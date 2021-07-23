@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY = gql`
 query AccountSubscriptionCredits($before: String, $after: String, $accountSubscription: ID!) {

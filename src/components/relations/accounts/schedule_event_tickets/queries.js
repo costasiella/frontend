@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY = gql`
   query AccountScheduleEventTickets($after: String, $before: String, $account: ID!) {

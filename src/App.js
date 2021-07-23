@@ -1,7 +1,16 @@
 import Cookies from 'js-cookie'
 import React from 'react'
-import { ApolloProvider } from "react-apollo"
-import ApolloClient from "react"
+import {
+  ApolloClient,
+  concat,
+  createHttpLink,
+  ApolloLink,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+// import ApolloClient from "react"
 import { Observable } from 'apollo-link'
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
@@ -24,6 +33,7 @@ import "tabler-react/dist/Tabler.css"
 import "react-datepicker/dist/react-datepicker.css"
 // App css
 import './App.css'
+// import { concat } from 'apollo-boost';
 
 // Register "nl" locale for react-datepicker
 // https://reactdatepicker.com/#example-17
@@ -133,12 +143,9 @@ async function getCsrfToken() {
     return await csrftoken
 }
 
-// set up ApolloClient
-const client = new ApolloClient({
-  // uri: "http://localhost:8000/graphql/",
-  uri: "/d/graphql/",
-  credentials: "same-origin",
-  onError: processClientError,
+const httpLink = createHttpLink({
+  uri: '/d/graphql/',
+  credentials: 'same-origin',
   request: async (operation) => {
     const csrftoken = await getCsrfToken();
     Cookies.set('csrftoken', csrftoken);
@@ -148,8 +155,30 @@ const client = new ApolloClient({
         headers: {
             'X-CSRFToken': csrftoken,
         },
-    });
-},
+    })}
+});
+
+const csrfMiddleWare = new ApolloLink(async (operation, forward) => {
+  // const csrftoken = await getCsrfToken();
+  const csrftoken = await getCsrfToken();
+  Cookies.set('csrftoken', csrftoken);
+
+  operation.setContext({
+    // set the 'X-CSRFToken' header to the csrftoken
+    headers: {
+        'X-CSRFToken': csrftoken,
+    },
+  })
+
+  return forward(operation)
+})
+
+// set up ApolloClient
+const client = new ApolloClient({
+  link: concat(csrfMiddleWare, httpLink),
+  cache: new InMemoryCache(),
+  onError: processClientError,
+// },
   // request: async operation => {
   //   var csrftoken = Cookies.get('csrftoken');
   //   operation.setContext({

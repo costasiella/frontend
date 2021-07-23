@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_NOTES_QUERY = gql`
   query AccountNotes($after: String, $before: String, $account: ID!, $noteType: String!) {

@@ -9,7 +9,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
-import { useQuery, useMutation } from "react-apollo"
+import { useQuery, useMutation } from "@apollo/client"
 import { toast } from 'react-toastify'
 
 import { GET_APP_SETTINGS_QUERY } from "./components/settings/general/date_time/queries"

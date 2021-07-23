@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_FINANCE_INVOICE_ITEM_QUERY = gql`
 query financeInvoiceItem($before: String, $after: String, $accountSubscription: ID!) {

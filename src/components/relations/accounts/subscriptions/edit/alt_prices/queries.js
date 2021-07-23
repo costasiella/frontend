@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_SUBSCRIPTION_ALT_PRICES_QUERY = gql`
 query AccountSubscriptionAltPrices($before:String, $after:String, $accountSubscription: ID!) {

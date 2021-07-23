@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_SUBSCRIPTION_BLOCKS_QUERY = gql`
 query AccountSubscriptionBlocks($before: String, $after: String, $accountSubscription: ID!) {

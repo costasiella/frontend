@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_BACKEND_ANNOUNCEMENTS_QUERY = gql`
   query OrganizationAnnouncements($after: String, $before: String) {

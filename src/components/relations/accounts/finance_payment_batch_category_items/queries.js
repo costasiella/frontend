@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEMS_QUERY = gql`
   query AccountFinancePaymentBatchCategoryItems($after: String, $before: String, $account: ID!) {

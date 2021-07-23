@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 export const GET_BUSINESSES_QUERY = gql`
   query Businesses($before:String, $after:String, $name:String, $archived: Boolean!) {

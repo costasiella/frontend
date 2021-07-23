@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import { gql } from "@apollo/client"
 
 
 export const GET_ACCOUNT_BANK_ACCOUNT_MANDATE_QUERY = gql`
