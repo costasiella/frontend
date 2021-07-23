@@ -17,7 +17,6 @@ import OrganizationMenu from "../OrganizationMenu"
 
 
 function OrganizationClasstypesBase({t, history, children}) {
-
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
