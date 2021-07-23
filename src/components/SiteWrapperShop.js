@@ -4,7 +4,7 @@ import * as React from "react"
 import { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { NavLink, withRouter } from "react-router-dom"
-import { useQuery } from "react-apollo"
+import { useQuery } from "@apollo/client"
 import { ToastContainer, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -180,8 +180,8 @@ function SiteWrapperShop({t, match, history, children}) {
   console.log(organization)
   // const { error, loading, data, fetchMore } = useQuery(GET_USER)
 
-  // if (loading) return <p>{t('general.loading_with_dots')}</p>;
-  // if (error) return <p>{t('system.user.error_loading')}</p>; 
+  if (loading) return <p>{t('general.loading_with_dots')}</p>;
+  if (error) return <p>{t('system.user.error_loading')}</p>; 
 
   console.log(data)
 

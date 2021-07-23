@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Mutation, Query } from "react-apollo";
+import { Mutation, Query } from "@apollo/client";
 import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"

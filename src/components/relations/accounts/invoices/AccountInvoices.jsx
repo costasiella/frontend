@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Mutation } from 'react-apollo'
+import { Mutation } from '@apollo/client'
 import { useQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'

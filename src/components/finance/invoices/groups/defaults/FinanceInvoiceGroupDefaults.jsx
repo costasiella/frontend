@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Query, Mutation } from "react-apollo"
+import { Query, Mutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { Formik } from 'formik'

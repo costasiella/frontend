@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react'
 import { withTranslation } from 'react-i18next'
-import { useMutation } from "react-apollo"
+import { useMutation } from "@apollo/client"
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 import { toast } from 'react-toastify'

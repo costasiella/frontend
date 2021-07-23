@@ -59,7 +59,6 @@
     "postcss-safe-parser": "5.0.2",
     "prompts": "2.4.0",
     "react": "^17.0.2",
-    "react-apollo": "^3.1.5",
     "react-app-polyfill": "^2.0.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-c3js": "^0.1.20",
