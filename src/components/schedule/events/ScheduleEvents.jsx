@@ -34,7 +34,7 @@ import ScheduleEventArchive from "./ScheduleEventArchive"
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
-function ScheduleEvents({t, history, archived=false}) {
+function ScheduleEvents({t, history}) {
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_SCHEDULE_EVENTS_QUERY, {
     variables: get_list_query_variables()
   })
@@ -47,25 +47,25 @@ function ScheduleEvents({t, history, archived=false}) {
   </HasPermissionWrapper>
 
   const cardHeaderContent = <Card.Options>
-  <Button color={(localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED) === "false") ? 'primary': 'secondary'}  
-          size="sm"
-          onClick={() => {
-            localStorage.setItem(CSLS.SCHEDULE_EVENTS_ARCHIVED, false)
-            refetch(get_list_query_variables())
-          }
-  }>
-    {t('general.active')}
-  </Button>
-  <Button color={(localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED) === "true") ? 'primary': 'secondary'} 
-          size="sm" 
-          className="ml-2" 
-          onClick={() => {
-            localStorage.setItem(CSLS.SCHEDULE_EVENTS_ARCHIVED, true)
-            refetch(get_list_query_variables())
-          }
-  }>
-    {t('general.archive')}
-  </Button>
+    <Button color={(localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED) === "false") ? 'primary': 'secondary'}  
+            size="sm"
+            onClick={() => {
+              localStorage.setItem(CSLS.SCHEDULE_EVENTS_ARCHIVED, false)
+              refetch(get_list_query_variables())
+            }
+    }>
+      {t('general.active')}
+    </Button>
+    <Button color={(localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED) === "true") ? 'primary': 'secondary'} 
+            size="sm" 
+            className="ml-2" 
+            onClick={() => {
+              localStorage.setItem(CSLS.SCHEDULE_EVENTS_ARCHIVED, true)
+              refetch(get_list_query_variables())
+            }
+    }>
+      {t('general.archive')}
+    </Button>
   </Card.Options>
 
   if (loading) {

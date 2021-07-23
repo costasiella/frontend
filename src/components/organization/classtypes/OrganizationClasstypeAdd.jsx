@@ -21,6 +21,7 @@ import {
   Form,
 } from "tabler-react"
 
+import { get_list_query_variables } from './tools'
 import OrganizationClasstypesBase from './OrganizationClasstypesBase';
 
 const ADD_CLASSTYPE = gql`
@@ -39,12 +40,11 @@ mutation CreateOrganizationClasstype($input: CreateOrganizationClasstypeInput!) 
 }
 `
 
-const return_url = "/organization/classtypes"
 
-
-function OrganizationClasstypeAdd({t, history, returnUrl}) {
+function OrganizationClasstypeAdd({t, history}) {
+  const returnUrl = "/organization/classtypes"
   const [addClasstype] = useMutation(ADD_CLASSTYPE, {
-    onCompleted: () => history.push(returnUrl)
+    onCompleted: history.push(returnUrl)
   })
 
   return (
@@ -67,7 +67,7 @@ function OrganizationClasstypeAdd({t, history, returnUrl}) {
                 },
                 // file: values.image
               }, refetchQueries: [
-                  {query: GET_CLASSTYPES_QUERY, variables: {"archived": false }}
+                  {query: GET_CLASSTYPES_QUERY, variables: get_list_query_variables()}
               ]})
               .then(({ data }) => {
                   console.log('got data', data);
@@ -109,6 +109,7 @@ function OrganizationClasstypeAdd({t, history, returnUrl}) {
                         </Form.Group>
                         <Form.Group label={t('general.description')}>
                           <Editor
+                              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
                               textareaName="description"
                               initialValue={values.description}
                               init={tinymceBasicConf}
@@ -134,7 +135,7 @@ function OrganizationClasstypeAdd({t, history, returnUrl}) {
                         >
                           {t('general.submit')}
                         </Button>
-                        <Button color="link" onClick={() => history.push(return_url)}>
+                        <Button color="link" onClick={() => history.push(returnUrl)}>
                             {t('general.cancel')}
                         </Button>
                     </Card.Footer>

@@ -10,6 +10,7 @@ const cs_local_storage_keys = {
     FINANCE_PAYMENT_BATCH_CATEGORIES_SHOW_ARCHIVE: 'costasiella:financePaymentBatchCategoriesShowArchive',
     INSIGHT_CLASSPASSES_YEAR: 'costasiella:insightClasspassesYear',
     INSIGHT_SUBSCRIPTIONS_YEAR: 'costasiella:insightSubscriptionsYear',
+    ORGANIZATION_CLASSTYPES_ARCHIVED: 'costasiella:organizationClasstypesArchived',
     RELATIONS_ACCOUNTS_FILTER_TYPE: 'costasiella:relationsAccountsFilterType',
     RELATIONS_ACCOUNTS_SEARCH: 'costasiella:relationsAccountsSearch',
     RELATIONS_ACCOUNTS_IS_ACTIVE: 'costasiella:relationsAccountsIsActive',
