@@ -2,16 +2,17 @@ import Cookies from 'js-cookie'
 import React from 'react'
 import {
   ApolloClient,
-  concat,
+  from,
   createHttpLink,
   ApolloLink,
   InMemoryCache,
   ApolloProvider,
   useQuery,
+  Observable,
   gql
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 // import ApolloClient from "react"
-import { Observable } from 'apollo-link'
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
 // Import moment locale
@@ -47,13 +48,25 @@ String.prototype.trunc =
       return this.substr(0, n-1) + (this.length > n ? '...' : '')
   }
 
-function processClientError({ networkError, graphQLErrors, operation, forward, response }) {
-  // console.log(Object.keys(error))
-  console.log(operation)
-  console.log(networkError)
-  console.log(graphQLErrors)
-  console.log(forward)
-  console.log(response)
+function SetCurrentUrlAsNext() {
+  console.log("Storing current location as next in local storage")
+  const currentUrl = window.location.href
+  const next = currentUrl.split("#")[1]
+  console.log(next)
+  localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
+}
+  
+
+const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response}) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
+
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+
   // request size check
   if (graphQLErrors[0].message == "Request body exceeded settings.DATA_UPLOAD_MAX_MEMORY_SIZE.") {
     console.error('CHOSEN FILE EXCEEDS SIZE LIMIT')
@@ -77,10 +90,12 @@ function processClientError({ networkError, graphQLErrors, operation, forward, r
         const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
         if (refreshTokenExp == null) {
           // User hasn't logged in before
+          SetCurrentUrlAsNext()
           window.location.href = "#/user/login/required"
           window.location.reload()
         } else if ((new Date() / 1000) >= refreshTokenExp) {
           // Session expired
+          SetCurrentUrlAsNext()
           console.log("refresh token expired or not found")
           console.log(new Date() / 1000)
           console.log(refreshTokenExp)
@@ -117,12 +132,14 @@ function processClientError({ networkError, graphQLErrors, operation, forward, r
               .catch(error => {
                 // No refresh or client token available, we force user to login
                 observer.error(error);
+                SetCurrentUrlAsNext()
                 window.location.href = "/#/user/login"
                 window.location.reload()
               });
           })
         }
       } else {
+        SetCurrentUrlAsNext()
         window.location.href = "/#/user/login"
         window.location.reload()
       }
@@ -131,7 +148,8 @@ function processClientError({ networkError, graphQLErrors, operation, forward, r
       // window.location.reload()
     }
   }
-}
+});
+
 
 // Fetch CSRF Token 
 let csrftoken;
@@ -175,9 +193,8 @@ const csrfMiddleWare = new ApolloLink(async (operation, forward) => {
 
 // set up ApolloClient
 const client = new ApolloClient({
-  link: concat(csrfMiddleWare, httpLink),
+  link: from([csrfMiddleWare, errorLink, httpLink]),
   cache: new InMemoryCache(),
-  onError: processClientError,
 // },
   // request: async operation => {
   //   var csrftoken = Cookies.get('csrftoken');
