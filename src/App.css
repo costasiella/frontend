@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+#root {
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* font classes begin */
+
+.bold {
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* font classes end */
+
+/* Tabler changes begin */
+a:hover {
+  text-decoration: none;
+}
+
+table .btn {
+  margin-left: 4px;
+}
+
+.btn-link:hover {
+  text-decoration: none !important;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #6e7687;
+  margin-left: 0.7rem;
+}
+
+/* Show error messages under <Editor> components */
+.invalid-feedback {
+  display: block;
+}
+
+/* Add missing xs column media definition */
+@media (max-width: 575px) {
+  .col-xs-12 {
+    flex: 0 0 100%;
+    max-width: 100%
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Tabler changes end */
+
+/* React datepicker changes begin */
+.react-datepicker-wrapper, 
+.react-datepicker__input-container {
+  width: 100% !important;
 }
 
-.App-link {
-  color: #61dafb;
+.react-datepicker-popper {
+  z-index: 100;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.schedule-list-csdatepicker {
+  width: 156px !important;
 }
+
+.schedule-list-page-options-btn-list {
+  width: 100%;
+}
+
+/* React datepicker changes end */
