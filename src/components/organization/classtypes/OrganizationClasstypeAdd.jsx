@@ -16,20 +16,12 @@ import { CLASSTYPE_SCHEMA } from './yupSchema'
 
 
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Form,
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from "../OrganizationMenu"
 import OrganizationClasstypesBase from './OrganizationClasstypesBase';
-
 
 const ADD_CLASSTYPE = gql`
 mutation CreateOrganizationClasstype($input: CreateOrganizationClasstypeInput!) {
@@ -153,46 +145,5 @@ function OrganizationClasstypeAdd({t, history, returnUrl}) {
     </OrganizationClasstypesBase>
   )
 }
-
-
-// class OrganizationClasstypeAdd extends Component {
-//   constructor(props) {
-//     super(props)
-//     console.log("Organization classtype add props:")
-//     console.log(props)
-//   }
-
-//   render() {
-//     const t = this.props.t
-//     const match = this.props.match
-//     const history = this.props.history
-//     const return_url = "/organization/classtypes"
-
-//     return(
-//     <SiteWrapper>
-//       <div className="my-3 my-md-5">
-//         <Container>
-//           <Page.Header title="Organization" />
-//           <Grid.Row>
-//             <Grid.Col md={9}>
-            
-//             </Grid.Col>
-//             <Grid.Col md={3}>
-//               <HasPermissionWrapper permission="add"
-//                                     resource="organizationclasstype">
-//                 <Button color="primary btn-block mb-6"
-//                         onClick={() => history.push(return_url)}>
-//                   <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-//                 </Button>
-//               </HasPermissionWrapper>
-//               <OrganizationMenu active_link='classtypes'/>
-//             </Grid.Col>
-//           </Grid.Row>
-//         </Container>
-//       </div>
-//     </SiteWrapper>
-//     ) 
-//   }
-// }
 
 export default withTranslation()(withRouter(OrganizationClasstypeAdd))
