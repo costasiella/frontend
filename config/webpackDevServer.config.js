@@ -101,7 +101,11 @@ module.exports = function (proxy, allowedHost) {
     },
     public: allowedHost,
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
-    proxy,
+    // proxy,
+    proxy: [{
+        context: ['/d'],
+        target: 'http://localhost:8000'
+    }],
     before(app, server) {
       // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
       // middlewares before `redirectServedPath` otherwise will not have any effect
