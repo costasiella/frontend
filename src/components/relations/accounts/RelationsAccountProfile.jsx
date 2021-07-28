@@ -92,7 +92,7 @@ function RelationsAccountProfile({t, match}) {
               console.log(values)
 
               let input_vars = {
-                id: match.params.accountId,
+                id: accountId,
                 customer: values.customer,
                 teacher: values.teacher,
                 employee: values.employee,
@@ -119,7 +119,7 @@ function RelationsAccountProfile({t, match}) {
                   // Refetch list
                   {query: GET_ACCOUNTS_QUERY, variables: get_list_query_variables()},
                   // Refresh local cached results for this account
-                  {query: GET_ACCOUNT_QUERY, variables: {"id": match.params.accountId}}
+                  {query: GET_ACCOUNT_QUERY, variables: {id: accountId}}
               ]})
               .then(({ data }) => {
                   console.log('got data', data)
