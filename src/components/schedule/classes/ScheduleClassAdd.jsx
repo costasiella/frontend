@@ -207,7 +207,7 @@ class ScheduleClassAdd extends Component {
                             <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                           </Button>
                         </HasPermissionWrapper>
-                        <ScheduleMenu active_link='classes'/>
+                        <ScheduleMenu activeLink='classes'/>
                       </Grid.Col>
                     </Grid.Row>
                   </Container>

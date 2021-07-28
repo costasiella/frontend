@@ -52,7 +52,7 @@ const ScheduleClassTeacherAdd = ({ t, history, match }) => (
           return (
             <ClassEditBase 
               card_title={t('schedule.classes.teachers.title_add')}
-              menu_active_link="teachers"
+              menu_activeLink="teachers"
               sidebar_button={<ScheduleClassTeacherBack classId={match.params.class_id} />}
             >
               <Mutation mutation={ADD_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(return_url + match.params.class_id)}> 

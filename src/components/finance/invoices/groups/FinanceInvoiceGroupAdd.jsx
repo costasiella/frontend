@@ -131,7 +131,7 @@ const FinanceInvoiceGroupAdd = ({ t, history }) => (
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>
-            <FinanceMenu active_link='invoices'/>
+            <FinanceMenu activeLink='invoices'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

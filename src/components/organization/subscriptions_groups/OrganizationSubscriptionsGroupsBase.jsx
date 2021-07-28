@@ -44,7 +44,7 @@ function OrganizationSubscriptionsGroupsBase({ t, history, children }) {
                   <Icon prefix="fe" name="plus-circle" /> {t('organization.subscription_groups.add')}
                 </Button>
               </HasPermissionWrapper>
-              <OrganizationMenu active_link=''/>
+              <OrganizationMenu activeLink=''/>
             </Grid.Col>
           </Grid.Row>
         </Container>

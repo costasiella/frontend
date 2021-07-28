@@ -302,7 +302,7 @@ function AccountSubscriptionEdit({t, match, history}) {
 //                       </Link>
 //                     </HasPermissionWrapper>
 //                     <ProfileMenu 
-//                       active_link='subscriptions'
+//                       activeLink='subscriptions'
 //                       account_id={match.params.account_id}
 //                     />
 //                   </Grid.Col>

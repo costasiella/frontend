@@ -240,7 +240,7 @@ function ScheduleClassEdit({ t, match, history }) {
               <ClassMenu 
                 scheduleItemId={schedule_item_id}
                 class_date={class_date}
-                active_link="edit"
+                activeLink="edit"
               />
             </Grid.Col>
           </Grid.Row>

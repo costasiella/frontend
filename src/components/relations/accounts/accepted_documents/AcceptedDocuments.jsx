@@ -131,7 +131,7 @@ function AccountAcceptedDocuments({ t, history, match }) {
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
               <ProfileMenu 
-                active_link='accepted_documents' 
+                activeLink='accepted_documents' 
                 account_id={match.params.account_id}
               />
             </Grid.Col>

@@ -82,7 +82,7 @@ function OrganizationDocuments({ t, match }) {
               </Card>        
             </Grid.Col>
             <Grid.Col md={3}>
-              <OrganizationMenu active_link='organization'/>
+              <OrganizationMenu activeLink='organization'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

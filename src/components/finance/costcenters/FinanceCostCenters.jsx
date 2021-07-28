@@ -194,7 +194,7 @@ const FinanceCostCenters = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('finance.costcenters.add')}
               </Button>
             </HasPermissionWrapper>
-            <FinanceMenu active_link='costcenters'/>
+            <FinanceMenu activeLink='costcenters'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

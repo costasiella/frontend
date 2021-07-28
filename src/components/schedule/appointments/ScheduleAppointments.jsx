@@ -330,7 +330,7 @@ const ScheduleAppointments = ({ t, history }) => (
                 <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
                 <ScheduleAppointmentsFilter data={data} refetch={refetch} />
                 <h5>{t("general.menu")}</h5>
-                <ScheduleMenu active_link='appointments'/>
+                <ScheduleMenu activeLink='appointments'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

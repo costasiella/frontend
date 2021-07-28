@@ -35,7 +35,7 @@ function ScheduleEventEditBaseBase({ t, match, history, children, pageHeaderOpti
             <Grid.Col md={3}>
               { sidebarContent }
               <h5>{t("general.edit_menu")}</h5>
-              <ScheduleEventEditMenu active_link={activeLink} eventId={eventId}/>
+              <ScheduleEventEditMenu activeLink={activeLink} eventId={eventId}/>
             </Grid.Col>
             </Grid.Row>
           </Container>

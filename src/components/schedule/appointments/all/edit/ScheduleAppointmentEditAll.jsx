@@ -77,7 +77,7 @@ class ScheduleAppointmentEditAll extends Component {
             {({ loading, error, data, refetch }) => {
               // Loading
               if (loading) return (
-                <AppointmentEditBase menu_active_link="edit">
+                <AppointmentEditBase menu_activeLink="edit">
                   <p>{t('general.loading_with_dots')}</p>
                 </AppointmentEditBase>
               )
@@ -85,7 +85,7 @@ class ScheduleAppointmentEditAll extends Component {
               if (error) {
                 console.log(error)
                 return (
-                  <AppointmentEditBase menu_active_link="edit">
+                  <AppointmentEditBase menu_activeLink="edit">
                     <p>{t('general.error_sad_smiley')}</p>
                   </AppointmentEditBase>
                 )
@@ -101,7 +101,7 @@ class ScheduleAppointmentEditAll extends Component {
               
               return (
                 <AppointmentEditBase 
-                  menu_active_link="edit"
+                  menu_activeLink="edit"
                 >
                   <Mutation mutation={UPDATE_APPOINTMENT} onCompleted={() => history.push(return_url)}> 
                   {(updateScheduleAppointment, { data }) => (

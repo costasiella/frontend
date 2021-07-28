@@ -16,13 +16,13 @@ let subscriptions_active
 let teachers_active
 let prices_active
 
-const ClassEditMenu = ({ t, active_link, classId }) => (
+const ClassEditMenu = ({ t, activeLink, classId }) => (
     <List.Group transparent={true}>
-        {(active_link === 'edit') ? edit_active = true: edit_active = false}
-        {(active_link === 'classpasses') ? classpasses_active = true: classpasses_active = false}
-        {(active_link === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
-        {(active_link === 'teachers') ? teachers_active = true: teachers_active = false}
-        {(active_link === 'prices') ? prices_active = true: prices_active = false}        
+        {(activeLink === 'edit') ? edit_active = true: edit_active = false}
+        {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
+        {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
+        {(activeLink === 'teachers') ? teachers_active = true: teachers_active = false}
+        {(activeLink === 'prices') ? prices_active = true: prices_active = false}        
 
         <List.GroupItem
             key={v4()}

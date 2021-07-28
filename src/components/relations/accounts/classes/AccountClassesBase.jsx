@@ -39,7 +39,7 @@ function AccountClassesBase({ t, match, history, children, account={} }) {
                   </Link>
                 </HasPermissionWrapper> */}
               <ProfileMenu 
-                active_link='classes' 
+                activeLink='classes' 
                 account_id={match.params.account_id}
               />
             </Grid.Col>

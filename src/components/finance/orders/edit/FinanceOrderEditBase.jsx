@@ -43,7 +43,7 @@ function FinanceOrderEditBase ({ t, match, history, children, refetch }) {
                 </Link>
               </HasPermissionWrapper>            
               <h5>{t("general.menu")}</h5>
-              <FinanceMenu active_link='orders'/>
+              <FinanceMenu activeLink='orders'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

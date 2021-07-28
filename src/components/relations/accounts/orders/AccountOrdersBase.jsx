@@ -31,7 +31,7 @@ function AccountOrdersBase({ t, match, history, children, account={} }) {
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
               <ProfileMenu 
-                active_link='orders' 
+                activeLink='orders' 
                 account_id={match.params.account_id}
               />
             </Grid.Col>

@@ -15,11 +15,11 @@ let b2b_active
 let suppliers_active
 
 
-const RelationsMenu = ({ t, active_link }) => (
+const RelationsMenu = ({ t, activeLink }) => (
     <List.Group transparent={true}>
-        {(active_link === 'accounts') ? accounts_active = true: accounts_active = false}
-        {(active_link === 'b2b') ? b2b_active = true: b2b_active = false}
-        {(active_link === 'suppliers') ? suppliers_active = true: suppliers_active = false}
+        {(activeLink === 'accounts') ? accounts_active = true: accounts_active = false}
+        {(activeLink === 'b2b') ? b2b_active = true: b2b_active = false}
+        {(activeLink === 'suppliers') ? suppliers_active = true: suppliers_active = false}
         
 
         <List.GroupItem

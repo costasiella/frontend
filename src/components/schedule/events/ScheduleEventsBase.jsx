@@ -50,7 +50,7 @@ function ScheduleEventsBase({ t, match, history, children, sidebarContent="", di
               {(displayMenu) ?
                 <span>
                   <h5>{t("general.menu")}</h5>
-                  <ScheduleMenu active_link='events'/>
+                  <ScheduleMenu activeLink='events'/>
                 </span>
                 : "" }
             </Grid.Col>

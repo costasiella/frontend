@@ -65,7 +65,7 @@ const RelationsAccountsBase = ({t, history, refetch, children }) => (
               <Icon prefix="fe" name="plus-circle" /> {t('relations.accounts.add')}
             </Button>
           </HasPermissionWrapper>
-          <RelationsMenu active_link='accounts'/>
+          <RelationsMenu activeLink='accounts'/>
         </Grid.Col>
       </Grid.Row>
     </Container>

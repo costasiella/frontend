@@ -201,7 +201,7 @@ const OrganizationLocations = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.locations.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu active_link='locations'/>
+            <OrganizationMenu activeLink='locations'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -20,17 +20,17 @@ let payment_batch_collections_active
 let payment_batch_payments_active
 let payment_batch_categories_active
 
-const FinanceMenu = ({ t, active_link }) => (
+const FinanceMenu = ({ t, activeLink }) => (
     <List.Group transparent={true}>
-        {(active_link === 'invoices') ? invoices_active = true: invoices_active = false}
-        {(active_link === 'orders') ? orders_active = true: orders_active = false}
-        {(active_link === 'costcenters') ? costcenters_active = true: costcenters_active = false}
-        {(active_link === 'glaccounts') ? glaccounts_active = true: glaccounts_active = false}
-        {(active_link === 'taxrates') ? taxrates_active = true: taxrates_active = false}
-        {(active_link === 'payment_methods') ? payment_methods_active = true: payment_methods_active = false}
-        {(active_link === 'payment_batch_collections') ? payment_batch_collections_active = true: payment_batch_collections_active = false}
-        {(active_link === 'payment_batch_payments') ? payment_batch_payments_active = true: payment_batch_payments_active = false}
-        {(active_link === 'payment_batch_categories') ? payment_batch_categories_active = true: payment_batch_categories_active = false}
+        {(activeLink === 'invoices') ? invoices_active = true: invoices_active = false}
+        {(activeLink === 'orders') ? orders_active = true: orders_active = false}
+        {(activeLink === 'costcenters') ? costcenters_active = true: costcenters_active = false}
+        {(activeLink === 'glaccounts') ? glaccounts_active = true: glaccounts_active = false}
+        {(activeLink === 'taxrates') ? taxrates_active = true: taxrates_active = false}
+        {(activeLink === 'payment_methods') ? payment_methods_active = true: payment_methods_active = false}
+        {(activeLink === 'payment_batch_collections') ? payment_batch_collections_active = true: payment_batch_collections_active = false}
+        {(activeLink === 'payment_batch_payments') ? payment_batch_payments_active = true: payment_batch_payments_active = false}
+        {(activeLink === 'payment_batch_categories') ? payment_batch_categories_active = true: payment_batch_categories_active = false}
         
 
         <List.GroupItem

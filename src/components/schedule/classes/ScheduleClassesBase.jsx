@@ -163,7 +163,7 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                 </div>
               : ""}
               <h5>{t("general.menu")}</h5>
-              <ScheduleMenu active_link='classes'/>
+              <ScheduleMenu activeLink='classes'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

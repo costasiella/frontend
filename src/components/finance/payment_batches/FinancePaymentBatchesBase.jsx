@@ -60,7 +60,7 @@ function FinancePaymentBatchesBase({t, history, match, children, showAdd=false, 
                 </HasPermissionWrapper>
                 : "" 
               }
-              <FinanceMenu active_link={activeLink} />
+              <FinanceMenu activeLink={activeLink} />
             </Grid.Col>
           </Grid.Row>
         </Container>

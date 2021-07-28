@@ -220,7 +220,7 @@ const OrganizationAppointments = ({ t, history, match, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.appointments.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu active_link='appointments'/>
+            <OrganizationMenu activeLink='appointments'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

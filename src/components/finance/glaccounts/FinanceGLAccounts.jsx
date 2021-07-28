@@ -193,7 +193,7 @@ const FinanceGLAccounts = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('finance.glaccounts.add')}
               </Button>
             </HasPermissionWrapper>
-            <FinanceMenu active_link='glaccounts'/>
+            <FinanceMenu activeLink='glaccounts'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -34,7 +34,7 @@ function OrganizationClasstypesBase({t, history, children}) {
                   <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
                 </Button>
               </HasPermissionWrapper>
-              <OrganizationMenu active_link='classtypes'/>
+              <OrganizationMenu activeLink='classtypes'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

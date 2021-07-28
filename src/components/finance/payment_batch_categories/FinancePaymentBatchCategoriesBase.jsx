@@ -51,7 +51,7 @@ function FinancePaymentBatchCategoriesBase({t, history, children, showAdd=false,
                 </HasPermissionWrapper>
                 : "" 
               }
-              <FinanceMenu active_link='payment_batch_categories'/>
+              <FinanceMenu activeLink='payment_batch_categories'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

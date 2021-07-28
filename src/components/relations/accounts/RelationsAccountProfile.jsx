@@ -1,14 +1,13 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
-import { Query, Mutation } from "@apollo/client";
+import React from 'react'
+import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_ACCOUNTS_QUERY, GET_ACCOUNT_QUERY } from './queries'
+import { GET_ACCOUNTS_QUERY, GET_ACCOUNT_QUERY, UPDATE_ACCOUNT } from './queries'
 import { ACCOUNT_SCHEMA } from './yupSchema'
 
 import {
@@ -30,173 +29,125 @@ import RelationsAccountProfileForm from "./RelationsAccountProfileForm"
 
 // import OrganizationMenu from "../OrganizationMenu"
 import ProfileMenu from "./ProfileMenu"
+import RelationsAccountProfileBase from './RelationsAccountProfileBase'
 
+function RelationsAccountProfile({t, match}) {
+  const accountId = match.params.account_id
+  const returnUrl = "/relations/accounts"
 
-const UPDATE_ACCOUNT = gql`
-  mutation UpdateAccount($input:UpdateAccountInput!) {
-    updateAccount(input: $input) {
-      account {
-        id
-        firstName
-        lastName
-        email
-      }
-    }
-  }
-`
+  const {loading, error, data} = useQuery(GET_ACCOUNT_QUERY, {
+    variables: {id: accountId}
+  })
+  const [updateAccount] = useMutation(UPDATE_ACCOUNT)
 
+  if (loading) return (
+    <RelationsAccountProfileBase>
+      <p>{t('general.loading_with_dots')}</p>
+    </RelationsAccountProfileBase>
+  )
 
-class RelationsAccountProfile extends Component {
-  constructor(props) {
-    super(props)
-    console.log("Organization profile props:")
-    console.log(props)
-  }
+  if (error) return (
+    <RelationsAccountProfileBase>
+      {console.log(error)}
+      <p>{t('general.error_sad_smiley')}</p>
+    </RelationsAccountProfileBase>
+  )
 
-  render() {
-    const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const account_id = match.params.account_id
-    const return_url = "/relations/accounts"
+  const account = data.account
+  console.log(account)
 
-    return (
-      <SiteWrapper>
-        <div className="my-3 my-md-5">
-          <Container>
-            <Query query={GET_ACCOUNT_QUERY} variables={{ id: account_id }} >
-              {({ loading, error, data, refetch }) => {
-                  // Loading
-                  if (loading) return <p>{t('general.loading_with_dots')}</p>
-                  // Error
-                  if (error) {
-                    console.log(error)
-                    return <p>{t('general.error_sad_smiley')}</p>
-                  }
-                  
-                  const initialData = data.account;
-                  console.log('query data')
-                  console.log(data)
-
-                  // DatePicker doesn't like a string as an initial value
-                  // This makes it a happy DatePicker :)
-                  let dateOfBirth = null
-                  if (initialData.dateOfBirth) {
-                    dateOfBirth = new Date(initialData.dateOfBirth)
-                  }
-
-                  return (
-                    <div>
-                      <Page.Header title={initialData.firstName + " " + initialData.lastName}>
-                        <RelationsAccountsBack />
-                      </Page.Header>
-                      <Grid.Row>
-                        <Grid.Col md={9}>
-                        <Card>
-                          <Card.Header>
-                            <Card.Title>{t('relations.accounts.profile')}</Card.Title>
-                            {console.log(match.params.account_id)}
-                          </Card.Header>
-                        <Mutation mutation={UPDATE_ACCOUNT}> 
-                         {(updateAccount, { data }) => (
-                          <Formik
-                            initialValues={{ 
-                              customer: initialData.customer, 
-                              teacher: initialData.teacher, 
-                              employee: initialData.employee, 
-                              firstName: initialData.firstName, 
-                              lastName: initialData.lastName, 
-                              email: initialData.email,
-                              dateOfBirth: dateOfBirth,
-                              gender: initialData.gender,
-                              emergency: initialData.emergency,
-                              phone: initialData.phone,
-                              mobile: initialData.mobile,
-                              address: initialData.address,
-                              postcode: initialData.postcode,
-                              city: initialData.city,
-                              country: initialData.country,
-                            }}
-                            validationSchema={ACCOUNT_SCHEMA}
-                            onSubmit={(values, { setSubmitting }) => {
-                                console.log('submit values:')
-                                console.log(values)
-
-                                let input_vars = {
-                                  id: match.params.account_id,
-                                  customer: values.customer,
-                                  teacher: values.teacher,
-                                  employee: values.employee,
-                                  firstName: values.firstName,
-                                  lastName: values.lastName,
-                                  email: values.email,
-                                  gender: values.gender,
-                                  emergency: values.emergency,
-                                  phone: values.phone,
-                                  mobile: values.mobile,
-                                  address: values.address,
-                                  postcode: values.postcode,
-                                  city: values.city,
-                                  country: values.country
-                                }
-
-                                if (values.dateOfBirth) {
-                                  input_vars['dateOfBirth'] = dateToLocalISO(values.dateOfBirth)
-                                } 
-
-                                updateAccount({ variables: {
-                                  input: input_vars
-                                }, refetchQueries: [
-                                    // Refetch list
-                                    {query: GET_ACCOUNTS_QUERY, variables: get_list_query_variables()},
-                                    // Refresh local cached results for this account
-                                    {query: GET_ACCOUNT_QUERY, variables: {"id": match.params.account_id}}
-                                ]})
-                                .then(({ data }) => {
-                                    console.log('got data', data)
-                                    toast.success((t('relations.accounts.toast_edit_success')), {
-                                        position: toast.POSITION.BOTTOM_RIGHT
-                                      })
-                                    setSubmitting(false)
-                                  }).catch((error) => {
-                                    toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                                        position: toast.POSITION.BOTTOM_RIGHT
-                                      })
-                                    console.log('there was an error sending the query', error)
-                                    setSubmitting(false)
-                                  })
-                            }}
-                            >
-                            {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-                              <RelationsAccountProfileForm
-                                isSubmitting={isSubmitting}
-                                setFieldTouched={setFieldTouched}
-                                setFieldValue={setFieldValue}
-                                errors={errors}
-                                values={values}
-                              />
-                            )}
-                          </Formik>
-                        )}
-                      </Mutation>
-                    </Card>
-                    </Grid.Col>                                    
-                    <Grid.Col md={3}>
-                      <ProfileCardSmall user={initialData}/>
-                      <ProfileMenu 
-                        active_link='profile'
-                        account_id={account_id}
-                      /> 
-                    </Grid.Col>
-                  </Grid.Row>
-                </div>
-              )}}
-            </Query>
-          </Container>
-        </div>
-    </SiteWrapper>
-    )}
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let dateOfBirth = null
+  if (account.dateOfBirth) {
+    dateOfBirth = new Date(account.dateOfBirth)
   }
 
+  return (
+    <RelationsAccountProfileBase 
+      headerTitle={`${account.firstName} ${account.lastName}`}
+      user={account}
+    >
+       <Formik
+          initialValues={{ 
+            customer: account.customer, 
+            teacher: account.teacher, 
+            employee: account.employee, 
+            firstName: account.firstName, 
+            lastName: account.lastName, 
+            email: account.email,
+            dateOfBirth: dateOfBirth,
+            gender: account.gender,
+            emergency: account.emergency,
+            phone: account.phone,
+            mobile: account.mobile,
+            address: account.address,
+            postcode: account.postcode,
+            city: account.city,
+            country: account.country,
+          }}
+          validationSchema={ACCOUNT_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
+              console.log('submit values:')
+              console.log(values)
+
+              let input_vars = {
+                id: match.params.accountId,
+                customer: values.customer,
+                teacher: values.teacher,
+                employee: values.employee,
+                firstName: values.firstName,
+                lastName: values.lastName,
+                email: values.email,
+                gender: values.gender,
+                emergency: values.emergency,
+                phone: values.phone,
+                mobile: values.mobile,
+                address: values.address,
+                postcode: values.postcode,
+                city: values.city,
+                country: values.country
+              }
+
+              if (values.dateOfBirth) {
+                input_vars['dateOfBirth'] = dateToLocalISO(values.dateOfBirth)
+              } 
+
+              updateAccount({ variables: {
+                input: input_vars
+              }, refetchQueries: [
+                  // Refetch list
+                  {query: GET_ACCOUNTS_QUERY, variables: get_list_query_variables()},
+                  // Refresh local cached results for this account
+                  {query: GET_ACCOUNT_QUERY, variables: {"id": match.params.accountId}}
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data)
+                  toast.success((t('relations.accounts.toast_edit_success')), {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  setSubmitting(false)
+                }).catch((error) => {
+                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
+                })
+          }}
+          >
+          {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+            <RelationsAccountProfileForm
+              isSubmitting={isSubmitting}
+              setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              values={values}
+            />
+          )}
+        </Formik>
+    </RelationsAccountProfileBase>
+  )
+}
 
 export default withTranslation()(withRouter(RelationsAccountProfile))

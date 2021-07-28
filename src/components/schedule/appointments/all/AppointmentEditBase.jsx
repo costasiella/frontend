@@ -33,7 +33,7 @@ class AppointmentEditBase extends Component {
     const t = this.props.t
     const match = this.props.match
     const appointmentId = match.params.appointment_id
-    const menu_active_link = this.props.menu_active_link
+    const menu_activeLink = this.props.menu_activeLink
     const default_card = this.props.default_card
     const sidebar_button = this.props.sidebar_button
 
@@ -88,7 +88,7 @@ class AppointmentEditBase extends Component {
                 <Grid.Col md={3}>
                   {sidebar_button}
                   <h5>{t('general.menu')}</h5>
-                  <AppointmentEditMenu active_link={menu_active_link} appointmentId={appointmentId}/>
+                  <AppointmentEditMenu activeLink={menu_activeLink} appointmentId={appointmentId}/>
                 </Grid.Col>
               </Grid.Row>
             </Container>

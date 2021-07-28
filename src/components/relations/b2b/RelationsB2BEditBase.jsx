@@ -50,9 +50,9 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              {/* <RelationsMenu active_link='b2b'/> */}
+              {/* <RelationsMenu activeLink='b2b'/> */}
               {/* <ProfileMenu 
-                active_link='profile'
+                activeLink='profile'
                 account_id={account_id}
               />  */}
             </Grid.Col>

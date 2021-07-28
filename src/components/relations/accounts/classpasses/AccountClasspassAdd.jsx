@@ -168,7 +168,7 @@ class AccountClasspassAdd extends Component {
                         </Button>
                       </Link>
                     </HasPermissionWrapper>
-                    <ProfileMenu account_id={account_id} active_link='classpasses'/>
+                    <ProfileMenu account_id={account_id} activeLink='classpasses'/>
                   </Grid.Col>
                 </Grid.Row>
               </Container>

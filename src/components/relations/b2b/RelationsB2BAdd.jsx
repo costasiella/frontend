@@ -102,7 +102,7 @@ function RelationsB2BAdd({ t, history }) {
                   <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                 </Button>
               </HasPermissionWrapper>
-              <RelationsMenu active_link='accounts'/>
+              <RelationsMenu activeLink='accounts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

@@ -109,7 +109,7 @@ function OrganizationAnnouncementAdd({t, history}) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              <OrganizationMenu active_link='announcements'/>
+              <OrganizationMenu activeLink='announcements'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

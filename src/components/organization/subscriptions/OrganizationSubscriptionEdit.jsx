@@ -208,7 +208,7 @@ class OrganizationSubscriptionEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu active_link='subscriptions'/>
+                <OrganizationMenu activeLink='subscriptions'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

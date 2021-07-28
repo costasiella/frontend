@@ -170,7 +170,7 @@ class FinanceCostCenterEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <FinanceMenu active_link='costcenters'/>
+                <FinanceMenu activeLink='costcenters'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

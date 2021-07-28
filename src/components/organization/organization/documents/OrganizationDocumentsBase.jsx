@@ -30,7 +30,7 @@ function OrganizationDocumentsBase({ t, children, headerLinks, sidebarButton }) 
             </Grid.Col>
             <Grid.Col md={3}>
               {sidebarButton}
-              <OrganizationMenu active_link='organization'/>
+              <OrganizationMenu activeLink='organization'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

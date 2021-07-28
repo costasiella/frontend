@@ -22,7 +22,7 @@ const FinanceInvoicesBase = ({ t, history, children, refetch }) => (
       <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
       <FinanceInvoicesFilter refetch={refetch}/>
       <h5>{t("general.menu")}</h5>
-      <FinanceMenu active_link='invoices'/>
+      <FinanceMenu activeLink='invoices'/>
     </Grid.Col>
   </Grid.Row>
 )

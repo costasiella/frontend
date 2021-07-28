@@ -308,7 +308,7 @@ class OrganizationMembershipAdd extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu active_link='memberships'/>
+                <OrganizationMenu activeLink='memberships'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

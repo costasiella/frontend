@@ -14,10 +14,10 @@ let classpasses_active
 let subscriptions_active
 
 
-const InsightMenu = ({ t, active_link }) => (
+const InsightMenu = ({ t, activeLink }) => (
     <List.Group transparent={true}>
-        {(active_link === 'classpasses') ? classpasses_active = true: classpasses_active = false}
-        {(active_link === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
+        {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
+        {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
         
         <HasPermissionWrapper 
             permission="view"

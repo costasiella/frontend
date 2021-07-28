@@ -13,10 +13,10 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 let edit_active
 let teachers_available_active
 
-const AppointmentEditMenu = ({ t, active_link, appointmentId }) => (
+const AppointmentEditMenu = ({ t, activeLink, appointmentId }) => (
     <List.Group transparent={true}>
-        {(active_link === 'edit') ? edit_active = true: edit_active = false}
-        {(active_link === 'teachers_available') ? teachers_available_active = true: teachers_available_active = false}
+        {(activeLink === 'edit') ? edit_active = true: edit_active = false}
+        {(activeLink === 'teachers_available') ? teachers_available_active = true: teachers_available_active = false}
         
         <HasPermissionWrapper
           resource="scheduleappointment"

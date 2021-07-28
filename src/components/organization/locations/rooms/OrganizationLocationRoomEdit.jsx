@@ -146,7 +146,7 @@ class OrganizationLocationRoomEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu active_link='locations'/>
+                <OrganizationMenu activeLink='locations'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

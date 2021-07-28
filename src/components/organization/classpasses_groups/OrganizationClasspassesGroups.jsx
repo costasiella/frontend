@@ -299,7 +299,7 @@ function OrganizationClasspassesGroups({ t, history}) {
 //                 <Icon prefix="fe" name="plus-circle" /> {t('organization.classpass_groups.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu active_link=''/>
+//             <OrganizationMenu activeLink=''/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

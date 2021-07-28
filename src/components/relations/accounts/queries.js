@@ -80,6 +80,19 @@ export const ADD_ACCOUNT = gql`
   }
 `
 
+export const UPDATE_ACCOUNT = gql`
+  mutation UpdateAccount($input:UpdateAccountInput!) {
+    updateAccount(input: $input) {
+      account {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+  }
+`
+
 export const UPDATE_ACCOUNT_ACTIVE = gql`
   mutation UpdateAccountActive($input: UpdateAccountActiveInput!) {
     updateAccountActive(input: $input) {

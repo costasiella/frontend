@@ -361,7 +361,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                 <ClassMenu 
                   scheduleItemId={schedule_item_id}
                   class_date={class_date}
-                  active_link="attendance"
+                  activeLink="attendance"
                 />
               </Grid.Col>
             </Grid.Row>

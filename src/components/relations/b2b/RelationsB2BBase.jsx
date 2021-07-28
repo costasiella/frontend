@@ -48,7 +48,7 @@ const RelationsB2BBase = ({t, history, refetch, children }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('relations.b2b.add')}
               </Button>
             </HasPermissionWrapper>
-            <RelationsMenu active_link='b2b'/>
+            <RelationsMenu activeLink='b2b'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

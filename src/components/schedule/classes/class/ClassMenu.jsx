@@ -11,11 +11,11 @@ import {
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 
-function ClassMenu ({ t, scheduleItemId, class_date, active_link }) {
+function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
   let attendance_active = false
   let edit_active = false
 
-  switch (active_link) {
+  switch (activeLink) {
     case "attendance":
       attendance_active = true
       break

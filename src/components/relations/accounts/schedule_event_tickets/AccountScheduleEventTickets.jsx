@@ -351,7 +351,7 @@ function AccountScheduleEventTickets({t, history, match}) {
 //                     </Link>
 //                   </HasPermissionWrapper>
 //                   <ProfileMenu 
-//                     active_link='classpasses' 
+//                     activeLink='classpasses' 
 //                     account_id={match.params.account_id}
 //                   />
 //                 </Grid.Col>

@@ -63,7 +63,7 @@ function AccountSubscriptionEditBaseBase({t, history, match, children, account=n
                 </Link>
               </HasPermissionWrapper>
               <ProfileMenu 
-                active_link='subscriptions'
+                activeLink='subscriptions'
                 account_id={accountId}
               />
             </Grid.Col>

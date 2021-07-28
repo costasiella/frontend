@@ -241,7 +241,7 @@ const FinanceInvoiceGroupsDefaults = ({ t, history }) => (
           </Grid.Col>
           <Grid.Col md={3}>
             <h5>{t("general.menu")}</h5>
-            <FinanceMenu active_link='invoices'/>
+            <FinanceMenu activeLink='invoices'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

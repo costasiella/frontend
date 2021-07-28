@@ -75,7 +75,7 @@ function RelationsAccountBankAccountBase({ t, match, history, children, bankAcco
                 : ""
               }
               <ProfileMenu 
-                active_link='bank_account'
+                activeLink='bank_account'
                 account_id={accountId}
               /> 
             </Grid.Col>

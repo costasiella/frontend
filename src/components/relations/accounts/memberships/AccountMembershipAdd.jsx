@@ -174,7 +174,7 @@ class AccountMembershipAdd extends Component {
                         </Button>
                       </Link>
                     </HasPermissionWrapper>
-                    <ProfileMenu account_id={account_id} active_link='memberships'/>
+                    <ProfileMenu account_id={account_id} activeLink='memberships'/>
                   </Grid.Col>
                 </Grid.Row>
               </Container>

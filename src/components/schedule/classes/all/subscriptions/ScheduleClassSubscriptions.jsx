@@ -77,13 +77,13 @@ class ScheduleClassSubscriptions extends Component {
   
             // Loading
             if (loading) return (
-              <ClassEditBase menu_active_link="subscriptions" card_title={t('schedule.classes.subscriptions.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="subscriptions" card_title={t('schedule.classes.subscriptions.title')} sidebar_button={ButtonAdd}>
                 <Dimmer active={true} loader={true} />
               </ClassEditBase>
             )
             // Error
             if (error) return (
-              <ClassEditBase menu_active_link="subscriptions" card_title={t('schedule.classes.subscriptions.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="subscriptions" card_title={t('schedule.classes.subscriptions.title')} sidebar_button={ButtonAdd}>
                 <p>{t('schedule.classes.subscriptions.error_loading')}</p>
               </ClassEditBase>
             )
@@ -99,14 +99,14 @@ class ScheduleClassSubscriptions extends Component {
   
             // Empty list
             if (!data.scheduleItemOrganizationSubscriptionGroups.edges.length) { return (
-              <ClassEditBase menu_active_link="subscriptions" card_title={t('schedule.classes.subscriptions.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="subscriptions" card_title={t('schedule.classes.subscriptions.title')} sidebar_button={ButtonAdd}>
                 <p>{t('schedule.classes.subscriptions.empty_list')}</p>
               </ClassEditBase>
             )} else {   
             // Life's good! :)
               return (
                 <ClassEditBase 
-                  menu_active_link="subscriptions" 
+                  menu_activeLink="subscriptions" 
                   default_card={false} 
                   subtitle={subtitle}
                   sidebar_button={ButtonAdd}

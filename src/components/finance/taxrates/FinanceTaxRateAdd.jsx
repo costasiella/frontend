@@ -149,7 +149,7 @@ const FinanceTaxRateAdd = ({ t, history }) => (
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>
-            <FinanceMenu active_link='taxrates'/>
+            <FinanceMenu activeLink='taxrates'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -196,7 +196,7 @@ const FinancePaymentMethods = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('finance.payment_methods.add')}
               </Button>
             </HasPermissionWrapper>
-            <FinanceMenu active_link='payment_methods'/>
+            <FinanceMenu activeLink='payment_methods'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

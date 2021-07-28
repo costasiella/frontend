@@ -238,7 +238,7 @@ function OrganizationSubscriptionsPrices ({ t, history, match, archived=false })
                   <Icon prefix="fe" name="plus-circle" /> {t('organization.subscription_prices.add')}
                 </Button>
               </HasPermissionWrapper>
-              <OrganizationMenu active_link='subscriptions'/>
+              <OrganizationMenu activeLink='subscriptions'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

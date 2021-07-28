@@ -39,7 +39,7 @@ function RelationsAccountProfileBase({t, match, children, headerTitle="", user={
             <Grid.Col md={3}>
               <ProfileCardSmall user={user}/>
               <ProfileMenu 
-                active_link='profile'
+                activeLink='profile'
                 accountId={accountId}
               /> 
             </Grid.Col>

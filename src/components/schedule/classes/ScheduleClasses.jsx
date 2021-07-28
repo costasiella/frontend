@@ -472,7 +472,7 @@ export default withTranslation()(withRouter(ScheduleClasses))
 //                   <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
 //                   <ScheduleClassesFilter data={data} refetch={refetch} />
 //                   <h5>{t("general.menu")}</h5>
-//                   <ScheduleMenu active_link='classes'/>
+//                   <ScheduleMenu activeLink='classes'/>
 //               </Grid.Col>
 //             </Grid.Row>
 //           </Container>

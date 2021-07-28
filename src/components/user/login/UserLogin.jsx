@@ -278,7 +278,7 @@ function UserLogin({t, match, history}) {
 //                     <Grid.Col md={3}>
 //                       <ProfileCardSmall user={initialData}/>
 //                       <ProfileMenu 
-//                         active_link='profile'
+//                         activeLink='profile'
 //                         account_id={account_id}
 //                       /> 
 //                     </Grid.Col>

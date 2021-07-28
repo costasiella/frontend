@@ -22,19 +22,19 @@ let organization_active
 let organization_branding_active
 let announcements_active
 
-const OrganizationMenu = ({ t, active_link }) => (
+const OrganizationMenu = ({ t, activeLink }) => (
     <List.Group transparent={true}>
-        {(active_link === 'classpasses') ? classpasses_active = true: classpasses_active = false}
-        {(active_link === 'classtypes') ? classtypes_active = true: classtypes_active = false}
-        {(active_link === 'discoveries') ? discoveries_active = true: discoveries_active = false}
-        {(active_link === 'locations') ? locations_active = true: locations_active = false}
-        {(active_link === 'levels') ? levels_active = true: levels_active = false}
-        {(active_link === 'memberships') ? memberships_active = true: memberships_active = false}
-        {(active_link === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
-        {(active_link === 'appointments') ? appointments_active = true: appointments_active = false}
-        {(active_link === 'organization') ? organization_active = true: organization_active = false}
-        {(active_link === 'organization_branding') ? organization_branding_active = true: organization_branding_active = false}
-        {(active_link === 'announcements') ? announcements_active = true: announcements_active = false}
+        {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
+        {(activeLink === 'classtypes') ? classtypes_active = true: classtypes_active = false}
+        {(activeLink === 'discoveries') ? discoveries_active = true: discoveries_active = false}
+        {(activeLink === 'locations') ? locations_active = true: locations_active = false}
+        {(activeLink === 'levels') ? levels_active = true: levels_active = false}
+        {(activeLink === 'memberships') ? memberships_active = true: memberships_active = false}
+        {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
+        {(activeLink === 'appointments') ? appointments_active = true: appointments_active = false}
+        {(activeLink === 'organization') ? organization_active = true: organization_active = false}
+        {(activeLink === 'organization_branding') ? organization_branding_active = true: organization_branding_active = false}
+        {(activeLink === 'announcements') ? announcements_active = true: announcements_active = false}
         
 
         <List.GroupItem

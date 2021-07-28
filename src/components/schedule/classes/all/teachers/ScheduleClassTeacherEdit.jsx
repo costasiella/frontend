@@ -72,7 +72,7 @@ class ScheduleClassTeacherEdit extends Component {
               return (
                 <ClassEditBase 
                   card_title={t('schedule.classes.teachers.title_edit')}
-                  menu_active_link="teachers"
+                  menu_activeLink="teachers"
                   sidebar_button={<ScheduleClassTeacherBack classId={class_id} />}
                 >
                   <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(return_url)}> 

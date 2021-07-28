@@ -16,13 +16,13 @@ let earlybirds_active
 let activities_active
 let media_active
 
-const ScheduleEventMenu = ({ t, eventId, active_link }) => (
+const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
   <List.Group transparent={true}>
-    {(active_link === 'general') ? general_active = true: general_active = false}
-    {(active_link === 'tickets') ? tickets_active = true: tickets_active = false}
-    {(active_link === 'earlybirds') ? earlybirds_active = true: earlybirds_active = false}
-    {(active_link === 'activities') ? activities_active = true: activities_active = false}
-    {(active_link === 'media') ? media_active = true: media_active = false}
+    {(activeLink === 'general') ? general_active = true: general_active = false}
+    {(activeLink === 'tickets') ? tickets_active = true: tickets_active = false}
+    {(activeLink === 'earlybirds') ? earlybirds_active = true: earlybirds_active = false}
+    {(activeLink === 'activities') ? activities_active = true: activities_active = false}
+    {(activeLink === 'media') ? media_active = true: media_active = false}
     
 
     <HasPermissionWrapper 

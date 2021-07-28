@@ -228,7 +228,7 @@ const FinanceInvoiceGroups = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('finance.invoice_groups.add')}
               </Button>
             </HasPermissionWrapper>
-            <FinanceMenu active_link='invoices'/>
+            <FinanceMenu activeLink='invoices'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

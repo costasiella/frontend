@@ -85,7 +85,7 @@ class ScheduleClassEditAll extends Component {
             {({ loading, error, data, refetch }) => {
               // Loading
               if (loading) return (
-                <ClassEditBase menu_active_link="edit">
+                <ClassEditBase menu_activeLink="edit">
                   <p>{t('general.loading_with_dots')}</p>
                 </ClassEditBase>
               )
@@ -93,7 +93,7 @@ class ScheduleClassEditAll extends Component {
               if (error) {
                 console.log(error)
                 return (
-                  <ClassEditBase menu_active_link="edit">
+                  <ClassEditBase menu_activeLink="edit">
                     <p>{t('general.error_sad_smiley')}</p>
                   </ClassEditBase>
                 )
@@ -114,7 +114,7 @@ class ScheduleClassEditAll extends Component {
               
               return (
                 <ClassEditBase 
-                  menu_active_link="edit"
+                  menu_activeLink="edit"
                 >
                   <Mutation mutation={UPDATE_CLASS}> 
                   {(updateScheduleClass, { data }) => (

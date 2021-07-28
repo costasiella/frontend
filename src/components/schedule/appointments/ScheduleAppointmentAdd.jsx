@@ -195,7 +195,7 @@ class ScheduleAppointmentAdd extends Component {
                             <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                           </Button>
                         </HasPermissionWrapper>
-                        <ScheduleMenu active_link='appointments'/>
+                        <ScheduleMenu activeLink='appointments'/>
                       </Grid.Col>
                     </Grid.Row>
                   </Container>

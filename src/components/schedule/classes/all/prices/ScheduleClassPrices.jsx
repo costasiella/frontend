@@ -49,7 +49,7 @@ function ScheduleClassPrices({t, match, history}) {
   if (loading) return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
-        <ClassEditBase menu_active_link="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
+        <ClassEditBase menu_activeLink="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
           <Dimmer active={true} loader={true} />
         </ClassEditBase>
       </div>
@@ -59,7 +59,7 @@ function ScheduleClassPrices({t, match, history}) {
   if (error) return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
-        <ClassEditBase menu_active_link="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
+        <ClassEditBase menu_activeLink="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
           <p>{t('schedule.classes.prices.error_loading')}</p>
         </ClassEditBase>
       </div>
@@ -80,7 +80,7 @@ function ScheduleClassPrices({t, match, history}) {
   if (!data.scheduleItemPrices.edges.length) { return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
-        <ClassEditBase menu_active_link="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
+        <ClassEditBase menu_activeLink="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
           <p>{t('schedule.classes.prices.empty_list')}</p>
         </ClassEditBase>
       </div>
@@ -94,7 +94,7 @@ function ScheduleClassPrices({t, match, history}) {
         {console.log(classId)}
 
         <ClassEditBase 
-          menu_active_link="prices" 
+          menu_activeLink="prices" 
           default_card={false} 
           subtitle={subtitle}
           sidebar_button={<ButtonAdd classId={classId}/>}

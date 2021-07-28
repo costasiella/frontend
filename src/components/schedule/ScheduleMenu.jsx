@@ -14,11 +14,11 @@ let appointments_active
 let events_active
 let classes_active
 
-const ScheduleMenu = ({ t, active_link }) => (
+const ScheduleMenu = ({ t, activeLink }) => (
   <List.Group transparent={true}>
-    {(active_link === 'appointments') ? appointments_active = true: appointments_active = false}
-    {(active_link === 'events') ? events_active = true: events_active = false}
-    {(active_link === 'classes') ? classes_active = true: classes_active = false}
+    {(activeLink === 'appointments') ? appointments_active = true: appointments_active = false}
+    {(activeLink === 'events') ? events_active = true: events_active = false}
+    {(activeLink === 'classes') ? classes_active = true: classes_active = false}
     
 
     <HasPermissionWrapper 

@@ -170,7 +170,7 @@ class FinanceGLAccountEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <FinanceMenu active_link='glaccounts'/>
+                <FinanceMenu activeLink='glaccounts'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

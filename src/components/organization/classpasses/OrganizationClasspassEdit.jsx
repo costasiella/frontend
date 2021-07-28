@@ -208,7 +208,7 @@ class OrganizationClasspassEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu active_link='classpasses'/>
+                <OrganizationMenu activeLink='classpasses'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

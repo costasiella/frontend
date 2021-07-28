@@ -45,7 +45,7 @@ function OrganizationAnnouncementsBase({t, history, children, showEditBack=false
                 </Link>
                 </HasPermissionWrapper>
             }
-            <OrganizationMenu active_link='announcements'/>
+            <OrganizationMenu activeLink='announcements'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

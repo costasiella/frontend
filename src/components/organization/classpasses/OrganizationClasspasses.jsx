@@ -241,7 +241,7 @@ const OrganizationClasspasses = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.classpasses.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu active_link='classpasses'/>
+            <OrganizationMenu activeLink='classpasses'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

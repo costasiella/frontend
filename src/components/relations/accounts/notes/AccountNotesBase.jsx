@@ -77,7 +77,7 @@ function AccountNotesBase({ t, history, match, children, showBack=false }) {
                 : ""
               }
               <ProfileMenu 
-                active_link='notes'
+                activeLink='notes'
                 account_id={accountId}
               /> 
             </Grid.Col>

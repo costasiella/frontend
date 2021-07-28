@@ -33,7 +33,7 @@ class ClassEditBase extends Component {
     const t = this.props.t
     const match = this.props.match
     const classId = match.params.class_id
-    const menu_active_link = this.props.menu_active_link
+    const menu_activeLink = this.props.menu_activeLink
     const default_card = this.props.default_card
     const sidebar_button = this.props.sidebar_button
 
@@ -89,7 +89,7 @@ class ClassEditBase extends Component {
                 <Grid.Col md={3}>
                   {sidebar_button}
                   <h5>{t('general.menu')}</h5>
-                  <ClassEditMenu active_link={menu_active_link} classId={classId}/>
+                  <ClassEditMenu activeLink={menu_activeLink} classId={classId}/>
                 </Grid.Col>
               </Grid.Row>
             </Container>

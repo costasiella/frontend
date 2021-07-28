@@ -171,7 +171,7 @@ const AccountClasspasses = ({ t, history, match, archived=false }) => (
                     </Link>
                   </HasPermissionWrapper>
                   <ProfileMenu 
-                    active_link='classpasses' 
+                    activeLink='classpasses' 
                     account_id={match.params.account_id}
                   />
                 </Grid.Col>

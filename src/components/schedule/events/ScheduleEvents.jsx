@@ -346,7 +346,7 @@ export default withTranslation()(withRouter(ScheduleEvents))
 //                 <Icon prefix="fe" name="plus-circle" /> {t('organization.levels.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu active_link='levels'/>
+//             <OrganizationMenu activeLink='levels'/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

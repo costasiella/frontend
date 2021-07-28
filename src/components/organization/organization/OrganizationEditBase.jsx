@@ -50,7 +50,7 @@ function OrganizationEditBase({t, match, history, children}) {
             </Grid.Col>
             <Grid.Col md={3}>
               <h5>{t("general.menu")}</h5>
-              <OrganizationMenu active_link='organization'/>
+              <OrganizationMenu activeLink='organization'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

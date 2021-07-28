@@ -176,7 +176,7 @@ class FinancePaymentMethodEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <FinanceMenu active_link='payment_methods'/>
+                <FinanceMenu activeLink='payment_methods'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

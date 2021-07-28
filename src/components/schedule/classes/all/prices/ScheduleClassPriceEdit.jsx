@@ -84,7 +84,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
       <div className="my-3 my-md-5">
         <ClassEditBase 
           card_title={t('schedule.classes.prices.title_edit')}
-          menu_active_link="prices"
+          menu_activeLink="prices"
           sidebar_button={<ScheduleClassPriceBack classId={match.params.class_id} />}
         >
           <Formik
@@ -190,7 +190,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //               return (
 //                 <ClassEditBase 
 //                   card_title={t('schedule.classes.teachers.title_edit')}
-//                   menu_active_link="teachers"
+//                   menu_activeLink="teachers"
 //                   sidebar_button={<ScheduleClassTeacherBack classId={class_id} />}
 //                 >
 //                   <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(return_url)}> 

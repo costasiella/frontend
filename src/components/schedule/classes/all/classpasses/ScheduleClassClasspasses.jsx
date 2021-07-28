@@ -77,13 +77,13 @@ class ScheduleClassClasspasses extends Component {
   
             // Loading
             if (loading) return (
-              <ClassEditBase menu_active_link="classpasses" card_title={t('schedule.classes.classpasses.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="classpasses" card_title={t('schedule.classes.classpasses.title')} sidebar_button={ButtonAdd}>
                 <Dimmer active={true} loader={true} />
               </ClassEditBase>
             )
             // Error
             if (error) return (
-              <ClassEditBase menu_active_link="classpasses" card_title={t('schedule.classes.classpasses.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="classpasses" card_title={t('schedule.classes.classpasses.title')} sidebar_button={ButtonAdd}>
                 <p>{t('schedule.classes.classpasses.error_loading')}</p>
               </ClassEditBase>
             )
@@ -99,14 +99,14 @@ class ScheduleClassClasspasses extends Component {
   
             // Empty list
             if (!data.scheduleItemOrganizationClasspassGroups.edges.length) { return (
-              <ClassEditBase menu_active_link="classpasses" card_title={t('schedule.classes.classpasses.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="classpasses" card_title={t('schedule.classes.classpasses.title')} sidebar_button={ButtonAdd}>
                 <p>{t('schedule.classes.classpasses.empty_list')}</p>
               </ClassEditBase>
             )} else {   
             // Life's good! :)
               return (
                 <ClassEditBase 
-                  menu_active_link="classpasses" 
+                  menu_activeLink="classpasses" 
                   default_card={false} 
                   subtitle={subtitle}
                   sidebar_button={ButtonAdd}
