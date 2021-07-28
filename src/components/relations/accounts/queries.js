@@ -66,3 +66,22 @@ export const GET_ACCOUNT_QUERY = gql`
     }
   }
 `
+
+export const UPDATE_ACCOUNT_ACTIVE = gql`
+  mutation UpdateAccountActive($input: UpdateAccountActiveInput!) {
+    updateAccountActive(input: $input) {
+      account {
+        id
+        isActive
+      }
+    }
+  }
+`
+
+export const DELETE_ACCOUNT = gql`
+  mutation DeleteAccount($input: DeleteAccountInput!) {
+    deleteAccount(input: $input) {
+      ok
+    }
+  }
+`
