@@ -7,6 +7,7 @@ import { withRouter } from "react-router"
 
 import {
   Page,
+  Form,
   Grid,
   Icon,
   Button,
@@ -14,10 +15,10 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import InputSearch from "../../general/InputSearch"
+import RelationsMenu from "../RelationsMenu"
 
 import CSLS from "../../../tools/cs_local_storage"
-
-import RelationsAccountsBase from "./_RelationsAccountsBase"
 import { get_list_query_variables } from "./tools"
 
 
