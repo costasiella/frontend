@@ -57,7 +57,7 @@ function SetCurrentUrlAsNext() {
 }
   
 
-const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response}) => {
+const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(
@@ -73,79 +73,81 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
   }
 
   // Token refresh / re-auth check
-  let i
-  for (i = 0; i < response.errors.length; i++) {
-    if (response.errors[i].extensions && response.errors[i].extensions.code === CSEC.USER_NOT_LOGGED_IN) {
+  if (response) {
+    let i
+    for (i = 0; i < response.errors.length; i++) {
+      if (response.errors[i].extensions && response.errors[i].extensions.code === CSEC.USER_NOT_LOGGED_IN) {
 
-      let authTokenExpired = false
-      const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
-      if ((new Date() / 1000) >= tokenExp) {
-        authTokenExpired = true
-      }
-
-      console.log('token expired')
-      console.log(authTokenExpired)
-
-      if (authTokenExpired) {
-        const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
-        if (refreshTokenExp == null) {
-          // User hasn't logged in before
-          SetCurrentUrlAsNext()
-          window.location.href = "#/user/login/required"
-          window.location.reload()
-        } else if ((new Date() / 1000) >= refreshTokenExp) {
-          // Session expired
-          SetCurrentUrlAsNext()
-          console.log("refresh token expired or not found")
-          console.log(new Date() / 1000)
-          console.log(refreshTokenExp)
-    
-          window.location.href = "#/user/session/expired"
-          window.location.reload()
-        } else {
-          // Refresh token... no idea how this observable & subscriber stuff works... but it does :).
-          // https://stackoverflow.com/questions/50965347/how-to-execute-an-async-fetch-request-and-then-retry-last-failed-request/51321068#51321068
-          console.log("auth token expired")
-          console.log(new Date() / 1000)
-          console.log(refreshTokenExp)
-
-          console.log("refresh token... somehow...")
-
-          return new Observable(observer => {
-            client.mutate({
-              mutation: TOKEN_REFRESH
-            })
-              .then(({ data }) => { 
-                console.log(data)
-                CSAuth.updateTokenInfo(data.refreshToken)
-              })
-              .then(() => {
-                const subscriber = {
-                  next: observer.next.bind(observer),
-                  error: observer.error.bind(observer),
-                  complete: observer.complete.bind(observer)
-                };
-
-                // Retry last failed request
-                forward(operation).subscribe(subscriber);
-              })
-              .catch(error => {
-                // No refresh or client token available, we force user to login
-                observer.error(error);
-                SetCurrentUrlAsNext()
-                window.location.href = "/#/user/login"
-                window.location.reload()
-              });
-          })
+        let authTokenExpired = false
+        const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
+        if ((new Date() / 1000) >= tokenExp) {
+          authTokenExpired = true
         }
-      } else {
-        SetCurrentUrlAsNext()
-        window.location.href = "/#/user/login"
-        window.location.reload()
-      }
 
-      // window.location.href = "/#/user/login"
-      // window.location.reload()
+        console.log('token expired')
+        console.log(authTokenExpired)
+
+        if (authTokenExpired) {
+          const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
+          if (refreshTokenExp == null) {
+            // User hasn't logged in before
+            SetCurrentUrlAsNext()
+            window.location.href = "#/user/login/required"
+            window.location.reload()
+          } else if ((new Date() / 1000) >= refreshTokenExp) {
+            // Session expired
+            SetCurrentUrlAsNext()
+            console.log("refresh token expired or not found")
+            console.log(new Date() / 1000)
+            console.log(refreshTokenExp)
+      
+            window.location.href = "#/user/session/expired"
+            window.location.reload()
+          } else {
+            // Refresh token... no idea how this observable & subscriber stuff works... but it does :).
+            // https://stackoverflow.com/questions/50965347/how-to-execute-an-async-fetch-request-and-then-retry-last-failed-request/51321068#51321068
+            console.log("auth token expired")
+            console.log(new Date() / 1000)
+            console.log(refreshTokenExp)
+
+            console.log("refresh token... somehow...")
+
+            return new Observable(observer => {
+              client.mutate({
+                mutation: TOKEN_REFRESH
+              })
+                .then(({ data }) => { 
+                  console.log(data)
+                  CSAuth.updateTokenInfo(data.refreshToken)
+                })
+                .then(() => {
+                  const subscriber = {
+                    next: observer.next.bind(observer),
+                    error: observer.error.bind(observer),
+                    complete: observer.complete.bind(observer)
+                  };
+
+                  // Retry last failed request
+                  forward(operation).subscribe(subscriber);
+                })
+                .catch(error => {
+                  // No refresh or client token available, we force user to login
+                  observer.error(error);
+                  SetCurrentUrlAsNext()
+                  window.location.href = "/#/user/login"
+                  window.location.reload()
+                });
+            })
+          }
+        } else {
+          SetCurrentUrlAsNext()
+          window.location.href = "/#/user/login"
+          window.location.reload()
+        }
+
+        // window.location.href = "/#/user/login"
+        // window.location.reload()
+      }
     }
   }
 });
