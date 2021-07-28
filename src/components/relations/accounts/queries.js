@@ -67,6 +67,19 @@ export const GET_ACCOUNT_QUERY = gql`
   }
 `
 
+export const ADD_ACCOUNT = gql`
+  mutation CreateAccount($input:CreateAccountInput!) {
+    createAccount(input: $input) {
+      account {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+  }
+`
+
 export const UPDATE_ACCOUNT_ACTIVE = gql`
   mutation UpdateAccountActive($input: UpdateAccountActiveInput!) {
     updateAccountActive(input: $input) {
