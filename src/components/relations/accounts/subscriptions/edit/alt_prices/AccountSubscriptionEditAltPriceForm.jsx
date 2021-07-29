@@ -86,6 +86,7 @@ function AccountSubscriptionEditAltPriceForm ({
           <Grid.Col>
           <Form.Group label={t('general.note')}>
             <Editor
+                tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
                 textareaName="note"
                 initialValue={values.note}
                 init={tinymceBasicConf}

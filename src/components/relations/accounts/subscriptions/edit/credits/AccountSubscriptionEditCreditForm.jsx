@@ -69,6 +69,7 @@ function AccountSubscriptionEditCreditForm ({
           <Grid.Col>
           <Form.Group label={t('general.description')}>
             <Editor
+                tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
                 textareaName="description"
                 initialValue={values.description}
                 init={tinymceBasicConf}
