@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -9,33 +9,23 @@ import { Link } from 'react-router-dom'
 
 
 import {
-  Page,
-  Grid,
   Icon,
-  Dimmer,
   Button,
   Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
 import BadgeBoolean from "../../../ui/BadgeBoolean"
-import RelationsAccountsBack from "../RelationsAccountsBack"
 import confirm_delete from "../../../../tools/confirm_delete"
 
 import ContentCard from "../../../general/ContentCard"
-import ProfileMenu from "../ProfileMenu"
-import ProfileCardSmall from "../../../ui/ProfileCardSmall"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 
 import { GET_ACCOUNT_SUBSCRIPTIONS_QUERY, DELETE_ACCOUNT_SUBSCRIPTION } from "./queries"
 
 
 function AccountSubscriptions({t, match}) {
-  const [showArchived, setShowArchived] = useState(false);
   const accountId = match.params.account_id
   const cardTitle = t('relations.account.subscriptions.title')
   const activeLink = "subscriptions"
@@ -160,7 +150,7 @@ function AccountSubscriptions({t, match}) {
                               id: node.id
                             }
                           }, refetchQueries: [
-                            {query: GET_ACCOUNT_SUBSCRIPTIONS_QUERY, variables: { archived: showArchived, accountId: accountId }} 
+                            {query: GET_ACCOUNT_SUBSCRIPTIONS_QUERY, variables: { accountId: accountId }} 
                           ]}
                         })
                     }}>
