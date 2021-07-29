@@ -42,14 +42,28 @@ function RelationsAccountProfile({t, match}) {
 
   if (loading) return (
     <RelationsAccountProfileBase>
-      <p>{t('general.loading_with_dots')}</p>
+      <Card>
+        <Card.Header>
+          <Card.Title>{t('relations.accounts.profile')}</Card.Title>
+        </Card.Header>
+        <Card.Body>
+          <p>{t('general.loading_with_dots')}</p>  
+        </Card.Body>
+      </Card>
     </RelationsAccountProfileBase>
   )
 
   if (error) return (
     <RelationsAccountProfileBase>
       {console.log(error)}
-      <p>{t('general.error_sad_smiley')}</p>
+      <Card>
+        <Card.Header>
+          <Card.Title>{t('relations.accounts.profile')}</Card.Title>
+        </Card.Header>
+        <Card.Body>
+          <p>{t('general.error_sad_smiley')}</p>
+        </Card.Body>
+      </Card>
     </RelationsAccountProfileBase>
   )
 
@@ -65,87 +79,93 @@ function RelationsAccountProfile({t, match}) {
 
   return (
     <RelationsAccountProfileBase 
-      headerTitle={`${account.firstName} ${account.lastName}`}
       user={account}
     >
-       <Formik
-          initialValues={{ 
-            customer: account.customer, 
-            teacher: account.teacher, 
-            employee: account.employee, 
-            firstName: account.firstName, 
-            lastName: account.lastName, 
-            email: account.email,
-            dateOfBirth: dateOfBirth,
-            gender: account.gender,
-            emergency: account.emergency,
-            phone: account.phone,
-            mobile: account.mobile,
-            address: account.address,
-            postcode: account.postcode,
-            city: account.city,
-            country: account.country,
-          }}
-          validationSchema={ACCOUNT_SCHEMA}
-          onSubmit={(values, { setSubmitting }) => {
-              console.log('submit values:')
-              console.log(values)
+      <Card>
+        <Card.Header>
+          <Card.Title>{t('relations.accounts.profile')}</Card.Title>
+        </Card.Header>
+        <Card.Body>
+        <Formik
+            initialValues={{ 
+              customer: account.customer, 
+              teacher: account.teacher, 
+              employee: account.employee, 
+              firstName: account.firstName, 
+              lastName: account.lastName, 
+              email: account.email,
+              dateOfBirth: dateOfBirth,
+              gender: account.gender,
+              emergency: account.emergency,
+              phone: account.phone,
+              mobile: account.mobile,
+              address: account.address,
+              postcode: account.postcode,
+              city: account.city,
+              country: account.country,
+            }}
+            validationSchema={ACCOUNT_SCHEMA}
+            onSubmit={(values, { setSubmitting }) => {
+                console.log('submit values:')
+                console.log(values)
 
-              let input_vars = {
-                id: accountId,
-                customer: values.customer,
-                teacher: values.teacher,
-                employee: values.employee,
-                firstName: values.firstName,
-                lastName: values.lastName,
-                email: values.email,
-                gender: values.gender,
-                emergency: values.emergency,
-                phone: values.phone,
-                mobile: values.mobile,
-                address: values.address,
-                postcode: values.postcode,
-                city: values.city,
-                country: values.country
-              }
+                let input_vars = {
+                  id: accountId,
+                  customer: values.customer,
+                  teacher: values.teacher,
+                  employee: values.employee,
+                  firstName: values.firstName,
+                  lastName: values.lastName,
+                  email: values.email,
+                  gender: values.gender,
+                  emergency: values.emergency,
+                  phone: values.phone,
+                  mobile: values.mobile,
+                  address: values.address,
+                  postcode: values.postcode,
+                  city: values.city,
+                  country: values.country
+                }
 
-              if (values.dateOfBirth) {
-                input_vars['dateOfBirth'] = dateToLocalISO(values.dateOfBirth)
-              } 
+                if (values.dateOfBirth) {
+                  input_vars['dateOfBirth'] = dateToLocalISO(values.dateOfBirth)
+                } 
 
-              updateAccount({ variables: {
-                input: input_vars
-              }, refetchQueries: [
-                  // Refetch list
-                  {query: GET_ACCOUNTS_QUERY, variables: get_list_query_variables()},
-                  // Refresh local cached results for this account
-                  {query: GET_ACCOUNT_QUERY, variables: {id: accountId}}
-              ]})
-              .then(({ data }) => {
-                  console.log('got data', data)
-                  toast.success((t('relations.accounts.toast_edit_success')), {
-                      position: toast.POSITION.BOTTOM_RIGHT
-                    })
-                  setSubmitting(false)
-                }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                      position: toast.POSITION.BOTTOM_RIGHT
-                    })
-                  console.log('there was an error sending the query', error)
-                  setSubmitting(false)
-                })
-          }}
-          >
-          {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-            <RelationsAccountProfileForm
-              isSubmitting={isSubmitting}
-              setFieldTouched={setFieldTouched}
-              setFieldValue={setFieldValue}
-              errors={errors}
-              values={values}
-            />
-          )}
-        </Formik>
+                updateAccount({ variables: {
+                  input: input_vars
+                }, refetchQueries: [
+                    // Refetch list
+                    {query: GET_ACCOUNTS_QUERY, variables: get_list_query_variables()},
+                    // Refresh local cached results for this account
+                    {query: GET_ACCOUNT_QUERY, variables: {id: accountId}}
+                ]})
+                .then(({ data }) => {
+                    console.log('got data', data)
+                    toast.success((t('relations.accounts.toast_edit_success')), {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                      })
+                    setSubmitting(false)
+                  }).catch((error) => {
+                    toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                      })
+                    console.log('there was an error sending the query', error)
+                    setSubmitting(false)
+                  })
+            }}
+            >
+            {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+              <RelationsAccountProfileForm
+                isSubmitting={isSubmitting}
+                setFieldTouched={setFieldTouched}
+                setFieldValue={setFieldValue}
+                errors={errors}
+                values={values}
+              />
+            )}
+          </Formik>
+        </Card.Body>
+      </Card>
     </RelationsAccountProfileBase>
   )
 }

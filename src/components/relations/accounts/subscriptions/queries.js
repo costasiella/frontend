@@ -161,3 +161,12 @@ export const GET_ACCOUNT_QUERY = gql`
     }
   }
 `
+
+
+export const DELETE_ACCOUNT_SUBSCRIPTION = gql`
+  mutation DeleteAccountSubscription($input: DeleteAccountSubscriptionInput!) {
+    deleteAccountSubscription(input: $input) {
+      ok
+    }
+  }
+`
