@@ -18,6 +18,7 @@ import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AccountSubscriptionEditTabs from "./AccountSubscriptionEditTabs"
 
+import ProfileCardSmall from "../../../../ui/ProfileCardSmall"
 import ProfileMenu from "../../ProfileMenu"
 import moment from 'moment'
 
@@ -54,6 +55,7 @@ function AccountSubscriptionEditBaseBase({t, history, match, children, account=n
               </Card>
             </Grid.Col>
             <Grid.Col md={3}>
+              <ProfileCardSmall user={account}/>
               <HasPermissionWrapper permission="change"
                                     resource="accountsubscription">
                 <Link to={returnUrl}>
@@ -64,7 +66,7 @@ function AccountSubscriptionEditBaseBase({t, history, match, children, account=n
               </HasPermissionWrapper>
               <ProfileMenu 
                 activeLink='subscriptions'
-                account_id={accountId}
+                accountId={accountId}
               />
             </Grid.Col>
           </Grid.Row>

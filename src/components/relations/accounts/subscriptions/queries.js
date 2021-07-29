@@ -190,6 +190,34 @@ export const CREATE_ACCOUNT_SUBSCRIPTION = gql`
   }
 `
 
+export const UPDATE_ACCOUNT_SUBSCRIPTION = gql`
+  mutation UpdateAccountSubscription($input: UpdateAccountSubscriptionInput!) {
+    updateAccountSubscription(input: $input) {
+      accountSubscription {
+        id
+        account {
+          id
+          firstName
+          lastName
+          email
+        }
+        organizationSubscription {
+          id
+          name
+        }
+        financePaymentMethod {
+          id
+          name
+        }
+        dateStart
+        dateEnd
+        note
+        registrationFeePaid        
+      }
+    }
+  }
+`
+
 export const DELETE_ACCOUNT_SUBSCRIPTION = gql`
   mutation DeleteAccountSubscription($input: DeleteAccountSubscriptionInput!) {
     deleteAccountSubscription(input: $input) {
