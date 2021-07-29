@@ -17,6 +17,7 @@ function ButtonAddSecondaryMenu({t, match, history, linkTo}) {
         color="primary"
         size="sm"
         icon="plus-circle"
+        className="float-right"
       >
         {t("general.add")}
       </Button>
