@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_ACCOUNT_CLASSPASSES_QUERY, GET_ACCOUNT_CLASSPASS_QUERY } from './queries'
+import { GET_ACCOUNT_CLASSPASSES_QUERY, GET_ACCOUNT_CLASSPASS_QUERY, UPDATE_ACCOUNT_CLASSPASS } from './queries'
 import { CLASSPASS_SCHEMA } from './yupSchema'
 import AccountClasspassForm from './AccountClasspassForm'
 
@@ -29,30 +29,6 @@ import { dateToLocalISO } from '../../../../tools/date_tools'
 import ProfileMenu from "../ProfileMenu"
 
 
-const UPDATE_ACCOUNT_CLASSPASS = gql`
-  mutation UpdateAccountClasspass($input: UpdateAccountClasspassInput!) {
-    updateAccountClasspass(input: $input) {
-      accountClasspass {
-        id
-        account {
-          id
-          firstName
-          lastName
-          email
-        }
-        organizationClasspass {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        note
-      }
-    }
-  }
-`
-
-
 class AccountClasspassEdit extends Component {
   constructor(props) {
     super(props)
@@ -66,7 +42,7 @@ class AccountClasspassEdit extends Component {
     const match = this.props.match
     const id = match.params.id
     const account_id = match.params.account_id
-    const return_url = "/relations/accounts/" + account_id + "/classpasses"
+    const returnUrl = "/relations/accounts/" + account_id + "/classpasses"
 
     return (
       <SiteWrapper>
@@ -96,7 +72,7 @@ class AccountClasspassEdit extends Component {
                     <Card.Header>
                       <Card.Title>{t('relations.account.classpasses.title_edit')}</Card.Title>
                     </Card.Header>
-                      <Mutation mutation={UPDATE_ACCOUNT_CLASSPASS} onCompleted={() => history.push(return_url)}> 
+                      <Mutation mutation={UPDATE_ACCOUNT_CLASSPASS} onCompleted={() => history.push(returnUrl)}> 
                       {(updateClasspass, { data }) => (
                           <Formik
                               initialValues={{ 
@@ -152,7 +128,7 @@ class AccountClasspassEdit extends Component {
                                   setFieldTouched={setFieldTouched}
                                   errors={errors}
                                   values={values}
-                                  return_url={return_url}
+                                  returnUrl={returnUrl}
                                 >
                                   {console.log(errors)}
                                 </AccountClasspassForm>
@@ -165,7 +141,7 @@ class AccountClasspassEdit extends Component {
                   <Grid.Col md={3}>
                     <HasPermissionWrapper permission="change"
                                           resource="accountclasspass">
-                      <Link to={return_url}>
+                      <Link to={returnUrl}>
                         <Button color="primary btn-block mb-6">
                           <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                         </Button>
