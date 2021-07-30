@@ -103,3 +103,12 @@ export const GET_INPUT_VALUES_QUERY = gql`
     }
   }
 `
+
+
+export const DELETE_ACCOUNT_CLASSPASS = gql`
+  mutation DeleteAccountClasspass($input: DeleteAccountClasspassInput!) {
+    deleteAccountClasspass(input: $input) {
+      ok
+    }
+  }
+`
