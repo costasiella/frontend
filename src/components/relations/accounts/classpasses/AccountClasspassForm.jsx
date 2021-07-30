@@ -19,7 +19,7 @@ import {
 } from "tabler-react";
 
 
-const AccountClasspassForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, return_url }) => (
+const AccountClasspassForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
   <FoForm>
     <Card.Body> 
       <Grid.Row>
@@ -70,12 +70,13 @@ const AccountClasspassForm = ({ t, history, inputData, isSubmitting, setFieldVal
         </Grid.Row>
       <Form.Group label={t('general.note')}>
         <Editor
-            textareaName="note"
-            initialValue={values.note}
-            init={tinymceBasicConf}
-            onChange={(e) => setFieldValue("note", e.target.getContent())}
-            onBlur={() => setFieldTouched("note", true)}
-          />
+          tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+          textareaName="note"
+          initialValue={values.note}
+          init={tinymceBasicConf}
+          onChange={(e) => setFieldValue("note", e.target.getContent())}
+          onBlur={() => setFieldTouched("note", true)}
+        />
         <ErrorMessage name="note" component="span" className="invalid-feedback" />
       </Form.Group>
     </Card.Body>
@@ -91,7 +92,7 @@ const AccountClasspassForm = ({ t, history, inputData, isSubmitting, setFieldVal
         <Button
           type="button" 
           color="link" 
-          onClick={() => history.push(return_url)}
+          onClick={() => history.push(returnUrl)}
         >
           {t('general.cancel')}
         </Button>
