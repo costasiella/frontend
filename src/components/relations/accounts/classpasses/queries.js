@@ -76,8 +76,8 @@ export const GET_ACCOUNT_CLASSPASS_QUERY = gql`
 `
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query ClasspassInputValues($after: String, $before: String, $archived: Boolean!, $accountId: ID!) {
-    organizationClasspasses(first: 100, before: $before, after: $after, archived: $archived) {
+  query ClasspassInputValues($after: String, $before: String, $accountId: ID!) {
+    organizationClasspasses(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
