@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_ACCOUNT_CLASSPASSES_QUERY, GET_INPUT_VALUES_QUERY } from './queries'
+import { GET_ACCOUNT_CLASSPASSES_QUERY, GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_CLASSPASS } from './queries'
 import { CLASSPASS_SCHEMA } from './yupSchema'
 import AccountClasspassForm from './AccountClasspassForm'
 
@@ -28,29 +28,6 @@ import { dateToLocalISO } from '../../../../tools/date_tools'
 
 import ProfileMenu from "../ProfileMenu"
 
-
-const CREATE_ACCOUNT_CLASSPASS = gql`
-  mutation CreateAccountClasspass($input: CreateAccountClasspassInput!) {
-    createAccountClasspass(input: $input) {
-      accountClasspass {
-        id
-        account {
-          id
-          firstName
-          lastName
-          email
-        }
-        organizationClasspass {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        note
-      }
-    }
-  }
-`
 
 
 class AccountClasspassAdd extends Component {

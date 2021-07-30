@@ -104,6 +104,29 @@ export const GET_INPUT_VALUES_QUERY = gql`
   }
 `
 
+export const CREATE_ACCOUNT_CLASSPASS = gql`
+  mutation CreateAccountClasspass($input: CreateAccountClasspassInput!) {
+    createAccountClasspass(input: $input) {
+      accountClasspass {
+        id
+        account {
+          id
+          firstName
+          lastName
+          email
+        }
+        organizationClasspass {
+          id
+          name
+        }
+        dateStart
+        dateEnd
+        note
+      }
+    }
+  }
+`
+
 
 export const DELETE_ACCOUNT_CLASSPASS = gql`
   mutation DeleteAccountClasspass($input: DeleteAccountClasspassInput!) {
