@@ -1,8 +1,7 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql, useMutation, useQuery } from "@apollo/client"
-import { Query, Mutation } from "@apollo/client";
+import React from 'react'
+import { useMutation, useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
@@ -15,19 +14,12 @@ import { SUBSCRIPTION_SCHEMA } from './yupSchema'
 import AccountSubscriptionForm from './AccountSubscriptionForm'
 
 import {
-  Page,
-  Grid,
   Icon,
   Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import { dateToLocalISO } from '../../../../tools/date_tools'
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
-
-import ProfileMenu from "../ProfileMenu"
 
 
 function AccountSubscriptionAdd({t, history, match}) {
