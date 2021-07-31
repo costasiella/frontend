@@ -78,7 +78,7 @@ function AccountFinancePaymentBatchcAtegoryItemsBase({ t, history, match, childr
               }
               <ProfileMenu 
                 activeLink='finance_payment_batch_category_item'
-                account_id={accountId}
+                accountId={accountId}
               /> 
             </Grid.Col>
           </Grid.Row>
