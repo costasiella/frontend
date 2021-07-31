@@ -88,7 +88,7 @@ function AccountScheduleEventTicketsBase({t, history, match, children}) {
               </HasPermissionWrapper> */}
               <ProfileMenu 
                 activeLink='tickets' 
-                account_id={match.params.account_id}
+                accountId={accountId}
               />
             </Grid.Col>
           </Grid.Row>
