@@ -33,6 +33,7 @@ import RelationsAccountProfileBase from './RelationsAccountProfileBase'
 
 function RelationsAccountProfile({t, match}) {
   const accountId = match.params.account_id
+  const activeLink = "profile"
   const returnUrl = "/relations/accounts"
 
   const {loading, error, data} = useQuery(GET_ACCOUNT_QUERY, {
@@ -41,7 +42,7 @@ function RelationsAccountProfile({t, match}) {
   const [updateAccount] = useMutation(UPDATE_ACCOUNT)
 
   if (loading) return (
-    <RelationsAccountProfileBase>
+    <RelationsAccountProfileBase activeLink={activeLink}>
       <Card>
         <Card.Header>
           <Card.Title>{t('relations.accounts.profile')}</Card.Title>
@@ -54,7 +55,7 @@ function RelationsAccountProfile({t, match}) {
   )
 
   if (error) return (
-    <RelationsAccountProfileBase>
+    <RelationsAccountProfileBase activeLink={activeLink}>
       {console.log(error)}
       <Card>
         <Card.Header>
@@ -80,6 +81,7 @@ function RelationsAccountProfile({t, match}) {
   return (
     <RelationsAccountProfileBase 
       user={account}
+      activeLink={activeLink}
     >
       <Card>
         <Card.Header>
