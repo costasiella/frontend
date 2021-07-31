@@ -11,6 +11,7 @@ import moment from 'moment'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
+  Card,
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
@@ -29,6 +30,7 @@ function AccountClasses({ t, match, history }) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const account_id = match.params.account_id
+  const cardTitle = t('relations.account.classes.title')
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_CLASSES_QUERY, {
     variables: {'account': account_id},
     fetchPolicy: "network-only"
@@ -37,7 +39,11 @@ function AccountClasses({ t, match, history }) {
   // Loading
   if (loading) return (
     <AccountClassesBase>
-      <p>{t('general.loading_with_dots')}</p>
+      <Card title={cardTitle}>
+        <Card.Body>
+          <p>{t('general.loading_with_dots')}</p>
+        </Card.Body>
+      </Card>
     </AccountClassesBase>
   )
   // Error
@@ -45,7 +51,11 @@ function AccountClasses({ t, match, history }) {
     console.log(error)
     return (
       <AccountClassesBase>
-        <p>{t('general.error_sad_smiley')}</p>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('general.error_sad_smiley')}</p>
+          </Card.Body>
+        </Card>
       </AccountClassesBase>
     )
   }
@@ -59,7 +69,11 @@ function AccountClasses({ t, match, history }) {
   if (!scheduleItemAttendances.edges.length) {
     return (
       <AccountClassesBase account={account}>
-        <p>{t('relations.account.classes.empty_list')}</p>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.classes.empty_list')}</p>
+          </Card.Body>
+        </Card>
       </AccountClassesBase>
     )
   }
@@ -68,7 +82,7 @@ function AccountClasses({ t, match, history }) {
   return (
     <AccountClassesBase account={account}>
       <ContentCard 
-        cardTitle={t('relations.account.classes.title')}
+        cardTitle={cardTitle}
         pageInfo={scheduleItemAttendances.pageInfo}
         onLoadMore={() => {
           fetchMore({
