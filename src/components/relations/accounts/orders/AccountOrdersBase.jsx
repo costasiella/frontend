@@ -17,6 +17,8 @@ import ProfileCardSmall from "../../../ui/ProfileCardSmall"
 
 
 function AccountOrdersBase({ t, match, history, children, account={} }) {
+  const accountId = match.params.account_id
+
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -32,7 +34,7 @@ function AccountOrdersBase({ t, match, history, children, account={} }) {
               <ProfileCardSmall user={account}/>
               <ProfileMenu 
                 activeLink='orders' 
-                account_id={match.params.account_id}
+                accountId={accountId}
               />
             </Grid.Col>
           </Grid.Row>
