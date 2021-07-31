@@ -36,7 +36,7 @@ export const GET_ACCOUNT_CLASSPASSES_QUERY = gql`
 `
 
 export const GET_ACCOUNT_CLASSPASS_QUERY = gql`
-  query AccountClasspass($id: ID!, $accountId: ID!, $after: String, $before: String, $archived: Boolean!) {
+  query AccountClasspass($id: ID!, $accountId: ID!, $after: String, $before: String) {
     accountClasspass(id:$id) {
       id
       organizationClasspass {
@@ -48,7 +48,7 @@ export const GET_ACCOUNT_CLASSPASS_QUERY = gql`
       note
       createdAt
     }
-    organizationClasspasses(first: 100, before: $before, after: $after, archived: $archived) {
+    organizationClasspasses(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
