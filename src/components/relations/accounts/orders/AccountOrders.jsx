@@ -13,6 +13,7 @@ import FinanceOrderStatus from "../../../finance/orders/FinanceOrderStatus"
 
 import {
   Button,
+  Card,
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
@@ -30,6 +31,7 @@ function AccountOrders({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   // const timeFormat = appSettings.timeFormatMoment
+  const cardTitle = t('relations.account.orders.title')
   const account_id = match.params.account_id
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ORDERS_QUERY, {
     variables: {'account': account_id},
@@ -38,7 +40,11 @@ function AccountOrders({ t, match, history }) {
   // Loading
   if (loading) return (
     <AccountOrdersBase>
-      <p>{t('general.loading_with_dots')}</p>
+      <Card title={cardTitle}>
+        <Card.Body>
+          <p>{t('general.loading_with_dots')}</p>
+        </Card.Body>
+      </Card>
     </AccountOrdersBase>
   )
   // Error
@@ -46,7 +52,11 @@ function AccountOrders({ t, match, history }) {
     console.log(error)
     return (
       <AccountOrdersBase>
-        <p>{t('general.error_sad_smiley')}</p>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('general.error_sad_smiley')}</p>
+          </Card.Body>
+        </Card>
       </AccountOrdersBase>
     )
   }
@@ -60,7 +70,11 @@ function AccountOrders({ t, match, history }) {
   if (!financeOrders.edges.length) {
     return (
       <AccountOrdersBase account={account}>
-        <p>{t('relations.account.orders.empty_list')}</p>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.orders.empty_list')}</p>
+          </Card.Body>
+        </Card>
       </AccountOrdersBase>
     )
   }
