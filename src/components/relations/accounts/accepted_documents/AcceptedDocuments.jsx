@@ -132,7 +132,7 @@ function AccountAcceptedDocuments({ t, history, match }) {
               <ProfileCardSmall user={account}/>
               <ProfileMenu 
                 activeLink='accepted_documents' 
-                account_id={match.params.account_id}
+                accountId={match.params.account_id}
               />
             </Grid.Col>
           </Grid.Row>
