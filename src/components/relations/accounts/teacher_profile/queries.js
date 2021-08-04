@@ -38,3 +38,15 @@ export const GET_ACCOUNT_TEACHER_PROFILE_QUERY = gql`
     }
   }
 `
+
+
+export const UPDATE_ACCOUNT_TEACHER_PROFILE = gql`
+  mutation UpdateAccountTeacherProfile($input:UpdateAccountTeacherProfileInput!) {
+    updateAccountTeacherProfile(input: $input) {
+      accountTeacherProfile {
+        id
+      }
+    }
+  }
+`
+
