@@ -79,21 +79,27 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
         </Grid.Row>
         <Form.Group label={t('general.education')}>
           <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="education"
               initialValue={values.education}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("education", e.target.getContent())}
-              onBlur={() => setFieldTouched("education", true)}
+              onBlur={(e) => {
+                setFieldTouched("education", true)
+                setFieldValue("education", e.target.getContent())
+              }}
             />
           <ErrorMessage name="education" component="span" className="invalid-feedback" />
         </Form.Group>
         <Form.Group label={t('general.bio')}>
           <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="bio"
               initialValue={values.bio}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("bio", e.target.getContent())}
-              onBlur={() => setFieldTouched("bio", true)}
+              onBlur={(e) => {
+                setFieldTouched("bio", true)
+                setFieldValue("bio", e.target.getContent())
+              }}
             />
           <ErrorMessage name="bio" component="span" className="invalid-feedback" />
         </Form.Group>
