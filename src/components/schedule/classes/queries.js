@@ -275,3 +275,37 @@ export const GET_INPUT_VALUES_QUERY = gql`
     }
   }
 `
+
+export const CREATE_CLASS = gql`
+  mutation CreateScheduleClass($input:CreateScheduleClassInput!) {
+    createScheduleClass(input: $input) {
+      scheduleItem {
+        id
+        scheduleItemType
+        frequencyType
+        frequencyInterval
+        organizationLocationRoom {
+          id
+          name
+          organizationLocation {
+            id
+            name
+          }
+        }
+        organizationClasstype {
+          id
+          name
+        }
+        organizationLevel {
+          id
+          name
+        }
+        dateStart
+        dateEnd
+        timeStart
+        timeEnd
+        displayPublic
+      }
+    }
+  }
+`

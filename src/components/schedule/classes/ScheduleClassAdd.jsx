@@ -2,13 +2,12 @@
 
 import React, { Component } from 'react'
 import { Query, Mutation } from "@apollo/client";
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_CLASSES_QUERY, GET_INPUT_VALUES_QUERY } from './queries'
+import { GET_CLASSES_QUERY, GET_INPUT_VALUES_QUERY, CREATE_CLASS } from './queries'
 import { get_list_query_variables } from './tools'
 import { CLASS_SCHEMA } from './yupSchema'
 import ScheduleClassForm from './ScheduleClassForm'
@@ -28,41 +27,6 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { dateToLocalISO, dateToLocalISOTime } from '../../../tools/date_tools'
 
 import ScheduleMenu from '../ScheduleMenu'
-
-
-const CREATE_CLASS = gql`
-  mutation CreateScheduleClass($input:CreateScheduleClassInput!) {
-    createScheduleClass(input: $input) {
-      scheduleItem {
-        id
-        scheduleItemType
-        frequencyType
-        frequencyInterval
-        organizationLocationRoom {
-          id
-          name
-          organizationLocation {
-            id
-            name
-          }
-        }
-        organizationClasstype {
-          id
-          name
-        }
-        organizationLevel {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        timeStart
-        timeEnd
-        displayPublic
-      }
-    }
-  }
-`
 
 
 class ScheduleClassAdd extends Component {
