@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from "uuid"
+import { Link } from 'react-router-dom'
 
 import {
     Button,
@@ -16,7 +17,7 @@ import { tinymceBasicConf } from "../../../plugin_config/tinymce"
 import CSDatePicker from "../../ui/CSDatePicker"
 import CSTimePicker from "../../ui/CSTimePicker"
 
-const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, return_url }) => (
+const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, returnUrl }) => (
     <FoForm>
       <Card.Body>
         <Form.Group>
@@ -214,9 +215,11 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         >
         {t('general.submit')}
         </Button>
-        <Button color="link" onClick={() => history.push(return_url)}>
-            {t('general.cancel')}
-        </Button>
+        <Link to={returnUrl}>
+          <Button color="link">
+              {t('general.cancel')}
+          </Button>
+        </Link>
       </Card.Footer>
     </FoForm>
 )
