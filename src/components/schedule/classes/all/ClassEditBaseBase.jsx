@@ -17,7 +17,9 @@ import ClassEditMenu from './ClassEditMenu'
 import ClassEditBack from './ClassEditBack';
 
 
-function ClassEditBaseBase({t, match, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", sidebarButton=""}) {
+function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", sidebarButton=""}) {
+  const classId = match.params.class_id
+  
   return (
     <Container>
       <Page.Header 
@@ -29,12 +31,9 @@ function ClassEditBaseBase({t, match, subTitle="", cardTitle="", defaultCard=tru
       <Grid.Row>
         <Grid.Col md={9}>
           {(!defaultCard) ? children :
-            <Card>
-              <Card.Header>
-                <Card.Title>{this.props.card_title}</Card.Title>
-              </Card.Header>
+            <Card title={cardTitle}>
               <Card.Body>
-                {this.props.children}
+                {children}
               </Card.Body>
             </Card>
           }
