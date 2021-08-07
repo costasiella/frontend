@@ -208,8 +208,8 @@ export const GET_CLASS_QUERY = gql`
 `
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query ScheduleClassInputValues($after: String, $before: String, $archived: Boolean) {
-    organizationLocationRooms(first: 100, before: $before, after: $after, archived: $archived) {
+  query ScheduleClassInputValues($after: String, $before: String) {
+    organizationLocationRooms(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -228,7 +228,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    organizationClasstypes(first: 100, before: $before, after: $after, archived: $archived) {
+    organizationClasstypes(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -243,7 +243,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    organizationLevels(first: 100, before: $before, after: $after, archived: $archived) {
+    organizationLevels(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -258,7 +258,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financePaymentMethods(first: 100, before: $before, after: $after, archived: $archived) {
+    financePaymentMethods(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor

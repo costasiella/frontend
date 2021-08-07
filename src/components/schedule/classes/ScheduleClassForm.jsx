@@ -184,6 +184,7 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         </Grid.Row>
         <Form.Group label={t('general.note')}>
           <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="note"
               initialValue={values.note}
               init={tinymceBasicConf}
@@ -194,6 +195,7 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         </Form.Group>
         <Form.Group label={t('general.info_mail')}>
           <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="infoMailContent"
               initialValue={values.infoMailContent}
               init={tinymceBasicConf}
