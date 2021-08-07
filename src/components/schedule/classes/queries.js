@@ -110,7 +110,7 @@ export const GET_CLASSES_QUERY = gql`
 `
 
 export const GET_CLASS_QUERY = gql`
-  query ScheduleItem($id: ID!, $before: String, $after: String, $archived: Boolean!) {
+  query ScheduleItem($id: ID!, $before: String, $after: String) {
     scheduleItem(id:$id) {
       id
       frequencyType
@@ -140,7 +140,7 @@ export const GET_CLASS_QUERY = gql`
       displayPublic
       infoMailContent
     }
-    organizationLocationRooms(first: 100, before: $before, after: $after, archived: $archived) {
+    organizationLocationRooms(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -159,7 +159,7 @@ export const GET_CLASS_QUERY = gql`
         }
       }
     }
-    organizationClasstypes(first: 100, before: $before, after: $after, archived: $archived) {
+    organizationClasstypes(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -174,7 +174,7 @@ export const GET_CLASS_QUERY = gql`
         }
       }
     }
-    organizationLevels(first: 100, before: $before, after: $after, archived: $archived) {
+    organizationLevels(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -189,7 +189,7 @@ export const GET_CLASS_QUERY = gql`
         }
       }
     }
-    financePaymentMethods(first: 100, before: $before, after: $after, archived: $archived) {
+    financePaymentMethods(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
