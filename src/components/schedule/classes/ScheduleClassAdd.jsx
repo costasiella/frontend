@@ -52,87 +52,85 @@ function ScheduleClassAdd({t, history}) {
 
   return (
     <ScheduleClassAddBase>
-      <Formik
-        initialValues={{ 
-          displayPublic: true,
-          frequencyType: "WEEKLY",
-          frequencyInterval: 1,
-          organizationLocationRoom: "",
-          organizationClasstype: "",
-          organizationLevel: "",
-          dateStart: new Date(),
-          timeStart: new Date(),
-          timeEnd: new Date(),
-          spaces: "",
-          walkInSpaces: ""
-        }}
-        validationSchema={CLASS_SCHEMA}
-        onSubmit={(values, { setSubmitting }) => {
-            console.log('submit values:')
-            console.log(values)
+      <Card title={cardTitle}>
+        <Formik
+          initialValues={{ 
+            displayPublic: true,
+            frequencyType: "WEEKLY",
+            frequencyInterval: 1,
+            organizationLocationRoom: "",
+            organizationClasstype: "",
+            organizationLevel: "",
+            dateStart: new Date(),
+            timeStart: new Date(),
+            timeEnd: new Date(),
+            spaces: "",
+            walkInSpaces: ""
+          }}
+          validationSchema={CLASS_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
+              console.log('submit values:')
+              console.log(values)
 
-            let frequencyInterval = values.frequencyInterval
-            if (values.frequencyType == 'SPECIFIC')
-              frequencyInterval = 0
+              let frequencyInterval = values.frequencyInterval
+              if (values.frequencyType == 'SPECIFIC')
+                frequencyInterval = 0
 
-            let dateEnd
-              if (values.dateEnd) {
-                dateEnd = dateToLocalISO(values.dateEnd)
-              } else {
-                dateEnd = values.dateEnd
-              }
-            
-            createScheduleClass({ variables: {
-              input: {
-                displayPublic: values.displayPublic,
-                frequencyType: values.frequencyType,
-                frequencyInterval: frequencyInterval,
-                organizationLocationRoom: values.organizationLocationRoom,
-                organizationClasstype: values.organizationClasstype,
-                organizationLevel: values.organizationLevel,
-                dateStart: dateToLocalISO(values.dateStart),
-                dateEnd: dateEnd,
-                timeStart: dateToLocalISOTime(values.timeStart),
-                timeEnd: dateToLocalISOTime(values.timeEnd),
-                spaces: values.spaces,
-                walkInSpaces: values.walkInSpaces
-              }
-            }, refetchQueries: [
-                {query: GET_CLASSES_QUERY, variables: get_list_query_variables()}
-            ]})
-            .then(({ data }) => {
-                console.log('got data', data)
-                toast.success((t('schedule.classes.toast_add_success')), {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                  })
-              }).catch((error) => {
-                toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                  })
-                console.log('there was an error sending the query', error)
-                setSubmitting(false)
-              })
-        }}
-        >
-        {({ isSubmitting, setFieldValue, setFieldTouched, errors, values, touched }) => (
-              <ScheduleClassForm
-                inputData={inputData}
-                isSubmitting={isSubmitting}
-                setFieldValue={setFieldValue}
-                setFieldTouched={setFieldTouched}
-                errors={errors}
-                values={values}
-                touched={touched}
-                returnUrl={returnUrl}
-              >
-                {console.log('########## v & e')}
-                {console.log(values)}
-                {console.log(errors)}
-                {console.log(touched)}
-              </ScheduleClassForm>
-            )
-          }
-      </Formik>
+              let dateEnd
+                if (values.dateEnd) {
+                  dateEnd = dateToLocalISO(values.dateEnd)
+                } else {
+                  dateEnd = values.dateEnd
+                }
+              
+              createScheduleClass({ variables: {
+                input: {
+                  displayPublic: values.displayPublic,
+                  frequencyType: values.frequencyType,
+                  frequencyInterval: frequencyInterval,
+                  organizationLocationRoom: values.organizationLocationRoom,
+                  organizationClasstype: values.organizationClasstype,
+                  organizationLevel: values.organizationLevel,
+                  dateStart: dateToLocalISO(values.dateStart),
+                  dateEnd: dateEnd,
+                  timeStart: dateToLocalISOTime(values.timeStart),
+                  timeEnd: dateToLocalISOTime(values.timeEnd),
+                  spaces: values.spaces,
+                  walkInSpaces: values.walkInSpaces
+                }
+              }, refetchQueries: [
+                  {query: GET_CLASSES_QUERY, variables: get_list_query_variables()}
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data)
+                  toast.success((t('schedule.classes.toast_add_success')), {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                }).catch((error) => {
+                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
+                })
+          }}
+          >
+          {({ isSubmitting, setFieldValue, setFieldTouched, errors, values, touched }) => (
+                <ScheduleClassForm
+                  inputData={inputData}
+                  isSubmitting={isSubmitting}
+                  setFieldValue={setFieldValue}
+                  setFieldTouched={setFieldTouched}
+                  errors={errors}
+                  values={values}
+                  touched={touched}
+                  returnUrl={returnUrl}
+                >
+                </ScheduleClassForm>
+              )
+           }
+        </Formik>
+      </Card>      
     </ScheduleClassAddBase>
   )
 }
