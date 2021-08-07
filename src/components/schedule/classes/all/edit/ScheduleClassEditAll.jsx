@@ -2,13 +2,15 @@
 
 import React, { Component } from 'react'
 import { Query, Mutation } from "@apollo/client";
-import { gql } from "@apollo/client"
+
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_CLASSES_QUERY, GET_CLASS_QUERY } from '../../queries'
+import { UPDATE_CLASS } from './queries'
+
 import { get_list_query_variables } from '../../tools'
 import { CLASS_SCHEMA } from '../../yupSchema'
 import ScheduleClassForm from '../../ScheduleClassForm'
@@ -29,39 +31,9 @@ import { dateToLocalISO, dateToLocalISOTime, TimeStringToJSDateOBJ } from '../..
 import ClassEditBase from '../ClassEditBase'
 
 
-const UPDATE_CLASS = gql`
-  mutation UpdateScheduleClass($input:UpdateScheduleClassInput!) {
-    updateScheduleClass(input: $input) {
-      scheduleItem {
-        id
-        scheduleItemType
-        frequencyType
-        frequencyInterval
-        organizationLocationRoom {
-          id
-          name
-          organizationLocation {
-            id
-            name
-          }
-        }
-        organizationClasstype {
-          id
-          name
-        }
-        organizationLevel {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        timeStart
-        timeEnd
-        displayPublic
-      }
-    }
-  }
-`
+
+
+
 
 
 class ScheduleClassEditAll extends Component {
