@@ -32,15 +32,7 @@ import confirm_delete from "../../../../../tools/confirm_delete"
 import ContentCard from "../../../../general/ContentCard"
 import ClassEditBase from "../ClassEditBase"
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY } from "./queries"
-
-const DELETE_SCHEDULE_CLASS_TEACHER = gql`
-  mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemTeacherInput!) {
-    deleteScheduleItemTeacher(input: $input) {
-      ok
-    }
-  }
-`
+import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
 
 
 class ScheduleClassTeachers extends Component {
