@@ -1,8 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Query, Mutation, useMutation, useQuery } from "@apollo/client";
-import { gql } from "@apollo/client"
+import { useMutation, useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
@@ -13,8 +12,6 @@ import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
 import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
-
-import SiteWrapper from "../../../../SiteWrapper"
 
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassTeacherBack from "./ScheduleClassTeacherBack"

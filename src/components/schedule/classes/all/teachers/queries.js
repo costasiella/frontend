@@ -122,6 +122,17 @@ mutation CreateScheduleItemTeacher($input:CreateScheduleItemTeacherInput!) {
 `
 
 
+export const UPDATE_SCHEDULE_CLASS_TEACHER = gql`
+mutation UpdateScheduleItemTeacher($input: UpdateScheduleItemTeacherInput!) {
+  updateScheduleItemTeacher(input:$input) {
+    scheduleItemTeacher {
+      id
+    } 
+  }
+}
+`
+
+
 export const DELETE_SCHEDULE_CLASS_TEACHER = gql`
 mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemTeacherInput!) {
   deleteScheduleItemTeacher(input: $input) {

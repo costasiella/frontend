@@ -1,153 +1,145 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
-import { Query, Mutation } from "@apollo/client";
+import React from 'react'
+import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY } from './queries'
+import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY, UPDATE_SCHEDULE_CLASS_TEACHER } from './queries'
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
 import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
-
-
-import SiteWrapper from "../../../../SiteWrapper"
 
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassTeacherBack from "./ScheduleClassTeacherBack"
 
 
-const UPDATE_SCHEDULE_CLASS_TEACHER = gql`
-  mutation UpdateScheduleItemTeacher($input: UpdateScheduleItemTeacherInput!) {
-    updateScheduleItemTeacher(input:$input) {
-      scheduleItemTeacher {
-        id
-      } 
-    }
+function ScheduleClassTeacherEdit({ t, match, history }) {
+  const id = match.params.id
+  const classId = match.params.class_id
+  const returnUrl = `/schedule/classes/all/teachers/${classId}`
+  const cardTitle = t('schedule.classes.teachers.title_edit')
+  const menuActiveLink = "teachers"
+  const sidebarButton = <ScheduleClassTeacherBack classId={classId} />
+
+  const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY, {
+    variables: { id: id }
+  })
+  const [updateScheduleClassTeacher] = useMutation(UPDATE_SCHEDULE_CLASS_TEACHER)
+
+  if (loading) return (
+    <ClassEditBase
+      cardTitle={cardTitle}
+      menuActiveLink={menuActiveLink}
+      sidebarButton={sidebarButton}
+    >
+      <p>{t('general.loading_with_dots')}</p>
+    </ClassEditBase>
+  )
+
+  if (error) return (
+    <ClassEditBase
+      cardTitle={cardTitle}
+      menuActiveLink={menuActiveLink}
+      sidebarButton={sidebarButton}
+    >
+      <p>{t('general.error_sad_smiley')}</p>
+    </ClassEditBase>
+  )
+
+  console.log('query data')
+  console.log(data)
+  const inputData = data
+  const initialData = data.scheduleItemTeacher
+
+  let initialAccount2 = ""
+  if (initialData.account2) {
+    initialAccount2 =  initialData.account2.id
+  } 
+
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let dateStart = null
+  if (initialData.dateStart) {
+    dateStart = new Date(initialData.dateStart)
   }
-`
-
-
-class ScheduleClassTeacherEdit extends Component {
-  constructor(props) {
-    super(props)
-    console.log("Schedule class teacher edit props:")
-    console.log(props)
+  
+  let dateEnd = null
+  if (initialData.dateEnd) {
+    dateEnd = new Date(initialData.dateEnd)
   }
 
-  render() {
-    const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const id = match.params.id
-    const class_id = match.params.class_id
-    const return_url = "/schedule/classes/all/teachers/" + class_id
+  return (
+    <ClassEditBase 
+      cardTitle={cardTitle}
+      menuActiveLink="teachers"
+      sidebarButton={sidebarButton}
+    >
+      <Formik
+        initialValues={{  
+          dateStart: dateStart,
+          dateEnd: dateEnd,
+          account: initialData.account.id,
+          role: initialData.role,
+          account2: initialAccount2,
+          role2: initialData.role2,
+        }}
+        validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+        onSubmit={(values, { setSubmitting }) => {
 
-    return (
-      <SiteWrapper>
-        <div className="my-3 my-md-5">
-          <Query query={GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY} variables={{id: id}}>
-            {({ loading, error, data, refetch }) => {
-              // Loading
-              if (loading) return <p>{t('general.loading_with_dots')}</p>
-              // Error
-              if (error) {
-                console.log(error)
-                return <p>{t('general.error_sad_smiley')}</p>
+            let dateEnd
+            if (values.dateEnd) {
+              dateEnd = dateToLocalISO(values.dateEnd)
+            } else {
+              dateEnd = values.dateEnd
+            }
+
+            updateScheduleClassTeacher({ variables: {
+              input: {
+                id: match.params.id,
+                account: values.account,
+                role: values.role,
+                account2: values.account2,
+                role2: values.role2,
+                dateStart: dateToLocalISO(values.dateStart),
+                dateEnd: dateEnd
               }
-    
-              console.log('query data')
-              console.log(data)
-              const inputData = data
-              const initialData = data.scheduleItemTeacher
-
-              let initialAccount2 = ""
-              if (initialData.account2) {
-                initialAccount2 =  initialData.account2.id
-              } 
-    
-              return (
-                <ClassEditBase 
-                  card_title={t('schedule.classes.teachers.title_edit')}
-                  menu_activeLink="teachers"
-                  sidebar_button={<ScheduleClassTeacherBack classId={class_id} />}
-                >
-                  <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(return_url)}> 
-                    {(addScheduleClassTeacher, { data }) => (
-                        <Formik
-                            initialValues={{  
-                              dateStart: initialData.dateStart,
-                              dateEnd: initialData.dateEnd,
-                              account: initialData.account.id,
-                              role: initialData.role,
-                              account2: initialAccount2,
-                              role2: initialData.role2,
-                            }}
-                            validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
-                            onSubmit={(values, { setSubmitting }) => {
-    
-                                let dateEnd
-                                if (values.dateEnd) {
-                                  dateEnd = dateToLocalISO(values.dateEnd)
-                                } else {
-                                  dateEnd = values.dateEnd
-                                }
-    
-                                addScheduleClassTeacher({ variables: {
-                                  input: {
-                                    id: match.params.id,
-                                    account: values.account,
-                                    role: values.role,
-                                    account2: values.account2,
-                                    role2: values.role2,
-                                    dateStart: dateToLocalISO(values.dateStart),
-                                    dateEnd: dateEnd
-                                  }
-                                }, refetchQueries: [
-                                    {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
-                                    // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
-                                ]})
-                                .then(({ data }) => {
-                                    console.log('got data', data);
-                                    toast.success((t('schedule.classes.teachers.toast_edit_success')), {
-                                        position: toast.POSITION.BOTTOM_RIGHT
-                                      })
-                                  }).catch((error) => {
-                                    toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                                        position: toast.POSITION.BOTTOM_RIGHT
-                                      })
-                                    console.log('there was an error sending the query', error)
-                                    setSubmitting(false)
-                                  })
-                            }}
-                            >
-                            {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-                              <ScheduleClassTeacherForm
-                                inputData={inputData}
-                                isSubmitting={isSubmitting}
-                                setFieldTouched={setFieldTouched}
-                                setFieldValue={setFieldValue}
-                                errors={errors}
-                                values={values}
-                                return_url={return_url}
-                              >
-                                {console.log(errors)}
-                              </ScheduleClassTeacherForm>
-                            )}
-                        </Formik>
-                    )}
-                  </Mutation>
-                </ClassEditBase>
-              )
-            }}
-          </Query>
-        </div>
-      </SiteWrapper>
-    )
-  }
+            }, refetchQueries: [
+                {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+                // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
+            ]})
+            .then(({ data }) => {
+                console.log('got data', data);
+                toast.success((t('schedule.classes.teachers.toast_edit_success')), {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+              }).catch((error) => {
+                toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+                console.log('there was an error sending the query', error)
+                setSubmitting(false)
+              })
+        }}
+        >
+        {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+          <ScheduleClassTeacherForm
+            inputData={inputData}
+            isSubmitting={isSubmitting}
+            setFieldTouched={setFieldTouched}
+            setFieldValue={setFieldValue}
+            errors={errors}
+            values={values}
+            returnUrl={returnUrl}
+          >
+            {console.log(errors)}
+          </ScheduleClassTeacherForm>
+        )}
+      </Formik>
+    </ClassEditBase>
+  )
 }
 
 
