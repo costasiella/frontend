@@ -86,7 +86,6 @@ query ScheduleItemPrice($before: String, $after: String, $id: ID!) {
 }
 `
 
-
 export const GET_INPUT_VALUES_QUERY = gql`
   query InputValues($after: String, $before: String) {
     organizationClasspasses(first: 100, before: $before, after: $after, archived: false) {
@@ -102,6 +101,16 @@ export const GET_INPUT_VALUES_QUERY = gql`
           name
         }
       }
+    }
+  }
+`
+
+export const ADD_SCHEDULE_ITEM_PRICE = gql`
+  mutation CreateScheduleItemPrice($input:CreateScheduleItemPriceInput!) {
+    createScheduleItemPrice(input:$input) {
+      scheduleItemPrice {
+        id
+      } 
     }
   }
 `
