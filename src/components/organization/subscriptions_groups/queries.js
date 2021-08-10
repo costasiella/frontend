@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_SUBSCRIPTION_GROUPS_QUERY = gql`
   query OrganizationSubscriptionGroups($after: String, $before: String) {
-    organizationSubscriptionGroups(first: 15, before: $before, after: $after) {
+    organizationSubscriptionGroups(first: 100, before: $before, after: $after) {
       pageInfo {
         startCursor
         endCursor

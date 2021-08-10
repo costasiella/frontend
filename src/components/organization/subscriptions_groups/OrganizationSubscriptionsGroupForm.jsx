@@ -7,6 +7,7 @@ import { Form as FoForm, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
 
 import {
+  Alert,
   Button,
   Card,
   Form,
@@ -31,6 +32,17 @@ const OrganizationSubscriptionGroupForm = ({ t, history, isSubmitting, errors, r
           </Form.Group>
       </Card.Body>
       <Card.Footer>
+        {(isSubmitting) ?
+        <Button 
+          color="primary"
+          className="pull-right" 
+          type="submit" 
+          loading
+          disabled={isSubmitting}
+        >
+          {t("general.submit")}
+        </Button>
+        :
           <Button 
             color="primary"
             className="pull-right" 
@@ -39,11 +51,18 @@ const OrganizationSubscriptionGroupForm = ({ t, history, isSubmitting, errors, r
           >
             {t('general.submit')}
           </Button>
-          <Link to={returnUrl}>
-            <Button color="link">
-                {t('general.cancel')}
-            </Button>
-          </Link>
+        }
+        <Link to={returnUrl}>
+          <Button color="link">
+              {t('general.cancel')}
+          </Button>
+        </Link>
+        {(isSubmitting) ? 
+          <Alert type="primary" hasExtraSpace>
+            <strong>{t('general.please_wait')}</strong> {t('organization.subscription_groups.toast_creating_might_take_a_while')}
+          </Alert> : 
+          ""
+        }
       </Card.Footer>
   </FoForm>
 )
