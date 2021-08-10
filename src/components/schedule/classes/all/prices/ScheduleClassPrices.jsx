@@ -1,32 +1,20 @@
 // @flow
 
 import React, { useContext } from 'react'
-import { Query, Mutation, useQuery } from "@apollo/client"
-import { gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import {
-  Alert,
-  Page,
-  Grid,
-  Icon,
   Dimmer,
-  Badge,
   Button,
-  Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ButtonAdd from "./ButtonAdd"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 import { class_edit_all_subtitle } from "../tools"
 import confirm_delete from "../../../../../tools/confirm_delete"
 

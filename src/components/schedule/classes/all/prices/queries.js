@@ -115,6 +115,16 @@ export const ADD_SCHEDULE_ITEM_PRICE = gql`
   }
 `
 
+export const UPDATE_SCHEDULE_ITEM_PRICE = gql`
+mutation UpdateScheduleItemPrice($input: UpdateScheduleItemPriceInput!) {
+  updateScheduleItemPrice(input:$input) {
+    scheduleItemPrice {
+      id
+    } 
+  }
+}
+`
+
 export const DELETE_SCHEDULE_ITEM_PRICE = gql`
   mutation DeleteScheduleItemPrice($input: DeleteScheduleItemPriceInput!) {
     deleteScheduleItemPrice(input: $input) {

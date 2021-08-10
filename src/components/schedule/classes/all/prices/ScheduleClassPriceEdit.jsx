@@ -8,60 +8,54 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SCHEDULE_ITEM_PRICES_QUERY, GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY } from './queries'
+import {
+  Dimmer,
+} from "tabler-react";
+
+import { GET_SCHEDULE_ITEM_PRICES_QUERY, GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, UPDATE_SCHEDULE_ITEM_PRICE } from './queries'
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
 import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
-
-import SiteWrapper from "../../../../SiteWrapper"
-
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassPriceBack from "./ScheduleClassPriceBack"
 
-
-const UPDATE_SCHEDULE_ITEM_PRICE = gql`
-  mutation UpdateScheduleItemPrice($input: UpdateScheduleItemPriceInput!) {
-    updateScheduleItemPrice(input:$input) {
-      scheduleItemPrice {
-        id
-      } 
-    }
-  }
-`
-
 function ScheduleClassPriceEdit({ t, history, match }) {
-  const classId = match.params.class_id
-  const return_url = "/schedule/classes/all/prices/" + classId
   const id = match.params.id
-  const { loading: queryLoading, error: queryError, data, } = useQuery(GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, {
+  const classId = match.params.class_id
+  const returnUrl = `/schedule/classes/all/prices/${classId}`
+  const menuActiveLink = "prices"
+  const cardTitle = t('schedule.classes.prices.title_edit')
+  const sidebarButton = <ScheduleClassPriceBack classId={match.params.class_id} />
+  const { loading, error, data, } = useQuery(GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, {
     variables: {
       id: id
     }
   })
-  const [editScheduleClassPrice, { mutationData, mutationLoading, mutationError, onCompleted }] = useMutation(UPDATE_SCHEDULE_ITEM_PRICE, {
-    onCompleted: () => history.push(return_url)
+  const [editScheduleClassPrice] = useMutation(UPDATE_SCHEDULE_ITEM_PRICE, {
+    onCompleted: () => history.push(returnUrl)
   })
 
 
-  if (queryLoading) return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <p>{t('general.loading_with_dots')}</p>
-      </div>
-    </SiteWrapper>
+  if (loading) return (
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      cardTitle={cardTitle} 
+      sidebarButton={sidebarButton}
+    >
+      <Dimmer active={true} loader={true} />
+    </ClassEditBase>
   )
   // Error
-  if (queryError) {
-    return (
-      <SiteWrapper>
-        <div className="my-3 my-md-5">
-          console.log(error)
-          return <p>{t('general.error_sad_smiley')}</p>
-        </div>
-      </SiteWrapper>
-    )
-  }
+  if (error) return (
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      cardTitle={cardTitle} 
+      sidebarButton={sidebarButton}
+    >
+      <p>{t('general.error_sad_smiley')}</p>
+    </ClassEditBase>
+  )
 
 
   console.log('query data')
@@ -79,72 +73,80 @@ function ScheduleClassPriceEdit({ t, history, match }) {
     initialOrganizationClasspassTrial = inputData.scheduleItemPrice.organizationClasspassTrial.id
   }
 
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let dateStart = null
+  let dateEnd = null
+  if (inputData.scheduleItemPrice.dateStart) {
+    dateStart = new Date(inputData.scheduleItemPrice.dateStart)
+  }
+  if (inputData.scheduleItemPrice.dateEnd) {
+    dateEnd = new Date(inputData.scheduleItemPrice.dateEnd)
+  }
+
+
   return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <ClassEditBase 
-          card_title={t('schedule.classes.prices.title_edit')}
-          menu_activeLink="prices"
-          sidebar_button={<ScheduleClassPriceBack classId={match.params.class_id} />}
-        >
-          <Formik
-            initialValues={{ 
-              dateStart: inputData.scheduleItemPrice.dateStart,
-              dateEnd: inputData.scheduleItemPrice.dateEnd,
-              organizationClasspassDropin: initialOrganizationClasspassDropin,
-              organizationClasspassTrial: initialOrganizationClasspassTrial,
-            }}
-            // validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
-            onSubmit={(values, { setSubmitting }) => {
+  <ClassEditBase 
+    cardTitle={cardTitle}
+    menu_activeLink={menuActiveLink}
+    sidebarButton={sidebarButton}
+  >
+    <Formik
+      initialValues={{ 
+        dateStart: dateStart,
+        dateEnd: dateEnd,
+        organizationClasspassDropin: initialOrganizationClasspassDropin,
+        organizationClasspassTrial: initialOrganizationClasspassTrial,
+      }}
+      // validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+      onSubmit={(values, { setSubmitting }) => {
 
-                let dateEnd
-                if (values.dateEnd) {
-                  dateEnd = dateToLocalISO(values.dateEnd)
-                } else {
-                  dateEnd = values.dateEnd
-                }
+          let dateEnd
+          if (values.dateEnd) {
+            dateEnd = dateToLocalISO(values.dateEnd)
+          } else {
+            dateEnd = values.dateEnd
+          }
 
-                editScheduleClassPrice({ variables: {
-                  input: {
-                    id: id,
-                    dateStart: dateToLocalISO(values.dateStart),
-                    dateEnd: dateEnd,
-                    organizationClasspassDropin: values.organizationClasspassDropin,
-                    organizationClasspassTrial: values.organizationClasspassTrial
-                  }
-                }, refetchQueries: [
-                    {query: GET_SCHEDULE_ITEM_PRICES_QUERY, variables: { scheduleItem: match.params.class_id }},
-                    // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
-                ]})
-                .then(({ data }) => {
-                    console.log('got data', data);
-                    toast.success((t('schedule.classes.prices.toast_edit_success')), {
-                        position: toast.POSITION.BOTTOM_RIGHT
-                      })
-                  }).catch((error) => {
-                    toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                        position: toast.POSITION.BOTTOM_RIGHT
-                      })
-                    console.log('there was an error sending the query', error)
-                    setSubmitting(false)
-                  })
-            }}
-            >
-            {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-              <ScheduleClassPriceForm
-                inputData={inputData}
-                isSubmitting={isSubmitting}
-                setFieldTouched={setFieldTouched}
-                setFieldValue={setFieldValue}
-                errors={errors}
-                values={values}
-                return_url={return_url + match.params.class_id}
-              />
-            )}
-        </Formik>
-        </ClassEditBase>
-      </div>
-    </SiteWrapper>
+          editScheduleClassPrice({ variables: {
+            input: {
+              id: id,
+              dateStart: dateToLocalISO(values.dateStart),
+              dateEnd: dateEnd,
+              organizationClasspassDropin: values.organizationClasspassDropin,
+              organizationClasspassTrial: values.organizationClasspassTrial
+            }
+          }, refetchQueries: [
+              {query: GET_SCHEDULE_ITEM_PRICES_QUERY, variables: { scheduleItem: match.params.class_id }},
+              // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
+          ]})
+          .then(({ data }) => {
+              console.log('got data', data);
+              toast.success((t('schedule.classes.prices.toast_edit_success')), {
+                  position: toast.POSITION.BOTTOM_RIGHT
+                })
+            }).catch((error) => {
+              toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                  position: toast.POSITION.BOTTOM_RIGHT
+                })
+              console.log('there was an error sending the query', error)
+              setSubmitting(false)
+            })
+      }}
+      >
+      {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+        <ScheduleClassPriceForm
+          inputData={inputData}
+          isSubmitting={isSubmitting}
+          setFieldTouched={setFieldTouched}
+          setFieldValue={setFieldValue}
+          errors={errors}
+          values={values}
+          returnUrl={returnUrl + match.params.class_id}
+        />
+      )}
+  </Formik>
+</ClassEditBase>
   )
 }
 
@@ -162,7 +164,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //     const history = this.props.history
 //     const id = match.params.id
 //     const class_id = match.params.class_id
-//     const return_url = "/schedule/classes/all/teachers/" + class_id
+//     const returnUrl = "/schedule/classes/all/teachers/" + class_id
 
 //     return (
 //       <SiteWrapper>
@@ -193,7 +195,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                   menu_activeLink="teachers"
 //                   sidebar_button={<ScheduleClassTeacherBack classId={class_id} />}
 //                 >
-//                   <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(return_url)}> 
+//                   <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(returnUrl)}> 
 //                     {(addScheduleClassTeacher, { data }) => (
 //                         <Formik
 //                             initialValues={{  
@@ -250,7 +252,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                                 setFieldValue={setFieldValue}
 //                                 errors={errors}
 //                                 values={values}
-//                                 return_url={return_url}
+//                                 returnUrl={returnUrl}
 //                               >
 //                                 {console.log(errors)}
 //                               </ScheduleClassTeacherForm>
