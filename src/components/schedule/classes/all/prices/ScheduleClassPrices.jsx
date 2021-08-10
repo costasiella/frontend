@@ -41,29 +41,32 @@ function ScheduleClassPrices({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const classId = match.params.class_id
+  const menuActiveLink = "prices" 
+  const cardTitle = t('schedule.classes.prices.title')
+  const sidebarButton = <ButtonAdd classId={classId}/>
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_ITEM_PRICES_QUERY, {
     variables: { scheduleItem: classId }
   })
 
   if (loading) return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <ClassEditBase menu_activeLink="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
-          <Dimmer active={true} loader={true} />
-        </ClassEditBase>
-      </div>
-    </SiteWrapper>
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      cardTitle={cardTitle} 
+      sidebarButton={sidebarButton}
+    >
+      <Dimmer active={true} loader={true} />
+    </ClassEditBase>
   )
   // Error
   if (error) return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <ClassEditBase menu_activeLink="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
-          <p>{t('schedule.classes.prices.error_loading')}</p>
-        </ClassEditBase>
-      </div>
-    </SiteWrapper>
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      cardTitle={cardTitle} 
+      sidebarButton={sidebarButton}
+    >
+      <p>{t('schedule.classes.prices.error_loading')}</p>
+    </ClassEditBase>
   )
 
 
@@ -78,103 +81,96 @@ function ScheduleClassPrices({t, match, history}) {
 
   // Empty list
   if (!data.scheduleItemPrices.edges.length) { return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <ClassEditBase menu_activeLink="prices" card_title={t('schedule.classes.prices.title')} sidebar_button={<ButtonAdd classId={classId}/>}>
-          <p>{t('schedule.classes.prices.empty_list')}</p>
-        </ClassEditBase>
-      </div>
-    </SiteWrapper>
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      cardTitle={cardTitle} 
+      sidebarButton={sidebarButton}
+    >
+      <p>{t('schedule.classes.prices.empty_list')}</p>
+    </ClassEditBase>
   )}
 
   return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        {console.log('ID here:')}
-        {console.log(classId)}
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      cardTitle={cardTitle} 
+      sidebarButton={sidebarButton}
+      defaultCard={false}
+    >
+    <ContentCard 
+      cardTitle={t('schedule.classes.title_edit')}
+      // headerContent={headerOptions}
+      pageInfo={data.scheduleItemPrices.pageInfo}
+      onLoadMore={() => {
+      fetchMore({
+        variables: {
+          after: data.scheduleItemPrices.pageInfo.endCursor
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const newEdges = fetchMoreResult.scheduleItemPrices.edges
+          const pageInfo = fetchMoreResult.scheduleItemPrices.pageInfo
 
-        <ClassEditBase 
-          menu_activeLink="prices" 
-          default_card={false} 
-          subtitle={subtitle}
-          sidebar_button={<ButtonAdd classId={classId}/>}
-        >
-        <ContentCard 
-          cardTitle={t('schedule.classes.title_edit')}
-          // headerContent={headerOptions}
-          pageInfo={data.scheduleItemPrices.pageInfo}
-          onLoadMore={() => {
-          fetchMore({
-            variables: {
-              after: data.scheduleItemPrices.pageInfo.endCursor
-            },
-            updateQuery: (previousResult, { fetchMoreResult }) => {
-              const newEdges = fetchMoreResult.scheduleItemPrices.edges
-              const pageInfo = fetchMoreResult.scheduleItemPrices.pageInfo
-
-              return newEdges.length
-                ? {
-                    // Put the new locations at the end of the list and update `pageInfo`
-                    // so we have the new `endCursor` and `hasNextPage` values
-                    data: { 
-                      scheduleItemPrices: {
-                        __typename: previousResult.scheduleItemPrices.__typename,
-                        edges: [ ...previousResult.scheduleItemPrices.edges, ...newEdges ],
-                        pageInfo
-                      }
-                    }
+          return newEdges.length
+            ? {
+                // Put the new locations at the end of the list and update `pageInfo`
+                // so we have the new `endCursor` and `hasNextPage` values
+                data: { 
+                  scheduleItemPrices: {
+                    __typename: previousResult.scheduleItemPrices.__typename,
+                    edges: [ ...previousResult.scheduleItemPrices.edges, ...newEdges ],
+                    pageInfo
                   }
-                : previousResult
+                }
               }
-            })
-          }} >
-          <div>
-            <Table>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.dropin')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.trial')}</Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {data.scheduleItemPrices.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    {console.log(node)}
-                    <Table.Col key={v4()}> 
-                      {moment(node.dateStart).format('LL')}
-                    </Table.Col>
-                    <Table.Col key={v4()}> 
-                      {(node.dateEnd) ? moment(node.dateEnd).format('LL') : ""}
-                    </Table.Col>
-                    <Table.Col>
-                      {node.organizationClasspassDropin.name}
-                    </Table.Col>
-                    <Table.Col>
-                      {(node.organizationClasspassTrial) ? node.organizationClasspassTrial.name : ""}
-                    </Table.Col>
-                    <Table.Col className="text-right" key={v4()}>
-                      <Button className='btn-sm' 
-                              onClick={() => history.push("/schedule/classes/all/prices/" + match.params.class_id + '/edit/' + node.id)}
-                              color="secondary">
-                        {t('general.edit')}
-                      </Button>
-                    </Table.Col>
-                    <Table.Col>
-                      <ScheduleClassPriceDelete id={node.id} />
-                    </Table.Col>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-            </div>
-          </ContentCard>
-        </ClassEditBase>
-      </div>
-    </SiteWrapper>
+            : previousResult
+          }
+        })
+      }} >
+      <div>
+        <Table>
+          <Table.Header>
+            <Table.Row>
+              <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.dropin')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.trial')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {data.scheduleItemPrices.edges.map(({ node }) => (
+              <Table.Row key={v4()}>
+                {console.log(node)}
+                <Table.Col key={v4()}> 
+                  {moment(node.dateStart).format('LL')}
+                </Table.Col>
+                <Table.Col key={v4()}> 
+                  {(node.dateEnd) ? moment(node.dateEnd).format('LL') : ""}
+                </Table.Col>
+                <Table.Col>
+                  {node.organizationClasspassDropin.name}
+                </Table.Col>
+                <Table.Col>
+                  {(node.organizationClasspassTrial) ? node.organizationClasspassTrial.name : ""}
+                </Table.Col>
+                <Table.Col className="text-right" key={v4()}>
+                  <Button className='btn-sm' 
+                          onClick={() => history.push("/schedule/classes/all/prices/" + match.params.class_id + '/edit/' + node.id)}
+                          color="secondary">
+                    {t('general.edit')}
+                  </Button>
+                </Table.Col>
+                <Table.Col>
+                  <ScheduleClassPriceDelete id={node.id} />
+                </Table.Col>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+        </div>
+      </ContentCard>
+    </ClassEditBase>
   )
 }
 
