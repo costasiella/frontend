@@ -73,8 +73,6 @@ function ScheduleClassSubscriptions({t, match, history}) {
     </ClassEditBase>
   )
 
-  const initialTimeStart = TimeStringToJSDateOBJ(data.scheduleItem.timeStart)
-
   // Empty list
   if (!data.scheduleItemOrganizationSubscriptionGroups.edges.length) return (
     <ClassEditBase 
@@ -146,7 +144,6 @@ function ScheduleClassSubscriptions({t, match, history}) {
                       validationSchema={SCHEDULE_CLASS_SUBSCRIPTION_SCHEMA}
                       onSubmit={(values, { setSubmitting }) => {
                           console.log(values)
-
                           updateScheduleClassSubscription({ variables: {
                             input: {
                               id: node.id,
@@ -155,8 +152,9 @@ function ScheduleClassSubscriptions({t, match, history}) {
                               attend: values.attend
                             }
                           }, refetchQueries: [
-                              // {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
-                              // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
+                            { query: GET_SCHEDULE_CLASS_SUBSCRIPTIONS_QUERY, 
+                              variables: { scheduleItem: classId }
+                            }
                           ]})
                           .then(({ data }) => {
                               console.log('got data', data);

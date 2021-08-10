@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_SCHEDULE_CLASS_SUBSCRIPTIONS_QUERY = gql`
   query ScheduleItemOrganizationSubscriptionGroups($after: String, $before: String, $scheduleItem: ID!) {
-    scheduleItemOrganizationSubscriptionGroups(before: $before, after: $after, scheduleItem:$scheduleItem) {
+    scheduleItemOrganizationSubscriptionGroups(first: 100, before: $before, after: $after, scheduleItem:$scheduleItem) {
       pageInfo {
         hasNextPage
         hasPreviousPage
