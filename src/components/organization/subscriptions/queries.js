@@ -181,3 +181,14 @@ export const GET_INPUT_VALUES_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_SUBSCRIPTION = gql`
+mutation ArchiveOrganizationSubscription($input: ArchiveOrganizationSubscriptionInput!) {
+  archiveOrganizationSubscription(input: $input) {
+    organizationSubscription {
+      id
+      archived
+    }
+  }
+}
+`
