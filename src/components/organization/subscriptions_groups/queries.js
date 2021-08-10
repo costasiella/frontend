@@ -91,3 +91,30 @@ export const DELETE_SUBSCRIPTION_GROUP = gql`
     }
   }
 `
+
+export const ADD_CARD_TO_GROUP = gql`
+  mutation AddCardToGroup($input: CreateOrganizationSubscriptionGroupSubscriptionInput!) {
+    createOrganizationSubscriptionGroupSubscription(input:$input) {
+      organizationSubscriptionGroupSubscription {
+        id
+        organizationSubscription {
+          id
+          name
+        }
+        organizationSubscriptionGroup {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+
+export const DELETE_CARD_FROM_GROUP = gql`
+  mutation DeleteCardFromGroup($input: DeleteOrganizationSubscriptionGroupSubscriptionInput!) {
+    deleteOrganizationSubscriptionGroupSubscription(input:$input) {
+      ok
+    }
+  }
+`

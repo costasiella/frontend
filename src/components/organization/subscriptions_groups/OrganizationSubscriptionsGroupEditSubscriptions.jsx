@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { toast } from 'react-toastify'
 
-import { GET_SUBSCRIPTION_GROUP_SUBSCRIPTIONS_QUERY } from './queries'
+import { GET_SUBSCRIPTION_GROUP_SUBSCRIPTIONS_QUERY, ADD_CARD_TO_GROUP, DELETE_CARD_FROM_GROUP } from './queries'
 
 
 import {
@@ -25,34 +25,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationMenu from "../OrganizationMenu"
-
-
-const ADD_CARD_TO_GROUP = gql`
-  mutation AddCardToGroup($input: CreateOrganizationSubscriptionGroupSubscriptionInput!) {
-    createOrganizationSubscriptionGroupSubscription(input:$input) {
-      organizationSubscriptionGroupSubscription {
-        id
-        organizationSubscription {
-          id
-          name
-        }
-        organizationSubscriptionGroup {
-          id
-          name
-        }
-      }
-    }
-  }
-`
-
-
-const DELETE_CARD_FROM_GROUP = gql`
-  mutation DeleteCardFromGroup($input: DeleteOrganizationSubscriptionGroupSubscriptionInput!) {
-    deleteOrganizationSubscriptionGroupSubscription(input:$input) {
-      ok
-    }
-  }
-`
 
 
 class OrganizationSubscriptionGroupEditSubscriptions extends Component {
