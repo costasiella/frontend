@@ -74,6 +74,16 @@ export const ADD_SUBSCRIPTION_GROUP = gql`
   }
 `
 
+export const UPDATE_SUBSCRIPTION_GROUP = gql`
+mutation UpdateOrganizationSubscriptionGroup($input: UpdateOrganizationSubscriptionGroupInput!) {
+  updateOrganizationSubscriptionGroup(input: $input) {
+    organizationSubscriptionGroup {
+      id
+    }
+  }
+}
+`
+
 export const DELETE_SUBSCRIPTION_GROUP = gql`
   mutation DeleteSubscriptionGroup($input: DeleteOrganizationSubscriptionGroupInput!) {
     deleteOrganizationSubscriptionGroup(input: $input) {
