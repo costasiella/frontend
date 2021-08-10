@@ -88,12 +88,12 @@ function ScheduleClassSubscriptions({t, match, history}) {
 
   return (
     <ClassEditBase 
-      menuActiveLink="subscriptions" 
+      menuActiveLink={menuActiveLink} 
       defaultCard={false} 
       sidebarButton={sidebarButton}
     >
       <ContentCard 
-        cardTitle={t('schedule.classes.title_edit')}
+        cardTitle={cardTitle}
         // headerContent={headerOptions}
         pageInfo={data.scheduleItemOrganizationSubscriptionGroups.pageInfo}
         onLoadMore={() => {
