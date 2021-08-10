@@ -4,6 +4,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Link } from 'react-router-dom'
 
 import {
   Button,
@@ -11,7 +12,7 @@ import {
   Form,
 } from "tabler-react"
 
-const OrganizationSubscriptionGroupForm = ({ t, history, isSubmitting, errors, return_url }) => (
+const OrganizationSubscriptionGroupForm = ({ t, history, isSubmitting, errors, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('general.name')}>
@@ -38,9 +39,11 @@ const OrganizationSubscriptionGroupForm = ({ t, history, isSubmitting, errors, r
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(return_url)}>
-              {t('general.cancel')}
-          </Button>
+          <Link to={returnUrl}>
+            <Button color="link">
+                {t('general.cancel')}
+            </Button>
+          </Link>
       </Card.Footer>
   </FoForm>
 )

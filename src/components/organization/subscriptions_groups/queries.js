@@ -64,6 +64,16 @@ export const GET_SUBSCRIPTION_GROUP_SUBSCRIPTIONS_QUERY = gql`
   }
 `
 
+export const ADD_SUBSCRIPTION_GROUP = gql`
+  mutation CreateOrganizationSubscriptionGroup($input:CreateOrganizationSubscriptionGroupInput!) {
+    createOrganizationSubscriptionGroup(input: $input) {
+      organizationSubscriptionGroup{
+        id
+      }
+    }
+  }
+`
+
 export const DELETE_SUBSCRIPTION_GROUP = gql`
   mutation DeleteSubscriptionGroup($input: DeleteOrganizationSubscriptionGroupInput!) {
     deleteOrganizationSubscriptionGroup(input: $input) {
