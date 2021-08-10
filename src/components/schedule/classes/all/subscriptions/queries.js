@@ -53,3 +53,13 @@ export const GET_SCHEDULE_CLASS_SUBSCRIPTIONS_QUERY = gql`
     }
   }
 `
+
+export const UPDATE_SCHEDULE_CLASS_SUBSCRIPTION = gql`
+mutation UpdateScheduleItemOrganizationSubscriptionGroup($input: UpdateScheduleItemOrganizationSubscriptionGroupInput!) {
+  updateScheduleItemOrganizationSubscriptionGroup(input:$input) {
+    scheduleItemOrganizationSubscriptionGroup {
+      id
+    } 
+  }
+}
+`
