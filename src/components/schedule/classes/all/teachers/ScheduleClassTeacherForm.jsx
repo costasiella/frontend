@@ -16,7 +16,7 @@ import {
 
 import CSDatePicker from "../../../../ui/CSDatePicker"
 
-const ScheduleClassTeacherForm = ({ t, history, match, isSubmitting, errors, values, inputData, return_url, setFieldTouched, setFieldValue }) => (
+const ScheduleClassTeacherForm = ({ t, history, match, isSubmitting, errors, values, inputData, returnUrl, setFieldTouched, setFieldValue }) => (
   <FoForm>
       <Card.Body>
         <Grid.Row>
@@ -113,7 +113,7 @@ const ScheduleClassTeacherForm = ({ t, history, match, isSubmitting, errors, val
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(return_url)} role="button">
+          <Button color="link" onClick={() => history.push(returnUrl)} role="button">
               {t('general.cancel')}
           </Button>
       </Card.Footer>
