@@ -474,7 +474,8 @@
         "priority": "Priority",
         "display_public": "Public",
         "memberships": "Memberships",
-        "events": "Events"
+        "events": "Events",
+        "please_wait": "Please wait..."
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -648,7 +649,8 @@
             "title": "Subscription groups",
             "error_loading": "Error loading subscription groups :(",
             "empty_list": "No subscription groups found",
-            "add": "Add subscription group"
+            "add": "Add subscription group",
+            "toast_creating_might_take_a_while": "Creating a new subscription group might take a few minutes in case a large number of classes is defined."
         },
         "subscription_group_subscriptions": {
             "title_edit": "Edit subscriptions in group"
