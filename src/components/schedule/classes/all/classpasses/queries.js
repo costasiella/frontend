@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_SCHEDULE_CLASS_CLASSPASSES_QUERY = gql`
   query ScheduleItemOrganizationClasspassGroups($after: String, $before: String, $scheduleItem: ID!) {
-    scheduleItemOrganizationClasspassGroups(before: $before, after: $after, scheduleItem:$scheduleItem) {
+    scheduleItemOrganizationClasspassGroups(before: $before, after: $after, scheduleItem: $scheduleItem) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -49,6 +49,16 @@ export const GET_SCHEDULE_CLASS_CLASSPASSES_QUERY = gql`
       timeStart
       timeEnd
       displayPublic
+    }
+  }
+`
+
+export const UPDATE_SCHEDULE_CLASS_CLASSPASS = gql`
+  mutation UpdateScheduleItemOrganizationClasspassGroup($input: UpdateScheduleItemOrganizationClasspassGroupInput!) {
+    updateScheduleItemOrganizationClasspassGroup(input:$input) {
+      scheduleItemOrganizationClasspassGroup {
+        id
+      } 
     }
   }
 `
