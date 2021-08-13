@@ -64,9 +64,6 @@ function ScheduleClassClasspasses({ t, match }) {
     </ClassEditBase>
   )
 
-  console.log("$$$$$$$$$$$$")
-  console.log(data)
-
   // Empty list
   if (!data.scheduleItemOrganizationClasspassGroups.edges.length) return (
     <ClassEditBase 

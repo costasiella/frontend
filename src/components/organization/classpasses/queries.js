@@ -219,3 +219,14 @@ export const GET_INPUT_VALUES_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_CLASSPASS = gql`
+mutation ArchiveOrganizationClasspass($input: ArchiveOrganizationClasspassInput!) {
+  archiveOrganizationClasspass(input: $input) {
+    organizationClasspass {
+      id
+      archived
+    }
+  }
+}
+`
