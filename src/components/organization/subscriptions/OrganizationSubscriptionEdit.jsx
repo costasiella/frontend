@@ -8,7 +8,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SUBSCRIPTIONS_QUERY, GET_SUBSCRIPTION_QUERY } from './queries'
+import { GET_SUBSCRIPTIONS_QUERY, GET_SUBSCRIPTION_QUERY, UPDATE_SUBSCRIPTION } from './queries'
 import { SUBSCRIPTION_SCHEMA } from './yupSchema'
 import OrganizationSubscriptionForm from './OrganizationSubscriptionForm'
 
@@ -25,43 +25,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationMenu from "../OrganizationMenu"
-
-
-const UPDATE_SUBSCRIPTION = gql`
-  mutation UpdateOrganizationSubscription($input: UpdateOrganizationSubscriptionInput!) {
-    updateOrganizationSubscription(input: $input) {
-      organizationSubscription {
-        id
-        displayPublic
-        displayShop
-        name
-        description
-        sortOrder
-        minDuration
-        classes
-        subscriptionUnit
-        subscriptionUnitDisplay
-        reconciliationClasses
-        creditValidity
-        unlimited
-        termsAndConditions
-        organizationMembership {
-          id
-          name
-        }
-        quickStatsAmount
-        financeGlaccount {
-          id
-          name
-        }
-        financeCostcenter {
-          id
-          name
-        }
-      }
-    }
-  }
-`
 
 
 class OrganizationSubscriptionEdit extends Component {

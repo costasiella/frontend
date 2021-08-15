@@ -220,6 +220,43 @@ export const CREATE_SUBSCRIPTION = gql`
 `
 
 
+const UPDATE_SUBSCRIPTION = gql`
+  mutation UpdateOrganizationSubscription($input: UpdateOrganizationSubscriptionInput!) {
+    updateOrganizationSubscription(input: $input) {
+      organizationSubscription {
+        id
+        displayPublic
+        displayShop
+        name
+        description
+        sortOrder
+        minDuration
+        classes
+        subscriptionUnit
+        subscriptionUnitDisplay
+        reconciliationClasses
+        creditValidity
+        unlimited
+        termsAndConditions
+        organizationMembership {
+          id
+          name
+        }
+        quickStatsAmount
+        financeGlaccount {
+          id
+          name
+        }
+        financeCostcenter {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+
 export const ARCHIVE_SUBSCRIPTION = gql`
 mutation ArchiveOrganizationSubscription($input: ArchiveOrganizationSubscriptionInput!) {
   archiveOrganizationSubscription(input: $input) {
