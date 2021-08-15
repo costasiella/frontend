@@ -48,7 +48,7 @@ export const GET_SUBSCRIPTIONS_QUERY = gql`
 `
 
 export const GET_SUBSCRIPTION_QUERY = gql`
-  query OrganizationSubscription($id: ID!, $after: String, $before: String, $archived: Boolean!) {
+  query OrganizationSubscription($id: ID!, $after: String, $before: String) {
     organizationSubscription(id:$id) {
       id
       archived
@@ -80,7 +80,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
         name
       }
     }
-    organizationMemberships(first: 15, before: $before, after: $after, archived: $archived) {
+    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -95,7 +95,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: $archived) {
+    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -111,7 +111,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: $archived) {
+    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -220,7 +220,7 @@ export const CREATE_SUBSCRIPTION = gql`
 `
 
 
-const UPDATE_SUBSCRIPTION = gql`
+export const UPDATE_SUBSCRIPTION = gql`
   mutation UpdateOrganizationSubscription($input: UpdateOrganizationSubscriptionInput!) {
     updateOrganizationSubscription(input: $input) {
       organizationSubscription {

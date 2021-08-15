@@ -5,6 +5,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 import { v4 } from "uuid"
+import { Link } from "react-router-dom"
 
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../plugin_config/tinymce"
@@ -17,7 +18,7 @@ import {
 } from "tabler-react";
 
 
-const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, return_url }) => (
+const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
   <FoForm>
     <Card.Body> 
       <Form.Group>
@@ -187,13 +188,14 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
         >
           {t('general.submit')}
         </Button>
-        <Button
-          type="button" 
-          color="link" 
-          onClick={() => history.push(return_url)}
-        >
-            {t('general.cancel')}
-        </Button>
+        <Link to={returnUrl}>
+          <Button
+            type="button" 
+            color="link"
+          >
+              {t('general.cancel')}
+          </Button>
+        </Link>
     </Card.Footer>
   </FoForm>
 )

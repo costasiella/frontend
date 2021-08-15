@@ -1,8 +1,7 @@
 // @flow
 
-import React, { Component } from 'react'
-import { gql } from "@apollo/client"
-import { Query, Mutation } from "@apollo/client";
+import React from 'react'
+import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
@@ -14,171 +13,140 @@ import OrganizationSubscriptionForm from './OrganizationSubscriptionForm'
 
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
+  Dimmer
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-
-import OrganizationMenu from "../OrganizationMenu"
+import ContentCard from "../../general/ContentCard"
+import OrganizationSubscriptionsBase from './OrganizationSubscriptionsBase';
 
 
-class OrganizationSubscriptionEdit extends Component {
-  constructor(props) {
-    super(props)
-    console.log("Organization subscription edit props:")
-    console.log(props)
-  }
+function OrganizationSubscriptionEdit({t, match, history}) {
+  const id = match.params.id
+  const returnUrl = "/organization/subscriptions"
+  const cardTitle = t('organization.subscriptions.title_edit')
 
-  render() {
-    const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const id = match.params.id
-    const return_url = "/organization/subscriptions"
+  const { loading, error, data } = useQuery(GET_SUBSCRIPTION_QUERY, { 
+    variables: { id: id }
+  })
+  const [ updateSubscription ] = useMutation(UPDATE_SUBSCRIPTION)
 
-    return (
-      <SiteWrapper>
-        <div className="my-3 my-md-5">
-          <Container>
-            <Page.Header title="Organization" />
-            <Grid.Row>
-              <Grid.Col md={9}>
-              <Card>
-                <Card.Header>
-                  <Card.Title>{t('organization.subscriptions.title_edit')}</Card.Title>
-                  {console.log(match.params.id)}
-                </Card.Header>
-                <Query query={GET_SUBSCRIPTION_QUERY} variables={{ "id": id, "archived": false}} >
-                  {({ loading, error, data, refetch }) => {
-                    // Loading
-                    if (loading) return <p>{t('general.loading_with_dots')}</p>
-                    // Error
-                    if (error) {
-                      console.log(error)
-                      return <p>{t('general.error_sad_smiley')}</p>
-                    }
-                    
-                    console.log('query data')
-                    console.log(data)
-                    const initialData = data
+  if (loading) return (
+    <OrganizationSubscriptionsBase>
+      <ContentCard cardTitle={cardTitle}>
+        <Dimmer active={true}
+                loader={true}>
+        </Dimmer>
+      </ContentCard>
+    </OrganizationSubscriptionsBase>
+  )
 
-                    let initialMembership = ""
-                    if (initialData.organizationSubscription.organizationMembership) {
-                      initialMembership =  initialData.organizationSubscription.organizationMembership.id
-                    } 
+  if (error) return (
+    <OrganizationSubscriptionsBase>
+      <ContentCard cardTitle={cardTitle}>
+        <p>{t('general.error_sad_smiley')}</p>
+      </ContentCard>
+    </OrganizationSubscriptionsBase>
+  )
 
-                    let initialGlaccount = ""
-                    if (initialData.organizationSubscription.financeGlaccount) {
-                      initialGlaccount =  initialData.organizationSubscription.financeGlaccount.id
-                    } 
+  console.log('query data')
+  console.log(data)
+  const initialData = data
 
-                    let initialCostcenter = ""
-                    if (initialData.organizationSubscription.financeCostcenter) {
-                      initialCostcenter =  initialData.organizationSubscription.financeCostcenter.id
-                    } 
+  let initialMembership = ""
+  if (initialData.organizationSubscription.organizationMembership) {
+    initialMembership =  initialData.organizationSubscription.organizationMembership.id
+  } 
 
-                    return (
-                      <Mutation mutation={UPDATE_SUBSCRIPTION} onCompleted={() => history.push(return_url)}> 
-                      {(createSubscription, { data }) => (
-                          <Formik
-                              initialValues={{ 
-                                displayPublic: initialData.organizationSubscription.displayPublic,
-                                displayShop: initialData.organizationSubscription.displayShop,
-                                name: initialData.organizationSubscription.name,
-                                description: initialData.organizationSubscription.description,
-                                sortOrder: initialData.organizationSubscription.sortOrder,
-                                minDuration: initialData.organizationSubscription.minDuration,
-                                classes: initialData.organizationSubscription.classes,
-                                subscriptionUnit: initialData.organizationSubscription.subscriptionUnit,
-                                reconciliationClasses: initialData.organizationSubscription.reconciliationClasses,
-                                creditValidity: initialData.organizationSubscription.creditValidity,
-                                unlimited: initialData.organizationSubscription.unlimited,
-                                termsAndConditions: initialData.organizationSubscription.termsAndConditions,
-                                organizationMembership: initialMembership,
-                                quickStatsAmount: initialData.organizationSubscription.quickStatsAmount,
-                                financeGlaccount:  initialGlaccount,
-                                financeCostcenter: initialCostcenter
-                              }}
-                              validationSchema={SUBSCRIPTION_SCHEMA}
-                              onSubmit={(values, { setSubmitting }) => {
-                                  console.log('submit values:')
-                                  console.log(values)
+  let initialGlaccount = ""
+  if (initialData.organizationSubscription.financeGlaccount) {
+    initialGlaccount =  initialData.organizationSubscription.financeGlaccount.id
+  } 
 
-                                  createSubscription({ variables: {
-                                    input: {
-                                      id: match.params.id,
-                                      displayPublic: values.displayPublic,
-                                      displayShop: values.displayShop,
-                                      name: values.name,
-                                      description: values.description,
-                                      sortOrder: values.sortOrder,
-                                      minDuration: values.minDuration,
-                                      classes: values.classes,
-                                      subscriptionUnit: values.subscriptionUnit,
-                                      reconciliationClasses: values.reconciliationClasses,
-                                      creditValidity: values.creditValidity,
-                                      unlimited: values.unlimited,
-                                      termsAndConditions: values.termsAndConditions,
-                                      quickStatsAmount: values.quickStatsAmount,
-                                      financeGlaccount: values.financeGlaccount,
-                                      financeCostcenter: values.financeCostcenter
-                                    }
-                                  }, refetchQueries: [
-                                      {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }}
-                                  ]})
-                                  .then(({ data }) => {
-                                      console.log('got data', data)
-                                      toast.success((t('organization.subscriptions.toast_edit_success')), {
-                                          position: toast.POSITION.BOTTOM_RIGHT
-                                        })
-                                    }).catch((error) => {
-                                      toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                                          position: toast.POSITION.BOTTOM_RIGHT
-                                        })
-                                      console.log('there was an error sending the query', error)
-                                      setSubmitting(false)
-                                    })
-                              }}
-                              >
-                              {({ isSubmitting, setFieldValue, setFieldTouched, errors, values }) => (
-                                <OrganizationSubscriptionForm
-                                  inputData={initialData}
-                                  isSubmitting={isSubmitting}
-                                  setFieldValue={setFieldValue}
-                                  setFieldTouched={setFieldTouched}
-                                  errors={errors}
-                                  values={values}
-                                  return_url={return_url}
-                                />
-                              )}
-                          </Formik>
-                      )}
-                      </Mutation>
-                      )}}
-                </Query>
-              </Card>
-              </Grid.Col>
-              <Grid.Col md={3}>
-                <HasPermissionWrapper permission="change"
-                                      resource="organizationsubscription">
-                  <Button color="primary btn-block mb-6"
-                          onClick={() => history.push(return_url)}>
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </HasPermissionWrapper>
-                <OrganizationMenu activeLink='subscriptions'/>
-              </Grid.Col>
-            </Grid.Row>
-          </Container>
-        </div>
-    </SiteWrapper>
-    )}
-  }
+  let initialCostcenter = ""
+  if (initialData.organizationSubscription.financeCostcenter) {
+    initialCostcenter =  initialData.organizationSubscription.financeCostcenter.id
+  } 
+
+  return (
+    <OrganizationSubscriptionsBase>
+      <Card title={cardTitle}>
+        <Formik
+          initialValues={{ 
+            displayPublic: initialData.organizationSubscription.displayPublic,
+            displayShop: initialData.organizationSubscription.displayShop,
+            name: initialData.organizationSubscription.name,
+            description: initialData.organizationSubscription.description,
+            sortOrder: initialData.organizationSubscription.sortOrder,
+            minDuration: initialData.organizationSubscription.minDuration,
+            classes: initialData.organizationSubscription.classes,
+            subscriptionUnit: initialData.organizationSubscription.subscriptionUnit,
+            reconciliationClasses: initialData.organizationSubscription.reconciliationClasses,
+            creditValidity: initialData.organizationSubscription.creditValidity,
+            unlimited: initialData.organizationSubscription.unlimited,
+            termsAndConditions: initialData.organizationSubscription.termsAndConditions,
+            organizationMembership: initialMembership,
+            quickStatsAmount: initialData.organizationSubscription.quickStatsAmount,
+            financeGlaccount:  initialGlaccount,
+            financeCostcenter: initialCostcenter
+          }}
+          validationSchema={SUBSCRIPTION_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
+              console.log('submit values:')
+              console.log(values)
+
+              updateSubscription({ variables: {
+                input: {
+                  id: match.params.id,
+                  displayPublic: values.displayPublic,
+                  displayShop: values.displayShop,
+                  name: values.name,
+                  description: values.description,
+                  sortOrder: values.sortOrder,
+                  minDuration: values.minDuration,
+                  classes: values.classes,
+                  subscriptionUnit: values.subscriptionUnit,
+                  reconciliationClasses: values.reconciliationClasses,
+                  creditValidity: values.creditValidity,
+                  unlimited: values.unlimited,
+                  termsAndConditions: values.termsAndConditions,
+                  quickStatsAmount: values.quickStatsAmount,
+                  financeGlaccount: values.financeGlaccount,
+                  financeCostcenter: values.financeCostcenter
+                }
+              }, refetchQueries: [
+                  {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }}
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data)
+                  toast.success((t('organization.subscriptions.toast_edit_success')), {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  setSubmitting(false)
+                }).catch((error) => {
+                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
+                })
+          }}
+          >
+          {({ isSubmitting, setFieldValue, setFieldTouched, errors, values }) => (
+            <OrganizationSubscriptionForm
+              inputData={initialData}
+              isSubmitting={isSubmitting}
+              setFieldValue={setFieldValue}
+              setFieldTouched={setFieldTouched}
+              errors={errors}
+              values={values}
+              returnUrl={returnUrl}
+            />
+          )}
+        </Formik>
+      </Card>
+    </OrganizationSubscriptionsBase>
+  )
+}
 
 
 export default withTranslation()(withRouter(OrganizationSubscriptionEdit))
