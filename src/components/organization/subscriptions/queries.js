@@ -131,8 +131,8 @@ export const GET_SUBSCRIPTION_QUERY = gql`
 `
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query SubscriptionInputValues($after: String, $before: String, $archived: Boolean) {
-    organizationMemberships(first: 15, before: $before, after: $after, archived: $archived) {
+  query SubscriptionInputValues($after: String, $before: String) {
+    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -147,7 +147,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: $archived) {
+    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -163,7 +163,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: $archived) {
+    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -181,6 +181,44 @@ export const GET_INPUT_VALUES_QUERY = gql`
     }
   }
 `
+
+
+export const CREATE_SUBSCRIPTION = gql`
+  mutation CreateSubscription($input: CreateOrganizationSubscriptionInput!) {
+    createOrganizationSubscription(input: $input) {
+      organizationSubscription {
+        id
+        displayPublic
+        displayShop
+        name
+        description
+        sortOrder
+        minDuration
+        classes
+        subscriptionUnit
+        subscriptionUnitDisplay
+        reconciliationClasses
+        creditValidity
+        unlimited
+        termsAndConditions
+        organizationMembership {
+          id
+          name
+        }
+        quickStatsAmount
+        financeGlaccount {
+          id
+          name
+        }
+        financeCostcenter {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
 
 export const ARCHIVE_SUBSCRIPTION = gql`
 mutation ArchiveOrganizationSubscription($input: ArchiveOrganizationSubscriptionInput!) {
