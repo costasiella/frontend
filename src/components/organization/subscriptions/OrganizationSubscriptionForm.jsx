@@ -53,11 +53,14 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
       </Form.Group>
       <Form.Group label={t('general.description')}>
         <Editor
+            tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
             textareaName="description"
             initialValue={values.description}
             init={tinymceBasicConf}
-            onChange={(e) => setFieldValue("description", e.target.getContent())}
-            onBlur={() => setFieldTouched("description", true)}
+            onBlur={(e) => {
+              setFieldValue("description", e.target.getContent())
+              setFieldTouched("description", true)
+            }}
           />
         <ErrorMessage name="description" component="span" className="invalid-feedback" />
       </Form.Group>
@@ -127,11 +130,14 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
       </Form.Group>
       <Form.Group label={t('general.terms_and_conditions')}>
         <Editor
+            tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
             textareaName="termsAndConditions"
             initialValue={values.termsAndConditions}
             init={tinymceBasicConf}
-            onChange={(e) => setFieldValue("termsAndConditions", e.target.getContent())}
-            onBlur={() => setFieldTouched("termsAndConditions", true)}
+            onBlur={(e) => {
+              setFieldValue("termsAndConditions", e.target.getContent())
+              setFieldTouched("termsAndConditions", true)
+            }}
           />
         <ErrorMessage name="termsAndConditions" component="span" className="invalid-feedback" />
       </Form.Group>
