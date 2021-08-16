@@ -152,8 +152,8 @@ export const GET_CLASSPASS_QUERY = gql`
 `
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query InputValues($after: String, $before: String, $archived: Boolean) {
-    organizationMemberships(first: 15, before: $before, after: $after, archived: $archived) {
+  query InputValues($after: String, $before: String) {
+    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -168,7 +168,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeTaxRates(first: 15, before: $before, after: $after, archived: $archived) {
+    financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -185,7 +185,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: $archived) {
+    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -201,7 +201,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: $archived) {
+    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -218,6 +218,42 @@ export const GET_INPUT_VALUES_QUERY = gql`
       }
     }
   }
+`
+
+export const CREATE_CLASSPASS = gql`
+mutation CreateClasspass($input: CreateOrganizationClasspassInput!) {
+  createOrganizationClasspass(input: $input) {
+    organizationClasspass {
+      id
+      displayPublic
+      displayShop
+      name
+      description
+      price
+      financeTaxRate {
+        id
+        name
+      }
+      validity
+      validityUnit
+      classes
+      unlimited
+      organizationMembership {
+        id
+        name
+      }
+      quickStatsAmount
+      financeGlaccount {
+        id
+        name
+      }
+      financeCostcenter {
+        id
+        name
+      }
+    }
+  }
+}
 `
 
 export const ARCHIVE_CLASSPASS = gql`

@@ -17,7 +17,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import OrganizationMenu from "../OrganizationMenu"
 
 
-function OrganizationClasspassesBase({t, children, showBack={false}}) {
+function OrganizationClasspassesBase({t, children, showBack=false}) {
   const activeLink = "classpasses"
 
   return (
@@ -37,7 +37,7 @@ function OrganizationClasspassesBase({t, children, showBack={false}}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              {(showback) ?
+              {(showBack) ?
                 <Link to="/organization/classpasses/">
                   <Button color="primary btn-block mb-6">
                     <Icon prefix="fe" name="chevrons-let" /> {t('general.back')}
