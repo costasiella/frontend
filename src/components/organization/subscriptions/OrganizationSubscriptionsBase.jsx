@@ -17,7 +17,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import OrganizationMenu from "../OrganizationMenu"
 
 
-function OrganizationSubscriptionsBase({t, children}) {
+function OrganizationSubscriptionsBase({t, children, showBack=false}) {
   const activeLink = "subscriptions"
 
   return (
@@ -37,14 +37,22 @@ function OrganizationSubscriptionsBase({t, children}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationsubscription">
-                <Link to="/organization/subscriptions/add">
+              {(showBack) ? 
+                <Link to="/organization/subscriptions/">
                   <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="plus-circle" /> {t('organization.subscriptions.add')}
+                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </Link>
-              </HasPermissionWrapper>
+              :
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationsubscription">
+                  <Link to="/organization/subscriptions/add">
+                    <Button color="primary btn-block mb-6">
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.subscriptions.add')}
+                    </Button>
+                  </Link>
+                </HasPermissionWrapper>
+              }
               <OrganizationMenu activeLink={activeLink}/>
             </Grid.Col>
           </Grid.Row>
