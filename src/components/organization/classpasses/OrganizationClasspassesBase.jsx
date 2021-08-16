@@ -39,7 +39,7 @@ function OrganizationClasspassesBase({t, children}) {
             <Grid.Col md={3}>
               <HasPermissionWrapper permission="add"
                                     resource="organizationclasspass">
-                <Link to="/organization/classpassess/add">
+                <Link to="/organization/classpasses/add">
                   <Button color="primary btn-block mb-6">
                     <Icon prefix="fe" name="plus-circle" /> {t('organization.classpasses.add')}
                   </Button>
