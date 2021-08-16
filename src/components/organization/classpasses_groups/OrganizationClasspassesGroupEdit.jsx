@@ -8,7 +8,7 @@ import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_CLASSPASS_GROUPS_QUERY, GET_CLASSPASS_GROUP_QUERY } from './queries'
+import { GET_CLASSPASS_GROUPS_QUERY, GET_CLASSPASS_GROUP_QUERY, UPDATE_CLASSPASS_GROUP } from './queries'
 import { CLASSPASS_GROUP_SCHEMA } from './yupSchema'
 
 
@@ -26,18 +26,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationMenu from "../OrganizationMenu"
-
-
-const UPDATE_CLASSPASS_GROUP = gql`
-  mutation UpdateOrganizationClasspassGroup($input: UpdateOrganizationClasspassGroupInput!) {
-    updateOrganizationClasspassGroup(input: $input) {
-      organizationClasspassGroup {
-        id
-        name
-      }
-    }
-  }
-`
 
 
 class OrganizationClasspassGroupEdit extends Component {
