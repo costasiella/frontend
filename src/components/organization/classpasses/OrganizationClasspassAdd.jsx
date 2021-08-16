@@ -98,6 +98,7 @@ function OrganizationClasspassAdd({t, match, history}) {
               ]})
               .then(({ data }) => {
                   console.log('got data', data)
+                  history.push(returnUrl)
                   toast.success((t('organization.classpasses.toast_add_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })

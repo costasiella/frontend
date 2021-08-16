@@ -101,11 +101,14 @@ class OrganizationClasspassForm extends Component {
             </Form.Group>
             <Form.Group label={t('general.description')}>
                 <Editor
-                    textareaName="description"
-                    initialValue={values.description}
-                    init={tinymceBasicConf}
-                    onChange={(e) => setFieldValue("description", e.target.getContent())}
-                    onBlur={() => setFieldTouched("description", true)}
+                  tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+                  textareaName="description"
+                  initialValue={values.description}
+                  init={tinymceBasicConf}
+                  onBlur={(e) => {
+                    setFieldTouched("description", true)
+                    setFieldValue("description", e.target.getContent())
+                  }}
                 />
                 <ErrorMessage name="description" component="span" className="invalid-feedback" />
             </Form.Group>
