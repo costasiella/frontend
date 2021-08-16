@@ -533,7 +533,8 @@
             "title": "Class pass groups",
             "error_loading": "Error loading class pass groups :(",
             "empty_list": "No class pass groups found",
-            "add": "Add class pass group"
+            "add": "Add class pass group",
+            "toast_creating_might_take_a_while": "Creating a new classpass group might take a few minutes in case a large number of classes is defined."
         },
         "classtypes": {
             "title_add": "Add class type",
