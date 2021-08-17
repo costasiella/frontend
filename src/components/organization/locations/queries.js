@@ -45,6 +45,18 @@ mutation CreateOrganizationLocation($input: CreateOrganizationLocationInput!) {
 }
 `
 
+export const UPDATE_LOCATION = gql`
+mutation UpdateOrganizationLocation($input: UpdateOrganizationLocationInput!) {
+  updateOrganizationLocation(input: $input) {
+    organizationLocation {
+      id
+      name
+      displayPublic
+    }
+  }
+}
+`
+
 export const ARCHIVE_LOCATION = gql`
 mutation ArchiveOrganizationLocation($input: ArchiveOrganizationLocationInput!) {
   archiveOrganizationLocation(input: $input) {
