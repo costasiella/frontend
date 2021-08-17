@@ -30,18 +30,9 @@ import ContentCard from "../../../general/ContentCard"
 import CardHeaderSeparator from "../../../general/CardHeaderSeparator"
 import OrganizationMenu from "../../OrganizationMenu"
 
-import { GET_LOCATION_ROOMS_QUERY } from "./queries"
+import { GET_LOCATION_ROOMS_QUERY, ARCHIVE_LOCATION_ROOM } from "./queries"
 
-const ARCHIVE_LOCATION_ROOM = gql`
-  mutation ArchiveOrganizationLocationRoom($input: ArchiveOrganizationLocationRoomInput!) {
-    archiveOrganizationLocationRoom(input: $input) {
-      organizationLocationRoom {
-        id
-        archived
-      }
-    }
-  }
-`
+
 
 const OrganizationLocationsRooms = ({ t, history, match, archived=false }) => (
   <SiteWrapper>

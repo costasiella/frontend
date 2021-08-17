@@ -43,3 +43,14 @@ export const GET_LOCATION_ROOM_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_LOCATION_ROOM = gql`
+mutation ArchiveOrganizationLocationRoom($input: ArchiveOrganizationLocationRoomInput!) {
+  archiveOrganizationLocationRoom(input: $input) {
+    organizationLocationRoom {
+      id
+      archived
+    }
+  }
+}
+`
