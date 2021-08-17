@@ -16,7 +16,9 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import OrganizationMenu from "../../OrganizationMenu"
 
 
-function OrganizationLocationRoomsBase({t, history, match, children}) {
+function OrganizationLocationRoomsBase({t, history, match, children, showBack=false}) {
+  const locationId = match.params.location_id
+
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -34,13 +36,22 @@ function OrganizationLocationRoomsBase({t, history, match, children}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-            <HasPermissionWrapper permission="add"
-                                  resource="organizationlocationroom">
-              <Button color="primary btn-block mb-6"
-                      onClick={() => history.push("/organization/locations/rooms/add/" + match.params.location_id)}>
-                <Icon prefix="fe" name="plus-circle" /> {t('organization.location_rooms.add')}
-              </Button>
-            </HasPermissionWrapper>
+              {(showBack) ?
+                <Link to={`/organization/locations/rooms/${locationId}`}>
+                  <Button color="primary btn-block mb-6">
+                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
+                  </Button>
+                </Link>
+              :
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationlocationroom">
+                  <Link to={`/organization/locations/rooms/add/${match.params.location_id}`}>
+                    <Button color="primary btn-block mb-6">
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.location_rooms.add')}
+                    </Button>
+                  </Link>
+                </HasPermissionWrapper>
+              }
             <OrganizationMenu activeLink='locations'/>
           </Grid.Col>
         </Grid.Row>
