@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_LOCATIONS_QUERY = gql`
   query OrganizationLocations($after: String, $before: String, $archived: Boolean) {
-    organizationLocations(first: 15, before: $before, after: $after, archived: $archived) {
+    organizationLocations(first: 100, before: $before, after: $after, archived: $archived) {
       pageInfo {
         startCursor
         endCursor
@@ -30,6 +30,19 @@ export const GET_LOCATION_QUERY = gql`
       archived
     }
   }
+`
+
+export const ADD_LOCATION = gql`
+mutation CreateOrganizationLocation($input: CreateOrganizationLocationInput!) {
+  createOrganizationLocation(input: $input) {
+    organizationLocation {
+      id
+      archived
+      displayPublic
+      name
+    }
+  }
+}
 `
 
 export const ARCHIVE_LOCATION = gql`
