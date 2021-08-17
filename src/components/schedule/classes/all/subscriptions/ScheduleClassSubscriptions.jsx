@@ -144,16 +144,18 @@ function ScheduleClassSubscriptions({t, match, history}) {
                       validationSchema={SCHEDULE_CLASS_SUBSCRIPTION_SCHEMA}
                       onSubmit={(values, { setSubmitting }) => {
                           console.log(values)
-                          updateScheduleClassSubscription({ variables: {
-                            input: {
-                              id: node.id,
-                              enroll: values.enroll,
-                              shopBook: values.shopBook,
-                              attend: values.attend
-                            }
-                          }, refetchQueries: [
-                            { query: GET_SCHEDULE_CLASS_SUBSCRIPTIONS_QUERY, 
-                              variables: { scheduleItem: classId }
+                          updateScheduleClassSubscription({ 
+                            variables: {
+                              input: {
+                                id: node.id,
+                                enroll: values.enroll,
+                                shopBook: values.shopBook,
+                                attend: values.attend
+                              }
+                            }, 
+                            refetchQueries: [
+                              { query: GET_SCHEDULE_CLASS_SUBSCRIPTIONS_QUERY, 
+                                variables: { scheduleItem: classId }
                             }
                           ]})
                           .then(({ data }) => {

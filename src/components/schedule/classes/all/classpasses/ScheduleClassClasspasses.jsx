@@ -136,14 +136,15 @@ function ScheduleClassClasspasses({ t, match }) {
                         console.log(values)
 
                         updateScheduleClassClasspass({ variables: {
-                          input: {
-                            id: node.id,
-                            shopBook: values.shopBook,
-                            attend: values.attend
-                          }
-                        }, refetchQueries: [
-                            // {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
-                            // {query: GET_CLASSPASSES_QUERY, variables: {"archived": false }},
+                            input: {
+                              id: node.id,
+                              shopBook: values.shopBook,
+                              attend: values.attend
+                            }
+                          }, refetchQueries: [
+                            { query: GET_SCHEDULE_CLASS_CLASSPASSES_QUERY,
+                              variables: { scheduleItem: classId }
+                            }
                         ]})
                         .then(({ data }) => {
                             console.log('got data', data);
