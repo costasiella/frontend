@@ -92,3 +92,29 @@ export const DELETE_CLASSPASS_GROUP = gql`
     }
   }
 `
+
+export const ADD_CARD_TO_GROUP = gql`
+  mutation AddCardToGroup($input: CreateOrganizationClasspassGroupClasspassInput!) {
+    createOrganizationClasspassGroupClasspass(input:$input) {
+      organizationClasspassGroupClasspass {
+        id
+        organizationClasspass {
+          id
+          name
+        }
+        organizationClasspassGroup {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+export const DELETE_CARD_FROM_GROUP = gql`
+  mutation DeleteCardFromGroup($input: DeleteOrganizationClasspassGroupClasspassInput!) {
+    deleteOrganizationClasspassGroupClasspass(input:$input) {
+      ok
+    }
+  }
+`

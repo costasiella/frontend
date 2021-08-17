@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { toast } from 'react-toastify'
 
-import { GET_CLASSPASS_GROUP_PASSES_QUERY } from './queries'
+import { GET_CLASSPASS_GROUP_PASSES_QUERY, ADD_CARD_TO_GROUP, DELETE_CARD_FROM_GROUP } from './queries'
 
 
 import {
@@ -25,33 +25,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationMenu from "../OrganizationMenu"
-
-
-const ADD_CARD_TO_GROUP = gql`
-  mutation AddCardToGroup($input: CreateOrganizationClasspassGroupClasspassInput!) {
-    createOrganizationClasspassGroupClasspass(input:$input) {
-      organizationClasspassGroupClasspass {
-        id
-        organizationClasspass {
-          id
-          name
-        }
-        organizationClasspassGroup {
-          id
-          name
-        }
-      }
-    }
-  }
-`
-
-const DELETE_CARD_FROM_GROUP = gql`
-  mutation DeleteCardFromGroup($input: DeleteOrganizationClasspassGroupClasspassInput!) {
-    deleteOrganizationClasspassGroupClasspass(input:$input) {
-      ok
-    }
-  }
-`
 
 
 class OrganizationClasspassGroupEditPasses extends Component {
