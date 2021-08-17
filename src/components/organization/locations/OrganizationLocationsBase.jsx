@@ -1,6 +1,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from 'react-router-dom'
 
 import {
   Page,
@@ -14,7 +15,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import OrganizationMenu from "../OrganizationMenu"
 
 
-function OrganizationLocationsBase({t, history, children}) {
+function OrganizationLocationsBase({t, history, children, showBack=false}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -25,13 +26,22 @@ function OrganizationLocationsBase({t, history, children}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationlocation">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/organization/locations/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('organization.locations.add')}
-                </Button>
-              </HasPermissionWrapper>
+              {(showBack) ? 
+                <Link to="/organization/locations">
+                  <Button color="primary btn-block mb-6">
+                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
+                  </Button> 
+                </Link>
+                :
+                <HasPermissionWrapper permission="add"
+                                resource="organizationlocation">
+                  <Link to="/organization/locations/add">
+                    <Button color="primary btn-block mb-6">
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.locations.add')}
+                    </Button>
+                  </Link>
+                </HasPermissionWrapper>
+              }
               <OrganizationMenu activeLink='locations'/>
             </Grid.Col>
           </Grid.Row>
