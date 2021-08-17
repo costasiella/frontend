@@ -31,3 +31,14 @@ export const GET_LOCATION_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_LOCATION = gql`
+mutation ArchiveOrganizationLocation($input: ArchiveOrganizationLocationInput!) {
+  archiveOrganizationLocation(input: $input) {
+    organizationLocation {
+      id
+      archived
+    }
+  }
+}
+`
