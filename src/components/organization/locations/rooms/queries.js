@@ -44,6 +44,23 @@ export const GET_LOCATION_ROOM_QUERY = gql`
   }
 `
 
+export const ADD_LOCATION_ROOM = gql`
+  mutation CreateOrganizationLocationRoom($input: CreateOrganizationLocationRoomInput!) {
+    createOrganizationLocationRoom(input: $input) {
+      organizationLocationRoom {
+        id
+        organizationLocation {
+          id
+          name
+        }
+        archived
+        displayPublic
+        name
+      }
+    }
+  }
+`
+
 export const ARCHIVE_LOCATION_ROOM = gql`
 mutation ArchiveOrganizationLocationRoom($input: ArchiveOrganizationLocationRoomInput!) {
   archiveOrganizationLocationRoom(input: $input) {

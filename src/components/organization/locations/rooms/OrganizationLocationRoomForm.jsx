@@ -4,7 +4,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
+import { Link } from 'react-router-dom'
 
 import {
   Button,
@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const OrganizationLocationRoomForm = ({ t, history, match, isSubmitting, errors, values, return_url }) => (
+const OrganizationLocationRoomForm = ({ t, history, match, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group>
@@ -46,9 +46,11 @@ const OrganizationLocationRoomForm = ({ t, history, match, isSubmitting, errors,
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(return_url + match.params.location_id)}>
-              {t('general.cancel')}
-          </Button>
+          <Link to={returnUrl}>
+            <Button color="link">
+                {t('general.cancel')}
+            </Button>
+          </Link>
       </Card.Footer>
   </FoForm>
 );
