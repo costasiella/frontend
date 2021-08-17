@@ -144,6 +144,7 @@ function ScheduleEventEdit({t, match, history}) {
                   toast.success((t('schedule.events.toast_edit_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
+                  setSubmitting(false)
                 }).catch((error) => {
                   toast.error((t('general.toast_server_error')) + ': ' +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
