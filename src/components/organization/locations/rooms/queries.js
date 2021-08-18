@@ -61,6 +61,22 @@ export const ADD_LOCATION_ROOM = gql`
   }
 `
 
+export const UPDATE_LOCATION_ROOM = gql`
+mutation UpdateOrganizationLocationRoom($input: UpdateOrganizationLocationRoomInput!) {
+  updateOrganizationLocationRoom(input: $input) {
+    organizationLocationRoom {
+      id
+      organizationLocation {
+        id
+        name
+      }
+      name
+      displayPublic
+    }
+  }
+}
+`
+
 export const ARCHIVE_LOCATION_ROOM = gql`
 mutation ArchiveOrganizationLocationRoom($input: ArchiveOrganizationLocationRoomInput!) {
   archiveOrganizationLocationRoom(input: $input) {
