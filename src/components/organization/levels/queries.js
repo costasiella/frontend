@@ -30,6 +30,18 @@ export const GET_LEVEL_QUERY = gql`
   }
 `
 
+export const ADD_LEVEL = gql`
+mutation CreateOrganizationLevel($input:CreateOrganizationLevelInput!) {
+  createOrganizationLevel(input: $input) {
+    organizationLevel{
+      id
+      archived
+      name
+    }
+  }
+}
+`
+
 export const ARCHIVE_LEVEL = gql`
 mutation ArchiveOrganizationLevel($input: ArchiveOrganizationLevelInput!) {
   archiveOrganizationLevel(input: $input) {
