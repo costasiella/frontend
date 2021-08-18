@@ -42,6 +42,17 @@ mutation CreateOrganizationLevel($input:CreateOrganizationLevelInput!) {
 }
 `
 
+export const UPDATE_LEVEL = gql`
+mutation UpdateOrganizationLevel($input: UpdateOrganizationLevelInput!) {
+  updateOrganizationLevel(input: $input) {
+    organizationLevel {
+      id
+      name
+    }
+  }
+}
+`
+
 export const ARCHIVE_LEVEL = gql`
 mutation ArchiveOrganizationLevel($input: ArchiveOrganizationLevelInput!) {
   archiveOrganizationLevel(input: $input) {
