@@ -3,6 +3,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from "react-router-dom"
 
 import {
   Page,
@@ -29,10 +30,11 @@ function OrganizationClasstypesBase({t, history, children}) {
             <Grid.Col md={3}>
               <HasPermissionWrapper permission="add"
                                     resource="organizationclasstype">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/organization/classtypes/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
-                </Button>
+                <Link to="/organization/classtypes/add">
+                  <Button color="primary btn-block mb-6">
+                    <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
+                  </Button>
+                </Link>
               </HasPermissionWrapper>
               <OrganizationMenu activeLink='classtypes'/>
             </Grid.Col>

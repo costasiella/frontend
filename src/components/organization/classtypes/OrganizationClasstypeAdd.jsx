@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useMutation } from "@apollo/client";
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
@@ -11,7 +10,7 @@ import { toast } from 'react-toastify'
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../plugin_config/tinymce"
 
-import { GET_CLASSTYPES_QUERY } from './queries'
+import { GET_CLASSTYPES_QUERY, ADD_CLASSTYPE } from './queries'
 import { CLASSTYPE_SCHEMA } from './yupSchema'
 
 
@@ -24,28 +23,10 @@ import {
 import { get_list_query_variables } from './tools'
 import OrganizationClasstypesBase from './OrganizationClasstypesBase';
 
-const ADD_CLASSTYPE = gql`
-mutation CreateOrganizationClasstype($input: CreateOrganizationClasstypeInput!) {
-  createOrganizationClasstype(input: $input) {
-    organizationClasstype {
-      id
-      archived
-      name
-      description
-      displayPublic
-      urlWebsite
-      image
-    }
-  }
-}
-`
-
 
 function OrganizationClasstypeAdd({t, history}) {
   const returnUrl = "/organization/classtypes"
-  const [addClasstype] = useMutation(ADD_CLASSTYPE, {
-    onCompleted: history.push(returnUrl)
-  })
+  const [addClasstype] = useMutation(ADD_CLASSTYPE)
 
   return (
     <OrganizationClasstypesBase>
@@ -71,6 +52,7 @@ function OrganizationClasstypeAdd({t, history}) {
               ]})
               .then(({ data }) => {
                   console.log('got data', data);
+                  history.push(returnUrl)
                   toast.success((t('organization.classtypes.toast_add_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })

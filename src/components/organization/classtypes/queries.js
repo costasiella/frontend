@@ -39,6 +39,22 @@ query getOrganizationClasstype($id: ID!) {
 }
 `
 
+export const ADD_CLASSTYPE = gql`
+mutation CreateOrganizationClasstype($input: CreateOrganizationClasstypeInput!) {
+  createOrganizationClasstype(input: $input) {
+    organizationClasstype {
+      id
+      archived
+      name
+      description
+      displayPublic
+      urlWebsite
+      image
+    }
+  }
+}
+`
+
 export const ARCHIVE_CLASSTYPE = gql`
 mutation ArchiveOrganizationClasstype($input: ArchiveOrganizationClasstypeInput!) {
     archiveOrganizationClasstype(input: $input) {
