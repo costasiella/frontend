@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -23,19 +22,9 @@ import CSLS from "../../../tools/cs_local_storage"
 import ContentCard from "../../general/ContentCard"
 
 import { get_list_query_variables } from './tools'
-import { GET_CLASSTYPES_QUERY } from "./queries"
+import { GET_CLASSTYPES_QUERY, ARCHIVE_CLASSTYPE } from "./queries"
 import OrganizationClasstypesBase from "./OrganizationClasstypesBase"
 
-const ARCHIVE_CLASSTYPE = gql`
-    mutation ArchiveOrganizationClasstype($input: ArchiveOrganizationClasstypeInput!) {
-        archiveOrganizationClasstype(input: $input) {
-          organizationClasstype {
-            id
-            archived
-          }
-        }
-    }
-`
 
 function OrganizationClasstypes({t, history, archived=false}) {
   const {loading, error, data, refetch, fetchMore} = useQuery(GET_CLASSTYPES_QUERY, { 

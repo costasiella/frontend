@@ -38,3 +38,14 @@ query getOrganizationClasstype($id: ID!) {
   }
 }
 `
+
+export const ARCHIVE_CLASSTYPE = gql`
+mutation ArchiveOrganizationClasstype($input: ArchiveOrganizationClasstypeInput!) {
+    archiveOrganizationClasstype(input: $input) {
+      organizationClasstype {
+        id
+        archived
+      }
+    }
+}
+`
