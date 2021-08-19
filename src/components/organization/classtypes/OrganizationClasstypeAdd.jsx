@@ -29,7 +29,7 @@ function OrganizationClasstypeAdd({t, history}) {
   const [addClasstype] = useMutation(ADD_CLASSTYPE)
 
   return (
-    <OrganizationClasstypesBase>
+    <OrganizationClasstypesBase showBack={true}>
       <Card>
         <Card.Header>
           <Card.Title>{t('organization.classtypes.title_add')}</Card.Title>
@@ -95,8 +95,10 @@ function OrganizationClasstypeAdd({t, history}) {
                               textareaName="description"
                               initialValue={values.description}
                               init={tinymceBasicConf}
-                              onChange={(e) => setFieldValue("description", e.target.getContent())}
-                              onBlur={() => setFieldTouched("description", true)}
+                              onBlur={(e) => {
+                                setFieldValue("description", e.target.getContent())
+                                setFieldTouched("description", true)
+                              }}
                             />
                           <ErrorMessage name="description" component="span" className="invalid-feedback" />
                         </Form.Group>

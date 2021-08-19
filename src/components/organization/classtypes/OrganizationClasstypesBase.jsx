@@ -17,7 +17,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import OrganizationMenu from "../OrganizationMenu"
 
 
-function OrganizationClasstypesBase({t, history, children}) {
+function OrganizationClasstypesBase({t, history, children, showBack=false}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -28,14 +28,22 @@ function OrganizationClasstypesBase({t, history, children}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationclasstype">
-                <Link to="/organization/classtypes/add">
+              {(showBack) ?
+                <Link to="/organization/classtypes/">
                   <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
+                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </Link>
-              </HasPermissionWrapper>
+              :
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationclasstype">
+                  <Link to="/organization/classtypes/add">
+                    <Button color="primary btn-block mb-6">
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
+                    </Button>
+                  </Link>
+                </HasPermissionWrapper>
+              }
               <OrganizationMenu activeLink='classtypes'/>
             </Grid.Col>
           </Grid.Row>
