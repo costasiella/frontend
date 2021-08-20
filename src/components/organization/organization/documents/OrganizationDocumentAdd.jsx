@@ -28,10 +28,8 @@ import {
   Container,
   Form,
 } from "tabler-react"
-import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import OrganizationMenu from '../../OrganizationMenu'
 import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import { getSubtitle } from './tools'
 
@@ -77,12 +75,7 @@ function OrganizationDocumentAdd({ t, match, history }) {
 
   return (
     <OrganizationDocumentsBase sidebarButton={sidebarButton}>
-      <Card>
-        <Card.Header>
-          <Card.Title>
-            {t('organization.documents.add') + ' - ' + subTitle}
-          </Card.Title>
-        </Card.Header>
+      <Card title={t('organization.documents.add') + ' - ' + subTitle}>
         <Formik
           initialValues={{ 
             version: '',
