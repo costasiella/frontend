@@ -55,6 +55,21 @@ mutation CreateOrganizationClasstype($input: CreateOrganizationClasstypeInput!) 
 }
 `
 
+export const UPDATE_CLASSTYPE = gql`
+  mutation UpdateOrganizationClasstype($input: UpdateOrganizationClasstypeInput!) {
+    updateOrganizationClasstype(input: $input) {
+      organizationClasstype {
+        id
+        archived
+        name
+        description
+        displayPublic
+        urlWebsite
+      }
+    }
+  }
+`
+
 export const ARCHIVE_CLASSTYPE = gql`
 mutation ArchiveOrganizationClasstype($input: ArchiveOrganizationClasstypeInput!) {
     archiveOrganizationClasstype(input: $input) {
