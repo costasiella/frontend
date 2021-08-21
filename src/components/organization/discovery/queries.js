@@ -29,3 +29,14 @@ export const GET_DISCOVERY_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_DISCOVERY = gql`
+mutation ArchiveOrganizationDiscovery($input: ArchiveOrganizationDiscoveryInput!) {
+  archiveOrganizationDiscovery(input: $input) {
+    organizationDiscovery {
+      id
+      archived
+    }
+  }
+}
+`
