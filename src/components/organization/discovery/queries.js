@@ -30,6 +30,19 @@ export const GET_DISCOVERY_QUERY = gql`
   }
 `
 
+export const ADD_DISCOVERY = gql`
+  mutation CreateOrganizationDiscovery($input:CreateOrganizationDiscoveryInput!) {
+    createOrganizationDiscovery(input: $input) {
+      organizationDiscovery{
+        id
+        archived
+        name
+      }
+    }
+  }
+`
+
+
 export const ARCHIVE_DISCOVERY = gql`
 mutation ArchiveOrganizationDiscovery($input: ArchiveOrganizationDiscoveryInput!) {
   archiveOrganizationDiscovery(input: $input) {
