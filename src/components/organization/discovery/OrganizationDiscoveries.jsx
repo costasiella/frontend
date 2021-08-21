@@ -37,13 +37,13 @@ function OrganizationDiscoveries({ t, history }) {
   const headerOptions = <Card.Options>
     <Button color={(!archived) ? 'primary': 'secondary'}  
             size="sm"
-            onClick={() => {setArchived(false); refetch({archived: archived});}}>
+            onClick={() => {setArchived(false); refetch({archived: false});}}>
       {t('general.current')}
     </Button>
     <Button color={(archived) ? 'primary': 'secondary'} 
             size="sm" 
             className="ml-2" 
-            onClick={() => {setArchived(true); refetch({archived: archived});}}>
+            onClick={() => {setArchived(true); refetch({archived: true});}}>
       {t('general.archive')}
     </Button>
   </Card.Options>
