@@ -42,6 +42,16 @@ export const ADD_DISCOVERY = gql`
   }
 `
 
+export const UPDATE_DISCOVERY = gql`
+mutation UpdateOrganizationDiscovery($input: UpdateOrganizationDiscoveryInput!) {
+  updateOrganizationDiscovery(input: $input) {
+    organizationDiscovery {
+      id
+      name
+    }
+  }
+}
+`
 
 export const ARCHIVE_DISCOVERY = gql`
 mutation ArchiveOrganizationDiscovery($input: ArchiveOrganizationDiscoveryInput!) {
