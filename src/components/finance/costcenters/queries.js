@@ -31,3 +31,14 @@ export const GET_COSTCENTER_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_COSTCENTER = gql`
+mutation ArchiveFinanceCostCenter($input: ArchiveFinanceCostCenterInput!) {
+  archiveFinanceCostcenter(input: $input) {
+    financeCostcenter {
+      id
+      archived
+    }
+  }
+}
+`
