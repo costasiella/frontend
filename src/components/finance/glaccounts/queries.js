@@ -31,3 +31,14 @@ export const GET_GLACCOUNT_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_GLACCOUNT = gql`
+mutation ArchiveFinanceGLAccount($input: ArchiveFinanceGLAccountInput!) {
+  archiveFinanceGlaccount(input: $input) {
+    financeGlaccount {
+      id
+      archived
+    }
+  }
+}
+`
