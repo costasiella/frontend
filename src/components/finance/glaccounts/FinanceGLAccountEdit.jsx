@@ -1,183 +1,140 @@
 // @flow
 
 import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import { gql, useMutation, useQuery } from "@apollo/client"
 import { Query, Mutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
-import { GET_GLACCOUNTS_QUERY, GET_GLACCOUNT_QUERY } from './queries'
+import { GET_GLACCOUNTS_QUERY, GET_GLACCOUNT_QUERY, UPDATE_GLACCOUNT } from './queries'
 import { GLACCOUNT_SCHEMA } from './yupSchema'
 
 
-
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
+  Dimmer,
   Form
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import FinanceMenu from "../FinanceMenu"
-
-
-const UPDATE_GLACCOUNT = gql`
-  mutation UpdateFinanceGLAccount($input: UpdateFinanceGLAccountInput!) {
-    updateFinanceGlaccount(input: $input) {
-      financeGlaccount {
-        id
-        name
-        code
-      }
-    }
-  }
-`
+import ContentCard from "../../general/ContentCard"
+import FinanceGLAccountsBase from './FinanceGLAccountsBase'
 
 
-class FinanceGLAccountEdit extends Component {
-  constructor(props) {
-    super(props)
-    console.log("finance glaccount edit props:")
-    console.log(props)
-  }
+function FinanceGLAccountEdit({t, history, match}) {
+  const id = match.params.id
+  const returnUrl = "/finance/glaccounts"
+  const cardTitle = t('finance.glaccounts.title_edit')
+  const { loading, error, data } = useQuery(GET_GLACCOUNT_QUERY, {
+    variables: { id: id }
+  })
+  const [ updateGlaccount ] = useMutation(UPDATE_GLACCOUNT)
 
-  render() {
-    const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const id = match.params.id
-    const return_url = "/finance/glaccounts"
+  if (loading) return (
+    <FinanceGLAccountsBase>
+      <ContentCard cardTitle={cardTitle}>
+        <Dimmer active={true}
+                loader={true}>
+        </Dimmer>
+      </ContentCard>
+    </FinanceGLAccountsBase>
+  )
 
-    return (
-      <SiteWrapper>
-        <div className="my-3 my-md-5">
-          <Container>
-            <Page.Header title={t('finance.glaccounts.title')} />
-            <Grid.Row>
-              <Grid.Col md={9}>
-              <Card>
-                <Card.Header>
-                  <Card.Title>{t('finance.glaccounts.title_edit')}</Card.Title>
-                  {console.log(match.params.id)}
-                </Card.Header>
-                <Query query={GET_GLACCOUNT_QUERY} variables={{ id }} >
-                {({ loading, error, data, refetch }) => {
-                    // Loading
-                    if (loading) return <p>{t('general.loading_with_dots')}</p>
-                    // Error
-                    if (error) {
-                      console.log(error)
-                    return <p>{t('general.error_sad_smiley')}</p>
-                    }
-                    
-                    const initialData = data.financeGlaccount;
-                    console.log('query data')
-                    console.log(data)
+  if (error) return (
+    <FinanceGLAccountsBase>
+      <ContentCard cardTitle={cardTitle}>
+        <p>{t('general.error_sad_smiley')}</p>
+      </ContentCard>
+    </FinanceGLAccountsBase>
+  )
 
-                    return (
-                      
-                      <Mutation mutation={UPDATE_GLACCOUNT} onCompleted={() => history.push(return_url)}> 
-                      {(updateGlaccount, { data }) => (
-                          <Formik
-                              initialValues={{ 
-                                name: initialData.name, 
-                                code: initialData.code
-                              }}
-                              validationSchema={GLACCOUNT_SCHEMA}
-                              onSubmit={(values, { setSubmitting }) => {
-                                  console.log('submit values:')
-                                  console.log(values)
+  const initialData = data.financeGlaccount;
+  console.log('query data')
+  console.log(data)
 
-                                  updateGlaccount({ variables: {
-                                    input: {
-                                      id: match.params.id,
-                                      name: values.name,
-                                      code: values.code
-                                    }
-                                  }, refetchQueries: [
-                                      {query: GET_GLACCOUNTS_QUERY, variables: {"archived": false }}
-                                  ]})
-                                  .then(({ data }) => {
-                                      console.log('got data', data)
-                                      toast.success((t('finance.glaccounts.toast_edit_success')), {
-                                          position: toast.POSITION.BOTTOM_RIGHT
-                                        })
-                                    }).catch((error) => {
-                                      toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                                          position: toast.POSITION.BOTTOM_RIGHT
-                                        })
-                                      console.log('there was an error sending the query', error)
-                                      setSubmitting(false)
-                                    })
-                              }}
-                              >
-                              {({ isSubmitting, errors, values }) => (
-                                  <FoForm>
-                                      <Card.Body>
-                                        <Form.Group label={t('general.name')}>
-                                          <Field type="text" 
-                                                  name="name" 
-                                                  className={(errors.name) ? "form-control is-invalid" : "form-control"} 
-                                                  autoComplete="off" />
-                                          <ErrorMessage name="name" component="span" className="invalid-feedback" />
-                                        </Form.Group>
-                                        <Form.Group label={t('finance.code')}>
-                                          <Field type="text" 
-                                                  name="code" 
-                                                  className={(errors.code) ? "form-control is-invalid" : "form-control"} 
-                                                  autoComplete="off" />
-                                          <ErrorMessage name="code" component="span" className="invalid-feedback" />
-                                        </Form.Group>
-                                      </Card.Body>
-                                      <Card.Footer>
-                                          <Button 
-                                            className="pull-right"
-                                            color="primary"
-                                            disabled={isSubmitting}
-                                            type="submit"
-                                          >
-                                            {t('general.submit')}
-                                          </Button>
-                                          <Button
-                                            type="button" 
-                                            color="link" 
-                                            onClick={() => history.push(return_url)}
-                                          >
-                                              {t('general.cancel')}
-                                          </Button>
-                                      </Card.Footer>
-                                  </FoForm>
-                              )}
-                          </Formik>
-                      )}
-                      </Mutation>
-                      )}}
-                </Query>
-              </Card>
-              </Grid.Col>
-              <Grid.Col md={3}>
-                <HasPermissionWrapper permission="change"
-                                      resource="financeglaccount">
-                  <Button color="primary btn-block mb-6"
-                          onClick={() => history.push(return_url)}>
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </HasPermissionWrapper>
-                <FinanceMenu activeLink='glaccounts'/>
-              </Grid.Col>
-            </Grid.Row>
-          </Container>
-        </div>
-    </SiteWrapper>
-    )}
-  }
+  return (
+    <FinanceGLAccountsBase>
+      <Card title={cardTitle}>
+        <Formik
+          initialValues={{ 
+            name: initialData.name, 
+            code: initialData.code
+          }}
+          validationSchema={GLACCOUNT_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
+              console.log('submit values:')
+              console.log(values)
+
+              updateGlaccount({ variables: {
+                input: {
+                  id: match.params.id,
+                  name: values.name,
+                  code: values.code
+                }
+              }, refetchQueries: [
+                  {query: GET_GLACCOUNTS_QUERY, variables: {"archived": false }}
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data)
+                  history.push(returnUrl)
+                  toast.success((t('finance.glaccounts.toast_edit_success')), {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                }).catch((error) => {
+                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
+                })
+          }}
+          >
+          {({ isSubmitting, errors, values }) => (
+            <FoForm>
+                <Card.Body>
+                  <Form.Group label={t('general.name')}>
+                    <Field type="text" 
+                            name="name" 
+                            className={(errors.name) ? "form-control is-invalid" : "form-control"} 
+                            autoComplete="off" />
+                    <ErrorMessage name="name" component="span" className="invalid-feedback" />
+                  </Form.Group>
+                  <Form.Group label={t('finance.code')}>
+                    <Field type="text" 
+                            name="code" 
+                            className={(errors.code) ? "form-control is-invalid" : "form-control"} 
+                            autoComplete="off" />
+                    <ErrorMessage name="code" component="span" className="invalid-feedback" />
+                  </Form.Group>
+                </Card.Body>
+                <Card.Footer>
+                    <Button 
+                      className="pull-right"
+                      color="primary"
+                      disabled={isSubmitting}
+                      type="submit"
+                    >
+                      {t('general.submit')}
+                    </Button>
+                    <Link to={returnUrl}>
+                      <Button
+                        type="button" 
+                        color="link" 
+                      >
+                          {t('general.cancel')}
+                      </Button>
+                    </Link>
+                </Card.Footer>
+            </FoForm>
+          )}
+        </Formik>
+      </Card>
+    </FinanceGLAccountsBase>
+  )
+}
 
 
 export default withTranslation()(withRouter(FinanceGLAccountEdit))

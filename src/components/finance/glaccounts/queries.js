@@ -45,6 +45,18 @@ mutation CreateFinanceGLAccount($input:CreateFinanceGLAccountInput!) {
 }
 `
 
+export const UPDATE_GLACCOUNT = gql`
+mutation UpdateFinanceGLAccount($input: UpdateFinanceGLAccountInput!) {
+  updateFinanceGlaccount(input: $input) {
+    financeGlaccount {
+      id
+      name
+      code
+    }
+  }
+}
+`
+
 export const ARCHIVE_GLACCOUNT = gql`
 mutation ArchiveFinanceGLAccount($input: ArchiveFinanceGLAccountInput!) {
   archiveFinanceGlaccount(input: $input) {
