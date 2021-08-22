@@ -44,7 +44,7 @@ function FinanceTaxRateEdit({t, match, history}) {
   if (error) return (
     <FinanceTaxRatesBase showBack={true}>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('finance.glaccounts.error_loading')}</p>
+        <p>{t('finance.taxrates.error_loading')}</p>
       </ContentCard>
     </FinanceTaxRatesBase>
   )

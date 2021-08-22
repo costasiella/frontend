@@ -23,7 +23,7 @@ import { GET_TAXRATES_QUERY, ARCHIVE_TAXRATE } from "./queries"
 
 function FinanceTaxRates({t, history}) {
   let [archived, setArchived] = useState(false)
-  const cardTitle = t('finance.taxrate.title')
+  const cardTitle = t('finance.taxrates.title')
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_TAXRATES_QUERY, {
     variables: { archived: archived }
   })
