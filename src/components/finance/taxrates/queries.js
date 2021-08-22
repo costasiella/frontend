@@ -51,6 +51,21 @@ mutation CreateFinanceTaxRate($input:CreateFinanceTaxRateInput!) {
 }
 `
 
+export const UPDATE_TAXRATE = gql`
+mutation UpdateFinanceTaxRate($input: UpdateFinanceTaxRateInput!) {
+  updateFinanceTaxRate(input: $input) {
+    financeTaxRate {
+      id
+      archived
+      name
+      percentage
+      rateType
+      code
+    }
+  }
+}
+`
+
 export const ARCHIVE_TAXRATE = gql`
 mutation ArchiveFinanceTaxRate($input: ArchiveFinanceTaxRateInput!) {
   archiveFinanceTaxRate(input: $input) {
