@@ -45,6 +45,18 @@ mutation CreateFinanceCostCenter($input:CreateFinanceCostCenterInput!) {
 }
 `
 
+export const UPDATE_COSTCENTER = gql`
+mutation UpdateFinanceCostCenter($input: UpdateFinanceCostCenterInput!) {
+  updateFinanceCostcenter(input: $input) {
+    financeCostcenter {
+      id
+      name
+      code
+    }
+  }
+}
+`
+
 export const ARCHIVE_COSTCENTER = gql`
 mutation ArchiveFinanceCostCenter($input: ArchiveFinanceCostCenterInput!) {
   archiveFinanceCostcenter(input: $input) {
