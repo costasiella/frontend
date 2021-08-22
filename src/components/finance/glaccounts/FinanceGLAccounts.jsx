@@ -8,23 +8,15 @@ import { withRouter } from "react-router"
 
 
 import {
-  Page,
-  Grid,
   Icon,
   Dimmer,
-  Badge,
   Button,
   Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../general/ContentCard"
-import FinanceMenu from "../FinanceMenu"
 
 import { GET_GLACCOUNTS_QUERY, ARCHIVE_GLACCOUNT } from "./queries"
 import FinanceGLAccountsBase from './FinanceGLAccountsBase'
