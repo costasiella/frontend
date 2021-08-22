@@ -32,6 +32,19 @@ export const GET_GLACCOUNT_QUERY = gql`
   }
 `
 
+export const ADD_GLACCOUNT = gql`
+mutation CreateFinanceGLAccount($input:CreateFinanceGLAccountInput!) {
+  createFinanceGlaccount(input: $input) {
+    financeGlaccount{
+      id
+      archived
+      name
+      code
+    }
+  }
+}
+`
+
 export const ARCHIVE_GLACCOUNT = gql`
 mutation ArchiveFinanceGLAccount($input: ArchiveFinanceGLAccountInput!) {
   archiveFinanceGlaccount(input: $input) {
