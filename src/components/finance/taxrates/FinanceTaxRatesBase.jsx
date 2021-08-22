@@ -37,7 +37,7 @@ function FinanceTaxRatesBase({ t, history, children, showBack=false }) {
               :
                 <HasPermissionWrapper permission="add"
                                       resource="financetaxrate">
-                  <Link to="finance/taxrates/add">
+                  <Link to="/finance/taxrates/add">
                     <Button color="primary btn-block mb-6">
                       <Icon prefix="fe" name="plus-circle" /> {t('finance.taxrates.add')}
                     </Button>
