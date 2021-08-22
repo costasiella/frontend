@@ -35,3 +35,13 @@ export const GET_TAXRATE_QUERY = gql`
     }
   }
 `
+export const ARCHIVE_TAXRATE = gql`
+mutation ArchiveFinanceTaxRate($input: ArchiveFinanceTaxRateInput!) {
+  archiveFinanceTaxRate(input: $input) {
+    financeTaxRate {
+      id
+      archived
+    }
+  }
+}
+`
