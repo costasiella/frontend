@@ -17,7 +17,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import FinanceMenu from "../FinanceMenu"
 
 
-function FinancePaymentMethodsBase({ t, history, children, showBack=true }) {
+function FinancePaymentMethodsBase({ t, history, children, showBack=false }) {
   return (
     <SiteWrapper>
     <div className="my-3 my-md-5">
