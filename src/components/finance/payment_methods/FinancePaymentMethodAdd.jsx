@@ -13,15 +13,8 @@ import { PAYMENT_METHOD_SCHEMA } from './yupSchema'
 
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import FinancePaymentMethodsBase from './FinancePaymentMethodsBase';
 import FinancePaymentMethodForm from './FinancePaymentMethodForm'
