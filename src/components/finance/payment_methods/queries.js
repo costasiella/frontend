@@ -32,3 +32,14 @@ export const GET_PAYMENT_METHOD_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_PAYMENT_METHOD = gql`
+mutation ArchiveFinancePaymentMethod($input: ArchiveFinancePaymentMethodInput!) {
+  archiveFinancePaymentMethod(input: $input) {
+    financePaymentMethod {
+      id
+      archived
+    }
+  }
+}
+`

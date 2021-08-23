@@ -57,7 +57,7 @@ function FinanceCostCenters({t, history}) {
   if (error) return (
     <FinanceCostCentersBase>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('finance.glaccounts.error_loading')}</p>
+        <p>{t('finance.costcenters.error_loading')}</p>
       </ContentCard>
     </FinanceCostCentersBase>
   )
