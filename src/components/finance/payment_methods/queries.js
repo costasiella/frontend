@@ -46,6 +46,18 @@ mutation CreateFinancePaymentMethod($input:CreateFinancePaymentMethodInput!) {
 }
 `
 
+export const UPDATE_PAYMENT_METHOD = gql`
+mutation UpdateFinancePaymentMethod($input: UpdateFinancePaymentMethodInput!) {
+  updateFinancePaymentMethod(input: $input) {
+    financePaymentMethod {
+      id
+      name
+      code
+    }
+  }
+}
+`
+
 export const ARCHIVE_PAYMENT_METHOD = gql`
 mutation ArchiveFinancePaymentMethod($input: ArchiveFinancePaymentMethodInput!) {
   archiveFinancePaymentMethod(input: $input) {
