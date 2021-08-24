@@ -155,13 +155,13 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
               })
             }}
         >
-          {({ isSubmitting, errors, values, touched, handleChange, submitForm, setFieldTouched, setFieldValue }) => (
+          {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (
             <FinanceInvoiceEditNoteForm
               isSubmitting={isSubmitting}
               errors={errors}
               values={values}
+              touched={touched}
               handleChange={handleChange}
-              submitForm={submitForm}
               setFieldTouched={setFieldTouched}
               setFieldValue={setFieldValue}
             >
