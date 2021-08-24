@@ -15,7 +15,7 @@ import {
 
 
 import { get_list_query_variables } from "../tools"
-import { UPDATE_INVOICE, GET_INVOICES_QUERY } from "../queries"
+import { UPDATE_INVOICE, GET_INVOICE_QUERY } from "../queries"
 import FinanceInvoiceEditTermsForm from "./FinanceInvoiceEditTermsForm"
 import FinanceInvoiceEditFooterForm from "./FinanceInvoiceEditFooterForm"
 import FinanceInvoiceEditNoteForm from "./FinanceInvoiceEditNoteForm"
@@ -23,6 +23,7 @@ import FinanceInvoiceEditPayments from "./FinanceInvoiceEditPayments"
 
 
 function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
+  const id = match.params.id
   const [ updateInvoice ] = useMutation(UPDATE_INVOICE)
 
   return (
@@ -43,7 +44,7 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
                 terms: values.terms, 
               }
             }, refetchQueries: [
-                // {query: GET_INVOICES_QUERY, variables: get_list_query_variables()}
+                {query: GET_INVOICE_QUERY, variables: {id: id}}
             ]})
             .then(({ data }) => {
                 console.log('got data', data)
@@ -60,13 +61,13 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
               })
             }}
         >
-          {({ isSubmitting, errors, values, touched, handleChange, submitForm, setFieldTouched, setFieldValue }) => (
+          {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (
             <FinanceInvoiceEditTermsForm
               isSubmitting={isSubmitting}
               errors={errors}
               values={values}
+              touched={touched}
               handleChange={handleChange}
-              submitForm={submitForm}
               setFieldTouched={setFieldTouched}
               setFieldValue={setFieldValue}
             >
