@@ -91,7 +91,7 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
                 footer: values.footer, 
               }
             }, refetchQueries: [
-                // {query: GET_INVOICES_QUERY, variables: get_list_query_variables()}
+              {query: GET_INVOICE_QUERY, variables: {id: id}}
             ]})
             .then(({ data }) => {
                 console.log('got data', data)
@@ -108,13 +108,13 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
               })
             }}
         >
-          {({ isSubmitting, errors, values, touched, handleChange, submitForm, setFieldTouched, setFieldValue }) => (
+          {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (
             <FinanceInvoiceEditFooterForm
               isSubmitting={isSubmitting}
               errors={errors}
               values={values}
               handleChange={handleChange}
-              submitForm={submitForm}
+              touched={touched}
               setFieldTouched={setFieldTouched}
               setFieldValue={setFieldValue}
             >
@@ -138,7 +138,7 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
                 note: values.note, 
               }
             }, refetchQueries: [
-                // {query: GET_INVOICES_QUERY, variables: get_list_query_variables()}
+              {query: GET_INVOICE_QUERY, variables: {id: id}}
             ]})
             .then(({ data }) => {
                 console.log('got data', data)

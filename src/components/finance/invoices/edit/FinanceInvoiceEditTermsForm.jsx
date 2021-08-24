@@ -39,16 +39,14 @@ const FinanceInvoiceEditTermsForm = ({ t, isSubmitting, values, errors, touched,
         />
         <ErrorMessage name="terms" component="span" className="invalid-feedback" />
       </Form.Group>
-      {(Object.keys(touched).length === 0) ? "" :
-        <Button 
-          color="primary"
-          className="pull-right" 
-          type="submit" 
-          disabled={isSubmitting}
-        >
-          {t('general.submit')}
-        </Button>
-      }
+      <Button 
+        color="primary"
+        className="pull-right" 
+        type="submit" 
+        disabled={isSubmitting}
+      >
+        {t('general.submit')}
+      </Button>
     </FoForm>
   </Dimmer>
 )
