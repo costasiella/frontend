@@ -66,7 +66,7 @@ function FinanceInvoiceEdit({t, match, history}) {
     return_url = "/finance/invoices"
   }
   const export_url = "/d/export/invoice/pdf/" + id
-  const payment_add_url = "/finance/invoices/" + id + "/payment/add"
+  const payment_add_url = `/finance/invoices/${id}/payment/add`
 
   return (
     <FinanceInvoiceEditBase>

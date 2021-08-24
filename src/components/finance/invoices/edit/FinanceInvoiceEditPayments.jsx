@@ -17,11 +17,18 @@ import FinanceInvoiceEditPaymentDelete from "./FinanceInvoiceEditPaymentDelete"
 
 
 function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputData }) {
+  const id = match.params.id
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
+  const paymentAddUrl = `/finance/invoices/${id}/payment/add`
 
   return (
     <div>
+        <Link 
+          to={paymentAddUrl} 
+          className='btn btn-primary btn-sm float-right'>
+          <Icon prefix="fe" name="dollar-sign" /> {t('finance.invoice.payments.add')} 
+        </Link>
         <Table>
           <Table.Header>
             <Table.Row>
