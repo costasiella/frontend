@@ -57,13 +57,14 @@ function FinanceInvoiceEditSummary({t, history, match, initialData}) {
               })
             }}
         >
-          {({ isSubmitting, errors, values, touched, handleChange, submitForm }) => (
+          {({ isSubmitting, errors, values, touched, setFieldTouched, handleChange }) => (
             <FinanceInvoiceEditSummaryForm
               isSubmitting={isSubmitting}
               errors={errors}
               values={values}
+              touched={touched}
               handleChange={handleChange}
-              submitForm={submitForm}
+              setFieldTouched={setFieldTouched}
             >
             </FinanceInvoiceEditSummaryForm>
           )}
