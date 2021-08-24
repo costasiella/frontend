@@ -7,6 +7,7 @@ import { Form as FoForm, Field, ErrorMessage } from 'formik'
 import { v4 } from 'uuid'
 
 import {
+  Button,
   Dimmer,
   Form,
 } from "tabler-react"
@@ -14,13 +15,7 @@ import {
 import CSDatePicker from "../../../ui/CSDatePicker"
 
 
-import { handleTextInputBlur } from './tools'
-
-let optionsFormTypingTimer
-const formSubmitTimeout = 225
-
-
-const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handleChange, submitForm, setFieldValue, setFieldTouched, inputData }) => (
+const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handleChange, touched, setFieldValue, setFieldTouched, inputData }) => (
   <Dimmer loader={isSubmitting} active={isSubmitting}>
     <FoForm>
       <Form.Group label={t('finance.invoices.invoice_number')}>
@@ -28,9 +23,10 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
                 name="invoiceNumber" 
                 className={(errors.invoiceNumber) ? "form-control is-invalid" : "form-control"} 
                 autoComplete="off" 
-                onBlur={(e) => { 
-                  handleTextInputBlur(e, handleChange, submitForm)
-                }}                
+                onChange={(e) => {
+                  handleChange(e)
+                  setFieldTouched("invoiceNumber", true, true)
+                }}           
         />
         <ErrorMessage name="invoiceNumber" component="span" className="invalid-feedback" />
       </Form.Group>
@@ -41,7 +37,6 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
           onChange={(date) => {
             setFieldValue("dateSent", date)
             setFieldTouched("dateSent", true)
-            setTimeout(() => {submitForm()}, formSubmitTimeout)
           }}
         />
         <ErrorMessage name="dateSent" component="span" className="invalid-feedback" />
@@ -53,7 +48,6 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
           onChange={(date) => {
             setFieldValue("dateDue", date)
             setFieldTouched("dateDue", true)
-            setTimeout(() => {submitForm()}, formSubmitTimeout)
           }}
         />
         <ErrorMessage name="dateDue" component="span" className="invalid-feedback" />
@@ -63,8 +57,9 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
               name="status" 
               className={(errors.status) ? "form-control is-invalid" : "form-control"} 
               autoComplete="off"
-              onBlur={(e) => { 
-                handleTextInputBlur(e, handleChange, submitForm)
+              onChange={(e) => {
+                handleChange(e)
+                setFieldTouched("status", true, true)
               }}
         >
           <option value="DRAFT">{t('finance.invoices.status.DRAFT')}</option>
@@ -78,9 +73,10 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
         <Field component="select" 
               name="financePaymentMethod" 
               className={(errors.financePaymentMethod) ? "form-control is-invalid" : "form-control"} 
-              onBlur={(e) => { 
-                handleTextInputBlur(e, handleChange, submitForm)
-              }}   
+              onChange={(e) => {
+                handleChange(e)
+                setFieldTouched("financePaymentMethod", true, true)
+              }}
               autoComplete="off">
           <option value="" key={v4()}></option>
           {inputData.financePaymentMethods.edges.map(({ node }) =>
@@ -89,6 +85,16 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
         </Field>
         <ErrorMessage name="financePaymentMethod" component="span" className="invalid-feedback" />
       </Form.Group>  
+      {(Object.keys(touched).length === 0) ? "" :
+        <Button 
+          color="primary"
+          className="pull-right" 
+          type="submit" 
+          disabled={isSubmitting}
+        >
+          {t('general.submit')}
+        </Button>
+      }
     </FoForm>
   </Dimmer>
 )

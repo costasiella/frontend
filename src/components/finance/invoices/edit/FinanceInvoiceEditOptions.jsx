@@ -92,8 +92,8 @@ function FinanceInvoiceEditOptions({t, match, initialData}) {
               isSubmitting={isSubmitting}
               errors={errors}
               values={values}
+              touched={touched}
               handleChange={handleChange}
-              submitForm={submitForm}
               setFieldValue={setFieldValue}
               setFieldTouched={setFieldTouched}
             >
