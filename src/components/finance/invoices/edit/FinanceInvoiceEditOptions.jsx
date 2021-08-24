@@ -25,14 +25,26 @@ function FinanceInvoiceEditOptions({t, match, initialData}) {
     initialPaymentMethod = initialData.financeInvoice.financePaymentMethod.id
   }
 
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let dateSent = null
+  if (initialData.dateSent) {
+    dateSent = new Date(initialData.dateSent)
+  }
+  let dateDue = null
+  if (initialData.dateDue) {
+    dateDue = new Date(initialData.dateDue)
+  }
+
+
   return (
     <Card title={t('general.options')} statusColor="blue">
       <Card.Body>
         <Formik
           initialValues={{ 
             invoiceNumber: initialData.financeInvoice.invoiceNumber, 
-            dateSent: initialData.financeInvoice.dateSent,
-            dateDue: initialData.financeInvoice.dateDue,
+            dateSent: dateSent,
+            dateDue: dateDue,
             status: initialData.financeInvoice.status,
             financePaymentMethod: initialPaymentMethod
           }}
