@@ -28,13 +28,19 @@ function FinanceInvoiceEditOptions({t, match, initialData}) {
   // DatePicker doesn't like a string as an initial value
   // This makes it a happy DatePicker :)
   let dateSent = null
-  if (initialData.dateSent) {
-    dateSent = new Date(initialData.dateSent)
+  if (initialData.financeInvoice.dateSent) {
+    dateSent = new Date(initialData.financeInvoice.dateSent)
   }
   let dateDue = null
-  if (initialData.dateDue) {
-    dateDue = new Date(initialData.dateDue)
+  if (initialData.financeInvoice.dateDue) {
+    dateDue = new Date(initialData.financeInvoice.dateDue)
   }
+
+  
+  console.log("########")
+  console.log(initialData)
+  console.log(dateSent)
+  console.log(dateDue)
 
 
   return (
