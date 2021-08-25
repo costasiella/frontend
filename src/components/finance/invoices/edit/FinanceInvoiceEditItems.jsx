@@ -14,12 +14,6 @@ import {
   Grid, 
 } from "tabler-react"
 
-import UpdateProductName from "./UpdateProductName"
-import UpdateDescription from "./UpdateDescription"
-import UpdateQuantity from "./UpdateQuantity"
-import UpdatePrice from "./UpdatePrice"
-import UpdateFinanceTaxRate from "./UpdateFinanceTaxRate"
-import FinanceInvoiceItemDelete from "./FinanceInvoiceItemDelete"
 import FinanceInvoiceItemAdd from "./FinanceInvoiceItemAdd"
 import { GET_INVOICE_QUERY } from '../queries'
 
@@ -182,11 +176,11 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
                 </Table.Row>
               </Table.Header> */}
               <Grid.Row className="cs-grid-table-header">
-                <Grid.Col md={2} className="cs-grid-table-cell">{t("general.product")}</Grid.Col>
+                <Grid.Col md={3} className="cs-grid-table-cell">{t("general.product")}</Grid.Col>
                 <Grid.Col md={3} className="cs-grid-table-cell">{t("general.description")}</Grid.Col>
                 <Grid.Col md={2} className="cs-grid-table-cell">{t("general.quantity_short_and_price")}</Grid.Col>
                 <Grid.Col md={2} className="cs-grid-table-cell">{t("general.tax")}</Grid.Col>
-                <Grid.Col md={2} className="cs-grid-table-cell"><span className="float-right">{t("general.total")}</span></Grid.Col>
+                <Grid.Col md={1} className="cs-grid-table-cell"><span className="float-right">{t("general.total")}</span></Grid.Col>
                 <Grid.Col md={1} className="cs-grid-table-cell"></Grid.Col>
               </Grid.Row>
               <Droppable droppableId="invoice_items">

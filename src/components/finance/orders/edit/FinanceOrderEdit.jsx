@@ -27,7 +27,7 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
 import { dateToLocalISO } from '../../../../tools/date_tools'
-import FormPrice from '../../invoices/edit/FormPrice';
+
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 

@@ -22,7 +22,7 @@ const FinanceInvoiceItemEditForm = ({ t, isSubmitting, errors, node, touched, ha
     <FoForm>
       <Grid.Row>
       {/* <Icon name="more-vertical" /> */}
-        <Grid.Col md={2} className="cs-grid-table-cell">
+        <Grid.Col md={3} className="cs-grid-table-cell">
           <Form.Group>
             <Field type="text" 
                     name="productName" 
@@ -98,7 +98,7 @@ const FinanceInvoiceItemEditForm = ({ t, isSubmitting, errors, node, touched, ha
             <ErrorMessage name="financeTaxRate" component="span" className="invalid-feedback" />
           </Form.Group>
         </Grid.Col>
-        <Grid.Col md={2} className="cs-grid-table-cell">
+        <Grid.Col md={1} className="cs-grid-table-cell">
           <span className="float-right">{node.totalDisplay}</span> <br /><br />
           {(Object.keys(touched).length === 0) ? "" :
             <Button 
