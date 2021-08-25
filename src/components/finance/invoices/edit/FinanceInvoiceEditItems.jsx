@@ -11,7 +11,7 @@ import { toast } from 'react-toastify'
 import {
   Card,
   Dimmer, 
-  Table
+  Grid, 
 } from "tabler-react"
 
 import UpdateProductName from "./UpdateProductName"
@@ -23,22 +23,14 @@ import FinanceInvoiceItemDelete from "./FinanceInvoiceItemDelete"
 import FinanceInvoiceItemAdd from "./FinanceInvoiceItemAdd"
 import { GET_INVOICE_QUERY } from '../queries'
 
+import FinanceInvoiceItemEdit from './FinanceInvoiceItemEdit'
+
 
 export const UPDATE_INVOICE_ITEM = gql`
   mutation UpdateFinanceInvoiceItem($input: UpdateFinanceInvoiceItemInput!) {
     updateFinanceInvoiceItem(input: $input) {
       financeInvoiceItem {
         id
-        productName
-        description
-        quantity
-        price
-        financeTaxRate {
-          id
-          name
-        }
-        total
-        lineNumber
       }
     }
   }
@@ -178,7 +170,7 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
         <Card.Body>
           {/* {(allowReorder) ? "reordering allowed" : "no reordering allowed"} */}
           <Dimmer active={updating} loader={updating}>
-            <Table>
+            {/* <Table>
               <Table.Header>
                 <Table.Row>
                   <Table.ColHeader>{t("general.product")}</Table.ColHeader>
@@ -188,10 +180,22 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
                   <Table.ColHeader>{t("general.total")}</Table.ColHeader>
                   <Table.ColHeader></Table.ColHeader>
                 </Table.Row>
-              </Table.Header>
+              </Table.Header> */}
+              <Grid.Row className="cs-grid-table-header">
+                <Grid.Col md={2} className="cs-grid-table-cell">{t("general.product")}</Grid.Col>
+                <Grid.Col md={3} className="cs-grid-table-cell">{t("general.description")}</Grid.Col>
+                <Grid.Col md={2} className="cs-grid-table-cell">{t("general.quantity_short_and_price")}</Grid.Col>
+                <Grid.Col md={2} className="cs-grid-table-cell">{t("general.tax")}</Grid.Col>
+                <Grid.Col md={2} className="cs-grid-table-cell"><span className="float-right">{t("general.total")}</span></Grid.Col>
+                <Grid.Col md={1} className="cs-grid-table-cell"></Grid.Col>
+              </Grid.Row>
               <Droppable droppableId="invoice_items">
                 {(provided, snapshot) => (
-                    <tbody 
+                    // <tbody 
+                    //   ref={provided.innerRef} 
+                    //   {...provided.droppableProps} 
+                    // >
+                    <div
                       ref={provided.innerRef} 
                       {...provided.droppableProps} 
                     >
@@ -202,39 +206,30 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
                           key={node.id}
                         >
                           {(provided, snapshot) => (
-                              <tr 
+                              // <tr 
+                              //   ref={provided.innerRef}
+                              //   {...provided.draggableProps}
+                              //   {...provided.dragHandleProps}
+                              // >
+                              <div 
                                 ref={provided.innerRef}
+                                index={node.lineNumber}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                              >
-                                <Table.Col>
-                                  <UpdateProductName initialValues={node} />
-                                </Table.Col>
-                                <Table.Col>
-                                  <UpdateDescription initialValues={node} />
-                                </Table.Col>
-                                <Table.Col>
-                                  <UpdateQuantity initialValues={node} />
-                                  <UpdatePrice initialValues={node} />
-                                </Table.Col>
-                                <Table.Col>
-                                  <UpdateFinanceTaxRate initialValues={node} inputData={inputData} />
-                                </Table.Col>
-                                <Table.Col>
-                                  <span className="pull-right">{node.totalDisplay}</span>
-                                </Table.Col>
-                                <Table.Col>
-                                  <FinanceInvoiceItemDelete node={node} />
-                                </Table.Col>
-                              </tr>
+                                >
+                                <FinanceInvoiceItemEdit initialValues={node} inputData={inputData} node={node} />
+                              </div>
+
+                              // </tr>
                           )}
                         </Draggable>
                       ))}
                       {provided.placeholder}
-                    </tbody>
+                    {/* </tbody> */}
+                    </div>
                 )}
               </Droppable>
-            </Table>
+            {/* </Table> */}
           </Dimmer>
         </Card.Body>
       </Card>

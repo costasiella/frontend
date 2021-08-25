@@ -63,3 +63,17 @@ table .btn {
 }
 
 /* React datepicker changes end */
+
+/* Bring grid used as table in line with table */
+
+.cs-grid-table-header {
+  color: #9aa0ac;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.cs-grid-table-cell {
+  padding: 12px 8px;
+  border-bottom: 1px solid rgb(222, 226, 230);
+  vertical-align: middle;
+}
