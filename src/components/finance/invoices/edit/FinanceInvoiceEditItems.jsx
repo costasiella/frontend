@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState } from 'react'
 import { gql } from "@apollo/client"
 import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -32,47 +32,7 @@ export const UPDATE_INVOICE_ITEM = gql`
 
 function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData }) {
   const [updateItem, { data }] = useMutation(UPDATE_INVOICE_ITEM)
-
-  // const [ invoiceItems, setInvoiceItems ] = useState(inputData.financeInvoice.items.edges)
-  // const [ allowReorder, setAllowReorder ] = useState(true)
   const [ updating, setUpdating ] = useState(false)
-
-  // useEffect(() => {
-  //   console.log("props updated")
-
-  //   if (inputData.financeInvoice.items.edges !== invoiceItems) {
-  //     setInvoiceItems(inputData.financeInvoice.items.edges)
-  //     setAllowReorder(false)
-  //   } else {
-  //     setAllowReorder(true)
-  //   }
-
-  //   let unmounted = false
-  //   if(!unmounted) {
-  //     // cancel update state
-  //   }
-  //   return () => unmounted = true;
-  // }, [])
-  // }, [inputData.financeInvoice.items.edges, invoiceItems])
-
-  // useEffect(() => {
-  //   console.log("render items!")
-  //   console.log(invoiceItems)
-  //   // Update invoice items when one has been added or removed
-  //   setInvoiceItems(inputData.financeInvoice.items.edges) 
-  //   console.log("after effect items!")
-  //   console.log(invoiceItems)
-  // })
-  // }, [inputData.financeInvoice.items.edges])
-
-
-  // useEffect(() => {
-  //   console.log("Called on setInvoiceItems")
-  //   // setInvoiceItems(inputData.financeInvoice.items.edges) 
-  // }, [setInvoiceItems] )
-
-  // console.log("main component items...")
-  // console.log(invoiceItems)
 
   const onDragEnd = useCallback((result) => {
     // the only one that is required
@@ -82,12 +42,6 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
     console.log(source)
     console.log(destination)
     console.log(reason)
-
-    // TODO: notify backend of sorting change
-    // dragableID = nodeID 
-    // Indexes are 0 indexed
-    // source.index = old index
-    // destination.index = new index
 
     // Nothing to do, nowhere to go...
     console.log("drop cancelled...")
@@ -103,19 +57,6 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
     ) {
       return
     }
-
-    // console.log("invoice items in onDragEnd")
-    // console.log(invoiceItems)
-
-    // const new_order = invoiceItems
-    // const item = invoiceItems[source.index]
-    // console.log("dnd item:")
-    // console.log(item)
-    // // remove dnd'd item from array
-    // new_order.splice(source.index, 1)
-    // // add dnd'd item to new position in array
-    // new_order.splice(destination.index, 0, item)
-    // setInvoiceItems(new_order) 
 
     updateLineNumber({
       node_id: draggableId,
@@ -162,19 +103,7 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
           </Card.Options>
         </Card.Header>
         <Card.Body>
-          {/* {(allowReorder) ? "reordering allowed" : "no reordering allowed"} */}
           <Dimmer active={updating} loader={updating}>
-            {/* <Table>
-              <Table.Header>
-                <Table.Row>
-                  <Table.ColHeader>{t("general.product")}</Table.ColHeader>
-                  <Table.ColHeader>{t("general.description")}</Table.ColHeader>
-                  <Table.ColHeader>{t("general.quantity_short_and_price")}</Table.ColHeader>
-                  <Table.ColHeader>{t("general.tax")}</Table.ColHeader>
-                  <Table.ColHeader>{t("general.total")}</Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
-                </Table.Row>
-              </Table.Header> */}
               <Grid.Row className="cs-grid-table-header">
                 <Grid.Col md={3} className="cs-grid-table-cell">{t("general.product")}</Grid.Col>
                 <Grid.Col md={3} className="cs-grid-table-cell">{t("general.description")}</Grid.Col>
@@ -185,10 +114,6 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
               </Grid.Row>
               <Droppable droppableId="invoice_items">
                 {(provided, snapshot) => (
-                    // <tbody 
-                    //   ref={provided.innerRef} 
-                    //   {...provided.droppableProps} 
-                    // >
                     <div
                       ref={provided.innerRef} 
                       {...provided.droppableProps} 
@@ -200,11 +125,6 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
                           key={node.id}
                         >
                           {(provided, snapshot) => (
-                              // <tr 
-                              //   ref={provided.innerRef}
-                              //   {...provided.draggableProps}
-                              //   {...provided.dragHandleProps}
-                              // >
                               <div 
                                 ref={provided.innerRef}
                                 index={node.lineNumber}
@@ -213,17 +133,13 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
                                 >
                                 <FinanceInvoiceItemEdit initialValues={node} inputData={inputData} node={node} />
                               </div>
-
-                              // </tr>
                           )}
                         </Draggable>
                       ))}
                       {provided.placeholder}
-                    {/* </tbody> */}
                     </div>
                 )}
               </Droppable>
-            {/* </Table> */}
           </Dimmer>
         </Card.Body>
       </Card>
