@@ -55,13 +55,22 @@ function FinanceInvoiceGroupsBase({t, history, children, showBack=true}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="financeinvoicegroup">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/finance/invoices/groups/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('finance.invoice_groups.add')}
-                </Button>
-              </HasPermissionWrapper>
+              {(showBack) ?
+                <Link to="/finance/invoices/groups">
+                  <Button color="primary btn-block mb-6">
+                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
+                  </Button>
+                </Link>
+                :
+                <HasPermissionWrapper permission="add"
+                                      resource="financeinvoicegroup">
+                  <Link to="/finance/invoices/groups/add">
+                    <Button color="primary btn-block mb-6">
+                      <Icon prefix="fe" name="plus-circle" /> {t('finance.invoice_groups.add')}
+                    </Button>
+                  </Link>
+                </HasPermissionWrapper>
+              }
               <FinanceMenu activeLink='invoices'/>
             </Grid.Col>
           </Grid.Row>
