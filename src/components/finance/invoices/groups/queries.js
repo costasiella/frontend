@@ -47,3 +47,14 @@ export const GET_INVOICE_GROUP_QUERY = gql`
     }
   }
 `
+
+export const ARCHIVE_INVOICE_GROUP = gql`
+mutation ArchiveFinanceInvoiceGroup($input: ArchiveFinanceInvoiceGroupInput!) {
+  archiveFinanceInvoiceGroup(input: $input) {
+    financeInvoiceGroup {
+      id
+      archived
+    }
+  }
+}
+`
