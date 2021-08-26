@@ -48,6 +48,18 @@ export const GET_INVOICE_GROUP_QUERY = gql`
   }
 `
 
+export const UPDATE_INVOICE_GROUP = gql`
+mutation UpdateFinanceInvoiceGroup($input: UpdateFinanceInvoiceGroupInput!) {
+  updateFinanceInvoiceGroup(input: $input) {
+    financeInvoiceGroup {
+      id
+      name
+      code
+    }
+  }
+}
+`
+
 export const ADD_INVOICE_GROUP = gql`
 mutation CreateFinanceInvoiceGroup($input:CreateFinanceInvoiceGroupInput!) {
   createFinanceInvoiceGroup(input: $input) {
