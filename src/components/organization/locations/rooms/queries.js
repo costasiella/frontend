@@ -43,3 +43,47 @@ export const GET_LOCATION_ROOM_QUERY = gql`
     }
   }
 `
+
+export const ADD_LOCATION_ROOM = gql`
+  mutation CreateOrganizationLocationRoom($input: CreateOrganizationLocationRoomInput!) {
+    createOrganizationLocationRoom(input: $input) {
+      organizationLocationRoom {
+        id
+        organizationLocation {
+          id
+          name
+        }
+        archived
+        displayPublic
+        name
+      }
+    }
+  }
+`
+
+export const UPDATE_LOCATION_ROOM = gql`
+mutation UpdateOrganizationLocationRoom($input: UpdateOrganizationLocationRoomInput!) {
+  updateOrganizationLocationRoom(input: $input) {
+    organizationLocationRoom {
+      id
+      organizationLocation {
+        id
+        name
+      }
+      name
+      displayPublic
+    }
+  }
+}
+`
+
+export const ARCHIVE_LOCATION_ROOM = gql`
+mutation ArchiveOrganizationLocationRoom($input: ArchiveOrganizationLocationRoomInput!) {
+  archiveOrganizationLocationRoom(input: $input) {
+    organizationLocationRoom {
+      id
+      archived
+    }
+  }
+}
+`

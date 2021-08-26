@@ -14,43 +14,44 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import OrganizationMenu from "../OrganizationMenu"
+import FinanceMenu from "../FinanceMenu"
 
 
-function OrganizationClasstypesBase({t, history, children, showBack=false}) {
+function FinanceTaxRatesBase({ t, history, children, showBack=false }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title="Organization" />
+          <Page.Header title={t("finance.title")} />
           <Grid.Row>
             <Grid.Col md={9}>
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
               {(showBack) ?
-                <Link to="/organization/classtypes/">
+                <Link to="/finance/taxrates"  >
                   <Button color="primary btn-block mb-6">
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </Link>
               :
                 <HasPermissionWrapper permission="add"
-                                      resource="organizationclasstype">
-                  <Link to="/organization/classtypes/add">
+                                      resource="financetaxrate">
+                  <Link to="/finance/taxrates/add">
                     <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
+                      <Icon prefix="fe" name="plus-circle" /> {t('finance.taxrates.add')}
                     </Button>
                   </Link>
                 </HasPermissionWrapper>
               }
-              <OrganizationMenu activeLink='classtypes'/>
+              <FinanceMenu activeLink='taxrates'/>
             </Grid.Col>
           </Grid.Row>
         </Container>
       </div>
-    </SiteWrapper>          
+    </SiteWrapper>
   )
 }
 
-export default withTranslation()(withRouter(OrganizationClasstypesBase))
+
+export default withTranslation()(withRouter(FinanceTaxRatesBase))

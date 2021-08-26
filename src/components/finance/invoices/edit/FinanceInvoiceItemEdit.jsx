@@ -8,19 +8,23 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { UPDATE_INVOICE_ITEM } from "../queries"
-import FormProductName from "./FormProductName"
+import FinanceInvoiceItemEditForm from './FinanceInvoiceItemEditForm'
 
 
-function UpdateProductName({t, initialValues}) {
+function FinanceInvoiceItemEdit({t, initialValues, node, inputData}) {
   const [updateInvoiceItem, { data }] = useMutation(UPDATE_INVOICE_ITEM)
 
     return (
       <Formik
         initialValues={{
-          productName: initialValues.productName
+          productName: initialValues.productName,
+          description: initialValues.description,
+          price: initialValues.price,
+          quantity: initialValues.quantity,
+          financeTaxRate: (initialValues.financeTaxRate) ? initialValues.financeTaxRate.id : null
         }}
         // validationSchema={INVOICE_GROUP_SCHEMA}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, setTouched }) => {
           console.log('submit values:')
           console.log(values)
 
@@ -28,16 +32,21 @@ function UpdateProductName({t, initialValues}) {
             input: {
               id: initialValues.id,
               productName: values.productName, 
+              description: values.description,
+              price: values.price,
+              quantity: values.quantity,
+              financeTaxRate: values.financeTaxRate
             }
           }, refetchQueries: [
               // {query: GET_INVOICES_QUERY, variables: get_list_query_variables()}
           ]})
           .then(({ data }) => {
               console.log('got data', data)
-              toast.success((t('finance.invoice.toast_edit_item_product_name_success')), {
+              toast.success((t('finance.invoice.item.toast_edit_success')), {
                   position: toast.POSITION.BOTTOM_RIGHT
                 })
               setSubmitting(false)
+              setTouched({})
             }).catch((error) => {
               toast.error((t('general.toast_server_error')) + ': ' +  error, {
                   position: toast.POSITION.BOTTOM_RIGHT
@@ -47,19 +56,22 @@ function UpdateProductName({t, initialValues}) {
             })
           }}
       >
-        {({ isSubmitting, errors, values, handleChange, submitForm }) => (
-          <FormProductName
+        {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched }) => (
+          <FinanceInvoiceItemEditForm
             isSubmitting={isSubmitting}
             errors={errors}
             values={values}
+            touched={touched}
             handleChange={handleChange}
-            submitForm={submitForm}
+            setFieldTouched={setFieldTouched}
+            node={node}
+            inputData={inputData}
           >
-          </FormProductName>   
+          </FinanceInvoiceItemEditForm>   
         )}
       </Formik>
     )
 }
 
 
-export default withTranslation()(withRouter(UpdateProductName))
+export default withTranslation()(withRouter(FinanceInvoiceItemEdit))

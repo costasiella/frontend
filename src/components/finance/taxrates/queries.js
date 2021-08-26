@@ -35,3 +35,44 @@ export const GET_TAXRATE_QUERY = gql`
     }
   }
 `
+
+export const ADD_TAXRATE = gql`
+mutation CreateFinanceTaxRate($input:CreateFinanceTaxRateInput!) {
+  createFinanceTaxRate(input: $input) {
+    financeTaxRate{
+      id
+      archived
+      name
+      percentage
+      rateType
+      code
+    }
+  }
+}
+`
+
+export const UPDATE_TAXRATE = gql`
+mutation UpdateFinanceTaxRate($input: UpdateFinanceTaxRateInput!) {
+  updateFinanceTaxRate(input: $input) {
+    financeTaxRate {
+      id
+      archived
+      name
+      percentage
+      rateType
+      code
+    }
+  }
+}
+`
+
+export const ARCHIVE_TAXRATE = gql`
+mutation ArchiveFinanceTaxRate($input: ArchiveFinanceTaxRateInput!) {
+  archiveFinanceTaxRate(input: $input) {
+    financeTaxRate {
+      id
+      archived
+    }
+  }
+}
+`

@@ -30,7 +30,6 @@
         "description": "__STRING_NOT_TRANSLATED__",
         "quantity_short_and_price": "__STRING_NOT_TRANSLATED__",
         "options": "__STRING_NOT_TRANSLATED__",
-        "last_updated_at": "__STRING_NOT_TRANSLATED__",
         "status": "__STRING_NOT_TRANSLATED__",
         "payment_method": "__STRING_NOT_TRANSLATED__",
         "from": "__STRING_NOT_TRANSLATED__",
@@ -526,7 +525,10 @@
             "toast_edit_item_quantity_success": "__STRING_NOT_TRANSLATED__",
             "cancel_and_create_credit_invoice": "__STRING_NOT_TRANSLATED__",
             "now_editing_credit_invoice": "__STRING_NOT_TRANSLATED__",
-            "credit_invoice_for": "__STRING_NOT_TRANSLATED__"
+            "credit_invoice_for": "__STRING_NOT_TRANSLATED__",
+            "item": {
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "invoice_groups_defaults": {
             "MEMBERSHIPS": "__STRING_NOT_TRANSLATED__",
@@ -957,7 +959,8 @@
             "title": "__STRING_NOT_TRANSLATED__",
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "add": "__STRING_NOT_TRANSLATED__",
+            "toast_creating_might_take_a_while": "__STRING_NOT_TRANSLATED__"
         },
         "classpass_group_classpasses": {
             "title_edit": "__STRING_NOT_TRANSLATED__"
@@ -1081,7 +1084,6 @@
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__",
-            "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
             "add": "__STRING_NOT_TRANSLATED__"
@@ -1158,6 +1160,9 @@
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__"
+        },
+        "locations_rooms": {
+            "error_loading": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {

@@ -29,3 +29,37 @@ export const GET_LEVEL_QUERY = gql`
     }
   }
 `
+
+export const ADD_LEVEL = gql`
+mutation CreateOrganizationLevel($input:CreateOrganizationLevelInput!) {
+  createOrganizationLevel(input: $input) {
+    organizationLevel{
+      id
+      archived
+      name
+    }
+  }
+}
+`
+
+export const UPDATE_LEVEL = gql`
+mutation UpdateOrganizationLevel($input: UpdateOrganizationLevelInput!) {
+  updateOrganizationLevel(input: $input) {
+    organizationLevel {
+      id
+      name
+    }
+  }
+}
+`
+
+export const ARCHIVE_LEVEL = gql`
+mutation ArchiveOrganizationLevel($input: ArchiveOrganizationLevelInput!) {
+  archiveOrganizationLevel(input: $input) {
+    organizationLevel {
+      id
+      archived
+    }
+  }
+}
+`

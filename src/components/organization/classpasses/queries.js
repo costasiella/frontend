@@ -49,7 +49,7 @@ export const GET_CLASSPASSES_QUERY = gql`
 `
 
 export const GET_CLASSPASS_QUERY = gql`
-  query OrganizationClasspass($id: ID!, $after: String, $before: String, $archived: Boolean!) {
+  query OrganizationClasspass($id: ID!, $after: String, $before: String) {
     organizationClasspass(id:$id) {
       id
       archived
@@ -84,7 +84,7 @@ export const GET_CLASSPASS_QUERY = gql`
         name
       }
     }
-    organizationMemberships(first: 15, before: $before, after: $after, archived: $archived) {
+    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -99,7 +99,7 @@ export const GET_CLASSPASS_QUERY = gql`
         }
       }
     }
-    financeTaxRates(first: 15, before: $before, after: $after, archived: $archived) {
+    financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -116,7 +116,7 @@ export const GET_CLASSPASS_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: $archived) {
+    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -132,7 +132,7 @@ export const GET_CLASSPASS_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: $archived) {
+    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -254,6 +254,42 @@ mutation CreateClasspass($input: CreateOrganizationClasspassInput!) {
     }
   }
 }
+`
+
+export const UPDATE_CLASSPASS = gql`
+  mutation UpdateOrganizationClasspass($input: UpdateOrganizationClasspassInput!) {
+    updateOrganizationClasspass(input: $input) {
+      organizationClasspass {
+        id
+        displayPublic
+        displayShop
+        name
+        description
+        price
+        financeTaxRate {
+          id
+          name
+        }
+        validity
+        validityUnit
+        classes
+        unlimited
+        organizationMembership {
+          id
+          name
+        }
+        quickStatsAmount
+        financeGlaccount {
+          id
+          name
+        }
+        financeCostcenter {
+          id
+          name
+        }
+      }
+    }
+  }
 `
 
 export const ARCHIVE_CLASSPASS = gql`

@@ -16,7 +16,7 @@ import {
 import { get_list_query_variables } from "../tools"
 
 import { GET_INVOICE_QUERY, GET_INVOICES_QUERY } from "../queries"
-import { GET_INVOICE_PAYMENT_QUERY } from './queries'
+import { GET_INVOICE_PAYMENT_QUERY, UPDATE_FINANCE_INVOICE_PAYMENT } from './queries'
 import { FINANCE_INVOICE_PAYMENT_SCHEMA } from './yupSchema'
 // import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../tools/date_tools'
@@ -26,16 +26,6 @@ import SiteWrapper from "../../../SiteWrapper"
 import FinanceInvoicePaymentBase from "./FinanceInvoicePaymentBase"
 import FinanceInvoicePaymentForm from "./FinanceInvoicePaymentForm"
 
-
-const UPDATE_FINANCE_INVOICE_PAYMENT = gql`
-  mutation UpdateFinanceInvoicePayment($input:UpdateFinanceInvoicePaymentInput!) {
-    updateFinanceInvoicePayment(input:$input) {
-      financeInvoicePayment {
-        id
-      } 
-    }
-  }
-`
 
 
 function FinanceInvoicePaymentEdit({ t, history, match }) {
@@ -100,11 +90,18 @@ function FinanceInvoicePaymentEdit({ t, history, match }) {
     initialPaymentMethod = initialValues.financePaymentMethod.id
   }
 
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let initialDate = null
+  if (initialValues.date) {
+    initialDate = new Date(initialValues.date)
+  }
+
   return (
     <FinanceInvoicePaymentBase form_type={"update"}>
       <Formik
         initialValues={{ 
-          date: initialValues.date,
+          date: initialDate,
           amount: initialValues.amount,
           financePaymentMethod: initialPaymentMethod,
           note: initialValues.note

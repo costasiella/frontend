@@ -78,11 +78,14 @@ function OrganizationAnnouncementForm({ t, history, isSubmitting, values, errors
           <Grid.Col>
             <Form.Group label={t('organization.announcements.content')}>
               <Editor
+                tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
                 textareaName="content"
                 initialValue={values.content}
                 init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("content", e.target.getContent())}
-                onBlur={() => setFieldTouched("content", true)}
+                onBlur={(e) => {
+                  setFieldTouched("content", true)
+                  setFieldValue("content", e.target.getContent())
+                }}
                 />
               <ErrorMessage name="content" component="span" className="invalid-feedback" />
             </Form.Group>

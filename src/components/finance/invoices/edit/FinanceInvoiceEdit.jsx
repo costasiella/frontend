@@ -1,7 +1,6 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -19,14 +18,9 @@ import {
   Grid,
   Icon,
   Button,
-  Card,
-  Container,
-  Form
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import FinanceMenu from "../../FinanceMenu"
 
 import CSLS from "../../../../tools/cs_local_storage"
 
@@ -38,7 +32,7 @@ import FinanceInvoiceEditOptions from "./FinanceInvoiceEditOptions"
 import FinanceInvoiceEditOrganization from "./FinanceInvoiceEditOrganization"
 import FinanceInvoiceEditSummary from "./FinanceInvoiceEditSummary"
 import FinanceInvoiceEditTo from "./FinanceInvoiceEditTo"
-
+import FinanceInvoiceEditPayments from "./FinanceInvoiceEditPayments"
 
 function FinanceInvoiceEdit({t, match, history}) {
   const id = match.params.id
@@ -66,7 +60,7 @@ function FinanceInvoiceEdit({t, match, history}) {
     return_url = "/finance/invoices"
   }
   const export_url = "/d/export/invoice/pdf/" + id
-  const payment_add_url = "/finance/invoices/" + id + "/payment/add"
+  const payment_add_url = `/finance/invoices/${id}/payment/add`
 
   return (
     <FinanceInvoiceEditBase>
@@ -159,139 +153,12 @@ function FinanceInvoiceEdit({t, match, history}) {
         <Grid.Col md={12}>
           <FinanceInvoiceEditItems inputData={data} refetchInvoice={refetch} />
           <FinanceInvoiceEditAdditional initialData={data} />
+          <FinanceInvoiceEditPayments inputData={data} />
         </Grid.Col>
       </Grid.Row>
     </FinanceInvoiceEditBase>
   )
-
 }
-
-
-// class FinanceInvoiceEdit extends Component {
-//   constructor(props) {
-//     super(props)
-//     console.log("finance invoice edit props:")
-//     console.log(props)
-//   }
-
-//   render() {
-//     const t = this.props.t
-//     const match = this.props.match
-//     const history = this.props.history
-//     const id = match.params.id
-//     // Fetch back location from localStorage, if no value set, default back to /finance/invoices
-//     let return_url = localStorage.getItem(CSLS.FINANCE_INVOICES_EDIT_RETURN)
-//     if (!return_url) {
-//       return_url = "/finance/invoices"
-//     }
-
-//     const export_url = "/d/export/invoice/pdf/" + id
-//     const payment_add_url = "/finance/invoices/" + id + "/payment/add"
-
-//     return (
-//       <SiteWrapper>
-//         <div className="my-3 my-md-5">
-//           <Query query={GET_INVOICE_QUERY} variables={{ id }} >
-//             {({ loading, error, data, refetch }) => {
-//               // Loading
-//               if (loading) return <FinanceInvoiceEditBase>{t('general.loading_with_dots')}</FinanceInvoiceEditBase>
-//               // Error
-//               if (error) {
-//                 console.log(error)
-//                 return <p>{t('general.error_sad_smiley')}</p>
-//               }
-              
-//               console.log('query data')
-//               console.log(data)
-
-//               return (
-//                 <Container>
-                  
-
-// {/*                             
-//                             <Mutation mutation={UPDATE_COSTCENTER} onCompleted={() => history.push(return_url)}> 
-//                             {(updateGlaccount, { data }) => (
-//                                 <Formik
-//                                     initialValues={{ 
-//                                       name: initialData.name, 
-//                                       code: initialData.code
-//                                     }}
-//                                     validationSchema={COSTCENTER_SCHEMA}
-//                                     onSubmit={(values, { setSubmitting }) => {
-//                                         console.log('submit values:')
-//                                         console.log(values)
-
-//                                         updateGlaccount({ variables: {
-//                                           input: {
-//                                             id: match.params.id,
-//                                             name: values.name,
-//                                             code: values.code
-//                                           }
-//                                         }, refetchQueries: [
-//                                             {query: GET_COSTCENTERS_QUERY, variables: {"archived": false }}
-//                                         ]})
-//                                         .then(({ data }) => {
-//                                             console.log('got data', data)
-//                                             toast.success((t('finance.costcenters.toast_edit_success')), {
-//                                                 position: toast.POSITION.BOTTOM_RIGHT
-//                                               })
-//                                           }).catch((error) => {
-//                                             toast.error((t('general.toast_server_error')) + ': ' +  error, {
-//                                                 position: toast.POSITION.BOTTOM_RIGHT
-//                                               })
-//                                             console.log('there was an error sending the query', error)
-//                                             setSubmitting(false)
-//                                           })
-//                                     }}
-//                                     >
-//                                     {({ isSubmitting, errors, values }) => (
-//                                         <FoForm>
-//                                             <Card.Body>
-//                                               <Form.Group label={t('general.name')}>
-//                                                 <Field type="text" 
-//                                                         name="name" 
-//                                                         className={(errors.name) ? "form-control is-invalid" : "form-control"} 
-//                                                         autoComplete="off" />
-//                                                 <ErrorMessage name="name" component="span" className="invalid-feedback" />
-//                                               </Form.Group>
-//                                               <Form.Group label={t('finance.code')}>
-//                                                 <Field type="text" 
-//                                                         name="code" 
-//                                                         className={(errors.code) ? "form-control is-invalid" : "form-control"} 
-//                                                         autoComplete="off" />
-//                                                 <ErrorMessage name="code" component="span" className="invalid-feedback" />
-//                                               </Form.Group>
-//                                             </Card.Body>
-//                                             <Card.Footer>
-//                                                 <Button 
-//                                                   className="pull-right"
-//                                                   color="primary"
-//                                                   disabled={isSubmitting}
-//                                                   type="submit"
-//                                                 >
-//                                                   {t('general.submit')}
-//                                                 </Button>
-//                                                 <Button
-//                                                   type="button" 
-//                                                   color="link" 
-//                                                   onClick={() => history.push(return_url)}
-//                                                 >
-//                                                     {t('general.cancel')}
-//                                                 </Button>
-//                                             </Card.Footer>
-//                                         </FoForm>
-//                                     )}
-//                                 </Formik>
-//                             )}
-//                             </Mutation> */}
-
-//                 </Container>
-//           )}}
-//         </Query>
-//       </div>
-//     </SiteWrapper>
-//     )}
-//   }
 
 
 export default withTranslation()(withRouter(FinanceInvoiceEdit))

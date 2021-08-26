@@ -64,9 +64,56 @@ export const GET_CLASSPASS_GROUP_PASSES_QUERY = gql`
   }
 `
 
+export const ADD_CLASSPASS_GROUP = gql`
+mutation CreateOrganizationClasspassGroup($input:CreateOrganizationClasspassGroupInput!) {
+  createOrganizationClasspassGroup(input: $input) {
+    organizationClasspassGroup{
+      id
+    }
+  }
+}
+`
+
+export const UPDATE_CLASSPASS_GROUP = gql`
+mutation UpdateOrganizationClasspassGroup($input: UpdateOrganizationClasspassGroupInput!) {
+  updateOrganizationClasspassGroup(input: $input) {
+    organizationClasspassGroup {
+      id
+      name
+    }
+  }
+}
+`
+
 export const DELETE_CLASSPASS_GROUP = gql`
   mutation DeleteClasspassGroup($input: DeleteOrganizationClasspassGroupInput!) {
     deleteOrganizationClasspassGroup(input: $input) {
+      ok
+    }
+  }
+`
+
+export const ADD_CARD_TO_GROUP = gql`
+  mutation AddCardToGroup($input: CreateOrganizationClasspassGroupClasspassInput!) {
+    createOrganizationClasspassGroupClasspass(input:$input) {
+      organizationClasspassGroupClasspass {
+        id
+        organizationClasspass {
+          id
+          name
+        }
+        organizationClasspassGroup {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+export const DELETE_CARD_FROM_GROUP = gql`
+  mutation DeleteCardFromGroup($input: DeleteOrganizationClasspassGroupClasspassInput!) {
+    deleteOrganizationClasspassGroupClasspass(input:$input) {
       ok
     }
   }

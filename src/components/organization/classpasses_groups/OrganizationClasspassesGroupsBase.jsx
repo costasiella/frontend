@@ -20,7 +20,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import OrganizationMenu from "../OrganizationMenu"
 
 
-function OrganizationClasspassesGroupsBase({ t, history, children }) {
+function OrganizationClasspassesGroupsBase({ t, history, children, showBack=false }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -38,13 +38,21 @@ function OrganizationClasspassesGroupsBase({ t, history, children }) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationclasspassgroup">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/organization/classpasses/groups/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('organization.classpass_groups.add')}
-                </Button>
-              </HasPermissionWrapper>
+              {(showBack) ?
+                <Link to={"/organization/classpasses/groups"}>
+                  <Button color="primary btn-block mb-6">
+                    <Icon prefix="fe" name="chevrons-left" /> {t("general.back")}
+                  </Button>
+                </Link>
+              :
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationclasspassgroup">
+                  <Button color="primary btn-block mb-6"
+                          onClick={() => history.push("/organization/classpasses/groups/add")}>
+                    <Icon prefix="fe" name="plus-circle" /> {t('organization.classpass_groups.add')}
+                  </Button>
+                </HasPermissionWrapper>              
+              }
               <OrganizationMenu activeLink=''/>
             </Grid.Col>
           </Grid.Row>

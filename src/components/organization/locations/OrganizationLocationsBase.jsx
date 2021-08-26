@@ -1,9 +1,7 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 import {
   Page,
@@ -17,7 +15,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import OrganizationMenu from "../OrganizationMenu"
 
 
-function OrganizationClasstypesBase({t, history, children, showBack=false}) {
+function OrganizationLocationsBase({t, history, children, showBack=false}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -28,29 +26,29 @@ function OrganizationClasstypesBase({t, history, children, showBack=false}) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              {(showBack) ?
-                <Link to="/organization/classtypes/">
+              {(showBack) ? 
+                <Link to="/organization/locations">
                   <Button color="primary btn-block mb-6">
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
+                  </Button> 
                 </Link>
-              :
+                :
                 <HasPermissionWrapper permission="add"
-                                      resource="organizationclasstype">
-                  <Link to="/organization/classtypes/add">
+                                resource="organizationlocation">
+                  <Link to="/organization/locations/add">
                     <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('organization.classtypes.add')}
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.locations.add')}
                     </Button>
                   </Link>
                 </HasPermissionWrapper>
               }
-              <OrganizationMenu activeLink='classtypes'/>
+              <OrganizationMenu activeLink='locations'/>
             </Grid.Col>
           </Grid.Row>
         </Container>
       </div>
-    </SiteWrapper>          
+    </SiteWrapper>  
   )
 }
 
-export default withTranslation()(withRouter(OrganizationClasstypesBase))
+export default withTranslation()(withRouter(OrganizationLocationsBase))

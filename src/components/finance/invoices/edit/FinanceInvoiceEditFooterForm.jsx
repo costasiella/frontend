@@ -7,6 +7,7 @@ import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
 
 import {
+  Button,
   Dimmer,
   Form,
 } from "tabler-react"
@@ -15,33 +16,37 @@ import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 
 
-let footerFormTypingTimer
-const formSubmitTimeout = 750
-
 // Use editor as controlled component:
 // https://github.com/tinymce/tinymce-react/blob/master/README.md
 
-const FinanceInvoiceEditFooterForm = ({ t, isSubmitting, values, errors, handleChange, submitForm, setFieldTouched, setFieldValue }) => (
+const FinanceInvoiceEditFooterForm = ({ t, isSubmitting, values, errors, touched, handleChange, setFieldTouched, setFieldValue }) => (
   <Dimmer loader={isSubmitting} active={isSubmitting}>
     <FoForm>
       <Form.Group label={t('general.footer')}>
         <Editor
-            textareaName="footer"
-            initialValue={values.footer}
-            init={tinymceBasicConf}
-            onEditorChange={(content, editor) => {
-              clearTimeout(footerFormTypingTimer)
-              setFieldValue("footer", content)
-              setFieldTouched("footer", true)
-              footerFormTypingTimer = setTimeout(() => {
-                submitForm()
-              }, formSubmitTimeout)         
-            }}
-            onKeyDown={() => clearTimeout(footerFormTypingTimer)}
-            onBlur={() => setFieldTouched("footer", true)}
-          />
+          tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+          textareaName="footer"
+          initialValue={values.footer}
+          init={tinymceBasicConf}
+          onChange={(e) => {
+            handleChange(e)
+            setFieldTouched("footer", true, true)
+          }}
+          onBlur={(e) => {
+            setFieldValue("footer", e.target.getContent())
+            setFieldTouched("footer", true, true)
+          }}
+        />
         <ErrorMessage name="footer" component="span" className="invalid-feedback" />
       </Form.Group>
+      <Button 
+        color="primary"
+        className="pull-right" 
+        type="submit" 
+        disabled={isSubmitting}
+      >
+        {t('general.submit')}
+      </Button>
     </FoForm>
   </Dimmer>
 )

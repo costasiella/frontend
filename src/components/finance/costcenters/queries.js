@@ -31,3 +31,39 @@ export const GET_COSTCENTER_QUERY = gql`
     }
   }
 `
+
+export const ADD_COSTCENTER = gql`
+mutation CreateFinanceCostCenter($input:CreateFinanceCostCenterInput!) {
+  createFinanceCostcenter(input: $input) {
+    financeCostcenter{
+      id
+      archived
+      name
+      code
+    }
+  }
+}
+`
+
+export const UPDATE_COSTCENTER = gql`
+mutation UpdateFinanceCostCenter($input: UpdateFinanceCostCenterInput!) {
+  updateFinanceCostcenter(input: $input) {
+    financeCostcenter {
+      id
+      name
+      code
+    }
+  }
+}
+`
+
+export const ARCHIVE_COSTCENTER = gql`
+mutation ArchiveFinanceCostCenter($input: ArchiveFinanceCostCenterInput!) {
+  archiveFinanceCostcenter(input: $input) {
+    financeCostcenter {
+      id
+      archived
+    }
+  }
+}
+`

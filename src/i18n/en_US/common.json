@@ -32,8 +32,8 @@
             "rateType": "Tax rate type",
             "including": "Including",
             "excluding": "Excluding",
-            "title_edit": "Edit tax rate type",
-            "toast_edit_success": "Saved tax rate type",
+            "title_edit": "Edit tax rate",
+            "toast_edit_success": "Saved",
             "error_loading": "Error loading tax rates :(",
             "empty_list": "No tax rates found",
             "empty_archive": "Tax rate archive is empty",
@@ -145,7 +145,10 @@
             },
             "cancel_and_create_credit_invoice": "Cancel and create credit invoice",
             "now_editing_credit_invoice": "You're now editing the credit invoice",
-            "credit_invoice_for": "Credit invoice for"
+            "credit_invoice_for": "Credit invoice for",
+            "item": {
+                "toast_edit_success": "Saved item"
+            }
         },
         "orders": {
             "title": "Orders",
@@ -372,7 +375,6 @@
         "paid": "Paid",
         "options": "Options",
         "summary": "Summary",
-        "last_updated_at": "Last updated",
         "from": "From",
         "to": "To",
         "payments": "Payments",
@@ -533,7 +535,8 @@
             "title": "Class pass groups",
             "error_loading": "Error loading class pass groups :(",
             "empty_list": "No class pass groups found",
-            "add": "Add class pass group"
+            "add": "Add class pass group",
+            "toast_creating_might_take_a_while": "Creating a new classpass group might take a few minutes in case a large number of classes is defined."
         },
         "classtypes": {
             "title_add": "Add class type",
@@ -614,7 +617,6 @@
             "empty_list": "No rooms found for this location",
             "empty_archive": "No rooms have been archived yet for this location",
             "add": "Add room",
-            "error_loading": "Error loading rooms :(",
             "title_edit": "Edit room",
             "toast_edit_success": "Saved room"
         },
@@ -751,6 +753,9 @@
             "title_edit": "Edit announcement",
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
             "deleted": "Deleted announcement"
+        },
+        "locations_rooms": {
+            "error_loading": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {
