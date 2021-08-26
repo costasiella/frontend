@@ -19,7 +19,7 @@ import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 
 
 
-const FinanceInvoiceGroupForm = ({ t, history, isSubmitting, setFieldTouched, setFieldValue, errors, values, return_url, edit=false }) => (
+const FinanceInvoiceGroupForm = ({ t, history, isSubmitting, setFieldTouched, setFieldValue, errors, values, returnUrl, edit=false }) => (
   <FoForm>
     <Card.Body>
       <Grid.Row>
@@ -105,21 +105,27 @@ const FinanceInvoiceGroupForm = ({ t, history, isSubmitting, setFieldTouched, se
       </Grid.Row>
       <Form.Group label={t('general.terms')}>
         <Editor
+          tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
           textareaName="terms"
           initialValue={values.terms}
           init={tinymceBasicConf}
-          onChange={(e) => setFieldValue("terms", e.target.getContent())}
-          onBlur={() => setFieldTouched("terms", true)}
+          onBlur={(e) => {
+            setFieldTouched("terms", true, true)
+            setFieldValue("terms", e.target.getContent())
+          }}
         />
         <ErrorMessage name="terms" component="span" className="invalid-feedback" />
       </Form.Group>
       <Form.Group label={t('general.footer')}>
         <Editor
+          tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
           textareaName="footer"
           initialValue={values.footer}
           init={tinymceBasicConf}
-          onChange={(e) => setFieldValue("footer", e.target.getContent())}
-          onBlur={() => setFieldTouched("footer", true)}
+          onBlur={(e) => {
+            setFieldTouched("terms", true, true)
+            setFieldValue("terms", e.target.getContent())
+          }}
         />
         <ErrorMessage name="footer" component="span" className="invalid-feedback" />
       </Form.Group>
@@ -140,7 +146,7 @@ const FinanceInvoiceGroupForm = ({ t, history, isSubmitting, setFieldTouched, se
         >
           {t('general.submit')}
         </Button>
-        <Link to={return_url}>
+        <Link to={returnUrl}>
           <Button 
             type="button" 
             color="link">

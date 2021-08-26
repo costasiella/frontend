@@ -48,6 +48,27 @@ export const GET_INVOICE_GROUP_QUERY = gql`
   }
 `
 
+export const ADD_INVOICE_GROUP = gql`
+mutation CreateFinanceInvoiceGroup($input:CreateFinanceInvoiceGroupInput!) {
+  createFinanceInvoiceGroup(input: $input) {
+    financeInvoiceGroup{
+      id
+      archived
+      displayPublic
+      name
+      nextId
+      dueAfterDays
+      prefix
+      prefixYear
+      autoResetPrefixYear
+      terms
+      footer
+      code
+    }
+  }
+}
+`
+
 export const ARCHIVE_INVOICE_GROUP = gql`
 mutation ArchiveFinanceInvoiceGroup($input: ArchiveFinanceInvoiceGroupInput!) {
   archiveFinanceInvoiceGroup(input: $input) {
