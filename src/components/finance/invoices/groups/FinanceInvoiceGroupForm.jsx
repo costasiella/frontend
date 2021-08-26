@@ -123,8 +123,8 @@ const FinanceInvoiceGroupForm = ({ t, history, isSubmitting, setFieldTouched, se
           initialValue={values.footer}
           init={tinymceBasicConf}
           onBlur={(e) => {
-            setFieldTouched("terms", true, true)
-            setFieldValue("terms", e.target.getContent())
+            setFieldTouched("footer", true, true)
+            setFieldValue("footer", e.target.getContent())
           }}
         />
         <ErrorMessage name="footer" component="span" className="invalid-feedback" />
