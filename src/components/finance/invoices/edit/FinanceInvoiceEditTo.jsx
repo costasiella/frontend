@@ -36,7 +36,7 @@ function FinanceInvoiceEditTo({ t, history, match, initialData }) {
             relationCountry: initialData.financeInvoice.relationCountry, 
           }}
           // validationSchema={INVOICE_GROUP_SCHEMA}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, setTouched }) => {
             console.log('submit values:')
             console.log(values)
 
@@ -61,6 +61,7 @@ function FinanceInvoiceEditTo({ t, history, match, initialData }) {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
                 setSubmitting(false)
+                setTouched({})
               }).catch((error) => {
                 toast.error((t('general.toast_server_error')) + ': ' +  error, {
                     position: toast.POSITION.BOTTOM_RIGHT
