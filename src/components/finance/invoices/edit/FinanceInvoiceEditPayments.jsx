@@ -6,6 +6,8 @@ import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
 import {
+  Button,
+  Card,
   Icon, 
   Table
 } from "tabler-react"
@@ -23,13 +25,19 @@ function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputD
   const paymentAddUrl = `/finance/invoices/${id}/payment/add`
 
   return (
-    <div>
-        <Link 
-          to={paymentAddUrl} 
-          className='btn btn-primary btn-sm float-right'>
-          <Icon prefix="fe" name="dollar-sign" /> {t('finance.invoice.payments.add')} 
-        </Link>
-        <Table>
+    <Card statusColor="blue">
+      <Card.Header>
+        <Card.Title>{t('general.payments')}</Card.Title>
+        <Card.Options>
+          {/* <FinanceInvoiceItemAdd /> */}
+          <Link to={paymentAddUrl}>
+            <Button className="btn-sm" color="primary">
+              <Icon prefix="fe" name="plus" /> {t('finance.invoice.payments.add')} 
+            </Button>
+          </Link>
+        </Card.Options>
+      </Card.Header>
+        <Table cards>
           <Table.Header>
             <Table.Row>
               <Table.ColHeader>{t("general.date")}</Table.ColHeader>
@@ -68,7 +76,7 @@ function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputD
             ))}
           </Table.Body>
         </Table>
-    </div>
+      </Card>
   )
 }
 

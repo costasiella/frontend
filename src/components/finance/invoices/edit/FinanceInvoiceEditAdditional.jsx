@@ -19,7 +19,6 @@ import { UPDATE_INVOICE, GET_INVOICE_QUERY } from "../queries"
 import FinanceInvoiceEditTermsForm from "./FinanceInvoiceEditTermsForm"
 import FinanceInvoiceEditFooterForm from "./FinanceInvoiceEditFooterForm"
 import FinanceInvoiceEditNoteForm from "./FinanceInvoiceEditNoteForm"
-import FinanceInvoiceEditPayments from "./FinanceInvoiceEditPayments"
 
 
 function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
@@ -168,9 +167,6 @@ function FinanceInvoiceEditAdditional({t, history, match, initialData}) {
             </FinanceInvoiceEditNoteForm>
           )}
         </Formik>
-      </Tab>
-      <Tab title={t('general.payments')}>
-        <FinanceInvoiceEditPayments inputData={initialData} />
       </Tab>
     </TabbedCard>
   )

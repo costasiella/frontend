@@ -1,7 +1,6 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -19,14 +18,9 @@ import {
   Grid,
   Icon,
   Button,
-  Card,
-  Container,
-  Form
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import FinanceMenu from "../../FinanceMenu"
 
 import CSLS from "../../../../tools/cs_local_storage"
 
@@ -38,7 +32,7 @@ import FinanceInvoiceEditOptions from "./FinanceInvoiceEditOptions"
 import FinanceInvoiceEditOrganization from "./FinanceInvoiceEditOrganization"
 import FinanceInvoiceEditSummary from "./FinanceInvoiceEditSummary"
 import FinanceInvoiceEditTo from "./FinanceInvoiceEditTo"
-
+import FinanceInvoiceEditPayments from "./FinanceInvoiceEditPayments"
 
 function FinanceInvoiceEdit({t, match, history}) {
   const id = match.params.id
@@ -159,6 +153,7 @@ function FinanceInvoiceEdit({t, match, history}) {
         <Grid.Col md={12}>
           <FinanceInvoiceEditItems inputData={data} refetchInvoice={refetch} />
           <FinanceInvoiceEditAdditional initialData={data} />
+          <FinanceInvoiceEditPayments inputData={data} />
         </Grid.Col>
       </Grid.Row>
     </FinanceInvoiceEditBase>
