@@ -37,6 +37,18 @@ query Accounts(
         lastName
         email
         isActive
+        subscriptions(last: 2) {
+          edges {
+            node {
+              organizationSubscription {
+                id
+                name
+              }
+              dateStart
+              dateEnd
+            }
+          }
+        }
         classpasses(last: 2) {
           edges {
             node {

@@ -75,7 +75,8 @@ function RelationsAccounts({t, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const {loading, error, data, fetchMore, refetch} = useQuery(GET_ACCOUNTS_QUERY, {
-    variables: get_list_query_variables()
+    variables: get_list_query_variables(),
+    fetchPolicy: "network-only"
   })
   const [updateAccountActive] = useMutation(UPDATE_ACCOUNT_ACTIVE)
   const [deleteAccount] = useMutation(DELETE_ACCOUNT)
@@ -193,6 +194,27 @@ function RelationsAccounts({t, history}) {
                       </span> : null}
                   </Table.Col>
                   <Table.Col key={v4()}>
+                    {(node.subscriptions) ? 
+                      // This is a workaround that reserves the array. Not yet figured out how to get the sorting right on subqueries in the backend
+                      node.subscriptions.edges.slice(0).reverse().map(({ node: subscription }) => (
+                        <div>
+                          <small>
+                          <Icon name="edit" /> {' '}
+                          { subscription.organizationSubscription.name } <br />
+                          <div className="text-muted ">
+                            <small>
+                              { moment(subscription.dateStart).format(dateFormat) } 
+                              {(subscription.dateEnd) ? 
+                                <span> - {moment(subscription.dateEnd).format(dateFormat)}</span>  
+                                : ""
+                              }
+                            </small>
+                          </div>
+                          </small>
+                        </div>
+                      )) 
+                      : ""
+                    }
                     {(node.classpasses) ? 
                       // This is a workaround that reserves the array. Not yet figured out how to get the sorting right on subqueries in the backend
                       node.classpasses.edges.slice(0).reverse().map(({ node: classpass }) => (
