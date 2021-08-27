@@ -1,46 +1,60 @@
 import { gql } from "@apollo/client"
 
 export const GET_ACCOUNTS_QUERY = gql`
-  query Accounts(
-    $after: String, 
-    $before: String, 
-    $isActive: Boolean!, 
-    $searchName: String,
-    $customer: Boolean,
-    $teacher: Boolean,
-    $employee: Boolean
-    
+query Accounts(
+  $after: String, 
+  $before: String, 
+  $isActive: Boolean!, 
+  $searchName: String,
+  $customer: Boolean,
+  $teacher: Boolean,
+  $employee: Boolean
+  
+) {
+  accounts(
+    first: 15, 
+    before: $before, 
+    after: $after, 
+    isActive: $isActive, 
+    fullName_Icontains: $searchName,
+    customer: $customer,
+    teacher: $teacher,
+    employee: $employee
   ) {
-    accounts(
-      first: 15, 
-      before: $before, 
-      after: $after, 
-      isActive: $isActive, 
-      fullName_Icontains: $searchName,
-      customer: $customer,
-      teacher: $teacher,
-      employee: $employee
-    ) {
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        startCursor
-        endCursor
-      }
-      edges {
-        node {
-          id
-          customer
-          teacher
-          employee
-          firstName
-          lastName
-          email
-          isActive
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        id
+        customer
+        teacher
+        employee
+        firstName
+        lastName
+        email
+        isActive
+        classpasses(first: 3) {
+          edges {
+            node {
+              id
+              organizationClasspass {
+                id
+              }
+              dateStart
+              dateEnd
+              classesRemaining
+              isExpired
+            }
+          }
         }
       }
     }
   }
+}
 `
 
 export const GET_ACCOUNT_QUERY = gql`
