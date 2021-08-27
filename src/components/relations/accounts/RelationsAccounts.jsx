@@ -171,7 +171,7 @@ function RelationsAccounts({t, history}) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-              <Table.ColHeader>products</Table.ColHeader>
+              <Table.ColHeader>{t('general.products')}</Table.ColHeader>
               {/* <Table.ColHeader>{t('general.info')}</Table.ColHeader> */}
             </Table.Row>
           </Table.Header>
