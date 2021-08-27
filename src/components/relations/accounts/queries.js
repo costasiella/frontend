@@ -35,6 +35,7 @@ query Accounts(
         employee
         firstName
         lastName
+        fullName
         email
         isActive
         subscriptions(last: 2) {

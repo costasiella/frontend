@@ -179,7 +179,7 @@ function RelationsAccounts({t, history}) {
               {accounts.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
-                    {node.firstName} {node.lastName} 
+                    <span className="bold">{node.fullName}</span>
                     <div className="text-muted">
                       <a href={`mailto:${node.email}`}>{node.email}</a>
                     </div>
