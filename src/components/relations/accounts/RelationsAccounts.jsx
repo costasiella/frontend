@@ -1,11 +1,12 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
+import { Link } from "react-router-dom"
+import moment from 'moment'
 
 import {
   Badge,
@@ -26,6 +27,7 @@ import ContentCard from "../../general/ContentCard"
 import RelationsAccountsBase from "./RelationsAccountsBase"
 import { GET_ACCOUNTS_QUERY, UPDATE_ACCOUNT_ACTIVE, DELETE_ACCOUNT } from "./queries"
 import { get_list_query_variables } from "./tools"
+import AppSettingsContext from '../../context/AppSettingsContext'
 
 // Set some initial value for isActive, if not found
 if (!localStorage.getItem(CSLS.RELATIONS_ACCOUNTS_IS_ACTIVE)) {
@@ -70,8 +72,11 @@ const confirm_delete = ({t, msgConfirm, msgDescription, msgSuccess, deleteFuncti
 
 
 function RelationsAccounts({t, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
   const {loading, error, data, fetchMore, refetch} = useQuery(GET_ACCOUNTS_QUERY, {
-    variables: get_list_query_variables()
+    variables: get_list_query_variables(),
+    fetchPolicy: "network-only"
   })
   const [updateAccountActive] = useMutation(UPDATE_ACCOUNT_ACTIVE)
   const [deleteAccount] = useMutation(DELETE_ACCOUNT)
@@ -166,21 +171,71 @@ function RelationsAccounts({t, history}) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.email')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.info')}</Table.ColHeader>
+              <Table.ColHeader>products</Table.ColHeader>
+              {/* <Table.ColHeader>{t('general.info')}</Table.ColHeader> */}
             </Table.Row>
           </Table.Header>
           <Table.Body>
               {accounts.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
-                    {node.firstName} {node.lastName}
+                    {node.firstName} {node.lastName} 
+                    <div className="text-muted">
+                      <a href={`mailto:${node.email}`}>{node.email}</a>
+                    </div>
+                    {(node.customer) ? <span>
+                        <Badge color="primary" className="mr-1">{t("general.customer")}</Badge>
+                      </span> : null}
+                    {(node.teacher) ? <span>
+                        <Badge color="info" className="mr-1">{t("general.teacher")}</Badge>
+                      </span> : null}
+                    {(node.employee) ? <span>
+                        <Badge color="secondary">{t("general.employee")}</Badge>
+                      </span> : null}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.email}
+                    {(node.subscriptions) ? 
+                      // This is a workaround that reserves the array. Not yet figured out how to get the sorting right on subqueries in the backend
+                      node.subscriptions.edges.slice(0).reverse().map(({ node: subscription }) => (
+                        <div>
+                          <small>
+                          <Icon name="edit" /> {' '}
+                          { subscription.organizationSubscription.name } <br />
+                          <div className="text-muted ">
+                            <small>
+                              { moment(subscription.dateStart).format(dateFormat) } 
+                              {(subscription.dateEnd) ? 
+                                <span> - {moment(subscription.dateEnd).format(dateFormat)}</span>  
+                                : ""
+                              }
+                            </small>
+                          </div>
+                          </small>
+                        </div>
+                      )) 
+                      : ""
+                    }
+                    {(node.classpasses) ? 
+                      // This is a workaround that reserves the array. Not yet figured out how to get the sorting right on subqueries in the backend
+                      node.classpasses.edges.slice(0).reverse().map(({ node: classpass }) => (
+                        <div>
+                          <small>
+                          <Icon name="credit-card" /> {' '}
+                          { classpass.organizationClasspass.name } <br />
+                          <div className="text-muted ">
+                            <small>
+                              { moment(classpass.dateStart).format(dateFormat) } {" - "}
+                              { moment(classpass.dateEnd).format(dateFormat)} { " | " }  
+                              { t("general.classes_remaining") }: { classpass.classesRemainingDisplay }
+                            </small>
+                          </div>
+                          </small>
+                        </div>
+                      )) 
+                      : ""
+                    }
                   </Table.Col>
-                  <Table.Col key={v4()}>
-                    {/* {console.log(node)} */}
+                  {/* <Table.Col key={v4()}>
                     {(node.customer) ? <span>
                         <Badge color="primary" className="mb-1">{t("general.customer")}</Badge> <br />
                       </span> : null}
@@ -190,15 +245,16 @@ function RelationsAccounts({t, history}) {
                     {(node.employee) ? <span>
                         <Badge color="secondary" className="mb-1">{t("general.employee")}</Badge> <br />
                       </span> : null}
-                  </Table.Col>
+                  </Table.Col> */}
                   <Table.Col className="text-right" key={v4()}>
                     {(!node.isActive) ? 
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                      <Button className='btn-sm' 
-                              onClick={() => history.push("/relations/accounts/" + node.id + "/profile")}
-                              color="secondary">
-                        {t('general.edit')}
-                      </Button>
+                      <Link to={`/relations/accounts/${node.id}/profile`}>
+                        <Button className='btn-sm' 
+                                color="secondary">
+                          {t('general.edit')}
+                        </Button>
+                      </Link>
                     }
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
