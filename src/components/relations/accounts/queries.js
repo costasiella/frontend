@@ -37,16 +37,18 @@ query Accounts(
         lastName
         email
         isActive
-        classpasses(first: 3) {
+        classpasses(last: 2) {
           edges {
             node {
               id
               organizationClasspass {
                 id
+                name
               }
               dateStart
               dateEnd
               classesRemaining
+              classesRemainingDisplay
               isExpired
             }
           }
