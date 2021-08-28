@@ -473,7 +473,9 @@
         "memberships": "Memberships",
         "events": "Events",
         "please_wait": "Please wait...",
-        "products": "Products"
+        "products": "Products",
+        "discovery": "Discovery",
+        "language": "Language"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

@@ -232,7 +232,9 @@
         "memberships": "__STRING_NOT_TRANSLATED__",
         "events": "__STRING_NOT_TRANSLATED__",
         "please_wait": "__STRING_NOT_TRANSLATED__",
-        "products": "__STRING_NOT_TRANSLATED__"
+        "products": "__STRING_NOT_TRANSLATED__",
+        "discovery": "__STRING_NOT_TRANSLATED__",
+        "language": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",
