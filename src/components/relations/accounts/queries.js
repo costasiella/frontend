@@ -92,6 +92,28 @@ export const GET_ACCOUNT_QUERY = gql`
       mobile
       emergency
       isActive
+      organizationDiscovery {
+        id
+      }
+      organizationLanguage {
+        id
+      }
+    }
+    organizationDiscoveries(first: 100){
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    organizationLanguages(first: 100) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
     }
   }
 `

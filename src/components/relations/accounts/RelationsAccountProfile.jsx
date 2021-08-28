@@ -78,6 +78,32 @@ function RelationsAccountProfile({t, match}) {
     dateOfBirth = new Date(account.dateOfBirth)
   }
 
+  let initialValues = { 
+    customer: account.customer, 
+    teacher: account.teacher, 
+    employee: account.employee, 
+    firstName: account.firstName, 
+    lastName: account.lastName, 
+    email: account.email,
+    dateOfBirth: dateOfBirth,
+    gender: account.gender,
+    emergency: account.emergency,
+    phone: account.phone,
+    mobile: account.mobile,
+    address: account.address,
+    postcode: account.postcode,
+    city: account.city,
+    country: account.country,
+  }
+
+  if (account.organizationDiscovery) {
+    initialValues.organizationDiscovery = account.organizationDiscovery.id
+  }
+
+  if (account.organizationLanguage) {
+    initialValues.organizationLanguage = account.organizationLanguage.id
+  }
+
   return (
     <RelationsAccountProfileBase 
       user={account}
@@ -89,23 +115,7 @@ function RelationsAccountProfile({t, match}) {
         </Card.Header>
         <Card.Body>
         <Formik
-            initialValues={{ 
-              customer: account.customer, 
-              teacher: account.teacher, 
-              employee: account.employee, 
-              firstName: account.firstName, 
-              lastName: account.lastName, 
-              email: account.email,
-              dateOfBirth: dateOfBirth,
-              gender: account.gender,
-              emergency: account.emergency,
-              phone: account.phone,
-              mobile: account.mobile,
-              address: account.address,
-              postcode: account.postcode,
-              city: account.city,
-              country: account.country,
-            }}
+            initialValues={initialValues}
             validationSchema={ACCOUNT_SCHEMA}
             onSubmit={(values, { setSubmitting }) => {
                 console.log('submit values:')
@@ -126,7 +136,9 @@ function RelationsAccountProfile({t, match}) {
                   address: values.address,
                   postcode: values.postcode,
                   city: values.city,
-                  country: values.country
+                  country: values.country,
+                  organizationDiscovery: values.organizationDiscovery,
+                  organizationLanguage: values.organizationLanguage
                 }
 
                 if (values.dateOfBirth) {
@@ -163,6 +175,7 @@ function RelationsAccountProfile({t, match}) {
                 setFieldValue={setFieldValue}
                 errors={errors}
                 values={values}
+                inputData={data}
               />
             )}
           </Formik>

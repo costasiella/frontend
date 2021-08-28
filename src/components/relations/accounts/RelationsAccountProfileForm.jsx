@@ -19,7 +19,7 @@ import CSDatePicker from "../../ui/CSDatePicker"
 import ISO_COUNTRY_CODES from "../../../tools/iso_country_codes"
 
 
-const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values, return_url, setFieldTouched, setFieldValue }) => (
+const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values, inputData, setFieldTouched, setFieldValue }) => (
   <FoForm>
       <Card.Body>
         <Grid.Row>
@@ -197,6 +197,36 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
             </Form.Group> 
           </Grid.Col>
         </Grid.Row>
+        <Grid.Row>
+          <Grid.Col>
+            <Form.Group label={t('general.discovery')}>
+              <Field component="select" 
+                    name="organizationDiscovery" 
+                    className={(errors.organizationDiscovery) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off">
+                <option value="" key={v4()}></option>
+                {inputData.organizationDiscoveries.edges.map(({ node }) =>
+                  <option value={node.id} key={v4()}>{node.name}</option>
+                )}
+              </Field>
+              <ErrorMessage name="organizationDiscovery" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
+          <Grid.Col>
+            <Form.Group label={t('general.language')}>
+              <Field component="select" 
+                    name="organizationLanguage" 
+                    className={(errors.organizationLanguage) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off">
+                <option value="" key={v4()}></option>
+                {inputData.organizationLanguages.edges.map(({ node }) =>
+                  <option value={node.id} key={v4()}>{node.name}</option>
+                )}
+              </Field>
+              <ErrorMessage name="organizationLanguage" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
+        </Grid.Row> 
       </Card.Body>
       <Card.Footer>
           <Button 
