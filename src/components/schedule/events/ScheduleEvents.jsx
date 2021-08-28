@@ -34,6 +34,13 @@ import ScheduleEventArchive from "./ScheduleEventArchive"
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
+
+// Set some initial values for dates, if not found
+if (!localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED)) {
+  localStorage.setItem(CSLS.SCHEDULE_EVENTS_ARCHIVED, false) 
+} 
+
+
 function ScheduleEvents({t, history}) {
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_SCHEDULE_EVENTS_QUERY, {
     variables: get_list_query_variables()
