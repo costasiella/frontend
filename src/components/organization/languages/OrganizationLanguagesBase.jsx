@@ -40,7 +40,7 @@ function OrganizationLanguagesBase({t, history, children, showBack=false}) {
                                       resource="organizationlanguage">
                   <Link to="/organization/languages/add">
                     <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('organization.levels.add')}
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.languages.add')}
                     </Button>
                   </Link>
                 </HasPermissionWrapper>
