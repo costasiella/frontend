@@ -40,6 +40,15 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
+            to="#/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA="
+            icon="layout"
+            active={organization_active}
+            >
+            {t('organization.organization.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
             to="#/organization/locations"
             icon="home"
             active={locations_active}
@@ -49,29 +58,11 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
-            to="#/organization/levels"
-            icon="tag"
-            active={levels_active}
-            >
-            {t('organization.levels.title')}
-        </List.GroupItem>
-        <List.GroupItem
-            key={v4()}
-            className="d-flex align-items-center"
             to="#/organization/classtypes"
             icon="book-open"
             active={classtypes_active}
             >
             {t('organization.classtypes.title')}
-        </List.GroupItem>
-        <List.GroupItem
-            key={v4()}
-            className="d-flex align-items-center"
-            to="#/organization/discoveries"
-            icon="compass"
-            active={discoveries_active}
-            >
-            {t('organization.discoveries.title')}
         </List.GroupItem>
         {/* <List.GroupItem
             key={v4()}
@@ -112,11 +103,20 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
-            to="#/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA="
-            icon="layout"
-            active={organization_active}
+            to="#/organization/levels"
+            icon="tag"
+            active={levels_active}
             >
-            {t('organization.organization.title')}
+            {t('organization.levels.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
+            to="#/organization/discoveries"
+            icon="compass"
+            active={discoveries_active}
+            >
+            {t('organization.discoveries.title')}
         </List.GroupItem>
         <List.GroupItem
             key={v4()}
