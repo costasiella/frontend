@@ -58,7 +58,7 @@ function OrganizationLevels({t, history}) {
   if (error) return (
     <OrganizationLevelsBase>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('organization.subscriptions.error_loading')}</p>
+        <p>{t('organization.levels.error_loading')}</p>
       </ContentCard>
     </OrganizationLevelsBase>
   )
