@@ -56,7 +56,7 @@ function OrganizationLanguages({t, history}) {
   if (error) return (
     <OrganizationLanguagesBase>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('organization.subscriptions.error_loading')}</p>
+        <p>{t('organization.languages.error_loading')}</p>
       </ContentCard>
     </OrganizationLanguagesBase>
   )
