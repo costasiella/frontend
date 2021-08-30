@@ -85,6 +85,11 @@ class OrganizationHome extends Component {
                     </Link>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
+                    <Link to='/organization/languages'>
+                      <StampCard header={<small>{t('organization.languages.title')}</small>} footer={t('')} color="blue" icon="flag" />
+                    </Link>
+                  </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
                     <Link to='/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=/branding'>
                       <StampCard header={<small>{t('organization.organization.branding.title')}</small>} footer={t('')} color="blue" icon="image" />
                     </Link>
