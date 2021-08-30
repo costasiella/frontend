@@ -106,6 +106,8 @@ import OrganizationListDocuments from './components/organization/organization/do
 import OrganizationDocumentAdd from './components/organization/organization/documents/OrganizationDocumentAdd'
 import OrganizationDocumentEdit from './components/organization/organization/documents/OrganizationDocumentEdit'
 import OrganizationLanguages from './components/organization/languages/OrganizationLanguages'
+import OrganizationLanguageAdd from './components/organization/languages/OrganizationLanguageAdd'
+import OrganizationLanguageEdit from './components/organization/languages/OrganizationLanguageEdit'
 import OrganizationLocations from './components/organization/locations/OrganizationLocations'
 import OrganizationLocationAdd from './components/organization/locations/OrganizationLocationAdd'
 import OrganizationLocationEdit from './components/organization/locations/OrganizationLocationEdit'
@@ -455,6 +457,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/discoveries/add" component={OrganizationDiscoveryAdd} /> 
             <PrivateRoute exact path="/organization/discoveries/edit/:id" component={OrganizationDiscoveryEdit} /> 
             <PrivateRoute exact path="/organization/languages" component={OrganizationLanguages} />
+            <PrivateRoute exact path="/organization/languages/add" component={OrganizationLanguageAdd} />
+            <PrivateRoute exact path="/organization/languages/edit/:id" component={OrganizationLanguageEdit} />
             <PrivateRoute exact path="/organization/levels" component={OrganizationLevels} />
             <PrivateRoute exact path="/organization/levels/add" component={OrganizationLevelAdd} />
             <PrivateRoute exact path="/organization/levels/edit/:id" component={OrganizationLevelEdit} />
