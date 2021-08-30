@@ -616,7 +616,8 @@
             "empty_archive": "No rooms have been archived yet for this location",
             "add": "Add room",
             "title_edit": "Edit room",
-            "toast_edit_success": "Saved room"
+            "toast_edit_success": "Saved room",
+            "error_loading": "Error loading rooms :("
         },
         "location_room": {
             "public": "This is a public room"
@@ -752,8 +753,11 @@
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
             "deleted": "Deleted announcement"
         },
-        "locations_rooms": {
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+        "languages": {
+            "title": "Languages",
+            "error_loading": "Error loading languages :(",
+            "empty_list": "No languages have been defined yet.",
+            "empty_archive": "No languages have been archived yet."
         }
     },
     "validity": {

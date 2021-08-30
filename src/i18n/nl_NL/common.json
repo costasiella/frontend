@@ -1084,7 +1084,8 @@
             "title": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "add": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__"
         },
         "location_room": {
             "public": "__STRING_NOT_TRANSLATED__"
@@ -1159,8 +1160,11 @@
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__"
         },
-        "locations_rooms": {
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+        "languages": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "empty_archive": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {
