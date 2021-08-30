@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_LANGUAGES_QUERY = gql`
   query OrganizationLanguages($after: String, $before: String, $archived: Boolean) {
-    organizationLanguags(first: 15, before: $before, after: $after, archived: $archived) {
+    organizationLanguages(first: 15, before: $before, after: $after, archived: $archived) {
       pageInfo {
         startCursor
         endCursor
