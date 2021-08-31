@@ -1654,18 +1654,18 @@
     "insight": {
         "classpasses": {
             "sold": {
-                "title": "Sold classpasses",
+                "title": "Sold class passes",
                 "export_excel": "Export sold as Excel"
             },
             "active": {
-                "title": "Active classpasses",
+                "title": "Active class passes",
                 "export_excel": "Export active as Excel"
             },
-            "title": "classpasses"
+            "title": "Class passes"
         },
         "title": "Insight",
         "classpass": {
-            "title": "Classpasses"
+            "title": "Class passes"
         },
         "subscriptions": {
             "title": "Subscriptions",
