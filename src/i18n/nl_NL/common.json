@@ -234,7 +234,8 @@
         "please_wait": "__STRING_NOT_TRANSLATED__",
         "products": "__STRING_NOT_TRANSLATED__",
         "discovery": "__STRING_NOT_TRANSLATED__",
-        "language": "__STRING_NOT_TRANSLATED__"
+        "language": "__STRING_NOT_TRANSLATED__",
+        "key_number": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",

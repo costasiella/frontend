@@ -94,6 +94,7 @@ function RelationsAccountProfile({t, match}) {
     postcode: account.postcode,
     city: account.city,
     country: account.country,
+    keyNumber: account.keyNumber
   }
 
   if (account.organizationDiscovery) {
@@ -137,6 +138,7 @@ function RelationsAccountProfile({t, match}) {
                   postcode: values.postcode,
                   city: values.city,
                   country: values.country,
+                  keyNumber: values.keyNumber,
                   organizationDiscovery: values.organizationDiscovery,
                   organizationLanguage: values.organizationLanguage
                 }

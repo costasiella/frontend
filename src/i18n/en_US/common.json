@@ -475,7 +475,8 @@
         "please_wait": "Please wait...",
         "products": "Products",
         "discovery": "Discovery",
-        "language": "Language"
+        "language": "Language",
+        "key_number": "Door key number"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

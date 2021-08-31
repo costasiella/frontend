@@ -17,6 +17,7 @@ import {
 
 import CSDatePicker from "../../ui/CSDatePicker"
 import ISO_COUNTRY_CODES from "../../../tools/iso_country_codes"
+import { GraphQLID } from 'graphql'
 
 
 const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values, inputData, setFieldTouched, setFieldValue }) => (
@@ -227,6 +228,20 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
             </Form.Group>
           </Grid.Col>
         </Grid.Row> 
+        <Grid.Row>
+          <Grid.Col>
+            <Form.Group label={t('general.key_number')}>
+              <Field type="text" 
+                      name="keyNumber" 
+                      className={(errors.keyNumber) ? "form-control is-invalid" : "form-control"} 
+                      autoComplete="off" />
+              <ErrorMessage name="keyNumber" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
+          <Grid.Col>
+
+          </Grid.Col>
+        </Grid.Row>
       </Card.Body>
       <Card.Footer>
           <Button 
