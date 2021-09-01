@@ -28,10 +28,6 @@ const FinanceInvoiceEditFooterForm = ({ t, isSubmitting, values, errors, touched
           textareaName="footer"
           initialValue={values.footer}
           init={tinymceBasicConf}
-          onChange={(e) => {
-            handleChange(e)
-            setFieldTouched("footer", true, true)
-          }}
           onBlur={(e) => {
             setFieldValue("footer", e.target.getContent())
             setFieldTouched("footer", true, true)

@@ -6,8 +6,6 @@ import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
-
-
 import {
   Icon,
   Dimmer,
@@ -18,18 +16,18 @@ import {
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../general/ContentCard"
-import OrganizationLevelsBase from './OrganizationLevelsBase'
+import OrganizationLanguagesBase from './OrganizationLanguagesBase'
 
-import { GET_LEVELS_QUERY, ARCHIVE_LEVEL } from "./queries"
+import { GET_LANGUAGES_QUERY, ARCHIVE_LANGUAGE } from "./queries"
 
 
-function OrganizationLevels({t, history}) {
+function OrganizationLanguages({t, history}) {
   let [archived, setArchived] = useState(false)
-  const cardTitle = t('organization.levels.title')
-  const { loading, error, data, refetch, fetchMore } = useQuery(GET_LEVELS_QUERY, {
+  const cardTitle = t('organization.languages.title')
+  const { loading, error, data, refetch, fetchMore } = useQuery(GET_LANGUAGES_QUERY, {
     variables: { archived: archived }
   })
-  const [ archiveLevel ] = useMutation(ARCHIVE_LEVEL)
+  const [ archiveLanguage ] = useMutation(ARCHIVE_LANGUAGE)
 
   const headerOptions = <Card.Options>
     <Button color={(!archived) ? 'primary': 'secondary'}  
@@ -46,60 +44,60 @@ function OrganizationLevels({t, history}) {
   </Card.Options>
 
   if (loading) return (
-    <OrganizationLevelsBase>
+    <OrganizationLanguagesBase>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
         </Dimmer>
       </ContentCard>
-    </OrganizationLevelsBase>
+    </OrganizationLanguagesBase>
   )
 
   if (error) return (
-    <OrganizationLevelsBase>
+    <OrganizationLanguagesBase>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('organization.levels.error_loading')}</p>
+        <p>{t('organization.languages.error_loading')}</p>
       </ContentCard>
-    </OrganizationLevelsBase>
+    </OrganizationLanguagesBase>
   )
 
-  let levels = data.organizationLevels
+  let languages = data.organizationLanguages
 
   // Empty list
-  if (!levels.edges.length) { return (
-    <OrganizationLevelsBase>
-      <ContentCard cardTitle={t('organization.levels.title')}
+  if (!languages.edges.length) { return (
+    <OrganizationLanguagesBase>
+      <ContentCard cardTitle={t('organization.languages.title')}
                     headerContent={headerOptions}>
         <p>
-          {(!archived) ? t('organization.levels.empty_list') : t("organization.levels.empty_archive")}
+          {(!archived) ? t('organization.languages.empty_list') : t("organization.languages.empty_archive")}
         </p>
       </ContentCard>
-    </OrganizationLevelsBase>
+    </OrganizationLanguagesBase>
   )}
 
 
   return (
-    <OrganizationLevelsBase>
+    <OrganizationLanguagesBase>
       <ContentCard 
         cardTitle={cardTitle}
         headerContent={headerOptions}
-        pageInfo={levels.pageInfo}
+        pageInfo={languages.pageInfo}
         onLoadMore={() => {
         fetchMore({
           variables: {
-            after: levels.pageInfo.endCursor
+            after: languages.pageInfo.endCursor
           },
           updateQuery: (previousResult, { fetchMoreResult }) => {
-            const newEdges = fetchMoreResult.organizationLevels.edges
-            const pageInfo = fetchMoreResult.organizationLevels.pageInfo
+            const newEdges = fetchMoreResult.organizationLanguages.edges
+            const pageInfo = fetchMoreResult.organizationLanguages.pageInfo
 
             return newEdges.length
               ? {
-                  // Put the new levels at the end of the list and update `pageInfo`
+                  // Put the new languages at the end of the list and update `pageInfo`
                   // so we have the new `endCursor` and `hasNextPage` values
-                  organizationLevels: {
-                    __typename: previousResult.organizationLevels.__typename,
-                    edges: [ ...previousResult.organizationLevels.edges, ...newEdges ],
+                  organizationLanguages: {
+                    __typename: previousResult.organizationLanguages.__typename,
+                    edges: [ ...previousResult.organizationLanguages.edges, ...newEdges ],
                     pageInfo
                   }
                 }
@@ -114,7 +112,7 @@ function OrganizationLevels({t, history}) {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-              {levels.edges.map(({ node }) => (
+              {languages.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
                     {node.name}
@@ -123,7 +121,7 @@ function OrganizationLevels({t, history}) {
                     {(node.archived) ? 
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
                       <Button className='btn-sm' 
-                              onClick={() => history.push("/organization/levels/edit/" + node.id)}
+                              onClick={() => history.push("/organization/languages/edit/" + node.id)}
                               color="secondary">
                         {t('general.edit')}
                       </Button>
@@ -134,13 +132,13 @@ function OrganizationLevels({t, history}) {
                         onClick={() => {
                           console.log("clicked archived")
                           let id = node.id
-                          archiveLevel({ variables: {
+                          archiveLanguage({ variables: {
                             input: {
                             id,
                             archived: !archived
                             }
                     }, refetchQueries: [
-                        {query: GET_LEVELS_QUERY, variables: {"archived": archived }}
+                        {query: GET_LANGUAGES_QUERY, variables: {"archived": archived }}
                     ]}).then(({ data }) => {
                       console.log('got data', data);
                       toast.success(
@@ -162,10 +160,8 @@ function OrganizationLevels({t, history}) {
           </Table.Body>
         </Table>
       </ContentCard>
-    </OrganizationLevelsBase>
+    </OrganizationLanguagesBase>
   )
 }
 
-
-
-export default withTranslation()(withRouter(OrganizationLevels))
+export default withTranslation()(withRouter(OrganizationLanguages))

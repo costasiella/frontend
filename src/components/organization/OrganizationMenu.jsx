@@ -13,6 +13,7 @@ import HasPermissionWrapper from "../HasPermissionWrapper"
 let classpasses_active
 let classtypes_active
 let discoveries_active
+let languages_active
 let locations_active
 let levels_active
 let memberships_active
@@ -27,6 +28,7 @@ const OrganizationMenu = ({ t, activeLink }) => (
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'classtypes') ? classtypes_active = true: classtypes_active = false}
         {(activeLink === 'discoveries') ? discoveries_active = true: discoveries_active = false}
+        {(activeLink === 'languages') ? languages_active = true: languages_active = false}
         {(activeLink === 'locations') ? locations_active = true: locations_active = false}
         {(activeLink === 'levels') ? levels_active = true: levels_active = false}
         {(activeLink === 'memberships') ? memberships_active = true: memberships_active = false}
@@ -40,6 +42,15 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
+            to="#/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA="
+            icon="layout"
+            active={organization_active}
+            >
+            {t('organization.organization.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
             to="#/organization/locations"
             icon="home"
             active={locations_active}
@@ -49,29 +60,11 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
-            to="#/organization/levels"
-            icon="tag"
-            active={levels_active}
-            >
-            {t('organization.levels.title')}
-        </List.GroupItem>
-        <List.GroupItem
-            key={v4()}
-            className="d-flex align-items-center"
             to="#/organization/classtypes"
             icon="book-open"
             active={classtypes_active}
             >
             {t('organization.classtypes.title')}
-        </List.GroupItem>
-        <List.GroupItem
-            key={v4()}
-            className="d-flex align-items-center"
-            to="#/organization/discoveries"
-            icon="compass"
-            active={discoveries_active}
-            >
-            {t('organization.discoveries.title')}
         </List.GroupItem>
         {/* <List.GroupItem
             key={v4()}
@@ -112,11 +105,29 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
-            to="#/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA="
-            icon="layout"
-            active={organization_active}
+            to="#/organization/levels"
+            icon="tag"
+            active={levels_active}
             >
-            {t('organization.organization.title')}
+            {t('organization.levels.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
+            to="#/organization/discoveries"
+            icon="compass"
+            active={discoveries_active}
+            >
+            {t('organization.discoveries.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
+            to="#/organization/langauges"
+            icon="flag"
+            active={languages_active}
+            >
+            {t('organization.languages.title')}
         </List.GroupItem>
         <List.GroupItem
             key={v4()}

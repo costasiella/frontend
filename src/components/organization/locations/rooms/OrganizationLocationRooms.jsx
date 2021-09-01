@@ -60,7 +60,7 @@ function OrganizationLocationsRooms({ t, history, match }) {
   if (error) return (
     <OrganizationLocationRoomsBase>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('organization.locations_rooms.error_loading')}</p>
+        <p>{t('organization.location_rooms.error_loading')}</p>
       </ContentCard>
     </OrganizationLocationRoomsBase>
   )

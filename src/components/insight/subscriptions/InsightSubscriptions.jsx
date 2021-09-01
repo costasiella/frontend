@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
-import { useQuery } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import C3Chart from "react-c3js"
 
 import AppSettingsContext from '../../context/AppSettingsContext'
 import CSLS from "../../../tools/cs_local_storage"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
 
 import {
   colors,
@@ -15,6 +16,7 @@ import {
 } from "tabler-react";
 // import ContentCard from "../../general/ContentCard"
 import { GET_SUBSCRIPTIONS_SOLD_QUERY, GET_SUBSCRIPTIONS_ACTIVE_QUERY } from './queries'
+import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightSubscriptionsBase from './InsightSubscriptionsBase'
 
 function InsightSubscriptions ({ t, history }) {
@@ -24,6 +26,8 @@ function InsightSubscriptions ({ t, history }) {
   const year = localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)
   const export_url_active = "/d/export/insight/subscriptions/active/" + year
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year
+
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   const { 
     loading: loadingSold, 
@@ -163,8 +167,10 @@ function InsightSubscriptions ({ t, history }) {
             block
             color="secondary"
             RootComponent="a"
-            href={export_url_sold}
             icon="download-cloud"
+            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+              doTokenRefresh, history, export_url_sold
+            )}
           >
             {t("insight.subscriptions.sold.export_excel")}
           </Button>
@@ -175,6 +181,9 @@ function InsightSubscriptions ({ t, history }) {
             RootComponent="a"
             href={export_url_active}
             icon="download-cloud"
+            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+              doTokenRefresh, history, export_url_active
+            )}
           >
             {t("insight.subscriptions.active.export_excel")}
           </Button>

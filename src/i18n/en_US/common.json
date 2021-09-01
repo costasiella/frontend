@@ -475,7 +475,8 @@
         "please_wait": "Please wait...",
         "products": "Products",
         "discovery": "Discovery",
-        "language": "Language"
+        "language": "Language",
+        "key_number": "Door key number"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -616,7 +617,8 @@
             "empty_archive": "No rooms have been archived yet for this location",
             "add": "Add room",
             "title_edit": "Edit room",
-            "toast_edit_success": "Saved room"
+            "toast_edit_success": "Saved room",
+            "error_loading": "Error loading rooms :("
         },
         "location_room": {
             "public": "This is a public room"
@@ -752,8 +754,16 @@
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
             "deleted": "Deleted announcement"
         },
-        "locations_rooms": {
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+        "languages": {
+            "title": "Languages",
+            "error_loading": "Error loading languages :(",
+            "empty_list": "No languages have been defined yet.",
+            "empty_archive": "No languages have been archived yet.",
+            "title_add": "Add Language",
+            "toast_add_success": "Added language",
+            "title_edit": "Edit Language",
+            "toast_edit_success": "Saved",
+            "add": "Add Language"
         }
     },
     "validity": {
@@ -1644,18 +1654,18 @@
     "insight": {
         "classpasses": {
             "sold": {
-                "title": "Sold classpasses",
+                "title": "Sold class passes",
                 "export_excel": "Export sold as Excel"
             },
             "active": {
-                "title": "Active classpasses",
+                "title": "Active class passes",
                 "export_excel": "Export active as Excel"
             },
-            "title": "classpasses"
+            "title": "Class passes"
         },
         "title": "Insight",
         "classpass": {
-            "title": "Classpasses"
+            "title": "Class passes"
         },
         "subscriptions": {
             "title": "Subscriptions",

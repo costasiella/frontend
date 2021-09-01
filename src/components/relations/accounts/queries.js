@@ -92,6 +92,7 @@ export const GET_ACCOUNT_QUERY = gql`
       mobile
       emergency
       isActive
+      keyNumber
       organizationDiscovery {
         id
       }

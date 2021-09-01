@@ -40,23 +40,18 @@ class OrganizationHome extends Component {
               <Grid.Col md={9}>
                 <Grid.Row>
                   <Grid.Col md={4} lg={4}>
+                    <Link to='/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA='>
+                      <StampCard header={<small>{t('organization.organization.title')}</small>} footer={t('')} color="blue" icon="layout" />
+                    </Link>
+                  </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
                     <Link to='/organization/locations'>
                       <StampCard header={<small>{t('organization.locations.title')}</small>} footer={t('')} color="blue" icon="home" />
                     </Link>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/levels'>
-                      <StampCard header={<small>{t('organization.levels.title')}</small>} footer={t('')} color="blue" icon="tag" />
-                    </Link>
-                  </Grid.Col>
-                  <Grid.Col md={4} lg={4}>
                     <Link to='/organization/classtypes'>
                       <StampCard header={<small>{t('organization.classtypes.title')}</small>} footer={t('')} color="blue" icon="book-open" />
-                    </Link>
-                  </Grid.Col>
-                  <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/discoveries'>
-                      <StampCard header={<small>{t('organization.discoveries.title')}</small>} footer={t('')} color="blue" icon="compass" />
                     </Link>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
@@ -80,8 +75,18 @@ class OrganizationHome extends Component {
                     </Link>
                   </Grid.Col> */}
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA='>
-                      <StampCard header={<small>{t('organization.organization.title')}</small>} footer={t('')} color="blue" icon="layout" />
+                    <Link to='/organization/levels'>
+                      <StampCard header={<small>{t('organization.levels.title')}</small>} footer={t('')} color="blue" icon="tag" />
+                    </Link>
+                  </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
+                    <Link to='/organization/discoveries'>
+                      <StampCard header={<small>{t('organization.discoveries.title')}</small>} footer={t('')} color="blue" icon="compass" />
+                    </Link>
+                  </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
+                    <Link to='/organization/languages'>
+                      <StampCard header={<small>{t('organization.languages.title')}</small>} footer={t('')} color="blue" icon="flag" />
                     </Link>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
