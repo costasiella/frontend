@@ -86,12 +86,15 @@ const AccountMembershipForm = ({ t, history, inputData, isSubmitting, setFieldVa
         </Grid.Row>
       <Form.Group label={t('general.note')}>
         <Editor
-            textareaName="note"
-            initialValue={values.note}
-            init={tinymceBasicConf}
-            onChange={(e) => setFieldValue("note", e.target.getContent())}
-            onBlur={() => setFieldTouched("note", true)}
-          />
+          tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+          textareaName="note"
+          initialValue={values.note}
+          init={tinymceBasicConf}
+          onBlur={(e) => {
+            setFieldValue("note", e.target.getContent())
+            setFieldTouched("note", true, true)
+          }}
+        />
         <ErrorMessage name="note" component="span" className="invalid-feedback" />
       </Form.Group>
     </Card.Body>

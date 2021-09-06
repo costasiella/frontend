@@ -90,8 +90,10 @@ function AccountSubscriptionEditAltPriceForm ({
                 textareaName="note"
                 initialValue={values.note}
                 init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("note", e.target.getContent())}
-                onBlur={() => setFieldTouched("note", true)}
+                onBlur={(e) => {
+                  setFieldValue("note", e.target.getContent())
+                  setFieldTouched("note", true, true)
+                }}
               />
             <ErrorMessage name="note" component="span" className="invalid-feedback" />
           </Form.Group>

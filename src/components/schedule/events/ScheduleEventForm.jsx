@@ -148,11 +148,14 @@ const ScheduleEventForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         <Grid.Col>
           <Form.Group label={t('general.preview')}>
             <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="preview"
               initialValue={values.preview}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("preview", e.target.getContent())}
-              onBlur={() => setFieldTouched("preview", true)}
+              onBlur={(e) => {
+                setFieldValue("preview", e.target.getContent())
+                setFieldTouched("preview", true, true)
+              }}
               />
             <ErrorMessage name="preview" component="span" className="invalid-feedback" />
           </Form.Group>
@@ -162,11 +165,14 @@ const ScheduleEventForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         <Grid.Col>
           <Form.Group label={t('general.description')}>
             <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="description"
               initialValue={values.description}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("description", e.target.getContent())}
-              onBlur={() => setFieldTouched("description", true)}
+              onBlur={(e) => {
+                setFieldValue("description", e.target.getContent())
+                setFieldTouched("description", true, true)
+              }}
               />
             <ErrorMessage name="description" component="span" className="invalid-feedback" />
           </Form.Group>
@@ -176,11 +182,14 @@ const ScheduleEventForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         <Grid.Col>
           <Form.Group label={t('general.infoMailContent')}>
             <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="infoMailContent"
               initialValue={values.infoMailContent}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("infoMailContent", e.target.getContent())}
-              onBlur={() => setFieldTouched("infoMailContent", true)}
+              onBlur={(e) => {
+                setFieldValue("infoMailContent", e.target.getContent())
+                setFieldTouched("infoMailContent", true, true)
+              }}
               />
             <ErrorMessage name="infoMailContent" component="span" className="invalid-feedback" />
           </Form.Group>

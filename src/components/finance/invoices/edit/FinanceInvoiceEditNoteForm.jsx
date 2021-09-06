@@ -27,10 +27,6 @@ const FinanceInvoiceEditNoteForm = ({ t, isSubmitting, values, errors, handleCha
           textareaName="note"
           initialValue={values.note}
           init={tinymceBasicConf}
-          onChange={(e) => {
-            handleChange(e)
-            setFieldTouched("note", true, true)
-          }}
           onBlur={(e) => {
             setFieldValue("note", e.target.getContent())
             setFieldTouched("note", true, true)

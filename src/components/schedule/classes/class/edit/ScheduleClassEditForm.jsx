@@ -199,24 +199,17 @@ const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
         </Grid.Row>
         <Form.Group label={t('general.info_mail')}>
           <Editor
-              textareaName="infoMailContent"
-              initialValue={values.infoMailContent}
-              init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("infoMailContent", e.target.getContent())}
-              onBlur={() => setFieldTouched("infoMailContent", true)}
-            />
+            tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+            textareaName="infoMailContent"
+            initialValue={values.infoMailContent}
+            init={tinymceBasicConf}
+            onBlur={(e) => {
+              setFieldValue("infoMailContent", e.target.getContent())
+              setFieldTouched("infoMailContent", true, true)
+            }}
+          />
           <ErrorMessage name="note" component="span" className="invalid-feedback" />
         </Form.Group>
-        {/* <Form.Group label={t('general.note')}>
-          <Editor
-              textareaName="note"
-              initialValue={values.note}
-              init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("note", e.target.getContent())}
-              onBlur={() => setFieldTouched("note", true)}
-            />
-          <ErrorMessage name="note" component="span" className="invalid-feedback" />
-        </Form.Group> */}
       </Card.Body>
       <Card.Footer>
         <Button 

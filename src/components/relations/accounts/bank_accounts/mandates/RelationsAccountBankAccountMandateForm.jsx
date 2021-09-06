@@ -48,11 +48,14 @@ const RelationsAccountBankAccountMandateForm = ({ t, history, inputData, isSubmi
         <Grid.Col>
           <Form.Group label={t('relations.account.bank_accounts.mandates.content')}>
             <Editor
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
               textareaName="content"
               initialValue={values.content}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("content", e.target.getContent())}
-              onBlur={() => setFieldTouched("content", true)}
+              onBlur={(e) => {
+                setFieldValue("content", e.target.getContent())
+                setFieldTouched("content", true, true)
+              }}
               />
             <ErrorMessage name="content" component="span" className="invalid-feedback" />
           </Form.Group>

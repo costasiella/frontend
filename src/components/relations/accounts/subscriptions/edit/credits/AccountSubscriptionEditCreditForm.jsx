@@ -73,8 +73,10 @@ function AccountSubscriptionEditCreditForm ({
                 textareaName="description"
                 initialValue={values.description}
                 init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("description", e.target.getContent())}
-                onBlur={() => setFieldTouched("description", true)}
+                onBlur={(e) => {
+                  setFieldValue("description", e.target.getContent())
+                  setFieldTouched("description", true, true)
+                }}
               />
             <ErrorMessage name="description" component="span" className="invalid-feedback" />
           </Form.Group>

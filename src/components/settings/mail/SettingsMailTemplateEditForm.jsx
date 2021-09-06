@@ -41,32 +41,41 @@ function SettingsMailTemplateEditForm({ t, history, isSubmitting, errors, values
           </Form.Group>
           <Form.Group label={t('general.description')}>
             <Editor
-                textareaName="description"
-                initialValue={values.description}
-                init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("description", e.target.getContent())}
-                onBlur={() => setFieldTouched("description", true)}
-              />
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+              textareaName="description"
+              initialValue={values.description}
+              init={tinymceBasicConf}
+              onBlur={(e) => {
+                setFieldValue("description", e.target.getContent())
+                setFieldTouched("description", true, true)
+              }}
+            />
             <ErrorMessage name="description" component="span" className="invalid-feedback" />
           </Form.Group>
           <Form.Group label={t('general.content')}>
             <Editor
-                textareaName="content"
-                initialValue={values.content}
-                init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("content", e.target.getContent())}
-                onBlur={() => setFieldTouched("content", true)}
-              />
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+              textareaName="content"
+              initialValue={values.content}
+              init={tinymceBasicConf}
+              onBlur={(e) => {
+                setFieldValue("content", e.target.getContent())
+                setFieldTouched("content", true, true)
+              }}
+            />
             <ErrorMessage name="content" component="span" className="invalid-feedback" />
           </Form.Group>
           <Form.Group label={t('general.comments')}>
             <Editor
-                textareaName="comments"
-                initialValue={values.comments}
-                init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("comments", e.target.getContent())}
-                onBlur={() => setFieldTouched("comments", true)}
-              />
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+              textareaName="comments"
+              initialValue={values.comments}
+              init={tinymceBasicConf}
+              onBlur={(e) => {
+                setFieldValue("comments", e.target.getContent())
+                setFieldTouched("comments", true, true)
+              }}
+            />
             <ErrorMessage name="comments" component="span" className="invalid-feedback" />
           </Form.Group>
         </Card.Body>

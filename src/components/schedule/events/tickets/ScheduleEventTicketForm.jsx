@@ -92,12 +92,15 @@ function ScheduleEventTicketForm ({
           <Grid.Col>
           <Form.Group label={t('general.description')}>
             <Editor
-                textareaName="description"
-                initialValue={values.description}
-                init={tinymceBasicConf}
-                onChange={(e) => setFieldValue("description", e.target.getContent())}
-                onBlur={() => setFieldTouched("description", true)}
-              />
+              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+              textareaName="description"
+              initialValue={values.description}
+              init={tinymceBasicConf}
+              onBlur={(e) => {
+                setFieldValue("description", e.target.getContent())
+                setFieldTouched("description", true, true)
+              }}
+            />
             <ErrorMessage name="description" component="span" className="invalid-feedback" />
           </Form.Group>
           </Grid.Col>

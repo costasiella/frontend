@@ -28,10 +28,6 @@ const FinanceInvoiceEditTermsForm = ({ t, isSubmitting, values, errors, touched,
           textareaName="terms"
           initialValue={values.terms}
           init={tinymceBasicConf}
-          onChange={(e) => {
-            handleChange(e)
-            setFieldTouched("terms", true, true)
-          }}
           onBlur={(e) => {
             setFieldValue("terms", e.target.getContent())
             setFieldTouched("terms", true, true)

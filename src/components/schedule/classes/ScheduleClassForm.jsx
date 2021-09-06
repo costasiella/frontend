@@ -189,8 +189,10 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
               textareaName="note"
               initialValue={values.note}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("note", e.target.getContent())}
-              onBlur={() => setFieldTouched("note", true)}
+              onBlur={(e) => {
+                setFieldValue("note", e.target.getContent())
+                setFieldTouched("note", true, true)
+              }}
             />
           <ErrorMessage name="note" component="span" className="invalid-feedback" />
         </Form.Group>
@@ -200,8 +202,10 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
               textareaName="infoMailContent"
               initialValue={values.infoMailContent}
               init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("infoMailContent", e.target.getContent())}
-              onBlur={() => setFieldTouched("infoMailContent", true)}
+              onBlur={(e) => {
+                setFieldValue("infoMailContent", e.target.getContent())
+                setFieldTouched("infoMailContent", true, true)
+              }}
             />
           <ErrorMessage name="note" component="span" className="invalid-feedback" />
         </Form.Group>

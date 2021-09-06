@@ -35,12 +35,15 @@ const OrganizationForm = ({
         </Form.Group>
         <Form.Group label={t('general.address')}>
           <Editor
-              textareaName="address"
-              initialValue={values.address}
-              init={tinymceBasicConf}
-              onChange={(e) => setFieldValue("address", e.target.getContent())}
-              onBlur={() => setFieldTouched("address", true)}
-            />
+            tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
+            textareaName="address"
+            initialValue={values.address}
+            init={tinymceBasicConf}
+            onBlur={(e) => {
+              setFieldValue("address", e.target.getContent())
+              setFieldTouched("address", true, true)
+            }}
+          />
           <ErrorMessage name="address" component="span" className="invalid-feedback" />
         </Form.Group>
         <Grid.Row>
