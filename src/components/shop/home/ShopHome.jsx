@@ -34,7 +34,7 @@ function ShopHome({ t, match, history }) {
 
   return (
     <ShopHomeBase title={t("shop.home.title")}>
-      <Grid.Row>
+      <Grid.Row cards deck>
         {(announcements.edges.length) ? announcements.edges.map(({ node }) => (
           <Grid.Col md={6}>
             <Card title={node.title}>
