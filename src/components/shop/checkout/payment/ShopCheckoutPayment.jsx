@@ -1,11 +1,12 @@
 // @flow
 
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
 import { toast } from 'react-toastify'
-import { v4 } from 'uuid'
+
+import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
   Card,
@@ -21,6 +22,8 @@ import { CREATE_PAYMENT_LINK } from "./queries"
 
 
 function ShopCheckoutPayment({ t, match, history }) {
+  const appSettings = useContext(AppSettingsContext)
+  const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
   const btnPayNow = useRef(null);
   const initialBtnText = <span><Icon name="credit-card" /> {t('shop.checkout.payment.to_payment')} <Icon name="chevron-right" /></span>
   const [btn_text, setBtnText] = useState(initialBtnText)
@@ -67,6 +70,21 @@ function ShopCheckoutPayment({ t, match, history }) {
     })
   }
 
+  let msgExplanation
+  let msgNextStep
+  let buttonNext
+  if (onlinePaymentsAvailable) {
+    msgExplanation = t("shop.checkout.payment.order_received_to_payment_explanation")
+    msgNextStep = t("shop.checkout.payment.order_received_to_payment_text")
+    buttonNext = <button
+      className="btn btn-block btn-success"
+      ref={btnPayNow}
+      onClick={ onClickPay }
+    >
+      {btn_text}
+    </button>
+  }
+
 
   return (
     <ShopCheckoutPaymentBase title={title}>
@@ -75,17 +93,11 @@ function ShopCheckoutPayment({ t, match, history }) {
             <Card title={t("shop.checkout.payment.order_received")}>
               <Card.Body>
                 <h5 className={"mb-4"}>{t("shop.checkout.payment.order_received_subheader")}</h5>
-                {t("shop.checkout.payment.order_received_to_payment_explanation")} <br />
-                {t("shop.checkout.payment.order_received_to_payment_text")}
+                {msgExplanation} <br />
+                {msgNextStep}
               </Card.Body>
               <Card.Footer>
-                <button
-                  className="btn btn-block btn-success"
-                  ref={btnPayNow}
-                  onClick={ onClickPay }
-                >
-                  {btn_text}
-                </button>
+                {buttonNext}
               </Card.Footer>
             </Card>
           </Grid.Col>
