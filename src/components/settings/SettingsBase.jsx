@@ -15,7 +15,7 @@ import HasPermissionWrapper from "../HasPermissionWrapper"
 import SettingsBack from "./SettingsBack"
 
 
-function SettingsBase({ t, children, headerSubTitle="", cardTitle, sidebarActive, sidebarContent, returnUrl="/settings" }) {
+function SettingsBase({ t, children, headerSubTitle="", cardTitle, alertBanner="", returnUrl="/settings" }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -27,12 +27,13 @@ function SettingsBase({ t, children, headerSubTitle="", cardTitle, sidebarActive
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={12}>
-            <Card>
-              <Card.Header>
-                <Card.Title>{cardTitle}</Card.Title>
-              </Card.Header>
-              {children}
-            </Card>
+              {alertBanner}
+              <Card>
+                <Card.Header>
+                  <Card.Title>{cardTitle}</Card.Title>
+                </Card.Header>
+                {children}
+              </Card>
             </Grid.Col>
           </Grid.Row>
         </Container>

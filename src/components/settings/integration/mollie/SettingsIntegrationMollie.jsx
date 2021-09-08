@@ -25,6 +25,7 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 // import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
 import SettingsIntegrationMollieForm from "./SettingsIntegrationMollieForm"
+import SettingsIntegrationMollieCreateAccount from "./SettingsIntegrationMollieCreateAccount"
 
 
 function SettingsIntegrationMollie({ t, match, history }) {
@@ -69,20 +70,23 @@ function SettingsIntegrationMollie({ t, match, history }) {
     )
   }
 
-  let mollie_api_key = ""
+  let mollieApiKey = ""
   if (data.systemSettings.edges.length) {
-    mollie_api_key = data.systemSettings.edges[0].node.value
+    mollieApiKey = data.systemSettings.edges[0].node.value
   }
+
+  // https://www.mollie.com/dashboard/signup/2488481
 
   return (
     <SettingsBase 
       headerSubTitle={headerSubTitle}
       cardTitle={cardTitle}
       sidebarActive={sidebarActive}
-    >  
+      alertBanner={<SettingsIntegrationMollieCreateAccount mollieApiKey={mollieApiKey} />}
+    >
     <Formik
       initialValues={{ 
-        mollie_api_key: mollie_api_key
+        mollie_api_key: mollieApiKey
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {

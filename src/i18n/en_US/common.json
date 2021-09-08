@@ -1494,7 +1494,10 @@
             "mollie": {
                 "title": "Mollie",
                 "explanation": "Mollie integration settings",
-                "api_key": "Mollie API key"
+                "api_key": "Mollie API key",
+                "create_account_title": "Mollie is not yet configured",
+                "create_account_message": "Create a new Mollie account to get your API key to start using it to process online payments in Costasiella.",
+                "to_mollie": "To Mollie"
             }
         },
         "finance": {

@@ -284,7 +284,10 @@
             "mollie": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
-                "api_key": "__STRING_NOT_TRANSLATED__"
+                "api_key": "__STRING_NOT_TRANSLATED__",
+                "create_account_title": "__STRING_NOT_TRANSLATED__",
+                "create_account_message": "__STRING_NOT_TRANSLATED__",
+                "to_mollie": "__STRING_NOT_TRANSLATED__"
             }
         },
         "mail": {
