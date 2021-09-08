@@ -75,8 +75,6 @@ function SettingsIntegrationMollie({ t, match, history }) {
     mollieApiKey = data.systemSettings.edges[0].node.value
   }
 
-  // https://www.mollie.com/dashboard/signup/2488481
-
   return (
     <SettingsBase 
       headerSubTitle={headerSubTitle}
@@ -100,7 +98,9 @@ function SettingsIntegrationMollie({ t, match, history }) {
               value: values.mollie_api_key
             }
           }, refetchQueries: [
-              {query: GET_SYSTEM_SETTINGS_QUERY}
+              {query: GET_SYSTEM_SETTINGS_QUERY,     variables: {
+                setting: "integration_mollie_api_key"
+              }}
           ]})
           .then(({ data }) => {
               console.log('got data', data)
