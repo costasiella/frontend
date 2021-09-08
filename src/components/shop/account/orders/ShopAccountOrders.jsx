@@ -163,7 +163,7 @@ function ShopAccountOrders({t, match, history}) {
                       <Table.Row>
                         <Table.ColHeader>{t("general.product")}</Table.ColHeader>
                         <Table.ColHeader>{t("general.description")}</Table.ColHeader>
-                        <Table.ColHeader>{t("general.total")}</Table.ColHeader>
+                        <Table.ColHeader><span className="float-right">{t("general.total")}</span></Table.ColHeader>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -171,13 +171,13 @@ function ShopAccountOrders({t, match, history}) {
                         <Table.Row>
                           <Table.Col>{node.productName}</Table.Col>
                           <Table.Col>{node.description}</Table.Col>
-                          <Table.Col>{node.totalDisplay}</Table.Col>
+                          <Table.Col><span className="float-right">{node.totalDisplay}</span></Table.Col>
                         </Table.Row>    
                       ))}
                       <Table.Row>
                         <Table.Col></Table.Col>
                         <Table.Col></Table.Col>
-                        <Table.Col><span className="bold">{node.totalDisplay}</span></Table.Col>
+                        <Table.Col><span className="bold float-right">{node.totalDisplay}</span></Table.Col>
                       </Table.Row>
                     </Table.Body>
                   </Table>
