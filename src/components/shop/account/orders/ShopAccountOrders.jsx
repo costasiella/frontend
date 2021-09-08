@@ -32,6 +32,7 @@ function ShopAccountOrders({t, match, history}) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormat = dateFormat + ' ' + timeFormat
+  const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
 
   // Chain queries. First query user data and then query orders for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
@@ -144,7 +145,7 @@ function ShopAccountOrders({t, match, history}) {
                           {t('general.cancel')}
                         </Button>
                       : ""}
-                      {(node.status == "AWAITING_PAYMENT") ?
+                      {(node.status == "AWAITING_PAYMENT" && onlinePaymentsAvailable) ?
                         <Link to={"/shop/checkout/payment/" + node.id}>
                           <Button
                             className="ml-4"
