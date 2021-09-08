@@ -91,77 +91,10 @@ function ShopCheckoutPayment({ t, match, history }) {
           </Grid.Col>
           <Grid.Col md={6}>
             <ShopCheckoutOrderSummary id={id} />
-            {/* <Card title={t("shop.checkout.payment.order_summary")}>
-              <div className="table-responsive">
-                <Table cards={true}>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.ColHeader>{t('general.item')}</Table.ColHeader>
-                      <Table.ColHeader>{t('general.price')}</Table.ColHeader>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {orderItems.map(({ node }) => (
-                      <Table.Row key={v4()}>
-                        <Table.Col>
-                          {node.productName} <br /> 
-                          <span className="text-muted">
-                            {node.description}
-                          </span>
-                        </Table.Col>
-                        <Table.Col>{node.totalDisplay}</Table.Col>
-                      </Table.Row>      
-                    ))}
-                    <Table.Row className="bold">
-                      <Table.Col>
-                        {t("general.total")}
-                      </Table.Col>
-                      <Table.Col>
-                          {order.totalDisplay}
-                      </Table.Col>
-                    </Table.Row>
-                  </Table.Body>
-                </Table>
-              </div>
-              <Card.Body>
-                <span className="text-muted">
-                  <Icon name="message-square" /> {t("shop.checkout.payment.order_summary_message")} <br /><br />
-                  {order.message}
-                </span>
-              </Card.Body>
-            </Card> */}
           </Grid.Col>
         </Grid.Row>
     </ShopCheckoutPaymentBase>
   )
 }
 
-
 export default withTranslation()(withRouter(ShopCheckoutPayment))
-
-
-{/* <Grid.Col sm={6} lg={3}>
-<PricingCard active>
-  <PricingCard.Category>{"Premium"}</PricingCard.Category>
-  <PricingCard.Price>{"$49"} </PricingCard.Price>
-  <PricingCard.AttributeList>
-    <PricingCard.AttributeItem>
-      <strong>10 </strong>
-      {"Users"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Sharing Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Design Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Private Messages"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Twitter API"}
-    </PricingCard.AttributeItem>
-  </PricingCard.AttributeList>
-  <PricingCard.Button active>{"Choose plan"} </PricingCard.Button>
-</PricingCard>
-</Grid.Col> */}
