@@ -4,7 +4,6 @@ import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
