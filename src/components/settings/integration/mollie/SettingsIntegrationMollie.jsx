@@ -69,6 +69,10 @@ function SettingsIntegrationMollie({ t, match, history }) {
     )
   }
 
+  let mollie_api_key = ""
+  if (data.systemSettings.edges.length) {
+    mollie_api_key = data.systemSettings.edges[0].node.value
+  }
 
   return (
     <SettingsBase 
@@ -78,7 +82,7 @@ function SettingsIntegrationMollie({ t, match, history }) {
     >  
     <Formik
       initialValues={{ 
-        mollie_api_key: data.systemSettings.edges[0].node.value
+        mollie_api_key: mollie_api_key
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
