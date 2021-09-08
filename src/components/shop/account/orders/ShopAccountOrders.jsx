@@ -114,9 +114,9 @@ function ShopAccountOrders({t, match, history}) {
                 <span className="pull-right">
                   <FinanceOrderStatus status={node.status} />
                 </span>
-                <span className="text-muted">
+                <small className="text-muted">
                   {moment(node.createdAt).format(dateTimeFormat)}
-                </span>
+                </small>
                 <Card statusColor={get_order_card_status_color(node.status)}>
                   <Card.Header>
                     <Card.Title>{t("general.order") + " #" + node.orderNumber}</Card.Title>
