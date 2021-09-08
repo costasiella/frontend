@@ -5,14 +5,15 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
+  Button,
   Card,
   Grid,
   Icon,
-  Table,
 } from "tabler-react";
 import ShopCheckoutPaymentBase from "./ShopCheckoutPaymentBase"
 import ShopCheckoutOrderSummary from "../order_summary/ShopCheckoutOrderSummary"
@@ -70,11 +71,9 @@ function ShopCheckoutPayment({ t, match, history }) {
     })
   }
 
-  let msgExplanation
   let msgNextStep
   let buttonNext
   if (onlinePaymentsAvailable) {
-    msgExplanation = t("shop.checkout.payment.order_received_to_payment_explanation")
     msgNextStep = t("shop.checkout.payment.order_received_to_payment_text")
     buttonNext = <button
       className="btn btn-block btn-success"
@@ -83,6 +82,16 @@ function ShopCheckoutPayment({ t, match, history }) {
     >
       {btn_text}
     </button>
+  } else {
+    msgNextStep = t("shop.checkout.payment.order_received_to_profile_text")
+    buttonNext = <Link to="/">
+      <Button
+        block
+        color="success"
+      >
+        {t("shop.checkout.payment.to_profile")} <Icon name="chevron-right" />
+      </Button>
+    </Link>
   }
 
 
@@ -93,7 +102,7 @@ function ShopCheckoutPayment({ t, match, history }) {
             <Card title={t("shop.checkout.payment.order_received")}>
               <Card.Body>
                 <h5 className={"mb-4"}>{t("shop.checkout.payment.order_received_subheader")}</h5>
-                {msgExplanation} <br />
+                {t("shop.checkout.payment.order_received_to_payment_explanation")} <br />< br />
                 {msgNextStep}
               </Card.Body>
               <Card.Footer>
