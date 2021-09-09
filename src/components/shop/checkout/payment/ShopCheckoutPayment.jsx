@@ -34,7 +34,7 @@ function ShopCheckoutPayment({ t, match, history }) {
     variables: { id: id }
   })
 
-  const [createPaymentLink, {data: createPaymentLinkData}] = useMutation(CREATE_PAYMENT_LINK)
+  const [createPaymentLink] = useMutation(CREATE_PAYMENT_LINK)
 
   if (loading) return (
     <ShopCheckoutPaymentBase title={title} >

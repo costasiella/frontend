@@ -743,7 +743,8 @@
             "invoices": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "to_payment": "__STRING_NOT_TRANSLATED__"
             },
             "class_info": {
                 "error_loading_data": "__STRING_NOT_TRANSLATED__",

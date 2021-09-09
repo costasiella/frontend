@@ -1827,7 +1827,8 @@
             "invoices": {
                 "title": "My invoices",
                 "explanation": "View your invoices and download them as a PDF file.",
-                "empty_list": "You don't have any invoices yet."
+                "empty_list": "You don't have any invoices yet.",
+                "to_payment": "Pay now"
             },
             "class_info": {
                 "error_loading_data": "Error loading class info... :(",
