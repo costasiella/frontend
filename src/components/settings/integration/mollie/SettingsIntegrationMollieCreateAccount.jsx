@@ -13,9 +13,9 @@ import {
 
 
 function SettingsIntegrationMollieCreateAccount({ t, match, history, mollieApiKey }) {
-  // if (!mollieApiKey) {
-  //   return ""
-  // }
+  if (mollieApiKey) {
+    return ""
+  }
 
   return (
     <Alert type="primary">
