@@ -99,7 +99,34 @@ function ShopAccountInvoicePayment({t, match, history}) {
     <ShopAccountInvoicePaymentBase accountName={user.fullName}>
       <Card title={<span>{t("general.invoice")} #{invoice.invoiceNumber}</span>}>
         <Card.Body>
-          Test
+          { invoice.items.edges.map(({ node }) => (
+            <Grid.Row>
+              <Grid.Col md={9}>
+                {node.productName} <br />
+                <small className="text-muted">
+                  {node.description}
+                </small>
+              </Grid.Col>
+              <Grid.Col md={3}>
+                <span className="float-right">
+                  {node.totalDisplay}
+                </span>
+              </Grid.Col>
+            </Grid.Row>
+          ))}
+          {/* Total */}
+          <Grid.Row>
+            <Grid.Col md={9} className="bold">
+              <br />
+              {t("general.total")}
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <span className="bold float-right">
+                <br />
+                {invoice.totalDisplay}
+              </span>
+            </Grid.Col>
+          </Grid.Row>
         </Card.Body>
         <Card.Footer>
           <button
