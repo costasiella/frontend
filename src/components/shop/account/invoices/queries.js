@@ -47,12 +47,3 @@ export const QUERY_ACCOUNT_INVOICES = gql`
   }
 `
 
-export const CREATE_PAYMENT_LINK = gql`
-mutation CreateFinanceInvoicePaymentLink($id: ID!) {
-  createFinanceInvoicePaymentLink(id: $id) {
-    financeInvoicePaymentLink {
-      paymentLink
-    }
-  }
-}
-`
