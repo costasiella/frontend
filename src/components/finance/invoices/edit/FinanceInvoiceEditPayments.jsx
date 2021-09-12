@@ -58,6 +58,7 @@ function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputD
                 </Table.Col>
                 <Table.Col>
                   { (node.financePaymentMethod) ? node.financePaymentMethod.name : "" }
+                  { (node.onlinePaymentId) ? <div><small className="text-muted">{node.onlinePaymentId}</small></div> : "" }
                 </Table.Col>
                 <Table.Col>
                   <div dangerouslySetInnerHTML={{ __html:node.note }}></div>
