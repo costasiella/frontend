@@ -19,7 +19,7 @@ function ShopAccountInvoicePaymentBase({ t, match, history, children, accountNam
           <Container>
             <Page.Header title={t("shop.account.title")} subTitle={ accountName }>
               <div className="page-options d-flex">
-                <ShopAccountBack />
+                <ShopAccountBack returnUrl="/shop/account/invoices"/>
               </div>
             </Page.Header>
             { children }
