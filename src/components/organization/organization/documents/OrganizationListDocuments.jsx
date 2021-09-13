@@ -30,6 +30,7 @@ import ContentCard from "../../../general/ContentCard"
 import OrganizationMenu from "../../OrganizationMenu"
 import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import OrganizationDocumentsDelete from "./OrganizationDocumentDelete"
+import { getSubtitle } from './tools'
 
 import { GET_DOCUMENTS_QUERY, DELETE_DOCUMENT } from "./queries"
 
@@ -37,6 +38,8 @@ import { GET_DOCUMENTS_QUERY, DELETE_DOCUMENT } from "./queries"
 function OrganizationListDocuments({ t, match, history }) {
   const organizationId = match.params.organization_id
   const documentType = match.params.document_type
+  const subTitle = getSubtitle(t, documentType)
+
   const back = <Link to={`/organization/documents/${organizationId}`}>
     <Button 
       icon="arrow-left"
@@ -81,7 +84,7 @@ function OrganizationListDocuments({ t, match, history }) {
   return (
     <OrganizationDocumentsBase headerLinks={back} sidebarButton={sidebarButton}>
       <ContentCard 
-        cardTitle={t('organization.documents.title')}
+        cardTitle={t('organization.documents.title') + ' - ' + subTitle}
         pageInfo={data.organizationDocuments.pageInfo}
         onLoadMore={() => {
           fetchMore({
