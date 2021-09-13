@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import { DELETE_DOCUMENT, GET_DOCUMENTS_QUERY } from "./queries"
-import confirmDelete from "../../../../tools/confirm_delete"
+import confirmDelete from "../../../tools/confirm_delete"
 
 import {
   Icon

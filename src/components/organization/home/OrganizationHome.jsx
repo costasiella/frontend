@@ -94,6 +94,11 @@ class OrganizationHome extends Component {
                       <StampCard header={<small>{t('organization.organization.branding.title')}</small>} footer={t('')} color="blue" icon="image" />
                     </Link>
                   </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
+                    <Link to='/organization/documents/T3JnYW5pemF0aW9uTm9kZToxMDA='>
+                      <StampCard header={<small>{t('organization.documents.title')}</small>} footer={t('')} color="blue" icon="briefcase" />
+                    </Link>
+                  </Grid.Col>
                   <HasPermissionWrapper permission="view"
                                         resource="organizationannouncement">
                     <Grid.Col md={4} lg={4}>

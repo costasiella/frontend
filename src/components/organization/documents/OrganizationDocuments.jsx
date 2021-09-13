@@ -16,8 +16,8 @@ import {
   Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import OrganizationMenu from "../../OrganizationMenu"
+import SiteWrapper from "../../SiteWrapper"
+import OrganizationMenu from "../OrganizationMenu"
 
 
 function OrganizationDocuments({ t, match }) {
@@ -33,7 +33,7 @@ function OrganizationDocuments({ t, match }) {
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={t('organization.title')}>
-            <div className="page-options d-flex">
+            {/* <div className="page-options d-flex">
               <Link to={`/organization/edit/${organizationId}`}>
                 <Button 
                   icon="arrow-left"
@@ -44,7 +44,7 @@ function OrganizationDocuments({ t, match }) {
                   {t('general.back_to')} {t('organization.title')}
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
@@ -82,7 +82,7 @@ function OrganizationDocuments({ t, match }) {
               </Card>        
             </Grid.Col>
             <Grid.Col md={3}>
-              <OrganizationMenu activeLink='organization'/>
+              <OrganizationMenu activeLink='documents'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

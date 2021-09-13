@@ -20,14 +20,14 @@ import {
   Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
+import SiteWrapper from "../../SiteWrapper"
+import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 
-import ISODateString from "../../../ui/ISODateString"
-import FileDownloadTableButton from "../../../ui/FileDownloadTableButton"
-import ContentCard from "../../../general/ContentCard"
-import OrganizationMenu from "../../OrganizationMenu"
+import ISODateString from "../../ui/ISODateString"
+import FileDownloadTableButton from "../../ui/FileDownloadTableButton"
+import ContentCard from "../../general/ContentCard"
+import OrganizationMenu from "../OrganizationMenu"
 import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import OrganizationDocumentsDelete from "./OrganizationDocumentDelete"
 import { getSubtitle } from './tools'

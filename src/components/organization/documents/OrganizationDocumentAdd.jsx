@@ -15,9 +15,9 @@ import { Link } from 'react-router-dom'
 
 import { ADD_DOCUMENT, GET_DOCUMENTS_QUERY } from "./queries"
 import { DOCUMENT_SCHEMA } from './yupSchema'
-import { dateToLocalISO } from "../../../../tools/date_tools"
+import { dateToLocalISO } from "../../../tools/date_tools"
 // import OrganizationDocumentForm from './OrganizationDocumentForm'
-import CSDatePicker from "../../../ui/CSDatePicker"
+import CSDatePicker from "../../ui/CSDatePicker"
 
 import {
   Page,
@@ -28,7 +28,7 @@ import {
   Container,
   Form,
 } from "tabler-react"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
+import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import { getSubtitle } from './tools'
