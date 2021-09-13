@@ -30,6 +30,7 @@ function OrganizationDocumentsBase({ t, children, headerLinks, sidebarButton }) 
             </Grid.Col>
             <Grid.Col md={3}>
               {sidebarButton}
+              <h5>{t("general.menu")}</h5>
               <OrganizationMenu activeLink='documents'/>
             </Grid.Col>
           </Grid.Row>

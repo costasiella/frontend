@@ -82,6 +82,7 @@ function OrganizationDocuments({ t, match }) {
               </Card>        
             </Grid.Col>
             <Grid.Col md={3}>
+              <h5>{t("general.menu")}</h5>
               <OrganizationMenu activeLink='documents'/>
             </Grid.Col>
           </Grid.Row>
