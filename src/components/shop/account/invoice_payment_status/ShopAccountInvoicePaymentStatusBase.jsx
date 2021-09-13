@@ -18,9 +18,9 @@ function ShopAccountInvoicePaymentStatusBase({ t, match, history, children, acco
         <div className="my-3 my-md-5">
           <Container>
             <Page.Header title={t("shop.account.title")} subTitle={ accountName }>
-              <div className="page-options d-flex">
+              {/* <div className="page-options d-flex">
                 <ShopAccountBack />
-              </div>
+              </div> */}
             </Page.Header>
             { children }
           </Container>

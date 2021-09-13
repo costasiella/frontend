@@ -1870,7 +1870,17 @@
                 "title": "Sign out",
                 "explanation": "Click the button below to sign out."
             },
-            "btn_text_sign_out": "To sign out"
+            "btn_text_sign_out": "To sign out",
+            "invoice_payment": {
+                "title": "Invoice payment",
+                "error_loading_data": "Error loading invoice data... :("
+            },
+            "invoice_payment_status": {
+                "error_loading_data": "Error loading invoice data... :(",
+                "payment_received": "Payment received",
+                "payment_not_confirmed": "We weren't able to confirm your payment. In case this is an error, please contact us.",
+                "to_profile": "Continue"
+            }
         },
         "accounts": {
             "profile": {

@@ -786,7 +786,17 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__"
             },
-            "btn_text_sign_out": "__STRING_NOT_TRANSLATED__"
+            "btn_text_sign_out": "__STRING_NOT_TRANSLATED__",
+            "invoice_payment": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+            },
+            "invoice_payment_status": {
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "payment_received": "__STRING_NOT_TRANSLATED__",
+                "payment_not_confirmed": "__STRING_NOT_TRANSLATED__",
+                "to_profile": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "accounts": {
             "profile": {
