@@ -1187,7 +1187,10 @@
             "add": "__STRING_NOT_TRANSLATED__"
         },
         "holidays": {
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "add": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {

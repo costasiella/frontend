@@ -765,7 +765,10 @@
             "add": "Add Language"
         },
         "holidays": {
-            "title": "Holidays"
+            "title": "Holidays",
+            "error_loading": "Error loading holidays... :(",
+            "empty_list": "No holidays have been defined yet.",
+            "add": "Add holiday"
         }
     },
     "validity": {
