@@ -80,6 +80,11 @@ class OrganizationHome extends Component {
                     </Link>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
+                    <Link to='/organization/holidays'>
+                      <StampCard header={<small>{t('organization.holidays.title')}</small>} footer={t('')} color="blue" icon="sun" />
+                    </Link>
+                  </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
                     <Link to='/organization/discoveries'>
                       <StampCard header={<small>{t('organization.discoveries.title')}</small>} footer={t('')} color="blue" icon="compass" />
                     </Link>
