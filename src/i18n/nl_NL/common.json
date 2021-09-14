@@ -87,7 +87,6 @@
         "document": "__STRING_NOT_TRANSLATED__",
         "manage": "__STRING_NOT_TRANSLATED__",
         "download": "__STRING_NOT_TRANSLATED__",
-        "documents": "__STRING_NOT_TRANSLATED__",
         "address": "__STRING_NOT_TRANSLATED__",
         "phone": "__STRING_NOT_TRANSLATED__",
         "email": "__STRING_NOT_TRANSLATED__",
@@ -1186,6 +1185,9 @@
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "add": "__STRING_NOT_TRANSLATED__"
+        },
+        "holidays": {
+            "title": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {

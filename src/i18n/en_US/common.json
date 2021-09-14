@@ -393,7 +393,6 @@
         "privacy_policy": "Privacy policy",
         "document": "Document",
         "manage": "Manage",
-        "documents": "Documents",
         "version": "Version",
         "download": "Download",
         "document_type": "Document type",
@@ -764,6 +763,9 @@
             "title_edit": "Edit Language",
             "toast_edit_success": "Saved",
             "add": "Add Language"
+        },
+        "holidays": {
+            "title": "Holidays"
         }
     },
     "validity": {
