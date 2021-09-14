@@ -44,12 +44,25 @@ const OrganizationHolidayForm = ({ t, history, isSubmitting, errors, returnUrl }
                           setFieldTouched("dateEnd", true)
                       }}
                       onBlur={() => setFieldTouched("dateEnd", true)}
-                      placeholderText={t('schedule.classes.placeholder_enddate')}
+                      placeholderText={t('general.date_end')}
                     />
                     <ErrorMessage name="dateEnd" component="span" className="invalid-feedback" />
                   </Form.Group>
                 </Grid.Col>
               </Grid.Row>
+            <h5>{t("general.apply_to")}</h5>
+            <Form.Group>
+              <Form.Label className="custom-switch">
+                  <Field 
+                  className="custom-switch-input"
+                  type="checkbox" 
+                  name="classes" 
+                  checked={values.classes} />
+                  <span className="custom-switch-indicator" ></span>
+                  <span className="custom-switch-description">{t('general.classes')}</span>
+              </Form.Label>
+              <ErrorMessage name="classes" component="div" />   
+            </Form.Group>  
           <Form.Group label={t('general.note')}>
             <Editor
                 tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
