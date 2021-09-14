@@ -13,6 +13,7 @@ import HasPermissionWrapper from "../HasPermissionWrapper"
 let classpasses_active
 let classtypes_active
 let discoveries_active
+let documents_active
 let languages_active
 let locations_active
 let levels_active
@@ -28,6 +29,7 @@ const OrganizationMenu = ({ t, activeLink }) => (
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'classtypes') ? classtypes_active = true: classtypes_active = false}
         {(activeLink === 'discoveries') ? discoveries_active = true: discoveries_active = false}
+        {(activeLink === 'documents') ? documents_active = true: documents_active = false}
         {(activeLink === 'languages') ? languages_active = true: languages_active = false}
         {(activeLink === 'locations') ? locations_active = true: locations_active = false}
         {(activeLink === 'levels') ? levels_active = true: levels_active = false}
@@ -123,7 +125,7 @@ const OrganizationMenu = ({ t, activeLink }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
-            to="#/organization/langauges"
+            to="#/organization/languages"
             icon="flag"
             active={languages_active}
             >
@@ -137,6 +139,15 @@ const OrganizationMenu = ({ t, activeLink }) => (
             active={organization_branding_active}
             >
             {t('organization.organization.branding.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
+            to="#/organization/documents/T3JnYW5pemF0aW9uTm9kZToxMDA="
+            icon="briefcase"
+            active={documents_active}
+            >
+            {t('organization.documents.title')}
         </List.GroupItem>
         <HasPermissionWrapper permission="view"
                               resource="organizationannouncement">

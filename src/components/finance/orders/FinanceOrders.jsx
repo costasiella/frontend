@@ -122,7 +122,7 @@ function FinanceOrders({t, match, history}) {
                     # {node.orderNumber}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.account.fullName}
+                    {node.account && node.account.fullName}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {moment(node.createdAt).format('LL')}

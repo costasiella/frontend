@@ -1494,7 +1494,10 @@
             "mollie": {
                 "title": "Mollie",
                 "explanation": "Mollie integration settings",
-                "api_key": "Mollie API key"
+                "api_key": "Mollie API key",
+                "create_account_title": "Mollie is not yet configured",
+                "create_account_message": "Create a new Mollie account to get your API key to start using it to process online payments in Costasiella.",
+                "to_mollie": "To Mollie"
             }
         },
         "finance": {
@@ -1755,9 +1758,10 @@
                 "order_received_subheader": "We have received our order",
                 "order_received_to_payment_explanation": "The items in your order will be delivered as soon as we've received the payment for this order.",
                 "order_received_to_payment_text": "Please click the button below to start the payment.",
-                "order_summary_message": "Order message",
                 "to_payment": "Pay now",
-                "redirecting": "Preparing payment..."
+                "redirecting": "Preparing payment...",
+                "order_received_to_profile_text": "We'll contact you with payment instructions.",
+                "to_profile": "Back to the online shop"
             },
             "title": "Check out",
             "complete": {
@@ -1823,7 +1827,8 @@
             "invoices": {
                 "title": "My invoices",
                 "explanation": "View your invoices and download them as a PDF file.",
-                "empty_list": "You don't have any invoices yet."
+                "empty_list": "You don't have any invoices yet.",
+                "to_payment": "Pay now"
             },
             "class_info": {
                 "error_loading_data": "Error loading class info... :(",
@@ -1865,7 +1870,17 @@
                 "title": "Sign out",
                 "explanation": "Click the button below to sign out."
             },
-            "btn_text_sign_out": "To sign out"
+            "btn_text_sign_out": "To sign out",
+            "invoice_payment": {
+                "title": "Invoice payment",
+                "error_loading_data": "Error loading invoice data... :("
+            },
+            "invoice_payment_status": {
+                "error_loading_data": "Error loading invoice data... :(",
+                "payment_received": "Payment received",
+                "payment_not_confirmed": "We weren't able to confirm your payment. In case this is an error, please contact us.",
+                "to_profile": "Continue"
+            }
         },
         "accounts": {
             "profile": {

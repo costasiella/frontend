@@ -3,7 +3,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-import CSDatePicker from "../../../ui/CSDatePicker"
+import CSDatePicker from "../../ui/CSDatePicker"
 
 
 import {

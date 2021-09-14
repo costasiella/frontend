@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Costasiella frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the web frontend for Costasiella.
 
-## Available Scripts
+## Project status
 
-In the project directory, you can run:
+Costasiella is currently in Beta status and shouldn't be used in a production environment yet. Around Q4 2021 / Q1 2022 a first production release is scheduled to be available. After that release, professional services like hosting and support will also be available.
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Costasiella is freely distributed open source web based software built for Yoga, Dance, Karate/Martial Arts, and Fitness Studios/Schools. Here just a sample of the types of organizations Costasiella serves:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Yoga
+- Dance
+- Martial arts
+- Buddhist centers
 
-### `npm test`
+Any organization dealing with subscriptions, classes and/or events could benefit from the use of Costasiella.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Costasiella will help you manage customers, subscriptions, class passes, schedule classes and plan events.
 
-### `npm run build`
+Online payments are provided through [Mollie](https://www.mollie.com/en). Please refer to their website & support for current rates and questions about availability in your region. The Costasiella Mollie integration handles single payments for classes, class passes and event tickets. Recurring payments are supported for subscriptions. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Please refer to the manual found [here](https://costasiella-docs.readthedocs.io/en/latest/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting involved
 
-### `npm run eject`
+*Ideas*
+In case you'd like to see improvements in the feature set provided by OpenStudio, please open an issue where you describe your idea in detail. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+*Code*
+Any and all help coding is greatly appreciated, please use the [contact form](https://www.openstudioproject.com/contact/) on the OpenStudio website to get in touch. Perhaps you could tell a bit about yourself, your experience in other projects, if any and which languages and frameworks you're most comfortable with or would like to learn. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technology overview
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This is a general list of the technoligies used in this project.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Backend
 
-## Learn More
+- Django
+- GraphQL
+- Celery
+- MySQL
+- Redis
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- i18next
+- Apollo Client
+- Webpack
 
-### Code Splitting
+## Docs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://costasiella-docs.readthedocs.io/

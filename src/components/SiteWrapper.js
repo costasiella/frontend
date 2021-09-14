@@ -182,7 +182,7 @@ function SiteWrapper({t, match, history, children}) {
       headerProps={{
           href: "/",
           alt: "Costasiella",
-          imageURL: "/d/static/logos/stock/logo_stock_backend.svg", // Set logo url here
+          imageURL: "/d/static/logos/stock/logo_stock_backend.png", // Set logo url here
           navItems: (
             <Nav.Item type="div" className="d-none d-md-flex">
               <Link to="/settings">

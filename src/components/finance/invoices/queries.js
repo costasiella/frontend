@@ -120,6 +120,7 @@ export const GET_INVOICE_QUERY = gql`
               name
             }
             note
+            onlinePaymentId
           }
         }
       }

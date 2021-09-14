@@ -161,7 +161,7 @@ const getNavBarItems = (t, loading, error, data) => {
 }
 
 function getHeaderImageUrl(organization) {
-  let imageURL = "/d/static/logos/stock/logo_stock_backend.svg"
+  let imageURL = "/d/static/logos/stock/logo_stock_backend.png"
 
   if (organization) {
     if (organization.urlLogoShopHeader) {

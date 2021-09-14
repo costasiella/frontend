@@ -4,7 +4,6 @@ import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
@@ -32,6 +31,7 @@ function ShopAccountOrders({t, match, history}) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormat = dateFormat + ' ' + timeFormat
+  const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
 
   // Chain queries. First query user data and then query orders for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
@@ -113,9 +113,9 @@ function ShopAccountOrders({t, match, history}) {
                 <span className="pull-right">
                   <FinanceOrderStatus status={node.status} />
                 </span>
-                <span className="text-muted">
+                <small className="text-muted">
                   {moment(node.createdAt).format(dateTimeFormat)}
-                </span>
+                </small>
                 <Card statusColor={get_order_card_status_color(node.status)}>
                   <Card.Header>
                     <Card.Title>{t("general.order") + " #" + node.orderNumber}</Card.Title>
@@ -144,7 +144,7 @@ function ShopAccountOrders({t, match, history}) {
                           {t('general.cancel')}
                         </Button>
                       : ""}
-                      {(node.status == "AWAITING_PAYMENT") ?
+                      {(node.status == "AWAITING_PAYMENT" && onlinePaymentsAvailable) ?
                         <Link to={"/shop/checkout/payment/" + node.id}>
                           <Button
                             className="ml-4"
@@ -162,7 +162,7 @@ function ShopAccountOrders({t, match, history}) {
                       <Table.Row>
                         <Table.ColHeader>{t("general.product")}</Table.ColHeader>
                         <Table.ColHeader>{t("general.description")}</Table.ColHeader>
-                        <Table.ColHeader>{t("general.total")}</Table.ColHeader>
+                        <Table.ColHeader><span className="float-right">{t("general.total")}</span></Table.ColHeader>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -170,13 +170,13 @@ function ShopAccountOrders({t, match, history}) {
                         <Table.Row>
                           <Table.Col>{node.productName}</Table.Col>
                           <Table.Col>{node.description}</Table.Col>
-                          <Table.Col>{node.totalDisplay}</Table.Col>
+                          <Table.Col><span className="float-right">{node.totalDisplay}</span></Table.Col>
                         </Table.Row>    
                       ))}
                       <Table.Row>
                         <Table.Col></Table.Col>
                         <Table.Col></Table.Col>
-                        <Table.Col><span className="bold">{node.totalDisplay}</span></Table.Col>
+                        <Table.Col><span className="bold float-right">{node.totalDisplay}</span></Table.Col>
                       </Table.Row>
                     </Table.Body>
                   </Table>

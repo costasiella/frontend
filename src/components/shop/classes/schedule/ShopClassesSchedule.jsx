@@ -30,6 +30,11 @@ import { GET_CLASSES_QUERY } from "../../../schedule/classes/queries"
 import { get_list_query_variables } from './tools'
 
 
+function capitalize(word) {
+  const lower = word.toLowerCase();
+  return word.charAt(0).toUpperCase() + lower.slice(1);
+}
+
 
 // Set some initial values for dates, if not found
 if (!localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)) {
@@ -124,7 +129,7 @@ function ShopClassesSchedule({ t, match, history }) {
               <Card>
                 <Card.Header>
                   <Card.Title>
-                    <b>{moment(date).format("dddd")}</b> {' '}
+                    <b>{capitalize(moment(date).format("dddd"))}</b> {' '}
                     <span className="text-muted">
                       {moment(date).format("LL")} 
                     </span>

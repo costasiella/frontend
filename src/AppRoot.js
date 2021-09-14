@@ -101,10 +101,10 @@ import OrganizationClasstypeEditImage from './components/organization/classtypes
 import OrganizationDiscoveries from './components/organization/discovery/OrganizationDiscoveries'
 import OrganizationDiscoveryAdd from './components/organization/discovery/OrganizationDiscoveryAdd'
 import OrganizationDiscoveryEdit from './components/organization/discovery/OrganizationDiscoveryEdit'
-import OrganizationDocuments from './components/organization/organization/documents/OrganizationDocuments'
-import OrganizationListDocuments from './components/organization/organization/documents/OrganizationListDocuments'
-import OrganizationDocumentAdd from './components/organization/organization/documents/OrganizationDocumentAdd'
-import OrganizationDocumentEdit from './components/organization/organization/documents/OrganizationDocumentEdit'
+import OrganizationDocuments from './components/organization/documents/OrganizationDocuments'
+import OrganizationListDocuments from './components/organization/documents/OrganizationListDocuments'
+import OrganizationDocumentAdd from './components/organization/documents/OrganizationDocumentAdd'
+import OrganizationDocumentEdit from './components/organization/documents/OrganizationDocumentEdit'
 import OrganizationLanguages from './components/organization/languages/OrganizationLanguages'
 import OrganizationLanguageAdd from './components/organization/languages/OrganizationLanguageAdd'
 import OrganizationLanguageEdit from './components/organization/languages/OrganizationLanguageEdit'
@@ -240,6 +240,8 @@ import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopA
 import ShopAccountClassInfo from './components/shop/account/class_info/ShopAccountClassInfo'
 import ShopAccountClasspasses from './components/shop/account/classpasses/ShopAccountClasspasses'
 import ShopAccountEventTickets from './components/shop/account/event_tickets/ShopAccountEventTickets'
+import ShopAccountInvoicePayment from './components/shop/account/invoice_payment/ShopAccountInvoicePayment'
+import ShopAccountInvoicePaymentStatus from './components/shop/account/invoice_payment_status/ShopAccountInvoicePaymentStatus'
 import ShopAccountInvoices from './components/shop/account/invoices/ShopAccountInvoices'
 import ShopAccountOrders from './components/shop/account/orders/ShopAccountOrders'
 import ShopAccountProfile from './components/shop/account/profile/ShopAccountProfile'
@@ -604,6 +606,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/classes" component={ShopClasses} />
             <PrivateRoute exact path = "/shop/account/classpasses" component={ShopAccountClasspasses} />
             <PrivateRoute exact path = "/shop/account/event_tickets" component={ShopAccountEventTickets} />
+            <PrivateRoute exact path = "/shop/account/invoice_payment/:id" component={ShopAccountInvoicePayment} />
+            <PrivateRoute exact path = "/shop/account/invoice_payment_status/:id" component={ShopAccountInvoicePaymentStatus} />
             <PrivateRoute exact path = "/shop/account/invoices" component={ShopAccountInvoices} />
             <PrivateRoute exact path = "/shop/account/orders" component={ShopAccountOrders} />
             <PrivateRoute exact path = "/shop/account/profile" component={ShopAccountProfile} />

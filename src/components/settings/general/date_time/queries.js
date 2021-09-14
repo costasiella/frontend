@@ -8,6 +8,7 @@ export const GET_APP_SETTINGS_QUERY = gql`
       timeFormat
       timeFormatMoment
       dateTimeFormatMoment
+      onlinePaymentsAvailable
     }
   }
 `

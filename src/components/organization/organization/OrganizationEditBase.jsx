@@ -28,15 +28,6 @@ function OrganizationEditBase({t, match, history, children}) {
         <Container>
           <Page.Header title={t('organization.title')}>
             <div className="page-options d-flex">
-              <Link to={`/organization/documents/${id}`}>
-                <Button 
-                  icon="briefcase"
-                  className="mr-2"
-                  color="secondary"
-                >
-                  {t('general.documents')}
-                </Button>
-              </Link>
             </div>
           </Page.Header>
           <Grid.Row>

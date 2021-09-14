@@ -25,6 +25,7 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 // import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
 import SettingsIntegrationMollieForm from "./SettingsIntegrationMollieForm"
+import SettingsIntegrationMollieCreateAccount from "./SettingsIntegrationMollieCreateAccount"
 
 
 function SettingsIntegrationMollie({ t, match, history }) {
@@ -69,16 +70,21 @@ function SettingsIntegrationMollie({ t, match, history }) {
     )
   }
 
+  let mollieApiKey = ""
+  if (data.systemSettings.edges.length) {
+    mollieApiKey = data.systemSettings.edges[0].node.value
+  }
 
   return (
     <SettingsBase 
       headerSubTitle={headerSubTitle}
       cardTitle={cardTitle}
       sidebarActive={sidebarActive}
-    >  
+      alertBanner={<SettingsIntegrationMollieCreateAccount mollieApiKey={mollieApiKey} />}
+    >
     <Formik
       initialValues={{ 
-        mollie_api_key: data.systemSettings.edges[0].node.value
+        mollie_api_key: mollieApiKey
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
@@ -92,7 +98,9 @@ function SettingsIntegrationMollie({ t, match, history }) {
               value: values.mollie_api_key
             }
           }, refetchQueries: [
-              {query: GET_SYSTEM_SETTINGS_QUERY}
+              {query: GET_SYSTEM_SETTINGS_QUERY,     variables: {
+                setting: "integration_mollie_api_key"
+              }}
           ]})
           .then(({ data }) => {
               console.log('got data', data)

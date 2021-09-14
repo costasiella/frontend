@@ -80,7 +80,7 @@ function FinanceOrderEdit({t, match, history}) {
                 </Table.Row>
                 <Table.Row>
                   <Table.ColHeader>{t("general.account")}</Table.ColHeader>
-                  <Table.Col>{order.account.fullName}</Table.Col>
+                  <Table.Col>{order.account && order.account.fullName}</Table.Col>
                 </Table.Row>
                 <Table.Row>
                   <Table.ColHeader>{t("finance.orders.placed_at")}</Table.ColHeader>

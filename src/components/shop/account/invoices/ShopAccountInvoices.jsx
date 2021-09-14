@@ -20,7 +20,7 @@ import {
   Table,
   Text
 } from "tabler-react"
-import { QUERY_ACCOUNT_INVOICES } from "./queries"
+import { QUERY_ACCOUNT_INVOICES, CREATE_PAYMENT_LINK } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 
 import ShopAccountInvoicesBase from "./ShopAccountInvoicesBase"
@@ -31,6 +31,7 @@ function ShopAccountInvoices({t, match, history}) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormat = dateFormat + ' ' + timeFormat
+  const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
 
   // Chain queries. First query user data and then query invoices for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
@@ -140,14 +141,25 @@ function ShopAccountInvoices({t, match, history}) {
                       {node.balanceDisplay}
                     </Table.Col>
                     <Table.Col className="text-right" key={v4()}>
-                      <Button 
-                        RootComponent="a"
-                        href={`/d/export/invoice/pdf/${node.id}`}
-                        color="secondary"
-                        icon="printer"
-                      >
-                        {t('general.pdf')}
-                      </Button>
+                        {/* TODO: Add token refresh here within an onClick */}
+                        <Button 
+                          RootComponent="a"
+                          href={`/d/export/invoice/pdf/${node.id}`}
+                          color="secondary"
+                          icon="printer"
+                        >
+                          {t('general.pdf')}
+                        </Button>
+                        {(node.status == "SENT" && onlinePaymentsAvailable) ?
+                        <Link to={"/shop/account/invoice_payment/" + node.id}>
+                          <Button
+                            className=""
+                            color="success"
+                          >
+                            {t('shop.account.invoices.to_payment')} <Icon name="chevron-right" />
+                          </Button>
+                        </Link>
+                      : ""}
                     </Table.Col>
                   </Table.Row>
                 ))}
