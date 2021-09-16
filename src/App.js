@@ -23,8 +23,6 @@ import CSLS from "./tools/cs_local_storage"
 import CSEC from "./tools/cs_error_codes"
 import { CSAuth } from './tools/authentication'
 
-// import Cookies from 'js-cookie'
-
 // Main app
 import AppRoot from "./AppRoot"
 
