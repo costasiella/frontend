@@ -13,8 +13,10 @@ export const CSAuth = {
     updateTokenInfo(refreshTokenData) {
         console.log("Token payload:")
         console.log(refreshTokenData)
+        localStorage.setItem(CSLS.AUTH_TOKEN, refreshTokenData.token)
         localStorage.setItem(CSLS.AUTH_TOKEN_EXP, refreshTokenData.payload.exp)
         localStorage.setItem(CSLS.AUTH_TOKEN_ORIGIAT, refreshTokenData.payload.origIat)
+        localStorage.setItem(CSLS.AUTH_REFRESH_TOKEN, refreshTokenData.refreshToken)
         localStorage.setItem(CSLS.AUTH_REFRESH_TOKEN_EXP, refreshTokenData.refreshExpiresIn)
     },
     logout(expired=false) {
