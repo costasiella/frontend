@@ -179,7 +179,6 @@ function InsightSubscriptions ({ t, history }) {
             block
             color="secondary"
             RootComponent="a"
-            href={export_url_active}
             icon="download-cloud"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
               doTokenRefresh, history, export_url_active
