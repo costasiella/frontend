@@ -12,6 +12,7 @@ import {
   gql
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { setContext } from '@apollo/client/link/context';
 // import ApolloClient from "react"
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
@@ -57,11 +58,14 @@ function SetCurrentUrlAsNext() {
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
   if (graphQLErrors)
-    graphQLErrors.forEach(({ message, locations, path }) =>
+    graphQLErrors.forEach(({ message, locations, path }) => {
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      ),
-    );
+      )
+      if (message == "Signature has expired") {
+        tokenRefresh()
+      }
+    });
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
 
@@ -71,10 +75,11 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
   }
 
   // Token refresh / re-auth check
-  if (response) {
-    let i
-    for (i = 0; i < response.errors.length; i++) {
-      if (response.errors[i].extensions && response.errors[i].extensions.code === CSEC.USER_NOT_LOGGED_IN) {
+  function tokenRefresh() {
+    console.log("trying to refresh token")
+    // let i
+    // for (i = 0; i < response.errors.length; i++) {
+    //   if (response.errors[i].extensions && response.errors[i].extensions.code === CSEC.USER_NOT_LOGGED_IN) {
 
         let authTokenExpired = false
         const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
@@ -86,21 +91,23 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
         console.log(authTokenExpired)
 
         if (authTokenExpired) {
-          const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
+          const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
           if (refreshTokenExp == null) {
             // User hasn't logged in before
+            console.log("User hasn't logged in before")
             SetCurrentUrlAsNext()
-            window.location.href = "#/user/login/required"
-            window.location.reload()
+            // window.location.href = "#/user/login/required"
+            // window.location.reload()
           } else if ((new Date() / 1000) >= refreshTokenExp) {
             // Session expired
+            console.log("Session expired")
             SetCurrentUrlAsNext()
             console.log("refresh token expired or not found")
             console.log(new Date() / 1000)
             console.log(refreshTokenExp)
       
-            window.location.href = "#/user/session/expired"
-            window.location.reload()
+            // window.location.href = "#/user/session/expired"
+            // window.location.reload()
           } else {
             // Refresh token... no idea how this observable & subscriber stuff works... but it does :).
             // https://stackoverflow.com/questions/50965347/how-to-execute-an-async-fetch-request-and-then-retry-last-failed-request/51321068#51321068
@@ -146,54 +153,59 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
         // window.location.href = "/#/user/login"
         // window.location.reload()
       }
-    }
-  }
-});
+})
+    
+//     }
+//   }
+// });
 
 
 // Fetch CSRF Token 
-let csrftoken;
-async function getCsrfToken() {
-    if (csrftoken) return csrftoken;
-    csrftoken = await fetch('/d/csrf/')
-        .then(response => response.json())
-        .then(data => data.csrfToken)
-    return await csrftoken
-}
+// let csrftoken;
+// async function getCsrfToken() {
+//     if (csrftoken) return csrftoken;
+//     csrftoken = await fetch('/d/csrf/')
+//         .then(response => response.json())
+//         .then(data => data.csrfToken)
+//     return await csrftoken
+// }
+
 
 const httpLink = createHttpLink({
   uri: '/d/graphql/',
   credentials: 'same-origin',
-  request: async (operation) => {
-    const csrftoken = await getCsrfToken();
-    Cookies.set('csrftoken', csrftoken);
-    // set the cookie 'csrftoken'
-    operation.setContext({
-        // set the 'X-CSRFToken' header to the csrftoken
-        headers: {
-            'X-CSRFToken': csrftoken,
-        },
-    })}
 });
 
-const csrfMiddleWare = new ApolloLink(async (operation, forward) => {
-  // const csrftoken = await getCsrfToken();
-  const csrftoken = await getCsrfToken();
-  Cookies.set('csrftoken', csrftoken);
-
-  operation.setContext({
-    // set the 'X-CSRFToken' header to the csrftoken
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem(CSLS.AUTH_TOKEN)
+  // return the headers to the context so httpLink can read them
+  return {
     headers: {
-        'X-CSRFToken': csrftoken,
-    },
-  })
+      ...headers,
+      Authorization: token ? `JWT ${token}`: ''
+    }
+  }
+});
 
-  return forward(operation)
-})
+// const csrfMiddleWare = new ApolloLink(async (operation, forward) => {
+//   // const csrftoken = await getCsrfToken();
+//   const csrftoken = await getCsrfToken();
+//   Cookies.set('csrftoken', csrftoken);
+
+//   operation.setContext({
+//     // set the 'X-CSRFToken' header to the csrftoken
+//     headers: {
+//         'X-CSRFToken': csrftoken,
+//     },
+//   })
+
+//   return forward(operation)
+// })
 
 // set up ApolloClient
 const client = new ApolloClient({
-  link: from([csrfMiddleWare, errorLink, httpLink]),
+  link: from([authLink, errorLink, httpLink]),
   cache: new InMemoryCache(),
 // },
   // request: async operation => {

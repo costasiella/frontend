@@ -302,7 +302,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   }
 
   if (authTokenExpired) {
-    const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
+    const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
     if (refreshTokenExp == null) {
       SetCurrentUrlAsNext()
       
