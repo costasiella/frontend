@@ -23,12 +23,12 @@ export const TOKEN_VERIFY = gql`
 
 
 export const TOKEN_REFRESH = gql`
-  mutation RefreshToken {
-    refreshToken {
+  mutation RefreshToken($refreshToken: String!) {
+    refreshToken(refreshToken: $refreshToken) {
       token
       payload
-      refreshExpiresIn
       refreshToken
+      refreshExpiresIn
     }
   }
 `
