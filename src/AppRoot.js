@@ -351,13 +351,19 @@ function AppRoot({ t }) {
   })
 
   if (loadingAppSettings || loadingOrganization) return t('general.loading_with_dots')
-  if (errorAppSettings || errorOrganization) return (
-    <div>
-      { t('settings.error_loading') } <br />
-      { errorAppSettings.message } <br /><br />
-      { errorOrganization.message}
-    </div>
-  )
+  if (errorAppSettings || errorOrganization) {
+    if (errorAppSettings.message == "Signature has expired")  {
+      return ""
+    } else {
+      return (
+        <div>
+          { t('settings.error_loading') } <br />
+          { errorAppSettings.message } <br />
+          { errorOrganization.message}
+        </div>
+      )
+    }
+  }
 
   // Register "US" locale for moment
   // moment.locale('en-US')
