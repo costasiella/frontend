@@ -20,13 +20,13 @@ import {
 } from "tabler-react"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationContext from '../../context/OrganizationContext'
+// import OrganizationContext from '../../context/OrganizationContext'
 import { CSAuth } from "../../../tools/authentication"
 import CSStandaloneFormPage from "../../ui/CSStandaloneFormPage"
 
 function UserLoginRequired({t, match, history}) {
-  const organization = useContext(OrganizationContext)
-  console.log(organization)
+  // const organization = useContext(OrganizationContext)
+  // console.log(organization)
 
   const [active, setActive] = useState(false);
 
