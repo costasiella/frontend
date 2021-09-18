@@ -42,7 +42,7 @@ function OrganizationHolidayAdd({t, history}) {
                   classes: values.classes,
                 }
               }, refetchQueries: [
-                  {query: GET_HOLIDAYS_QUERY, variables: {"archived": false }}
+                  {query: GET_HOLIDAYS_QUERY}
               ]})
               .then(({ data }) => {
                   console.log('got data', data);
