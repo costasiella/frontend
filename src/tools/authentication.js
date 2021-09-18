@@ -19,18 +19,20 @@ export const CSAuth = {
         localStorage.setItem(CSLS.AUTH_REFRESH_TOKEN, refreshTokenData.refreshToken)
         localStorage.setItem(CSLS.AUTH_REFRESH_TOKEN_EXP, refreshTokenData.refreshExpiresIn)
     },
+    cleanup() {
+        // Like logging out, but don't unset next url. 
+        // This function is used when a refreshToken has expired
+        localStorage.removeItem(CSLS.AUTH_TOKEN)
+        localStorage.removeItem(CSLS.AUTH_TOKEN_EXP)
+        localStorage.removeItem(CSLS.AUTH_TOKEN_ORIGIAT)
+        localStorage.removeItem(CSLS.AUTH_REFRESH_TOKEN)
+        localStorage.removeItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
+    },
     logout(expired=false) {
         if (!expired) {
             // Manual logout, remove everything
-            localStorage.removeItem(CSLS.AUTH_TOKEN)
-            localStorage.removeItem(CSLS.AUTH_TOKEN_EXP)
-            localStorage.removeItem(CSLS.AUTH_TOKEN_ORIGIAT)
-            localStorage.removeItem(CSLS.AUTH_REFRESH_TOKEN)
-            localStorage.removeItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
-            // localStorage.removeItem(CSLS.AUTH_LOGIN_NEXT)
-        } 
-        // //  Always remove token
-        // localStorage.removeItem(CSLS.AUTH_TOKEN)
-        
+            this.cleanup()
+            localStorage.removeItem(CSLS.AUTH_LOGIN_NEXT)
+        }        
     }
 }
