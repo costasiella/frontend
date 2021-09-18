@@ -771,7 +771,9 @@
             "empty_list": "No holidays have been defined yet.",
             "add": "Add holiday",
             "title_add": "Add Holiday",
-            "toast_add_success": "Added holiday"
+            "toast_add_success": "Added holiday",
+            "title_edit": "Edit holiday",
+            "toast_edit_success": "Saved"
         }
     },
     "validity": {
