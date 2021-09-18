@@ -6,11 +6,16 @@ import { Link } from "react-router-dom"
 import {
     Button,
     Card,
-    Form
+    Form,
+    Grid,
   } from "tabler-react"
-  import { Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-const OrganizationHolidayForm = ({ t, history, isSubmitting, errors, returnUrl }) => (
+import { Editor } from '@tinymce/tinymce-react'
+import { tinymceBasicConf } from "../../../plugin_config/tinymce"  
+import CSDatePicker from "../../ui/CSDatePicker"
+
+const OrganizationHolidayForm = ({ t, history, isSubmitting, values, errors, setFieldTouched, setFieldValue, returnUrl }) => (
     <FoForm>
         <Card.Body>
           <Form.Group label={t('general.name')}>
@@ -63,18 +68,18 @@ const OrganizationHolidayForm = ({ t, history, isSubmitting, errors, returnUrl }
               </Form.Label>
               <ErrorMessage name="classes" component="div" />   
             </Form.Group>  
-          <Form.Group label={t('general.note')}>
+          <Form.Group label={t('general.description')}>
             <Editor
                 tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
-                textareaName="note"
-                initialValue={values.note}
+                textareaName="description"
+                initialValue={values.description}
                 init={tinymceBasicConf}
                 onBlur={(e) => {
-                    setFieldValue("note", e.target.getContent())
-                    setFieldTouched("note", true, true)
+                    setFieldValue("description", e.target.getContent())
+                    setFieldTouched("description", true, true)
                 }}
                 />
-            <ErrorMessage name="note" component="span" className="invalid-feedback" />
+            <ErrorMessage name="description" component="span" className="invalid-feedback" />
           </Form.Group>
         </Card.Body>
         <Card.Footer>
