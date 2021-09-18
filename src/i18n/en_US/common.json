@@ -475,7 +475,8 @@
         "products": "Products",
         "discovery": "Discovery",
         "language": "Language",
-        "key_number": "Door key number"
+        "key_number": "Door key number",
+        "apply_to": "Apply to"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -768,7 +769,9 @@
             "title": "Holidays",
             "error_loading": "Error loading holidays... :(",
             "empty_list": "No holidays have been defined yet.",
-            "add": "Add holiday"
+            "add": "Add holiday",
+            "title_add": "Add Holiday",
+            "toast_add_success": "Added holiday"
         }
     },
     "validity": {
@@ -1610,7 +1613,6 @@
     },
     "user": {
         "login": {
-            "invalid_credentials": "Email or password not correct",
             "title": "Sign in",
             "email": "Email",
             "email_placeholder": "Email...",
