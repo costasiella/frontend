@@ -107,6 +107,7 @@ import OrganizationDocumentAdd from './components/organization/documents/Organiz
 import OrganizationDocumentEdit from './components/organization/documents/OrganizationDocumentEdit'
 import OrganizationHolidays from './components/organization/holidays/OrganizationHolidays'
 import OrganizationHolidayAdd from './components/organization/holidays/OrganizationHolidayAdd'
+import OrganizationHolidayEdit from './components/organization/holidays/OrganizationHolidayEdit'
 import OrganizationLanguages from './components/organization/languages/OrganizationLanguages'
 import OrganizationLanguageAdd from './components/organization/languages/OrganizationLanguageAdd'
 import OrganizationLanguageEdit from './components/organization/languages/OrganizationLanguageEdit'
@@ -470,6 +471,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/discoveries/edit/:id" component={OrganizationDiscoveryEdit} /> 
             <PrivateRoute exact path="/organization/holidays" component={OrganizationHolidays} />
             <PrivateRoute exact path="/organization/holidays/add" component={OrganizationHolidayAdd} />
+            <PrivateRoute exact path="/organization/holidays/edit/:id" component={OrganizationHolidayEdit} />
             <PrivateRoute exact path="/organization/languages" component={OrganizationLanguages} />
             <PrivateRoute exact path="/organization/languages/add" component={OrganizationLanguageAdd} />
             <PrivateRoute exact path="/organization/languages/edit/:id" component={OrganizationLanguageEdit} />
