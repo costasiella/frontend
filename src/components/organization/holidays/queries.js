@@ -72,3 +72,53 @@ mutation DeleteOrganizationHoliday($input: DeleteOrganizationHolidayInput!) {
   }
 }
 `
+
+export const GET_HOLIDAY_LOCATIONS_QUERY = gql`
+  query GetOrganizationHolidayLocations($after: String, $before: String, $id:ID!) {
+    organizationLocations(first: 100, before: $before, after: $after) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    organizationHolidayLocations(id: $id) {
+      id
+      name
+      description
+      organizationLocations {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`
+
+export const ADD_LOCATION_TO_HOLIDAY = gql`
+  mutation AddLocationToHoliday($input: CreateOrganizationHolidayLocationInput!) {
+    createOrganizationHolidayLocation(input:$input) {
+      organizationHolidayLocation {
+        id
+      }
+    }
+  }
+`
+
+export const DELETE_LOCATION_FROM_HOLIDAY = gql`
+  mutation DeleteLocationFromHoliday($input: DeleteOrganizationHolidayLocationInput!) {
+    deleteOrganizationHolidayLocation(input:$input) {
+      ok
+    }
+  }
+`
