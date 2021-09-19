@@ -773,7 +773,9 @@
             "title_add": "Add Holiday",
             "toast_add_success": "Added holiday",
             "title_edit": "Edit holiday",
-            "toast_edit_success": "Saved"
+            "toast_edit_success": "Saved",
+            "holiday_delete_confirm_msg": "Are you sure you wish to delete this holiday?",
+            "payment_deleted": "Holiday deleted"
         }
     },
     "validity": {

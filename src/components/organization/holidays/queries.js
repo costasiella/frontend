@@ -66,7 +66,7 @@ mutation UpdateOrganizationHoliday($input: UpdateOrganizationHolidayInput!) {
 `
 
 export const DELETE_HOLIDAY = gql`
-mutation DeleteOrganizationHoliday($input: ArchiveOrganizationHolidayInput!) {
+mutation DeleteOrganizationHoliday($input: DeleteOrganizationHolidayInput!) {
   deleteOrganizationHoliday(input: $input) {
     ok
   }

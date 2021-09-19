@@ -123,34 +123,30 @@ function OrganizationHolidays({t, history}) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                    {/* <button className="icon btn btn-link btn-sm" 
-                        title={t('general.archive')} 
-                        href=""
-                        onClick={() => {
-                          console.log("clicked archived")
-                          let id = node.id
-                          archiveLevel({ variables: {
-                            input: {
-                            id,
-                            archived: !archived
-                            }
-                    }, refetchQueries: [
-                        {query: GET_HOLIDAYS_QUERY}
-                    ]}).then(({ data }) => {
-                      console.log('got data', data);
-                      toast.success(
-                        (archived) ? t('general.unarchived'): t('general.archived'), {
-                          position: toast.POSITION.BOTTOM_RIGHT
+                    <button className="icon btn btn-link btn-sm" 
+                      title={t('general.delete')} 
+                      href=""
+                      onClick={() => {
+                        confirm_delete({
+                          t: t,
+                          msgConfirm: t("organization.holidays.holiday_delete_confirm_msg"),
+                          msgDescription: <p>{node.name}</p>,
+                          msgSuccess: t('organization.holidays.payment_deleted'),
+                          deleteFunction: deleteHoliday,
+                          functionVariables: { 
+                            variables: {
+                              input: {
+                                id: node.id
+                              }
+                            }, 
+                            refetchQueries: [
+                              {query: GET_HOLIDAYS_QUERY },
+                            ]
+                          }
                         })
-                    }).catch((error) => {
-                      toast.error((t('general.toast_server_error')) + ': ' +  error, {
-                          position: toast.POSITION.BOTTOM_RIGHT
-                        })
-                      console.log('there was an error sending the query', error);
-                    })
                     }}>
-                      <Icon prefix="fe" name="inbox" />
-                    </button> */}
+                      <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
+                    </button>
                   </Table.Col>
                 </Table.Row>
               ))}
