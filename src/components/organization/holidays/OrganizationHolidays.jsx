@@ -1,11 +1,13 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
+import moment from "moment"
+import AppSettingsContext from '../../context/AppSettingsContext'
 
 
 import {
@@ -17,6 +19,7 @@ import {
 } from "tabler-react";
 import { toast } from 'react-toastify'
 
+import confirm_delete from "../../../tools/confirm_delete"
 import ContentCard from "../../general/ContentCard"
 import OrganizationHolidaysBase from './OrganizationHolidaysBase'
 
@@ -24,7 +27,11 @@ import { GET_HOLIDAYS_QUERY, DELETE_HOLIDAY } from "./queries"
 
 
 function OrganizationHolidays({t, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+
   const cardTitle = t('organization.holidays.title')
+  
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_HOLIDAYS_QUERY)
   const [ deleteHoliday ] = useMutation(DELETE_HOLIDAY)
 
@@ -90,13 +97,24 @@ function OrganizationHolidays({t, history}) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
               {holidays.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
-                    {node.name}
+                    {node.name} 
+                    <div className="text-muted">
+                      <small dangerouslySetInnerHTML={{__html: node.description}} />
+                    </div>
+                  </Table.Col>
+                  <Table.Col>
+                    {moment(node.dateStart).format(dateFormat)}
+                  </Table.Col>
+                  <Table.Col>
+                    {moment(node.dateEnd).format(dateFormat)}
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     <Link to={`/organization/holidays/edit/${node.id}`}>
