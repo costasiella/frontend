@@ -89,7 +89,7 @@ export const GET_HOLIDAY_LOCATIONS_QUERY = gql`
         }
       }
     }
-    organizationHolidayLocations(id: $id) {
+    organizationHoliday(id: $id) {
       id
       name
       description
