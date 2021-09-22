@@ -1803,7 +1803,7 @@
             "title": "My account",
             "profile": {
                 "title": "My profile",
-                "explanation": "Update your name and contact information. Please keep your information updated in case we need to contact you or reply to an inquiry.",
+                "explanation": "Update your name and contact information.",
                 "toast_edit_success": "Saved",
                 "error_loading_data": "Error loading profile data :("
             },
@@ -1837,7 +1837,7 @@
             },
             "invoices": {
                 "title": "My invoices",
-                "explanation": "View your invoices and download them as a PDF file.",
+                "explanation": "View and download your invoices.",
                 "empty_list": "You don't have any invoices yet.",
                 "to_payment": "Pay now"
             },
@@ -1869,7 +1869,7 @@
                 "cancelation_not_possible": "Your booking for this class can no longer be cancelled"
             },
             "goto": {
-                "explanation": "Use other features like the backend or selfcheckin."
+                "explanation": "Go to another feature like the backend."
             },
             "btn_go_to": "Choose where to go",
             "change_password": {
