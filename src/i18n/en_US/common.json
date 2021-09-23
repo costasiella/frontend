@@ -775,7 +775,10 @@
             "title_edit": "Edit holiday",
             "toast_edit_success": "Saved",
             "holiday_delete_confirm_msg": "Are you sure you wish to delete this holiday?",
-            "payment_deleted": "Holiday deleted"
+            "payment_deleted": "Holiday deleted",
+            "locations": {
+                "title_edit": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "validity": {
@@ -1962,7 +1965,8 @@
             "ticket": {
                 "choose": "Choose",
                 "earlybird_price": "Earlybird",
-                "regular_price": "Regular price"
+                "regular_price": "Regular price",
+                "free": "Free"
             }
         }
     },
