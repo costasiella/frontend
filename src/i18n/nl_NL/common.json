@@ -867,7 +867,8 @@
             "ticket": {
                 "choose": "__STRING_NOT_TRANSLATED__",
                 "earlybird_price": "__STRING_NOT_TRANSLATED__",
-                "regular_price": "__STRING_NOT_TRANSLATED__"
+                "regular_price": "__STRING_NOT_TRANSLATED__",
+                "free": "__STRING_NOT_TRANSLATED__"
             }
         }
     },
@@ -1197,7 +1198,10 @@
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "holiday_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-            "payment_deleted": "__STRING_NOT_TRANSLATED__"
+            "payment_deleted": "__STRING_NOT_TRANSLATED__",
+            "locations": {
+                "title_edit": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "validity": {
