@@ -66,31 +66,21 @@ query ScheduleEvent($id: ID!) {
           description
           isSoldOut
           isEarlybirdPrice
-          ticketScheduleItems(included: true) {
-           pageInfo{
-            hasNextPage
-            hasPreviousPage
-            startCursor
-            endCursor
-            }
-            edges {
-              node {
-                id
-                included
-                scheduleItem {
+          ticketScheduleItems {
+            included
+            scheduleItem {
+              name
+              dateStart
+              timeStart
+              timeEnd
+              organizationLocationRoom {
+                organizationLocation {
                   name
-                  dateStart
-                  timeStart
-                  timeEnd
-                  organizationLocationRoom {
-                    organizationLocation {
-                      name
-                    }
-                  }
                 }
               }
             }
           }
+          
         }
       }
     }
