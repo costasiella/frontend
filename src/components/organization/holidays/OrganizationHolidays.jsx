@@ -11,10 +11,10 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 
 
 import {
+  Badge,
   Icon,
   Dimmer,
   Button,
-  Card,
   Table
 } from "tabler-react";
 import { toast } from 'react-toastify'
@@ -99,6 +99,8 @@ function OrganizationHolidays({t, history}) {
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
               <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
+              <Table.ColHeader>{t('organization.locations.title')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -115,6 +117,11 @@ function OrganizationHolidays({t, history}) {
                   </Table.Col>
                   <Table.Col>
                     {moment(node.dateEnd).format(dateFormat)}
+                  </Table.Col>
+                  <Table.Col>
+                    {node.organizationLocations.edges.map(({ node: location }) => (
+                       <div><Badge color="primary" className="mr-1">{location.name}</Badge></div>
+                    ))}
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     <Link to={`/organization/holidays/edit/${node.id}/locations`}>
