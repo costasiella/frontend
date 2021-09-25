@@ -779,6 +779,14 @@
             "locations": {
                 "title_edit": "Edit locations"
             }
+        },
+        "holiday": {
+            "locations": {
+                "add_to_holiday": "Add to holiday",
+                "added_to_holiday": "Saved",
+                "delete_from_holiday": "Remove from holiday",
+                "deleted_from_holiday": "Saved"
+            }
         }
     },
     "validity": {

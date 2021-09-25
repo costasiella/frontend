@@ -1202,6 +1202,14 @@
             "locations": {
                 "title_edit": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "holiday": {
+            "locations": {
+                "add_to_holiday": "__STRING_NOT_TRANSLATED__",
+                "added_to_holiday": "__STRING_NOT_TRANSLATED__",
+                "delete_from_holiday": "__STRING_NOT_TRANSLATED__",
+                "deleted_from_holiday": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "validity": {
