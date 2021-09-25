@@ -143,10 +143,6 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
                 onBlur={() => setFieldTouched("timeStart", true)}
                 clearable={false}
               />
-              {/* {errors.timeStart}
-              {errors.timeStart && touched.timeStart ? (
-                <span className="invalid-feedback">{errors.timeStart} - hacky thingy</span>
-              ) : null} */}
               <ErrorMessage name="timeStart" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
