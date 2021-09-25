@@ -52,16 +52,16 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
           </PricingCard.AttributeItem>
           : "" 
         }
-        {ticketScheduleItems.map(({ scheduleItem }) => (
+        {ticketScheduleItems.edges.map(({ node }) => (
           <PricingCard.AttributeItem>
               <Icon name="calendar" /> { " " }
-              {moment(scheduleItem.dateStart).format(dateFormat)} {" "}
+              {moment(node.scheduleItem.dateStart).format(dateFormat)} {" "}
               {/* Start & end time */}
-              {moment(scheduleItem.dateStart + ' ' + scheduleItem.timeStart).format(timeFormat)} {' - '}
-              {moment(scheduleItem.dateStart + ' ' + scheduleItem.timeEnd).format(timeFormat)} { ' ' }
+              {moment(node.scheduleItem.dateStart + ' ' + node.scheduleItem.timeStart).format(timeFormat)} {' - '}
+              {moment(node.scheduleItem.dateStart + ' ' + node.scheduleItem.timeEnd).format(timeFormat)} { ' ' }
             <br />
             <small className="text-muted">
-              {scheduleItem.name} <Icon name="map-pin" /> {scheduleItem.organizationLocationRoom.organizationLocation.name}
+              {node.scheduleItem.name} <Icon name="map-pin" /> {node.scheduleItem.organizationLocationRoom.organizationLocation.name}
             </small>
           </PricingCard.AttributeItem>
         ))}
