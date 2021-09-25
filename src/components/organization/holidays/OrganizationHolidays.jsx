@@ -117,6 +117,12 @@ function OrganizationHolidays({t, history}) {
                     {moment(node.dateEnd).format(dateFormat)}
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
+                    <Link to={`/organization/holidays/edit/${node.id}/locations`}>
+                      <Button className='btn-sm' 
+                              color="secondary">
+                        {t('organization.holidays.locations.title_edit')}
+                      </Button>
+                    </Link>
                     <Link to={`/organization/holidays/edit/${node.id}`}>
                       <Button className='btn-sm' 
                               color="secondary">
