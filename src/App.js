@@ -47,13 +47,13 @@ function SetCurrentUrlAsNext() {
   const currentUrl = window.location.href
   const next = currentUrl.split("#")[1]
   console.log(next)
-  if ((next != "/user/login") && (next != "/user/session/expired") && (next != "/user/login/required")) {
+  if ((next != "/user/login") && (next != "/user/session/expired") && (next != "/user/login/required") && (next)) {
     // This is a dirty hack to work around the following, a user refreshes the page but has an expired refreshtoken.
     // This will produce an error on the orinal component, setting the correct next URL in localStorage. However, 
     // the code below will move the user to /user/login, which will also error at first, thus /user/login always
     // gets set... we don't want that. This flow can be refactored at some point, but it works for now. 
     localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
-  }
+  } 
 }
   
 
