@@ -8,7 +8,6 @@ export const GET_CLASSES_QUERY = gql`
       $organizationClasstype: String,
       $organizationLevel: String,
       $organizationLocation: String,
-      $publicOnly: Boolean,
       $attendanceCountType: String!
     ){
     scheduleClasses(
@@ -28,6 +27,8 @@ export const GET_CLASSES_QUERY = gql`
         frequencyType
         date
         status
+        holiday
+        holidayName
         description
         account {
           id

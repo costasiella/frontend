@@ -40,6 +40,7 @@ import ScheduleClassesBase from './ScheduleClassesBase'
 
 import { GET_CLASSES_QUERY } from "./queries"
 import { 
+  get_class_messages,
   get_list_query_variables, 
   represent_class_status,
   represent_teacher 
@@ -171,6 +172,8 @@ function ScheduleClasses ({ t, history }) {
                       frequencyType,
                       date, 
                       status,
+                      holiday,
+                      holidayName,
                       description,
                       account, 
                       role,
@@ -191,19 +194,19 @@ function ScheduleClasses ({ t, history }) {
                         {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
                         {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
                         {(frequencyType === 'SPECIFIC') ? <Badge color="primary">{t('general.once')}</Badge> : null } <br />
-                        <span className="text-muted">{description}</span>
+                        <small className="text-muted">{get_class_messages(t, status, description, holiday, holidayName)}</small>
                       </Table.Col>
                       <Table.Col>
                         {/* Location */}
                         {organizationLocationRoom.organizationLocation.name} <br />
-                        <span className="text-muted">{organizationLocationRoom.name}</span>
+                        <small className="text-muted">{organizationLocationRoom.name}</small>
                       </Table.Col>
                       <Table.Col>
                         {/* Type and level */}
                         {organizationClasstype.name} <br />
-                        <span className="text-muted">
+                        <small className="text-muted">
                           {(organizationLevel) ? organizationLevel.name: ""}
-                        </span>
+                        </small>
                       </Table.Col>
                       <Table.Col>
                         {/* Teacher(s) */}
@@ -211,9 +214,9 @@ function ScheduleClasses ({ t, history }) {
                             represent_teacher(account.fullName, role) : 
                             <span className="text-red">{t("schedule.classes.no_teacher")}</span>
                         } <br />
-                        <span className="text-muted">
+                        <small className="text-muted">
                           {(account2) ? represent_teacher(account2.fullName, role2) : ""}
-                        </span>
+                        </small>
                       </Table.Col>
                       <Table.Col>
                         {/* Public */}

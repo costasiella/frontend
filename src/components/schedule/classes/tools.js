@@ -90,3 +90,15 @@ export function represent_class_status(status) {
 
   return <StatusIcon color={color} />
 }
+
+
+export function get_class_messages(t, status, description, holiday, holidayName) {
+  let messages
+  if (holiday) {
+    return <span>{t("general.holiday")} ({holidayName})</span>
+  }
+
+  if (status == 'CANCELED') {
+    return description
+  }
+}
