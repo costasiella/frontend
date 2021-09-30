@@ -476,7 +476,8 @@
         "discovery": "Discovery",
         "language": "Language",
         "key_number": "Door key number",
-        "apply_to": "Apply to"
+        "apply_to": "Apply to",
+        "holiday": "Holiday"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

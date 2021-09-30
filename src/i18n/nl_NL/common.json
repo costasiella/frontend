@@ -235,7 +235,8 @@
         "discovery": "__STRING_NOT_TRANSLATED__",
         "language": "__STRING_NOT_TRANSLATED__",
         "key_number": "__STRING_NOT_TRANSLATED__",
-        "apply_to": "__STRING_NOT_TRANSLATED__"
+        "apply_to": "__STRING_NOT_TRANSLATED__",
+        "holiday": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",
