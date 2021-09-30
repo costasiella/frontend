@@ -1942,7 +1942,8 @@
                 "cancelled": "Cancelled",
                 "finished": "Finished",
                 "ongoing": "Ongoing",
-                "full": "Full"
+                "full": "Full",
+                "cancelled_holiday": "Holiday"
             }
         },
         "contact": {
