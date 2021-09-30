@@ -146,6 +146,8 @@ function ShopClassesSchedule({ t, match, history }) {
                         frequencyType,
                         date, 
                         status,
+                        holiday,
+                        holidayName,
                         description,
                         account, 
                         role,

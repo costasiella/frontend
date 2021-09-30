@@ -37,6 +37,11 @@ function ShopClassesScheduleButtonBook({ t, match, history, scheduleItemId, clas
           {t("shop.classes.class_booking_status.cancelled")}
         </span>
       break
+    case "HOLIDAY":
+      buttonBook = <span className="pull-right">
+          {t("shop.classes.class_booking_status.cancelled_holiday")}
+        </span>
+      break
     case "FINISHED":
       buttonBook = <span className="pull-right">
           {t("shop.classes.class_booking_status.finished")}
