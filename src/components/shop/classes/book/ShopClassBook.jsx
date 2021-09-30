@@ -99,6 +99,7 @@ function ShopClassBook({ t, match, history }) {
   console.log(prices)
   console.log("ALREADY BOOKED")
   console.log(alreadyBooked)
+  console.log(scheduleClass.bookingStatus)
 
   let content
 
@@ -114,6 +115,12 @@ function ShopClassBook({ t, match, history }) {
       content = <Alert type="primary" hasExtraSpace>
           <h5>{t("shop.classes.book.unable_to_show_booking_options")}</h5>
           {t("shop.classes.book.class_booking_status.cancelled")}
+        </Alert>
+      break
+    case "HOLIDAY":
+      content = <Alert type="primary" hasExtraSpace>
+          <h5>{t("shop.classes.book.unable_to_show_booking_options")}</h5>
+          {t("shop.classes.book.class_booking_status.cancelled_holiday")}
         </Alert>
       break
     case "FINISHED":

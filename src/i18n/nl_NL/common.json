@@ -816,7 +816,8 @@
                     "cancelled": "__STRING_NOT_TRANSLATED__",
                     "finished": "__STRING_NOT_TRANSLATED__",
                     "ongoing": "__STRING_NOT_TRANSLATED__",
-                    "full": "__STRING_NOT_TRANSLATED__"
+                    "full": "__STRING_NOT_TRANSLATED__",
+                    "cancelled_holiday": "__STRING_NOT_TRANSLATED__"
                 },
                 "unable_to_show_booking_options": "__STRING_NOT_TRANSLATED__",
                 "already_booked": "__STRING_NOT_TRANSLATED__"

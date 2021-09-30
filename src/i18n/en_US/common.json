@@ -1922,7 +1922,8 @@
                     "cancelled": "This class has been cancelled",
                     "finished": "This class has already finished",
                     "ongoing": "This class has already started",
-                    "full": "This class is fully booked"
+                    "full": "This class is fully booked",
+                    "cancelled_holiday": "This class is within a holiday"
                 },
                 "unable_to_show_booking_options": "Unable to show booking options",
                 "already_booked": "You're already booked this class"
