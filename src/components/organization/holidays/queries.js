@@ -45,32 +45,32 @@ export const GET_HOLIDAY_QUERY = gql`
 `
 
 export const ADD_HOLIDAY = gql`
-mutation CreateOrganizationHoliday($input:CreateOrganizationHolidayInput!) {
-  createOrganizationHoliday(input: $input) {
-    organizationHoliday {
-      id
+  mutation CreateOrganizationHoliday($input:CreateOrganizationHolidayInput!) {
+    createOrganizationHoliday(input: $input) {
+      organizationHoliday {
+        id
+      }
     }
   }
-}
 `
 
 export const UPDATE_HOLIDAY = gql`
-mutation UpdateOrganizationHoliday($input: UpdateOrganizationHolidayInput!) {
-  updateOrganizationHoliday(input: $input) {
-    organizationHoliday {
-      id
-      name
+  mutation UpdateOrganizationHoliday($input: UpdateOrganizationHolidayInput!) {
+    updateOrganizationHoliday(input: $input) {
+      organizationHoliday {
+        id
+        name
+      }
     }
   }
-}
 `
 
 export const DELETE_HOLIDAY = gql`
-mutation DeleteOrganizationHoliday($input: DeleteOrganizationHolidayInput!) {
-  deleteOrganizationHoliday(input: $input) {
-    ok
+  mutation DeleteOrganizationHoliday($input: DeleteOrganizationHolidayInput!) {
+    deleteOrganizationHoliday(input: $input) {
+      ok
+    }
   }
-}
 `
 
 export const GET_HOLIDAY_LOCATIONS_QUERY = gql`
