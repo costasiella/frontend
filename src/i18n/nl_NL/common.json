@@ -87,7 +87,6 @@
         "document": "__STRING_NOT_TRANSLATED__",
         "manage": "__STRING_NOT_TRANSLATED__",
         "download": "__STRING_NOT_TRANSLATED__",
-        "documents": "__STRING_NOT_TRANSLATED__",
         "address": "__STRING_NOT_TRANSLATED__",
         "phone": "__STRING_NOT_TRANSLATED__",
         "email": "__STRING_NOT_TRANSLATED__",
@@ -235,7 +234,10 @@
         "products": "__STRING_NOT_TRANSLATED__",
         "discovery": "__STRING_NOT_TRANSLATED__",
         "language": "__STRING_NOT_TRANSLATED__",
-        "key_number": "__STRING_NOT_TRANSLATED__"
+        "key_number": "__STRING_NOT_TRANSLATED__",
+        "apply_to": "__STRING_NOT_TRANSLATED__",
+        "holiday": "__STRING_NOT_TRANSLATED__",
+        "event": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -815,7 +817,8 @@
                     "cancelled": "__STRING_NOT_TRANSLATED__",
                     "finished": "__STRING_NOT_TRANSLATED__",
                     "ongoing": "__STRING_NOT_TRANSLATED__",
-                    "full": "__STRING_NOT_TRANSLATED__"
+                    "full": "__STRING_NOT_TRANSLATED__",
+                    "cancelled_holiday": "__STRING_NOT_TRANSLATED__"
                 },
                 "unable_to_show_booking_options": "__STRING_NOT_TRANSLATED__",
                 "already_booked": "__STRING_NOT_TRANSLATED__"
@@ -835,7 +838,8 @@
                 "cancelled": "__STRING_NOT_TRANSLATED__",
                 "finished": "__STRING_NOT_TRANSLATED__",
                 "ongoing": "__STRING_NOT_TRANSLATED__",
-                "full": "__STRING_NOT_TRANSLATED__"
+                "full": "__STRING_NOT_TRANSLATED__",
+                "cancelled_holiday": "__STRING_NOT_TRANSLATED__"
             }
         },
         "contact": {
@@ -867,7 +871,8 @@
             "ticket": {
                 "choose": "__STRING_NOT_TRANSLATED__",
                 "earlybird_price": "__STRING_NOT_TRANSLATED__",
-                "regular_price": "__STRING_NOT_TRANSLATED__"
+                "regular_price": "__STRING_NOT_TRANSLATED__",
+                "free": "__STRING_NOT_TRANSLATED__"
             }
         }
     },
@@ -1186,6 +1191,29 @@
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "add": "__STRING_NOT_TRANSLATED__"
+        },
+        "holidays": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "add": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "title_edit": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+            "holiday_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "payment_deleted": "__STRING_NOT_TRANSLATED__",
+            "locations": {
+                "title_edit": "__STRING_NOT_TRANSLATED__"
+            }
+        },
+        "holiday": {
+            "locations": {
+                "add_to_holiday": "__STRING_NOT_TRANSLATED__",
+                "added_to_holiday": "__STRING_NOT_TRANSLATED__",
+                "delete_from_holiday": "__STRING_NOT_TRANSLATED__",
+                "deleted_from_holiday": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "validity": {
@@ -1655,7 +1683,6 @@
     },
     "user": {
         "login": {
-            "invalid_credentials": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__",
             "email": "__STRING_NOT_TRANSLATED__",
             "email_placeholder": "__STRING_NOT_TRANSLATED__",

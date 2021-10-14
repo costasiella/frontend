@@ -105,6 +105,10 @@ import OrganizationDocuments from './components/organization/documents/Organizat
 import OrganizationListDocuments from './components/organization/documents/OrganizationListDocuments'
 import OrganizationDocumentAdd from './components/organization/documents/OrganizationDocumentAdd'
 import OrganizationDocumentEdit from './components/organization/documents/OrganizationDocumentEdit'
+import OrganizationHolidays from './components/organization/holidays/OrganizationHolidays'
+import OrganizationHolidayAdd from './components/organization/holidays/OrganizationHolidayAdd'
+import OrganizationHolidayEdit from './components/organization/holidays/OrganizationHolidayEdit'
+import OrganizationHolidayEditLocations from './components/organization/holidays/OrganizationHolidayEditLocations'
 import OrganizationLanguages from './components/organization/languages/OrganizationLanguages'
 import OrganizationLanguageAdd from './components/organization/languages/OrganizationLanguageAdd'
 import OrganizationLanguageEdit from './components/organization/languages/OrganizationLanguageEdit'
@@ -301,13 +305,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   }
 
   if (authTokenExpired) {
-    const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
+    const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
     if (refreshTokenExp == null) {
+      console.log("refresh token not found")
       SetCurrentUrlAsNext()
       
       return LoginRequired
     } else if ((new Date() / 1000) >= refreshTokenExp) {
-      console.log("refresh token expired or not found")
+      console.log("refresh token expired")
       console.log(new Date() / 1000)
       console.log(refreshTokenExp)
       SetCurrentUrlAsNext()
@@ -319,7 +324,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       console.log(new Date() / 1000)
       console.log(refreshTokenExp)
 
-      doTokenRefresh().then(({ data }) => {
+      const refreshToken = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN)
+      doTokenRefresh({ variables: { refreshToken: refreshToken }}).then(({ data }) => {
         console.log('got refresh data', data)
         CSAuth.updateTokenInfo(data.refreshToken)
         return ContinueAsYouAre
@@ -348,13 +354,19 @@ function AppRoot({ t }) {
   })
 
   if (loadingAppSettings || loadingOrganization) return t('general.loading_with_dots')
-  if (errorAppSettings || errorOrganization) return (
-    <div>
-      { t('settings.error_loading') } <br />
-      { errorAppSettings.message } <br /><br />
-      { errorOrganization.message}
-    </div>
-  )
+  if (errorAppSettings || errorOrganization) {
+    if (errorAppSettings.message == "Signature has expired")  {
+      return ""
+    } else {
+      return (
+        <div>
+          { t('settings.error_loading') } <br />
+          { errorAppSettings.message } <br />
+          { errorOrganization.message}
+        </div>
+      )
+    }
+  }
 
   // Register "US" locale for moment
   // moment.locale('en-US')
@@ -458,6 +470,10 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/discoveries" component={OrganizationDiscoveries} />
             <PrivateRoute exact path="/organization/discoveries/add" component={OrganizationDiscoveryAdd} /> 
             <PrivateRoute exact path="/organization/discoveries/edit/:id" component={OrganizationDiscoveryEdit} /> 
+            <PrivateRoute exact path="/organization/holidays" component={OrganizationHolidays} />
+            <PrivateRoute exact path="/organization/holidays/add" component={OrganizationHolidayAdd} />
+            <PrivateRoute exact path="/organization/holidays/edit/:id" component={OrganizationHolidayEdit} />
+            <PrivateRoute exact path="/organization/holidays/edit/:id/locations" component={OrganizationHolidayEditLocations} />
             <PrivateRoute exact path="/organization/languages" component={OrganizationLanguages} />
             <PrivateRoute exact path="/organization/languages/add" component={OrganizationLanguageAdd} />
             <PrivateRoute exact path="/organization/languages/edit/:id" component={OrganizationLanguageEdit} />

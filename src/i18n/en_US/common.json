@@ -393,7 +393,6 @@
         "privacy_policy": "Privacy policy",
         "document": "Document",
         "manage": "Manage",
-        "documents": "Documents",
         "version": "Version",
         "download": "Download",
         "document_type": "Document type",
@@ -476,7 +475,10 @@
         "products": "Products",
         "discovery": "Discovery",
         "language": "Language",
-        "key_number": "Door key number"
+        "key_number": "Door key number",
+        "apply_to": "Apply to",
+        "holiday": "Holiday",
+        "event": "Event"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -764,6 +766,29 @@
             "title_edit": "Edit Language",
             "toast_edit_success": "Saved",
             "add": "Add Language"
+        },
+        "holidays": {
+            "title": "Holidays",
+            "error_loading": "Error loading holidays... :(",
+            "empty_list": "No holidays have been defined yet.",
+            "add": "Add holiday",
+            "title_add": "Add Holiday",
+            "toast_add_success": "Added holiday",
+            "title_edit": "Edit holiday",
+            "toast_edit_success": "Saved",
+            "holiday_delete_confirm_msg": "Are you sure you wish to delete this holiday?",
+            "payment_deleted": "Holiday deleted",
+            "locations": {
+                "title_edit": "Edit locations"
+            }
+        },
+        "holiday": {
+            "locations": {
+                "add_to_holiday": "Add to holiday",
+                "added_to_holiday": "Saved holiday locations",
+                "delete_from_holiday": "Remove from holiday",
+                "deleted_from_holiday": "Saved holiday locations"
+            }
         }
     },
     "validity": {
@@ -1605,7 +1630,6 @@
     },
     "user": {
         "login": {
-            "invalid_credentials": "Email or password not correct",
             "title": "Sign in",
             "email": "Email",
             "email_placeholder": "Email...",
@@ -1792,7 +1816,7 @@
             "title": "My account",
             "profile": {
                 "title": "My profile",
-                "explanation": "Update your name and contact information. Please keep your information updated in case we need to contact you or reply to an inquiry.",
+                "explanation": "Update your name and contact information.",
                 "toast_edit_success": "Saved",
                 "error_loading_data": "Error loading profile data :("
             },
@@ -1826,7 +1850,7 @@
             },
             "invoices": {
                 "title": "My invoices",
-                "explanation": "View your invoices and download them as a PDF file.",
+                "explanation": "View and download your invoices.",
                 "empty_list": "You don't have any invoices yet.",
                 "to_payment": "Pay now"
             },
@@ -1858,7 +1882,7 @@
                 "cancelation_not_possible": "Your booking for this class can no longer be cancelled"
             },
             "goto": {
-                "explanation": "Use other features like the backend or selfcheckin."
+                "explanation": "Go to another feature like the backend."
             },
             "btn_go_to": "Choose where to go",
             "change_password": {
@@ -1899,7 +1923,8 @@
                     "cancelled": "This class has been cancelled",
                     "finished": "This class has already finished",
                     "ongoing": "This class has already started",
-                    "full": "This class is fully booked"
+                    "full": "This class is fully booked",
+                    "cancelled_holiday": "This class is within a holiday"
                 },
                 "unable_to_show_booking_options": "Unable to show booking options",
                 "already_booked": "You're already booked this class"
@@ -1919,7 +1944,8 @@
                 "cancelled": "Cancelled",
                 "finished": "Finished",
                 "ongoing": "Ongoing",
-                "full": "Full"
+                "full": "Full",
+                "cancelled_holiday": "Holiday"
             }
         },
         "contact": {
@@ -1951,7 +1977,8 @@
             "ticket": {
                 "choose": "Choose",
                 "earlybird_price": "Earlybird",
-                "regular_price": "Regular price"
+                "regular_price": "Regular price",
+                "free": "Free"
             }
         }
     },

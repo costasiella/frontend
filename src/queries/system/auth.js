@@ -4,7 +4,10 @@ import { gql } from "@apollo/client"
 export const TOKEN_AUTH = gql`
   mutation TokenAuth($username: String!, $password: String!) {
     tokenAuth(username: $username, password: $password) {
-    token
+      token
+      payload
+      refreshToken
+      refreshExpiresIn
     }
   } 
 `
@@ -20,12 +23,12 @@ export const TOKEN_VERIFY = gql`
 
 
 export const TOKEN_REFRESH = gql`
-  mutation RefreshToken {
-    refreshToken {
+  mutation RefreshToken($refreshToken: String!) {
+    refreshToken(refreshToken: $refreshToken) {
       token
       payload
-      refreshExpiresIn
       refreshToken
+      refreshExpiresIn
     }
   }
 `

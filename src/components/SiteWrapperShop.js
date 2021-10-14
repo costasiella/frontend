@@ -141,7 +141,7 @@ const getNavBarItems = (t, loading, error, data) => {
   })
 
   // Check if refresh token is present and if so, hasn't expired
-  const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
+  const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
   let accountTitle = t("shop.account.title")
   let accountLink = "/shop/account"
   if (new Date() / 1000 >= refreshTokenExp || refreshTokenExp == null ) {

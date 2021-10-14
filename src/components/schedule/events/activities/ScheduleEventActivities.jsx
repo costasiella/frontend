@@ -120,8 +120,10 @@ function ScheduleItems({t, match, history}) {
                 <Table.Col>
                   {moment(node.dateStart).format(dateFormat)} <br />
                   {/* Start & end time */}
-                  {moment(node.dateStart + ' ' + node.timeStart).format(timeFormat)} {' - '}
-                  {moment(node.dateStart + ' ' + node.timeEnd).format(timeFormat)} { ' ' }
+                  <small className="text-muted">
+                    {moment(node.dateStart + ' ' + node.timeStart).format(timeFormat)} {' - '}
+                    {moment(node.dateStart + ' ' + node.timeEnd).format(timeFormat)} { ' ' }
+                  </small>
                 </Table.Col>
                 <Table.Col>
                   {node.name} <br />
@@ -129,10 +131,10 @@ function ScheduleItems({t, match, history}) {
                 </Table.Col>
                 <Table.Col>
                   {node.organizationLocationRoom.organizationLocation.name} <br />
-                  <span className="text-muted">{node.organizationLocationRoom.name}</span>
+                  <small className="text-muted">{node.organizationLocationRoom.name}</small>
                 </Table.Col>
                 <Table.Col>
-                  {node.account.fullName} 
+                  {node.account && node.account.fullName} 
                   {(node.account2) ? <span className="text-muted"><br />{node.account2.fullName}</span> : ""}
                 </Table.Col>
                 <Table.Col>

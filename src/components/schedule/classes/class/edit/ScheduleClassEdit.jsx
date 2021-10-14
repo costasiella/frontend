@@ -131,8 +131,6 @@ function ScheduleClassEdit({ t, match, history }) {
     initialValues.organizationLevel = ""
     initialValues.timeStart = ""
     initialValues.timeEnd = ""
-    initialValues.spaces = null
-    initialValues.walkInSpaces = null
     initialValues.infoMailContent = ""
   }
 
@@ -157,15 +155,8 @@ function ScheduleClassEdit({ t, match, history }) {
                     validationSchema={SCHEDULE_CLASS_EDIT_OTC_SCHEMA}
                     onSubmit={(values, { setSubmitting }) => {
 
-                        // let dateEnd
-                        // if (values.dateEnd) {
-                        //   dateEnd = dateToLocalISO(values.dateEnd)
-                        // } else {
-                        //   dateEnd = values.dateEnd
-                        // }
-
-                        console.log(values.timeStart)
-                        console.log(values.timeEnd)
+                        console.log("SUBMIT VALUES")
+                        console.log(values)
 
                         let timeStart = undefined
                         let timeEnd = undefined
@@ -212,6 +203,7 @@ function ScheduleClassEdit({ t, match, history }) {
                               position: toast.POSITION.BOTTOM_RIGHT
                             })
                           console.log('there was an error sending the query', error)
+                          console.log('there was an error sending the query', error.graphQLErrors)
                           setSubmitting(false)
                         })
                       }

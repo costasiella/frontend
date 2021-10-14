@@ -13,7 +13,7 @@ export const GET_SCHEDULE_EVENT_TICKET_QUERY = gql`
       description
       isSoldOut
       isEarlybirdPrice
-      ticketScheduleItems(included: true) {
+      ticketScheduleItems(included: true, orderBy: "date_start") {
         pageInfo{
         hasNextPage
         hasPreviousPage

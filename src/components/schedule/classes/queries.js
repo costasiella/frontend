@@ -17,7 +17,8 @@ export const GET_CLASSES_QUERY = gql`
         organizationClasstype: $organizationClasstype,
         organizationLevel: $organizationLevel,
         organizationLocation: $organizationLocation,
-        attendanceCountType: $attendanceCountType
+        attendanceCountType: $attendanceCountType,
+        publicOnly: false
     ){
       date
       bookingOpenOn
@@ -26,6 +27,8 @@ export const GET_CLASSES_QUERY = gql`
         frequencyType
         date
         status
+        holiday
+        holidayName
         description
         account {
           id

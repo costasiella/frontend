@@ -40,7 +40,10 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
         {(eventTicket.isEarlybirdPrice) ? <div><Badge color="primary">{t("shop.event.ticket.earlybird_price")}</Badge></div> : ""}
       </PricingCard.Category>
       <PricingCard.Price>
-        {eventTicket.totalPriceDisplay}
+        { (eventTicket.price == 0) ? 
+          t("shop.event.ticket.free") :
+          eventTicket.totalPriceDisplay 
+        }
       </PricingCard.Price>
       <PricingCard.AttributeList>
         {(eventTicket.isEarlybirdPrice) ? 
@@ -51,13 +54,15 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
         }
         {ticketScheduleItems.edges.map(({ node }) => (
           <PricingCard.AttributeItem>
-            <b> 
+              <Icon name="calendar" /> { " " }
               {moment(node.scheduleItem.dateStart).format(dateFormat)} {" "}
               {/* Start & end time */}
               {moment(node.scheduleItem.dateStart + ' ' + node.scheduleItem.timeStart).format(timeFormat)} {' - '}
               {moment(node.scheduleItem.dateStart + ' ' + node.scheduleItem.timeEnd).format(timeFormat)} { ' ' }
-            </b><br />
-            {node.scheduleItem.name} {t("general.at").toLowerCase()} {node.scheduleItem.organizationLocationRoom.organizationLocation.name}
+            <br />
+            <small className="text-muted">
+              {node.scheduleItem.name} <Icon name="map-pin" /> {node.scheduleItem.organizationLocationRoom.organizationLocation.name}
+            </small>
           </PricingCard.AttributeItem>
         ))}
       </PricingCard.AttributeList>

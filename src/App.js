@@ -1,17 +1,14 @@
-import Cookies from 'js-cookie'
 import React from 'react'
 import {
   ApolloClient,
   from,
   createHttpLink,
-  ApolloLink,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
   Observable,
-  gql
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { setContext } from '@apollo/client/link/context';
 // import ApolloClient from "react"
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
@@ -23,8 +20,6 @@ import CSLS from "./tools/cs_local_storage"
 import CSEC from "./tools/cs_error_codes"
 import { CSAuth } from './tools/authentication'
 
-// import Cookies from 'js-cookie'
-
 // Main app
 import AppRoot from "./AppRoot"
 
@@ -34,7 +29,6 @@ import "tabler-react/dist/Tabler.css"
 import "react-datepicker/dist/react-datepicker.css"
 // App css
 import './App.css'
-// import { concat } from 'apollo-boost';
 
 // Register "nl" locale for react-datepicker
 // https://reactdatepicker.com/#example-17
@@ -53,167 +47,119 @@ function SetCurrentUrlAsNext() {
   const currentUrl = window.location.href
   const next = currentUrl.split("#")[1]
   console.log(next)
-  localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
+  if ((next != "/user/login") && (next != "/user/session/expired") && (next != "/user/login/required") && (next)) {
+    // This is a dirty hack to work around the following, a user refreshes the page but has an expired refreshtoken.
+    // This will produce an error on the orinal component, setting the correct next URL in localStorage. However, 
+    // the code below will move the user to /user/login, which will also error at first, thus /user/login always
+    // gets set... we don't want that. This flow can be refactored at some point, but it works for now. 
+    localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
+  } 
 }
   
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
   if (graphQLErrors)
-    graphQLErrors.forEach(({ message, locations, path }) =>
+    graphQLErrors.forEach(({ message, locations, path }) => {
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      ),
-    );
+      )
+    });
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
 
   // request size check
-  if (graphQLErrors[0].message == "Request body exceeded settings.DATA_UPLOAD_MAX_MEMORY_SIZE.") {
+  if (graphQLErrors && graphQLErrors[0].message == "Request body exceeded settings.DATA_UPLOAD_MAX_MEMORY_SIZE.") {
     console.error('CHOSEN FILE EXCEEDS SIZE LIMIT')
   }
 
-  // Token refresh / re-auth check
-  if (response) {
-    let i
-    for (i = 0; i < response.errors.length; i++) {
-      if (response.errors[i].extensions && response.errors[i].extensions.code === CSEC.USER_NOT_LOGGED_IN) {
+  // Token refresh check
+  if (graphQLErrors && graphQLErrors[0].message == "Signature has expired") {
+    console.log(graphQLErrors[0])
+    console.log('Time to refresh the token')
 
-        let authTokenExpired = false
-        const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
-        if ((new Date() / 1000) >= tokenExp) {
-          authTokenExpired = true
-        }
+    let authTokenExpired = false
+    let refreshTokenExpired = false
+    const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
+    const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
 
-        console.log('token expired')
-        console.log(authTokenExpired)
-
-        if (authTokenExpired) {
-          const refreshTokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_REFRESH_EXP)
-          if (refreshTokenExp == null) {
-            // User hasn't logged in before
-            SetCurrentUrlAsNext()
-            window.location.href = "#/user/login/required"
-            window.location.reload()
-          } else if ((new Date() / 1000) >= refreshTokenExp) {
-            // Session expired
-            SetCurrentUrlAsNext()
-            console.log("refresh token expired or not found")
-            console.log(new Date() / 1000)
-            console.log(refreshTokenExp)
+    if ((new Date() / 1000) >= tokenExp) {
+      authTokenExpired = true
       
-            window.location.href = "#/user/session/expired"
-            window.location.reload()
-          } else {
-            // Refresh token... no idea how this observable & subscriber stuff works... but it does :).
-            // https://stackoverflow.com/questions/50965347/how-to-execute-an-async-fetch-request-and-then-retry-last-failed-request/51321068#51321068
-            console.log("auth token expired")
-            console.log(new Date() / 1000)
-            console.log(refreshTokenExp)
-
-            console.log("refresh token... somehow...")
-
-            return new Observable(observer => {
-              client.mutate({
-                mutation: TOKEN_REFRESH
-              })
-                .then(({ data }) => { 
-                  console.log(data)
-                  CSAuth.updateTokenInfo(data.refreshToken)
-                })
-                .then(() => {
-                  const subscriber = {
-                    next: observer.next.bind(observer),
-                    error: observer.error.bind(observer),
-                    complete: observer.complete.bind(observer)
-                  };
-
-                  // Retry last failed request
-                  forward(operation).subscribe(subscriber);
-                })
-                .catch(error => {
-                  // No refresh or client token available, we force user to login
-                  observer.error(error);
-                  SetCurrentUrlAsNext()
-                  window.location.href = "/#/user/login"
-                  window.location.reload()
-                });
-            })
-          }
-        } else {
-          SetCurrentUrlAsNext()
-          window.location.href = "/#/user/login"
-          window.location.reload()
-        }
-
-        // window.location.href = "/#/user/login"
-        // window.location.reload()
+      if ((new Date() / 1000) >= refreshTokenExp) {
+        refreshTokenExpired = true
+        // Remove any remaining token data
+        CSAuth.cleanup()
+        // Store current location, user has to login again
+        SetCurrentUrlAsNext()
       }
     }
+    
+    if (authTokenExpired && !refreshTokenExpired) {
+      console.log("refresh token... somehow...")
+      console.log(localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN))
+
+      return new Observable(observer => {
+        client.mutate({
+          mutation: TOKEN_REFRESH,
+          variables: {
+            refreshToken: localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN)
+          }
+        })
+          .then(({ data }) => { 
+            console.log(data)
+            CSAuth.updateTokenInfo(data.refreshToken)
+          })
+          .then(() => {
+            const subscriber = {
+              next: observer.next.bind(observer),
+              error: observer.error.bind(observer),
+              complete: observer.complete.bind(observer)
+            };
+
+            // Retry last failed request
+            forward(operation).subscribe(subscriber);
+          })
+          .catch(error => {
+            // No refresh or client token available, we force user to login
+            console.log("Failed to refresh the token, onwards to the login page")
+            observer.error(error);
+            window.location.href = "/#/user/login"
+            window.location.reload()
+          });
+      })
+    } else if (refreshTokenExpired) {
+      window.location.href = "#/user/session/expired"
+      window.location.reload()
+    } else {
+      window.location.href = "#/user/login/required"
+      window.location.reload()
+    }
   }
-});
-
-
-// Fetch CSRF Token 
-let csrftoken;
-async function getCsrfToken() {
-    if (csrftoken) return csrftoken;
-    csrftoken = await fetch('/d/csrf/')
-        .then(response => response.json())
-        .then(data => data.csrfToken)
-    return await csrftoken
-}
+})
+    
 
 const httpLink = createHttpLink({
   uri: '/d/graphql/',
   credentials: 'same-origin',
-  request: async (operation) => {
-    const csrftoken = await getCsrfToken();
-    Cookies.set('csrftoken', csrftoken);
-    // set the cookie 'csrftoken'
-    operation.setContext({
-        // set the 'X-CSRFToken' header to the csrftoken
-        headers: {
-            'X-CSRFToken': csrftoken,
-        },
-    })}
 });
 
-const csrfMiddleWare = new ApolloLink(async (operation, forward) => {
-  // const csrftoken = await getCsrfToken();
-  const csrftoken = await getCsrfToken();
-  Cookies.set('csrftoken', csrftoken);
-
-  operation.setContext({
-    // set the 'X-CSRFToken' header to the csrftoken
+const authLink = setContext(async (request, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem(CSLS.AUTH_TOKEN)
+  console.log(token)
+  // return the headers to the context so httpLink can read them
+  return {
     headers: {
-        'X-CSRFToken': csrftoken,
-    },
-  })
-
-  return forward(operation)
-})
+      ...headers,
+      Authorization: token ? `JWT ${token}`: ''
+    }
+  }
+});
 
 // set up ApolloClient
 const client = new ApolloClient({
-  link: from([csrfMiddleWare, errorLink, httpLink]),
+  link: from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache(),
-// },
-  // request: async operation => {
-  //   var csrftoken = Cookies.get('csrftoken');
-  //   operation.setContext({
-  //     headers: {
-  //       "X-CSRFToken": csrftoken ? csrftoken : ''
-  //     }
-  //   })
-  // }
-  // request: async operation => {
-  //   const token = localStorage.getItem(CSLS.AUTH_TOKEN)
-  //   operation.setContext({
-  //     headers: {
-  //       Authorization: token ? `JWT ${token}`: ''
-  //     }
-  //   })
-  // }
 })
 
 
