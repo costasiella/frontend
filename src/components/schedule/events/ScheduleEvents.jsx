@@ -1,11 +1,12 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import moment from 'moment'
 
 
 import {
@@ -23,6 +24,8 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
+
+import AppSettingsContext from '../../context/AppSettingsContext'
 
 import CSLS from "../../../tools/cs_local_storage"
 import BadgeBoolean from "../../ui/BadgeBoolean"
@@ -42,6 +45,8 @@ if (!localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED)) {
 
 
 function ScheduleEvents({t, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_SCHEDULE_EVENTS_QUERY, {
     variables: get_list_query_variables()
   })
@@ -140,10 +145,9 @@ function ScheduleEvents({t, history}) {
         <Table>
           <Table.Header>
             <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('general.start')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.event')}</Table.ColHeader>
               <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.location')}</Table.ColHeader>
               <Table.ColHeader>{t('general.shop')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>  
             </Table.Row>
@@ -151,25 +155,19 @@ function ScheduleEvents({t, history}) {
           <Table.Body>
             { scheduleEvents.edges.map(({ node }) => (
               <Table.Row key={v4()}>
-                {/* <Table.Col>
-                  { moment(node.date).format(dateFormat) } <br />
-                  <span className="text-muted">
-                    {moment(node.date + ' ' + node.scheduleItem.timeStart).format(timeFormat)}
-                  </span>
-                </Table.Col> */}
                 <Table.Col>
-                  { node.name }
+                  { moment(node.date).format(dateFormat) } <br /> 
                 </Table.Col>
                 <Table.Col>
-                  Date here...
+                  <span title={ node.name }>{ node.name.trunc(36) }</span> <br />
+                  <small className="text-muted">
+                    { node.organizationLocation.name }
+                  </small>
                 </Table.Col>
                 <Table.Col>
                   {
-                    (node.teacher) ? node.teacher.fullName : ""
+                    (node.teacher) ? node.teacher.fullName.trunc(30) : ""
                   }
-                </Table.Col>
-                <Table.Col>
-                  { node.organizationLocation.name }
                 </Table.Col>
                 <Table.Col>
                   <BadgeBoolean value={node.displayShop} />
