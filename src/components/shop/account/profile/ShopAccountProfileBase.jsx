@@ -12,6 +12,7 @@ import {
 } from "tabler-react";
 import SiteWrapperShop from "../../../SiteWrapperShop"
 import ShopAccountBack from "../ShopAccountBack"
+import ShopAccountProfileBtnDownloadData from './ShopAccountProfileBtnDownloadData'
 
 
 function ShopAccountProfileBase({ t, match, history, children, accountName="" }) {
@@ -22,6 +23,7 @@ function ShopAccountProfileBase({ t, match, history, children, accountName="" })
           <Page.Header title={t("shop.account.title")} subTitle={ accountName }>
             <div className="page-options d-flex">
               <ShopAccountBack />
+              <ShopAccountProfileBtnDownloadData />
             </div>
           </Page.Header>
           { children }
