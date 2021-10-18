@@ -712,7 +712,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "download_my_data": "__STRING_NOT_TRANSLATED__"
             },
             "btn_text_profile_edit": "__STRING_NOT_TRANSLATED__",
             "error_loading_user_data": "__STRING_NOT_TRANSLATED__",

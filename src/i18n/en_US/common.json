@@ -1818,7 +1818,8 @@
                 "title": "My profile",
                 "explanation": "Update your name and contact information.",
                 "toast_edit_success": "Saved",
-                "error_loading_data": "Error loading profile data :("
+                "error_loading_data": "Error loading profile data :(",
+                "download_my_data": "Download my data"
             },
             "btn_text_profile_edit": "Update profile",
             "error_loading_user_data": "Error loading profile data :(",
