@@ -16,12 +16,12 @@ import {
 const SettingsWorkflowTrialForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
   <FoForm>
       <Card.Body>
-          <Form.Group label={t('settings.workflow.trial.trial_class_limit')}>
+          <Form.Group label={t('settings.workflow.trial.trial_pass_limit')}>
             <Field type="text" 
-              name="workflow_trial_class_limit" 
-              className={(errors.workflow_trial_class_limit) ? "form-control is-invalid" : "form-control"} 
+              name="workflow_trial_pass_limit" 
+              className={(errors.workflow_trial_pass_limit) ? "form-control is-invalid" : "form-control"} 
               autoComplete="off" />
-            <ErrorMessage name="workflow_trial_class_limit" component="span" className="invalid-feedback" />
+            <ErrorMessage name="workflow_trial_pass_limit" component="span" className="invalid-feedback" />
           </Form.Group>
       </Card.Body>
       <Card.Footer>

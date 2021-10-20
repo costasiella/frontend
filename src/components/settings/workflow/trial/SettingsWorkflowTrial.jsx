@@ -30,7 +30,7 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
     data: dataTrialClassLimit 
   } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
     variables: {
-      setting: "workflow_trial_class_limit"
+      setting: "workflow_trial_pass_limit"
     }
   })
   const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
@@ -66,10 +66,10 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
   console.log(dataTrialClassLimit)
 
   let initialValues = {
-    workflow_trial_class_limit: "1",
+    workflow_trial_pass_limit: "1",
   }
   if (dataTrialClassLimit.systemSettings.edges.length){
-    initialValues['workflow_trial_class_limit'] = dataTrialClassLimit.systemSettings.edges[0].node.value
+    initialValues['workflow_trial_pass_limit'] = dataTrialClassLimit.systemSettings.edges[0].node.value
   } 
     
   return (
@@ -79,7 +79,7 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
     >  
     <Formik
       initialValues={{ 
-        workflow_trial_class_limit: initialValues['workflow_trial_class_limit'],
+        workflow_trial_pass_limit: initialValues['workflow_trial_pass_limit'],
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
@@ -88,7 +88,7 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
           console.log(errors)
 
           const settings = [
-            { setting: "workflow_trial_class_limit", value: values.workflow_trial_class_limit },
+            { setting: "workflow_trial_pass_limit", value: values.workflow_trial_pass_limit },
           ]
 
           let error = false
