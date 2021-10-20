@@ -11,7 +11,7 @@ function ShopSubscriptionBase({ t, match, history, children }) {
   return (
     <ShopBase 
       title={t("shop.title")}
-      return_url="/shop/subscripitons"
+      return_url="/shop/subscriptions"
       checkoutProgress="order"
     >
       {children}
