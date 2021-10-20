@@ -1620,7 +1620,8 @@
             },
             "trial": {
                 "title": "Trial",
-                "explanation": "Trial class limit"
+                "explanation": "Trial card buying limit",
+                "trial_class_limit": "Number of times a customer can purchase a trial card"
             }
         },
         "shop": {

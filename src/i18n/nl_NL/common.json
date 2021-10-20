@@ -374,7 +374,8 @@
             },
             "trial": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "explanation": "__STRING_NOT_TRANSLATED__"
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "trial_class_limit": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
