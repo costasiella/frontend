@@ -238,6 +238,7 @@ import SettingsMailTemplates from './components/settings/mail/SettingsMailTempla
 import SettingsMailTemplateEdit from './components/settings/mail/SettingsMailTemplateEdit'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
 import SettingsWorkflowClassBooking from './components/settings/workflow/class_booking/SettingsWorkflowClassBooking'
+import SettingsWorkflowTrial from './components/settings/workflow/trial/SettingsWorkflowTrial'
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
@@ -655,6 +656,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />
             <PrivateRoute exact path="/settings/workflow/class_booking" component={SettingsWorkflowClassBooking} />
+            <PrivateRoute exact path="/settings/workflow/trial" component={SettingsWorkflowTrial} />
 
             {/* User */}
             <PrivateRoute exact path="/user/password/change" component={UserChangePassword} />
