@@ -95,7 +95,7 @@ function OrganizationClasspasses({t, history}) {
               ? {
                   // Put the new memberships at the end of the list and update `pageInfo`
                   // so we have the new `endCursor` and `hasNextPage` values
-                  organizationMemberships: {
+                  organizationClasspasses: {
                     __typename: previousResult.organizationClasspasses.__typename,
                     edges: [ ...previousResult.organizationClasspasses.edges, ...newEdges ],
                     pageInfo
