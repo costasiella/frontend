@@ -9,7 +9,6 @@ export const GET_CLASSPASS_QUERY = gql`
       displayPublic
       displayShop
       trialPass
-      trialTimes
       name
       description
       price
