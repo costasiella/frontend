@@ -16,14 +16,14 @@ import {
 const SettingsWorkflowClassBookingForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
   <FoForm>
       <Card.Body>
-          <Form.Group label={t('settings.workflow.workflow_class_book_days_advance')}>
+          <Form.Group label={t('settings.workflow.class_booking.book_days_advance')}>
             <Field type="text" 
               name="workflow_class_book_days_advance" 
               className={(errors.workflow_class_book_days_advance) ? "form-control is-invalid" : "form-control"} 
               autoComplete="off" />
             <ErrorMessage name="workflow_class_book_days_advance" component="span" className="invalid-feedback" />
           </Form.Group>
-          <Form.Group label={t('settings.workflow.workflow_class_cancel_until')}>
+          <Form.Group label={t('settings.workflow.class_booking.cancel_until')}>
             <Field type="text" 
               name="workflow_class_cancel_until" 
               className={(errors.workflow_class_cancel_until) ? "form-control is-invalid" : "form-control"} 
