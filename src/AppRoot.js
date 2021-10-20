@@ -635,14 +635,14 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/classes/book/:class_id/:date" component={ShopClassBook} />
             <PrivateRoute exact path = "/shop/classes/booked/:class_id/:date" component={ShopClassBooked} />
             <Route exact path = "/shop/classpasses" component={ShopClasspasses} />
-            <Route exact path = "/shop/classpass/:id" component={ShopClasspass} />
-            <Route exact path = "/shop/classpass/:id/:class_id/:date" component={ShopClasspass} />
+            <PrivateRoute exact path = "/shop/classpass/:id" component={ShopClasspass} />
+            <PrivateRoute exact path = "/shop/classpass/:id/:class_id/:date" component={ShopClasspass} />
             <Route exact path = "/shop/contact" component={ShopContact} />
             <Route exact path = "/shop/events" component={ShopEvents} />
-            <Route exact path = "/shop/events/:event_id" component={ShopEvent} />
-            <Route exact path = "/shop/events/:event_id/ticket/:id" component={ShopEventTicket} />
+            <PrivateRoute exact path = "/shop/events/:event_id" component={ShopEvent} />
+            <PrivateRoute exact path = "/shop/events/:event_id/ticket/:id" component={ShopEventTicket} />
             <Route exact path = "/shop/subscriptions" component={ShopSubscriptions} />
-            <Route exact path = "/shop/subscription/:id" component={ShopSubscription} />
+            <PrivateRoute exact path = "/shop/subscription/:id" component={ShopSubscription} />
 
             {/* Settings */}
             <PrivateRoute exact path="/settings" component={SettingsHome} />
