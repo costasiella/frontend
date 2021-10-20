@@ -220,7 +220,6 @@
         "payment": "__STRING_NOT_TRANSLATED__",
         "view": "__STRING_NOT_TRANSLATED__",
         "invoices": "__STRING_NOT_TRANSLATED__",
-        "ID": "__STRING_NOT_TRANSLATED__",
         "line": "__STRING_NOT_TRANSLATED__",
         "export": "__STRING_NOT_TRANSLATED__",
         "category": "__STRING_NOT_TRANSLATED__",
@@ -369,10 +368,14 @@
             "title": "__STRING_NOT_TRANSLATED__",
             "class_booking": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "explanation": "__STRING_NOT_TRANSLATED__"
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "book_days_advance": "__STRING_NOT_TRANSLATED__",
+                "cancel_until": "__STRING_NOT_TRANSLATED__"
             },
-            "workflow_class_book_days_advance": "__STRING_NOT_TRANSLATED__",
-            "workflow_class_cancel_until": "__STRING_NOT_TRANSLATED__"
+            "trial": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "shop": {
             "title": "__STRING_NOT_TRANSLATED__",
