@@ -375,7 +375,7 @@
             "trial": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
-                "trial_class_limit": "__STRING_NOT_TRANSLATED__"
+                "trial_pass_limit": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -1009,8 +1009,7 @@
         "classpass": {
             "public": "__STRING_NOT_TRANSLATED__",
             "shop": "__STRING_NOT_TRANSLATED__",
-            "trial_pass": "__STRING_NOT_TRANSLATED__",
-            "trial_times": "__STRING_NOT_TRANSLATED__"
+            "trial_pass": "__STRING_NOT_TRANSLATED__"
         },
         "classtypes": {
             "title_add": "__STRING_NOT_TRANSLATED__",

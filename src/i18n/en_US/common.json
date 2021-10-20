@@ -524,8 +524,7 @@
         "classpass": {
             "public": "This is a public pass",
             "shop": "Show this pass in the shop",
-            "trial_pass": "Trial pass",
-            "trial_times": "Number of times a customer can buy this pass (only used for trial passes)"
+            "trial_pass": "Trial pass"
         },
         "classpass_groups": {
             "title_add": "Add class pass group",
@@ -1621,7 +1620,7 @@
             "trial": {
                 "title": "Trial",
                 "explanation": "Trial card buying limit",
-                "trial_class_limit": "Number of times a customer can purchase a trial card"
+                "trial_pass_limit": "Number of times a customer can purchase a trial card"
             }
         },
         "shop": {
