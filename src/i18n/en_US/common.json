@@ -1765,7 +1765,7 @@
             "additional_information": "Additional information",
             "class_book_information": "Selected class",
             "class_book_explanation": "You'll be signed in to the class below once the order process has been completed.",
-            "trial_limit_reached": "Unable to purchase this pass",
+            "trial_limit_reached": "Trial limit reached",
             "trial_limit_reached_explanation": "As you've already purchased the maximum number of trial passes, we request you to go back and choose another pass."
         },
         "order": {
