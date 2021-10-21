@@ -36,5 +36,8 @@ export const GET_CLASSPASS_QUERY = gql`
         name
       }
     }
+    user {
+      hasReachedTrialLimit
+    }
   }
 `

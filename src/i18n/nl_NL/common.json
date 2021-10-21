@@ -653,7 +653,9 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "additional_information": "__STRING_NOT_TRANSLATED__",
             "class_book_information": "__STRING_NOT_TRANSLATED__",
-            "class_book_explanation": "__STRING_NOT_TRANSLATED__"
+            "class_book_explanation": "__STRING_NOT_TRANSLATED__",
+            "trial_limit_reached": "__STRING_NOT_TRANSLATED__",
+            "trial_limit_reached_explanation": "__STRING_NOT_TRANSLATED__"
         },
         "checkout": {
             "payment": {
