@@ -110,7 +110,7 @@ function ScheduleClassBook({ t, match, history }) {
                       <ScheduleClassBookPriceDropin priceDropin={prices.organizationClasspassDropin}/> : "" 
                     : "" }
                   {(prices) ?
-                    ((prices.organizationClasspassTrial) && (!account.hasReachedTrialLimit))? 
+                    ((prices.organizationClasspassTrial) && (!account.hasReachedTrialLimit)) ? 
                       <ScheduleClassBookPriceTrial priceTrial={prices.organizationClasspassTrial}/> : "" 
                     : "" }
                 </Grid.Row>
