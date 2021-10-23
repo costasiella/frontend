@@ -151,7 +151,7 @@ function ShopClassBook({ t, match, history }) {
             <ShopClassBookPriceDropin priceDropin={prices.organizationClasspassDropin}/> : "" 
         : "" }
         {(prices) ?
-          (prices.organizationClasspassTrial) ? 
+          ((prices.organizationClasspassTrial) && (!account.hasReachedTrialLimit)) ? 
             <ShopClassBookPriceTrial priceTrial={prices.organizationClasspassTrial}/> : "" 
           : "" } 
       </Grid.Row>
