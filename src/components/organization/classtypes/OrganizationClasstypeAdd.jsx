@@ -57,7 +57,7 @@ function OrganizationClasstypeAdd({t, history}) {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                 }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                  toast.error((t('general.toast_server_error')) +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                   console.log('there was an error sending the query', error)
