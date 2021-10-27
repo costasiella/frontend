@@ -241,7 +241,7 @@
         }
     },
     "general": {
-        "toast_server_error": "Uh oh... the server returned an error",
+        "toast_server_error": "",
         "name": "Name",
         "submit": "Save",
         "cancel": "Cancel",
@@ -1621,6 +1621,12 @@
                 "title": "Trial",
                 "explanation": "Trial card buying limit",
                 "trial_pass_limit": "Number of times a customer can purchase a trial card"
+            },
+            "subscription_pauses": {
+                "title": "Subscription pauses",
+                "explanation": "Configure limits on subscription pauses",
+                "min_duration_in_days": "Minimum pause duration (in days)",
+                "max_pauses_in_year": "Maximum pauses allowed in a year"
             }
         },
         "shop": {

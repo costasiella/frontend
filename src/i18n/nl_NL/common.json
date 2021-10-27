@@ -376,6 +376,12 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "trial_pass_limit": "__STRING_NOT_TRANSLATED__"
+            },
+            "subscription_pauses": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "min_duration_in_days": "__STRING_NOT_TRANSLATED__",
+                "max_pauses_in_year": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
