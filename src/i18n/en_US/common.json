@@ -2029,7 +2029,8 @@
                 },
                 "credits_expiration": {
                     "title": "Expire credits",
-                    "explanation": "Expire credits that are above the accumulation limit."
+                    "explanation": "Expire credits that are above the accumulation limit.",
+                    "title_card": "Credit expiration result"
                 }
             }
         },

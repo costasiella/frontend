@@ -23,10 +23,10 @@ import { toast } from 'react-toastify'
 import ContentCard from "../../../../general/ContentCard"
 
 import { GET_TASK_RESULT_QUERY } from "../../../queries"
-import AutomationAccountSubscriptionCreditsBase from './AutomationAccountSubscriptionCreditsExpirationBase'
+import AutomationAccountSubscriptionCreditExpirationBase from './AutomationAccountSubscriptionCreditExpirationBase'
 import AutomationTaskResultStatus from "../../../AutomationTaskResultStatus"
 
-function AutomationAccountSubscriptionCreditsExpiration({t, history, match}) {
+function AutomationAccountSubscriptionCreditExpiration({t, history, match}) {
   const appSettings = useContext(AppSettingsContext)
   const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
 
@@ -49,17 +49,17 @@ function AutomationAccountSubscriptionCreditsExpiration({t, history, match}) {
 
   // Loading
   if (loading) return (
-    <AutomationAccountSubscriptionCreditsBase>
+    <AutomationAccountSubscriptionCreditExpirationBase>
       <p>{t('general.loading_with_dots')}</p>
-    </AutomationAccountSubscriptionCreditsBase>
+    </AutomationAccountSubscriptionCreditExpirationBase>
   )
   // Error
   if (error) {
     console.log(error)
     return (
-      <AutomationAccountSubscriptionCreditsBase>
+      <AutomationAccountSubscriptionCreditExpirationBase>
         <p>{t('general.error_sad_smiley')}</p>
-      </AutomationAccountSubscriptionCreditsBase>
+      </AutomationAccountSubscriptionCreditExpirationBase>
     )
   }
 
@@ -69,7 +69,7 @@ function AutomationAccountSubscriptionCreditsExpiration({t, history, match}) {
   
 
   return (
-    <AutomationAccountSubscriptionCreditsBase>
+    <AutomationAccountSubscriptionCreditExpirationBase>
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.credits_expiration.title_card')}
         pageInfo={taskResults.pageInfo}
@@ -137,8 +137,8 @@ function AutomationAccountSubscriptionCreditsExpiration({t, history, match}) {
             </Table>
           }
         </ContentCard>
-    </AutomationAccountSubscriptionCreditsBase>
+    </AutomationAccountSubscriptionCreditExpirationBase>
   )
 }
 
-export default withTranslation()(withRouter(AutomationAccountSubscriptionCreditsExpiration))
+export default withTranslation()(withRouter(AutomationAccountSubscriptionCreditExpiration))

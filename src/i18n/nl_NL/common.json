@@ -2029,7 +2029,8 @@
                 },
                 "credits_expiration": {
                     "title": "__STRING_NOT_TRANSLATED__",
-                    "explanation": "__STRING_NOT_TRANSLATED__"
+                    "explanation": "__STRING_NOT_TRANSLATED__",
+                    "title_card": "__STRING_NOT_TRANSLATED__"
                 }
             }
         },

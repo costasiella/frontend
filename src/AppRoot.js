@@ -27,9 +27,10 @@ import HomeHome from './components/home/home/HomeHome'
 
 import AutomationHome from './components/automation/home/AutomationHome'
 import AutomationAccountSubscriptionCredits from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCredits'
+import AutomationAccountSubscriptionCreditAdd from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCreditAdd'
+import AutomationAccountSubscriptionCreditExpiration from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpiration'
 import AutomationAccountSubscriptionInvoices from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoices'
 import AutomationAccountSubscriptionInvoicesAdd from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoicesAdd'
-import AutomationAccountSubscriptionCreditAdd from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCreditAdd'
 import AutomationAccountSubscriptionMollieCollections 
   from './components/automation/account/subscription/mollie_collection/AutomationAccountSubscriptionMollieCollections'
 import AutomationAccountSubscriptionMollieCollectionAdd
@@ -391,6 +392,10 @@ function AppRoot({ t }) {
                                 component={AutomationAccountSubscriptionCredits} />
             <PrivateRoute exact path="/automation/account/subscriptions/credits/add" 
                                 component={AutomationAccountSubscriptionCreditAdd} />
+            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration" 
+                                component={AutomationAccountSubscriptionCreditExpiration} />
+            {/* <PrivateRoute exact path="/automation/account/subscriptions/credits/add" 
+                                component={AutomationAccountSubscriptionCreditAdd} /> */}
             <PrivateRoute exact path="/automation/account/subscriptions/invoices" 
                                 component={AutomationAccountSubscriptionInvoices} />    
             <PrivateRoute exact path="/automation/account/subscriptions/invoices/add" 

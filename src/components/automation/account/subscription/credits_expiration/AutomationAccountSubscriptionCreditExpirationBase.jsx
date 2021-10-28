@@ -14,7 +14,7 @@ import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AutomationBack from "../../../AutomationBack"
 
-function AutomationAccountSubscriptionCreditsExpirationBase({t, history, match, children, returnUrl="/automation"}) {
+function AutomationAccountSubscriptionCreditExpirationBase({t, history, match, children, returnUrl="/automation"}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -35,4 +35,4 @@ function AutomationAccountSubscriptionCreditsExpirationBase({t, history, match, 
   )
 }
 
-export default withTranslation()(withRouter(AutomationAccountSubscriptionCreditsExpirationBase))
+export default withTranslation()(withRouter(AutomationAccountSubscriptionCreditExpirationBase))
