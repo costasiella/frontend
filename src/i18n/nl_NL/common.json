@@ -2030,7 +2030,10 @@
                 "credits_expiration": {
                     "title": "__STRING_NOT_TRANSLATED__",
                     "explanation": "__STRING_NOT_TRANSLATED__",
-                    "title_card": "__STRING_NOT_TRANSLATED__"
+                    "title_card": "__STRING_NOT_TRANSLATED__",
+                    "title_add": "__STRING_NOT_TRANSLATED__",
+                    "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                    "explanation_new_expiration": "__STRING_NOT_TRANSLATED__"
                 }
             }
         },
