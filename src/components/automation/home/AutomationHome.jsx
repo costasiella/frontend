@@ -51,6 +51,16 @@ function AutomationHome({ t, match, params }) {
             <Grid.Col md={3}>
               <Card>
                 <Card.Body>
+                  <h5>{t("automation.account.subscriptions.credits_expire.title")}</h5>
+                  {t("automation.account.subscriptions.credits_expire.explanation")}
+                  <br /><br />
+                  <AutomationHomeItemButton link="/automation/account/subscriptions/credits_expire" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
                   <h5>{t("automation.account.subscriptions.mollie_collection.title")}</h5>
                   {t("automation.account.subscriptions.mollie_collection.explanation")}
                   <br /><br />

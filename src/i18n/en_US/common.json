@@ -2001,7 +2001,7 @@
             "subscriptions": {
                 "title": "Account subscriptions",
                 "credits": {
-                    "title": "Subscription credits",
+                    "title": "Add credits",
                     "explanation": "Add monthly credits for all active subscriptions.",
                     "empty_list": "This task hasn't run before.",
                     "toast_add_success": "Started adding credits...",
@@ -2017,7 +2017,7 @@
                     "empty_list": "This task hasn't run before."
                 },
                 "invoices": {
-                    "title": "Subscription invoices",
+                    "title": "Monthly invoices",
                     "explanation": "Create monthly invoices for all active subscriptions.",
                     "title_card": "Monthly invoice creation result",
                     "empty_list": "This task hasn't run before.",
@@ -2026,6 +2026,10 @@
                     "invoice_date": "Invoice date",
                     "today": "Today",
                     "invoice_date_first_day_month": "1st of chosen month"
+                },
+                "credits_expire": {
+                    "title": "Expire credits",
+                    "explanation": "Expire credits that are above the accumulation limit."
                 }
             }
         },

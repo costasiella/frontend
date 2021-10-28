@@ -2026,6 +2026,10 @@
                     "invoice_date": "__STRING_NOT_TRANSLATED__",
                     "today": "__STRING_NOT_TRANSLATED__",
                     "invoice_date_first_day_month": "__STRING_NOT_TRANSLATED__"
+                },
+                "credits_expire": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "explanation": "__STRING_NOT_TRANSLATED__"
                 }
             }
         },
