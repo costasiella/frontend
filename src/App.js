@@ -120,9 +120,10 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
             forward(operation).subscribe(subscriber);
           })
           .catch(error => {
-            // No refresh or client token available, we force user to login
+            // No refresh or client token available, we force user to login, after a cleanup
             console.log("Failed to refresh the token, onwards to the login page")
             observer.error(error);
+            CSAuth.cleanup()
             window.location.href = "/#/user/login"
             window.location.reload()
           });
