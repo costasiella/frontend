@@ -1,13 +1,13 @@
 // @flow
 
-import React from 'react'
+import React, {useState} from 'react'
 import { useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
+import { Link } from 'react-router-dom'
 
 import { GET_TASK_RESULT_QUERY } from "../../../queries"
 // import { AUTOMATION_ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA } from './yupSchema'
@@ -15,7 +15,10 @@ import AutomationAccountSubscriptionCreditExpirationForm from './AutomationAccou
 
 
 import {
+  Button,
   Card,
+  Grid,
+  Icon
 } from "tabler-react"
 // import SiteWrapper from "../../SiteWrapper"
 // import HasPermissionWrapper from "../../HasPermissionWrapper"
@@ -24,8 +27,8 @@ import AutomationAccountSubscriptionCreditExpirationBase from './AutomationAccou
 
 
 const ADD_TASK = gql`
-  mutation CreateAccountSubscriptionCreditForMonth($input:CreateAccountSubscriptionCreditForMonthInput!) {
-    createAccountSubscriptionCreditForMonth(input: $input) {
+  mutation ExpireAccountSubscriptionCredit($input: ExpireAccountSubscriptionCreditInput!) {
+    expireAccountSubscriptionCredit(input:$input) {
       ok
     }
   }
@@ -34,6 +37,7 @@ const ADD_TASK = gql`
 
 function AutomationAccountSubscriptionCreditExpirationAdd({ t, history }) {
   const [addTask] = useMutation(ADD_TASK)
+  let [isSubmitting, setSubmitting] = useState(false)
   const returnUrl = "/automation/account/subscriptions/credits_expiration"
 
   return (
@@ -42,14 +46,27 @@ function AutomationAccountSubscriptionCreditExpirationAdd({ t, history }) {
         <Card.Header>
           <Card.Title>{t('automation.account.subscriptions.credits_expiration.title_add')}</Card.Title>
         </Card.Header>
-        <Formik
-          // initialValues={}
-          // validationSchema={AUTOMATION_ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA}
-          onSubmit={(values, { setSubmitting }) => {
-              addTask({ refetchQueries: [
+        <Card.Body>
+          <Grid.Row>
+            <Grid.Col>
+              {t("automation.account.subscriptions.credits_expiration.explanation_new_expiration")}
+            </Grid.Col>
+          </Grid.Row>
+        </Card.Body>
+        <Card.Footer>
+          <Button 
+          color="primary"
+            className="pull-right" 
+            type="submit" 
+            disabled={isSubmitting}
+            onClick={() => {
+              setSubmitting(true)
+              addTask({ variables: {
+                input: {}
+              }, refetchQueries: [
                 {query: GET_TASK_RESULT_QUERY, 
                   variables: {
-                    taskName: "costasiella.tasks.account.subscription.credits.tasks.account_subscription_credits_add_for_month"
+                    taskName: "costasiella.tasks.account.subscription.credits.tasks.account_subscription_credits_expire"
                 }}
               ]})
               .then(({ data }) => {
@@ -65,16 +82,16 @@ function AutomationAccountSubscriptionCreditExpirationAdd({ t, history }) {
                   console.log('there was an error sending the query', error)
                   setSubmitting(false)
                 })
-          }}
+            }}
           >
-          {({ isSubmitting, errors }) => (
-              <AutomationAccountSubscriptionCreditExpirationForm 
-                isSubmitting={isSubmitting}
-                errors={errors}
-                returnUrl={returnUrl}
-              />
-          )}
-        </Formik>
+            {t('general.new_task')} <Icon name="chevron-right" />
+          </Button>
+          <Link to={returnUrl}>
+            <Button color="link">
+              {t('general.cancel')}
+            </Button>
+          </Link>
+        </Card.Footer>
       </Card>
     </AutomationAccountSubscriptionCreditExpirationBase>
   )
