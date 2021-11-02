@@ -33,6 +33,7 @@ export const GET_ACCOUNT_ORDERS_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `

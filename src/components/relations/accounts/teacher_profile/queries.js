@@ -35,6 +35,7 @@ export const GET_ACCOUNT_TEACHER_PROFILE_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `
