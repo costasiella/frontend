@@ -143,6 +143,7 @@ import RelationsHome from './components/relations/home/RelationsHome'
 import RelationsAccounts from './components/relations/accounts/RelationsAccounts'
 import RelationsAccountAdd from './components/relations/accounts/RelationsAccountAdd'
 import RelationsAccountProfile from './components/relations/accounts/RelationsAccountProfile'
+import RelationsAccountProfileImage from './components/relations/accounts/RelationsAccountProfileImage'
 import AccountAcceptedDocuments from './components/relations/accounts/accepted_documents/AcceptedDocuments.jsx'
 import RelationsAccountBankAccount from './components/relations/accounts/bank_accounts/RelationsAccountBankAccount'
 import RelationsAccountBankAccountMandateAdd from './components/relations/accounts/bank_accounts/mandates/RelationsAccountBankAccountMandateAdd'
@@ -515,6 +516,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts" component={RelationsAccounts} />
             <PrivateRoute exact path="/relations/accounts/add" component={RelationsAccountAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/profile" component={RelationsAccountProfile} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/profile/image" component={RelationsAccountProfileImage} />
             <PrivateRoute exact path="/relations/accounts/:account_id/accepted_documents" component={AccountAcceptedDocuments} />
             <PrivateRoute exact path="/relations/accounts/:account_id/bank_accounts" component={RelationsAccountBankAccount} />
             <PrivateRoute exact path="/relations/accounts/:account_id/bank_accounts/:bank_account_id/mandates/add" 
