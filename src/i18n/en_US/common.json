@@ -825,7 +825,8 @@
             "toast_edit_success": "Saved profile",
             "deactivated": "Moved account to deleted",
             "restored": "Restored account",
-            "emergency": "Emergency"
+            "emergency": "Emergency",
+            "profile_image": "Profile picture"
         },
         "account": {
             "subscriptions": {
