@@ -10,6 +10,7 @@ export const GET_ACCOUNT = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `
