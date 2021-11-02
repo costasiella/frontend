@@ -4,7 +4,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
+import { Link } from 'react-router-dom'
 
 import {
   Button,
@@ -13,7 +13,7 @@ import {
   Grid
 } from "tabler-react"
 
-import { customFileInputLabelStyle } from "../../../../tools/custom_file_input_label_style"
+import { customFileInputLabelStyle } from "../../../tools/custom_file_input_label_style"
 
 
 const RelationsAccountProfileImageForm = ({ t, history, isSubmitting, returnUrl, inputFileName, fileInputLabel, handleFileInputChange=f=>f }) => (
@@ -33,6 +33,11 @@ const RelationsAccountProfileImageForm = ({ t, history, isSubmitting, returnUrl,
         </Grid.Row>
       </Card.Body>
       <Card.Footer>
+          <Link to={returnUrl}>
+            <Button color="link" className="pull-right">
+              {t('general.cancel')}
+            </Button>
+          </Link>
           <Button 
             color="primary"
             // className="pull-right" 
@@ -41,10 +46,7 @@ const RelationsAccountProfileImageForm = ({ t, history, isSubmitting, returnUrl,
           >
             {t('general.submit')}
           </Button>
-          
-          {/* <Button color="link" onClick={() => history.push(return_url)}>
-              {t('general.cancel')}
-          </Button> */}
+
       </Card.Footer>
   </FoForm>
 )
