@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 import moment from 'moment'
 
 import {
+  Avatar,
   Badge,
   Icon,
   Dimmer,
@@ -170,7 +171,8 @@ function RelationsAccounts({t, history}) {
         <Table>
           <Table.Header>
             <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+              <Table.ColHeader>{t('general.account')}</Table.ColHeader>
               <Table.ColHeader>{t('general.products')}</Table.ColHeader>
               {/* <Table.ColHeader>{t('general.info')}</Table.ColHeader> */}
             </Table.Row>
@@ -178,6 +180,14 @@ function RelationsAccounts({t, history}) {
           <Table.Body>
               {accounts.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
+                  <Table.Col>
+                    <Link to={`/relations/accounts/${node.id}/profile`}>
+                      {(node.urlImageThumbnailSmall) ? 
+                        <Avatar size={"lg"} imageURL={node.urlImageThumbnailSmall} /> :
+                        <Avatar size={"lg"} icon="user" />
+                      }
+                    </Link>
+                  </Table.Col>
                   <Table.Col key={v4()}>
                     <span className="bold">{node.fullName}</span>
                     <div className="text-muted">
