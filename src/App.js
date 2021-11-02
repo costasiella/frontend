@@ -58,6 +58,8 @@ function SetCurrentUrlAsNext() {
   
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
+  console.log(operation)
+  
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.log(
@@ -147,7 +149,6 @@ const httpLink = createHttpLink({
 const authLink = setContext(async (request, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem(CSLS.AUTH_TOKEN)
-  console.log(token)
   // return the headers to the context so httpLink can read them
   return {
     headers: {
