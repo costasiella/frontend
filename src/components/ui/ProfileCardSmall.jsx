@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { withTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import {
   Avatar,
@@ -13,20 +14,27 @@ import {
   Tooltip,
 } from "tabler-react"
 
-const ProfileCardSmall = ({ t, value, user, avatarSize='md' }) => (
-  <Card>
-    <Card.Body>
-      {(!user) ? "" : 
+function ProfileCardSmall({ t, value, user, avatarSize='md' }) {
+  if (!user) {
+    return ""
+  }
+
+  const accountId = user.id
+
+  return (
+    <Card>
+      <Card.Body>
         <Media>
-          {(user.imageURL) ? 
-            <Avatar size={avatarSize + " mr-5"} imageURL="avatarImageURL" /> :
-            <Avatar size={avatarSize + " mr-5"} icon="user" />
-          }
+          <Link to={`/relations/accounts/${accountId}/profile/image`}>
+            {(user.urlImageThumbnailSmall) ? 
+              <Avatar size={avatarSize + " mr-5"} imageURL={user.urlImageThumbnailSmall} /> :
+              <Avatar size={avatarSize + " mr-5"} icon="user" />
+            }
+          </Link>
           <Media.Body>
             <h4 className="mb-2">{user.firstName + " " + user.lastName}</h4>
             <div className="text-muted mb-0">
               <SocialNetworksList className="mb-0 mt-2">
-
                 {
                   (user.phone) ? 
                     <List.Item inline>
@@ -93,9 +101,9 @@ const ProfileCardSmall = ({ t, value, user, avatarSize='md' }) => (
             /> */}
           </Media.Body>
         </Media>
-      }
-    </Card.Body>
-  </Card>
-)
+      </Card.Body>
+    </Card>  
+  )
+}
 
 export default withTranslation()(ProfileCardSmall)
