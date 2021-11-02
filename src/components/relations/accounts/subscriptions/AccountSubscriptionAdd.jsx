@@ -19,7 +19,7 @@ import {
   Card,
 } from "tabler-react";
 import { dateToLocalISO } from '../../../../tools/date_tools'
-import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
+import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 
 
 function AccountSubscriptionAdd({t, history, match}) {
