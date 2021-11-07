@@ -64,6 +64,26 @@ function SettingsHome({ t, match, params }) {
                 </Card.Body>
               </Card>
             </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.workflow.subscription_pauses.title")}</h5>
+                  {t("settings.workflow.subscription_pauses.explanation")}
+                  <br /><br />
+                  <SettingsHomeItemButton link="/settings/workflow/subscription_pauses" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.workflow.trial.title")}</h5>
+                  {t("settings.workflow.trial.explanation")}
+                  <br /><br />
+                  <SettingsHomeItemButton link="/settings/workflow/trial" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
           </Grid.Row>
           <Grid.Row>
             <Grid.Col md={12}>

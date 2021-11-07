@@ -64,7 +64,7 @@ function ShopCheckoutPayment({ t, match, history }) {
       const paymentLink = data.createFinanceOrderPaymentLink.financeOrderPaymentLink.paymentLink
       window.location.href = paymentLink
     }).catch((error) => {
-      toast.error((t('general.toast_server_error')) + ': ' +  error, {
+      toast.error((t('general.toast_server_error')) +  error, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
       console.log('there was an error sending the query', error)

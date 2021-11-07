@@ -95,7 +95,7 @@ function OrganizationClasspasses({t, history}) {
               ? {
                   // Put the new memberships at the end of the list and update `pageInfo`
                   // so we have the new `endCursor` and `hasNextPage` values
-                  organizationMemberships: {
+                  organizationClasspasses: {
                     __typename: previousResult.organizationClasspasses.__typename,
                     edges: [ ...previousResult.organizationClasspasses.edges, ...newEdges ],
                     pageInfo
@@ -180,7 +180,7 @@ function OrganizationClasspasses({t, history}) {
                           position: toast.POSITION.BOTTOM_RIGHT
                         })
                     }).catch((error) => {
-                      toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                      toast.error((t('general.toast_server_error')) +  error, {
                           position: toast.POSITION.BOTTOM_RIGHT
                         })
                       console.log('there was an error sending the query', error);
@@ -365,7 +365,7 @@ function OrganizationClasspasses({t, history}) {
 //                                           position: toast.POSITION.BOTTOM_RIGHT
 //                                         })
 //                                     }).catch((error) => {
-//                                       toast.error((t('general.toast_server_error')) + ': ' +  error, {
+//                                       toast.error((t('general.toast_server_error')) +  error, {
 //                                           position: toast.POSITION.BOTTOM_RIGHT
 //                                         })
 //                                       console.log('there was an error sending the query', error);

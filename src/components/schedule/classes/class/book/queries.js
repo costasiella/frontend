@@ -8,6 +8,7 @@ export const GET_BOOKING_OPTIONS_QUERY = gql`
       account {
         id
         fullName
+        hasReachedTrialLimit
       }
       alreadyBooked
       scheduleItem {

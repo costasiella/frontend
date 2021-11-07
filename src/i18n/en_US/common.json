@@ -241,7 +241,7 @@
         }
     },
     "general": {
-        "toast_server_error": "Uh oh... the server returned an error",
+        "toast_server_error": "",
         "name": "Name",
         "submit": "Save",
         "cancel": "Cancel",
@@ -461,7 +461,6 @@
         "payment": "Payment",
         "view": "View",
         "invoices": "Invoices",
-        "ID": "ID",
         "line": "Line",
         "export": "Export",
         "category": "Category",
@@ -525,8 +524,7 @@
         "classpass": {
             "public": "This is a public pass",
             "shop": "Show this pass in the shop",
-            "trial_pass": "Trial pass",
-            "trial_times": "Number of times a customer can buy this pass (only used for trial passes)"
+            "trial_pass": "Trial pass"
         },
         "classpass_groups": {
             "title_add": "Add class pass group",
@@ -827,7 +825,8 @@
             "toast_edit_success": "Saved profile",
             "deactivated": "Moved account to deleted",
             "restored": "Restored account",
-            "emergency": "Emergency"
+            "emergency": "Emergency",
+            "profile_image": "Profile picture"
         },
         "account": {
             "subscriptions": {
@@ -1615,10 +1614,21 @@
             "title": "Workflow",
             "class_booking": {
                 "title": "Class booking",
-                "explanation": "Class advance booking and cancellation settings"
+                "explanation": "Class booking and cancellation settings",
+                "book_days_advance": "Number of days in advance customers will be able to book classes",
+                "cancel_until": "Number of hours before a class starts a booking can be cancelled while returning credit"
             },
-            "workflow_class_book_days_advance": "Number of days in advance customers will be able to book classes",
-            "workflow_class_cancel_until": "Number of hours before a class starts a booking can be cancelled while returning credit"
+            "trial": {
+                "title": "Trial",
+                "explanation": "Trial card buying limit",
+                "trial_pass_limit": "Number of times a customer can purchase a trial card"
+            },
+            "subscription_pauses": {
+                "title": "Subscription pauses",
+                "explanation": "Configure limits on subscription pauses",
+                "min_duration_in_days": "Minimum pause duration (in days)",
+                "max_pauses_in_year": "Maximum pauses allowed in a year"
+            }
         },
         "shop": {
             "title": "Shop",
@@ -1761,7 +1771,9 @@
             "error_loading": "Error loading class pass :(",
             "additional_information": "Additional information",
             "class_book_information": "Selected class",
-            "class_book_explanation": "You'll be signed in to the class below once the order process has been completed."
+            "class_book_explanation": "You'll be signed in to the class below once the order process has been completed.",
+            "trial_limit_reached": "Trial limit reached",
+            "trial_limit_reached_explanation": "As you've already purchased the maximum number of trial passes, we request you to go back and choose another pass."
         },
         "order": {
             "message": "Any message with this order?",
@@ -1818,7 +1830,8 @@
                 "title": "My profile",
                 "explanation": "Update your name and contact information.",
                 "toast_edit_success": "Saved",
-                "error_loading_data": "Error loading profile data :("
+                "error_loading_data": "Error loading profile data :(",
+                "download_my_data": "Download my data"
             },
             "btn_text_profile_edit": "Update profile",
             "error_loading_user_data": "Error loading profile data :(",
@@ -1989,7 +2002,7 @@
             "subscriptions": {
                 "title": "Account subscriptions",
                 "credits": {
-                    "title": "Subscription credits",
+                    "title": "Add credits",
                     "explanation": "Add monthly credits for all active subscriptions.",
                     "empty_list": "This task hasn't run before.",
                     "toast_add_success": "Started adding credits...",
@@ -2005,7 +2018,7 @@
                     "empty_list": "This task hasn't run before."
                 },
                 "invoices": {
-                    "title": "Subscription invoices",
+                    "title": "Monthly invoices",
                     "explanation": "Create monthly invoices for all active subscriptions.",
                     "title_card": "Monthly invoice creation result",
                     "empty_list": "This task hasn't run before.",
@@ -2014,6 +2027,14 @@
                     "invoice_date": "Invoice date",
                     "today": "Today",
                     "invoice_date_first_day_month": "1st of chosen month"
+                },
+                "credits_expiration": {
+                    "title": "Expire credits",
+                    "explanation": "Expire credits that are above the accumulation limit.",
+                    "title_card": "Credit expiration result",
+                    "title_add": "Expire credits",
+                    "toast_add_success": "Started credits expiration",
+                    "explanation_new_expiration": "Expire all credits that are over the accumulation limit at this moment."
                 }
             }
         },

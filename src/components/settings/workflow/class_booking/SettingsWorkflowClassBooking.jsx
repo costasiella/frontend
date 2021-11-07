@@ -1,7 +1,6 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -12,14 +11,8 @@ import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 // import FinancePaymentMethodForm from './AppSettingsGeneralForm'
@@ -139,7 +132,7 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
                 })
                 setSubmitting(false)
               }).catch((error) => {
-                toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                toast.error((t('general.toast_server_error')) +  error, {
                   position: toast.POSITION.BOTTOM_RIGHT
                 })
                 console.log('there was an error sending the query', error)

@@ -3,8 +3,8 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from 'react-router-dom'
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-import { v4 } from 'uuid'
 
 import {
   Button,
@@ -74,9 +74,11 @@ function ScheduleEventMediaForm ({
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(returnUrl)} role="button">
-              {t('general.cancel')}
-          </Button>
+          <Link to={returnUrl}>
+            <Button color="link" role="button">
+                {t('general.cancel')}
+            </Button>
+          </Link>
       </Card.Footer>
     </FoForm>
   )

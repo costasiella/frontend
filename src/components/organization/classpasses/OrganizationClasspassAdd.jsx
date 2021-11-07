@@ -55,7 +55,6 @@ function OrganizationClasspassAdd({t, match, history}) {
             displayPublic: true,
             displayShop: true,
             trialPass: false,
-            trialTimes: 1,
             name: "",
             description: "",
             price: 0,
@@ -79,7 +78,6 @@ function OrganizationClasspassAdd({t, match, history}) {
                   displayPublic: values.displayPublic,
                   displayShop: values.displayShop,
                   trialPass: values.trialPass,
-                  trialTimes: values.trialTimes,
                   name: values.name,
                   description: values.description,
                   price: values.price,
@@ -103,7 +101,7 @@ function OrganizationClasspassAdd({t, match, history}) {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                 }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                  toast.error((t('general.toast_server_error')) +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                   console.log('there was an error sending the query', error)

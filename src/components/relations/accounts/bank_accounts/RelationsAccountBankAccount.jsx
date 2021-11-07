@@ -97,7 +97,7 @@ function RelationsAccountBankAccount({ t, match, history }) {
                     })
                   setSubmitting(false)
                 }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                  toast.error((t('general.toast_server_error')) +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                   console.log('there was an error sending the query', error)
@@ -118,7 +118,7 @@ function RelationsAccountBankAccount({ t, match, history }) {
       <Grid.Row>
       {mandates.edges.map(({ node }) => (
         <Grid.Col md={6}>
-          <Card title={t("general.ID") + ": " + node.reference}>
+          <Card title={node.reference}>
             <Card.Body>
               {t("relations.account.bank_accounts.mandates.signature_date")} {moment(node.signatureDate).format(dateFormat)}
               <div dangerouslySetInnerHTML={{ __html: node.content}} />

@@ -58,6 +58,12 @@ function RelationsAccountBankAccountMandateEdit({ t, match, history }) {
 
   const mandate = data.accountBankAccountMandate
  
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let signDate = null
+  if (mandate.signatureDate) {
+    signDate = new Date(mandate.signatureDate)
+  }
 
   return (
     <RelationsAccountBankAccountBase showBack={true}>
@@ -69,7 +75,7 @@ function RelationsAccountBankAccountMandateEdit({ t, match, history }) {
           initialValues={{
             reference: mandate.reference,
             content: mandate.content,
-            signatureDate: mandate.signatureDate
+            signatureDate: signDate
           }}
           // validationSchema={INVOICE_GROUP_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
@@ -94,7 +100,7 @@ function RelationsAccountBankAccountMandateEdit({ t, match, history }) {
                 history.push(returnUrl)
                 setSubmitting(false)
               }).catch((error) => {
-                toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                toast.error((t('general.toast_server_error')) +  error, {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
                 console.log('there was an error sending the query', error)

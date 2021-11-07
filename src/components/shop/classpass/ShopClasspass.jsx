@@ -63,10 +63,23 @@ function ShopClasspass({ t, match, history }) {
 
   console.log(data)
   const classpass = data.organizationClasspass
+  const user = data.user
   console.log(classpass)
 
   console.log('DATA CLASS')
   console.log(dataClass)
+
+  if (user.hasReachedTrialLimit) {
+    return (
+      <ShopClasspassBase title={title}>
+        <Card title={t("shop.classpass.trial_limit_reached")}>
+          <Card.Body>
+            {t("shop.classpass.trial_limit_reached_explanation")}
+          </Card.Body>
+        </Card>
+      </ShopClasspassBase>
+    )
+  }
 
   return (
     <ShopClasspassBase title={title}>
@@ -127,7 +140,7 @@ function ShopClasspass({ t, match, history }) {
                         const orderId = data.createFinanceOrder.financeOrder.id
                         history.push('/shop/checkout/payment/' + orderId)
                       }).catch((error) => {
-                        toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                        toast.error((t('general.toast_server_error')) +  error, {
                             position: toast.POSITION.BOTTOM_RIGHT
                           })
                         console.log('there was an error sending the query', error)

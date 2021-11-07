@@ -74,7 +74,6 @@ function OrganizationClasspassEdit({ t, match, history}) {
             displayPublic: initialData.organizationClasspass.displayPublic,
             displayShop: initialData.organizationClasspass.displayShop,
             trialPass: initialData.organizationClasspass.trialPass,
-            trialTimes: initialData.organizationClasspass.trialTimes,
             name: initialData.organizationClasspass.name,
             description: initialData.organizationClasspass.description,
             price: initialData.organizationClasspass.price,
@@ -99,7 +98,6 @@ function OrganizationClasspassEdit({ t, match, history}) {
                   displayPublic: values.displayPublic,
                   displayShop: values.displayShop,
                   trialPass: values.trialPass,
-                  trialTimes: values.trialTimes,
                   name: values.name,
                   description: values.description,
                   price: values.price,
@@ -123,7 +121,7 @@ function OrganizationClasspassEdit({ t, match, history}) {
                     })
                   setSubmitting(false)
                 }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                  toast.error((t('general.toast_server_error')) +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                   console.log('there was an error sending the query', error)

@@ -177,6 +177,11 @@ function SiteWrapper({t, match, history, children}) {
 
   console.log(data)
 
+  let avatarURL = "#"
+  if (data.user.urlImageThumbnailSmall) {
+    avatarURL = data.user.urlImageThumbnailSmall
+  }
+
   return (
     <Site.Wrapper
       headerProps={{
@@ -232,7 +237,7 @@ function SiteWrapper({t, match, history, children}) {
           //   unread: unreadCount,
           // },
           accountDropdown: {
-          avatarURL: "#",
+          avatarURL: avatarURL,
           name: data.user.firstName + ' ' + data.user.lastName,
           description: "",
           options: [

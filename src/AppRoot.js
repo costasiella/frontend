@@ -27,9 +27,13 @@ import HomeHome from './components/home/home/HomeHome'
 
 import AutomationHome from './components/automation/home/AutomationHome'
 import AutomationAccountSubscriptionCredits from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCredits'
+import AutomationAccountSubscriptionCreditAdd from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCreditAdd'
+import AutomationAccountSubscriptionCreditExpiration 
+  from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpiration'
+import AutomationAccountSubscriptionCreditExpirationAdd
+  from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpirationAdd'
 import AutomationAccountSubscriptionInvoices from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoices'
 import AutomationAccountSubscriptionInvoicesAdd from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoicesAdd'
-import AutomationAccountSubscriptionCreditAdd from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCreditAdd'
 import AutomationAccountSubscriptionMollieCollections 
   from './components/automation/account/subscription/mollie_collection/AutomationAccountSubscriptionMollieCollections'
 import AutomationAccountSubscriptionMollieCollectionAdd
@@ -139,6 +143,7 @@ import RelationsHome from './components/relations/home/RelationsHome'
 import RelationsAccounts from './components/relations/accounts/RelationsAccounts'
 import RelationsAccountAdd from './components/relations/accounts/RelationsAccountAdd'
 import RelationsAccountProfile from './components/relations/accounts/RelationsAccountProfile'
+import RelationsAccountProfileImage from './components/relations/accounts/RelationsAccountProfileImage'
 import AccountAcceptedDocuments from './components/relations/accounts/accepted_documents/AcceptedDocuments.jsx'
 import RelationsAccountBankAccount from './components/relations/accounts/bank_accounts/RelationsAccountBankAccount'
 import RelationsAccountBankAccountMandateAdd from './components/relations/accounts/bank_accounts/mandates/RelationsAccountBankAccountMandateAdd'
@@ -238,6 +243,8 @@ import SettingsMailTemplates from './components/settings/mail/SettingsMailTempla
 import SettingsMailTemplateEdit from './components/settings/mail/SettingsMailTemplateEdit'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
 import SettingsWorkflowClassBooking from './components/settings/workflow/class_booking/SettingsWorkflowClassBooking'
+import SettingsWorkflowSubscriptionPauses from './components/settings/workflow/subscription_pauses/SettingsWorkflowSubscriptionPauses'
+import SettingsWorkflowTrial from './components/settings/workflow/trial/SettingsWorkflowTrial'
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
@@ -389,6 +396,10 @@ function AppRoot({ t }) {
                                 component={AutomationAccountSubscriptionCredits} />
             <PrivateRoute exact path="/automation/account/subscriptions/credits/add" 
                                 component={AutomationAccountSubscriptionCreditAdd} />
+            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration" 
+                                component={AutomationAccountSubscriptionCreditExpiration} />
+            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration/add" 
+                                component={AutomationAccountSubscriptionCreditExpirationAdd} />
             <PrivateRoute exact path="/automation/account/subscriptions/invoices" 
                                 component={AutomationAccountSubscriptionInvoices} />    
             <PrivateRoute exact path="/automation/account/subscriptions/invoices/add" 
@@ -505,6 +516,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts" component={RelationsAccounts} />
             <PrivateRoute exact path="/relations/accounts/add" component={RelationsAccountAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/profile" component={RelationsAccountProfile} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/profile/image" component={RelationsAccountProfileImage} />
             <PrivateRoute exact path="/relations/accounts/:account_id/accepted_documents" component={AccountAcceptedDocuments} />
             <PrivateRoute exact path="/relations/accounts/:account_id/bank_accounts" component={RelationsAccountBankAccount} />
             <PrivateRoute exact path="/relations/accounts/:account_id/bank_accounts/:bank_account_id/mandates/add" 
@@ -634,14 +646,14 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/classes/book/:class_id/:date" component={ShopClassBook} />
             <PrivateRoute exact path = "/shop/classes/booked/:class_id/:date" component={ShopClassBooked} />
             <Route exact path = "/shop/classpasses" component={ShopClasspasses} />
-            <Route exact path = "/shop/classpass/:id" component={ShopClasspass} />
-            <Route exact path = "/shop/classpass/:id/:class_id/:date" component={ShopClasspass} />
+            <PrivateRoute exact path = "/shop/classpass/:id" component={ShopClasspass} />
+            <PrivateRoute exact path = "/shop/classpass/:id/:class_id/:date" component={ShopClasspass} />
             <Route exact path = "/shop/contact" component={ShopContact} />
             <Route exact path = "/shop/events" component={ShopEvents} />
-            <Route exact path = "/shop/events/:event_id" component={ShopEvent} />
-            <Route exact path = "/shop/events/:event_id/ticket/:id" component={ShopEventTicket} />
+            <PrivateRoute exact path = "/shop/events/:event_id" component={ShopEvent} />
+            <PrivateRoute exact path = "/shop/events/:event_id/ticket/:id" component={ShopEventTicket} />
             <Route exact path = "/shop/subscriptions" component={ShopSubscriptions} />
-            <Route exact path = "/shop/subscription/:id" component={ShopSubscription} />
+            <PrivateRoute exact path = "/shop/subscription/:id" component={ShopSubscription} />
 
             {/* Settings */}
             <PrivateRoute exact path="/settings" component={SettingsHome} />
@@ -655,6 +667,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />
             <PrivateRoute exact path="/settings/workflow/class_booking" component={SettingsWorkflowClassBooking} />
+            <PrivateRoute exact path="/settings/workflow/subscription_pauses" component={SettingsWorkflowSubscriptionPauses} />
+            <PrivateRoute exact path="/settings/workflow/trial" component={SettingsWorkflowTrial} />
 
             {/* User */}
             <PrivateRoute exact path="/user/password/change" component={UserChangePassword} />

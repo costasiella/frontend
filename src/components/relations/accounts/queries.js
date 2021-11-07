@@ -38,6 +38,7 @@ query Accounts(
         fullName
         email
         isActive
+        urlImageThumbnailSmall
         subscriptions(last: 2) {
           edges {
             node {
@@ -93,6 +94,7 @@ export const GET_ACCOUNT_QUERY = gql`
       emergency
       isActive
       keyNumber
+      urlImageThumbnailSmall
       organizationDiscovery {
         id
       }

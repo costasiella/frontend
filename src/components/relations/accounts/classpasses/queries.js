@@ -31,6 +31,7 @@ export const GET_ACCOUNT_CLASSPASSES_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `
@@ -71,6 +72,7 @@ export const GET_ACCOUNT_CLASSPASS_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `
@@ -100,6 +102,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `

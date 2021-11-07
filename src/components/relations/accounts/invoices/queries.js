@@ -39,70 +39,71 @@ export const GET_ACCOUNT_INVOICES_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `
 
-export const GET_ACCOUNT_SUBSCRIPTION_QUERY = gql`
-  query AccountSubscription($id: ID!, $accountId: ID!, $after: String, $before: String) {
-    accountSubscription(id:$id) {
-      id
-      organizationSubscription {
-        id
-        name
-      }
-      financePaymentMethod {
-        id
-        name
-      }
-      dateStart
-      dateEnd
-      note
-      registrationFeePaid
-      createdAt
-    }
-    organizationSubscriptions(first: 100, before: $before, after: $after, archived: false) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id
-          archived
-          name
-        }
-      }
-    }
-    financePaymentMethods(first: 100, before: $before, after: $after, archived: false) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id
-          archived
-          name
-          code
-        }
-      }
-    }
-    account(id:$accountId) {
-      id
-      firstName
-      lastName
-      email
-      phone
-      mobile
-      isActive
-    }
-  }
-`
+// export const GET_ACCOUNT_SUBSCRIPTION_QUERY = gql`
+//   query AccountSubscription($id: ID!, $accountId: ID!, $after: String, $before: String) {
+//     accountSubscription(id:$id) {
+//       id
+//       organizationSubscription {
+//         id
+//         name
+//       }
+//       financePaymentMethod {
+//         id
+//         name
+//       }
+//       dateStart
+//       dateEnd
+//       note
+//       registrationFeePaid
+//       createdAt
+//     }
+//     organizationSubscriptions(first: 100, before: $before, after: $after, archived: false) {
+//       pageInfo {
+//         startCursor
+//         endCursor
+//         hasNextPage
+//         hasPreviousPage
+//       }
+//       edges {
+//         node {
+//           id
+//           archived
+//           name
+//         }
+//       }
+//     }
+//     financePaymentMethods(first: 100, before: $before, after: $after, archived: false) {
+//       pageInfo {
+//         startCursor
+//         endCursor
+//         hasNextPage
+//         hasPreviousPage
+//       }
+//       edges {
+//         node {
+//           id
+//           archived
+//           name
+//           code
+//         }
+//       }
+//     }
+//     account(id:$accountId) {
+//       id
+//       firstName
+//       lastName
+//       email
+//       phone
+//       mobile
+//       isActive
+//     }
+//   }
+// `
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query InvoiceInputValues($after: String, $before: String, $accountId: ID!) {
@@ -128,6 +129,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `

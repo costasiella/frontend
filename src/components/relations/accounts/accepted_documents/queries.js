@@ -31,6 +31,7 @@ export const GET_ACCOUNT_ACCEPTED_DOCUMENTS_QUERY = gql`
       phone
       mobile
       isActive
+      urlImageThumbnailSmall
     }
   }
 `

@@ -81,7 +81,7 @@ function UserChangePassword({t, match, history}) {
                   }
                 } else {
                   // Show general error message
-                  toast.error((t('general.toast_server_error')) + ': ' +  error, {
+                  toast.error((t('general.toast_server_error')) +  error, {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
                 }

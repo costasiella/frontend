@@ -82,16 +82,7 @@ class OrganizationClasspassForm extends Component {
                   <ErrorMessage name="displayShop" component="div" />   
                 </Form.Group>
               </Grid.Col>
-            </Grid.Row>  
-            { (!values.trialPass) ? "" : 
-              <Form.Group label={t('organization.classpass.trial_times')} >
-                <Field type="text" 
-                    name="trialTimes" 
-                    className={(errors.trialTimes) ? "form-control is-invalid" : "form-control"} 
-                    autoComplete="off" />
-                <ErrorMessage name="trialTimes" component="span" className="invalid-feedback" />
-              </Form.Group>
-            }                
+            </Grid.Row>            
             <Form.Group label={t('general.name')} >
                 <Field type="text" 
                     name="name" 
