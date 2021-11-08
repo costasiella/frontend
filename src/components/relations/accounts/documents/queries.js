@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_DOCUMENTS_QUERY = gql`
   query AccountDocuments($account: ID!) {
-    organizationDocuments(account:$account) {
+    accountDocuments(account:$account) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -17,6 +17,16 @@ export const GET_DOCUMENTS_QUERY = gql`
           createdAt
         }
       }
+    }
+    account(id:$account) {
+      id
+      firstName
+      lastName
+      email
+      phone
+      mobile
+      isActive
+      urlImageThumbnailSmall
     }
   }
 `
