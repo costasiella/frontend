@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_CLASSPASS_GROUPS_QUERY = gql`
   query OrganizationClasspassGroups($after: String, $before: String) {
-    organizationClasspassGroups(first: 15, before: $before, after: $after) {
+    organizationClasspassGroups(first: 100, before: $before, after: $after) {
       pageInfo {
         startCursor
         endCursor
@@ -34,7 +34,7 @@ export const GET_CLASSPASS_GROUP_QUERY = gql`
 
 export const GET_CLASSPASS_GROUP_PASSES_QUERY = gql`
   query GetPassesAndGroupMembership($after: String, $before: String, $id:ID!) {
-    organizationClasspasses(first: 15, before: $before, after: $after) {
+    organizationClasspasses(first: 100, before: $before, after: $after) {
       pageInfo {
         startCursor
         endCursor
