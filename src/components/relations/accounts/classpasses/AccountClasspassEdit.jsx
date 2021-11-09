@@ -89,7 +89,6 @@ function AccountClasspassEdit({t, history, match}) {
         <Card.Header>
           <Card.Title>{cardTitle}</Card.Title>
         </Card.Header>
-        <Card.Body>
           <Formik
             initialValues={{ 
               organizationClasspass: initialdata.organizationClasspass.id,
@@ -150,7 +149,6 @@ function AccountClasspassEdit({t, history, match}) {
               </AccountClasspassForm>
             )}
           </Formik>
-        </Card.Body>
       </Card>
     </RelationsAccountProfileBase>
   )
