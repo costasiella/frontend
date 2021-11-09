@@ -13,25 +13,10 @@ import {
   Grid,
 } from "tabler-react";
 
-const customFileInputLabelStyle = {
-  whiteSpace: "nowrap",
-  display: "block",
-  overflow: "hidden"
-}
+import { customFileInputLabelStyle } from "../../../../tools/custom_file_input_label_style"
   
 
-function AccountDocumentForm({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) {
-  const [fileName, setFileName] = useState(values.fileName)
-  const inputFileName = useRef(null)
-  const fileInputLabel = fileName || t("general.custom_file_input_inner_label")
-
-
-  const _handleOnChange = (event) => {
-    console.log('on change triggered')
-    setFileName(event.target.files[0].name)
-  }
-
-
+function AccountDocumentForm({ t, history, errors, values, isSubmitting, returnUrl, inputFileName, fileInputLabel, handleFileInputChange=f=>f, }) {
   return (
     <FoForm>
       <Card.Body> 
@@ -50,7 +35,7 @@ function AccountDocumentForm({ t, history, inputData, isSubmitting, setFieldValu
           <Grid.Col>
             <Form.Group label={t('general.custom_file_input_label')}>
               <div className="custom-file">
-                <input type="file" ref={inputFileName} className="custom-file-input" onChange={_handleOnChange} />
+                <input type="file" ref={inputFileName} className="custom-file-input" onChange={handleFileInputChange} />
                 <label className="custom-file-label" style={customFileInputLabelStyle}>
                   {fileInputLabel}
                 </label>
@@ -79,8 +64,5 @@ function AccountDocumentForm({ t, history, inputData, isSubmitting, setFieldValu
     </FoForm>
   )
 }
-
-)
-
 
 export default withTranslation()(withRouter(AccountDocumentForm))
