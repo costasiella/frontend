@@ -19,10 +19,13 @@ import confirm_delete from "../../../../tools/confirm_delete"
 
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
+import FileDownloadTableButton from "../../../ui/FileDownloadTableButton"
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import { GET_DOCUMENTS_QUERY, DELETE_DOCUMENT } from "./queries"
 import moment from 'moment'
+
+import FileProtectedDownloadTableButton from "../../../ui/FileProtectedDownloadTableButton"
 
 
 function AccountDocuments({t, match}) {
@@ -66,6 +69,7 @@ function AccountDocuments({t, match}) {
 
   const account = data.account
   const accountDocuments = data.accountDocuments
+  console.log(accountDocuments)
 
   return (
     <RelationsAccountProfileBase 
@@ -105,6 +109,7 @@ function AccountDocuments({t, match}) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.document')}</Table.ColHeader>
               <Table.ColHeader>{t('general.time')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.download')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader> 
             </Table.Row>
           </Table.Header>
@@ -116,6 +121,9 @@ function AccountDocuments({t, match}) {
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {moment(node.createdAt).format(dateFormat)}
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    <FileProtectedDownloadTableButton protectedMediaUrl={node.urlProtectedDocument} />
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     <Link to={"/relations/accounts/" + accountId + "/documents/edit/" + node.id}>
