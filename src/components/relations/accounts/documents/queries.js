@@ -13,7 +13,7 @@ export const GET_DOCUMENTS_QUERY = gql`
         node {
           id
           description
-          urlDocument
+          urlProtectedDocument
           createdAt
         }
       }
