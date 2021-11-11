@@ -4,6 +4,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Link } from "react-router-dom"
 
 import {
   Button,
@@ -38,13 +39,14 @@ function AccountDocumentFormEdit({ t, history, errors, values, isSubmitting, ret
           >
             {t('general.submit')}
           </Button>
-          <Button
-            type="button" 
-            color="link" 
-            onClick={() => history.push(returnUrl)}
-          >
-            {t('general.cancel')}
-          </Button>
+          <Link to={returnUrl}>
+            <Button
+              type="button" 
+              color="link"
+            >
+              {t('general.cancel')}
+            </Button>
+          </Link>
       </Card.Footer>
     </FoForm>
   )
