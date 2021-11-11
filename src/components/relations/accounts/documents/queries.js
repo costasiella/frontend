@@ -32,10 +32,20 @@ export const GET_DOCUMENTS_QUERY = gql`
 `
 
 export const GET_DOCUMENT_QUERY = gql`
-  query AccountDocument($id: ID!) {
+  query AccountDocument($id: ID!, $account: ID!) {
     accountDocument(id:$id) {
       id
       description
+    }
+    account(id:$account) {
+      id
+      firstName
+      lastName
+      email
+      phone
+      mobile
+      isActive
+      urlImageThumbnailSmall
     }
   }
 `
