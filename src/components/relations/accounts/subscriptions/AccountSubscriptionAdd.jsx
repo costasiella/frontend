@@ -67,7 +67,6 @@ function AccountSubscriptionAdd({t, history, match}) {
         <Card.Header>
           <Card.Title>{cardTitle}</Card.Title>
         </Card.Header>
-        <Card.Body>
           <Formik
             initialValues={{ 
               organizationSubscription: "",
@@ -133,7 +132,6 @@ function AccountSubscriptionAdd({t, history, match}) {
               </AccountSubscriptionForm>
             )}
           </Formik>
-        </Card.Body>
       </Card>
     </RelationsAccountProfileBase>
   )

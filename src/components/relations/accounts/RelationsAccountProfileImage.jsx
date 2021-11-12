@@ -92,7 +92,6 @@ function RelationsAccountProfileImage({t, match, history}) {
         <Card.Header>
           <Card.Title>{cardTitle}</Card.Title>
         </Card.Header>
-        <Card.Body>
         <Formik
             initialValues={{}}
             // validationSchema={ACCOUNT_SCHEMA}
@@ -166,7 +165,6 @@ function RelationsAccountProfileImage({t, match, history}) {
               />
             )}
           </Formik>
-        </Card.Body>
       </Card>
     </RelationsAccountProfileBase>
   )

@@ -70,7 +70,6 @@ function AccountClasspassAdd({t, match, history}) {
         <Card.Header>
           <Card.Title>{cardTitle}</Card.Title>
         </Card.Header>
-        <Card.Body>
           <Formik
             initialValues={{ 
               organizationClasspass: "",
@@ -132,7 +131,6 @@ function AccountClasspassAdd({t, match, history}) {
               </AccountClasspassForm>
             )}
           </Formik>
-        </Card.Body>
       </Card>
     </RelationsAccountProfileBase>
   ) 

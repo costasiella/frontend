@@ -18,6 +18,7 @@ let memberships_active
 let subscriptions_active
 let classpasses_active
 let classes_active
+let documents_active
 let tickets_active
 let teacher_profile_active
 let orders_active
@@ -49,6 +50,7 @@ function ProfileMenu({t, accountId, activeLink}) {
         {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'classes') ? classes_active = true: classes_active = false}
+        {(activeLink === 'documents') ? documents_active = true: documents_active = false}
         {(activeLink === 'tickets') ? tickets_active = true: tickets_active = false}
         {(activeLink === 'teacher_profile') ? teacher_profile_active = true: teacher_profile_active = false}
         {(activeLink === 'orders') ? orders_active = true: orders_active = false}
@@ -176,19 +178,6 @@ function ProfileMenu({t, accountId, activeLink}) {
         </HasPermissionWrapper>
         <HasPermissionWrapper 
             permission="view"
-            resource="accountnote">
-            <List.GroupItem
-                key={v4()}
-                className="d-flex align-items-center"
-                to={"#/relations/accounts/" + accountId + "/notes"}
-                icon="message-square"
-                active={notes_active}
-                >
-            {t('relations.account.notes.title')}
-            </List.GroupItem>
-        </HasPermissionWrapper>
-        <HasPermissionWrapper 
-            permission="view"
             resource="accountfinancepaymentbatchcategoryitem">
             <List.GroupItem
                 key={v4()}
@@ -226,6 +215,32 @@ function ProfileMenu({t, accountId, activeLink}) {
                 active={accepted_documents_active}
                 >
             {t('relations.account.accepted_documents.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
+            resource="accountdocument">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/documents"}
+                icon="file"
+                active={documents_active}
+                >
+            {t('relations.account.documents.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
+            resource="accountnote">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/notes"}
+                icon="message-square"
+                active={notes_active}
+                >
+            {t('relations.account.notes.title')}
             </List.GroupItem>
         </HasPermissionWrapper>
     </List.Group>

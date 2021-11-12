@@ -114,7 +114,7 @@ function RelationsAccountProfile({t, match}) {
         <Card.Header>
           <Card.Title>{t('relations.accounts.profile')}</Card.Title>
         </Card.Header>
-        <Card.Body>
+
         <Formik
             initialValues={initialValues}
             validationSchema={ACCOUNT_SCHEMA}
@@ -181,7 +181,6 @@ function RelationsAccountProfile({t, match}) {
               />
             )}
           </Formik>
-        </Card.Body>
       </Card>
     </RelationsAccountProfileBase>
   )

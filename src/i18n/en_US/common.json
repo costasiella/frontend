@@ -989,6 +989,9 @@
                 "deleted": "Deleted note",
                 "title_edit": "Edit note",
                 "toast_edit_success": "Saved"
+            },
+            "documents": {
+                "title": "Documents"
             }
         },
         "b2b": {

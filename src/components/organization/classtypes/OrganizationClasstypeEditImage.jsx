@@ -15,27 +15,18 @@ import {
 
 
 import { GET_CLASSTYPES_QUERY, GET_CLASSTYPE_QUERY, UPDATE_CLASSTYPE_IMAGE } from './queries'
-import { CLASSTYPE_SCHEMA } from './yupSchema'
 
 import {
   Dimmer,
   Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Form,
 } from "tabler-react";
 
 import ContentCard from "../../general/ContentCard"
 import OrganizationClasstypesBase from './OrganizationClasstypesBase';
-
-
-const customFileInputLabelStyle = {
-  whiteSpace: "nowrap",
-  display: "block",
-  overflow: "hidden"
-}
+import { customFileInputLabelStyle } from "../../../tools/custom_file_input_label_style"
 
 
 function OrganizationClasstypeEditImage({t, history, match}) {
@@ -55,11 +46,8 @@ function OrganizationClasstypeEditImage({t, history, match}) {
   const handleFileInputChange = (event) => {
     console.log('on change triggered')
     setFileName(event.target.files[0].name)
-
-    console.log(inputFileName)
-    console.log(inputFileName.current)
-    console.log(inputFileName.current.files)
   }
+
 
   if (loading) return (
     <OrganizationClasstypesBase showBack={true}>
@@ -90,35 +78,58 @@ function OrganizationClasstypeEditImage({t, history, match}) {
           initialValues={{}}
           // validationSchema={DOCUMENT_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
+            console.log("Submit values")
+            console.log(values)
+            console.log(fileName)
+  
+            let inputVars = {
+              id: classtypeId,
+              imageFileName: fileName,
+            }
+  
             let reader = new FileReader()
             reader.onload = function(reader_event) {
               console.log(reader_event.target.result)
-              let b64_enc_image = reader_event.target.result
-
+              let b64_enc_file = reader_event.target.result
+              console.log(b64_enc_file)
+              // Add uploaded document b64 encoded blob to input vars
+              inputVars.image = b64_enc_file
+  
               uploadImage({ variables: {
-                input: {
-                  id: classtypeId,
-                  image: b64_enc_image
-                }
+                input: inputVars
               }, refetchQueries: [
-                  {query: GET_CLASSTYPES_QUERY, variables: {"archived": true }},
-                  {query: GET_CLASSTYPES_QUERY, variables: {"archived": false }}
+                {query: GET_CLASSTYPES_QUERY, variables: {"archived": false }}
               ]})
               .then(({ data }) => {
-                  console.log('got data', data)
+                  console.log('got data', data);
                   history.push(returnUrl)
-                  toast.success((t('organization.classtypes.toast_image_save_success')), {
+                  toast.success((t('organization.classtypes.toast_edit_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
+                    setSubmitting(false)
                 }).catch((error) => {
                   toast.error((t('general.toast_server_error')) +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
-                  console.log('there was an error sending the query', error);
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
                 })
             }
+            
             let file = inputFileName.current.files[0]
-            reader.readAsDataURL(file)
+            if (file && file.size < 5242880) {
+              reader.readAsDataURL(file)
+            } else if (file && file.size > 5242880) { 
+              toast.error(t("error_messages.selected_file_exceeds_max_filesize"), {
+                position: toast.POSITION.BOTTOM_RIGHT
+              })
+              setSubmitting(false)
+            } else {
+              toast.error(t("general.please_select_a_file"), {
+                position: toast.POSITION.BOTTOM_RIGHT
+              })
+              setSubmitting(false)
+            }
           }}
           >
           {({ isSubmitting, errors, values }) => (
