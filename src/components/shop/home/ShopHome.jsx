@@ -4,6 +4,7 @@ import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
+import { v4 } from 'uuid'
 
 import {
   Card,
@@ -36,7 +37,7 @@ function ShopHome({ t, match, history }) {
     <ShopHomeBase title={t("shop.home.title")}>
       <Grid.Row cards deck>
         {(announcements.edges.length) ? announcements.edges.map(({ node }) => (
-          <Grid.Col xs={12} sm={12} md={6}>
+          <Grid.Col xs={12} sm={12} md={6} key={v4()}>
             <Card title={node.title}>
               <Card.Body>
                 <div dangerouslySetInnerHTML={{ __html:node.content }}></div>
