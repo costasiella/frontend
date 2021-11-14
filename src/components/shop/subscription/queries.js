@@ -17,7 +17,6 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       subscriptionUnit
       subscriptionUnitDisplay
       reconciliationClasses
-      creditValidity
       unlimited
       termsAndConditions
       registrationFee

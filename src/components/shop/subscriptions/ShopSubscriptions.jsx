@@ -41,7 +41,7 @@ function ShopSubscriptions({ t, match, history }) {
     <ShopSubscriptionsBase title={title}>
         <Grid.Row>
           {subscriptions.edges.map(({ node }) => (
-            <Grid.Col md={3}>
+            <Grid.Col xs={12} sm={12} md={3}>
               <ShopSubscriptionPricingCard
                 subscription={node}
                 btnLink={"/shop/subscription/" + node.id}

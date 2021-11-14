@@ -69,17 +69,17 @@ function ShopSubscription({ t, match, history }) {
   return (
     <ShopSubscriptionBase title={title}>
       <Grid.Row>
-        <Grid.Col md={4}>
+        <Grid.Col xs={12} sm={12} md={4}>
           <ShopSubscriptionPricingCard subscription={subscription} active={true} />
         </Grid.Col>
-        <Grid.Col md={4}>
+        <Grid.Col xs={12} sm={12} md={4}>
           <Card title={t("shop.subscription.additional_information")}>
             <Card.Body>
               <div dangerouslySetInnerHTML={{__html:subscription.description}}></div>
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4}>
+        <Grid.Col xs={12} sm={12} md={4}>
           <Card title={t("shop.checkout.title")}>
             <Card.Body>
               <Formik
