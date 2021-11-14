@@ -19,7 +19,7 @@ function ShopClassBookPriceTrial({
 }) {
 
   return (
-    <Grid.Col md={3}>
+    <Grid.Col xs={12} sm={12} md={3}>
       <Card 
         statusColor="green"
         title={t("general.trial")} >

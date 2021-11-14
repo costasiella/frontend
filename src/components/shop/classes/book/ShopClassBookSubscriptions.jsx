@@ -19,7 +19,7 @@ function ShopClassBookSubscriptions({ t, match, history, subscriptions }) {
 
   return (
     subscriptions.map((subscription) =>(
-      <Grid.Col md={3}>
+      <Grid.Col xs={12} sm={12} md={3}>
         <Card 
           statusColor="blue"
           title={t("general.subscription")} >
