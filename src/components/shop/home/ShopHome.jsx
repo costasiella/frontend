@@ -36,7 +36,7 @@ function ShopHome({ t, match, history }) {
     <ShopHomeBase title={t("shop.home.title")}>
       <Grid.Row cards deck>
         {(announcements.edges.length) ? announcements.edges.map(({ node }) => (
-          <Grid.Col md={6}>
+          <Grid.Col xs={12} sm={12} md={6}>
             <Card title={node.title}>
               <Card.Body>
                 <div dangerouslySetInnerHTML={{ __html:node.content }}></div>
