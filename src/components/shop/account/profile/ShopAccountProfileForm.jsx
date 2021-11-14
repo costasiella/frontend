@@ -25,7 +25,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
     <Card title={t("shop.accounts.profile.edit")} >
       <Card.Body>
         <Grid.Row>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.first_name')}>
               <Field type="text" 
                       name="firstName" 
@@ -34,7 +34,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
               <ErrorMessage name="firstName" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.last_name')}>
               <Field type="text" 
                       name="lastName" 
@@ -45,7 +45,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
           </Grid.Col>
         </Grid.Row>
         <Grid.Row>
-         <Grid.Col>
+         <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.date_of_birth')}>
               <CSDatePicker 
                 selected={values.dateOfBirth}
@@ -55,7 +55,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
               <ErrorMessage name="dateOfBirth" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.gender')}>
               <Field component="select" 
                     name="gender" 
@@ -71,7 +71,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
           </Grid.Col>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.email')}>
               <Field type="text" 
                       name="email" 
@@ -80,7 +80,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
               <ErrorMessage name="email" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('relations.accounts.emergency')}>
               <Field type="text" 
                      name="emergency" 
@@ -91,7 +91,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
           </Grid.Col>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.phone')}>
               <Field type="text" 
                       name="phone" 
@@ -100,7 +100,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
               <ErrorMessage name="phone" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.mobile')}>
               <Field type="text" 
                      name="mobile" 
@@ -111,7 +111,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
           </Grid.Col>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.address')}>
               <Field type="text" 
                       name="address" 
@@ -120,7 +120,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
               <ErrorMessage name="address" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.postcode')}>
               <Field type="text" 
                      name="postcode" 
@@ -131,7 +131,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
           </Grid.Col>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.city')}>
               <Field type="text" 
                       name="city" 
@@ -140,7 +140,7 @@ const ShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, retu
               <ErrorMessage name="city" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Form.Group label={t('general.country')}>
               <Field component="select" 
                      name="country" 

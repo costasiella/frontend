@@ -41,7 +41,7 @@ function ShopAccountHome({t, match, history}) {
       {(user.teacher || user.employee) ?
         <div>
           <Grid.Row>
-            <Grid.Col md={4} lg={4}>
+            <Grid.Col xs={12} sm={12} md={4} lg={4}>
               <Card>
                 <Card.Body>
                   <h5>{t("goto.title")}</h5>
@@ -57,7 +57,7 @@ function ShopAccountHome({t, match, history}) {
         : ""
       } 
       <Grid.Row>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.classes.title")}</h5>
@@ -67,7 +67,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.subscriptions.title")}</h5>
@@ -77,7 +77,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.classpasses.title")}</h5>
@@ -87,7 +87,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.event_tickets.title")}</h5>
@@ -101,7 +101,7 @@ function ShopAccountHome({t, match, history}) {
       <hr />
       {/* Administrative stuff below this point, profile, invoices, orders, etc. */}
       <Grid.Row>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.profile.title")}</h5>
@@ -111,7 +111,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.orders.title")}</h5>
@@ -121,7 +121,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.invoices.title")}</h5>
@@ -131,7 +131,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.change_password.title")}</h5>
@@ -141,7 +141,7 @@ function ShopAccountHome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4} lg={4}>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
               <h5>{t("shop.account.sign_out.title")}</h5>
