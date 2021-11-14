@@ -69,7 +69,7 @@ function ShopClasspass({ t, match, history }) {
   console.log('DATA CLASS')
   console.log(dataClass)
 
-  if (user.hasReachedTrialLimit) {
+  if (user.hasReachedTrialLimit && classpass.trialPass) {
     return (
       <ShopClasspassBase title={title}>
         <Card title={t("shop.classpass.trial_limit_reached")}>
