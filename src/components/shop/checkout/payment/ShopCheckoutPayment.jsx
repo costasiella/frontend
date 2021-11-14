@@ -98,7 +98,7 @@ function ShopCheckoutPayment({ t, match, history }) {
   return (
     <ShopCheckoutPaymentBase title={title}>
         <Grid.Row>
-          <Grid.Col md={6}>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Card title={t("shop.checkout.payment.order_received")}>
               <Card.Body>
                 <h5 className={"mb-4"}>{t("shop.checkout.payment.order_received_subheader")}</h5>
@@ -110,7 +110,7 @@ function ShopCheckoutPayment({ t, match, history }) {
               </Card.Footer>
             </Card>
           </Grid.Col>
-          <Grid.Col md={6}>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <ShopCheckoutOrderSummary id={id} />
           </Grid.Col>
         </Grid.Row>

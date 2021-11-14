@@ -88,7 +88,7 @@ function ShopCheckoutComplete({ t, match, history }) {
   return (
     <ShopCheckoutCompleteBase title={title}>
         <Grid.Row>
-          <Grid.Col md={6}>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <Card title={t("shop.checkout.complete.title")}>
               <Card.Body>
                 <h5 className={"mb-4"}>{subHeader}</h5>
@@ -107,7 +107,7 @@ function ShopCheckoutComplete({ t, match, history }) {
               </Card.Footer>
             </Card>
           </Grid.Col>
-          <Grid.Col md={6}>
+          <Grid.Col xs={12} sm={12} md={6} lg={6}>
             <ShopCheckoutOrderSummary id={id} complete={complete} />
           </Grid.Col>
         </Grid.Row>
