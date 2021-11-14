@@ -44,7 +44,7 @@ function ShopClasspasses({ t, match, history }) {
     <ShopClasspassesBase title={title}>
         <Grid.Row>
           {classpasses.edges.map(({ node }) => (
-            <Grid.Col md={3}>
+            <Grid.Col xs={12} sm={12} md={3}>
               <ShopClasspassPricingCard
                 classpass={node}
                 btnLink={"/shop/classpass/" + node.id}

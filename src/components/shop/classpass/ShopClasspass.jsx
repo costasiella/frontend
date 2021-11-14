@@ -84,10 +84,10 @@ function ShopClasspass({ t, match, history }) {
   return (
     <ShopClasspassBase title={title}>
       <Grid.Row>
-        <Grid.Col md={4}>
+        <Grid.Col xs={12} sm={12} md={4}>
           <ShopClasspassesPricingCard classpass={classpass} active={true} />
         </Grid.Col>
-        <Grid.Col md={4}>
+        <Grid.Col xs={12} sm={12} md={4}>
           {(dataClass && !loadingClass && !errorClass) ?
             <Card title={t("shop.classpass.class_book_information")}>
               <Card.Body>
@@ -110,7 +110,7 @@ function ShopClasspass({ t, match, history }) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={4}>
+        <Grid.Col xs={12} sm={12} md={4}>
           <Card title={t("shop.checkout.title")}>
             <Card.Body>
               <Formik
