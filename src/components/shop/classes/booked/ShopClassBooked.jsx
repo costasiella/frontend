@@ -65,7 +65,7 @@ function ShopClassBook({ t, match, history }) {
   return (
     <ShopClassBookedBase>
       <Grid.Row cards deck>
-        <Grid.Col md={6}>
+        <Grid.Col xs={12} sm={12} md={6} lg={6}>
           <Card title={t("shop.classes.booked.class")}>
             <Card.Body>
               {t("shop.classes.booked.class_explanation")} <br /><br />
@@ -76,13 +76,6 @@ function ShopClassBook({ t, match, history }) {
                 dateFormat={dateFormat} 
                 timeFormat={timeFormat}
               />
-            </Card.Body>
-          </Card>
-        </Grid.Col>
-        <Grid.Col md={6}>
-          <Card title={t("shop.classes.booked.class_info")}>
-            <Card.Body>
-            Other info here...
             </Card.Body>
             <Card.Footer>
               <Link to={"/shop/account"}>
