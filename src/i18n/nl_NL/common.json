@@ -389,8 +389,12 @@
             },
             "shop": {
                 "title": "__STRING_NOT_TRANSLATED__",
+<<<<<<< refs/remotes/origin/main
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "subscription_payment_method": "__STRING_NOT_TRANSLATED__"
+=======
+                "explanation": "__STRING_NOT_TRANSLATED__"
+>>>>>>> Add documents translation strings
             }
         },
         "shop": {
