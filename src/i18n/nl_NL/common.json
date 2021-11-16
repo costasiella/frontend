@@ -385,7 +385,8 @@
             },
             "shop": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "explanation": "__STRING_NOT_TRANSLATED__"
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "subscription_payment_method": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -522,7 +523,9 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "add": "__STRING_NOT_TRANSLATED__",
+            "mollie": "__STRING_NOT_TRANSLATED__",
+            "direct_debit": "__STRING_NOT_TRANSLATED__"
         },
         "invoice": {
             "title": "__STRING_NOT_TRANSLATED__",

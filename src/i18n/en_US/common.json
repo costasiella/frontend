@@ -48,7 +48,9 @@
             "error_loading": "Error loading payment methods :(",
             "empty_list": "No payment methods found",
             "empty_archive": "Payment method archive is empty",
-            "add": "Add payment method"
+            "add": "Add payment method",
+            "mollie": "Mollie",
+            "direct_debit": "Direct debit"
         },
         "invoices": {
             "title": "Invoices",
@@ -1640,7 +1642,8 @@
             },
             "shop": {
                 "title": "Shop",
-                "explanation": "Shop workflows"
+                "explanation": "Shop workflows",
+                "subscription_payment_method": "Subscriptions payment method"
             }
         },
         "shop": {
