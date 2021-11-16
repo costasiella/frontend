@@ -382,6 +382,10 @@
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "min_duration_in_days": "__STRING_NOT_TRANSLATED__",
                 "max_pauses_in_year": "__STRING_NOT_TRANSLATED__"
+            },
+            "shop": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -839,8 +843,7 @@
             "booked": {
                 "class": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
-                "class_explanation": "__STRING_NOT_TRANSLATED__",
-                "class_info": "__STRING_NOT_TRANSLATED__"
+                "class_explanation": "__STRING_NOT_TRANSLATED__"
             },
             "filter_all_locations": "__STRING_NOT_TRANSLATED__",
             "filter_all_classtypes": "__STRING_NOT_TRANSLATED__",
@@ -1024,7 +1027,6 @@
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-            "toast_image_save_success": "__STRING_NOT_TRANSLATED__",
             "edit_image": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__",
             "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -1402,7 +1404,14 @@
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             },
             "documents": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+                "add": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {

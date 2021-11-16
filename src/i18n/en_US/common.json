@@ -542,7 +542,6 @@
             "toast_add_success": "Added class type",
             "title_edit": "Edit class type",
             "toast_edit_success": "Saved class type",
-            "toast_image_save_success": "Saved class type image",
             "edit_image": "Edit class type image",
             "title": "Class types",
             "error_loading": "Error loading class types :(",
@@ -991,7 +990,14 @@
                 "toast_edit_success": "Saved"
             },
             "documents": {
-                "title": "Documents"
+                "title": "Documents",
+                "title_add": "Add Document",
+                "toast_add_success": "Added document",
+                "title_edit": "Edit document",
+                "toast_edit_success": "Saved",
+                "add": "Add document",
+                "delete_confirm_msg": "Are you sure you wish to delete this document?",
+                "deleted": "Deleted document"
             }
         },
         "b2b": {
@@ -1631,6 +1637,10 @@
                 "explanation": "Configure limits on subscription pauses",
                 "min_duration_in_days": "Minimum pause duration (in days)",
                 "max_pauses_in_year": "Maximum pauses allowed in a year"
+            },
+            "shop": {
+                "title": "Shop",
+                "explanation": "Shop workflows"
             }
         },
         "shop": {
@@ -1948,8 +1958,7 @@
             "booked": {
                 "class": "Selected class",
                 "title": "Class booked!",
-                "class_explanation": "We've reserved your spot in the class below.",
-                "class_info": "Good to know"
+                "class_explanation": "We've reserved your spot in the class below."
             },
             "filter_all_locations": "All locations",
             "filter_all_classtypes": "All classtypes",
