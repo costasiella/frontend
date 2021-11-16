@@ -84,6 +84,16 @@ function SettingsHome({ t, match, params }) {
                 </Card.Body>
               </Card>
             </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.workflow.shop.title")}</h5>
+                  {t("settings.workflow.shop.explanation")}
+                  <br /><br />
+                  <SettingsHomeItemButton link="/settings/workflow/shop" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
           </Grid.Row>
           <Grid.Row>
             <Grid.Col md={12}>
