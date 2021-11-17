@@ -251,6 +251,7 @@ import SettingsWorkflowSubscriptionPauses from './components/settings/workflow/s
 import SettingsWorkflowTrial from './components/settings/workflow/trial/SettingsWorkflowTrial'
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
+import c from './components/shop/account/bank_account/ShopAccountBankAccount'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
 import ShopAccountClassInfo from './components/shop/account/class_info/ShopAccountClassInfo'
 import ShopAccountClasspasses from './components/shop/account/classpasses/ShopAccountClasspasses'
@@ -289,6 +290,7 @@ import Error404 from "./components/Error404"
 
 import CSLS from "./tools/cs_local_storage"
 import { CSAuth } from './tools/authentication'
+import ShopAccountBankAccount from './components/shop/account/bank_account/ShopAccountBankAccount'
 
 
 function SetCurrentUrlAsNext() {
@@ -635,6 +637,7 @@ function AppRoot({ t }) {
             {/* Shop */}
             <Route exact path = "/" component={ShopHome} />
             <PrivateRoute exact path = "/shop/account" component={ShopAccountHome} />
+            <PrivateRoute exact path = "/shop/account/bank_account" component={ShopAccountBankAccount} />
             <PrivateRoute exact path = "/shop/account/class_cancel/:class_id/:date/:attendance_id" 
                                 component={ShopAccountClassCancel} />
             <PrivateRoute exact path = "/shop/account/class_info/:class_id/:date" component={ShopAccountClassInfo} />
