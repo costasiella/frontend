@@ -32,6 +32,7 @@ const cs_local_storage_keys = {
     SCHEDULE_CLASSES_CLASS_ATTENDANCE_SEARCH: 'costasiella:scheduleClassesClassAttendanceSearch',
     SCHEDULE_EVENTS_ARCHIVED: 'costasiella:scheduleEventsArchived',
     SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH: 'costasiella:scheduleEventsTicketsCustomersSearch',
+    SHOP_ACCOUNT_BANK_ACCOUNT_NEXT: 'costasiella:ShopAccountBankAccountNext',
     SHOP_CLASSES_DATE_FROM: 'costasiella:shopClassesDateFrom',
     SHOP_CLASSES_DATE_UNTIL: 'costasiella:shopClassesDateUntil',
     SHOP_CLASSES_ORDER_BY: 'costasiella:shopClassesOrderBy',
