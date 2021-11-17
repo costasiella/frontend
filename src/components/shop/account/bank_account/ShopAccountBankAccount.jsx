@@ -8,6 +8,8 @@ import { toast } from 'react-toastify'
 import {
   Grid,
 } from "tabler-react";
+
+import CSLS from '../../../../tools/cs_local_storage'
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 import { GET_ACCOUNT_BANK_ACCOUNTS, UPDATE_BANK_ACCOUNT } from "./queries"
 
@@ -20,6 +22,7 @@ import ShopAccountBankAccountForm from "./ShopAccountBankAccountForm"
 
 function ShopAccountBankAccount({t, match, history}) {
   // TODO fetch returnUrl from local storage to see if the user comes from a shop subscription component
+  const nextUrl = localStorage.getItem(CSLS.SHOP_ACCOUNT_BANK_ACCOUNT_NEXT)
 
   // Chain queries. First query user data and then query class attendance for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
@@ -80,6 +83,10 @@ function ShopAccountBankAccount({t, match, history}) {
                 ]})
                 .then(({ data }) => {
                     console.log('got data', data)
+                    if (nextUrl) {
+                      history.push(nextUrl)
+                    }
+
                     toast.success((t('shop.account.bank_account.toast_edit_success')), {
                         position: toast.POSITION.BOTTOM_RIGHT
                       })
