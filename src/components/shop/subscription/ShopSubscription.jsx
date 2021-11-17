@@ -19,14 +19,15 @@ import {
 import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
 import AppSettingsContext from '../../context/AppSettingsContext'
 
+import CSLS from "../../../tools/cs_local_storage"
+import CheckoutCardMollie from './CheckoutCardMollie'
+import CheckoutCardBankAccountRequired from './CheckoutCardBankAccountRequired'
 import ShopSubscriptionBase from "./ShopSubscriptionBase"
 import ShopCheckoutForm from "../ShopCheckoutForm"
 import ShopSubscriptionPricingCard from "./ShopSubscriptionPricingCard"
 
 import { GET_SUBSCRIPTION_QUERY } from "./queries"
 // import { GET_CLASS_QUERY } from "../queries"
-import { CREATE_ORDER } from "../queries"
-
 
 function ShopSubscription({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
@@ -38,17 +39,12 @@ function ShopSubscription({ t, match, history }) {
   // const scheduleItemId = match.params.class_id
   // const classDate = match.params.date
 
+
+  // fetchPolicy network-only prevents caching. Need fresh results when coming back after setting bank account.
   const { loading, error, data } = useQuery(GET_SUBSCRIPTION_QUERY, {
-    variables: { id: id }
+    variables: { id: id },
+    fetchPolicy: "network-only"
   })
-
-  // const { loading: loadingClass, error: errorClass, data: dataClass } = useQuery(GET_CLASS_QUERY, {
-  //   variables: { scheduleItemId: scheduleItemId, date: classDate },
-  //   skip: (!scheduleItemId || !classDate)
-  // })
-
-  const [createOrder, { data: createOrderData }] = useMutation(CREATE_ORDER)
-
 
   if (loading) return (
     <ShopSubscriptionBase title={title} >
@@ -63,7 +59,26 @@ function ShopSubscription({ t, match, history }) {
 
   console.log(data)
   const subscription = data.organizationSubscription
+  const account = data.user
   console.log(subscription)
+  console.log(account)
+
+  let CheckoutCard
+
+  // Check for shop subscription payment method
+  if (subscription.shopPaymentMethod === "DIRECTDEBIT") {
+    // Check for bank account details, if not set, 
+    if (!account.hasBankAccountInfo) {
+      // Create local storage back url for account bank account component    
+      localStorage.setItem(CSLS.SHOP_ACCOUNT_BANK_ACCOUNT_NEXT, `/shop/subscription/${id}`)
+      // Show bank account requird 
+      CheckoutCard = <CheckoutCardBankAccountRequired />
+    } else {
+      return "Show agree button"
+    }
+  } else {
+    CheckoutCard = <CheckoutCardMollie organizationSubscriptionId={id} />
+  }
 
 
   return (
@@ -80,49 +95,7 @@ function ShopSubscription({ t, match, history }) {
           </Card>
         </Grid.Col>
         <Grid.Col xs={12} sm={12} md={4}>
-          <Card title={t("shop.checkout.title")}>
-            <Card.Body>
-              <Formik
-                initialValues={{ message: "" }}
-                // validationSchema={CLASSTYPE_SCHEMA}
-                onSubmit={(values, { setSubmitting }) => {
-
-                    let createOrderInput = {
-                      message: values.message,
-                      organizationSubscription: match.params.id,
-                    }
-
-                    createOrder({ variables: {
-                      input: createOrderInput,
-                      // file: values.image
-                    }, refetchQueries: [
-                        // {query: GET_CLASSTYPES_QUERY, variables: {"archived": false }}
-                    ]})
-                    .then(({ data }) => {
-                        console.log('got data', data)
-                        console.log('good...  now redirect to the payment page')
-                        const orderId = data.createFinanceOrder.financeOrder.id
-                        history.push('/shop/checkout/payment/' + orderId)
-                      }).catch((error) => {
-                        toast.error((t('general.toast_server_error')) +  error, {
-                            position: toast.POSITION.BOTTOM_RIGHT
-                          })
-                        console.log('there was an error sending the query', error)
-                        setSubmitting(false)
-                      })
-                }}
-                >
-                {({ isSubmitting, errors, values }) => (
-                  <ShopCheckoutForm 
-                    isSubmitting={isSubmitting}
-                    errors={errors}
-                    values={values}
-                  />
-                )}
-              </Formik>
-              {/* When a user is not logged in, show a login button to redirect to the login page */}
-            </Card.Body>
-          </Card>
+          {CheckoutCard}
         </Grid.Col>
       </Grid.Row>
     </ShopSubscriptionBase>
