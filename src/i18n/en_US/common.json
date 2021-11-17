@@ -1992,7 +1992,10 @@
         },
         "subscription": {
             "error_loading": "Error loading subscription information...:(",
-            "additional_information": "Additional information"
+            "additional_information": "Additional information",
+            "bank_account_required": "Bank account required",
+            "bank_account_required_explanation": "To activate this subscription, your bank information is required.",
+            "to_bank_account": "Set bank information"
         },
         "events": {
             "title": "Events",

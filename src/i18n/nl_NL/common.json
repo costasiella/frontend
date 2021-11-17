@@ -877,7 +877,10 @@
         },
         "subscription": {
             "error_loading": "__STRING_NOT_TRANSLATED__",
-            "additional_information": "__STRING_NOT_TRANSLATED__"
+            "additional_information": "__STRING_NOT_TRANSLATED__",
+            "bank_account_required": "__STRING_NOT_TRANSLATED__",
+            "bank_account_required_explanation": "__STRING_NOT_TRANSLATED__",
+            "to_bank_account": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "title": "__STRING_NOT_TRANSLATED__",
