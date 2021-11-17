@@ -17,7 +17,7 @@ import {
 
 const ShopAccountBankAccountForm = ({ t, history, isSubmitting, errors, returnUrl }) => (
   <FoForm>
-    <Card title={t("shop.accounts.bank_account.edit")} >
+    <Card title={t("shop.account.bank_account.title")} >
     <Card.Body>
         <Grid.Row>
           <Grid.Col>
