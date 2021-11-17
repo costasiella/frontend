@@ -15,7 +15,7 @@ import ShopAccountProfileBase from "../ShopAccountProfileBase"
 import ShopAccountBankAccountForm from "./ShopAccountBankAccountForm"
 
 
-import { ACCOUNT_SCHEMA } from "./yupSchema"
+// import { ACCOUNT_SCHEMA } from "./yupSchema"
 
 
 function ShopAccountBankAccount({t, match, history}) {
