@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client"
 
-export const QUERY_BANK_ACCOUNTS = gql`
+export const GET_ACCOUNT_BANK_ACCOUNTS = gql`
   query AccountBankAccounts($before: String, $after: String, $account: ID!) {
     accountBankAccounts(first: 1, before: $before, after: $after, account: $account) {
       pageInfo {
