@@ -1933,6 +1933,12 @@
                 "payment_received": "Payment received",
                 "payment_not_confirmed": "We weren't able to confirm your payment. In case this is an error, please contact us.",
                 "to_profile": "Continue"
+            },
+            "bank_account": {
+                "error_loading_data": "Error loading bank account... :(",
+                "toast_edit_success": "Saved",
+                "title": "My bank account",
+                "explanation": "Manage your bank information"
             }
         },
         "accounts": {

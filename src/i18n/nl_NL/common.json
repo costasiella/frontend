@@ -818,6 +818,12 @@
                 "payment_received": "__STRING_NOT_TRANSLATED__",
                 "payment_not_confirmed": "__STRING_NOT_TRANSLATED__",
                 "to_profile": "__STRING_NOT_TRANSLATED__"
+            },
+            "bank_account": {
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
