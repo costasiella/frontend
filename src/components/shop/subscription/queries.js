@@ -20,6 +20,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       unlimited
       termsAndConditions
       registrationFee
+      shopPaymentMethod
       organizationMembership {
         id
         name
@@ -33,6 +34,26 @@ export const GET_SUBSCRIPTION_QUERY = gql`
         id
         name
       }
+    }
+    user {
+      id
+      accountId
+      firstName
+      lastName
+      fullName
+      email
+      gender
+      dateOfBirth
+      address
+      postcode
+      city
+      country
+      phone
+      mobile
+      emergency
+      teacher
+      employee
+      hasBankAccountInfo
     }
   }
 `
