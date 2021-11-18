@@ -1936,7 +1936,7 @@
             },
             "bank_account": {
                 "error_loading_data": "Error loading bank account... :(",
-                "toast_edit_success": "Saved",
+                "toast_edit_success": "Saved bank account",
                 "title": "My bank account",
                 "explanation": "Manage your bank information"
             }
