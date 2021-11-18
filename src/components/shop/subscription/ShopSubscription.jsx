@@ -22,6 +22,7 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import CSLS from "../../../tools/cs_local_storage"
 import CheckoutCardMollie from './CheckoutCardMollie'
 import CheckoutCardBankAccountRequired from './CheckoutCardBankAccountRequired'
+import CheckoutCardDirectDebit from './CheckoutCardDirectDebit'
 import ShopSubscriptionBase from "./ShopSubscriptionBase"
 import ShopCheckoutForm from "../ShopCheckoutForm"
 import ShopSubscriptionPricingCard from "./ShopSubscriptionPricingCard"
@@ -74,7 +75,8 @@ function ShopSubscription({ t, match, history }) {
       // Show bank account requird 
       CheckoutCard = <CheckoutCardBankAccountRequired />
     } else {
-      return "Show agree button"
+      // Allow customer to create a subscription
+      CheckoutCard = <CheckoutCardDirectDebit accountId={account.accountId} organizationSubscription={subscription} />
     }
   } else {
     CheckoutCard = <CheckoutCardMollie organizationSubscriptionId={id} />
