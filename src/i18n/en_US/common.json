@@ -479,7 +479,8 @@
         "key_number": "Door key number",
         "apply_to": "Apply to",
         "holiday": "Holiday",
-        "event": "Event"
+        "event": "Event",
+        "i_agree": "I agree"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -807,8 +808,8 @@
         "month": "Month"
     },
     "datepicker": {
-        "placeholder": "Click to select a date",
-        "placeholder_time": "Click to select a time"
+        "placeholder": "Select a date",
+        "placeholder_time": "Select a time"
     },
     "relations": {
         "title": "Relations",
@@ -1995,7 +1996,9 @@
             "additional_information": "Additional information",
             "bank_account_required": "Bank account required",
             "bank_account_required_explanation": "To activate this subscription, your bank information is required.",
-            "to_bank_account": "Set bank information"
+            "to_bank_account": "Set bank information",
+            "start_on": "Subscription start from",
+            "please_select_date": "Please select start date"
         },
         "events": {
             "title": "Events",
