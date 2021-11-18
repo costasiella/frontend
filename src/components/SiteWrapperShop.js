@@ -262,16 +262,16 @@ function SiteWrapperShop({t, match, history, children}) {
           copyright: (
             <React.Fragment>
               <small>
-              Peacefully powered by
-              <a
-                href="https://www.costasiella.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                Costasiella
-              </a>{". "}
-              All rights reserved {now.getFullYear()}.
+                Peacefully powered by
+                <a
+                  href="https://www.costasiella.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  Costasiella
+                </a>{". "}
+                All rights reserved © {now.getFullYear()}.
               </small>
             </React.Fragment>
           ),
