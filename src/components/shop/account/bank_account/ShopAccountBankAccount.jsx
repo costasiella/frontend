@@ -15,9 +15,7 @@ import { GET_ACCOUNT_BANK_ACCOUNTS, UPDATE_BANK_ACCOUNT } from "./queries"
 
 import ShopAccountProfileBase from "../ShopAccountProfileBase"
 import ShopAccountBankAccountForm from "./ShopAccountBankAccountForm"
-
-
-// import { ACCOUNT_SCHEMA } from "./yupSchema"
+import { ACCOUNT_BANK_ACCOUNT_SCHEMA } from "./yupSchema"
 
 
 function ShopAccountBankAccount({t, match, history}) {
@@ -61,7 +59,7 @@ function ShopAccountBankAccount({t, match, history}) {
               holder: bankAccount.holder,
               bic: bankAccount.bic
             }}
-            // validationSchema={ACCOUNT_SCHEMA}
+            validationSchema={ACCOUNT_BANK_ACCOUNT_SCHEMA}
             onSubmit={(values, { setSubmitting }) => {
                 console.log('submit values:')
                 console.log(values)
