@@ -21,6 +21,9 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       termsAndConditions
       registrationFee
       shopPaymentMethod
+      accountRegistrationFee
+      accountRegistrationFeeDisplay
+      priceFirstMonthDisplay
       organizationMembership {
         id
         name
