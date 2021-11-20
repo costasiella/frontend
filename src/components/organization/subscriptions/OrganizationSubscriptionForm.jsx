@@ -113,12 +113,12 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
             </Field>
             <ErrorMessage name="subscriptionUnit" component="span" className="invalid-feedback" />
           </Form.Group>
-          <Form.Group label={t('general.credit_validity')}>
+          <Form.Group label={t('organization.subscriptions.credit_accumulation_days')}>
             <Field type="text" 
-                  name="creditValidity" 
-                  className={(errors.creditValidity) ? "form-control is-invalid" : "form-control"} 
+                  name="creditAccumulationDays" 
+                  className={(errors.creditAccumulationDays) ? "form-control is-invalid" : "form-control"} 
                   autoComplete="off" />
-            <ErrorMessage name="creditValidity" component="span" className="invalid-feedback" />
+            <ErrorMessage name="creditAccumulationDays" component="span" className="invalid-feedback" />
           </Form.Group>
         </span>
       } 

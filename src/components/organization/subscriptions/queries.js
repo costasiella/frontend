@@ -24,6 +24,7 @@ export const GET_SUBSCRIPTIONS_QUERY = gql`
           subscriptionUnit
           subscriptionUnitDisplay
           reconciliationClasses
+          creditAccumulationDays
           unlimited
           termsAndConditions
           registrationFee
@@ -61,7 +62,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       subscriptionUnit
       subscriptionUnitDisplay
       reconciliationClasses
-      creditValidity
+      creditAccumulationDays
       unlimited
       termsAndConditions
       registrationFee
