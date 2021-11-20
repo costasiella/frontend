@@ -93,7 +93,6 @@
         "sort_order": "__STRING_NOT_TRANSLATED__",
         "min_duration": "__STRING_NOT_TRANSLATED__",
         "subscription_unit": "__STRING_NOT_TRANSLATED__",
-        "credit_validity": "__STRING_NOT_TRANSLATED__",
         "a": "__STRING_NOT_TRANSLATED__",
         "edit_price": "__STRING_NOT_TRANSLATED__",
         "confirm_delete": "__STRING_NOT_TRANSLATED__",
@@ -237,7 +236,10 @@
         "apply_to": "__STRING_NOT_TRANSLATED__",
         "holiday": "__STRING_NOT_TRANSLATED__",
         "event": "__STRING_NOT_TRANSLATED__",
-        "i_agree": "__STRING_NOT_TRANSLATED__"
+        "i_agree": "__STRING_NOT_TRANSLATED__",
+        "months": "__STRING_NOT_TRANSLATED__",
+        "first_month": "__STRING_NOT_TRANSLATED__",
+        "registration_fee": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -874,7 +876,8 @@
         "subscriptions": {
             "title": "__STRING_NOT_TRANSLATED__",
             "choose": "__STRING_NOT_TRANSLATED__",
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "min_duration_in_months": "__STRING_NOT_TRANSLATED__"
         },
         "subscription": {
             "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -905,6 +908,9 @@
                 "regular_price": "__STRING_NOT_TRANSLATED__",
                 "free": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "subscription_directdebit_complete": {
+            "thank_you": "__STRING_NOT_TRANSLATED__"
         }
     },
     "home": {
@@ -1111,7 +1117,8 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "add": "__STRING_NOT_TRANSLATED__",
+            "credit_accumulation_days": "__STRING_NOT_TRANSLATED__"
         },
         "organization": {
             "title": "__STRING_NOT_TRANSLATED__",

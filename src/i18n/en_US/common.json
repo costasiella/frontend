@@ -290,7 +290,6 @@
         "sort_order": "Sort order",
         "min_duration": "Minimum duration",
         "subscription_unit": "Subscription unit",
-        "credit_validity": "Credit validity",
         "a": "a",
         "edit_price": "Edit price",
         "date_start": "Start date",
@@ -480,7 +479,10 @@
         "apply_to": "Apply to",
         "holiday": "Holiday",
         "event": "Event",
-        "i_agree": "I agree"
+        "i_agree": "I agree",
+        "months": "Months",
+        "first_month": "First month",
+        "registration_fee": "__STRING_NOT_TRANSLATED__"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -639,7 +641,8 @@
                 "edit_subscriptions": "Subscriptions in group",
                 "delete_confirm_msg": "Are you sure you wish to delete this subscriptions group?",
                 "deleted": "Deleted subscriptions group"
-            }
+            },
+            "credit_accumulation_days": "Credit accumulation in days"
         },
         "subscription": {
             "public": "This is a public subscription",
@@ -1989,7 +1992,8 @@
         "subscriptions": {
             "title": "Subscriptions",
             "choose": "Choose",
-            "error_loading": "Error loading subscriptions...:("
+            "error_loading": "Error loading subscriptions...:(",
+            "min_duration_in_months": "Minimum duration in months"
         },
         "subscription": {
             "error_loading": "Error loading subscription information...:(",
@@ -2020,6 +2024,9 @@
                 "regular_price": "Regular price",
                 "free": "Free"
             }
+        },
+        "subscription_directdebit_complete": {
+            "thank_you": "Thank you"
         }
     },
     "View info": "View info",
