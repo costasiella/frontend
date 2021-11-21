@@ -277,6 +277,7 @@ import ShopClasspasses from './components/shop/classpasses/ShopClasspasses'
 import ShopClasspass from './components/shop/classpass/ShopClasspass'
 import ShopSubscriptions from './components/shop/subscriptions/ShopSubscriptions'
 import ShopSubscription from './components/shop/subscription/ShopSubscription'
+import ShopSubscriptionDirectDebitActivated from './components/shop/subscription_directdebit_activated/ShopSubscriptionDirectDebitActivated'
 
 import UserChangePassword from './components/user/password/UserPasswordChange'
 import UserLogin from './components/user/login/UserLogin'
@@ -664,6 +665,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/events/:event_id/ticket/:id" component={ShopEventTicket} />
             <Route exact path = "/shop/subscriptions" component={ShopSubscriptions} />
             <PrivateRoute exact path = "/shop/subscription/:id" component={ShopSubscription} />
+            <PrivateRoute exact path = "/shop/subscription/direct_debit_activated/:id" component={ShopSubscriptionDirectDebitActivated} />
 
             {/* Settings */}
             <PrivateRoute exact path="/settings" component={SettingsHome} />
