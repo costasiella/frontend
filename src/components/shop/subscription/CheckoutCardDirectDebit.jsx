@@ -43,8 +43,8 @@ function CheckoutDirectDebit({ t, match, history, accountId, organizationSubscri
               .then(({ data }) => {
                   console.log('got data', data)
                   console.log('good...  now redirect to the subscription activated page')
-                  // const orderId = data.createFinanceOrder.financeOrder.id
-                  // history.push('/shop/checkout/payment/' + orderId)
+                  const accountSubscriptionId = data.createAccountSubscription.accountSubscription.id
+                  history.push(`/shop/subscription/direct_debit_activated/${accountSubscriptionId}`)
                 }).catch((error) => {
                   toast.error((t('general.toast_server_error')) +  error, {
                       position: toast.POSITION.BOTTOM_RIGHT
