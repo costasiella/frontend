@@ -2025,8 +2025,8 @@
                 "free": "Free"
             }
         },
-        "subscription_directdebit_complete": {
-            "thank_you": "Thank you"
+        "subscription_directdebit_activated": {
+            "thank_you": "Thank you!"
         }
     },
     "View info": "View info",

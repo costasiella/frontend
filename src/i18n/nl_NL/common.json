@@ -909,7 +909,7 @@
                 "free": "__STRING_NOT_TRANSLATED__"
             }
         },
-        "subscription_directdebit_complete": {
+        "subscription_directdebit_activated": {
             "thank_you": "__STRING_NOT_TRANSLATED__"
         }
     },
