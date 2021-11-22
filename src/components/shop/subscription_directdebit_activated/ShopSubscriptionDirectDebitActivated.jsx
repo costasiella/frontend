@@ -11,6 +11,7 @@ import { toast } from 'react-toastify'
 import moment from 'moment'
 
 import {
+  Button,
   Card,
   Grid,
   Icon,
@@ -54,7 +55,7 @@ function ShopSubscriptionDirectDebitActivated({ t, match, history }) {
   )
 
   console.log(data)
-  const subscription = data.organizationSubscription
+  const subscription = data.accountSubscription
   const account = data.user
   console.log(subscription)
   console.log(account)
@@ -65,7 +66,29 @@ function ShopSubscriptionDirectDebitActivated({ t, match, history }) {
         <Grid.Col xs={12} sm={12} md={12} lg={12}>
           <Card title={t("shop.subscription_directdebit_activated.thank_you")}>
             <Card.Body>
-              Subscription info here
+              {t("shop.subscription_directdebit_activated.message_activated")} <br/>
+
+              <b>{subscription.organizationSubscription.name}</b> {t("shop.subscription_directdebit_activated.starting_on")} {' '}
+              <b>{moment(subscription.dateStart).format(dateFormat)}</b>.
+              <br /><br />
+              <b>{t("shop.subscription_directdebit_activated.what_next_question")}</b>
+              <List.Group>
+                <Link to="/shop/classes" className="mb-1">
+                  <List.GroupItem>
+                    {t('shop.subscription_directdebit_activated.next_book_class')} <Icon name="chevron-right"/>
+                  </List.GroupItem>
+                </Link>
+                <Link to="/shop/account" className="mb-1">
+                  <List.GroupItem>
+                    {t('shop.subscription_directdebit_activated.next_account')} <Icon name="chevron-right"/>
+                  </List.GroupItem>
+                </Link>
+                <Link to="/">
+                  <List.GroupItem>
+                    {t('shop.subscription_directdebit_activated.next_continue_shopping')} <Icon name="chevron-right"/>
+                  </List.GroupItem>
+                </Link>
+              </List.Group>
             </Card.Body>
           </Card>
         </Grid.Col>

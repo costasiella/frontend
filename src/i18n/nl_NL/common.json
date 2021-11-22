@@ -910,7 +910,13 @@
             }
         },
         "subscription_directdebit_activated": {
-            "thank_you": "__STRING_NOT_TRANSLATED__"
+            "thank_you": "__STRING_NOT_TRANSLATED__",
+            "message_activated": "__STRING_NOT_TRANSLATED__",
+            "starting_on": "__STRING_NOT_TRANSLATED__",
+            "next_book_class": "__STRING_NOT_TRANSLATED__",
+            "next_account": "__STRING_NOT_TRANSLATED__",
+            "what_next_question": "__STRING_NOT_TRANSLATED__",
+            "next_continue_shopping": "__STRING_NOT_TRANSLATED__"
         }
     },
     "home": {
