@@ -34,7 +34,7 @@ function CheckoutDirectDebit({ t, match, history, accountId, organizationSubscri
                 input: {
                   organizationSubscription: organizationSubscription.id,
                   account: accountId,
-                  dateStart: dateToLocalISO(values.dateStart),                  
+                  dateStart: dateToLocalISO(values.dateStart),
                 },
                 // file: values.image
               }, refetchQueries: [

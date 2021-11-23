@@ -38,7 +38,8 @@ function SettingsFinanceIBAN({ t, match, history }) {
   } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
     variables: {
       setting: "finance_bank_accounts_iban"
-    }
+    },
+    // fetchPolicy: "network-only"
   })
   const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
@@ -76,7 +77,7 @@ function SettingsFinanceIBAN({ t, match, history }) {
     iban: false
   }
   if (data.systemSettings.edges.length){
-    initialValues['iban'] = data.systemSettings.edges[0].node.value
+    initialValues['iban'] = (data.systemSettings.edges[0].node.value.toLowerCase() === 'true')
   } 
     
   return (
@@ -112,7 +113,7 @@ function SettingsFinanceIBAN({ t, match, history }) {
                 value: settings[i].value,
               }
             }, refetchQueries: [
-                {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: i.setting }},
+                {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: settings[i].setting }},
             ]})
             .then(({ data }) => {
                 console.log('got data', data)
