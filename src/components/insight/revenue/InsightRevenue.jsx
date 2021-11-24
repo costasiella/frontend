@@ -15,7 +15,7 @@ import {
   Card,
 } from "tabler-react";
 // import ContentCard from "../../general/ContentCard"
-import { GET_REVENUE_TOTAL_QUERY } from './queries'
+import { GET_REVENUE_TOTAL_QUERY, GET_REVENUE_SUBTOTAL_QUERY } from './queries'
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightRevenueBase from './InsightRevenueBase'
 
@@ -38,17 +38,17 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
-  // const { 
-  //   loading: loadingActive, 
-  //   error: errorActive, 
-  //   data: dataActive,
-  //   refetch: refetchActive
-  //  } = useQuery(GET_CLASSPASSES_ACTIVE_QUERY, {
-  //   variables: { year: year }
-  // })
+  const { 
+    loading: loadingSubtotal, 
+    error: errorSubtotal, 
+    data: dataSubtotal,
+    refetch: refetchSubtotal
+   } = useQuery(GET_REVENUE_SUBTOTAL_QUERY, {
+    variables: { year: year }
+  })
 
 
-  if (loadingTotal) {
+  if (loadingTotal || loadingSubtotal) {
     return (
       <InsightRevenueBase year={year}>
         {t("general.loading_with_dots")}
@@ -56,31 +56,31 @@ function InsightRevenue ({ t, history }) {
     )
   }
 
-  // if (errorSold || errorActive) {
-  //   return (
-  //     <InsightRevenueBase year={year}>
-  //       {t("general.error_sad_smiley")}
-  //     </InsightRevenueBase>
-  //   )
-  // }
+  if (errorTotal || errorSubtotal) {
+    return (
+      <InsightRevenueBase year={year}>
+        {t("general.error_sad_smiley")}
+      </InsightRevenueBase>
+    )
+  }
 
   function refetchData(year) {
     refetchTotal({year: year})
-    // refetchSold({year: year})
+    refetchSubtotal({year: year})
   }
 
   console.log(dataTotal)
-  // console.log(dataActive)
+  console.log(dataSubtotal)
 
   const data_label_total = t("insight.revenue.total.title")
   const chart_data_total = dataTotal.insightRevenueTotal.data
   console.log("chart_data total")
   console.log(data_label_total, ...chart_data_total)
 
-  // const data_active_label = t("insight.classpasses.active.title")
-  // const chart_data_active = dataActive.insightAccountClasspassesActive.data
-  // console.log("chart_data active")
-  // console.log(data_sold_label, ...chart_data_active)
+  const data_label_subtotal = t("insight.revenue.subtotal.title")
+  const chart_data_subtotal = dataSubtotal.insightRevenueSubtotal.data
+  console.log("chart_data subtotal")
+  console.log(data_label_subtotal, ...chart_data_subtotal)
 
 
   return (
@@ -110,18 +110,18 @@ function InsightRevenue ({ t, history }) {
                       t("datetime.months.short_decemer"),
                     ],
                     [ 'total', ...chart_data_total],
-                    // [ 'active', ...chart_data_active],
+                    [ 'subtotal', ...chart_data_subtotal],
                   ],
-                  type: "area", // default type of chart
-                  groups: [['total']],
+                  type: "bar", // default type of chart
+                  groups: [['total'], ['subtotal']],
                   colors: {
                     total: colors["blue"],
-                    // active: colors["green"],
+                    subtotal: colors["green"],
                   },
                   names: {
                     // name of each serie
                     total: data_label_total,
-                    // active: data_active_label,
+                    subtotal: data_label_subtotal,
                   },
                   
                 }}

@@ -964,6 +964,9 @@
             "total": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__"
+            },
+            "subtotal": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         }
     },

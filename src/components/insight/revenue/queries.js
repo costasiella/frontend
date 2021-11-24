@@ -12,12 +12,12 @@ export const GET_REVENUE_TOTAL_QUERY = gql`
 `
 
 
-// export const GET_CLASSPASSES_ACTIVE_QUERY = gql`
-//   query InsightAccountClasspassesActive($year: Int!) {
-//     insightAccountClasspassesActive(year: $year) {
-//       description
-//       data
-//       year
-//     }
-//   }
-// `
+export const GET_REVENUE_SUBTOTAL_QUERY = gql`
+  query InsightRevenueSubTotal($year: Int!) {
+    insightRevenueSubtotal(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
