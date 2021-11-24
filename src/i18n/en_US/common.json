@@ -1739,6 +1739,10 @@
         },
         "home": {
             "link_view": "View"
+        },
+        "revenue": {
+            "title": "Revenue",
+            "explanation": "Revenue charts. Totals and by product type."
         }
     },
     "selfcheckin": {

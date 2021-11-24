@@ -12,12 +12,14 @@ import HasPermissionWrapper from "../HasPermissionWrapper"
 
 let classpasses_active
 let subscriptions_active
+let revenue_active
 
 
 const InsightMenu = ({ t, activeLink }) => (
     <List.Group transparent={true}>
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
+        {(activeLink === 'revenue') ? revenue_active = true: revenue_active = false}
         
         <HasPermissionWrapper 
             permission="view"
@@ -45,6 +47,20 @@ const InsightMenu = ({ t, activeLink }) => (
               active={subscriptions_active}
               >
               {t('insight.subscriptions.title')}
+          </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
+            resource="insight"
+        >
+          <List.GroupItem
+              key={v4()}
+              className="d-flex align-items-center"
+              to="#/insight/revenue"
+              icon="dollar-sign"
+              active={revenue_active}
+              >
+              {t('insight.revenue.title')}
           </List.GroupItem>
         </HasPermissionWrapper>
         {/* <HasPermissionWrapper 

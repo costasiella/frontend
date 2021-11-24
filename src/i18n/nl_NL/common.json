@@ -959,6 +959,10 @@
         },
         "home": {
             "link_view": "__STRING_NOT_TRANSLATED__"
+        },
+        "revenue": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

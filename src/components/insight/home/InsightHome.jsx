@@ -62,6 +62,16 @@ class InsightHome extends Component {
                       </Card.Body>
                     </Card>
                   </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("insight.revenue.title")}</h5>
+                        {t("insight.revenue.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/insight/revenue" />
+                      </Card.Body>
+                    </Card>
+                  </Grid.Col>
                 </Grid.Row>
               </Grid.Col>
               <Grid.Col md={3}>
