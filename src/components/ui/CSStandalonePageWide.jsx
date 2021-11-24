@@ -2,8 +2,6 @@
 
 import React from 'react'
 import { withTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-import { v4 } from 'uuid'
 import { ToastContainer, Slide } from 'react-toastify'
 
 import {

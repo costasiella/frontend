@@ -12,6 +12,10 @@ import { withTranslation } from 'react-i18next'
 import { useQuery, useMutation } from "@apollo/client"
 import { toast } from 'react-toastify'
 
+import {
+  Dimmer
+} from "tabler-react"
+
 import { GET_APP_SETTINGS_QUERY } from "./components/settings/general/date_time/queries"
 import { GET_ORGANIZATION_QUERY } from "./components/organization/organization/queries"
 import { TOKEN_REFRESH } from "./queries/system/auth"
@@ -19,6 +23,8 @@ import { TOKEN_REFRESH } from "./queries/system/auth"
 // Import moment locale
 import moment from 'moment'
 import 'moment/locale/nl'
+
+import CSStandalonePageWide from './components/ui/CSStandalonePageWide'
 
 import { AppSettingsProvider } from "./components/context/AppSettingsContext"
 import { OrganizationProvider } from "./components/context/OrganizationContext"
@@ -367,7 +373,17 @@ function AppRoot({ t }) {
     variables: {id: "T3JnYW5pemF0aW9uTm9kZToxMDA="}
   })
 
-  if (loadingAppSettings || loadingOrganization) return t('general.loading_with_dots')
+
+
+  if (loadingAppSettings || loadingOrganization) {
+    return (
+      <CSStandalonePageWide>
+        <div className='text-center'>
+          <Dimmer active={true} loader={true} />
+        </div>
+      </CSStandalonePageWide>
+    )
+  }
   if (errorAppSettings || errorOrganization) {
     if (errorAppSettings.message == "Signature has expired")  {
       return ""
