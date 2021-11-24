@@ -12,9 +12,6 @@ import { withTranslation } from 'react-i18next'
 import { useQuery, useMutation } from "@apollo/client"
 import { toast } from 'react-toastify'
 
-import {
-  Dimmer
-} from "tabler-react"
 
 import { GET_APP_SETTINGS_QUERY } from "./components/settings/general/date_time/queries"
 import { GET_ORGANIZATION_QUERY } from "./components/organization/organization/queries"
@@ -24,7 +21,7 @@ import { TOKEN_REFRESH } from "./queries/system/auth"
 import moment from 'moment'
 import 'moment/locale/nl'
 
-import CSStandalonePageWide from './components/ui/CSStandalonePageWide'
+import CSStandalonePageLoader from './components/ui/CSStandalonePageLoader'
 
 import { AppSettingsProvider } from "./components/context/AppSettingsContext"
 import { OrganizationProvider } from "./components/context/OrganizationContext"
@@ -377,11 +374,7 @@ function AppRoot({ t }) {
 
   if (loadingAppSettings || loadingOrganization) {
     return (
-      <CSStandalonePageWide>
-        <div className='text-center'>
-          <Dimmer active={true} loader={true} />
-        </div>
-      </CSStandalonePageWide>
+      <CSStandalonePageLoader />
     )
   }
   if (errorAppSettings || errorOrganization) {
