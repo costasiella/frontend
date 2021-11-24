@@ -1582,6 +1582,9 @@
                     "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
                     "delete_success": "__STRING_NOT_TRANSLATED__",
                     "delete_all_changes": "__STRING_NOT_TRANSLATED__"
+                },
+                "attendance_chart": {
+                    "title": "__STRING_NOT_TRANSLATED__"
                 }
             },
             "no_teacher": "__STRING_NOT_TRANSLATED__",

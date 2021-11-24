@@ -13,11 +13,15 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
   let attendance_active = false
+  let attendancechart_active = false
   let edit_active = false
 
   switch (activeLink) {
     case "attendance":
       attendance_active = true
+      break
+    case "attendancechart":
+      attendancechart_active = true
       break
     case "edit":
       edit_active = true
@@ -40,6 +44,20 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
               active={attendance_active}
               >
               {t("general.attendance")}
+          </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            resource="scheduleitemattendance"
+            permission="view" 
+        >
+          <List.GroupItem
+              key={v4()}
+              className="d-flex align-items-center"
+              to={"#/schedule/classes/class/attendance_chart/" + scheduleItemId + "/" + class_date}
+              icon="bar-chart-2"
+              active={attendancechart_active}
+              >
+              {t("schedule.classes.class.attendance_chart.title")}
           </List.GroupItem>
         </HasPermissionWrapper>
         <HasPermissionWrapper 

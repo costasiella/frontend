@@ -1123,6 +1123,9 @@
                     "delete_confirm_msg": "Are you sure you wish to delete all changes for this class on this date?",
                     "delete_success": "Removed all changes for class",
                     "delete_all_changes": "Remove all changes on this date"
+                },
+                "attendance_chart": {
+                    "title": "Attendance chart"
                 }
             },
             "no_teacher": "No teacher",
