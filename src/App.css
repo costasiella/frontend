@@ -10,6 +10,10 @@
 
 /* font classes end */
 
+.react-confirm-alert-overlay {
+  z-index: 2000;
+}
+
 /* Tabler changes begin */
 a:hover {
   text-decoration: none;
