@@ -967,6 +967,9 @@
             },
             "subtotal": {
                 "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "tax": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         }
     },

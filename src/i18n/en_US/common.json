@@ -1747,6 +1747,9 @@
             },
             "subtotal": {
                 "title": "Subtotal"
+            },
+            "tax": {
+                "title": "Taxes"
             }
         }
     },

@@ -15,7 +15,7 @@ import {
   Card,
 } from "tabler-react";
 // import ContentCard from "../../general/ContentCard"
-import { GET_REVENUE_TOTAL_QUERY, GET_REVENUE_SUBTOTAL_QUERY } from './queries'
+import { GET_REVENUE_TOTAL_QUERY, GET_REVENUE_SUBTOTAL_QUERY, GET_REVENUE_TAX_QUERY } from './queries'
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightRevenueBase from './InsightRevenueBase'
 
@@ -47,8 +47,17 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
+  const { 
+    loading: loadingTax, 
+    error: errorTax, 
+    data: dataTax,
+    refetch: refetchTax
+   } = useQuery(GET_REVENUE_TAX_QUERY, {
+    variables: { year: year }
+  })
 
-  if (loadingTotal || loadingSubtotal) {
+
+  if (loadingTotal || loadingSubtotal || loadingTax) {
     return (
       <InsightRevenueBase year={year}>
         {t("general.loading_with_dots")}
@@ -56,7 +65,7 @@ function InsightRevenue ({ t, history }) {
     )
   }
 
-  if (errorTotal || errorSubtotal) {
+  if (errorTotal || errorSubtotal || errorTax) {
     return (
       <InsightRevenueBase year={year}>
         {t("general.error_sad_smiley")}
@@ -67,6 +76,7 @@ function InsightRevenue ({ t, history }) {
   function refetchData(year) {
     refetchTotal({year: year})
     refetchSubtotal({year: year})
+    refetchTax({year: year})
   }
 
   console.log(dataTotal)
@@ -81,6 +91,11 @@ function InsightRevenue ({ t, history }) {
   const chart_data_subtotal = dataSubtotal.insightRevenueSubtotal.data
   console.log("chart_data subtotal")
   console.log(data_label_subtotal, ...chart_data_subtotal)
+
+  const data_label_tax = t("insight.revenue.tax.title")
+  const chart_data_tax = dataTax.insightRevenueTax.data
+  console.log("chart_data tax")
+  console.log(data_label_tax, ...chart_data_tax)
 
 
   return (
@@ -111,17 +126,23 @@ function InsightRevenue ({ t, history }) {
                     ],
                     [ 'total', ...chart_data_total],
                     [ 'subtotal', ...chart_data_subtotal],
+                    [ 'tax', ...chart_data_tax],
                   ],
                   type: "bar", // default type of chart
-                  groups: [['total'], ['subtotal']],
+                  // types: {
+                  //   total: "bar"
+                  // },
+                  groups: [['subtotal', 'tax']],
                   colors: {
                     total: colors["blue"],
                     subtotal: colors["green"],
+                    tax: colors["orange"],
                   },
                   names: {
                     // name of each serie
                     total: data_label_total,
                     subtotal: data_label_subtotal,
+                    tax: data_label_tax,
                   },
                   
                 }}

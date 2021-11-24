@@ -21,3 +21,14 @@ export const GET_REVENUE_SUBTOTAL_QUERY = gql`
     }
   }
 `
+
+
+export const GET_REVENUE_TAX_QUERY = gql`
+  query InsightRevenueTax($year: Int!) {
+    insightRevenueTax(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
