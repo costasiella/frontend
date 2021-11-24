@@ -1718,7 +1718,8 @@
                 "title": "Active class passes",
                 "export_excel": "Export active as Excel"
             },
-            "title": "Class passes"
+            "title": "Class passes",
+            "explanation": "Report on sold and active classpasses"
         },
         "title": "Insight",
         "classpass": {
@@ -1733,7 +1734,11 @@
             "active": {
                 "title": "Active subscriptions",
                 "export_excel": "Export active as Excel"
-            }
+            },
+            "explanation": "Report on sold and active subscriptions"
+        },
+        "home": {
+            "link_view": "View"
         }
     },
     "selfcheckin": {

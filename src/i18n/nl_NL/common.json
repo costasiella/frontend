@@ -938,7 +938,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "subscriptions": {
@@ -950,10 +951,14 @@
             "active": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "classpass": {
             "title": "__STRING_NOT_TRANSLATED__"
+        },
+        "home": {
+            "link_view": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

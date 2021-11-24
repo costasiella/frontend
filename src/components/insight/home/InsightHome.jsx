@@ -6,13 +6,17 @@ import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
 import {
+  Card,
   Page,
   Grid,
   Container,
   StampCard
 } from "tabler-react";
+
+import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+
 
 import InsightMenu from "../InsightMenu"
 
@@ -28,6 +32,7 @@ class InsightHome extends Component {
     const t = this.props.t
     const match = this.props.match
     const history = this.props.history
+    const linkTitle = t("insight.home.link_view")
 
     return (
       <SiteWrapper>
@@ -38,14 +43,24 @@ class InsightHome extends Component {
               <Grid.Col md={9}>
                 <Grid.Row>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/insight/classpasses'>
-                      <StampCard header={<small>{t('insight.classpasses.title')}</small>} footer={t('')} color="blue" icon="credit-card" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("insight.classpasses.title")}</h5>
+                        {t("insight.classpasses.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/insight/classpasses" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/insight/subscriptions'>
-                      <StampCard header={<small>{t('insight.subscriptions.title')}</small>} footer={t('')} color="blue" icon="edit" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("insight.subscriptions.title")}</h5>
+                        {t("insight.subscriptions.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/insight/subscriptions" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                 </Grid.Row>
               </Grid.Col>
