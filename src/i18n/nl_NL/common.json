@@ -239,7 +239,8 @@
         "i_agree": "__STRING_NOT_TRANSLATED__",
         "months": "__STRING_NOT_TRANSLATED__",
         "first_month": "__STRING_NOT_TRANSLATED__",
-        "registration_fee": "__STRING_NOT_TRANSLATED__"
+        "registration_fee": "__STRING_NOT_TRANSLATED__",
+        "revenue": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -954,15 +955,15 @@
             },
             "explanation": "__STRING_NOT_TRANSLATED__"
         },
-        "classpass": {
-            "title": "__STRING_NOT_TRANSLATED__"
-        },
         "home": {
             "link_view": "__STRING_NOT_TRANSLATED__"
         },
         "revenue": {
             "title": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "total": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "datetime": {

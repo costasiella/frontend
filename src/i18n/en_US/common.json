@@ -482,7 +482,8 @@
         "i_agree": "I agree",
         "months": "Months",
         "first_month": "First month",
-        "registration_fee": "Registration fee"
+        "registration_fee": "Registration fee",
+        "revenue": "Revenue"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1722,9 +1723,6 @@
             "explanation": "Report on sold and active classpasses"
         },
         "title": "Insight",
-        "classpass": {
-            "title": "Class passes"
-        },
         "subscriptions": {
             "title": "Subscriptions",
             "sold": {
@@ -1742,7 +1740,10 @@
         },
         "revenue": {
             "title": "Revenue",
-            "explanation": "Revenue charts. Totals and by product type."
+            "explanation": "Revenue charts. Totals and by product type.",
+            "total": {
+                "title": "Total"
+            }
         }
     },
     "selfcheckin": {
