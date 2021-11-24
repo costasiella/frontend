@@ -1742,7 +1742,8 @@
             "title": "Revenue",
             "explanation": "Revenue charts. Totals and by product type.",
             "total": {
-                "title": "Total"
+                "title": "Total",
+                "explanation": "Monthly total based on invoice amounts. Invoices with the status 'cancelled' or 'draft' are not counted."
             }
         }
     },

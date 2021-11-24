@@ -158,6 +158,9 @@ function InsightRevenue ({ t, history }) {
                 }}
               />
             </Card.Body>
+            <Card.Footer>
+              {t("insight.revenue.total.explanation")}
+            </Card.Footer>
           </Card>
         </Grid.Col>
         <Grid.Col md={3}>
