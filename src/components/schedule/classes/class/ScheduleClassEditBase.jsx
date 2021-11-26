@@ -9,13 +9,13 @@ import {
   Grid,
   Container,
 } from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import ScheduleClassBack from "../ScheduleClassBack"
-import ClassMenu from "../ClassMenu"
+import SiteWrapper from "../../../SiteWrapper"
+import HasPermissionWrapper from "../../../HasPermissionWrapper"
+import ScheduleClassBack from "./ScheduleClassBack"
+import ClassMenu from "./ClassMenu"
 
 
-function ScheduleClassEditBase({ t, match, history, subTitle="", menuActiveLink="" }) {
+function ScheduleClassEditBase({ t, match, history, children, subTitle="", menuActiveLink="" }) {
   const scheduleItemId = match.params.class_id
   const classDate = match.params.date
 

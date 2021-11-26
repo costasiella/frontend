@@ -210,6 +210,7 @@ import ScheduleClassTeachers from './components/schedule/classes/all/teachers/Sc
 import ScheduleClassTeacherAdd from './components/schedule/classes/all/teachers/ScheduleClassTeacherAdd'
 import ScheduleClassTeacherEdit from './components/schedule/classes/all/teachers/ScheduleClassTeacherEdit'
 import ScheduleClassAttendance from './components/schedule/classes/class/attendance/ScheduleClassAttendance'
+import ScheduleClassAttendanceChart from './components/schedule/classes/class/attendance_chart/ScheduleClassAttendanceChart'
 import ScheduleClassBook from './components/schedule/classes/class/book/ScheduleClassBook'
 import ScheduleClassEdit from './components/schedule/classes/class/edit/ScheduleClassEdit'
 import ScheduleClassPrices from './components/schedule/classes/all/prices/ScheduleClassPrices'
@@ -611,6 +612,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/add" component={ScheduleClassTeacherAdd} />
             <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/edit/:id" component={ScheduleClassTeacherEdit} />
             <PrivateRoute exact path="/schedule/classes/class/attendance/:class_id/:date" component={ScheduleClassAttendance} />
+            <PrivateRoute exact path="/schedule/classes/class/attendance_chart/:class_id/:date" 
+                          component={ScheduleClassAttendanceChart} />
             <PrivateRoute exact path="/schedule/classes/class/book/:class_id/:date/:account_id" component={ScheduleClassBook} />
             <PrivateRoute exact path="/schedule/classes/class/edit/:class_id/:date" component={ScheduleClassEdit} />
             <PrivateRoute exact path="/schedule/events" component={ScheduleEvents} />
