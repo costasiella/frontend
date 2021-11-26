@@ -14,7 +14,7 @@ import {
   Page,
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
-import HomeItemButton from "../../ui/SettingsHomeItemButton"
+import HomeItemButton from "../../ui/HomeItemButton"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 // import RelationsMenu from "../RelationsMenu"
