@@ -100,7 +100,7 @@ function ScheduleClassAttendanceChart({t, history, match}) {
               groups: [['current'], ['previous']],
               colors: {
                 current: colors["blue"],
-                previous: colors["green"],
+                previous: colors["blue-lighter"],
               },
               names: {
                 // name of each serie
@@ -117,6 +117,12 @@ function ScheduleClassAttendanceChart({t, history, match}) {
                   bottom: 0,
                 },
                 show: true,
+                // Don't show decimals on ticks, only whole numbers
+                tick: {
+                  format: function (d) {
+                      return (parseInt(d) == d) ? d : null;
+                  }
+                }
               },
               x: {
                 padding: {
