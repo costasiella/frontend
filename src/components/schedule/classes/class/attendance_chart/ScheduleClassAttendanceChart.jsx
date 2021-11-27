@@ -2,22 +2,11 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import C3Chart from "react-c3js"
 
 import {
     colors,
-    Alert,
-    Dropdown,
-    Page,
-    Grid,
-    Icon,
-    Dimmer,
-    Badge,
-    Button,
     Card,
-    Container,
-    Table
   } from "tabler-react";
 
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
@@ -93,8 +82,6 @@ function ScheduleClassAttendanceChart({t, history, match}) {
                 ],
                 [ 'current', ...chartDataCurrentYear],
                 [ 'previous', ...chartDataPreviousYear],
-                // [ 'subtotal', ...chart_data_subtotal],
-                // [ 'tax', ...chart_data_tax],
               ],
               type: "bar", // default type of chart
               groups: [['current'], ['previous']],
@@ -106,8 +93,6 @@ function ScheduleClassAttendanceChart({t, history, match}) {
                 // name of each serie
                 current: dataLabelCurrentYear,
                 previous: dataLabelPreviousYear
-                // subtotal: data_label_subtotal,
-                // tax: data_label_tax,
               },
               
             }}
