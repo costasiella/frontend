@@ -99,8 +99,8 @@ function ScheduleClassAttendanceChart({t, history, match}) {
               type: "bar", // default type of chart
               groups: [['current'], ['previous']],
               colors: {
-                current: colors["blue"],
-                previous: colors["blue-lighter"],
+                current: colors["azure"],
+                previous: colors["azure-lighter"],
               },
               names: {
                 // name of each serie
