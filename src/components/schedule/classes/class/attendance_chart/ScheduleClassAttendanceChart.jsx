@@ -3,8 +3,10 @@ import { useQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
+import C3Chart from "react-c3js"
 
 import {
+    colors,
     Alert,
     Dropdown,
     Page,
@@ -31,7 +33,7 @@ function ScheduleClassAttendanceChart({t, history, match}) {
   const scheduleItemId = match.params.class_id
   const menuActiveLink = "attendancechart"
 
-  const year = classDate.substring(0, 3)
+  const year = parseInt(classDate.substring(0, 4))
   console.log(year)
 
   const { loading, error, data } = useQuery(GET_CLASS_ATTENDANCE_COUNT_YEAR, {
@@ -57,7 +59,10 @@ function ScheduleClassAttendanceChart({t, history, match}) {
     )
   }
 
-  
+  const dataLabelCurrentYear = year
+  const chartDataCurrentYear = data.insightClassAttendanceCountYear.dataCurrent
+  const dataLabelPreviousYear = year - 1
+  const chartDataPreviousYear = data.insightClassAttendanceCountYear.dataPrevious
   const scheduleItem = data.scheduleItem
   
   const subTitle = class_subtitle({
@@ -69,9 +74,80 @@ function ScheduleClassAttendanceChart({t, history, match}) {
     date: classDate
   })
 
+  function range(size, startAt = 0) {
+    return [...Array(size).keys()].map(i => i + startAt);
+  }
+
   return (
     <ScheduleClassEditBase menuActiveLink={menuActiveLink} subTitle={subTitle}>
-      hello world
+      <Card title={t('schedule.classes.class.attendance_chart.title')}>
+        <Card.Body>
+          <C3Chart
+            style={{ height: "16rem" }}
+            data={{
+              x: 'x',
+              columns: [
+                // each columns data as array, starting with "name" and then containing data
+                [ 'x',
+                  ...range(54, 1) // This adds 1 .. 53
+                ],
+                [ 'current', ...chartDataCurrentYear],
+                [ 'previous', ...chartDataPreviousYear],
+                // [ 'subtotal', ...chart_data_subtotal],
+                // [ 'tax', ...chart_data_tax],
+              ],
+              type: "bar", // default type of chart
+              groups: [['current'], ['previous']],
+              colors: {
+                current: colors["blue"],
+                previous: colors["green"],
+              },
+              names: {
+                // name of each serie
+                current: dataLabelCurrentYear,
+                previous: dataLabelPreviousYear
+                // subtotal: data_label_subtotal,
+                // tax: data_label_tax,
+              },
+              
+            }}
+            axis={{
+              y: {
+                padding: {
+                  bottom: 0,
+                },
+                show: true,
+              },
+              x: {
+                padding: {
+                  left: 0,
+                  right: 0,
+                },
+                type: 'category',
+                show: true,
+              },
+            }}
+            tooltip={{
+              format: {
+                title: function(x) {
+                  return "";
+                },
+              },
+            }}
+            padding={{
+              bottom: 0,
+              // left: -1,
+              right: -1,
+            }}
+            point={{
+              show: false,
+            }}
+          />
+        </Card.Body>
+        <Card.Footer>
+          {/* {t("insight.revenue.total.explanation")} */}
+        </Card.Footer>
+      </Card>
     </ScheduleClassEditBase>
   )
 }
