@@ -127,19 +127,19 @@ function ShopAccountInvoices({t, match, history}) {
                       <Table cards>
                         <Table.Body>
                           <Table.Row>
-                            <Table.ColHeader>Sent</Table.ColHeader>
+                            <Table.ColHeader>{t("general.date")}</Table.ColHeader>
                             <Table.Col>{node.dateSent}</Table.Col>
                           </Table.Row>
                           <Table.Row>
-                            <Table.ColHeader>Due</Table.ColHeader>
+                            <Table.ColHeader>{t("finance.invoices.due")}</Table.ColHeader>
                             <Table.Col>{node.dateDue}</Table.Col>
                           </Table.Row>
                           <Table.Row>
-                            <Table.ColHeader>Total</Table.ColHeader>
+                            <Table.ColHeader>{t("general.total")}</Table.ColHeader>
                             <Table.Col>{node.totalDisplay}</Table.Col>
                           </Table.Row>
                           <Table.Row>
-                            <Table.ColHeader>Balance</Table.ColHeader>
+                            <Table.ColHeader>{t("general.balance")}</Table.ColHeader>
                             <Table.Col>{node.balanceDisplay}</Table.Col>
                           </Table.Row>
                         </Table.Body>
