@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useContext } from 'react'
-import { useQuery } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from "uuid"
@@ -10,7 +10,8 @@ import moment from 'moment'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
-import ContentCard from "../../../general/ContentCard"
+import { TOKEN_REFRESH } from "../../../../queries/system/auth"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../../tools/refresh_token_and_open_export_link"
 
 import {
   Button,
@@ -42,6 +43,7 @@ function ShopAccountInvoices({t, match, history}) {
       account: dataUser && dataUser.user ? dataUser.user.accountId : null
     }
   })
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   if (loading || loadingUser || !data) return (
     <ShopAccountInvoicesBase>
@@ -128,11 +130,11 @@ function ShopAccountInvoices({t, match, history}) {
                         <Table.Body>
                           <Table.Row>
                             <Table.ColHeader>{t("general.date")}</Table.ColHeader>
-                            <Table.Col>{node.dateSent}</Table.Col>
+                            <Table.Col>{moment(node.dateSent).format(dateFormat)}</Table.Col>
                           </Table.Row>
                           <Table.Row>
                             <Table.ColHeader>{t("finance.invoices.due")}</Table.ColHeader>
-                            <Table.Col>{node.dateDue}</Table.Col>
+                            <Table.Col>{moment(node.dateDue).format(dateFormat)}</Table.Col>
                           </Table.Row>
                           <Table.Row>
                             <Table.ColHeader>{t("general.total")}</Table.ColHeader>
