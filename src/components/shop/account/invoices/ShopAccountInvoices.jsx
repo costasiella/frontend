@@ -22,6 +22,7 @@ import {
 } from "tabler-react"
 import { QUERY_ACCOUNT_INVOICES, CREATE_PAYMENT_LINK } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
+import LoadMoreOnBottomScroll from "../../../general/LoadMoreOnBottomScroll"
 
 import ShopAccountInvoicesBase from "./ShopAccountInvoicesBase"
 
@@ -80,7 +81,7 @@ function ShopAccountInvoices({t, match, history}) {
     <ShopAccountInvoicesBase accountName={user.fullName}>
       <Grid.Row>
         <Grid.Col md={12}>
-          <ContentCard cardTitle={t('shop.account.invoices.title')}
+          <LoadMoreOnBottomScroll
             // headerContent={headerOptions}
             pageInfo={invoices.pageInfo}
             onLoadMore={() => {
@@ -105,67 +106,71 @@ function ShopAccountInvoices({t, match, history}) {
                     : previousResult
                 }
               })
-            }} >
-            <Table cards responsive>
-              <Table.Header>
-                <Table.Row key={v4()}>
-                  <Table.ColHeader>{t('general.status')}</Table.ColHeader>
-                  <Table.ColHeader>{t('finance.invoices.invoice_number')}</Table.ColHeader>
-                  <Table.ColHeader>{t('finance.invoices.date')} & {t('finance.invoices.due')}</Table.ColHeader>
-                  {/* <Table.ColHeader>{t('finance.invoices.due')}</Table.ColHeader> */}
-                  <Table.ColHeader>{t('general.total')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.balance')}</Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                { invoices.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    <Table.Col key={v4()}>
-                      <FinanceInvoicesStatus status={node.status} />
-                    </Table.Col>
-                    <Table.Col key={v4()}>
-                      {node.invoiceNumber} <br />
-                      <Text.Small muted>
-                        {node.summary.trunc(20)}
-                      </Text.Small>
-                    </Table.Col>
-                    <Table.Col key={v4()}>
-                      {moment(node.dateSent).format('LL')} <br />
-                      {moment(node.dateDue).format('LL')}
-                    </Table.Col>
-                    <Table.Col key={v4()}>
-                      {node.totalDisplay}
-                    </Table.Col>
-                    <Table.Col key={v4()}>
-                      {node.balanceDisplay}
-                    </Table.Col>
-                    <Table.Col className="text-right" key={v4()}>
-                        {/* TODO: Add token refresh here within an onClick */}
-                        <Button 
-                          RootComponent="a"
-                          href={`/d/export/invoice/pdf/${node.id}`}
-                          color="secondary"
-                          icon="printer"
-                        >
-                          {t('general.pdf')}
-                        </Button>
-                        {(node.status == "SENT" && onlinePaymentsAvailable) ?
+            }} 
+          >
+            <h4>{t("shop.account.invoices.title")}</h4>
+            <Grid.Row>
+              {invoices.edges.map(({ node }) => (
+                <Grid.Col xs={12} sm={12} md={4} lg={4}>
+                  <Card>
+                    <Card.Header>
+                      <Card.Title>{node.invoiceNumber}</Card.Title>
+                      <Card.Options>
+                        <FinanceInvoicesStatus status={node.status}/>
+                      </Card.Options>
+                    </Card.Header>
+                    <Card.Body>
+                      <span className="text-bold">
+                        {node.summary}
+                      </span>
+                    </Card.Body>
+                      <Table cards>
+                        <Table.Body>
+                          <Table.Row>
+                            <Table.ColHeader>Sent</Table.ColHeader>
+                            <Table.Col>{node.dateSent}</Table.Col>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.ColHeader>Due</Table.ColHeader>
+                            <Table.Col>{node.dateDue}</Table.Col>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.ColHeader>Total</Table.ColHeader>
+                            <Table.Col>{node.totalDisplay}</Table.Col>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.ColHeader>Balance</Table.ColHeader>
+                            <Table.Col>{node.balanceDisplay}</Table.Col>
+                          </Table.Row>
+                        </Table.Body>
+                      </Table>
+                    <Card.Footer>
+                      {(node.status == "SENT" && onlinePaymentsAvailable) ?
                         <Link to={"/shop/account/invoice_payment/" + node.id}>
                           <Button
-                            className=""
+                            className="float-right"
                             color="success"
                           >
                             {t('shop.account.invoices.to_payment')} <Icon name="chevron-right" />
                           </Button>
                         </Link>
-                      : ""}
-                    </Table.Col>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-          </ContentCard>
+                        : ""
+                      }  
+                      {/* TODO: Add token refresh here within an onClick */}
+                      <Button 
+                        RootComponent="a"
+                        href={`/d/export/invoice/pdf/${node.id}`}
+                        color="secondary"
+                        icon="printer"
+                      >
+                        {t('general.pdf')}
+                      </Button>              
+                    </Card.Footer>
+                  </Card>
+                </Grid.Col>
+              ))}
+            </Grid.Row>
+          </LoadMoreOnBottomScroll>
         </Grid.Col>
       </Grid.Row>
     </ShopAccountInvoicesBase>
