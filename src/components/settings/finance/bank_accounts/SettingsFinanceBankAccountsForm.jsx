@@ -17,15 +17,16 @@ const SettingsFinanceBankAccountsForm = ({ t, history, isSubmitting, errors, val
   <FoForm>
       <Card.Body>
         <Form.Group>
-          <Form.Label className="custom-switch">
+            <Form.Label className="custom-switch">
               <Field 
-              className="custom-switch-input"
-              type="checkbox" 
-              name="finance_bank_accounts_iban" 
-              checked={values.finance_bank_accounts_iban} />
-              <span className="custom-switch-indicator" ></span>
-              <span className="custom-switch-description">{t('settings.finance.bank_accounts.iban')}</span>
-          </Form.Label>
+                className="custom-switch-input"
+                type="checkbox" 
+                name="finance_bank_accounts_iban" 
+                checked={values.finance_bank_accounts_iban}
+              />
+                <span className="custom-switch-indicator" ></span>
+                <span className="custom-switch-description">{t('settings.finance.bank_accounts.iban')}</span>
+            </Form.Label>
           <ErrorMessage name="finance_bank_accounts_iban" component="div" />   
         </Form.Group>  
       </Card.Body>

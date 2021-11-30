@@ -17,7 +17,7 @@ import {
 // https://github.com/tabler/tabler-react/blob/master/example/src/interface/PricingCardsPage.react.js
 
 
-function ShopClasspassPricingCard({ t, subscription, btnLink, active=false }) {
+function ShopClasspassPricingCard({ t, subscription, btnLink, active=false, displayCheckoutInfo=false }) {
   // classpass should be an object with at least the following values from an organizationClasspass object:
   // id, name, priceDisplay, unlimited, classes, validity, link
   return (
@@ -30,13 +30,24 @@ function ShopClasspassPricingCard({ t, subscription, btnLink, active=false }) {
       </PricingCard.Price>
       <PricingCard.AttributeList>
         <PricingCard.AttributeItem>
-          <b>{(subscription.unlimited) ? t('general.unlimited') : subscription.classes }</b> { " " }
-          {((subscription.classes != 1) || (subscription.unlimited))? t('general.classes'): t('general.class')} / {t('general.month')}
+          {/* {((subscription.classes != 1) || (subscription.unlimited))? t('general.classes'): t('general.class')} / {t('general.month')} { ": " } */}
+          {t('general.classes')} / {t('general.month')} { ": " }
+          <b>{(subscription.unlimited) ? t('general.unlimited') : subscription.classes }</b> 
         </PricingCard.AttributeItem>
         <PricingCard.AttributeItem>
-          {t('general.min_duration')} { " " }
-          <b>{subscription.minDuration}</b> 
+          {t('general.min_duration')} { ": " }
+          <b>{subscription.minDuration} {(subscription.minDuration == 1) ? t("general.month") : t("general.months")}</b> 
         </PricingCard.AttributeItem>
+        {(displayCheckoutInfo) ? 
+          <PricingCard.AttributeItem>
+            {t("general.first_month")}: <b>{subscription.priceFirstMonthDisplay}</b>
+          </PricingCard.AttributeItem>
+        : ""}
+        {(displayCheckoutInfo && subscription.accountRegistrationFee > 0) ? 
+          <PricingCard.AttributeItem>
+            {t("general.registration_fee")}: <b>{subscription.accountRegistrationFeeDisplay}</b>
+          </PricingCard.AttributeItem>
+        : ""}
       </PricingCard.AttributeList>
       {(btnLink) ?
         <Link to={btnLink}>

@@ -48,7 +48,9 @@
             "error_loading": "Error loading payment methods :(",
             "empty_list": "No payment methods found",
             "empty_archive": "Payment method archive is empty",
-            "add": "Add payment method"
+            "add": "Add payment method",
+            "mollie": "Mollie",
+            "direct_debit": "Direct debit"
         },
         "invoices": {
             "title": "Invoices",
@@ -288,7 +290,6 @@
         "sort_order": "Sort order",
         "min_duration": "Minimum duration",
         "subscription_unit": "Subscription unit",
-        "credit_validity": "Credit validity",
         "a": "a",
         "edit_price": "Edit price",
         "date_start": "Start date",
@@ -477,7 +478,12 @@
         "key_number": "Door key number",
         "apply_to": "Apply to",
         "holiday": "Holiday",
-        "event": "Event"
+        "event": "Event",
+        "i_agree": "I agree",
+        "months": "Months",
+        "first_month": "First month",
+        "registration_fee": "Registration fee",
+        "revenue": "Revenue"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -542,7 +548,6 @@
             "toast_add_success": "Added class type",
             "title_edit": "Edit class type",
             "toast_edit_success": "Saved class type",
-            "toast_image_save_success": "Saved class type image",
             "edit_image": "Edit class type image",
             "title": "Class types",
             "error_loading": "Error loading class types :(",
@@ -637,7 +642,8 @@
                 "edit_subscriptions": "Subscriptions in group",
                 "delete_confirm_msg": "Are you sure you wish to delete this subscriptions group?",
                 "deleted": "Deleted subscriptions group"
-            }
+            },
+            "credit_accumulation_days": "Credit accumulation in days"
         },
         "subscription": {
             "public": "This is a public subscription",
@@ -806,8 +812,8 @@
         "month": "Month"
     },
     "datepicker": {
-        "placeholder": "Click to select a date",
-        "placeholder_time": "Click to select a time"
+        "placeholder": "Select a date",
+        "placeholder_time": "Select a time"
     },
     "relations": {
         "title": "Relations",
@@ -991,7 +997,14 @@
                 "toast_edit_success": "Saved"
             },
             "documents": {
-                "title": "Documents"
+                "title": "Documents",
+                "title_add": "Add Document",
+                "toast_add_success": "Added document",
+                "title_edit": "Edit document",
+                "toast_edit_success": "Saved",
+                "add": "Add document",
+                "delete_confirm_msg": "Are you sure you wish to delete this document?",
+                "deleted": "Deleted document"
             }
         },
         "b2b": {
@@ -1110,6 +1123,9 @@
                     "delete_confirm_msg": "Are you sure you wish to delete all changes for this class on this date?",
                     "delete_success": "Removed all changes for class",
                     "delete_all_changes": "Remove all changes on this date"
+                },
+                "attendance_chart": {
+                    "title": "Attendance chart"
                 }
             },
             "no_teacher": "No teacher",
@@ -1631,6 +1647,11 @@
                 "explanation": "Configure limits on subscription pauses",
                 "min_duration_in_days": "Minimum pause duration (in days)",
                 "max_pauses_in_year": "Maximum pauses allowed in a year"
+            },
+            "shop": {
+                "title": "Shop",
+                "explanation": "Shop workflows",
+                "subscription_payment_method": "Subscriptions payment method"
             }
         },
         "shop": {
@@ -1701,12 +1722,10 @@
                 "title": "Active class passes",
                 "export_excel": "Export active as Excel"
             },
-            "title": "Class passes"
+            "title": "Class passes",
+            "explanation": "Report on sold and active classpasses"
         },
         "title": "Insight",
-        "classpass": {
-            "title": "Class passes"
-        },
         "subscriptions": {
             "title": "Subscriptions",
             "sold": {
@@ -1716,6 +1735,24 @@
             "active": {
                 "title": "Active subscriptions",
                 "export_excel": "Export active as Excel"
+            },
+            "explanation": "Report on sold and active subscriptions"
+        },
+        "home": {
+            "link_view": "View"
+        },
+        "revenue": {
+            "title": "Revenue",
+            "explanation": "Revenue charts. Totals and by product type.",
+            "total": {
+                "title": "Total",
+                "explanation": "Monthly total based on invoice amounts. Invoices with the status 'cancelled' or 'draft' are not counted."
+            },
+            "subtotal": {
+                "title": "Subtotal"
+            },
+            "tax": {
+                "title": "Taxes"
             }
         }
     },
@@ -1920,6 +1957,12 @@
                 "payment_received": "Payment received",
                 "payment_not_confirmed": "We weren't able to confirm your payment. In case this is an error, please contact us.",
                 "to_profile": "Continue"
+            },
+            "bank_account": {
+                "error_loading_data": "Error loading bank account... :(",
+                "toast_edit_success": "Saved bank account",
+                "title": "My bank account",
+                "explanation": "Manage your bank information"
             }
         },
         "accounts": {
@@ -1948,8 +1991,7 @@
             "booked": {
                 "class": "Selected class",
                 "title": "Class booked!",
-                "class_explanation": "We've reserved your spot in the class below.",
-                "class_info": "Good to know"
+                "class_explanation": "We've reserved your spot in the class below."
             },
             "filter_all_locations": "All locations",
             "filter_all_classtypes": "All classtypes",
@@ -1970,11 +2012,17 @@
         "subscriptions": {
             "title": "Subscriptions",
             "choose": "Choose",
-            "error_loading": "Error loading subscriptions...:("
+            "error_loading": "Error loading subscriptions...:(",
+            "min_duration_in_months": "Minimum duration in months"
         },
         "subscription": {
             "error_loading": "Error loading subscription information...:(",
-            "additional_information": "Additional information"
+            "additional_information": "Additional information",
+            "bank_account_required": "Bank account required",
+            "bank_account_required_explanation": "To activate this subscription, your bank information is required.",
+            "to_bank_account": "Set bank information",
+            "start_on": "Subscription start from",
+            "please_select_date": "Please select start date"
         },
         "events": {
             "title": "Events",
@@ -1996,6 +2044,15 @@
                 "regular_price": "Regular price",
                 "free": "Free"
             }
+        },
+        "subscription_directdebit_activated": {
+            "thank_you": "Thank you!",
+            "message_activated": "Your subscription has been activated. You can use it to book classes starting on or after the start date of your subscription.",
+            "starting_on": "starting on",
+            "next_book_class": "Book a class",
+            "next_account": "Go to my account",
+            "what_next_question": "What would you like to do next?",
+            "next_continue_shopping": "Continue shopping"
         }
     },
     "View info": "View info",

@@ -27,11 +27,12 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
           <Grid.Col>
             <Form.Group>
               <Form.Label className="custom-switch">
-                  <Field 
+                <Field 
                   className="custom-switch-input"
                   type="checkbox" 
                   name="customer" 
-                  checked={values.customer} />
+                  checked={values.customer} 
+                />
                   <span className="custom-switch-indicator" ></span>
                   <span className="custom-switch-description">{t('general.customer')}</span>
               </Form.Label>

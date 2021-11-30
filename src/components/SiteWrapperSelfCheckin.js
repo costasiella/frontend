@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { Link } from 'react-router-dom'
 
+import CSStandalonePageLoader from "./ui/CSStandalonePageLoader"
 import GET_USER from "../queries/system/get_user"
 import { get_all_permissions, has_permission } from "../tools/user_tools"
 
@@ -126,7 +127,7 @@ const now = new Date()
 function SiteWrapperSelfCheckin({t, match, history, children}) {
   const { error, loading, data, fetchMore } = useQuery(GET_USER)
 
-  if (loading) return <p>{t('general.loading_with_dots')}</p>;
+  if (loading) return <CSStandalonePageLoader />
   if (error) return <p>{t('system.user.error_loading')}</p>; 
 
   console.log(data)

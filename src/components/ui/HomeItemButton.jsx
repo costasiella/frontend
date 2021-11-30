@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from 'react-router'
@@ -10,7 +8,7 @@ import {
   Icon,
 } from "tabler-react";
 
-function SettingsHomeItemButton({ t, link, linkTitle=null }) {
+function HomeItemButton({ t, link, linkTitle=null }) {
   return (
     <Link to={link} >
       <Button 
@@ -24,4 +22,4 @@ function SettingsHomeItemButton({ t, link, linkTitle=null }) {
   )
 }
 
-export default withTranslation()(withRouter(SettingsHomeItemButton))
+export default withTranslation()(withRouter(HomeItemButton))

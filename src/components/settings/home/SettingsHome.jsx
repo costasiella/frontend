@@ -14,7 +14,7 @@ import {
   Page,
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
-import SettingsHomeItemButton from "./SettingsHomeItemButton"
+import HomeItemButton from "../../ui/HomeItemButton"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 // import RelationsMenu from "../RelationsMenu"
@@ -35,7 +35,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.general.date_time.title")}</h5>
                   {t("settings.general.date_time.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/general/datetime" />
+                  <HomeItemButton link="/settings/general/datetime" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -45,7 +45,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.general.system.title")}</h5>
                   {t("settings.general.system.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/general/system" />
+                  <HomeItemButton link="/settings/general/system" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -60,7 +60,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.workflow.class_booking.title")}</h5>
                   {t("settings.workflow.class_booking.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/workflow/class_booking" />
+                  <HomeItemButton link="/settings/workflow/class_booking" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -70,7 +70,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.workflow.subscription_pauses.title")}</h5>
                   {t("settings.workflow.subscription_pauses.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/workflow/subscription_pauses" />
+                  <HomeItemButton link="/settings/workflow/subscription_pauses" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -80,7 +80,17 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.workflow.trial.title")}</h5>
                   {t("settings.workflow.trial.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/workflow/trial" />
+                  <HomeItemButton link="/settings/workflow/trial" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.workflow.shop.title")}</h5>
+                  {t("settings.workflow.shop.explanation")}
+                  <br /><br />
+                  <HomeItemButton link="/settings/workflow/shop" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -95,7 +105,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.finance.currency.title")}</h5>
                   {t("settings.finance.currency.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/finance/currency" />
+                  <HomeItemButton link="/settings/finance/currency" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -105,7 +115,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.finance.bank_accounts.title")}</h5>
                   {t("settings.finance.bank_accounts.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/finance/bank_accounts" />
+                  <HomeItemButton link="/settings/finance/bank_accounts" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -120,7 +130,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.mail.templates.title")}</h5>
                   {t("settings.mail.templates.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/mail/templates" />
+                  <HomeItemButton link="/settings/mail/templates" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -135,7 +145,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.shop.features.title")}</h5>
                   {t("settings.shop.features.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/shop/features/" />
+                  <HomeItemButton link="/settings/shop/features/" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -150,7 +160,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.integration.mollie.title")}</h5>
                   {t("settings.integration.mollie.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton link="/settings/integration/mollie/" />
+                  <HomeItemButton link="/settings/integration/mollie/" />
                 </Card.Body>
               </Card>
             </Grid.Col>
@@ -165,7 +175,7 @@ function SettingsHome({ t, match, params }) {
                   <h5>{t("settings.about.about.title")}</h5>
                   {t("settings.about.explanation")}
                   <br /><br />
-                  <SettingsHomeItemButton 
+                  <HomeItemButton 
                     link="/settings/about" 
                     linkTitle={t("View info")}
                   />

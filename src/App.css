@@ -77,3 +77,9 @@ table .btn {
   border-bottom: 1px solid rgb(222, 226, 230);
   vertical-align: middle;
 }
+
+/* React confirm alert fixes begin */
+.react-confirm-alert-overlay {
+  z-index: 2000;
+}
+/* React confirm alert fixes end */

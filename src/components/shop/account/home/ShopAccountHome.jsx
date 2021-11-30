@@ -11,7 +11,8 @@ import {
   Grid,
   Container
 } from "tabler-react";
-import SiteWrapperShop from "../../../SiteWrapperShop"
+
+import CSLS from '../../../../tools/cs_local_storage';
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 
 import ShopAccountHomeBase from "./ShopAccountHomeBase"
@@ -20,6 +21,10 @@ import ShopAccountHomeButton from "./ShopAccountHomeButton"
 
 function ShopAccountHome({t, match, history}) {
   const { loading, error, data } = useQuery(GET_USER_PROFILE)
+
+  // Unset any next link for bank accounts that might have come from /shop/subscription/:id
+  localStorage.removeItem(CSLS.SHOP_ACCOUNT_BANK_ACCOUNT_NEXT)
+
 
   if (loading) return (
     <ShopAccountHomeBase>
@@ -108,6 +113,16 @@ function ShopAccountHome({t, match, history}) {
               {t("shop.account.profile.explanation")}
               <br /><br />
               <ShopAccountHomeButton link="/shop/account/profile" buttonText={t("shop.account.btn_text_profile_edit")} />
+            </Card.Body>
+          </Card>
+        </Grid.Col>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
+          <Card>
+            <Card.Body>
+              <h5>{t("shop.account.bank_account.title")}</h5>
+              {t("shop.account.bank_account.explanation")}
+              <br /><br />
+              <ShopAccountHomeButton link="/shop/account/bank_account" buttonText={t("shop.account.btn_text_profile_edit")} />
             </Card.Body>
           </Card>
         </Grid.Col>

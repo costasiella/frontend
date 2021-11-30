@@ -232,34 +232,50 @@ function ScheduleClasses ({ t, history }) {
                           triggerContent={t("general.actions")}
                           items={[
                             <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
-                              <Dropdown.Item
-                                key={v4()}
-                                icon="check-circle"
-                                onClick={() => history.push('/schedule/classes/class/attendance/' + scheduleItemId + '/' + date)}>
-                                  {t("general.attendance")}
-                              </Dropdown.Item>
+                              <Link to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
+                                <Dropdown.Item
+                                  key={v4()}
+                                  icon="check-circle"
+                                >
+                                    {t("general.attendance")}
+                                </Dropdown.Item>
+                              </Link>
+                            </HasPermissionWrapper>,
+                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
+                              <Link to={'/schedule/classes/class/attendance_chart/' + scheduleItemId + '/' + date}>
+                                <Dropdown.Item
+                                  key={v4()}
+                                  icon="bar-chart-2">
+                                    {t("schedule.classes.class.attendance_chart.title")}
+                                </Dropdown.Item>
+                              </Link>
                             </HasPermissionWrapper>,
                             <HasPermissionWrapper key={v4()} permission="view" resource="scheduleclassweeklyotc">
-                              <Dropdown.Item
-                                key={v4()}
-                                icon="edit-3"
-                                onClick={() => history.push('/schedule/classes/class/edit/' + scheduleItemId + '/' + date)}>
+                              <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
+                                <Dropdown.Item
+                                  key={v4()}
+                                  icon="edit-3"
+                                >
                                   {t("general.edit")}
-                              </Dropdown.Item>
+                                </Dropdown.Item>
+                              </Link>
                             </HasPermissionWrapper>,
                             <HasPermissionWrapper key={v4()} permission="change" resource="scheduleclass">
                               <Dropdown.ItemDivider key={v4()} />
-                              <Dropdown.Item
-                                key={v4()}
-                                badge={t('schedule.classes.all_classes_in_series')}
-                                badgeType="secondary"
-                                icon="edit-3"
-                                onClick={() => history.push('/schedule/classes/all/edit/' + scheduleItemId)}>
-                                  {t("general.edit")}
-                              </Dropdown.Item>
+                              <Link to={'/schedule/classes/all/edit/' + scheduleItemId}>
+                                <Dropdown.Item
+                                  key={v4()}
+                                  badge={t('schedule.classes.all_classes_in_series')}
+                                  badgeType="secondary"
+                                  icon="edit-3"
+                                >
+                                    {t("general.edit")}
+                                </Dropdown.Item>
+                              </Link>
                             </HasPermissionWrapper>,
                             <HasPermissionWrapper key={v4()} permission="delete" resource="scheduleclass">
                               <Dropdown.ItemDivider key={v4()} />
+                              <span className="text-red">
                               <Dropdown.Item
                                 key={v4()}
                                 badge={t('schedule.classes.all_classes_in_series')}
@@ -286,9 +302,10 @@ function ScheduleClasses ({ t, history }) {
                                       { query: GET_CLASSES_QUERY, variables: get_list_query_variables() }
                                     ]}
                                   })
-                              }}>
+                                }}>
                               {t("general.delete")}
                               </Dropdown.Item>
+                              </span>
                             </HasPermissionWrapper>
                           ]}
                         />

@@ -93,7 +93,6 @@
         "sort_order": "__STRING_NOT_TRANSLATED__",
         "min_duration": "__STRING_NOT_TRANSLATED__",
         "subscription_unit": "__STRING_NOT_TRANSLATED__",
-        "credit_validity": "__STRING_NOT_TRANSLATED__",
         "a": "__STRING_NOT_TRANSLATED__",
         "edit_price": "__STRING_NOT_TRANSLATED__",
         "confirm_delete": "__STRING_NOT_TRANSLATED__",
@@ -236,7 +235,12 @@
         "key_number": "__STRING_NOT_TRANSLATED__",
         "apply_to": "__STRING_NOT_TRANSLATED__",
         "holiday": "__STRING_NOT_TRANSLATED__",
-        "event": "__STRING_NOT_TRANSLATED__"
+        "event": "__STRING_NOT_TRANSLATED__",
+        "i_agree": "__STRING_NOT_TRANSLATED__",
+        "months": "__STRING_NOT_TRANSLATED__",
+        "first_month": "__STRING_NOT_TRANSLATED__",
+        "registration_fee": "__STRING_NOT_TRANSLATED__",
+        "revenue": "__STRING_NOT_TRANSLATED__"
     },
     "settings": {
         "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -382,6 +386,11 @@
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "min_duration_in_days": "__STRING_NOT_TRANSLATED__",
                 "max_pauses_in_year": "__STRING_NOT_TRANSLATED__"
+            },
+            "shop": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "subscription_payment_method": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -518,7 +527,9 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "add": "__STRING_NOT_TRANSLATED__",
+            "mollie": "__STRING_NOT_TRANSLATED__",
+            "direct_debit": "__STRING_NOT_TRANSLATED__"
         },
         "invoice": {
             "title": "__STRING_NOT_TRANSLATED__",
@@ -811,6 +822,12 @@
                 "payment_received": "__STRING_NOT_TRANSLATED__",
                 "payment_not_confirmed": "__STRING_NOT_TRANSLATED__",
                 "to_profile": "__STRING_NOT_TRANSLATED__"
+            },
+            "bank_account": {
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
@@ -839,8 +856,7 @@
             "booked": {
                 "class": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
-                "class_explanation": "__STRING_NOT_TRANSLATED__",
-                "class_info": "__STRING_NOT_TRANSLATED__"
+                "class_explanation": "__STRING_NOT_TRANSLATED__"
             },
             "filter_all_locations": "__STRING_NOT_TRANSLATED__",
             "filter_all_classtypes": "__STRING_NOT_TRANSLATED__",
@@ -861,11 +877,17 @@
         "subscriptions": {
             "title": "__STRING_NOT_TRANSLATED__",
             "choose": "__STRING_NOT_TRANSLATED__",
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "min_duration_in_months": "__STRING_NOT_TRANSLATED__"
         },
         "subscription": {
             "error_loading": "__STRING_NOT_TRANSLATED__",
-            "additional_information": "__STRING_NOT_TRANSLATED__"
+            "additional_information": "__STRING_NOT_TRANSLATED__",
+            "bank_account_required": "__STRING_NOT_TRANSLATED__",
+            "bank_account_required_explanation": "__STRING_NOT_TRANSLATED__",
+            "to_bank_account": "__STRING_NOT_TRANSLATED__",
+            "start_on": "__STRING_NOT_TRANSLATED__",
+            "please_select_date": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "title": "__STRING_NOT_TRANSLATED__",
@@ -887,6 +909,15 @@
                 "regular_price": "__STRING_NOT_TRANSLATED__",
                 "free": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "subscription_directdebit_activated": {
+            "thank_you": "__STRING_NOT_TRANSLATED__",
+            "message_activated": "__STRING_NOT_TRANSLATED__",
+            "starting_on": "__STRING_NOT_TRANSLATED__",
+            "next_book_class": "__STRING_NOT_TRANSLATED__",
+            "next_account": "__STRING_NOT_TRANSLATED__",
+            "what_next_question": "__STRING_NOT_TRANSLATED__",
+            "next_continue_shopping": "__STRING_NOT_TRANSLATED__"
         }
     },
     "home": {
@@ -908,7 +939,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "subscriptions": {
@@ -920,10 +952,25 @@
             "active": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "explanation": "__STRING_NOT_TRANSLATED__"
         },
-        "classpass": {
-            "title": "__STRING_NOT_TRANSLATED__"
+        "home": {
+            "link_view": "__STRING_NOT_TRANSLATED__"
+        },
+        "revenue": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "total": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
+            },
+            "subtotal": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "tax": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "datetime": {
@@ -1024,7 +1071,6 @@
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-            "toast_image_save_success": "__STRING_NOT_TRANSLATED__",
             "edit_image": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__",
             "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -1094,7 +1140,8 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "add": "__STRING_NOT_TRANSLATED__",
+            "credit_accumulation_days": "__STRING_NOT_TRANSLATED__"
         },
         "organization": {
             "title": "__STRING_NOT_TRANSLATED__",
@@ -1402,7 +1449,14 @@
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             },
             "documents": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+                "add": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
@@ -1528,6 +1582,9 @@
                     "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
                     "delete_success": "__STRING_NOT_TRANSLATED__",
                     "delete_all_changes": "__STRING_NOT_TRANSLATED__"
+                },
+                "attendance_chart": {
+                    "title": "__STRING_NOT_TRANSLATED__"
                 }
             },
             "no_teacher": "__STRING_NOT_TRANSLATED__",

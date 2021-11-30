@@ -1,7 +1,6 @@
 // @flow
 
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -12,43 +11,36 @@ import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 // import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
-import SettingsFinanceBankAccountsForm from "./SettingsFinanceBankAccountsForm"
+import SettingsWorkflowShopForm from "./SettingsWorkflowShopForm"
 
 
-function SettingsFinanceIBAN({ t, match, history }) {
-  const headerSubTitle = t('settings.finance.title')
-  const cardTitle = t("settings.finance.bank_accounts.title")
+function SettingsWorkflowShop({ t, match, history }) {
+  const headerSubTitle = t('settings.workflow.title')
+  const cardTitle = t("settings.workflow.shop.title")
 
   const { 
-    loading: loading, 
-    error: error, 
-    data: data 
+    loading: loadingSubscriptionPayment, 
+    error: errorSubscriptionPayment, 
+    data: dataSubscriptionPayment 
   } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
     variables: {
-      setting: "finance_bank_accounts_iban"
-    },
-    // fetchPolicy: "network-only"
+      setting: "workflow_shop_subscription_payment_method"
+    }
   })
   const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
-  if (loading) {
+  if (loadingSubscriptionPayment) {
     return (
       <SettingsBase 
           headerSubTitle={headerSubTitle}
           cardTitle={cardTitle}
-      >
+      >  
         <Card.Body>
           <Dimmer active={true}
                   loader={true}>
@@ -57,7 +49,7 @@ function SettingsFinanceIBAN({ t, match, history }) {
       </SettingsBase>
     )
   }
-  if (error) {
+  if (errorSubscriptionPayment) {
     return (
       <SettingsBase 
           headerSubTitle={headerSubTitle}
@@ -70,14 +62,14 @@ function SettingsFinanceIBAN({ t, match, history }) {
     )
   }
 
-  console.log('query data app settings')
-  console.log(data)
+  console.log('query data settings')
+  console.log(dataSubscriptionPayment)
 
   let initialValues = {
-    iban: false
+    workflow_shop_subscription_payment_method: "",
   }
-  if (data.systemSettings.edges.length){
-    initialValues['iban'] = (data.systemSettings.edges[0].node.value.toLowerCase() === 'true')
+  if (dataSubscriptionPayment.systemSettings.edges.length){
+    initialValues['workflow_shop_subscription_payment_method'] = dataSubscriptionPayment.systemSettings.edges[0].node.value
   } 
     
   return (
@@ -87,7 +79,7 @@ function SettingsFinanceIBAN({ t, match, history }) {
     >  
     <Formik
       initialValues={{ 
-        finance_bank_accounts_iban: initialValues['iban'],
+        workflow_shop_subscription_payment_method: initialValues['workflow_shop_subscription_payment_method'],
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
@@ -96,7 +88,8 @@ function SettingsFinanceIBAN({ t, match, history }) {
           console.log(errors)
 
           const settings = [
-            { setting: "finance_bank_accounts_iban", value: values.finance_bank_accounts_iban },
+            { setting: "workflow_shop_subscription_payment_method", 
+              value: values.workflow_shop_subscription_payment_method },
           ]
 
           let error = false
@@ -132,13 +125,13 @@ function SettingsFinanceIBAN({ t, match, history }) {
       }}
     >
       {({ isSubmitting, errors, values }) => (
-        <SettingsFinanceBankAccountsForm
+        <SettingsWorkflowShopForm
           isSubmitting={isSubmitting}
           errors={errors}
           values={values}
         >
           {console.log(errors)}
-        </SettingsFinanceBankAccountsForm>
+        </SettingsWorkflowShopForm>
       )}
       </Formik>
     </SettingsBase>
@@ -146,4 +139,4 @@ function SettingsFinanceIBAN({ t, match, history }) {
 }
 
 
-export default withTranslation()(withRouter(SettingsFinanceIBAN))
+export default withTranslation()(withRouter(SettingsWorkflowShop))

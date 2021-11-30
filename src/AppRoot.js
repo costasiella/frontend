@@ -12,6 +12,7 @@ import { withTranslation } from 'react-i18next'
 import { useQuery, useMutation } from "@apollo/client"
 import { toast } from 'react-toastify'
 
+
 import { GET_APP_SETTINGS_QUERY } from "./components/settings/general/date_time/queries"
 import { GET_ORGANIZATION_QUERY } from "./components/organization/organization/queries"
 import { TOKEN_REFRESH } from "./queries/system/auth"
@@ -19,6 +20,8 @@ import { TOKEN_REFRESH } from "./queries/system/auth"
 // Import moment locale
 import moment from 'moment'
 import 'moment/locale/nl'
+
+import CSStandalonePageLoader from './components/ui/CSStandalonePageLoader'
 
 import { AppSettingsProvider } from "./components/context/AppSettingsContext"
 import { OrganizationProvider } from "./components/context/OrganizationContext"
@@ -73,6 +76,7 @@ import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdi
 
 import InsightHome from './components/insight/home/InsightHome'
 import InsightClasspasses from './components/insight/classpasses/InsightClasspasses'
+import InsightRevenue from './components/insight/revenue/InsightRevenue'
 import InsightSubscriptions from './components/insight/subscriptions/InsightSubscriptions'
 
 import OrganizationHome from './components/organization/home/OrganizationHome'
@@ -206,6 +210,7 @@ import ScheduleClassTeachers from './components/schedule/classes/all/teachers/Sc
 import ScheduleClassTeacherAdd from './components/schedule/classes/all/teachers/ScheduleClassTeacherAdd'
 import ScheduleClassTeacherEdit from './components/schedule/classes/all/teachers/ScheduleClassTeacherEdit'
 import ScheduleClassAttendance from './components/schedule/classes/class/attendance/ScheduleClassAttendance'
+import ScheduleClassAttendanceChart from './components/schedule/classes/class/attendance_chart/ScheduleClassAttendanceChart'
 import ScheduleClassBook from './components/schedule/classes/class/book/ScheduleClassBook'
 import ScheduleClassEdit from './components/schedule/classes/class/edit/ScheduleClassEdit'
 import ScheduleClassPrices from './components/schedule/classes/all/prices/ScheduleClassPrices'
@@ -246,10 +251,12 @@ import SettingsMailTemplates from './components/settings/mail/SettingsMailTempla
 import SettingsMailTemplateEdit from './components/settings/mail/SettingsMailTemplateEdit'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
 import SettingsWorkflowClassBooking from './components/settings/workflow/class_booking/SettingsWorkflowClassBooking'
+import SettingsWorkflowShop from './components/settings/workflow/shop/SettingsWorkflowShop'
 import SettingsWorkflowSubscriptionPauses from './components/settings/workflow/subscription_pauses/SettingsWorkflowSubscriptionPauses'
 import SettingsWorkflowTrial from './components/settings/workflow/trial/SettingsWorkflowTrial'
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
+import c from './components/shop/account/bank_account/ShopAccountBankAccount'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
 import ShopAccountClassInfo from './components/shop/account/class_info/ShopAccountClassInfo'
 import ShopAccountClasspasses from './components/shop/account/classpasses/ShopAccountClasspasses'
@@ -275,6 +282,7 @@ import ShopClasspasses from './components/shop/classpasses/ShopClasspasses'
 import ShopClasspass from './components/shop/classpass/ShopClasspass'
 import ShopSubscriptions from './components/shop/subscriptions/ShopSubscriptions'
 import ShopSubscription from './components/shop/subscription/ShopSubscription'
+import ShopSubscriptionDirectDebitActivated from './components/shop/subscription_directdebit_activated/ShopSubscriptionDirectDebitActivated'
 
 import UserChangePassword from './components/user/password/UserPasswordChange'
 import UserLogin from './components/user/login/UserLogin'
@@ -288,6 +296,7 @@ import Error404 from "./components/Error404"
 
 import CSLS from "./tools/cs_local_storage"
 import { CSAuth } from './tools/authentication'
+import ShopAccountBankAccount from './components/shop/account/bank_account/ShopAccountBankAccount'
 
 
 function SetCurrentUrlAsNext() {
@@ -363,7 +372,13 @@ function AppRoot({ t }) {
     variables: {id: "T3JnYW5pemF0aW9uTm9kZToxMDA="}
   })
 
-  if (loadingAppSettings || loadingOrganization) return t('general.loading_with_dots')
+
+
+  if (loadingAppSettings || loadingOrganization) {
+    return (
+      <CSStandalonePageLoader />
+    )
+  }
   if (errorAppSettings || errorOrganization) {
     if (errorAppSettings.message == "Signature has expired")  {
       return ""
@@ -597,6 +612,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/add" component={ScheduleClassTeacherAdd} />
             <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/edit/:id" component={ScheduleClassTeacherEdit} />
             <PrivateRoute exact path="/schedule/classes/class/attendance/:class_id/:date" component={ScheduleClassAttendance} />
+            <PrivateRoute exact path="/schedule/classes/class/attendance_chart/:class_id/:date" 
+                          component={ScheduleClassAttendanceChart} />
             <PrivateRoute exact path="/schedule/classes/class/book/:class_id/:date/:account_id" component={ScheduleClassBook} />
             <PrivateRoute exact path="/schedule/classes/class/edit/:class_id/:date" component={ScheduleClassEdit} />
             <PrivateRoute exact path="/schedule/events" component={ScheduleEvents} />
@@ -622,6 +639,7 @@ function AppRoot({ t }) {
             {/* Insight */}
             <PrivateRoute exact path="/insight" component={InsightHome} />
             <PrivateRoute exact path="/insight/classpasses" component={InsightClasspasses} />
+            <PrivateRoute exact path="/insight/revenue" component={InsightRevenue} />
             <PrivateRoute exact path="/insight/subscriptions" component={InsightSubscriptions} />
 
             {/* Self Check-in */}
@@ -634,6 +652,7 @@ function AppRoot({ t }) {
             {/* Shop */}
             <Route exact path = "/" component={ShopHome} />
             <PrivateRoute exact path = "/shop/account" component={ShopAccountHome} />
+            <PrivateRoute exact path = "/shop/account/bank_account" component={ShopAccountBankAccount} />
             <PrivateRoute exact path = "/shop/account/class_cancel/:class_id/:date/:attendance_id" 
                                 component={ShopAccountClassCancel} />
             <PrivateRoute exact path = "/shop/account/class_info/:class_id/:date" component={ShopAccountClassInfo} />
@@ -660,6 +679,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/events/:event_id/ticket/:id" component={ShopEventTicket} />
             <Route exact path = "/shop/subscriptions" component={ShopSubscriptions} />
             <PrivateRoute exact path = "/shop/subscription/:id" component={ShopSubscription} />
+            <PrivateRoute exact path = "/shop/subscription/direct_debit_activated/:id" component={ShopSubscriptionDirectDebitActivated} />
 
             {/* Settings */}
             <PrivateRoute exact path="/settings" component={SettingsHome} />
@@ -673,6 +693,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />
             <PrivateRoute exact path="/settings/workflow/class_booking" component={SettingsWorkflowClassBooking} />
+            <PrivateRoute exact path="/settings/workflow/shop" component={SettingsWorkflowShop} />
             <PrivateRoute exact path="/settings/workflow/subscription_pauses" component={SettingsWorkflowSubscriptionPauses} />
             <PrivateRoute exact path="/settings/workflow/trial" component={SettingsWorkflowTrial} />
 

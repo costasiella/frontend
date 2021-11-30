@@ -14,7 +14,7 @@ import { GET_SHOP_FEATURES_QUERY } from "../components/settings/shop/features/qu
 import OrganizationContext from './context/OrganizationContext'
 import CSLS from "../tools/cs_local_storage"
 import { get_all_permissions, has_permission } from "../tools/user_tools"
-
+import CSStandalonePageLoader from "./ui/CSStandalonePageLoader"
 
 import {
   Site,
@@ -180,7 +180,7 @@ function SiteWrapperShop({t, match, history, children}) {
   console.log(organization)
   // const { error, loading, data, fetchMore } = useQuery(GET_USER)
 
-  if (loading) return <p>{t('general.loading_with_dots')}</p>;
+  if (loading) return <CSStandalonePageLoader/>;
   if (error) return <p>{t('system.user.error_loading')}</p>; 
 
   console.log(data)
@@ -261,16 +261,18 @@ function SiteWrapperShop({t, match, history, children}) {
           //   "Premium and Open Source dashboard template with responsive and high quality UI. For Free!",
           copyright: (
             <React.Fragment>
-              Copyleft © {now.getFullYear()}.
-              <a
-                href="https://www.costasiella.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                Edwin van de Ven
-              </a>{". "}
-              All rights reserved.
+              <small>
+                Peacefully powered by
+                <a
+                  href="https://www.costasiella.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  Costasiella
+                </a>{". "}
+                All rights reserved © {now.getFullYear()}.
+              </small>
             </React.Fragment>
           ),
           nav: (
