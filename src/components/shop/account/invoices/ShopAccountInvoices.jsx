@@ -158,12 +158,12 @@ function ShopAccountInvoices({t, match, history}) {
                         </Link>
                         : ""
                       }  
-                      {/* TODO: Add token refresh here within an onClick */}
                       <Button 
-                        RootComponent="a"
-                        href={`/d/export/invoice/pdf/${node.id}`}
                         color="secondary"
                         icon="printer"
+                        onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+                          doTokenRefresh, history, `/d/export/invoice/pdf/${node.id}`
+                        )}
                       >
                         {t('general.pdf')}
                       </Button>              
