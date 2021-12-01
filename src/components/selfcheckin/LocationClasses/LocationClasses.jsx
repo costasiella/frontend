@@ -50,9 +50,10 @@ function LocationClasses({ t, match, history }) {
   )
 
   console.log(data)
+  const subTitle = data.organizationLocation.name
 
   return (
-    <SelfCheckinBase title={t("selfcheckin.classes.title")}>
+    <SelfCheckinBase title={t("selfcheckin.classes.title")} subTitle={subTitle}>
       <Card>
       <Table>
         <Table.Header>
