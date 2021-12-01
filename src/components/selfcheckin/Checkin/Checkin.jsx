@@ -63,7 +63,7 @@ function SelfCheckinCheckin({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-  // const today = moment().format('YYYY-MM-DD')
+  const dateTimeFormat = dateFormat + " " + timeFormat
 
   const { 
     refetch: refetchAttendance, 
@@ -108,9 +108,16 @@ function SelfCheckinCheckin({ t, match, history }) {
     checkedInIds.push(node.account.id)
   ))
   console.log(checkedInIds)
+  const scheduleItem = queryAttendanceData.scheduleItem
+
+  const subTitle = <span>
+    {scheduleItem.organizationLocationRoom.organizationLocation.name} { " - " }
+    {moment(class_date + " " +  scheduleItem.timeStart).format(dateTimeFormat)} { " " } 
+    {scheduleItem.organizationClasstype.name} { " " }
+  </span> 
 
   return (
-    <SelfCheckinBase title={t("selfcheckin.classes.title")}>
+    <SelfCheckinBase title={t("selfcheckin.classes.title")} subTitle={subTitle}>
       <ContentCard cardTitle={t('general.attendance')}
                     pageInfo={queryAttendanceData.scheduleItemAttendances.pageInfo}
                     onLoadMore={() => {
