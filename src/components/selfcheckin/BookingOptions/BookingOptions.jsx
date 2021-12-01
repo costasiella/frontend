@@ -1,8 +1,7 @@
 // @flow
 
-import React, { Component, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
-import { Query, Mutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -11,17 +10,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import {
-  Alert,
-  Page,
   Grid,
-  Icon,
-  Dimmer,
-  Badge,
-  Button,
-  Card,
-  Container,
-  Table,
-  StampCard
 } from "tabler-react";
 import SelfCheckinBase from "../SelfCheckinBase"
 // import HasPermissionWrapper from "../../../HasPermissionWrapper"
@@ -31,7 +20,10 @@ import { toast } from 'react-toastify'
 // import { class_edit_all_subtitle } from "../../schedule/classes/tools"
 // import confirm_delete from "../../../../tools/confirm_delete"
 
-import { class_subtitle, get_accounts_query_variables } from "../../schedule/classes/class/tools"
+import AppSettingsContext from '../../context/AppSettingsContext'
+
+import { get_accounts_query_variables } from "../../schedule/classes/class/tools"
+import { getSubtitle } from "../Checkin/tools"
 
 // import ContentCard from "../../../../general/ContentCard"
 // import ScheduleClassBookBack from "./ScheduleClassBookBack"
@@ -56,6 +48,11 @@ const DELETE_SCHEDULE_CLASS_TEACHER = gql`
 
 function SelfCheckinBookingOptions({ t, match, history }) {
   const [showSearch, setShowSearch] = useState(false)
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+  const timeFormat = appSettings.timeFormatMoment
+  const dateTimeFormat = dateFormat + " " + timeFormat
+
   const return_url = "/schedule/classes/"
   const account_id = match.params.account_id
   const schedule_item_id = match.params.class_id
@@ -87,20 +84,17 @@ function SelfCheckinBookingOptions({ t, match, history }) {
   const subscriptions = queryData.scheduleClassBookingOptions.subscriptions
   const prices = queryData.scheduleClassBookingOptions.scheduleItemPrices
   const scheduleItem = queryData.scheduleClassBookingOptions.scheduleItem
-  const subtitle = class_subtitle({
-    t: t,
-    location: scheduleItem.organizationLocationRoom.organizationLocation.name, 
-    locationRoom: scheduleItem.organizationLocationRoom.name,
-    classtype: scheduleItem.organizationClasstype.name, 
-    timeStart: TimeStringToJSDateOBJ(scheduleItem.timeStart), 
-    date: class_date
-  })
-
   console.log(prices)
   
+  const subTitle = getSubtitle(
+    class_date,
+    scheduleItem,
+    dateTimeFormat
+  )
+
   
   return (
-    <SelfCheckinBase title={t("selfcheckin.classes.title")}>
+    <SelfCheckinBase title={t("selfcheckin.classes.title")} subTitle={subTitle}>
       <Grid.Row>
           <Grid.Col md={12}>
             <h4>{t('general.booking_options')} {account.fullName}</h4>

@@ -1,5 +1,5 @@
 import CSLS from "../../../tools/cs_local_storage"
-import { withRouter } from "react-router"
+import moment from 'moment'
 
 export function get_accounts_query_variables() {
   let queryVars = {
@@ -21,4 +21,12 @@ export function get_attendance_list_query_variables(schedule_item_id, date) {
     scheduleItem: schedule_item_id,
     date: date
   }
+}
+
+export function getSubtitle(classDate, scheduleItem, dateTimeFormat) {
+  return <span>
+    {scheduleItem.organizationLocationRoom.organizationLocation.name} { " - " }
+    {moment(classDate + " " +  scheduleItem.timeStart).format(dateTimeFormat)} { " " } 
+    {scheduleItem.organizationClasstype.name} { " " }
+  </span> 
 }

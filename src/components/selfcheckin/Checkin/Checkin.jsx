@@ -24,7 +24,7 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { GET_ACCOUNTS_QUERY, GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, UPDATE_SCHEDULE_ITEM_ATTENDANCE } from "./queries"
-import { get_attendance_list_query_variables, get_accounts_query_variables } from "./tools"
+import { get_attendance_list_query_variables, get_accounts_query_variables, getSubtitle } from "./tools"
 import CSLS from "../../../tools/cs_local_storage"
 import BadgeBookingStatus from "../../ui/BadgeBookingStatus"
 import ContentCard from "../../general/ContentCard"
@@ -110,11 +110,11 @@ function SelfCheckinCheckin({ t, match, history }) {
   console.log(checkedInIds)
   const scheduleItem = queryAttendanceData.scheduleItem
 
-  const subTitle = <span>
-    {scheduleItem.organizationLocationRoom.organizationLocation.name} { " - " }
-    {moment(class_date + " " +  scheduleItem.timeStart).format(dateTimeFormat)} { " " } 
-    {scheduleItem.organizationClasstype.name} { " " }
-  </span> 
+  const subTitle = getSubtitle(
+    class_date,
+    scheduleItem,
+    dateTimeFormat
+  )
 
   return (
     <SelfCheckinBase title={t("selfcheckin.classes.title")} subTitle={subTitle}>
