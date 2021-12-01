@@ -204,16 +204,18 @@ function SiteWrapperSelfCheckin({t, match, history, children}) {
         //   "Premium and Open Source dashboard template with responsive and high quality UI. For Free!",
         copyright: (
           <React.Fragment>
-            Copyleft © {now.getFullYear()}.
-            <a
-              href="https://www.costasiella.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {" "}
-              Edwin van de Ven
-            </a>{". "}
-            All rights reserved.
+            <small>
+              Peacefully powered by
+              <a
+                href="https://www.costasiella.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                Costasiella
+              </a>{". "}
+              All rights reserved © {now.getFullYear()}.
+            </small>
           </React.Fragment>
         ),
         nav: (
