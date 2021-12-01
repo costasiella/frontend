@@ -1,8 +1,7 @@
 // @flow
 
 import React, { useContext, useState } from 'react'
-import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
-import { gql } from "@apollo/client"
+import { useQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -15,35 +14,20 @@ import {
 import SelfCheckinBase from "../SelfCheckinBase"
 // import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
-// import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
-// import { class_edit_all_subtitle } from "../../schedule/classes/tools"
-// import confirm_delete from "../../../../tools/confirm_delete"
 
 import AppSettingsContext from '../../context/AppSettingsContext'
 
 import { get_accounts_query_variables } from "../../schedule/classes/class/tools"
 import { getSubtitle } from "../Checkin/tools"
 
-// import ContentCard from "../../../../general/ContentCard"
-// import ScheduleClassBookBack from "./ScheduleClassBookBack"
 import ScheduleClassBookClasspasses from "../../schedule/classes/class/book/ScheduleClassBookClasspasses"
-// import ScheduleClassBookClasspasses from ""
+import CSLS from "../../../tools/cs_local_storage"
 import ScheduleClassBookSubscriptions from "../../schedule/classes/class/book/ScheduleClassBookSubscriptions"
 import ScheduleClassBookPriceDropin from "../../schedule/classes/class/book/ScheduleClassBookPriceDropin"
 import ScheduleClassBookPriceTrial from "../../schedule/classes/class/book/ScheduleClassBookPriceTrial"
-// import ClassEditBase from "../ClassEditBase"
 
 import { GET_BOOKING_OPTIONS_QUERY } from "./queries"
-// import CSLS from "../../../../tools/cs_local_storage"
-
-const DELETE_SCHEDULE_CLASS_TEACHER = gql`
-  mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemTeacherInput!) {
-    deleteScheduleItemTeacher(input: $input) {
-      ok
-    }
-  }
-`
 
 
 function SelfCheckinBookingOptions({ t, match, history }) {
@@ -69,6 +53,9 @@ function SelfCheckinBookingOptions({ t, match, history }) {
     }
   )
 
+  // Remove search in checkin component
+  localStorage.removeItem(CSLS.SELFCHECKIN_CHECKIN_SEARCH)
+
   // Query
   // Loading
   if (queryLoading) return <p>{t('general.loading_with_dots')}</p>
@@ -91,7 +78,6 @@ function SelfCheckinBookingOptions({ t, match, history }) {
     scheduleItem,
     dateTimeFormat
   )
-
   
   return (
     <SelfCheckinBase title={t("selfcheckin.classes.title")} subTitle={subTitle}>

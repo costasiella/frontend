@@ -90,7 +90,7 @@ function SelfCheckinCheckin({ t, match, history }) {
 
   console.log('queryAccountsData')
   console.log(queryAccountsData)
-  
+
   if (queryAttendanceLoading) return (
     <SelfCheckinBase>
       {t("general.loading_with_dots")}
