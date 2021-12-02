@@ -5,9 +5,9 @@ export const GET_CLASSES_QUERY = gql`
       $dateFrom: Date!, 
       $dateUntil:Date!, 
       $orderBy: String, 
-      $organizationClasstype: String,
-      $organizationLevel: String,
-      $organizationLocation: String,
+      $organizationClasstype: ID,
+      $organizationLevel: ID,
+      $organizationLocation: ID,
       $attendanceCountType: String!
     ){
     scheduleClasses(
