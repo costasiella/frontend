@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
+import { toast } from 'react-toastify'
 
 import {
   Button,
@@ -58,6 +59,12 @@ function UserLogin({t, match, history}) {
                 const next = localStorage.getItem(CSLS.AUTH_LOGIN_NEXT) || "/user/welcome"
                 CSAuth.login(data.tokenAuth)
                 setTimeout(() => history.push(next), 500)
+            }).catch((error) => {
+              toast.error((t('general.toast_server_error')) +  error, {
+                  position: toast.POSITION.BOTTOM_RIGHT
+                })
+              console.log(error)
+              setSubmitting(false)
             })
         }}
         >
