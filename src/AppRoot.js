@@ -73,6 +73,7 @@ import FinancePaymentMethodEdit from './components/finance/payment_methods/Finan
 import FinanceTaxRates from './components/finance/taxrates/FinanceTaxRates'
 import FinanceTaxRatesAdd from './components/finance/taxrates/FinanceTaxRateAdd'
 import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdit'
+import FinanceTaxRatesSummary from './components/finance/taxrates_summary/FinanceTaxRatesSummary'
 
 import InsightHome from './components/insight/home/InsightHome'
 import InsightClasspasses from './components/insight/classpasses/InsightClasspasses'
@@ -460,6 +461,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/taxrates" component={FinanceTaxRates} />
             <PrivateRoute exact path="/finance/taxrates/add" component={FinanceTaxRatesAdd} />
             <PrivateRoute exact path="/finance/taxrates/edit/:id" component={FinanceTaxRatesEdit} />
+            <PrivateRoute exact path="/finance/taxrates_summary" component={FinanceTaxRatesSummary} />
             
             {/* ORGANIZATION */}
             <PrivateRoute exact path="/organization" component={OrganizationHome} />
