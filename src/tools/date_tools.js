@@ -1,11 +1,14 @@
+import moment from 'moment'
+
 export function dateToLocalISO(date) {
-    if (date instanceof Date) {
-        return date.getFullYear() + '-' + 
-               ("0" + (date.getMonth() + 1)).slice(-2) + '-' +
-               ("0" + date.getDate()).slice(-2)
-    } else {
-        return date
-    }
+    return moment(date).format("YYYY-MM-DD")
+    // if (date instanceof Date) {
+    //     return date.getFullYear() + '-' + 
+    //            ("0" + (date.getMonth() + 1)).slice(-2) + '-' +
+    //            ("0" + date.getDate()).slice(-2)
+    // } else {
+    //     return date
+    // }
 }
 
 export function dateToLocalISOTime(date) {
