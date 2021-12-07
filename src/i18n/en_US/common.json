@@ -252,7 +252,11 @@
         },
         "taxrates_summary": {
             "title": "Tax summary",
-            "explanation": "Tax summary in a given period"
+            "explanation": "Tax summary in a given period",
+            "error_loading": "Error loading tax summary... :(",
+            "empty_list": "No data found within the selected dates",
+            "set_dates": "Set dates",
+            "taxable_amount": "Taxable amount"
         }
     },
     "general": {

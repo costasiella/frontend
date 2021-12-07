@@ -63,13 +63,14 @@ function FinanceTaxRatesSummaryFilter({ t, history, values, errors, data, isSubm
         <ErrorMessage name="dateEnd" component="span" className="invalid-feedback" />
       </Form.Group>
       <Button 
-          color="primary"
-          className="pull-right" 
-          type="submit" 
-          disabled={isSubmitting}
-        >
-          {t('general.submit')}
-        </Button>
+        block
+        color="primary"
+        className="pull-right" 
+        type="submit" 
+        disabled={isSubmitting}
+      >
+        {t('finance.taxrates_summary.set_dates')}
+      </Button>
     </FoForm>
   )
 }

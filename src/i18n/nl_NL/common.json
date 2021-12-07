@@ -624,7 +624,11 @@
         },
         "taxrates_summary": {
             "title": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "set_dates": "__STRING_NOT_TRANSLATED__",
+            "taxable_amount": "__STRING_NOT_TRANSLATED__"
         },
         "invoice": {
             "title": "__STRING_NOT_TRANSLATED__",

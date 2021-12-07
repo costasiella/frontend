@@ -42,19 +42,24 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
+              {/* <h5 className="mt-2 pt-1">{t("general.filter")}</h5> */}
               <Formik 
                 initialValues={{
                   dateStart: new Date(dateStart),
                   dateEnd: new Date(dateEnd)
                 }}
-                onSubmit={(values, { setSubmitting, setTouched }) => {
+                onSubmit={(values, { setSubmitting }) => {
                   console.log("hello world")
+
+                  refetch({
+                    dateStart: dateToLocalISO(values.dateStart),
+                    dateEnd: dateToLocalISO(values.dateEnd),
+                  })
+                  setSubmitting(false)
                   
                 }}
-
               >
-                {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched }) => (
+                {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (
                 <FinanceTaxRatesSummaryFilter 
                   isSubmitting={isSubmitting}
                   errors={errors}
@@ -62,9 +67,11 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
                   touched={touched}
                   handleChange={handleChange}
                   setFieldTouched={setFieldTouched}
+                  setFieldValue={setFieldValue}
                 />
                 )}
               </Formik>
+              <br /><br /><br />
               <h5>{t("general.menu")}</h5>
               <FinanceMenu activeLink='taxrates_summary'/>
             </Grid.Col>

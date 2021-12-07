@@ -79,6 +79,7 @@ function FinanceTaxRatesSummary({ t, location, history }) {
     <FinanceTaxRatesSummaryBase refetch={refetch}>
       <ContentCard cardTitle={t('finance.taxrates_summary.title')}
                   pageInfo={taxRatesSummary.pageInfo}
+                  hasCardBody={false}
                   // onLoadMore={() => {
                   //   fetchMore({
                   //     variables: {
@@ -103,82 +104,25 @@ function FinanceTaxRatesSummary({ t, location, history }) {
                   //   })
                   // }} 
         >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.tax_rate')}</Table.ColHeader> // Tax rate name
-              <Table.ColHeader>{t('general.percentage')}</Table.ColHeader> // Percentage
-              <Table.ColHeader>{t('general.total')}</Table.ColHeader> // Percentage
+              <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader>{t('finance.taxrates.percentage')}</Table.ColHeader>
+              <Table.ColHeader>{t('finance.taxrates_summary.taxable_amount')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.tax')}</Table.ColHeader>
 
             </Table.Row>
           </Table.Header>
           <Table.Body>
-              {/* {invoices.edges.map(({ node }) => (
-                <Table.Row key={v4()}>
-                  <Table.Col key={v4()}>
-                    <FinanceInvoicesStatus status={node.status} />
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    <Link to={"/finance/invoices/edit/" + node.id}>
-                      {node.invoiceNumber}
-                    </Link>
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    {(node.account) ? 
-                      <Link to={"/relations/accounts/" + node.account.id + "/profile"}>
-                        {(node.relationCompany) ? node.relationCompany: node.relationContactName}
-                      </Link> :
-                      (node.relationCompany) ? node.relationCompany: node.relationContactName
-                    }
-                    <br />
-                    <Text.Small color="gray">{node.summary.trunc(20)}</Text.Small>
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    {moment(node.dateSent).format('LL')} <br />
-                    {moment(node.dateDue).format('LL')}
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    {node.totalDisplay}
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    {node.balanceDisplay}
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
-                    <Link to={"/finance/invoices/edit/" + node.id}>
-                      <Button className='btn-sm' 
-                              color="secondary">
-                        {t('general.edit')}
-                      </Button>
-                    </Link>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
-                    <button className="icon btn btn-link btn-sm" 
-                      title={t('general.delete')} 
-                      href=""
-                      onClick={() => {
-                        confirm_delete({
-                          t: t,
-                          msgConfirm: t("finance.invoices.delete_confirm_msg"),
-                          msgDescription: <p>{node.invoiceNumber}</p>,
-                          msgSuccess: t('finance.invoices.deleted'),
-                          deleteFunction: deleteFinanceInvoice,
-                          functionVariables: { 
-                            variables: {
-                              input: {
-                                id: node.id
-                              }
-                            }, 
-                            refetchQueries: [
-                              {query: GET_INVOICES_QUERY, variables: get_list_query_variables() } 
-                            ]
-                          }
-                        })
-                    }}>
-                      <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
-                    </button>
-                </Table.Col>
-                </Table.Row>
-              ))} */}
+            {taxRatesSummary.data.map(({financeTaxRate, taxDisplay, subtotalDisplay }) => (
+              <Table.Row>
+                <Table.Col>{financeTaxRate.name}</Table.Col>
+                <Table.Col>{financeTaxRate.percentage} %</Table.Col>
+                <Table.Col>{subtotalDisplay}</Table.Col>
+                <Table.Col>{taxDisplay}</Table.Col>
+              </Table.Row>  
+            ))}
           </Table.Body>
         </Table>
       </ContentCard>
