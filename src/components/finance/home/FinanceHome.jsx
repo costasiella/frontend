@@ -95,16 +95,19 @@ class FinanceHome extends Component {
                       </Card.Body>
                     </Card>
                   </Grid.Col>
-                  <Grid.Col md={4} lg={4}>
-                    <Card>
-                      <Card.Body>
-                        <h5>{t("finance.taxrates_summary.title")}</h5>
-                        {t("finance.taxrates_summary.explanation")}
-                        <br /><br />
-                        <HomeItemButton linkTitle={linkTitleView} link="/finance/taxrates_summary" />
-                      </Card.Body>
-                    </Card>
-                  </Grid.Col>
+                  <HasPermissionWrapper permission="view"
+                              resource="insightfinancetaxratesummary">
+                    <Grid.Col md={4} lg={4}>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("finance.taxrates_summary.title")}</h5>
+                          {t("finance.taxrates_summary.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitleView} link="/finance/taxrates_summary" />
+                        </Card.Body>
+                      </Card>
+                    </Grid.Col>
+                  </HasPermissionWrapper>
                   <Grid.Col md={4} lg={4}>
                     <Card>
                       <Card.Body>

@@ -80,15 +80,18 @@ const FinanceMenu = ({ t, activeLink }) => (
             >
             {t('finance.taxrates.title')}
         </List.GroupItem>
-        <List.GroupItem
-            key={v4()}
-            className="d-flex align-items-center"
-            to="#/finance/taxrates_summary"
-            icon="layout"
-            active={taxrates_summary_active}
-            >
-            {t('finance.taxrates_summary.title')}
-        </List.GroupItem>
+        <HasPermissionWrapper permission="view"
+                              resource="insightfinancetaxratesummary">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to="#/finance/taxrates_summary"
+                icon="layout"
+                active={taxrates_summary_active}
+                >
+                {t('finance.taxrates_summary.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
