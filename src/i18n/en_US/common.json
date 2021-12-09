@@ -1771,6 +1771,10 @@
             "tax": {
                 "title": "Taxes"
             }
+        },
+        "trialpasses": {
+            "title": "Trial passes",
+            "explanation": "Report on trial passes & follow up purchases"
         }
     },
     "selfcheckin": {

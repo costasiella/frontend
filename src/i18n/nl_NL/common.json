@@ -1550,6 +1550,10 @@
             "tax": {
                 "title": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "trialpasses": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {
