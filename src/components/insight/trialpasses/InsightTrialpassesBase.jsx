@@ -21,7 +21,7 @@ import CSLS from "../../../tools/cs_local_storage"
 //   localStorage.setItem(CSLS.INSIGHT_CLASSPASSES_YEAR, moment().format('YYYY')) 
 // } 
 
-function InsightTrialpassesBase ({ t, history, children, year, refetchData=f=>f }) {
+function InsightTrialpassesBase ({ t, history, children, year, refetch=f=>f }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -61,7 +61,12 @@ function InsightTrialpassesBase ({ t, history, children, year, refetchData=f=>f 
             </div>
           </Page.Header>
           <Grid.Row>
-            {children}
+            <Grid.Col md={9}>
+              {children}
+            </Grid.Col>
+            <Grid.Col md={3}>
+              
+            </Grid.Col>
           </Grid.Row>
         </Container>  
       </div>
