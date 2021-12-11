@@ -2,8 +2,8 @@ import { gql } from "@apollo/client"
 
 
 export const GET_TRIALPASSES_QUERY = gql`
-  query AccountClasspasses($dateStart: Date!, $dateEnd: Date!) {
-    accountClasspasses(organizationClasspass_TrialPass: true, dateStart_Gte: $dateStart, dateStart_Lte:$dateEnd), {
+  query AccountClasspasses($dateStartFrom: Date!, $dateStartUntil: Date!) {
+    accountClasspasses(first:100, organizationClasspass_TrialPass: true, dateStart_Gte: $dateStartFrom, dateStart_Lte:$dateStartUntil), {
       edges {
         node {
           id
