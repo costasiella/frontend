@@ -126,6 +126,7 @@ function AccountClasspassEdit({t, history, match}) {
                     toast.success((t('relations.account.classpasses.toast_edit_success')), {
                         position: toast.POSITION.BOTTOM_RIGHT
                       })
+                    setSubmitting(false)
                   }).catch((error) => {
                     toast.error((t('general.toast_server_error')) +  error, {
                         position: toast.POSITION.BOTTOM_RIGHT
