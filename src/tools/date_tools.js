@@ -30,3 +30,15 @@ export function TimeStringToJSDateOBJ(time_string) {
 
     return date_obj
 }
+
+
+export function getFirstDayMonth(year, month) {
+    const firstDayMonth = moment(`${year}-${month}-01`).startOf('month')
+    return new Date(firstDayMonth)
+}
+
+
+export function getLastDayMonth(year, month) {
+    const firstDayMonth = moment(`${year}-${month}-01`).endOf('month')
+    return new Date(firstDayMonth)
+}
