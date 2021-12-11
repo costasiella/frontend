@@ -19,7 +19,7 @@ import {
 } from "tabler-react";
 
 
-const AccountClasspassForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
+const AccountClasspassForm = ({ t, history, create, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
   <FoForm>
     <Card.Body> 
       <Grid.Row>
@@ -53,20 +53,22 @@ const AccountClasspassForm = ({ t, history, inputData, isSubmitting, setFieldVal
             <ErrorMessage name="dateStart" component="span" className="invalid-feedback" />
           </Form.Group>
         </Grid.Col>
-        <Grid.Col>
-          <Form.Group label={t('general.date_end')}>
-            <CSDatePicker 
-              selected={values.dateEnd}
-              onChange={(date) => {
-                setFieldValue("dateEnd", date)
-                setFieldTouched("dateEnd", true)
-              }}
-              onBlur={() => setFieldTouched("dateEnd", true)}
-              placeholderText={t('schedule.classes.placeholder_enddate')}
-            />
-            <ErrorMessage name="dateEnd" component="span" className="invalid-feedback" />
-          </Form.Group>
-        </Grid.Col>
+        {(!create) ? 
+          <Grid.Col>
+            <Form.Group label={t('general.date_end')}>
+              <CSDatePicker 
+                selected={values.dateEnd}
+                onChange={(date) => {
+                  setFieldValue("dateEnd", date)
+                  setFieldTouched("dateEnd", true)
+                }}
+                onBlur={() => setFieldTouched("dateEnd", true)}
+                placeholderText={t('schedule.classes.placeholder_enddate')}
+              />
+              <ErrorMessage name="dateEnd" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
+        : "" }
         </Grid.Row>
       <Form.Group label={t('general.note')}>
         <Editor
