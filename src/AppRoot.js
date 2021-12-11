@@ -79,6 +79,7 @@ import InsightHome from './components/insight/home/InsightHome'
 import InsightClasspasses from './components/insight/classpasses/InsightClasspasses'
 import InsightRevenue from './components/insight/revenue/InsightRevenue'
 import InsightSubscriptions from './components/insight/subscriptions/InsightSubscriptions'
+import InsightTrialpasses from './components/insight/trialpasses/InsightTrialpasses'
 
 import OrganizationHome from './components/organization/home/OrganizationHome'
 import OrganizationEdit from './components/organization/organization/OrganizationEdit'
@@ -643,6 +644,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/insight/classpasses" component={InsightClasspasses} />
             <PrivateRoute exact path="/insight/revenue" component={InsightRevenue} />
             <PrivateRoute exact path="/insight/subscriptions" component={InsightSubscriptions} />
+            <PrivateRoute exact path="/insight/trialpasses" component={InsightTrialpasses} />
 
             {/* Self Check-in */}
             <PrivateRoute exact path="/selfcheckin/checkin/:location_id/:class_id/:date" component={SelfCheckinCheckin} />
