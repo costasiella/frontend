@@ -14,10 +14,8 @@ import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_to
 import { dateToLocalISO, getFirstDayMonth, getLastDayMonth } from '../../../tools/date_tools'
 
 import {
-  colors,
-  Grid,
-  Button,
-  Card,
+  Icon,
+  List,
   Table
 } from "tabler-react";
 // import ContentCard from "../../general/ContentCard"
@@ -120,8 +118,7 @@ function InsightTrialpasses ({ t, history }) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.classpass')}</Table.ColHeader>
               <Table.ColHeader>{t('general.account')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.classpasses')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.subscriptions')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.products')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -138,25 +135,36 @@ function InsightTrialpasses ({ t, history }) {
                       {node.account.fullName}
                     </Link>
                   </Table.Col>
-                  
+                  <Table.Col>
+                    <List unstyled>
+                      {node.account.classpasses.edges && node.account.classpasses.edges.map(({ node }) => (
+                        <List.Item>
+                          <Icon name="credit-card" /> { " " }
+                          {node.organizationClasspass.name} <br />
+                          <small className='text-muted'>
+                            {node.dateStart}
+                          </small>
+                        </List.Item>
+                      ))}
+                    </List>
+                    <List unstyled>
+                      {node.account.subscriptions.edges && node.account.subscriptions.edges.map(({ node }) => (
+                        <List.Item>
+                          <Icon name="edit" /> { " " }
+                          {node.organizationSubscription.name} <br />
+                          <small className='text-muted'>
+                            {node.dateStart}
+                          </small>
+                        </List.Item>
+                      ))}
+                    </List>
+                  </Table.Col>
                 </Table.Row>
               ))}
           </Table.Body>
         </Table>
       </ContentCard>
     </InsightTrialpassesBase>
-  //   <SiteWrapper>
-  //     <div className="my-3 my-md-5">
-  //       <Container>
-  //         <Page.Header title={t("insight.title")} subTitle={t("general.classpasses") + " " + year}>
-  //           <div className="page-options d-flex">
-  //             <InsightBackHome />
-  //           </div>
-  //         </Page.Header>
-
-  //       </Container>  
-  //     </div>
-  //   </SiteWrapper>
   )
 }
 
