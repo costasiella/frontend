@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from "react-router-dom"
 import { v4 } from "uuid"
 import C3Chart from "react-c3js"
 import moment from 'moment'
@@ -127,11 +128,17 @@ function InsightTrialpasses ({ t, history }) {
               {accountClasspasses.edges.map(({ node }) => (
                 <Table.Row>
                   <Table.Col>
-                    {node.organizationClasspass.name}
+                    {node.organizationClasspass.name} <br />
+                    <small className='text-muted'>
+                      {node.dateStart}
+                    </small>
                   </Table.Col>
                   <Table.Col>
-                    {node.account.fullName}
+                    <Link to={`/relations/accounts/${node.account.id}/profile/`}>
+                      {node.account.fullName}
+                    </Link>
                   </Table.Col>
+                  
                 </Table.Row>
               ))}
           </Table.Body>
