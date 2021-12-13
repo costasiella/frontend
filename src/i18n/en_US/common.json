@@ -1774,7 +1774,8 @@
         },
         "trialpasses": {
             "title": "Trial passes",
-            "explanation": "Report on trial passes & follow up purchases"
+            "explanation": "Report on trial passes & follow up purchases",
+            "set_month": "Set month"
         }
     },
     "selfcheckin": {
@@ -1809,7 +1810,19 @@
             "short_september": "Sep",
             "short_october": "Oct",
             "short_november": "Nov",
-            "short_decemer": "Dec"
+            "short_decemer": "Dec",
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December"
         }
     },
     "goto": {

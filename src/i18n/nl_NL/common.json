@@ -1553,7 +1553,8 @@
         },
         "trialpasses": {
             "title": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "set_month": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {
@@ -1569,7 +1570,19 @@
             "short_september": "__STRING_NOT_TRANSLATED__",
             "short_october": "__STRING_NOT_TRANSLATED__",
             "short_november": "__STRING_NOT_TRANSLATED__",
-            "short_decemer": "__STRING_NOT_TRANSLATED__"
+            "short_decemer": "__STRING_NOT_TRANSLATED__",
+            "january": "__STRING_NOT_TRANSLATED__",
+            "february": "__STRING_NOT_TRANSLATED__",
+            "march": "__STRING_NOT_TRANSLATED__",
+            "april": "__STRING_NOT_TRANSLATED__",
+            "may": "__STRING_NOT_TRANSLATED__",
+            "june": "__STRING_NOT_TRANSLATED__",
+            "july": "__STRING_NOT_TRANSLATED__",
+            "august": "__STRING_NOT_TRANSLATED__",
+            "september": "__STRING_NOT_TRANSLATED__",
+            "october": "__STRING_NOT_TRANSLATED__",
+            "november": "__STRING_NOT_TRANSLATED__",
+            "december": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {
