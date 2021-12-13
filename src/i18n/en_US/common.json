@@ -849,7 +849,8 @@
             "deactivated": "Moved account to deleted",
             "restored": "Restored account",
             "emergency": "Emergency",
-            "profile_image": "Profile picture"
+            "profile_image": "Profile picture",
+            "explanation": "User accounts that can log in"
         },
         "account": {
             "subscriptions": {
@@ -1038,7 +1039,8 @@
             "add": "Add",
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
-            "archived": "Archived B2B relation"
+            "archived": "Archived B2B relation",
+            "explanation": "Business to Business relations"
         },
         "suppliers": {
             "title": "Suppliers"

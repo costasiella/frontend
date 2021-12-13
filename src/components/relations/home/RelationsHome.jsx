@@ -6,11 +6,13 @@ import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
 import {
+  Card,
   Page,
   Grid,
   Container,
   StampCard
 } from "tabler-react";
+import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
@@ -29,6 +31,7 @@ class RelationsHome extends Component {
     const t = this.props.t
     const match = this.props.match
     const history = this.props.history
+    const linkTitle = t("general.manage")
 
     return (
       <SiteWrapper>
@@ -39,9 +42,14 @@ class RelationsHome extends Component {
               <Grid.Col md={9}>
                 <Grid.Row>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/relations/accounts'>
-                      <StampCard header={<small>{t('relations.accounts.title')}</small>} footer={t('')} color="blue" icon="users" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("relations.accounts.title")}</h5>
+                        {t("relations.accounts.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/relations/accounts" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   {/* <HasPermissionWrapper permission="view"
                                         resource="business">
@@ -54,9 +62,14 @@ class RelationsHome extends Component {
                   <HasPermissionWrapper permission="view"
                                         resource="business">
                     <Grid.Col md={4} lg={4}>
-                      <Link to='/relations/b2b'>
-                        <StampCard header={<small>{t('relations.b2b.title')}</small>} footer={t('')} color="blue" icon="briefcase" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("relations.b2b.title")}</h5>
+                          {t("relations.b2b.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/relations/b2b" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                 </Grid.Row>
