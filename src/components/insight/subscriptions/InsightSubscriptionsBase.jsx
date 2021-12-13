@@ -29,7 +29,7 @@ function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>
           <Page.Header title={t("insight.title")} subTitle={t("general.subscriptions") + " " + year}>
             <div className="page-options d-flex">
               <InsightBackHome />
-              <Button.List className="schedule-list-page-options-btn-list">
+              <Button.List className="ml-4 schedule-list-page-options-btn-list">
                 <Button 
                   icon="chevron-left"
                   color="secondary"
