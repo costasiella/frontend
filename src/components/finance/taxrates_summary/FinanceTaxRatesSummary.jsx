@@ -80,29 +80,6 @@ function FinanceTaxRatesSummary({ t, location, history }) {
       <ContentCard cardTitle={t('finance.taxrates_summary.title')}
                   pageInfo={taxRatesSummary.pageInfo}
                   hasCardBody={false}
-                  // onLoadMore={() => {
-                  //   fetchMore({
-                  //     variables: {
-                  //       after: taxRatesSummary.pageInfo.endCursor
-                  //     },
-                  //     updateQuery: (previousResult, { fetchMoreResult }) => {
-                  //       const newEdges = fetchMoreResult.financeInvoices.edges
-                  //       const pageInfo = fetchMoreResult.financeInvoices.pageInfo
-
-                  //       return newEdges.length
-                  //         ? {
-                  //             // Put the new taxRatesSummary at the end of the list and update `pageInfo`
-                  //             // so we have the new `endCursor` and `hasNextPage` values
-                  //             financeInvoices: {
-                  //               __typename: previousResult.taxRatesSummary.__typename,
-                  //               edges: [ ...previousResult.taxRatesSummary.edges, ...newEdges ],
-                  //               pageInfo
-                  //             }
-                  //           }
-                  //         : previousResult
-                  //     }
-                  //   })
-                  // }} 
         >
         <Table cards>
           <Table.Header>
@@ -111,7 +88,6 @@ function FinanceTaxRatesSummary({ t, location, history }) {
               <Table.ColHeader>{t('finance.taxrates.percentage')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.taxrates_summary.taxable_amount')}</Table.ColHeader>
               <Table.ColHeader>{t('general.tax')}</Table.ColHeader>
-
             </Table.Row>
           </Table.Header>
           <Table.Body>
