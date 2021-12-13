@@ -15,28 +15,6 @@ import CSLS from "../../../tools/cs_local_storage"
 import CSDatePicker from "../../ui/CSDatePicker"
 
 
-// function getDefaultValue(value) {
-//   let defaultValue = localStorage.getItem(value)
-//   console.log(defaultValue)
-
-//   if (defaultValue) {
-//     return defaultValue
-//   } else {
-//     console.log('return empty default')
-//     return ""
-//   }
-// }
-
-
-// function updateLocalStorageAndRefetch(key, value, refetch) {
-//   localStorage.setItem(key, value)
-//   refetch(get_list_query_variables())
-
-// }
-
-// const selectClass = "form-control mb-2"
-
-
 function FinanceTaxRatesSummaryFilter({ t, history, values, errors, data, isSubmitting, setFieldTouched=f=>f, setFieldValue=f=>f,  refetch }) {
   return (
     <FoForm>
