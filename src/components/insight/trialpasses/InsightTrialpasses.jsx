@@ -6,22 +6,22 @@ import { Link } from "react-router-dom"
 import { v4 } from "uuid"
 import C3Chart from "react-c3js"
 import moment from 'moment'
-
-import ContentCard from '../../general/ContentCard'
-import AppSettingsContext from '../../context/AppSettingsContext'
-import CSLS from "../../../tools/cs_local_storage"
-import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
-import { dateToLocalISO, getFirstDayMonth, getLastDayMonth } from '../../../tools/date_tools'
-
 import {
   Icon,
   List,
   Table
 } from "tabler-react";
-// import ContentCard from "../../general/ContentCard"
+
 import { GET_TRIALPASSES_QUERY } from './queries'
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
+
+import ContentCard from '../../general/ContentCard'
+import AppSettingsContext from '../../context/AppSettingsContext'
+import CSLS from "../../../tools/cs_local_storage"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
+
 import InsightTrialpassesBase from './InsightTrialpassesBase'
+import { getListQueryVariables } from './tools'
 
 // Set some initial values for dates, if not found
 if (!localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_YEAR)) {
@@ -29,7 +29,6 @@ if (!localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_YEAR)) {
   localStorage.setItem(CSLS.INSIGHT_TRIALPASSES_YEAR, moment().format('YYYY')) 
   localStorage.setItem(CSLS.INSIGHT_TRIALPASSES_MONTH, moment().format('MM')) 
 } 
-
 
 function InsightTrialpasses ({ t, history }) {
   const appSettings = useContext(AppSettingsContext)
@@ -39,25 +38,12 @@ function InsightTrialpasses ({ t, history }) {
   const month = localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_MONTH)
   const cardTitle = t("insight.trialpasses.title")
 
-  let dateStartFrom = dateToLocalISO(getFirstDayMonth(
-    localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_YEAR),
-    localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_MONTH)
-  ))
-  let dateStartUntil = dateToLocalISO(getLastDayMonth(
-    localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_YEAR),
-    localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_MONTH)
-  ))
-  console.log(dateStartFrom)
-  console.log(dateStartUntil)
+  const listVariables = getListQueryVariables()
 
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_TRIALPASSES_QUERY, {
-    variables: {
-      dateStartFrom: dateStartFrom,
-      dateStartUntil: dateStartUntil
-    }
+    variables: listVariables
   })
-
 
   if (loading) {
     return (
@@ -78,14 +64,9 @@ function InsightTrialpasses ({ t, history }) {
   console.log(data)
   let accountClasspasses = data.accountClasspasses
 
-  // const data_sold_label = t("insight.classpasses.sold.title")
-  // const chart_data_sold = dataSold.insightAccountClasspassesSold.data
-  // console.log("chart_data sold")
-  // console.log(data_sold_label, ...chart_data_sold)
-
 
   return (
-    <InsightTrialpassesBase year={year} refetch={refetch}>
+    <InsightTrialpassesBase year={year} month={month} refetch={refetch}>
       <ContentCard cardTitle={cardTitle}
           // headerContent={headerOptions}
           hasCardBody={false}
