@@ -27,7 +27,7 @@ import { GET_ACCOUNT_ORDERS_QUERY } from "./queries"
 function AccountOrders({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  // const timeFormat = appSettings.timeFormatMoment
+  const dateTimeFormat = appSettings.dateTimeFormatMoment
   const cardTitle = t('relations.account.orders.title')
   const account_id = match.params.account_id
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ORDERS_QUERY, {
@@ -112,10 +112,8 @@ function AccountOrders({ t, match, history }) {
             <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.status')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.orders.order_number')}</Table.ColHeader>
-              <Table.ColHeader>{t('finance.orders.relation')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.orders.date')}</Table.ColHeader>
               <Table.ColHeader>{t('general.total')}</Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -128,25 +126,20 @@ function AccountOrders({ t, match, history }) {
                   <Table.Col key={v4()}>
                     # {node.orderNumber}
                   </Table.Col>
-                  <Table.Col key={v4()}>
-                    {node.account.fullName}
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    {moment(node.createdAt).format(dateFormat)}
+                  <Table.Col>
+                    {moment(node.createdAt).format(dateTimeFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.totalDisplay}
                   </Table.Col>
                   <Table.Col key={v4()}>
+                  <AccountOrderDelete node={node} account={account} />
                     <Link to={"/finance/orders/edit/" + node.id}>
-                      <Button className='btn-sm' 
+                      <Button className='btn-sm float-right' 
                               color="secondary">
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    <AccountOrderDelete node={node} account={account} />
                   </Table.Col>
                 </Table.Row>
               ))}
