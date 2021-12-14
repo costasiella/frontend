@@ -18,8 +18,6 @@ import {
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import BadgeBookingStatus from "../../../ui/BadgeBookingStatus"
-
 import ContentCard from "../../../general/ContentCard"
 import AccountOrdersBase from "./AccountOrdersBase"
 import AccountOrderDelete from "./AccountOrderDelete"
@@ -85,6 +83,7 @@ function AccountOrders({ t, match, history }) {
       <ContentCard 
         cardTitle={t('relations.account.orders.title')}
         pageInfo={financeOrders.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -109,7 +108,7 @@ function AccountOrders({ t, match, history }) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.status')}</Table.ColHeader>
