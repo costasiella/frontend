@@ -71,6 +71,7 @@ function AccountInvoices({ t, location, match, history }) {
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={financeInvoices.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -95,7 +96,7 @@ function AccountInvoices({ t, location, match, history }) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
