@@ -67,6 +67,7 @@ function AccountScheduleEventTickets({t, history, match}) {
       <ContentCard 
         cardTitle={t('relations.account.event_tickets.title')}
         pageInfo={accountScheduleEventTickets.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -91,7 +92,7 @@ function AccountScheduleEventTickets({t, history, match}) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.ticket')}</Table.ColHeader>
