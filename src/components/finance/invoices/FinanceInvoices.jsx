@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -15,6 +15,7 @@ import {
   Text
 } from "tabler-react";
 
+import AppSettingsContext from '../../context/AppSettingsContext'
 import { get_list_query_variables } from "./tools"
 import ContentCard from "../../general/ContentCard"
 import FinanceInvoicesBase from "./FinanceInvoicesBase"
@@ -28,6 +29,9 @@ import moment from 'moment'
 
 
 function FinanceInvoices({ t, location, history }) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+
   // Set back location for edit invoice
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
   // Fetch data
@@ -132,8 +136,8 @@ function FinanceInvoices({ t, location, history }) {
                     <Text.Small color="gray">{node.summary.trunc(20)}</Text.Small>
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {moment(node.dateSent).format('LL')} <br />
-                    {moment(node.dateDue).format('LL')}
+                    {moment(node.dateSent).format(dateFormat)} <br />
+                    {moment(node.dateDue).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.totalDisplay}
