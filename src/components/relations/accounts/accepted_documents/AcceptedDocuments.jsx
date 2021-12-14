@@ -67,6 +67,7 @@ function AccountAcceptedDocuments({ t, history, match }) {
               <ContentCard 
                 cardTitle={t('relations.account.accepted_documents.title')}
                 pageInfo={acceptedDocuments.pageInfo}
+                hasCardBody={false}
                 onLoadMore={() => {
                   fetchMore({
                     variables: {
@@ -91,7 +92,7 @@ function AccountAcceptedDocuments({ t, history, match }) {
                   })
                 }} 
               >
-                <Table>
+                <Table cards>
                   <Table.Header>
                     <Table.Row key={v4()}>
                       <Table.ColHeader>{t('general.document_type')}</Table.ColHeader>
