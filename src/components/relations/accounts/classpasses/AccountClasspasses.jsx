@@ -1,12 +1,12 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useMutation, useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
+import moment from 'moment'
 
 import {
   Icon,
@@ -17,6 +17,7 @@ import {
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import confirm_delete from "../../../../tools/confirm_delete"
 
+import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 
@@ -24,6 +25,9 @@ import { GET_ACCOUNT_CLASSPASSES_QUERY, DELETE_ACCOUNT_CLASSPASS } from "./queri
 
 
 function AccountClasspasses({t, match}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+
   const accountId = match.params.account_id
   const activeLink = "classpasses"
   const cardTitle = t('relations.account.classpasses.title')
@@ -112,13 +116,15 @@ function AccountClasspasses({t, match}) {
                     {node.organizationClasspass.name}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.dateStart}
+                    {moment(node.dateStart).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.dateEnd}
+                    {moment(node.dateEnd).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.classesRemainingDisplay}
+                    <Link to={`/relations/accounts/${accountId}/classpasses/classes/${node.id}`}>
+                      {node.classesRemainingDisplay}
+                    </Link>
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     <Link to={"/relations/accounts/" + match.params.account_id + "/classpasses/edit/" + node.id}>
