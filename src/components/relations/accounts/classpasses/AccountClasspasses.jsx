@@ -75,6 +75,7 @@ function AccountClasspasses({t, match}) {
       <ContentCard 
         cardTitle={t('relations.account.classpasses.title')}
         pageInfo={accountClasspasses.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -99,7 +100,7 @@ function AccountClasspasses({t, match}) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
