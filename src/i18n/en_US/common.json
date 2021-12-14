@@ -926,7 +926,9 @@
                 "title": "Class passes",
                 "delete_confirm_msg": "Are you sure you wish to delete this class pass and all associated data?",
                 "deleted": "Deleted class pass",
-                "add": "Add class pass"
+                "add": "Add class pass",
+                "title_classes": "Classes taken using",
+                "no_classes_taken_yet": "No classes taken yet using this pass"
             },
             "memberships": {
                 "title_add": "Add membership",
