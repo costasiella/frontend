@@ -8,12 +8,12 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-import AppSettingsContext from '../../../context/AppSettingsContext'
-
 import {
   Card,
   Table
 } from "tabler-react";
+
+import AppSettingsContext from '../../../context/AppSettingsContext'
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 import BadgeBookingStatus from "../../../ui/BadgeBookingStatus"
