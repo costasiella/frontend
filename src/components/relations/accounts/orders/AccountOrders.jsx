@@ -8,15 +8,14 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-import AppSettingsContext from '../../../context/AppSettingsContext'
-import FinanceOrderStatus from "../../../finance/orders/FinanceOrderStatus"
-
 import {
   Button,
   Card,
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
+import AppSettingsContext from '../../../context/AppSettingsContext'
+import FinanceOrderStatus from "../../../finance/orders/FinanceOrderStatus"
 
 import ContentCard from "../../../general/ContentCard"
 import AccountOrdersBase from "./AccountOrdersBase"
@@ -133,7 +132,7 @@ function AccountOrders({ t, match, history }) {
                     {node.account.fullName}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {moment(node.createdAt).format('LL')}
+                    {moment(node.createdAt).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.totalDisplay}
