@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -15,7 +14,6 @@ import {
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
 import confirm_delete from "../../../../tools/confirm_delete"
 
