@@ -1165,7 +1165,8 @@
             "classpass_dropin": "Drop-in classpass",
             "classpass_trial": "Trial classpass",
             "spaces": "Total spaces",
-            "spaces_walk_in": "Walk-in spaces (Not bookable online)"
+            "spaces_walk_in": "Walk-in spaces (Not bookable online)",
+            "explanation": "Weekly & one time classes"
         },
         "appointments": {
             "title": "Appointments",
@@ -1265,7 +1266,8 @@
                 "empty_list": "No earlybird discounts have been defined yet for this event",
                 "edit": "Edit earlybird discount",
                 "toast_edit_success": "Saved"
-            }
+            },
+            "explanation": "Manage workshops, events, etc."
         },
         "event": {
             "location_please_select": "Please select...",

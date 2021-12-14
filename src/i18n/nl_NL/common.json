@@ -1713,7 +1713,8 @@
             "frequencyType": "__STRING_NOT_TRANSLATED__",
             "select_specific": "__STRING_NOT_TRANSLATED__",
             "select_weekly": "__STRING_NOT_TRANSLATED__",
-            "frequencyInterval": "__STRING_NOT_TRANSLATED__"
+            "frequencyInterval": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "tickets": {
@@ -1790,7 +1791,8 @@
             "public": "__STRING_NOT_TRANSLATED__",
             "shop": "__STRING_NOT_TRANSLATED__",
             "auto_send_info_mail": "__STRING_NOT_TRANSLATED__",
-            "error_loading_data": "__STRING_NOT_TRANSLATED__"
+            "error_loading_data": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "appointments": {
