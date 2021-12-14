@@ -1,28 +1,19 @@
 // @flow
 
-import React from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import React, { useContext } from 'react'
+import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Dimmer,
-  Badge,
   Button,
-  Card,
-  Container,
   Table, 
-  Text
 } from "tabler-react";
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 // import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
+import AppSettingsContext from '../../context/AppSettingsContext'
 
 import { get_list_query_variables } from "./tools"
 import ContentCard from "../../general/ContentCard"
@@ -30,14 +21,15 @@ import FinanceOrdersBase from './FinanceOrdersBase'
 import FinanceOrderStatus from "./FinanceOrderStatus"
 import FinanceOrderDelete from "./FinanceOrderDelete"
 
-import { GET_ORDERS_QUERY, DELETE_FINANCE_ORDER } from "./queries"
-
-import confirm_delete from "../../../tools/confirm_delete"
+import { GET_ORDERS_QUERY } from "./queries"
 import moment from 'moment'
 
 
 
 function FinanceOrders({t, match, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateTimeFormat = appSettings.dateTimeFormatMoment
+
   const title = t("shop.home.title")
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_ORDERS_QUERY, {
     variables: {get_list_query_variables},
@@ -103,12 +95,11 @@ function FinanceOrders({t, match, history}) {
         <Table>
           <Table.Header>
             <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.status')}</Table.ColHeader>
-              <Table.ColHeader>{t('finance.orders.order_number')}</Table.ColHeader>
-              <Table.ColHeader>{t('finance.orders.relation')}</Table.ColHeader>
+              {/* <Table.ColHeader>{t('general.status')}</Table.ColHeader> */}
+              <Table.ColHeader>{t('general.order')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.orders.date')}</Table.ColHeader>
+              <Table.ColHeader>{t('finance.orders.relation')}</Table.ColHeader>
               <Table.ColHeader>{t('general.total')}</Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -116,30 +107,29 @@ function FinanceOrders({t, match, history}) {
               {orders.edges.map(({ node }) => (        
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
+                    # {node.orderNumber} <br />
                     <FinanceOrderStatus status={node.status} />
                   </Table.Col>
+                  {/* <Table.Col key={v4()}>
+                    
+                  </Table.Col> */}
                   <Table.Col key={v4()}>
-                    # {node.orderNumber}
+                    {moment(node.createdAt).format(dateTimeFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.account && node.account.fullName}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {moment(node.createdAt).format('LL')}
-                  </Table.Col>
-                  <Table.Col key={v4()}>
                     {node.totalDisplay}
                   </Table.Col>
                   <Table.Col key={v4()}>
+                    <FinanceOrderDelete node={node}/>
                     <Link to={"/finance/orders/edit/" + node.id}>
-                      <Button className='btn-sm' 
+                      <Button className='btn-sm float-right' 
                               color="secondary">
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col key={v4()}>
-                    <FinanceOrderDelete node={node}/>
                   </Table.Col>
                 </Table.Row>
               ))}
