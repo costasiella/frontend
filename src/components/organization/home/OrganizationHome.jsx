@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
 import {
+  Card,
   Page,
   Grid,
   Container,
@@ -13,6 +14,7 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import HomeItemButton from "../../ui/HomeItemButton"
 
 import OrganizationMenu from "../OrganizationMenu"
 
@@ -30,6 +32,7 @@ class OrganizationHome extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.id
+    const linkTitle = t("general.manage")
 
     return (
       <SiteWrapper>
@@ -40,34 +43,54 @@ class OrganizationHome extends Component {
               <Grid.Col md={9}>
                 <Grid.Row>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA='>
-                      <StampCard header={<small>{t('organization.organization.title')}</small>} footer={t('')} color="blue" icon="layout" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.organization.title")}</h5>
+                        {t("organization.organization.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/locations'>
-                      <StampCard header={<small>{t('organization.locations.title')}</small>} footer={t('')} color="blue" icon="home" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.locations.title")}</h5>
+                        {t("organization.locations.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/locations" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/classtypes'>
-                      <StampCard header={<small>{t('organization.classtypes.title')}</small>} footer={t('')} color="blue" icon="book-open" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.classtypes.title")}</h5>
+                        {t("organization.classtypes.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/classtypes" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/classpasses'>
-                      <StampCard header={<small>{t('organization.classpasses.title')}</small>} footer={t('')} color="blue" icon="credit-card" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.classpasses.title")}</h5>
+                        {t("organization.classpasses.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/classpasses" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
-                  {/* <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/memberships'>
-                      <StampCard header={<small>{t('organization.memberships.title')}</small>} footer={t('')} color="blue" icon="clipboard" />
-                    </Link>
-                  </Grid.Col> */}
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/subscriptions'>
-                      <StampCard header={<small>{t('organization.subscriptions.title')}</small>} footer={t('')} color="blue" icon="edit" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.subscriptions.title")}</h5>
+                        {t("organization.subscriptions.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/subscriptions" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   {/* <Grid.Col md={4} lg={4}>
                     <Link to='/organization/appointment_categories'>
@@ -75,41 +98,77 @@ class OrganizationHome extends Component {
                     </Link>
                   </Grid.Col> */}
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/levels'>
-                      <StampCard header={<small>{t('organization.levels.title')}</small>} footer={t('')} color="blue" icon="tag" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.levels.title")}</h5>
+                        {t("organization.levels.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/levels" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/holidays'>
-                      <StampCard header={<small>{t('organization.holidays.title')}</small>} footer={t('')} color="blue" icon="sun" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.holidays.title")}</h5>
+                        {t("organization.holidays.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/holidays" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/discoveries'>
-                      <StampCard header={<small>{t('organization.discoveries.title')}</small>} footer={t('')} color="blue" icon="compass" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.discoveries.title")}</h5>
+                        {t("organization.discoveries.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/discoveries" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/languages'>
-                      <StampCard header={<small>{t('organization.languages.title')}</small>} footer={t('')} color="blue" icon="flag" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.languages.title")}</h5>
+                        {t("organization.languages.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/languages" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=/branding'>
-                      <StampCard header={<small>{t('organization.organization.branding.title')}</small>} footer={t('')} color="blue" icon="image" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.organization.branding.title")}</h5>
+                        {t("organization.organization.branding.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=/branding" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/organization/documents/T3JnYW5pemF0aW9uTm9kZToxMDA='>
-                      <StampCard header={<small>{t('organization.documents.title')}</small>} footer={t('')} color="blue" icon="briefcase" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("organization.documents.title")}</h5>
+                        {t("organization.documents.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/documents/T3JnYW5pemF0aW9uTm9kZToxMDA=" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <HasPermissionWrapper permission="view"
                                         resource="organizationannouncement">
+
                     <Grid.Col md={4} lg={4}>
-                      <Link to='/organization/announcements'>
-                        <StampCard header={<small>{t('organization.announcements.title')}</small>} footer={t('')} color="blue" icon="message-square" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("organization.announcements.title")}</h5>
+                          {t("organization.announcements.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/organization/announcements" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                 </Grid.Row>
