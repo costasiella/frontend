@@ -81,6 +81,7 @@ function OrganizationLanguages({t, history}) {
       <ContentCard 
         cardTitle={cardTitle}
         headerContent={headerOptions}
+        hasCardBody={false}
         pageInfo={languages.pageInfo}
         onLoadMore={() => {
         fetchMore({
@@ -105,7 +106,7 @@ function OrganizationLanguages({t, history}) {
           }
         })
       }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

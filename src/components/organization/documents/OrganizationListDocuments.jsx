@@ -86,6 +86,7 @@ function OrganizationListDocuments({ t, match, history }) {
       <ContentCard 
         cardTitle={t('organization.documents.title') + ' - ' + subTitle}
         pageInfo={data.organizationDocuments.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -110,7 +111,7 @@ function OrganizationListDocuments({ t, match, history }) {
           })
         }}
       >
-        <Table>
+        <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.date')}</Table.ColHeader>

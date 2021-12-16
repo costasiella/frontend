@@ -83,6 +83,7 @@ function OrganizationLevels({t, history}) {
       <ContentCard 
         cardTitle={cardTitle}
         headerContent={headerOptions}
+        hasCardBody={false}
         pageInfo={levels.pageInfo}
         onLoadMore={() => {
         fetchMore({
@@ -107,7 +108,7 @@ function OrganizationLevels({t, history}) {
           }
         })
       }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

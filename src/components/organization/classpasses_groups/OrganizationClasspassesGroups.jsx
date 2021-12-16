@@ -60,6 +60,7 @@ function OrganizationClasspassesGroups({ t, history}) {
     <OrganizationClasspassesGroupsBase>
       <ContentCard cardTitle={t('organization.classpass_groups.title')}
                     pageInfo={classpass_groups.pageInfo}
+                    hasCardBody={false}
                     onLoadMore={() => {
                     fetchMore({
                       variables: {
@@ -83,7 +84,7 @@ function OrganizationClasspassesGroups({ t, history}) {
                       }
                     })
                   }} >
-            <Table>
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.name')}</Table.ColHeader>

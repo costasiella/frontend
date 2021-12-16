@@ -69,6 +69,7 @@ function OrganizationAnnouncements({ t, history }) {
     <OrganizationAnnouncementsBase>
       <ContentCard cardTitle={cardTitle}
                     pageInfo={organizationAnnouncements.pageInfo}
+                    hasCardBody={false}
                     onLoadMore={() => {
                     fetchMore({
                       variables: {
@@ -92,7 +93,7 @@ function OrganizationAnnouncements({ t, history }) {
                       }
                     })
                   }} >
-        <Table>
+        <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.title')}</Table.ColHeader>

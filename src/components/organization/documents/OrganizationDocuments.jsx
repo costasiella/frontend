@@ -52,33 +52,31 @@ function OrganizationDocuments({ t, match }) {
                 <Card.Header>
                   <Card.Title>{t('organization.documents.title')}</Card.Title>
                 </Card.Header>
-                <Card.Body>
-                  <Table>
-                    <Table.Header>
-                      <Table.Row key={v4()}>
-                        <Table.ColHeader>{t('general.document')}</Table.ColHeader>
-                        <Table.ColHeader></Table.ColHeader>
-                      </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        {docTypes.map((docType) => (
-                          <Table.Row key={v4()}>
-                            <Table.Col key={v4()}>
-                              {docType[1]}
-                            </Table.Col>
-                            <Table.Col className="text-right" key={v4()}>
-                              <Link to={`/organization/documents/${organizationId}/${docType[0]}`}>
-                                <Button className='btn-sm' 
-                                        color="secondary">
-                                  {t('general.manage')} <Icon name="chevron-right" />
-                                </Button>
-                              </Link>
-                            </Table.Col>
-                          </Table.Row>
-                        ))}
-                    </Table.Body>
-                  </Table>
-                </Card.Body>
+                <Table cards>
+                  <Table.Header>
+                    <Table.Row key={v4()}>
+                      <Table.ColHeader>{t('general.document')}</Table.ColHeader>
+                      <Table.ColHeader></Table.ColHeader>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                      {docTypes.map((docType) => (
+                        <Table.Row key={v4()}>
+                          <Table.Col key={v4()}>
+                            {docType[1]}
+                          </Table.Col>
+                          <Table.Col className="text-right" key={v4()}>
+                            <Link to={`/organization/documents/${organizationId}/${docType[0]}`}>
+                              <Button className='btn-sm' 
+                                      color="secondary">
+                                {t('general.manage')} <Icon name="chevron-right" />
+                              </Button>
+                            </Link>
+                          </Table.Col>
+                        </Table.Row>
+                      ))}
+                  </Table.Body>
+                </Table>
               </Card>        
             </Grid.Col>
             <Grid.Col md={3}>

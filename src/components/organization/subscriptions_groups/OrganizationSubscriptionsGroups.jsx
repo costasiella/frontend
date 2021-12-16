@@ -69,6 +69,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
   return (
     <OrganizationGroupsSubscriptionsBase>
       <ContentCard cardTitle={t('organization.subscription_groups.title')}
+            hasCardBody={false}
             pageInfo={subscription_groups.pageInfo}
             onLoadMore={() => {
             fetchMore({
@@ -93,7 +94,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
               }
             })
           }} >
-        <Table>
+        <Table cards>
           <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.name')}</Table.ColHeader>

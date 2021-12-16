@@ -84,6 +84,7 @@ function OrganizationDiscoveries({ t, history }) {
     <OrganizationDiscoveriesBase>
       <ContentCard cardTitle={cardTitle}
                     headerContent={headerOptions}
+                    hasCardBody={false}
                     pageInfo={discoveries.pageInfo}
                     onLoadMore={() => {
                     fetchMore({
@@ -108,7 +109,7 @@ function OrganizationDiscoveries({ t, history }) {
                       }
                     })
                   }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

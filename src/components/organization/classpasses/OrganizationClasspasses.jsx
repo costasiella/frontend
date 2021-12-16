@@ -81,6 +81,7 @@ function OrganizationClasspasses({t, history}) {
       <ContentCard 
         cardTitle={cardTitle}
         headerContent={headerOptions}
+        hasCardBody={false}
         pageInfo={classpasses.pageInfo}
         onLoadMore={() => {
         fetchMore({
@@ -106,7 +107,7 @@ function OrganizationClasspasses({t, history}) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -116,6 +117,8 @@ function OrganizationClasspasses({t, history}) {
               <Table.ColHeader>{t('general.classes')}</Table.ColHeader>
               <Table.ColHeader>{t('general.price')}</Table.ColHeader>
               <Table.ColHeader>{t('general.validity')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
