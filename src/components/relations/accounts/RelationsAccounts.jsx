@@ -175,6 +175,8 @@ function RelationsAccounts({t, history}) {
               <Table.ColHeader></Table.ColHeader>
               <Table.ColHeader>{t('general.account')}</Table.ColHeader>
               <Table.ColHeader>{t('general.products')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
               {/* <Table.ColHeader>{t('general.info')}</Table.ColHeader> */}
             </Table.Row>
           </Table.Header>
