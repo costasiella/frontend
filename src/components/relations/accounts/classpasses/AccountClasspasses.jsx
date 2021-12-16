@@ -134,8 +134,6 @@ function AccountClasspasses({t, match}) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.delete')} 
                       href=""
