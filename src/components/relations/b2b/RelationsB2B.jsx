@@ -120,6 +120,7 @@ function RelationsB2B({ t, history }) {
     <RelationsB2BBase refetch={refetch}>
       <ContentCard cardTitle={t('relations.b2b.title')}
                     headerContent={headerOptions}
+                    hasCardBody={false}
                     pageInfo={businesses.pageInfo}
                     onLoadMore={() => {
                       fetchMore({
@@ -144,7 +145,7 @@ function RelationsB2B({ t, history }) {
                       }
                     })
                   }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

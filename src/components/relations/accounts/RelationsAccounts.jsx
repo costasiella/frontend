@@ -144,6 +144,7 @@ function RelationsAccounts({t, history}) {
       <ContentCard 
         cardTitle={t('relations.accounts.title')}
         headerContent={headerOptions}
+        hasCardBody={false}
         pageInfo={data.accounts.pageInfo}
         onLoadMore={() => {
           fetchMore({
@@ -168,7 +169,7 @@ function RelationsAccounts({t, history}) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader></Table.ColHeader>
