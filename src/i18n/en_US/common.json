@@ -1637,6 +1637,14 @@
                     "help_description": "This field is not used",
                     "help_content": "Footer content for all automated mails here",
                     "help_comments": "This field is not used"
+                },
+                "trialpass_followup": {
+                    "title": "Trialpass followup",
+                    "help_subject": "No variables available",
+                    "help_title": "No variables available",
+                    "help_description": "No variables available",
+                    "help_content": "{{account.first_name}} (First name of account)",
+                    "help_comments": "No variables available"
                 }
             }
         },
