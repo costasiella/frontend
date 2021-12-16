@@ -542,7 +542,8 @@
                 "delete_confirm_msg": "Are you sure you with to delete this group?",
                 "deleted": "Deleted group"
             },
-            "trial_pass": "Trial"
+            "trial_pass": "Trial",
+            "explanation": "A number of or unlimited classes within a set time for a given price"
         },
         "classpass": {
             "public": "This is a public pass",
@@ -570,7 +571,8 @@
             "error_loading": "Error loading class types :(",
             "empty_list": "No class types found",
             "empty_archive": "Class types archive is empty",
-            "add": "Add class type"
+            "add": "Add class type",
+            "explanation": "Manage class types available in the schedule"
         },
         "classtype": {
             "public": "This is a public class type",
@@ -585,7 +587,8 @@
             "title_add": "Add discovery type",
             "toast_add_success": "Saved discovery type",
             "title_edit": "Edit discovery type",
-            "toast_edit_success": "Saved discovery type"
+            "toast_edit_success": "Saved discovery type",
+            "explanation": "How people found this organization"
         },
         "locations": {
             "title": "Locations",
@@ -596,7 +599,8 @@
             "error_loading": "Error loading locations :(",
             "empty_list": "No locations found",
             "empty_archive": "Locations archive is empty",
-            "add": "Add location"
+            "add": "Add location",
+            "explanation": "Locations & rooms at those locations"
         },
         "memberships": {
             "title": "Memberships",
@@ -629,7 +633,8 @@
             "error_loading": "Error loading levels :(",
             "empty_list": "No levels found",
             "empty_archive": "Levels archive is empty",
-            "add": "Add level"
+            "add": "Add level",
+            "explanation": "Class levels available in the schedule"
         },
         "location_rooms": {
             "title_add": "Add a room to this location",
@@ -660,7 +665,8 @@
                 "delete_confirm_msg": "Are you sure you wish to delete this subscriptions group?",
                 "deleted": "Deleted subscriptions group"
             },
-            "credit_accumulation_days": "Credit accumulation in days"
+            "credit_accumulation_days": "Credit accumulation in days",
+            "explanation": "A number of or unlimited classes for a monthly fee"
         },
         "subscription": {
             "public": "This is a public subscription",
@@ -739,8 +745,10 @@
             "registration": "Registration ID",
             "tax_registration": "Tax registration ID",
             "branding": {
-                "title": "Branding"
-            }
+                "title": "Branding",
+                "explanation": "Set logos used for your organization"
+            },
+            "explanation": "Organization address & contact information"
         },
         "documents": {
             "title": "Documents",
@@ -750,7 +758,8 @@
             "delete_confirm_msg": "Are you sure you wish to delete this document?",
             "deleted": "Deleted document",
             "edit": "Edit document",
-            "toast_edit_success": "Saved document"
+            "toast_edit_success": "Saved document",
+            "explanation": "Terms of business & privacy policy"
         },
         "branding": {
             "link_change": "Change",
@@ -775,7 +784,8 @@
             "toast_edit_success": "Saved",
             "title_edit": "Edit announcement",
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
-            "deleted": "Deleted announcement"
+            "deleted": "Deleted announcement",
+            "explanation": "Manage shop & backend announcements"
         },
         "languages": {
             "title": "Languages",
@@ -786,7 +796,8 @@
             "toast_add_success": "Added language",
             "title_edit": "Edit Language",
             "toast_edit_success": "Saved",
-            "add": "Add Language"
+            "add": "Add Language",
+            "explanation": "Manage contact languages for accounts"
         },
         "holidays": {
             "title": "Holidays",
@@ -801,7 +812,8 @@
             "payment_deleted": "Holiday deleted",
             "locations": {
                 "title_edit": "Edit locations"
-            }
+            },
+            "explanation": "Cancel all classes at chosen locations during a given period"
         },
         "holiday": {
             "locations": {
