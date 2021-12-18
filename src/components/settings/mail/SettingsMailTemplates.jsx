@@ -56,6 +56,7 @@ function SystemMailTemplates({ t, match, params }) {
         cardTitle={t('settings.mail.templates.title')}
         // headerContent={headerOptions}
         pageInfo={mailTemplates.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -79,7 +80,7 @@ function SystemMailTemplates({ t, match, params }) {
             }
           })
         }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('settings.mail.templates.name')}</Table.ColHeader>

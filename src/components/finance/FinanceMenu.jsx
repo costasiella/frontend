@@ -15,6 +15,7 @@ let orders_active
 let costcenters_active
 let glaccounts_active
 let taxrates_active
+let taxrates_summary_active
 let payment_methods_active
 let payment_batch_collections_active
 let payment_batch_payments_active
@@ -27,6 +28,7 @@ const FinanceMenu = ({ t, activeLink }) => (
         {(activeLink === 'costcenters') ? costcenters_active = true: costcenters_active = false}
         {(activeLink === 'glaccounts') ? glaccounts_active = true: glaccounts_active = false}
         {(activeLink === 'taxrates') ? taxrates_active = true: taxrates_active = false}
+        {(activeLink === 'taxrates_summary') ? taxrates_summary_active = true: taxrates_summary_active = false}
         {(activeLink === 'payment_methods') ? payment_methods_active = true: payment_methods_active = false}
         {(activeLink === 'payment_batch_collections') ? payment_batch_collections_active = true: payment_batch_collections_active = false}
         {(activeLink === 'payment_batch_payments') ? payment_batch_payments_active = true: payment_batch_payments_active = false}
@@ -78,6 +80,18 @@ const FinanceMenu = ({ t, activeLink }) => (
             >
             {t('finance.taxrates.title')}
         </List.GroupItem>
+        <HasPermissionWrapper permission="view"
+                              resource="insightfinancetaxratesummary">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to="#/finance/taxrates_summary"
+                icon="layout"
+                active={taxrates_summary_active}
+                >
+                {t('finance.taxrates_summary.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"

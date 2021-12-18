@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -17,6 +17,7 @@ import {
 } from "tabler-react";
 import confirm_delete from "../../../../tools/confirm_delete"
 
+import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 
 import { GET_ACCOUNT_INVOICES_QUERY } from "./queries"
@@ -27,6 +28,9 @@ import AccountInvoicesBase from './AccountInvoicesBase'
 
 
 function AccountInvoices({ t, location, match, history }) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+
   const accountId = match.params.account_id
   const cardTitle = t('relations.account.invoices.title')
 
@@ -71,6 +75,7 @@ function AccountInvoices({ t, location, match, history }) {
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={financeInvoices.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -95,7 +100,7 @@ function AccountInvoices({ t, location, match, history }) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -118,8 +123,8 @@ function AccountInvoices({ t, location, match, history }) {
                     <Text.Small color="gray">{node.summary.trunc(35)}</Text.Small>
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {moment(node.dateSent).format('LL')} <br />
-                    <Text.Small color="gray">{moment(node.dateDue).format('LL')}</Text.Small>
+                    {moment(node.dateSent).format(dateFormat)} <br />
+                    <Text.Small color="gray">{moment(node.dateDue).format(dateFormat)}</Text.Small>
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.totalDisplay}

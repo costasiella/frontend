@@ -12,6 +12,8 @@ const cs_local_storage_keys = {
     INSIGHT_CLASSPASSES_YEAR: 'costasiella:insightClasspassesYear',
     INSIGHT_REVENUE_YEAR: 'costasiella:insightRevenueYear',
     INSIGHT_SUBSCRIPTIONS_YEAR: 'costasiella:insightSubscriptionsYear',
+    INSIGHT_TRIALPASSES_YEAR: 'costasiella:insightTrialpassesYear',
+    INSIGHT_TRIALPASSES_MONTH: 'costasiella:insightTrialpassesMonth',
     ORGANIZATION_CLASSTYPES_ARCHIVED: 'costasiella:organizationClasstypesArchived',
     RELATIONS_ACCOUNTS_FILTER_TYPE: 'costasiella:relationsAccountsFilterType',
     RELATIONS_ACCOUNTS_SEARCH: 'costasiella:relationsAccountsSearch',

@@ -70,6 +70,7 @@ function OrganizationHolidays({t, history}) {
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={holidays.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
         fetchMore({
           variables: {
@@ -93,7 +94,7 @@ function OrganizationHolidays({t, history}) {
           }
         })
       }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

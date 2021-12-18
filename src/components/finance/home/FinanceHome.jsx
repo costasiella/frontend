@@ -14,6 +14,7 @@ import {
   Container,
   StampCard
 } from "tabler-react";
+import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
@@ -33,6 +34,8 @@ class FinanceHome extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.id
+    const linkTitle = t("general.manage")
+    const linkTitleView = t("general.view")
 
     return (
       <SiteWrapper>
@@ -43,57 +46,115 @@ class FinanceHome extends Component {
               <Grid.Col md={9}>
                 <Grid.Row>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/finance/invoices'>
-                      <StampCard header={<small>{t('finance.invoices.title')}</small>} footer={t('')} color="blue" icon="file-text" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("finance.invoices.title")}</h5>
+                        {t("finance.invoices.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/finance/invoices" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/finance/orders'>
-                      <StampCard header={<small>{t('finance.orders.title')}</small>} footer={t('')} color="blue" icon="file-plus" />
-                      </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("finance.orders.title")}</h5>
+                        {t("finance.orders.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/finance/orders" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/finance/glaccounts'>
-                      <StampCard header={<small>{t('finance.glaccounts.title')}</small>} footer={t('')} color="blue" icon="book" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("finance.glaccounts.title")}</h5>
+                        {t("finance.glaccounts.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/finance/glaccounts" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/finance/costcenters'>
-                      <StampCard header={<small>{t('finance.costcenters.title')}</small>} footer={t('')} color="blue" icon="compass" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("finance.costcenters.title")}</h5>
+                        {t("finance.costcenters.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/finance/costcenters"/>
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/finance/taxrates'>
-                      <StampCard header={<small>{t('finance.taxrates.title')}</small>} footer={t('')} color="blue" icon="briefcase" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("finance.taxrates.title")}</h5>
+                        {t("finance.taxrates.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/finance/taxrates" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
+                  <HasPermissionWrapper permission="view"
+                              resource="insightfinancetaxratesummary">
+                    <Grid.Col md={4} lg={4}>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("finance.taxrates_summary.title")}</h5>
+                          {t("finance.taxrates_summary.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitleView} link="/finance/taxrates_summary" />
+                        </Card.Body>
+                      </Card>
+                    </Grid.Col>
+                  </HasPermissionWrapper>
                   <Grid.Col md={4} lg={4}>
-                    <Link to='/finance/paymentmethods'>
-                      <StampCard header={<small>{t('finance.payment_methods.title')}</small>} footer={t('')} color="blue" icon="credit-card" />
-                    </Link>
+                    <Card>
+                      <Card.Body>
+                        <h5>{t("finance.payment_methods.title")}</h5>
+                        {t("finance.payment_methods.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/finance/paymentmethods" />
+                      </Card.Body>
+                    </Card>
                   </Grid.Col>
                   <HasPermissionWrapper permission="view"
                               resource="financepaymentbatch">
                     <Grid.Col md={4} lg={4}>
-                      <Link to={'/finance/paymentbatches/collection'}>
-                        <StampCard header={<small>{t('finance.payment_batch_collections.title')}</small>} footer={t('')} color="blue" icon="download" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("finance.payment_batch_collections.title")}</h5>
+                          {t("finance.payment_batch_collections.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/finance/paymentbatches/collection" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                   <HasPermissionWrapper permission="view"
                               resource="financepaymentbatch">
                     <Grid.Col md={4} lg={4}>
-                      <Link to={'/finance/paymentbatches/payment'}>
-                        <StampCard header={<small>{t('finance.payment_batch_payments.title')}</small>} footer={t('')} color="blue" icon="upload" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("finance.payment_batch_payments.title")}</h5>
+                          {t("finance.payment_batch_payments.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/finance/paymentbatches/payment" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                   <HasPermissionWrapper permission="view"
                               resource="financepaymentbatchcategory">
                     <Grid.Col md={4} lg={4}>
-                      <Link to={'/finance/paymentbatchcategories'}>
-                        <StampCard header={<small>{t('finance.payment_batch_categories.title')}</small>} footer={t('')} color="blue" icon="list" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("finance.payment_batch_categories.title")}</h5>
+                          {t("finance.payment_batch_categories.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/finance/paymentbatchcategories" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                 </Grid.Row>

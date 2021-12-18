@@ -78,6 +78,20 @@ export function getTemplateInfo(t, template_name) {
         comments: t("settings.mail.templates.system_footer.help_comments"), 
       }
       break
+    case "trialpass_followup":
+      cardTitle = t("settings.mail.templates.trialpass_followup.title")
+      helpTexts = {
+        subject: t("settings.mail.templates.trialpass_followup.help_subject"),
+        title: t("settings.mail.templates.trialpass_followup.help_title"),
+        description: t("settings.mail.templates.trialpass_followup.help_description", {
+          interpolation: { prefix: "%%", suffix: "%%" }
+        }),
+        content: t("settings.mail.templates.trialpass_followup.help_content", {
+          interpolation: { prefix: "%%", suffix: "%%" }
+        }),
+        comments: t("settings.mail.templates.trialpass_followup.help_comments"), 
+      }
+      break
     default:
       cardTitle = t("settings.mail.templates.not_found.title")
       helpTexts = {

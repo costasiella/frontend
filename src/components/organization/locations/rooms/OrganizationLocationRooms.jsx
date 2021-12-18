@@ -85,6 +85,7 @@ function OrganizationLocationsRooms({ t, history, match }) {
       <ContentCard 
         cardTitle={cardTitle}
                     headerContent={headerOptions}
+                    hasCardBody={false}
                     pageInfo={locationRooms.pageInfo}
                     onLoadMore={() => {
                     fetchMore({
@@ -114,11 +115,13 @@ function OrganizationLocationsRooms({ t, history, match }) {
             <strong>{t('general.location')}</strong> {location.name}
           </Alert>
 
-          <Table>
+          <Table cards>
             <Table.Header>
               <Table.Row key={v4()}>
                 <Table.ColHeader>{t('general.name')}</Table.ColHeader>
                 <Table.ColHeader>{t('general.public')}</Table.ColHeader>
+                <Table.ColHeader></Table.ColHeader>
+                <Table.ColHeader></Table.ColHeader>
               </Table.Row>
             </Table.Header>
             <Table.Body>

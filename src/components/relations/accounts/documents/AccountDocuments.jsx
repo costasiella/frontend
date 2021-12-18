@@ -80,6 +80,7 @@ function AccountDocuments({t, match}) {
       <ContentCard 
         cardTitle={t('relations.account.documents.title')}
         pageInfo={accountDocuments.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -104,7 +105,7 @@ function AccountDocuments({t, match}) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.document')}</Table.ColHeader>

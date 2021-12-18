@@ -1,11 +1,14 @@
+import moment from 'moment'
+
 export function dateToLocalISO(date) {
-    if (date instanceof Date) {
-        return date.getFullYear() + '-' + 
-               ("0" + (date.getMonth() + 1)).slice(-2) + '-' +
-               ("0" + date.getDate()).slice(-2)
-    } else {
-        return date
-    }
+    return moment(date).format("YYYY-MM-DD")
+    // if (date instanceof Date) {
+    //     return date.getFullYear() + '-' + 
+    //            ("0" + (date.getMonth() + 1)).slice(-2) + '-' +
+    //            ("0" + date.getDate()).slice(-2)
+    // } else {
+    //     return date
+    // }
 }
 
 export function dateToLocalISOTime(date) {
@@ -26,4 +29,16 @@ export function TimeStringToJSDateOBJ(time_string) {
     date_obj.setMinutes(time_split[1])
 
     return date_obj
+}
+
+
+export function getFirstDayMonth(year, month) {
+    const firstDayMonth = moment(`${year}-${month}-01`).startOf('month')
+    return new Date(firstDayMonth)
+}
+
+
+export function getLastDayMonth(year, month) {
+    const firstDayMonth = moment(`${year}-${month}-01`).endOf('month')
+    return new Date(firstDayMonth)
 }

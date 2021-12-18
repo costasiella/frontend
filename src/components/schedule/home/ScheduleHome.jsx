@@ -14,6 +14,7 @@ import {
   Container,
   StampCard
 } from "tabler-react";
+import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
@@ -33,6 +34,7 @@ class ScheduleHome extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.id
+    const linkTitle = t('general.manage')
 
     return (
       <SiteWrapper>
@@ -47,9 +49,14 @@ class ScheduleHome extends Component {
                     permission="view"
                   >
                     <Grid.Col md={4} lg={4}>
-                      <Link to='/schedule/classes'>
-                        <StampCard header={<small>{t('schedule.classes.title')}</small>} footer={t('')} color="blue" icon="book" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("schedule.classes.title")}</h5>
+                          {t("schedule.classes.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/schedule/classes" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                   <HasPermissionWrapper
@@ -57,9 +64,14 @@ class ScheduleHome extends Component {
                     permission="view"
                   >
                     <Grid.Col md={4} lg={4}>
-                      <Link to='/schedule/events'>
-                        <StampCard header={<small>{t('schedule.events.title')}</small>} footer={t('')} color="blue" icon="clipboard" />
-                      </Link>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("schedule.events.title")}</h5>
+                          {t("schedule.events.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/schedule/events" />
+                        </Card.Body>
+                      </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
                   {/* <HasPermissionWrapper

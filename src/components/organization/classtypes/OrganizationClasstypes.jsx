@@ -88,6 +88,7 @@ function OrganizationClasstypes({t, history, archived=false}) {
     <OrganizationClasstypesBase>
       <ContentCard cardTitle={t('organization.classtypes.title')}
                    headerContent={headerOptions}
+                   hasCardBody={false}
                    pageInfo={classtypes.pageInfo}
                    onLoadMore={() => {
                     fetchMore({
@@ -113,7 +114,7 @@ function OrganizationClasstypes({t, history, archived=false}) {
                     })
                   }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('')}</Table.ColHeader>

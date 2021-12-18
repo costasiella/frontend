@@ -23,7 +23,7 @@ function FinanceOrderDelete({t, match, node}) {
   const [deleteOrder, { data }] = useMutation(DELETE_FINANCE_ORDER)
 
     return (
-      <button className="icon btn btn-link btn-sm" 
+      <button className="icon btn btn-link btn-sm float-right" 
         title={t('general.delete')} 
         href=""
         onClick={() => {

@@ -17,7 +17,7 @@ import ProfileCardSmall from "../../ui/ProfileCardSmall"
 import RelationsAccountsBack from "./RelationsAccountsBack"
 import ProfileMenu from "./ProfileMenu"
 
-function RelationsAccountProfileBase({t, match, children, sidebarButton="", activeLink="", user={}}) {
+function RelationsAccountProfileBase({t, match, children, back, sidebarButton="", activeLink="", user={}}) {
   const accountId = match.params.account_id
   let headerTitle = ""
   if (user) {
@@ -29,7 +29,7 @@ function RelationsAccountProfileBase({t, match, children, sidebarButton="", acti
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={headerTitle}>
-            <RelationsAccountsBack />
+            {(back) ? back : <RelationsAccountsBack />}
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>

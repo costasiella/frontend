@@ -82,20 +82,12 @@ function AccountClasspassAdd({t, match, history}) {
                 console.log(values)
                 console.log(errors)
 
-                
-                let dateEnd
-                if (values.dateEnd) {
-                  dateEnd = dateToLocalISO(values.dateEnd)
-                } else {
-                  dateEnd = values.dateEnd
-                }
 
                 createAccountClasspass({ variables: {
                   input: {
                     account: accountId, 
                     organizationClasspass: values.organizationClasspass,
                     dateStart: dateToLocalISO(values.dateStart),
-                    dateEnd: dateEnd,
                     note: values.note,
                   }
                 }, refetchQueries: [
@@ -119,6 +111,7 @@ function AccountClasspassAdd({t, match, history}) {
             >
             {({ isSubmitting, setFieldValue, setFieldTouched, errors, values }) => (
               <AccountClasspassForm
+                create={true}
                 inputData={inputData}
                 isSubmitting={isSubmitting}
                 setFieldValue={setFieldValue}

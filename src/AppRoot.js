@@ -73,11 +73,13 @@ import FinancePaymentMethodEdit from './components/finance/payment_methods/Finan
 import FinanceTaxRates from './components/finance/taxrates/FinanceTaxRates'
 import FinanceTaxRatesAdd from './components/finance/taxrates/FinanceTaxRateAdd'
 import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdit'
+import FinanceTaxRatesSummary from './components/finance/taxrates_summary/FinanceTaxRatesSummary'
 
 import InsightHome from './components/insight/home/InsightHome'
 import InsightClasspasses from './components/insight/classpasses/InsightClasspasses'
 import InsightRevenue from './components/insight/revenue/InsightRevenue'
 import InsightSubscriptions from './components/insight/subscriptions/InsightSubscriptions'
+import InsightTrialpasses from './components/insight/trialpasses/InsightTrialpasses'
 
 import OrganizationHome from './components/organization/home/OrganizationHome'
 import OrganizationEdit from './components/organization/organization/OrganizationEdit'
@@ -156,6 +158,7 @@ import RelationsAccountClasses from './components/relations/accounts/classes/Acc
 import AccountClasspasses from './components/relations/accounts/classpasses/AccountClasspasses'
 import AccountClasspassAdd from './components/relations/accounts/classpasses/AccountClasspassAdd'
 import AccountClasspassEdit from './components/relations/accounts/classpasses/AccountClasspassEdit'
+import AccountClasspassClasses from './components/relations/accounts/classpass_classes/AccountClasspassClasses'
 import AccountDocuments from './components/relations/accounts/documents/AccountDocuments'
 import AccountDocumentAdd from './components/relations/accounts/documents/AccountDocumentAdd'
 import AccountDocumentEdit from './components/relations/accounts/documents/AccountDocumentEdit'
@@ -460,6 +463,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/taxrates" component={FinanceTaxRates} />
             <PrivateRoute exact path="/finance/taxrates/add" component={FinanceTaxRatesAdd} />
             <PrivateRoute exact path="/finance/taxrates/edit/:id" component={FinanceTaxRatesEdit} />
+            <PrivateRoute exact path="/finance/taxrates_summary" component={FinanceTaxRatesSummary} />
             
             {/* ORGANIZATION */}
             <PrivateRoute exact path="/organization" component={OrganizationHome} />
@@ -545,6 +549,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/classpasses" component={AccountClasspasses} />
             <PrivateRoute exact path="/relations/accounts/:account_id/classpasses/add" component={AccountClasspassAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/classpasses/edit/:id" component={AccountClasspassEdit} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/classpasses/classes/:id" component={AccountClasspassClasses} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents" component={AccountDocuments} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents/add" component={AccountDocumentAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents/edit/:id" component={AccountDocumentEdit} />
@@ -641,6 +646,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/insight/classpasses" component={InsightClasspasses} />
             <PrivateRoute exact path="/insight/revenue" component={InsightRevenue} />
             <PrivateRoute exact path="/insight/subscriptions" component={InsightSubscriptions} />
+            <PrivateRoute exact path="/insight/trialpasses" component={InsightTrialpasses} />
 
             {/* Self Check-in */}
             <PrivateRoute exact path="/selfcheckin/checkin/:location_id/:class_id/:date" component={SelfCheckinCheckin} />

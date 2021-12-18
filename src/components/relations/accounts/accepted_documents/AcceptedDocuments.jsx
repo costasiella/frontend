@@ -2,27 +2,20 @@
 
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
   Page,
   Grid,
-  Icon,
-  Dimmer,
-  Button,
-  Card,
   Container,
   Table
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
 import BadgeBoolean from "../../../ui/BadgeBoolean"
 import RelationsAccountsBack from "../RelationsAccountsBack"
@@ -74,6 +67,7 @@ function AccountAcceptedDocuments({ t, history, match }) {
               <ContentCard 
                 cardTitle={t('relations.account.accepted_documents.title')}
                 pageInfo={acceptedDocuments.pageInfo}
+                hasCardBody={false}
                 onLoadMore={() => {
                   fetchMore({
                     variables: {
@@ -98,7 +92,7 @@ function AccountAcceptedDocuments({ t, history, match }) {
                   })
                 }} 
               >
-                <Table>
+                <Table cards>
                   <Table.Header>
                     <Table.Row key={v4()}>
                       <Table.ColHeader>{t('general.document_type')}</Table.ColHeader>

@@ -10,7 +10,8 @@
             "error_loading": "Error loading cost centers :(",
             "empty_list": "No cost centers found",
             "empty_archive": "Cost center archive is empty",
-            "add": "Add cost center"
+            "add": "Add cost center",
+            "explanation": "Manage cost centers"
         },
         "code": "Accounting code",
         "glaccounts": {
@@ -22,7 +23,8 @@
             "error_loading": "Error loading general ledger accounts :(",
             "empty_list": "No general ledger accounts found",
             "empty_archive": "General ledger archive is empty",
-            "add": "Add G/L account"
+            "add": "Add G/L account",
+            "explanation": "Manage general ledger accounts"
         },
         "taxrates": {
             "title": "Tax rates",
@@ -37,7 +39,8 @@
             "error_loading": "Error loading tax rates :(",
             "empty_list": "No tax rates found",
             "empty_archive": "Tax rate archive is empty",
-            "add": "Add tax rate"
+            "add": "Add tax rate",
+            "explanation": "Manage tax rates"
         },
         "payment_methods": {
             "title": "Payment methods",
@@ -50,7 +53,8 @@
             "empty_archive": "Payment method archive is empty",
             "add": "Add payment method",
             "mollie": "Mollie",
-            "direct_debit": "Direct debit"
+            "direct_debit": "Direct debit",
+            "explanation": "Manage payment methods"
         },
         "invoices": {
             "title": "Invoices",
@@ -88,7 +92,8 @@
             "item_delete_confirm_msg": "Are you sure you wish to delete this item?",
             "item_deleted": "Deleted item",
             "payment_delete_confirm_msg": "Are you sure you wish to delte this payment?",
-            "payment_deleted": "Deleted payment"
+            "payment_deleted": "Deleted payment",
+            "explanation": "Manage invoices"
         },
         "invoice_groups": {
             "title": "Invoice groups",
@@ -169,7 +174,8 @@
             "placed_at": "Received on",
             "toast_edit_success": "Saved status",
             "customer_message": "Customer message",
-            "set_status_to_delivered_to_deliver_manually": "Change the status to 'Delivered' to manually deliver the order and create an invoice."
+            "set_status_to_delivered_to_deliver_manually": "Change the status to 'Delivered' to manually deliver the order and create an invoice.",
+            "explanation": "Manage orders"
         },
         "payment_batch_categories": {
             "title": "Payment batch categories",
@@ -186,7 +192,8 @@
             "toast_add_success": "Added payment batch category",
             "title_add": "Add payment batch category",
             "toast_edit_success": "Save",
-            "title_edit": "Edit payment batch category"
+            "title_edit": "Edit payment batch category",
+            "explanation": "Manage payment batch categories"
         },
         "payment_batch_collections": {
             "title": "Collection batches",
@@ -195,14 +202,16 @@
             "invoices_batch": "Invoices",
             "invoices_batch_description": "Create a batch containing all invoices with status 'sent' and payment method 'direct debit'.",
             "category_batch": "Payment batch category",
-            "category_batch_description": "Create a batch containing items in a chosen month for a payment batch category."
+            "category_batch_description": "Create a batch containing items in a chosen month for a payment batch category.",
+            "explanation": "Manage collection batches"
         },
         "payment_batch_payments": {
             "title": "Payment batches",
             "empty_list": "No payment batches found",
             "title_add_what": "Choose type of payment batch to add",
             "category_batch": "Payment batch category",
-            "category_batch_description": "Create a batch containing items in a chosen month for a payment batch category."
+            "category_batch_description": "Create a batch containing items in a chosen month for a payment batch category.",
+            "explanation": "Manage payment batches"
         },
         "payment_batches": {
             "error_loading": "Error loading batches... :(",
@@ -240,6 +249,14 @@
                 "AWAITING_APPROVAL": "Awaiting Approval",
                 "REJECTED": "Rejected"
             }
+        },
+        "taxrates_summary": {
+            "title": "Tax summary",
+            "explanation": "Tax summary in a given period",
+            "error_loading": "Error loading tax summary... :(",
+            "empty_list": "No data found within the selected dates",
+            "set_dates": "Set dates",
+            "taxable_amount": "Taxable amount"
         }
     },
     "general": {
@@ -525,7 +542,8 @@
                 "delete_confirm_msg": "Are you sure you with to delete this group?",
                 "deleted": "Deleted group"
             },
-            "trial_pass": "Trial"
+            "trial_pass": "Trial",
+            "explanation": "A number of or unlimited classes within a set time for a given price"
         },
         "classpass": {
             "public": "This is a public pass",
@@ -553,7 +571,8 @@
             "error_loading": "Error loading class types :(",
             "empty_list": "No class types found",
             "empty_archive": "Class types archive is empty",
-            "add": "Add class type"
+            "add": "Add class type",
+            "explanation": "Manage class types available in the schedule"
         },
         "classtype": {
             "public": "This is a public class type",
@@ -568,7 +587,8 @@
             "title_add": "Add discovery type",
             "toast_add_success": "Saved discovery type",
             "title_edit": "Edit discovery type",
-            "toast_edit_success": "Saved discovery type"
+            "toast_edit_success": "Saved discovery type",
+            "explanation": "How people found this organization"
         },
         "locations": {
             "title": "Locations",
@@ -579,7 +599,8 @@
             "error_loading": "Error loading locations :(",
             "empty_list": "No locations found",
             "empty_archive": "Locations archive is empty",
-            "add": "Add location"
+            "add": "Add location",
+            "explanation": "Locations & rooms at those locations"
         },
         "memberships": {
             "title": "Memberships",
@@ -612,7 +633,8 @@
             "error_loading": "Error loading levels :(",
             "empty_list": "No levels found",
             "empty_archive": "Levels archive is empty",
-            "add": "Add level"
+            "add": "Add level",
+            "explanation": "Class levels available in the schedule"
         },
         "location_rooms": {
             "title_add": "Add a room to this location",
@@ -643,7 +665,8 @@
                 "delete_confirm_msg": "Are you sure you wish to delete this subscriptions group?",
                 "deleted": "Deleted subscriptions group"
             },
-            "credit_accumulation_days": "Credit accumulation in days"
+            "credit_accumulation_days": "Credit accumulation in days",
+            "explanation": "A number of or unlimited classes for a monthly fee"
         },
         "subscription": {
             "public": "This is a public subscription",
@@ -722,8 +745,10 @@
             "registration": "Registration ID",
             "tax_registration": "Tax registration ID",
             "branding": {
-                "title": "Branding"
-            }
+                "title": "Branding",
+                "explanation": "Set logos used for your organization"
+            },
+            "explanation": "Organization address & contact information"
         },
         "documents": {
             "title": "Documents",
@@ -733,7 +758,8 @@
             "delete_confirm_msg": "Are you sure you wish to delete this document?",
             "deleted": "Deleted document",
             "edit": "Edit document",
-            "toast_edit_success": "Saved document"
+            "toast_edit_success": "Saved document",
+            "explanation": "Terms of business & privacy policy"
         },
         "branding": {
             "link_change": "Change",
@@ -758,7 +784,8 @@
             "toast_edit_success": "Saved",
             "title_edit": "Edit announcement",
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
-            "deleted": "Deleted announcement"
+            "deleted": "Deleted announcement",
+            "explanation": "Manage shop & backend announcements"
         },
         "languages": {
             "title": "Languages",
@@ -769,7 +796,8 @@
             "toast_add_success": "Added language",
             "title_edit": "Edit Language",
             "toast_edit_success": "Saved",
-            "add": "Add Language"
+            "add": "Add Language",
+            "explanation": "Manage contact languages for accounts"
         },
         "holidays": {
             "title": "Holidays",
@@ -784,7 +812,8 @@
             "payment_deleted": "Holiday deleted",
             "locations": {
                 "title_edit": "Edit locations"
-            }
+            },
+            "explanation": "Cancel all classes at chosen locations during a given period"
         },
         "holiday": {
             "locations": {
@@ -832,7 +861,8 @@
             "deactivated": "Moved account to deleted",
             "restored": "Restored account",
             "emergency": "Emergency",
-            "profile_image": "Profile picture"
+            "profile_image": "Profile picture",
+            "explanation": "User accounts that can log in"
         },
         "account": {
             "subscriptions": {
@@ -908,7 +938,9 @@
                 "title": "Class passes",
                 "delete_confirm_msg": "Are you sure you wish to delete this class pass and all associated data?",
                 "deleted": "Deleted class pass",
-                "add": "Add class pass"
+                "add": "Add class pass",
+                "title_classes": "Classes taken using",
+                "no_classes_taken_yet": "No classes taken yet using this pass"
             },
             "memberships": {
                 "title_add": "Add membership",
@@ -1021,7 +1053,8 @@
             "add": "Add",
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
-            "archived": "Archived B2B relation"
+            "archived": "Archived B2B relation",
+            "explanation": "Business to Business relations"
         },
         "suppliers": {
             "title": "Suppliers"
@@ -1144,7 +1177,8 @@
             "classpass_dropin": "Drop-in classpass",
             "classpass_trial": "Trial classpass",
             "spaces": "Total spaces",
-            "spaces_walk_in": "Walk-in spaces (Not bookable online)"
+            "spaces_walk_in": "Walk-in spaces (Not bookable online)",
+            "explanation": "Weekly & one time classes"
         },
         "appointments": {
             "title": "Appointments",
@@ -1244,7 +1278,8 @@
                 "empty_list": "No earlybird discounts have been defined yet for this event",
                 "edit": "Edit earlybird discount",
                 "toast_edit_success": "Saved"
-            }
+            },
+            "explanation": "Manage workshops, events, etc."
         },
         "event": {
             "location_please_select": "Please select...",
@@ -1614,6 +1649,14 @@
                     "help_description": "This field is not used",
                     "help_content": "Footer content for all automated mails here",
                     "help_comments": "This field is not used"
+                },
+                "trialpass_followup": {
+                    "title": "Trialpass followup",
+                    "help_subject": "No variables available",
+                    "help_title": "No variables available",
+                    "help_description": "No variables available",
+                    "help_content": "{{account.first_name}} (First name of account)",
+                    "help_comments": "No variables available"
                 }
             }
         },
@@ -1754,6 +1797,11 @@
             "tax": {
                 "title": "Taxes"
             }
+        },
+        "trialpasses": {
+            "title": "Trial passes",
+            "explanation": "Report on trial passes & follow up purchases",
+            "set_month": "Set month"
         }
     },
     "selfcheckin": {
@@ -1788,7 +1836,19 @@
             "short_september": "Sep",
             "short_october": "Oct",
             "short_november": "Nov",
-            "short_decemer": "Dec"
+            "short_decemer": "Dec",
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December"
         }
     },
     "goto": {

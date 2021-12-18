@@ -120,6 +120,7 @@ function RelationsB2B({ t, history }) {
     <RelationsB2BBase refetch={refetch}>
       <ContentCard cardTitle={t('relations.b2b.title')}
                     headerContent={headerOptions}
+                    hasCardBody={false}
                     pageInfo={businesses.pageInfo}
                     onLoadMore={() => {
                       fetchMore({
@@ -144,7 +145,7 @@ function RelationsB2B({ t, history }) {
                       }
                     })
                   }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -210,12 +211,10 @@ function RelationsB2B({ t, history }) {
                           t("general.restore")
                       }
                     </button>
-                  </Table.Col>
 
                   {/* Delete button shown when archived */}
                     {
                       (!node.archived) ? '' :
-                        <Table.Col className="text-right" key={v4()}>
                         <button className="icon btn btn-link btn-sm" 
                           title={t('general.delete')} 
                           href=""
@@ -238,8 +237,8 @@ function RelationsB2B({ t, history }) {
                         >
                           <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
                         </button>
-                      </Table.Col>
                     }
+                    </Table.Col>
                 </Table.Row>
               ))}
           </Table.Body>

@@ -65,8 +65,8 @@ function OrganizationAnnouncementEdit({t, history, match}) {
                 displayBackend: organizationAnnouncement.displayBackend,
                 title: organizationAnnouncement.title, 
                 content: organizationAnnouncement.content,
-                dateStart: organizationAnnouncement.dateStart,
-                dateEnd: organizationAnnouncement.dateEnd,
+                dateStart: new Date(organizationAnnouncement.dateStart),
+                dateEnd: new Date(organizationAnnouncement.dateEnd),
                 priority: organizationAnnouncement.priority,
               }}
               validationSchema={ANNOUNCEMENT_SCHEMA}

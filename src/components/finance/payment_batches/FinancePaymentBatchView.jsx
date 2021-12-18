@@ -156,7 +156,7 @@ function FinancePaymentBatchView({ t, history, match }) {
               {financePaymentBatch.exports.edges.map(({ node }) => (
                 <List.Item>
                   {moment(node.createdAt).format(dateTimeFormat)} <br /> 
-                  <small>{node.account.fullName}</small>
+                  <small>{node.account && node.account.fullName}</small>
                 </List.Item>
               ))}
               </List>
@@ -213,9 +213,11 @@ function FinancePaymentBatchView({ t, history, match }) {
                     <Table.Row>
                       <Table.Col>{index + 1}</Table.Col>
                       <Table.Col>
-                        <Link to={`/relations/accounts/${node.account.id}/profile`}>
-                          {node.account.fullName}
-                        </Link>
+                        {node.account && 
+                          <Link to={`/relations/accounts/${node.account.id}/profile`}>
+                            {node.account.fullName}
+                          </Link>
+                        }
                       </Table.Col>
                       <Table.Col>
                         {node.accountHolder}
