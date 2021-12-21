@@ -822,6 +822,10 @@
                 "delete_from_holiday": "Remove from holiday",
                 "deleted_from_holiday": "Saved holiday locations"
             }
+        },
+        "shifts": {
+            "title": "Staff shifts",
+            "explanation": "Shift types available in the staff schedule"
         }
     },
     "validity": {

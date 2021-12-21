@@ -110,6 +110,16 @@ class OrganizationHome extends Component {
                   <Grid.Col md={4} lg={4}>
                     <Card>
                       <Card.Body>
+                        <h5>{t("organization.shifts.title")}</h5>
+                        {t("organization.shifts.explanation")}
+                        <br /><br />
+                        <HomeItemButton linkTitle={linkTitle} link="/organization/shifts" />
+                      </Card.Body>
+                    </Card>
+                  </Grid.Col>
+                  <Grid.Col md={4} lg={4}>
+                    <Card>
+                      <Card.Body>
                         <h5>{t("organization.holidays.title")}</h5>
                         {t("organization.holidays.explanation")}
                         <br /><br />
