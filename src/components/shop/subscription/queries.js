@@ -24,10 +24,6 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       accountRegistrationFee
       accountRegistrationFeeDisplay
       priceFirstMonthDisplay
-      organizationMembership {
-        id
-        name
-      }
       quickStatsAmount
       financeGlaccount {
         id 

@@ -22,10 +22,6 @@ export const GET_CLASSPASS_QUERY = gql`
       validityUnitDisplay
       classes
       unlimited
-      organizationMembership {
-        id
-        name
-      }
       quickStatsAmount
       financeGlaccount {
         id 
