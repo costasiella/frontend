@@ -17,6 +17,7 @@ let documents_active
 let languages_active
 let locations_active
 let levels_active
+let shifts_active
 let holidays_active
 let memberships_active
 let subscriptions_active
@@ -34,6 +35,7 @@ const OrganizationMenu = ({ t, activeLink }) => (
         {(activeLink === 'languages') ? languages_active = true: languages_active = false}
         {(activeLink === 'locations') ? locations_active = true: locations_active = false}
         {(activeLink === 'levels') ? levels_active = true: levels_active = false}
+        {(activeLink === 'shifts') ? shifts_active = true: shifts_active = false}
         {(activeLink === 'holidays') ? holidays_active = true: holidays_active = false}
         {(activeLink === 'memberships') ? memberships_active = true: memberships_active = false}
         {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
@@ -114,6 +116,15 @@ const OrganizationMenu = ({ t, activeLink }) => (
             active={levels_active}
             >
             {t('organization.levels.title')}
+        </List.GroupItem>
+        <List.GroupItem
+            key={v4()}
+            className="d-flex align-items-center"
+            to="#/organization/shifts"
+            icon="coffee"
+            active={shifts_active}
+            >
+            {t('organization.shifts.title')}
         </List.GroupItem>
         <List.GroupItem
             key={v4()}
