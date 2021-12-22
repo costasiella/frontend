@@ -316,7 +316,7 @@ function ScheduleClassClasspasses({ t, match }) {
 //                                             attend: values.attend
 //                                           }
 //                                         }, refetchQueries: [
-//                                             // {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+//                                             // {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }},
 //                                             // {query: GET_CLASSPASSES_QUERY, variables: {"archived": false }},
 //                                         ]})
 //                                         .then(({ data }) => {

@@ -7,7 +7,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY, UPDATE_SCHEDULE_CLASS_TEACHER } from './queries'
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY, UPDATE_SCHEDULE_CLASS_TEACHER } from './queries'
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
 import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
@@ -24,7 +24,7 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
   const menuActiveLink = "teachers"
   const sidebarButton = <ScheduleClassTeacherBack classId={classId} />
 
-  const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY, {
+  const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY, {
     variables: { id: id }
   })
   const [updateScheduleClassTeacher] = useMutation(UPDATE_SCHEDULE_CLASS_TEACHER)
@@ -52,7 +52,7 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
   console.log('query data')
   console.log(data)
   const inputData = data
-  const initialData = data.scheduleItemTeacher
+  const initialData = data.scheduleItemAccount
 
   let initialAccount2 = ""
   if (initialData.account2) {
@@ -107,7 +107,7 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
                 dateEnd: dateEnd
               }
             }, refetchQueries: [
-                {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+                {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }},
                 // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
             ]})
             .then(({ data }) => {

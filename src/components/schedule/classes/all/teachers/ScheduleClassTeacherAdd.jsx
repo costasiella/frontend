@@ -8,7 +8,7 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_CLASS_TEACHER } from './queries'
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_CLASS_TEACHER } from './queries'
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
 import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
@@ -87,7 +87,7 @@ function ScheduleClassTeacherAdd({ t, history, match }) {
                 dateEnd: dateEnd
               }
             }, refetchQueries: [
-                {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+                {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }},
                 // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
             ]})
             .then(({ data }) => {

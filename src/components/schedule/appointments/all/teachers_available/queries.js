@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
-export const GET_SCHEDULE_CLASS_TEACHERS_QUERY = gql`
-  query ScheduleItemTeachers($after: String, $before: String, $scheduleItem: ID!) {
-    scheduleItemTeachers(first: 15, before: $before, after: $after, scheduleItem: $scheduleItem) {
+export const GET_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
+  query ScheduleItemAccounts($after: String, $before: String, $scheduleItem: ID!) {
+    scheduleItemAccounts(first: 15, before: $before, after: $after, scheduleItem: $scheduleItem) {
       pageInfo {
         startCursor
         endCursor
@@ -56,9 +56,9 @@ export const GET_SCHEDULE_CLASS_TEACHERS_QUERY = gql`
   }
 `
 
-export const GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY = gql`
-  query ScheduleItemTeacher($before: String, $after: String, $id: ID!) {
-    scheduleItemTeacher(id: $id) {
+export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
+  query ScheduleItemAccount($before: String, $after: String, $id: ID!) {
+    scheduleItemAccount(id: $id) {
       id
       account {
         id

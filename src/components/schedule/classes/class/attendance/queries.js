@@ -71,9 +71,9 @@ export const UPDATE_SCHEDULE_ITEM_ATTENDANCE = gql`
 `
 
 
-// export const GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY = gql`
-//   query ScheduleItemTeacher($before: String, $after: String, $id: ID!) {
-//     scheduleItemTeacher(id: $id) {
+// export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
+//   query ScheduleItemAccount($before: String, $after: String, $id: ID!) {
+//     scheduleItemAccount(id: $id) {
 //       id
 //       account {
 //         id

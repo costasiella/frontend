@@ -32,11 +32,11 @@ import confirm_delete from "../../../../../tools/confirm_delete"
 import ContentCard from "../../../../general/ContentCard"
 import ClassEditBase from "../ClassEditBase"
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY } from "./queries"
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY } from "./queries"
 
 const DELETE_SCHEDULE_CLASS_TEACHER = gql`
-  mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemTeacherInput!) {
-    deleteScheduleItemTeacher(input: $input) {
+  mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemAccountInput!) {
+    deleteScheduleItemAccount(input: $input) {
       ok
     }
   }
@@ -69,7 +69,7 @@ class ScheduleClassTeachers extends Component {
       <div className="my-3 my-md-5">
         {console.log('ID here:')}
         {console.log(classId)}
-        <Query query={GET_SCHEDULE_CLASS_TEACHERS_QUERY} variables={{ scheduleItem: classId }}>
+        <Query query={GET_SCHEDULE_CLASS_ACCOUNTS_QUERY} variables={{ scheduleItem: classId }}>
           {({ loading, error, data, refetch, fetchMore }) => {
   
             // Loading
@@ -108,7 +108,7 @@ class ScheduleClassTeachers extends Component {
             })
   
             // Empty list
-            if (!data.scheduleItemTeachers.edges.length) { return (
+            if (!data.scheduleItemAccounts.edges.length) { return (
               <ClassEditBase menu_activeLink="teachers" card_title={t('schedule.classes.teachers.title')} sidebar_button={ButtonAdd}>
                 <p>{t('schedule.classes.teachers.empty_list')}</p>
               </ClassEditBase>
@@ -124,24 +124,24 @@ class ScheduleClassTeachers extends Component {
                 <ContentCard 
                   cardTitle={t('schedule.classes.title_edit')}
                   // headerContent={headerOptions}
-                  pageInfo={data.scheduleItemTeachers.pageInfo}
+                  pageInfo={data.scheduleItemAccounts.pageInfo}
                   onLoadMore={() => {
                   fetchMore({
                     variables: {
-                      after: data.scheduleItemTeachers.pageInfo.endCursor
+                      after: data.scheduleItemAccounts.pageInfo.endCursor
                     },
                     updateQuery: (previousResult, { fetchMoreResult }) => {
-                      const newEdges = fetchMoreResult.scheduleItemTeachers.edges
-                      const pageInfo = fetchMoreResult.scheduleItemTeachers.pageInfo
+                      const newEdges = fetchMoreResult.scheduleItemAccounts.edges
+                      const pageInfo = fetchMoreResult.scheduleItemAccounts.pageInfo
   
                       return newEdges.length
                         ? {
                             // Put the new locations at the end of the list and update `pageInfo`
                             // so we have the new `endCursor` and `hasNextPage` values
                             data: { 
-                              scheduleItemTeachers: {
-                                __typename: previousResult.scheduleItemTeachers.__typename,
-                                edges: [ ...previousResult.scheduleItemTeachers.edges, ...newEdges ],
+                              scheduleItemAccounts: {
+                                __typename: previousResult.scheduleItemAccounts.__typename,
+                                edges: [ ...previousResult.scheduleItemAccounts.edges, ...newEdges ],
                                 pageInfo
                               }
                             }
@@ -163,7 +163,7 @@ class ScheduleClassTeachers extends Component {
                         </Table.Row>
                       </Table.Header>
                       <Table.Body>
-                        {data.scheduleItemTeachers.edges.map(({ node }) => (
+                        {data.scheduleItemAccounts.edges.map(({ node }) => (
                           <Table.Row key={v4()}>
                             {console.log(node)}
                             <Table.Col key={v4()}> 
@@ -196,7 +196,7 @@ class ScheduleClassTeachers extends Component {
                               </Button>
                             </Table.Col>
                             <Mutation mutation={DELETE_SCHEDULE_CLASS_TEACHER} key={v4()}>
-                              {(deleteScheduleItemTeacher, { data }) => (
+                              {(deleteScheduleItemAccount, { data }) => (
                                 <Table.Col className="text-right" key={v4()}>
                                   <button className="icon btn btn-link btn-sm" 
                                       title={t('general.delete')} 
@@ -207,13 +207,13 @@ class ScheduleClassTeachers extends Component {
                                           msgConfirm: t('schedule.classes.teachers.delete_confirm_msg'),
                                           msgDescription: <p>{t('schedule.classes.teachers.delete_confirm_description')}</p>,
                                           msgSuccess: t('schedule.classes.teachers.deleted'),
-                                          deleteFunction: deleteScheduleItemTeacher,
+                                          deleteFunction: deleteScheduleItemAccount,
                                           functionVariables: { variables: {
                                             input: {
                                               id: node.id
                                             }
                                           }, refetchQueries: [
-                                            {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }}
+                                            {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }}
                                           ]}
                                       })}}
                                   >

@@ -169,7 +169,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //     return (
 //       <SiteWrapper>
 //         <div className="my-3 my-md-5">
-//           <Query query={GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY} variables={{id: id}}>
+//           <Query query={GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY} variables={{id: id}}>
 //             {({ loading, error, data, refetch }) => {
 //               // Loading
 //               if (loading) return <p>{t('general.loading_with_dots')}</p>
@@ -182,7 +182,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //               console.log('query data')
 //               console.log(data)
 //               const inputData = data
-//               const initialData = data.scheduleItemTeacher
+//               const initialData = data.scheduleItemAccount
 
 //               let initialAccount2 = ""
 //               if (initialData.account2) {
@@ -227,7 +227,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                                     dateEnd: dateEnd
 //                                   }
 //                                 }, refetchQueries: [
-//                                     {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+//                                     {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }},
 //                                     // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
 //                                 ]})
 //                                 .then(({ data }) => {

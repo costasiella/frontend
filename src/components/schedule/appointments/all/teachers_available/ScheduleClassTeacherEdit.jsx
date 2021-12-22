@@ -8,7 +8,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY } from './queries'
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY } from './queries'
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
 import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
@@ -21,9 +21,9 @@ import ScheduleClassTeacherBack from "./ScheduleClassTeacherBack"
 
 
 const UPDATE_SCHEDULE_CLASS_TEACHER = gql`
-  mutation UpdateScheduleItemTeacher($input: UpdateScheduleItemTeacherInput!) {
-    updateScheduleItemTeacher(input:$input) {
-      scheduleItemTeacher {
+  mutation UpdateScheduleItemAccount($input: UpdateScheduleItemAccountInput!) {
+    updateScheduleItemAccount(input:$input) {
+      scheduleItemAccount {
         id
       } 
     }
@@ -49,7 +49,7 @@ class ScheduleClassTeacherEdit extends Component {
     return (
       <SiteWrapper>
         <div className="my-3 my-md-5">
-          <Query query={GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY} variables={{id: id}}>
+          <Query query={GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY} variables={{id: id}}>
             {({ loading, error, data, refetch }) => {
               // Loading
               if (loading) return <p>{t('general.loading_with_dots')}</p>
@@ -62,7 +62,7 @@ class ScheduleClassTeacherEdit extends Component {
               console.log('query data')
               console.log(data)
               const inputData = data
-              const initialData = data.scheduleItemTeacher
+              const initialData = data.scheduleItemAccount
 
               let initialAccount2 = ""
               if (initialData.account2) {
@@ -107,7 +107,7 @@ class ScheduleClassTeacherEdit extends Component {
                                     dateEnd: dateEnd
                                   }
                                 }, refetchQueries: [
-                                    {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+                                    {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }},
                                     // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
                                 ]})
                                 .then(({ data }) => {

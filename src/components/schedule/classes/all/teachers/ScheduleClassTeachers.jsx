@@ -21,17 +21,17 @@ import confirm_delete from "../../../../../tools/confirm_delete"
 import ContentCard from "../../../../general/ContentCard"
 import ClassEditBase from "../ClassEditBase"
 
-import { GET_SCHEDULE_CLASS_TEACHERS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
 
 
 function ScheduleClassTeachers({ t, match, history}) {
   const classId = match.params.class_id
   const menuActiveLink = "teachers"
   const cardTitle = t('schedule.classes.teachers.title')
-  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_CLASS_TEACHERS_QUERY, {
+  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, {
     variables: {scheduleItem: classId}
   })
-  const [ deleteScheduleItemTeacher ] = useMutation(DELETE_SCHEDULE_CLASS_TEACHER)
+  const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_CLASS_TEACHER)
 
   const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleitemteacher">
     <Link to={`/schedule/classes/all/teachers/${classId}/add` } >
@@ -63,7 +63,7 @@ function ScheduleClassTeachers({ t, match, history}) {
   )
 
   // Empty list
-  if (!data.scheduleItemTeachers.edges.length) return (
+  if (!data.scheduleItemAccounts.edges.length) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
@@ -81,24 +81,25 @@ function ScheduleClassTeachers({ t, match, history}) {
     >
       <ContentCard 
         cardTitle={cardTitle}
-        pageInfo={data.scheduleItemTeachers.pageInfo}
+        pageInfo={data.scheduleItemAccounts.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
         fetchMore({
           variables: {
-            after: data.scheduleItemTeachers.pageInfo.endCursor
+            after: data.scheduleItemAccounts.pageInfo.endCursor
           },
           updateQuery: (previousResult, { fetchMoreResult }) => {
-            const newEdges = fetchMoreResult.scheduleItemTeachers.edges
-            const pageInfo = fetchMoreResult.scheduleItemTeachers.pageInfo
+            const newEdges = fetchMoreResult.scheduleItemAccounts.edges
+            const pageInfo = fetchMoreResult.scheduleItemAccounts.pageInfo
 
             return newEdges.length
               ? {
                   // Put the new locations at the end of the list and update `pageInfo`
                   // so we have the new `endCursor` and `hasNextPage` values
                   data: { 
-                    scheduleItemTeachers: {
-                      __typename: previousResult.scheduleItemTeachers.__typename,
-                      edges: [ ...previousResult.scheduleItemTeachers.edges, ...newEdges ],
+                    scheduleItemAccounts: {
+                      __typename: previousResult.scheduleItemAccounts.__typename,
+                      edges: [ ...previousResult.scheduleItemAccounts.edges, ...newEdges ],
                       pageInfo
                     }
                   }
@@ -108,7 +109,7 @@ function ScheduleClassTeachers({ t, match, history}) {
           })
         }} >
         <div>
-          <Table>
+          <Table cards>
             <Table.Header>
               <Table.Row>
                 <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
@@ -120,7 +121,7 @@ function ScheduleClassTeachers({ t, match, history}) {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {data.scheduleItemTeachers.edges.map(({ node }) => (
+              {data.scheduleItemAccounts.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
                   {console.log(node)}
                   <Table.Col key={v4()}> 
@@ -164,13 +165,13 @@ function ScheduleClassTeachers({ t, match, history}) {
                             msgConfirm: t('schedule.classes.teachers.delete_confirm_msg'),
                             msgDescription: <p>{t('schedule.classes.teachers.delete_confirm_description')}</p>,
                             msgSuccess: t('schedule.classes.teachers.deleted'),
-                            deleteFunction: deleteScheduleItemTeacher,
+                            deleteFunction: deleteScheduleItemAccount,
                             functionVariables: { variables: {
                               input: {
                                 id: node.id
                               }
                             }, refetchQueries: [
-                              {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }}
+                              {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }}
                             ]}
                         })}}
                     >

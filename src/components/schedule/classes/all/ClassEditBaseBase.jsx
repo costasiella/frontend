@@ -34,9 +34,7 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           <Grid.Col md={9}>
             {(!defaultCard) ? children :
               <Card title={cardTitle}>
-                <Card.Body>
-                  {children}
-                </Card.Body>
+                {children}
               </Card>
             }
           </Grid.Col>
