@@ -12,7 +12,8 @@ import {
   Icon,
   Dimmer,
   Button,
-  Table
+  Table,
+  Card
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { represent_teacher_role } from "../tools"
@@ -48,7 +49,9 @@ function ScheduleClassTeachers({ t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={ButtonAdd}
     >
-      <Dimmer active={true} loader={true} />
+      <Card.Body>
+        <Dimmer active={true} loader={true} />
+      </Card.Body>
     </ClassEditBase>
   )
   // Error
@@ -58,7 +61,9 @@ function ScheduleClassTeachers({ t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={ButtonAdd}
     >
-      <p>{t('schedule.classes.teachers.error_loading')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.teachers.error_loading')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -69,7 +74,9 @@ function ScheduleClassTeachers({ t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={ButtonAdd}
     >
-      <p>{t('schedule.classes.teachers.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.teachers.empty_list')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 

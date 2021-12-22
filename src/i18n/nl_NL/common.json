@@ -407,7 +407,9 @@
         "confirm_archive_yes": "__STRING_NOT_TRANSLATED__",
         "confirm_unarchive": "__STRING_NOT_TRANSLATED__",
         "confirm_unarchive_no": "__STRING_NOT_TRANSLATED__",
-        "confirm_unarchive_yes": "__STRING_NOT_TRANSLATED__"
+        "confirm_unarchive_yes": "__STRING_NOT_TRANSLATED__",
+        "classpass_group": "__STRING_NOT_TRANSLATED__",
+        "subscription_group": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {

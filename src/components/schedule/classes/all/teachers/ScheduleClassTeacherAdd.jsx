@@ -6,7 +6,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
+import { Card } from 'tabler-react';
 
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_CLASS_TEACHER } from './queries'
 import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
@@ -33,7 +33,9 @@ function ScheduleClassTeacherAdd({ t, history, match }) {
       menuActiveLink={menuActiveLink}
       sidebarButton={sidebarButton}
     >
-      <p>{t('general.loading_with_dots')}</p>
+      <Card.Body>
+        <p>{t('general.loading_with_dots')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -43,7 +45,9 @@ function ScheduleClassTeacherAdd({ t, history, match }) {
       menuActiveLink={menuActiveLink}
       sidebarButton={sidebarButton}
     >
-      <p>{t('general.error_sad_smiley')}</p>
+      <Card.Body>
+        <p>{t('general.error_sad_smiley')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 

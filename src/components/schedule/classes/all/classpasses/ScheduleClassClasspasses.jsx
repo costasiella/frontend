@@ -12,7 +12,8 @@ import {
   Icon,
   Dimmer,
   Button,
-  Table
+  Table,
+  Card
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 // import { confirmAlert } from 'react-confirm-alert'; // Import
@@ -50,7 +51,9 @@ function ScheduleClassClasspasses({ t, match }) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <Dimmer active={true} loader={true} />
+      <Card.Body>
+        <Dimmer active={true} loader={true} />
+      </Card.Body>
     </ClassEditBase>
   )
   // Error
@@ -60,7 +63,9 @@ function ScheduleClassClasspasses({ t, match }) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <p>{t('schedule.classes.classpasses.error_loading')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.classpasses.error_loading')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -71,7 +76,9 @@ function ScheduleClassClasspasses({ t, match }) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <p>{t('schedule.classes.classpasses.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.classpasses.empty_list')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -85,6 +92,7 @@ function ScheduleClassClasspasses({ t, match }) {
       cardTitle={cardTitle}
       // headerContent={headerOptions}
       pageInfo={data.scheduleItemOrganizationClasspassGroups.pageInfo}
+      hasCardBody={false}
       onLoadMore={() => {
       fetchMore({
         variables: {
@@ -111,10 +119,10 @@ function ScheduleClassClasspasses({ t, match }) {
         })
       }} >
       <div>
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row>
-              <Table.ColHeader>{t('general.classpass')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.classpass_group')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>

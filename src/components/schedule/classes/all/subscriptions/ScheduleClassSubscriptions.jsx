@@ -59,7 +59,9 @@ function ScheduleClassSubscriptions({t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <Dimmer active={true} loader={true} />
+      <Card.Body>
+        <Dimmer active={true} loader={true} />
+      </Card.Body>
     </ClassEditBase>
   )
   // Error
@@ -69,7 +71,9 @@ function ScheduleClassSubscriptions({t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <p>{t('schedule.classes.subscriptions.error_loading')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.subscriptions.error_loading')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -80,7 +84,9 @@ function ScheduleClassSubscriptions({t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <p>{t('schedule.classes.subscriptions.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.subscriptions.empty_list')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -124,7 +130,7 @@ function ScheduleClassSubscriptions({t, match, history}) {
           <Table cards>
             <Table.Header>
               <Table.Row>
-                <Table.ColHeader>{t('general.subscription')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.subscription_group')}</Table.ColHeader>
                 <Table.ColHeader></Table.ColHeader>
               </Table.Row>
             </Table.Header>

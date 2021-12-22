@@ -14,6 +14,7 @@ import { dateToLocalISO } from '../../../../../tools/date_tools'
 
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassTeacherBack from "./ScheduleClassTeacherBack"
+import { Card } from 'tabler-react';
 
 
 function ScheduleClassTeacherEdit({ t, match, history }) {
@@ -35,7 +36,9 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
       menuActiveLink={menuActiveLink}
       sidebarButton={sidebarButton}
     >
-      <p>{t('general.loading_with_dots')}</p>
+      <Card.Body>
+        <p>{t('general.loading_with_dots')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -45,7 +48,9 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
       menuActiveLink={menuActiveLink}
       sidebarButton={sidebarButton}
     >
-      <p>{t('general.error_sad_smiley')}</p>
+      <Card.Body>
+        <p>{t('general.error_sad_smiley')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 

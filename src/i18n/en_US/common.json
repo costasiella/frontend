@@ -500,7 +500,9 @@
         "months": "Months",
         "first_month": "First month",
         "registration_fee": "Registration fee",
-        "revenue": "Revenue"
+        "revenue": "Revenue",
+        "classpass_group": "Classpass group",
+        "subscription_group": "Subscription group"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
