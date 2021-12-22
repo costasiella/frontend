@@ -186,32 +186,6 @@ mutation CreateClasspass($input: CreateOrganizationClasspassInput!) {
   createOrganizationClasspass(input: $input) {
     organizationClasspass {
       id
-      displayPublic
-      displayShop
-      name
-      description
-      price
-      financeTaxRate {
-        id
-        name
-      }
-      validity
-      validityUnit
-      classes
-      unlimited
-      organizationMembership {
-        id
-        name
-      }
-      quickStatsAmount
-      financeGlaccount {
-        id
-        name
-      }
-      financeCostcenter {
-        id
-        name
-      }
     }
   }
 }
@@ -222,32 +196,6 @@ export const UPDATE_CLASSPASS = gql`
     updateOrganizationClasspass(input: $input) {
       organizationClasspass {
         id
-        displayPublic
-        displayShop
-        name
-        description
-        price
-        financeTaxRate {
-          id
-          name
-        }
-        validity
-        validityUnit
-        classes
-        unlimited
-        organizationMembership {
-          id
-          name
-        }
-        quickStatsAmount
-        financeGlaccount {
-          id
-          name
-        }
-        financeCostcenter {
-          id
-          name
-        }
       }
     }
   }
