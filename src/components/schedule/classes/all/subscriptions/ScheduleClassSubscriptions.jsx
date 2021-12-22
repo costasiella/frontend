@@ -94,6 +94,7 @@ function ScheduleClassSubscriptions({t, match, history}) {
         cardTitle={cardTitle}
         // headerContent={headerOptions}
         pageInfo={data.scheduleItemOrganizationSubscriptionGroups.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
         fetchMore({
           variables: {
@@ -120,7 +121,7 @@ function ScheduleClassSubscriptions({t, match, history}) {
           })
         }} >
         <div>
-          <Table>
+          <Table cards>
             <Table.Header>
               <Table.Row>
                 <Table.ColHeader>{t('general.subscription')}</Table.ColHeader>
