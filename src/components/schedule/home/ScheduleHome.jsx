@@ -74,6 +74,21 @@ class ScheduleHome extends Component {
                       </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
+                  <HasPermissionWrapper
+                    resource="scheduleshift"
+                    permission="view"
+                  >
+                    <Grid.Col md={4} lg={4}>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("schedule.shifts.title")}</h5>
+                          {t("schedule.shifts.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/schedule/shifts" />
+                        </Card.Body>
+                      </Card>
+                    </Grid.Col>
+                  </HasPermissionWrapper>
                   {/* <HasPermissionWrapper
                     resource="scheduleappointment"
                     permission="view"

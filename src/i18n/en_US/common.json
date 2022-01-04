@@ -1299,6 +1299,10 @@
             "location_please_select": "Please select...",
             "teacher_please_select": "Please select...",
             "error_loading": "Error loading event... :("
+        },
+        "shifts": {
+            "title": "Staff schedule",
+            "explanation": "Manage staff shifts"
         }
     },
     "countries": {

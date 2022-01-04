@@ -1856,6 +1856,10 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "location_please_select": "__STRING_NOT_TRANSLATED__",
             "teacher_please_select": "__STRING_NOT_TRANSLATED__"
+        },
+        "shifts": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "genders": {
