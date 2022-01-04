@@ -192,3 +192,12 @@ export const CREATE_SHIFT = gql`
     }
   }
 `
+
+
+export const DELETE_SCHEDULE_SHIFT = gql`
+  mutation DeleteScheduleShift($input: DeleteScheduleShiftInput!) {
+    deleteScheduleShift(input: $input) {
+      ok
+    }
+  }
+`
