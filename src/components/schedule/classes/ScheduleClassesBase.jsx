@@ -41,7 +41,7 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("schedule.title")}>
+          <Page.Header title={t("schedule.title")} subTitle={t("schedule.classes.title")}>
             <div className="page-options d-flex">
               <span title={t("schedule.classes.tooltip_sort_by_location")}>
                 <Button 

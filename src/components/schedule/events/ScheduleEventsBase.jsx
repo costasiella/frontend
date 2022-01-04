@@ -19,7 +19,7 @@ function ScheduleEventsBase({ t, match, history, children, sidebarContent="", di
       <SiteWrapper>
         <div className="my-3 my-md-5">
           <Container>
-            <Page.Header title={t("schedule.events.title")} >
+            <Page.Header title={t("schedule.title")} subTitle={t("schedule.events.title")}>
               <div className="page-options d-flex">
                 {/* Page options can go here... */}
               </div>
