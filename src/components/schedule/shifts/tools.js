@@ -62,7 +62,7 @@ export function represent_teacher(name, role) {
 }
 
 
-export function represent_class_status(status) {
+export function represent_shift_status(status) {
   let color
 
   switch (status) {
