@@ -134,6 +134,9 @@ import OrganizationLevelEdit from './components/organization/levels/Organization
 import OrganizationMemberships from './components/organization/memberships/OrganizationMemberships'
 import OrganizationMembershipAdd from './components/organization/memberships/OrganizationMembershipAdd'
 import OrganizationMembershipEdit from './components/organization/memberships/OrganizationMembershipEdit'
+import OrganizationShifts from './components/organization/shifts/OrganizationShifts'
+import OrganizationShiftAdd from './components/organization/shifts/OrganizationShiftAdd'
+import OrganizationShiftEdit from './components/organization/shifts/OrganizationShiftEdit'
 import OrganizationSubscriptions from './components/organization/subscriptions/OrganizationSubscriptions'
 import OrganizationSubscriptionAdd from './components/organization/subscriptions/OrganizationSubscriptionAdd'
 import OrganizationSubscriptionEdit from './components/organization/subscriptions/OrganizationSubscriptionEdit'
@@ -519,9 +522,12 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/locations/rooms/:location_id" component={OrganizationLocationRooms} />
             <PrivateRoute exact path="/organization/locations/rooms/add/:location_id" component={OrganizationLocationRoomAdd} />
             <PrivateRoute exact path="/organization/locations/rooms/edit/:location_id/:id" component={OrganizationLocationRoomEdit} />
-            <PrivateRoute exact path="/organization/memberships" component={OrganizationMemberships} />
+            <PrivateRoute exact path="/organization/shifts" component={OrganizationShifts} />
+            <PrivateRoute exact path="/organization/shifts/add" component={OrganizationShiftAdd} />
+            <PrivateRoute exact path="/organization/shifts/edit/:id" component={OrganizationShiftEdit} /> 
+            {/* <PrivateRoute exact path="/organization/memberships" component={OrganizationMemberships} />
             <PrivateRoute exact path="/organization/memberships/add" component={OrganizationMembershipAdd} />
-            <PrivateRoute exact path="/organization/memberships/edit/:id" component={OrganizationMembershipEdit} /> 
+            <PrivateRoute exact path="/organization/memberships/edit/:id" component={OrganizationMembershipEdit} />  */}
             <PrivateRoute exact path="/organization/subscriptions" component={OrganizationSubscriptions} />
             <PrivateRoute exact path="/organization/subscriptions/add" component={OrganizationSubscriptionAdd} />
             <PrivateRoute exact path="/organization/subscriptions/edit/:id" component={OrganizationSubscriptionEdit} />

@@ -40,7 +40,7 @@ function OrganizationShiftsBase({t, history, children, showBack=false}) {
                                       resource="organizationshift">
                   <Link to="/organization/shifts/add">
                     <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('organization.levels.add')}
+                      <Icon prefix="fe" name="plus-circle" /> {t('organization.shifts.add')}
                     </Button>
                   </Link>
                 </HasPermissionWrapper>
