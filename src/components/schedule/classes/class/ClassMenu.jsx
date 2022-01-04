@@ -61,7 +61,7 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
           </List.GroupItem>
         </HasPermissionWrapper>
         <HasPermissionWrapper 
-            resource="scheduleclassweeklyotc"
+            resource="scheduleitemweeklyotc"
             permission="change" 
         >
           <List.GroupItem

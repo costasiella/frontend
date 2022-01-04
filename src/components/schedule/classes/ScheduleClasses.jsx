@@ -250,7 +250,7 @@ function ScheduleClasses ({ t, history }) {
                                 </Dropdown.Item>
                               </Link>
                             </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleclassweeklyotc">
+                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemweeklyotc">
                               <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
                                 <Dropdown.Item
                                   key={v4()}

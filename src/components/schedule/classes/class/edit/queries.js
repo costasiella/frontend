@@ -3,7 +3,7 @@ import { gql } from "@apollo/client"
 
 export const GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY = gql`
   query ScheduleClassWeeklyOTCs($scheduleItem: ID!, $date: Date!) {
-    scheduleClassWeeklyOtcs(first:1, scheduleItem: $scheduleItem, date:$date) {
+    scheduleItemWeeklyOtcs(first:1, scheduleItem: $scheduleItem, date:$date) {
       edges {
         node {
           id 
@@ -144,7 +144,7 @@ export const DELETE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
 export const UPDATE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
   mutation UpdateScheduleClassWeeklyOTC($input: UpdateScheduleClassWeeklyOTCInput!) {
     updateScheduleClassWeeklyOtc(input:$input) {
-      scheduleClassWeeklyOtc {
+      scheduleItemWeeklyOtc {
         id
       }
     }
