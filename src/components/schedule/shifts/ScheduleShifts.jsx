@@ -35,7 +35,7 @@ import CSLS from "../../../tools/cs_local_storage"
 import BadgeBoolean from "../../ui/BadgeBoolean"
 import ContentCard from "../../general/ContentCard"
 import ScheduleMenu from "../ScheduleMenu"
-import ScheduleClassesFilter from "./ScheduleClassesFilter"
+import ScheduleShiftsFilter from "./ScheduleShiftsFilter"
 import ScheduleShiftsBase from './ScheduleShiftsBase'
 
 import { GET_SHIFTS_QUERY, DELETE_SCHEDULE_SHIFT } from "./queries"
