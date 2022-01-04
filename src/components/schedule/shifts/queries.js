@@ -1,43 +1,44 @@
 import { gql } from "@apollo/client"
 
 export const GET_SHIFTS_QUERY = gql`
-query ScheduleShifts(
-  $dateFrom: Date!, 
-  $dateUntil:Date!, 
-  $orderBy: String, 
-  $organizationShift: ID,
-  $organizationLocation: ID,
-){
-  scheduleShifts(
-      dateFrom:$dateFrom, 
-      dateUntil: $dateUntil, 
-      orderBy: $orderBy, 
-      organizationShift: $organizationShift,
-      organizationLocation: $organizationLocation,
+  query ScheduleShifts(
+    $dateFrom: Date!, 
+    $dateUntil:Date!, 
+    $orderBy: String, 
+    $organizationShift: ID,
+    $organizationLocation: ID,
   ){
-    date
-    shifts {
-      scheduleItemId
-      frequencyType
+    scheduleShifts(
+        dateFrom:$dateFrom, 
+        dateUntil: $dateUntil, 
+        orderBy: $orderBy, 
+        organizationShift: $organizationShift,
+        organizationLocation: $organizationLocation,
+    ){
       date
-      status
-      description
-      holiday
-      holidayName
-      organizationLocationRoom {
-        id
-        name
-        organizationLocation {
+      shifts {
+        scheduleItemId
+        frequencyType
+        date
+        status
+        description
+        holiday
+        holidayName
+        organizationLocationRoom {
+          id
+          name
+          organizationLocation {
+            id
+            name
+          }
+        }
+        organizationShift {
           id
           name
         }
+        timeStart
+        timeEnd
       }
-      organizationShift {
-        id
-        name
-      }
-      timeStart
-      timeEnd
     }
     organizationLocations(first: 100, archived: false) {
       pageInfo {
