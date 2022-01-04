@@ -10,17 +10,9 @@ import {
 } from "tabler-react";
 import HasPermissionWrapper from "../HasPermissionWrapper"
 
-let appointments_active
-let events_active
-let classes_active
 
 const ScheduleMenu = ({ t, activeLink }) => (
   <List.Group transparent={true}>
-    {(activeLink === 'appointments') ? appointments_active = true: appointments_active = false}
-    {(activeLink === 'events') ? events_active = true: events_active = false}
-    {(activeLink === 'classes') ? classes_active = true: classes_active = false}
-    
-
     <HasPermissionWrapper 
         resource="scheduleclass"
         permission="view" 
@@ -30,7 +22,7 @@ const ScheduleMenu = ({ t, activeLink }) => (
           className="d-flex align-items-center"
           to="#/schedule/classes"
           icon="book"
-          active={classes_active}
+          active={(activeLink === 'classes')}
           >
           {t('schedule.classes.title')}
       </List.GroupItem>
@@ -44,9 +36,23 @@ const ScheduleMenu = ({ t, activeLink }) => (
           className="d-flex align-items-center"
           to="#/schedule/events"
           icon="clipboard"
-          active={events_active}
+          active={(activeLink === 'events')}
           >
           {t('schedule.events.title')}
+      </List.GroupItem>
+    </HasPermissionWrapper>
+    <HasPermissionWrapper 
+        resource="scheduleshift"
+        permission="view" 
+    >
+      <List.GroupItem
+          key={v4()}
+          className="d-flex align-items-center"
+          to="#/schedule/shifts"
+          icon="clock"
+          active={(activeLink === 'shifts')}
+          >
+          {t('schedule.shifts.title')}
       </List.GroupItem>
     </HasPermissionWrapper>
     {/* <HasPermissionWrapper 

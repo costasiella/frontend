@@ -1301,7 +1301,7 @@
             "error_loading": "Error loading event... :("
         },
         "shifts": {
-            "title": "Staff schedule",
+            "title": "Staff",
             "explanation": "Manage staff shifts"
         }
     },
