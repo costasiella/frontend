@@ -121,7 +121,7 @@ const OrganizationMenu = ({ t, activeLink }) => (
             key={v4()}
             className="d-flex align-items-center"
             to="#/organization/shifts"
-            icon="coffee"
+            icon="clock"
             active={shifts_active}
             >
             {t('organization.shifts.title')}
