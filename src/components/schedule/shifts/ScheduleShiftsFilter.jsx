@@ -61,7 +61,7 @@ const ScheduleShiftsFilter = ({ t, history, data, refetch }) => (
       }}
     >
       <option value="" key={v4()}>{t("schedule.shifts.filter_all_shifts")}</option>
-      {data.organizationClasstypes.edges.map(({ node }) =>
+      {data.organizationShifts.edges.map(({ node }) =>
         <option value={node.id} key={v4()}>{node.name}</option>
       )}
     </select>
