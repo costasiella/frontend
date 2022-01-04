@@ -41,7 +41,7 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("schedule.title")}>
+          <Page.Header title={t("schedule.title")} subTitle={t("schedule.shifts.title")}>
             <div className="page-options d-flex">
               <span title={t("schedule.classes.tooltip_sort_by_location")}>
                 <Button 
@@ -163,7 +163,7 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
                 </div>
               : ""}
               <h5>{t("general.menu")}</h5>
-              <ScheduleMenu activeLink='classes'/>
+              <ScheduleMenu activeLink='shifts'/>
           </Grid.Col>
         </Grid.Row>
       </Container>
