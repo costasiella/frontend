@@ -827,7 +827,15 @@
         },
         "shifts": {
             "title": "Staff shifts",
-            "explanation": "Shift types available in the staff schedule"
+            "explanation": "Shift types available in the staff schedule",
+            "title_add": "Add shift",
+            "toast_add_success": "Added shift",
+            "title_edit": "Edit shift",
+            "toast_edit_success": "Saved",
+            "error_loading": "Error loading shifts... :(",
+            "empty_list": "No shifts have been created yet.",
+            "empty_archive": "No shifts have been archived yet",
+            "add": "Add shift"
         }
     },
     "validity": {
