@@ -241,6 +241,7 @@ import ScheduleEventTicketEdit from './components/schedule/events/tickets/Schedu
 import ScheduleEventTicketEditActivities from './components/schedule/events/tickets/activities/ScheduleEventTicketEditActivities'
 import ScheduleEventTicketEditCustomers from './components/schedule/events/tickets/customers/ScheduleEventTicketEditCustomers'
 import ScheduleShifts from './components/schedule/shifts/ScheduleShifts'
+import ScheduleShiftAdd from './components/schedule/shifts/ScheduleShiftAdd'
 
 import SelfCheckinCheckin from './components/selfcheckin/Checkin/Checkin'
 import SelfCheckinBookingOptions from './components/selfcheckin/BookingOptions/BookingOptions'
@@ -648,6 +649,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/activities" component={ScheduleEventTicketEditActivities} />
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/customers" component={ScheduleEventTicketEditCustomers} />
             <PrivateRoute exact path="/schedule/shifts" component={ScheduleShifts} />
+            <PrivateRoute exact path="/schedule/shifts/add" component={ScheduleShiftAdd} />
 
             {/* Insight */}
             <PrivateRoute exact path="/insight" component={InsightHome} />
