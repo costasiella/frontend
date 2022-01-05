@@ -502,7 +502,8 @@
         "registration_fee": "Registration fee",
         "revenue": "Revenue",
         "classpass_group": "Classpass group",
-        "subscription_group": "Subscription group"
+        "subscription_group": "Subscription group",
+        "shift": "Shift"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1206,11 +1207,11 @@
             "add": "Add appointment",
             "filter_all_locations": "All locations",
             "filter_all_appointments": "All appointment types",
-            "title_edit": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-            "title_add": "__STRING_NOT_TRANSLATED__",
-            "toast_add_success": "__STRING_NOT_TRANSLATED__",
-            "public": "__STRING_NOT_TRANSLATED__",
+            "title_edit": "Edit appointment",
+            "toast_edit_success": "Saved",
+            "title_add": "Add appoinement",
+            "toast_add_success": "Added appoinement",
+            "public": "Public",
             "frequencyType": "__STRING_NOT_TRANSLATED__",
             "select_specific": "__STRING_NOT_TRANSLATED__",
             "select_weekly": "__STRING_NOT_TRANSLATED__",
@@ -1302,7 +1303,20 @@
         },
         "shifts": {
             "title": "Staff",
-            "explanation": "Manage staff shifts"
+            "explanation": "Manage staff shifts",
+            "title_add": "Add shift",
+            "toast_add_success": "Added shift",
+            "empty_list": "No shifts scheduled on this day.",
+            "no_employee": "Not assigned",
+            "all_shifts_in_series": "All shifts",
+            "delete_confirm_msg": "Are you sure you wish to delete this shift?",
+            "deleted": "Deleted shift",
+            "tooltip_sort_by_location": "Sort by location",
+            "tooltip_sort_by_starttime": "Sort by start time",
+            "go_to_date": "Go to date",
+            "add": "Add shift",
+            "filter_all_locations": "All locations",
+            "filter_all_shifts": "All shifts"
         }
     },
     "countries": {

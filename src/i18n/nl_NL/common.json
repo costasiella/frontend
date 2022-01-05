@@ -409,7 +409,8 @@
         "confirm_unarchive_no": "__STRING_NOT_TRANSLATED__",
         "confirm_unarchive_yes": "__STRING_NOT_TRANSLATED__",
         "classpass_group": "__STRING_NOT_TRANSLATED__",
-        "subscription_group": "__STRING_NOT_TRANSLATED__"
+        "subscription_group": "__STRING_NOT_TRANSLATED__",
+        "shift": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1859,7 +1860,20 @@
         },
         "shifts": {
             "title": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "no_employee": "__STRING_NOT_TRANSLATED__",
+            "all_shifts_in_series": "__STRING_NOT_TRANSLATED__",
+            "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "deleted": "__STRING_NOT_TRANSLATED__",
+            "tooltip_sort_by_location": "__STRING_NOT_TRANSLATED__",
+            "tooltip_sort_by_starttime": "__STRING_NOT_TRANSLATED__",
+            "go_to_date": "__STRING_NOT_TRANSLATED__",
+            "add": "__STRING_NOT_TRANSLATED__",
+            "filter_all_locations": "__STRING_NOT_TRANSLATED__",
+            "filter_all_shifts": "__STRING_NOT_TRANSLATED__"
         }
     },
     "genders": {
