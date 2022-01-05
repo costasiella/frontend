@@ -6,7 +6,7 @@ import { TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
 
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
-import { GET_CLASS_QUERY } from "../queries"
+import { GET_SHIFT_QUERY } from "../queries"
 
 import ShiftEditBaseBase from './ShiftEditBaseBase'
 import { shift_edit_all_subtitle } from "./tools"
@@ -14,7 +14,7 @@ import { shift_edit_all_subtitle } from "./tools"
 
 function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true, sidebarButton="", cardTitle=""}) {
   const shiftId = match.params.shift_id
-  const { loading, error, data } = useQuery(GET_CLASS_QUERY, { variables: {
+  const { loading, error, data } = useQuery(GET_SHIFT_QUERY, { variables: {
     id: shiftId
   }})
 
@@ -54,7 +54,7 @@ function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true,
     t: t,
     location: initialValues.organizationLocationRoom.organizationLocation.name,
     locationRoom: initialValues.organizationLocationRoom.name,
-    shifttype: initialValues.organizationShifttype.name,
+    shift: initialValues.organizationShift.name,
     starttime: initialTimeStart
   })
 
