@@ -74,22 +74,29 @@ export const GET_SHIFTS_QUERY = gql`
 `
 
 export const GET_SHIFT_QUERY = gql`
-  query ScheduleShift($scheduleItemId: ID!, $date: Date!) {
-    scheduleShift(scheduleItemId:$scheduleItemId, date: $date) {
-      scheduleItemId
+  query ScheduleItem($id: ID!) {
+    scheduleItem(id:$id) {
+      id
       frequencyType
+      frequencyInterval
       organizationLocationRoom {
         id
         name
+        organizationLocation {
+          id
+          name
+        }
       }
       organizationShift {
         id
         name
       }
+      dateStart
+      dateEnd
       timeStart
       timeEnd
     }
-    organizationLocationRooms(first: 100, before: $before, after: $after, archived: false) {
+    organizationLocationRooms(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -108,7 +115,7 @@ export const GET_SHIFT_QUERY = gql`
         }
       }
     }
-    organizationShifts(first: 100, before: $before, after: $after, archived: false) {
+    organizationShifts(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
