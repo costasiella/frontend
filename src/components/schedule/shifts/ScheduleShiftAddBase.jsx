@@ -37,7 +37,7 @@ function ScheduleShiftAddBase({t, children}) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              <ScheduleMenu activeLink='classes'/>
+              <ScheduleMenu activeLink='shifts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>
