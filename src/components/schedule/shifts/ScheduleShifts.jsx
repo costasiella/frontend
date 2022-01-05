@@ -209,11 +209,11 @@ function ScheduleShifts ({ t, history }) {
                                     t: t,
                                     msgConfirm: t("schedule.shifts.delete_confirm_msg"),
                                     msgDescription: <p key={v4()}>
-                                      {moment(date + ' ' + timeStart).format(dateFormat)} {' - '}
-                                      {moment(date + ' ' + timeEnd).format(dateFormat)} {' '} @ {' '}
+                                      {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
+                                      {moment(date + ' ' + timeEnd).format(timeFormat)} {' '} 
+                                      {organizationShift.name} {' '} @ {' '}
                                       {organizationLocationRoom.organizationLocation.name} {' '}
                                       {organizationLocationRoom.name}
-                                      {organizationShift.Name}
                                       </p>,
                                     msgSuccess: t('schedule.shifts.deleted'),
                                     deleteFunction: deleteScheduleShift,
