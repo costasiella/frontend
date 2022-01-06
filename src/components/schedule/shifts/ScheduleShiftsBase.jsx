@@ -126,6 +126,14 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
                     refetch(get_list_query_variables())
                 }} />
               </Button.List> 
+              <HasPermissionWrapper permission="add"
+                                    resource="scheduleshift">
+                <Link to={"/schedule/shifts/add"}>
+                  <Button color="primary btn-block ml-2">
+                    <Icon prefix="fe" name="plus-circle" /> {t('general.add')}
+                  </Button>
+                </Link>
+              </HasPermissionWrapper>
             </div>
           </Page.Header>
           <Grid.Row>
@@ -133,13 +141,6 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="scheduleshift">
-                <Button color="primary btn-block mb-1"
-                        onClick={() => history.push("/schedule/shifts/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('schedule.shifts.add')}
-                </Button>
-              </HasPermissionWrapper>
               {(data) ? 
                 <div>
                   <div>
