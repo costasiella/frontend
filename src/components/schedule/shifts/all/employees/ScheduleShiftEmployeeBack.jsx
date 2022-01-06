@@ -4,8 +4,8 @@ import { withRouter } from "react-router"
 
 import ButtonBack from '../../../../ui/ButtonBack'
 
-const ScheduleClassTeacherBack = ({ t, shiftId }) => (
+const ScheduleShiftEmployeeBack = ({ t, shiftId }) => (
   <ButtonBack returnUrl={"/schedule/shifts/all/employees/" + shiftId} />
 )
 
-export default withTranslation()(withRouter(ScheduleClassTeacherBack))
+export default withTranslation()(withRouter(ScheduleShiftEmployeeBack))
