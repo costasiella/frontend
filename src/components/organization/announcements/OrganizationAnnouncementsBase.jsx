@@ -15,7 +15,7 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationAnnouncementsBase({t, history, children, showEditBack=false}) {
@@ -45,7 +45,6 @@ function OrganizationAnnouncementsBase({t, history, children, showEditBack=false
                 </Link>
                 </HasPermissionWrapper>
             }
-            <OrganizationMenu activeLink='announcements'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

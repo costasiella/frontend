@@ -29,7 +29,6 @@ import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
 import CardHeaderSeparator from "../../../../general/CardHeaderSeparator"
-import OrganizationMenu from "../../../OrganizationMenu"
 
 import { GET_APPOINTMENT_PRICES_QUERY } from "./queries"
 
@@ -190,7 +189,6 @@ const OrganizationAppointmentPrices = ({ t, history, match }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.appointment_prices.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='appointments'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -200,7 +200,6 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
 //                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
 //                   </Button>
 //                 </HasPermissionWrapper>
-//                 <OrganizationMenu activeLink=''/>
 //               </Grid.Col>
 //             </Grid.Row>
 //           </Container>

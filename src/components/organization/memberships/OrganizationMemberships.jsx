@@ -28,7 +28,7 @@ import BadgeBoolean from "../../ui/BadgeBoolean"
 import Validity from "../../ui/Validity"
 
 import ContentCard from "../../general/ContentCard"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 import { GET_MEMBERSHIPS_QUERY } from "./queries"
 
@@ -215,7 +215,6 @@ const OrganizationMemberships = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.memberships.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='memberships'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -24,7 +24,6 @@ import {
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../../OrganizationMenu"
 
 
 const UPDATE_APPOINTMENT_PRICE = gql`
@@ -168,7 +167,6 @@ class OrganizationAppointmentPriceEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu activeLink='appointments'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

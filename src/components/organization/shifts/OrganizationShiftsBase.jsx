@@ -15,7 +15,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from "../OrganizationMenu"
 
 
 function OrganizationShiftsBase({t, history, children, showBack=false}) {
@@ -45,7 +44,6 @@ function OrganizationShiftsBase({t, history, children, showBack=false}) {
                   </Link>
                 </HasPermissionWrapper>
               }     
-              <OrganizationMenu activeLink='shifts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

@@ -15,7 +15,7 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationLanguagesBase({t, history, children, showBack=false}) {
@@ -45,7 +45,6 @@ function OrganizationLanguagesBase({t, history, children, showBack=false}) {
                   </Link>
                 </HasPermissionWrapper>
               }     
-              <OrganizationMenu activeLink='languages'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

@@ -394,7 +394,6 @@ function OrganizationClasspasses({t, history}) {
 //                 <Icon prefix="fe" name="plus-circle" /> {t('organization.classpasses.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu activeLink='classpasses'/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

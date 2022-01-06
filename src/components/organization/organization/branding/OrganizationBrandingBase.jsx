@@ -16,7 +16,6 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../OrganizationMenu"
 
 
 function OrganizationBrandingBase({t, match, history, children}) {
@@ -28,13 +27,9 @@ function OrganizationBrandingBase({t, match, history, children}) {
         <Container>
           <Page.Header title={t('organization.title')} />
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               <h3>{t('organization.organization.branding.title')}</h3>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <h5>{t("general.menu")}</h5>
-              <OrganizationMenu activeLink='organization_branding'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

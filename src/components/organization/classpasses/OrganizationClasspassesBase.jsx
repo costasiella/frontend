@@ -14,7 +14,7 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationClasspassesBase({t, children, showBack=false}) {
@@ -53,8 +53,6 @@ function OrganizationClasspassesBase({t, children, showBack=false}) {
                   </Link>
                 </HasPermissionWrapper>              
               }
-
-              <OrganizationMenu activeLink={activeLink}/>
             </Grid.Col>
           </Grid.Row>
         </Container>

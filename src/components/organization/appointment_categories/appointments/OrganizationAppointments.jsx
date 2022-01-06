@@ -28,7 +28,6 @@ import { toast } from 'react-toastify'
 
 import ContentCard from "../../../general/ContentCard"
 import CardHeaderSeparator from "../../../general/CardHeaderSeparator"
-import OrganizationMenu from "../../OrganizationMenu"
 
 import { GET_APPOINTMENTS_QUERY } from "./queries"
 
@@ -220,7 +219,6 @@ const OrganizationAppointments = ({ t, history, match, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.appointments.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='appointments'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

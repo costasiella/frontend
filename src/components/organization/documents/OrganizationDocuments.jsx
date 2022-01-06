@@ -17,7 +17,7 @@ import {
   Table
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationDocuments({ t, match }) {
@@ -47,7 +47,7 @@ function OrganizationDocuments({ t, match }) {
             </div> */}
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               <Card>
                 <Card.Header>
                   <Card.Title>{t('organization.documents.title')}</Card.Title>
@@ -78,10 +78,6 @@ function OrganizationDocuments({ t, match }) {
                   </Table.Body>
                 </Table>
               </Card>        
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <h5>{t("general.menu")}</h5>
-              <OrganizationMenu activeLink='documents'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

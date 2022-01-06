@@ -13,7 +13,7 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../OrganizationMenu"
+
 
 
 function OrganizationLocationRoomsBase({t, history, match, children, showBack=false}) {
@@ -52,7 +52,6 @@ function OrganizationLocationRoomsBase({t, history, match, children, showBack=fa
                   </Link>
                 </HasPermissionWrapper>
               }
-            <OrganizationMenu activeLink='locations'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -26,7 +26,7 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationAppointmentCategoryForm from "./OrganizationAppointmentCategoryForm"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 const ADD_ORGANIZATION_APPOINTMENT_CATEGORY = gql`
@@ -104,7 +104,6 @@ const OrganizationAppointmentCategoryAdd = ({ t, history }) => (
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='appointment_categories'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -16,7 +16,7 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationSubscriptionsGroupsBase({ t, history, children, showBack=false }) {
@@ -53,7 +53,6 @@ function OrganizationSubscriptionsGroupsBase({ t, history, children, showBack=fa
                   </Link>
                 </HasPermissionWrapper>
               }
-              <OrganizationMenu activeLink=''/>
             </Grid.Col>
           </Grid.Row>
         </Container>
