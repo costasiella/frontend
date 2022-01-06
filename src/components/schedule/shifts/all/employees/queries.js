@@ -84,7 +84,7 @@ export const GET_SINGLE_SCHEDULE_SHIFT_ACCOUNTS_QUERY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query InputValues($after: String, $before: String) {
-    accounts(first: 15, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 1000, before: $before, after: $after, isActive: true, employee: true) {
       pageInfo {
         startCursor
         endCursor
