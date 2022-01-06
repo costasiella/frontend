@@ -26,8 +26,9 @@ function ShiftEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           title={t("schedule.title")} 
           subTitle={subTitle}
         >
-          <ShiftEditBack />
-          {pageHeaderButtonList}
+          <div className="page-options d-flex">
+            {pageHeaderButtonList}
+          </div>
         </Page.Header>
         <Grid.Row>
           <Grid.Col md={9}>

@@ -25,6 +25,8 @@ import ClassEditBase from "../ClassEditBase"
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
 
 
+// TODO: Add date format
+
 function ScheduleClassTeachers({ t, match, history}) {
   const classId = match.params.class_id
   const menuActiveLink = "teachers"
