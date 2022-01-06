@@ -108,8 +108,9 @@ function ScheduleShiftEdit({ t, match, history }) {
     initialValues.timeEnd = ""
   }
 
+
   return (
-    <ScheduleShiftEditBase subTitle={subtitle} sidebarButton={<ScheduleShiftWeeklyOTCDelete/>}>
+    <ScheduleShiftEditBase subTitle={subtitle} sidebarButton={(showDelete) ? <ScheduleShiftWeeklyOTCDelete/> : ""}>
       <Card>
         <Card.Header>
           <Card.Title>{t('general.edit')}</Card.Title>
