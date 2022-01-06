@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -11,10 +9,10 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
 // import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import ScheduleClassBack from "./ScheduleClassBack"
+import ScheduleShiftBack from "./ScheduleShiftBack"
 
 
-function ScheduleShiftEditBase({ t, match, history, children, subTitle="" }) {
+function ScheduleShiftEditBase({ t, match, history, children, sitebarButton="", subTitle="" }) {
   // const scheduleItemId = match.params.class_id
   // const classDate = match.params.date
 
@@ -24,7 +22,7 @@ function ScheduleShiftEditBase({ t, match, history, children, subTitle="" }) {
         <Container>
           <Page.Header title={t('schedule.title')} subTitle={subTitle}>
             <div className="page-options d-flex">       
-              <ScheduleClassBack />
+              <ScheduleShiftBack />
             </div>
           </Page.Header>
           <Grid.Row>
@@ -32,6 +30,7 @@ function ScheduleShiftEditBase({ t, match, history, children, subTitle="" }) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
+              {sidebarButton}
               {/* <ClassMenu 
                 scheduleItemId={scheduleItemId}
                 class_date={classDate}
