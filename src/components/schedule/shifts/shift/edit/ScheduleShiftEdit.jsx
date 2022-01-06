@@ -12,7 +12,7 @@ import { SCHEDULE_CLASS_EDIT_OTC_SCHEMA } from './yupSchema'
 import ScheduleShiftEditForm from './ScheduleShiftEditForm'
 import { TimeStringToJSDateOBJ, dateToLocalISOTime } from '../../../../../tools/date_tools'
 
-import { shift_subtitle } from "../tools"
+import { shiftSubtitle } from "../tools"
 
 
 import {
@@ -59,7 +59,7 @@ function ScheduleShiftEdit({ t, match, history }) {
   console.log(queryData)
 
   const scheduleItem = queryData.scheduleItem
-  const subtitle = shift_subtitle({
+  const subtitle = shiftSubtitle({
     t: t,
     location: scheduleItem.organizationLocationRoom.organizationLocation.name, 
     locationRoom: scheduleItem.organizationLocationRoom.name,
@@ -188,4 +188,4 @@ function ScheduleShiftEdit({ t, match, history }) {
 }
 
 
-export default withTranslation()(withRouter(ScheduleClassEdit))
+export default withTranslation()(withRouter(ScheduleShiftEdit))
