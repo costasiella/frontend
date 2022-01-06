@@ -33,9 +33,9 @@ function ScheduleShiftEmployees({ t, match, history}) {
   })
   const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_SHIFT_ACCOUNT)
 
-  const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleitemteacher">
+  const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleitemaccount">
     <Link to={`/schedule/shifts/all/employees/${shiftId}/add` } >
-      <Button color="primary btn-block mb-6">
+      <Button color="primary ml-2">
       <Icon prefix="fe" name="plus-circle" /> {t('general.add')}
       </Button>
     </Link>
@@ -46,7 +46,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={ButtonAdd}
+      pageHeaderButtonList={ButtonAdd}
     >
       <Card.Body>
         <Dimmer active={true} loader={true} />
@@ -58,7 +58,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={ButtonAdd}
+      pageHeaderButtonList={ButtonAdd}
     >
       <Card.Body>
         <p>{t('schedule.shifts.employees.error_loading')}</p>
@@ -71,7 +71,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={ButtonAdd}
+      pageHeaderButtonList={ButtonAdd}
     >
       <Card.Body>
         <p>{t('schedule.shifts.employees.empty_list')}</p>
@@ -83,7 +83,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
     menuActiveLink={menuActiveLink} 
     defaultCard={false}
-    sidebarButton={ButtonAdd}
+    pageHeaderButtonList={ButtonAdd}
     >
       <ContentCard 
         cardTitle={cardTitle}
