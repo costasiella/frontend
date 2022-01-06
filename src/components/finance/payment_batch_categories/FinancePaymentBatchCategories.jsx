@@ -29,7 +29,6 @@ import { get_list_query_variables } from "./tools"
 
 import FinancePaymentBatchCategory from "../../ui/FinancePaymentBatchCategory"
 import ContentCard from "../../general/ContentCard"
-import FinanceMenu from "../FinanceMenu"
 import FinancePaymentBatchCategoriesBase from "./FinancePaymentBatchCategoriesBase"
 import CSLS from "../../../tools/cs_local_storage"
 
@@ -348,7 +347,6 @@ function FinancePaymentBatchCategories({t, history}) {
 //                 <Icon prefix="fe" name="plus-circle" /> {t('finance.payment_methods.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <FinanceMenu activeLink='payment_methods'/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

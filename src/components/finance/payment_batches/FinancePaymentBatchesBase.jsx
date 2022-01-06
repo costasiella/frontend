@@ -15,8 +15,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import FinanceMenu from "../FinanceMenu"
-
 
 function FinancePaymentBatchesBase({t, history, match, children, showAdd=false, showBack=false, returnUrl=""}) {
   const batchType = match.params.batch_type
@@ -60,7 +58,6 @@ function FinancePaymentBatchesBase({t, history, match, children, showAdd=false, 
                 </HasPermissionWrapper>
                 : "" 
               }
-              <FinanceMenu activeLink={activeLink} />
             </Grid.Col>
           </Grid.Row>
         </Container>

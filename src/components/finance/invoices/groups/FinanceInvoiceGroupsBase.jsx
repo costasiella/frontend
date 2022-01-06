@@ -28,7 +28,6 @@ import { toast } from 'react-toastify'
 
 import BadgeBoolean from "../../../ui/BadgeBoolean"
 import ContentCard from "../../../general/ContentCard"
-import FinanceMenu from "../../FinanceMenu"
 
 import { GET_INVOICE_GROUPS_QUERY, ARCHIVE_INVOICE_GROUP } from "./queries"
 
@@ -71,7 +70,6 @@ function FinanceInvoiceGroupsBase({t, history, children, showBack=true}) {
                   </Link>
                 </HasPermissionWrapper>
               }
-              <FinanceMenu activeLink='invoices'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

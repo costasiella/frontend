@@ -12,8 +12,6 @@ import {
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
-import FinanceMenu from "../../../FinanceMenu"
-
 
 function FinanceInvoiceGroupsDefaultsBase({ t, history, children }) {
   return (
@@ -29,12 +27,8 @@ function FinanceInvoiceGroupsDefaultsBase({ t, history, children }) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <h5>{t("general.menu")}</h5>
-              <FinanceMenu activeLink='invoices'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

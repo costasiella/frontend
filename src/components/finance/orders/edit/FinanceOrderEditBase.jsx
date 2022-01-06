@@ -15,7 +15,6 @@ import {
 
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import FinanceMenu from "../../FinanceMenu"
 
 
 function FinanceOrderEditBase ({ t, match, history, children, refetch }) {
@@ -42,8 +41,6 @@ function FinanceOrderEditBase ({ t, match, history, children, refetch }) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>            
-              <h5>{t("general.menu")}</h5>
-              <FinanceMenu activeLink='orders'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

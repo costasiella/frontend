@@ -24,7 +24,6 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../../../general/ContentCard"
-import FinanceMenu from "../../../FinanceMenu"
 import FinanceInvoiceGroupDefaultsBase from './FinanceInvoiceGroupDefaultsBase'
 import FinanceInvoiceGroupDefaultForm from './FinanceInvoiceGroupDefaultForm'
 

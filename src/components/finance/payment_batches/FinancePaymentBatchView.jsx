@@ -34,7 +34,6 @@ import BooleanBadge from "../../ui/BadgeBoolean"
 import FinancePaymentBatchCategory from "../../ui/FinancePaymentBatchCategory"
 import AppSettingsContext from '../../context/AppSettingsContext'
 
-import FinanceMenu from '../FinanceMenu'
 import FinancePaymentBatchViewBase from './FinancePaymentBatchViewBase'
 import FinancePaymentCollectionBatchForm from './FinancePaymentCollectionBatchForm'
 import BadgeBoolean from '../../ui/BadgeBoolean';

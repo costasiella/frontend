@@ -12,9 +12,7 @@ import {
 } from "tabler-react";
 
 import SiteWrapper from "../../SiteWrapper"
-
 import FinanceOrdersFilter from "./FinanceOrdersFilter"
-import FinanceMenu from "../FinanceMenu"
 
 
 const FinanceOrdersBase = ({ t, history, children, refetch }) => (
@@ -32,8 +30,6 @@ const FinanceOrdersBase = ({ t, history, children, refetch }) => (
           <Grid.Col md={3}>
             <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
             <FinanceOrdersFilter refetch={refetch}/>
-            <h5>{t("general.menu")}</h5>
-            <FinanceMenu activeLink='orders'/>
           </Grid.Col>
         </Grid.Row>
       </Container>
