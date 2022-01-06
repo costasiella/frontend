@@ -110,7 +110,7 @@ export const GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY = gql`
   }
 `
 
-export const DELETE_SCHEDULE_SHIFT_WEEKLY_OTC = gql`
+export const DELETE_SCHEDULE_ITEM_WEEKLY_OTC = gql`
   mutation DeleteScheduleItemWeeklyOTC($input: DeleteScheduleItemWeeklyOTCInput!) {
     deleteScheduleItemWeeklyOtc(input: $input) {
       ok
@@ -119,7 +119,7 @@ export const DELETE_SCHEDULE_SHIFT_WEEKLY_OTC = gql`
 `
 
 
-export const UPDATE_SCHEDULE_SHIFT_WEEKLY_OTC = gql`
+export const UPDATE_SCHEDULE_ITEM_WEEKLY_OTC = gql`
   mutation UpdateScheduleItemWeeklyOTC($input: UpdateScheduleItemWeeklyOTCInput!) {
     updateScheduleItemWeeklyOtc(input:$input) {
       scheduleItemWeeklyOtc {
