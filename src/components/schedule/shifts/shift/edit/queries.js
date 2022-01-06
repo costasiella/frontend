@@ -45,11 +45,7 @@ export const GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY = gql`
           name
         }
       }
-      organizationClasstype {
-        id
-        name
-      }
-      organizationLevel {
+      organizationShift {
         id
         name
       }
@@ -57,7 +53,6 @@ export const GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY = gql`
       dateEnd
       timeStart
       timeEnd
-      displayPublic
     }
     accounts(first: 100, isActive: true, teacher: true) {
       pageInfo {
