@@ -9,12 +9,12 @@ import {
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 
-const ShiftEditMenu = ({ t, activeLink, classId }) => (
+const ShiftEditMenu = ({ t, activeLink, shiftId }) => (
   <List.Group transparent={true}>
     <List.GroupItem
       key={v4()}
       className="d-flex align-items-center"
-      to={"#/schedule/classes/all/edit/" + classId}
+      to={"#/schedule/shifts/all/edit/" + shiftId}
       icon="edit-3"
       active={(activeLink==="edit")}
       >
@@ -25,11 +25,11 @@ const ShiftEditMenu = ({ t, activeLink, classId }) => (
       <List.GroupItem
         key={v4()}
         className="d-flex align-items-center"
-        to={"#/schedule/classes/all/teachers/" + classId}
+        to={"#/schedule/shifts/all/employees/" + shiftId}
         icon="users"
-        active={activeLink==="teachers"}
+        active={activeLink==="employees"}
         >
-        {t('general.teachers')}
+        {t('general.employees')}
       </List.GroupItem>
     </HasPermissionWrapper>
   </List.Group>
