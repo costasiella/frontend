@@ -133,8 +133,8 @@ export const GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY = gql`
 `
 
 export const DELETE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
-  mutation DeleteScheduleClassWeeklyOTC($input: DeleteScheduleClassWeeklyOTCInput!) {
-    deleteScheduleClassWeeklyOtc(input: $input) {
+  mutation DeleteScheduleClassWeeklyOTC($input: DeleteScheduleItemWeeklyOTCInput!) {
+    deleteScheduleItemWeeklyOtc(input: $input) {
       ok
     }
   }
@@ -142,8 +142,8 @@ export const DELETE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
 
 
 export const UPDATE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
-  mutation UpdateScheduleClassWeeklyOTC($input: UpdateScheduleClassWeeklyOTCInput!) {
-    updateScheduleClassWeeklyOtc(input:$input) {
+  mutation UpdateScheduleClassWeeklyOTC($input: UpdateScheduleItemWeeklyOTCInput!) {
+    updateScheduleItemWeeklyOtc(input:$input) {
       scheduleItemWeeklyOtc {
         id
       }
