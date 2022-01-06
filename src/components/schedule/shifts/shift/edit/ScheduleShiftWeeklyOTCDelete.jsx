@@ -15,7 +15,7 @@ import {
 
 function ScheduleItemWeeklyOTCDelete({t, match, history}) {
   const scheduleItemId = match.params.shift_id
-  const classDate = match.params.date
+  const shiftDate = match.params.date
   const [deleteScheduleShiftOTC] = useMutation(DELETE_SCHEDULE_ITEM_WEEKLY_OTC, {
     onCompleted: () => { history.push("/schedule/shifts/") }
   })
@@ -39,7 +39,7 @@ function ScheduleItemWeeklyOTCDelete({t, match, history}) {
             variables: {
               input: {
                 scheduleItem: scheduleItemId,
-                date: classDate
+                date: shiftDate
               },
             }, 
             refetchQueries: [
