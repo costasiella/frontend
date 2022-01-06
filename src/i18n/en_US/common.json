@@ -1212,11 +1212,11 @@
             "title_add": "Add appoinement",
             "toast_add_success": "Added appoinement",
             "public": "Public",
-            "frequencyType": "__STRING_NOT_TRANSLATED__",
-            "select_specific": "__STRING_NOT_TRANSLATED__",
-            "select_weekly": "__STRING_NOT_TRANSLATED__",
-            "frequencyInterval": "__STRING_NOT_TRANSLATED__",
-            "placeholder_enddate": "__STRING_NOT_TRANSLATED__"
+            "frequencyType": "Recurring",
+            "select_specific": "Once",
+            "select_weekly": "Weekly",
+            "frequencyInterval": "Week day",
+            "placeholder_enddate": "Click to select a date or leave empty for no enddate"
         },
         "events": {
             "title": "Events",
@@ -1316,7 +1316,20 @@
             "go_to_date": "Go to date",
             "add": "Add shift",
             "filter_all_locations": "All locations",
-            "filter_all_shifts": "All shifts"
+            "filter_all_shifts": "All shifts",
+            "title_edit": "Edit shift",
+            "toast_edit_success": "Saved",
+            "shift": {
+                "edit": {
+                    "toast_edit_success": "Saved",
+                    "delete_confirm_msg": "Are you sure you wish to remove all changes made to this shift?",
+                    "delete_success": "Deleted shift changes",
+                    "delete_all_changes": "Remove all changes on this date"
+                }
+            }
+        },
+        "shiftes": {
+            "title_edit": "__STRING_NOT_TRANSLATED__"
         }
     },
     "countries": {

@@ -1873,7 +1873,20 @@
             "go_to_date": "__STRING_NOT_TRANSLATED__",
             "add": "__STRING_NOT_TRANSLATED__",
             "filter_all_locations": "__STRING_NOT_TRANSLATED__",
-            "filter_all_shifts": "__STRING_NOT_TRANSLATED__"
+            "filter_all_shifts": "__STRING_NOT_TRANSLATED__",
+            "title_edit": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+            "shift": {
+                "edit": {
+                    "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+                    "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                    "delete_success": "__STRING_NOT_TRANSLATED__",
+                    "delete_all_changes": "__STRING_NOT_TRANSLATED__"
+                }
+            }
+        },
+        "shiftes": {
+            "title_edit": "__STRING_NOT_TRANSLATED__"
         }
     },
     "genders": {
