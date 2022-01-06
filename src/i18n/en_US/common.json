@@ -877,7 +877,7 @@
             "restored": "Restored account",
             "emergency": "Emergency",
             "profile_image": "Profile picture",
-            "explanation": "User accounts that can log in"
+            "explanation": "Customer, teacher & employee accounts"
         },
         "account": {
             "subscriptions": {
@@ -1069,7 +1069,7 @@
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
             "archived": "Archived B2B relation",
-            "explanation": "Business to Business relations"
+            "explanation": "Businesses this organization is connected to"
         },
         "suppliers": {
             "title": "Suppliers"
