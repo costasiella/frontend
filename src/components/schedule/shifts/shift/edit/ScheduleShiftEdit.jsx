@@ -115,74 +115,72 @@ function ScheduleShiftEdit({ t, match, history }) {
         <Card.Header>
           <Card.Title>{t('general.edit')}</Card.Title>
         </Card.Header>
-        <Card.Body>
-          <Formik
-            initialValues={initialValues}
-            // validationSchema={SCHEDULE_CLASS_EDIT_OTC_SCHEMA}
-            onSubmit={(values, { setSubmitting }) => {
+        <Formik
+          initialValues={initialValues}
+          // validationSchema={SCHEDULE_CLASS_EDIT_OTC_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
 
-                console.log("SUBMIT VALUES")
-                console.log(values)
+              console.log("SUBMIT VALUES")
+              console.log(values)
 
-                let timeStart = undefined
-                let timeEnd = undefined
-                if (values.timeStart) {
-                  timeStart = dateToLocalISOTime(values.timeStart)
+              let timeStart = undefined
+              let timeEnd = undefined
+              if (values.timeStart) {
+                timeStart = dateToLocalISOTime(values.timeStart)
+              }
+              
+              if (values.timeEnd) {
+                timeEnd = dateToLocalISOTime(values.timeEnd)  
+              }
+              
+
+              updateScheduleITEMWeeklyOTC({ variables: {
+                input: {
+                  scheduleItem: scheduleItemId,
+                  date: shiftDate,
+                  status: values.status,
+                  description: values.description,
+                  account: values.account,
+                  account2: values.account2,
+                  organizationLocationRoom: values.organizationLocationRoom,
+                  organizationShift: values.organizationShift,
+                  timeStart: timeStart,
+                  timeEnd: timeEnd,
                 }
-                
-                if (values.timeEnd) {
-                  timeEnd = dateToLocalISOTime(values.timeEnd)  
-                }
-                
-
-                updateScheduleITEMWeeklyOTC({ variables: {
-                  input: {
-                    scheduleItem: scheduleItemId,
-                    date: shiftDate,
-                    status: values.status,
-                    description: values.description,
-                    account: values.account,
-                    account2: values.account2,
-                    organizationLocationRoom: values.organizationLocationRoom,
-                    organizationShift: values.organizationShift,
-                    timeStart: timeStart,
-                    timeEnd: timeEnd,
-                  }
-                }, refetchQueries: [
-                    {query: GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY, variables: query_vars},
-                    {query: GET_SHIFTS_QUERY, variables: get_list_query_variables()},
-                ]})
-                .then(({ data }) => {
-                    console.log('got data', data);
-                    toast.success((t('schedule.shifts.shift.edit.toast_edit_success')), {
-                        position: toast.POSITION.BOTTOM_RIGHT
-                      })
-                    setSubmitting(false)
-                }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) +  error, {
+              }, refetchQueries: [
+                  {query: GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY, variables: query_vars},
+                  {query: GET_SHIFTS_QUERY, variables: get_list_query_variables()},
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data);
+                  toast.success((t('schedule.shifts.shift.edit.toast_edit_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
-                  console.log('there was an error sending the query', error)
-                  console.log('there was an error sending the query', error.graphQLErrors)
                   setSubmitting(false)
-                })
-              }
+              }).catch((error) => {
+                toast.error((t('general.toast_server_error')) +  error, {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+                console.log('there was an error sending the query', error)
+                console.log('there was an error sending the query', error.graphQLErrors)
+                setSubmitting(false)
+              })
             }
+          }
+          >
+          {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+            <ScheduleShiftEditForm
+              inputData={queryData}
+              isSubmitting={isSubmitting}
+              setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              values={values}
             >
-            {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-              <ScheduleShiftEditForm
-                inputData={queryData}
-                isSubmitting={isSubmitting}
-                setFieldTouched={setFieldTouched}
-                setFieldValue={setFieldValue}
-                errors={errors}
-                values={values}
-              >
-                {console.log(errors)}
-              </ScheduleShiftEditForm>
-            )}
-          </Formik>
-        </Card.Body>
+              {console.log(errors)}
+            </ScheduleShiftEditForm>
+          )}
+        </Formik>
       </Card>
     </ScheduleShiftEditBase>
   )

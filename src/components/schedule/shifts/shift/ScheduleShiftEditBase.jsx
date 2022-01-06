@@ -13,9 +13,6 @@ import ScheduleShiftBack from "./ScheduleShiftBack"
 
 
 function ScheduleShiftEditBase({ t, match, history, children, sidebarButton="", subTitle="" }) {
-  // const scheduleItemId = match.params.class_id
-  // const classDate = match.params.date
-
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -31,11 +28,6 @@ function ScheduleShiftEditBase({ t, match, history, children, sidebarButton="", 
             </Grid.Col>
             <Grid.Col md={3}>
               {sidebarButton}
-              {/* <ClassMenu 
-                scheduleItemId={scheduleItemId}
-                class_date={classDate}
-                activeLink={menuActiveLink}
-              /> */}
             </Grid.Col>
           </Grid.Row>
         </Container>
