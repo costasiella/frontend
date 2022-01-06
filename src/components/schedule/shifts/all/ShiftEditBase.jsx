@@ -12,7 +12,7 @@ import ShiftEditBaseBase from './ShiftEditBaseBase'
 import { shift_edit_all_subtitle } from "./tools"
 
 
-function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true, sidebarButton="", cardTitle=""}) {
+function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true, pageHeaderButtonList="", cardTitle=""}) {
   const shiftId = match.params.shift_id
   const { loading, error, data } = useQuery(GET_SHIFT_QUERY, { variables: {
     id: shiftId
@@ -26,7 +26,7 @@ function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true,
     <ShiftEditBaseBase 
       cardTitle={cardTitle}
       defaultCard={true}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
       menuActiveLink={menuActiveLink}
     >
       <p>{t('general.loading_with_dots')}</p>
@@ -37,7 +37,7 @@ function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true,
     <ShiftEditBaseBase 
       cardTitle={cardTitle}
       defaultCard={true}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
       menuActiveLink={menuActiveLink}
     >
       {console.log(error)}
@@ -62,7 +62,7 @@ function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true,
     <ShiftEditBaseBase 
       subTitle={subTitle}
       cardTitle={cardTitle}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
       defaultCard={defaultCard}
       menuActiveLink={menuActiveLink}
     >

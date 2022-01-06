@@ -16,7 +16,7 @@ import ShiftEditMenu from './ShiftEditMenu'
 import ShiftEditBack from './ShiftEditBack';
 
 
-function ShiftEditBaseBase({t, match, children, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", sidebarButton=""}) {
+function ShiftEditBaseBase({t, match, children, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", pageHeaderButtonList=""}) {
   const shiftId = match.params.shift_id
   
   return (
@@ -27,6 +27,7 @@ function ShiftEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           subTitle={subTitle}
         >
           <ShiftEditBack />
+          {pageHeaderButtonList}
         </Page.Header>
         <Grid.Row>
           <Grid.Col md={9}>
@@ -37,8 +38,6 @@ function ShiftEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
             }
           </Grid.Col>
           <Grid.Col md={3}>
-            {sidebarButton}
-            <h5>{t('general.menu')}</h5>
             <ShiftEditMenu activeLink={menuActiveLink} shiftId={shiftId}/>
           </Grid.Col>
         </Grid.Row>
