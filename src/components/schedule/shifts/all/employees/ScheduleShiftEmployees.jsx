@@ -19,20 +19,18 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
+import ShiftEditBack from "../ShiftEditBack"
 import ShiftEditBase from "../ShiftEditBase"
 
 import { GET_SCHEDULE_SHIFT_ACCOUNTS_QUERY, DELETE_SCHEDULE_SHIFT_ACCOUNT } from "./queries"
 
 
+// TODO: Add date format
+
 function ScheduleShiftEmployees({ t, match, history}) {
   const shiftId = match.params.shift_id
   const menuActiveLink = "employees"
   const cardTitle = t('schedule.shifts.employees.title')
-  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_SHIFT_ACCOUNTS_QUERY, {
-    variables: {scheduleItem: shiftId}
-  })
-  const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_SHIFT_ACCOUNT)
-
   const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleitemaccount">
     <Link to={`/schedule/shifts/all/employees/${shiftId}/add` } >
       <Button color="primary ml-2">
@@ -40,13 +38,23 @@ function ScheduleShiftEmployees({ t, match, history}) {
       </Button>
     </Link>
   </HasPermissionWrapper>
+  const pageHeaderButtonList = <Button.List>
+    <ShiftEditBack />
+    {ButtonAdd}
+  </Button.List>
+  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_SHIFT_ACCOUNTS_QUERY, {
+    variables: {scheduleItem: shiftId}
+  })
+  const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_SHIFT_ACCOUNT)
+
+
 
   // Loading
   if (loading) return (
     <ShiftEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      pageHeaderButtonList={ButtonAdd}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <Dimmer active={true} loader={true} />
@@ -58,7 +66,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      pageHeaderButtonList={ButtonAdd}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.shifts.employees.error_loading')}</p>
@@ -71,7 +79,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      pageHeaderButtonList={ButtonAdd}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.shifts.employees.empty_list')}</p>
@@ -83,7 +91,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
     <ShiftEditBase 
     menuActiveLink={menuActiveLink} 
     defaultCard={false}
-    pageHeaderButtonList={ButtonAdd}
+    pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={cardTitle}
