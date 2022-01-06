@@ -21,6 +21,7 @@ import {
 } from "tabler-react"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import ButtonBack from '../../ui/ButtonBack';
 
 import { get_list_query_variables } from "./tools"
 import RelationsAccountForm from "./RelationsAccountForm"
@@ -34,9 +35,13 @@ function RelationsAccountAdd({t, history}) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t('relations.title')} />
+          <Page.Header title={t('relations.title')} >
+            <div className="page-options d-flex">
+              <ButtonBack returnUrl={returnUrl} />
+            </div>
+          </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
             <Card>
               <Card.Header>
                 <Card.Title>{t('relations.accounts.title_add')}</Card.Title>
@@ -78,16 +83,7 @@ function RelationsAccountAdd({t, history}) {
                         />
                     )}
                 </Formik>
-            </Card>
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="account">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push(returnUrl)}>
-                  <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                </Button>
-              </HasPermissionWrapper>
+              </Card>
             </Grid.Col>
           </Grid.Row>
         </Container>

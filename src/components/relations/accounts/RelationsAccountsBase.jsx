@@ -25,8 +25,17 @@ function RelationsAccountsBase({t, history, children, refetch}) {
         <Container>
           <Page.Header title={t("relations.title")}>
             <div className="page-options d-flex">
+              <InputSearch 
+                initialValueKey={CSLS.RELATIONS_ACCOUNTS_SEARCH}
+                placeholder="Search..."
+                onChange={(value) => {
+                  console.log(value)
+                  localStorage.setItem(CSLS.RELATIONS_ACCOUNTS_SEARCH, value)
+                  refetch(get_list_query_variables())
+                }}
+              />
               <Form.Select
-                className="w-auto mr-2"
+                className="w-auto ml-2"
                 onChange={(event) => {
                   console.log(event.target.value)
                   localStorage.setItem(CSLS.RELATIONS_ACCOUNTS_FILTER_TYPE, event.target.value)
@@ -39,29 +48,18 @@ function RelationsAccountsBase({t, history, children, refetch}) {
                 <option value="teacher">{t("general.teachers")}</option>
                 <option value="employee">{t("general.employees")}</option>
               </Form.Select>
-              <InputSearch 
-                initialValueKey={CSLS.RELATIONS_ACCOUNTS_SEARCH}
-                placeholder="Search..."
-                onChange={(value) => {
-                  console.log(value)
-                  localStorage.setItem(CSLS.RELATIONS_ACCOUNTS_SEARCH, value)
-                  refetch(get_list_query_variables())
-                }}
-              />
+              <HasPermissionWrapper permission="add"
+                                    resource="account">
+                <Button color="primary ml-2"
+                        onClick={() => history.push("/relations/accounts/add")}>
+                  <Icon prefix="fe" name="plus-circle" /> {t('general.add')}
+                </Button>
+              </HasPermissionWrapper>
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="account">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/relations/accounts/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('relations.accounts.add')}
-                </Button>
-              </HasPermissionWrapper>
             </Grid.Col>
           </Grid.Row>
         </Container>        

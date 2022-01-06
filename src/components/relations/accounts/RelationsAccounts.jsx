@@ -176,8 +176,6 @@ function RelationsAccounts({t, history}) {
               <Table.ColHeader>{t('general.account')}</Table.ColHeader>
               <Table.ColHeader>{t('general.products')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
-              {/* <Table.ColHeader>{t('general.info')}</Table.ColHeader> */}
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -269,8 +267,6 @@ function RelationsAccounts({t, history}) {
                         </Button>
                       </Link>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.deactivate')} 
                       href=""
