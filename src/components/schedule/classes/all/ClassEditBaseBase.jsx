@@ -40,7 +40,6 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           </Grid.Col>
           <Grid.Col md={3}>
             {sidebarButton}
-            <h5>{t('general.menu')}</h5>
             <ClassEditMenu activeLink={menuActiveLink} classId={classId}/>
           </Grid.Col>
         </Grid.Row>
