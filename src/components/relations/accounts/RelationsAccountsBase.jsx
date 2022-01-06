@@ -1,9 +1,6 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
 
 import {
   Page,
@@ -16,7 +13,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import InputSearch from "../../general/InputSearch"
-import RelationsMenu from "../RelationsMenu"
 
 import CSLS from "../../../tools/cs_local_storage"
 import { get_list_query_variables } from "./tools"
@@ -66,7 +62,6 @@ function RelationsAccountsBase({t, history, children, refetch}) {
                   <Icon prefix="fe" name="plus-circle" /> {t('relations.accounts.add')}
                 </Button>
               </HasPermissionWrapper>
-              <RelationsMenu activeLink='accounts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>        

@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -13,7 +12,6 @@ import {
 
 import CSLS from "../../../tools/cs_local_storage"
 import InputSearch from "../../general/InputSearch"
-import RelationsMenu from "../RelationsMenu"
 import { get_list_query_variables } from "./tools"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
@@ -48,7 +46,6 @@ const RelationsB2BBase = ({t, history, refetch, children }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('relations.b2b.add')}
               </Button>
             </HasPermissionWrapper>
-            <RelationsMenu activeLink='b2b'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

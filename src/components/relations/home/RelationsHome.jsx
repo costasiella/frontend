@@ -16,8 +16,6 @@ import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import RelationsMenu from "../RelationsMenu"
-
 
 class RelationsHome extends Component {
   constructor(props) {

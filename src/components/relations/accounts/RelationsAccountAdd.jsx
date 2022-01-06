@@ -24,7 +24,6 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import { get_list_query_variables } from "./tools"
 import RelationsAccountForm from "./RelationsAccountForm"
-import RelationsMenu from '../RelationsMenu'
 
 const returnUrl = "/relations/accounts"
 
@@ -89,7 +88,6 @@ function RelationsAccountAdd({t, history}) {
                   <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                 </Button>
               </HasPermissionWrapper>
-              <RelationsMenu activeLink='accounts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

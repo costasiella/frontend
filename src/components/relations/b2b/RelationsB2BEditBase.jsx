@@ -41,7 +41,6 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
             </Card>
             </Grid.Col>                                    
             <Grid.Col md={3}>
-              {/* B2B relation menu goes here */}
               <HasPermissionWrapper permission="change"
                                     resource="business">
                 <Link to={returnUrl}>
@@ -50,11 +49,6 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              {/* <RelationsMenu activeLink='b2b'/> */}
-              {/* <ProfileMenu 
-                activeLink='profile'
-                account_id={account_id}
-              />  */}
             </Grid.Col>
           </Grid.Row>
         </Container>

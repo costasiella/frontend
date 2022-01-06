@@ -27,7 +27,6 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import { get_list_query_variables } from "./tools"
 import RelationsB2BAddForm from "./RelationB2BAddForm"
-import RelationsMenu from '../RelationsMenu'
 
 
 const ADD_BUSINESS = gql`
@@ -102,7 +101,6 @@ function RelationsB2BAdd({ t, history }) {
                   <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                 </Button>
               </HasPermissionWrapper>
-              <RelationsMenu activeLink='accounts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>
