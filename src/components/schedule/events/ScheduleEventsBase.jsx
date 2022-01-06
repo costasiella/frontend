@@ -11,10 +11,9 @@ import {
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import SiteWrapper from "../../SiteWrapper"
 // import ShopAccountBack from "../ShopAccountBack"
-import ScheduleMenu from "../ScheduleMenu"
 
 
-function ScheduleEventsBase({ t, match, history, children, sidebarContent="", displayMenu=true }) {
+function ScheduleEventsBase({ t, match, history, children, sidebarContent="" }) {
   return (
       <SiteWrapper>
         <div className="my-3 my-md-5">
@@ -47,12 +46,6 @@ function ScheduleEventsBase({ t, match, history, children, sidebarContent="", di
                   </div> */}
                   {/* <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
                   <ScheduleClassesFilter data={data} refetch={refetch} /> */}
-              {(displayMenu) ?
-                <span>
-                  <h5>{t("general.menu")}</h5>
-                  <ScheduleMenu activeLink='events'/>
-                </span>
-                : "" }
             </Grid.Col>
             </Grid.Row>
           </Container>

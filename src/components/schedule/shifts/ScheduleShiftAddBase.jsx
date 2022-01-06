@@ -13,8 +13,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import ScheduleMenu from '../ScheduleMenu'
-
 
 function ScheduleShiftAddBase({t, children}) {
   const returnUrl = "/schedule/shifts"
@@ -37,7 +35,6 @@ function ScheduleShiftAddBase({t, children}) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              <ScheduleMenu activeLink='shifts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

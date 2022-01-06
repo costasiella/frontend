@@ -18,7 +18,6 @@ import CSDatePicker from "../../ui/CSDatePicker"
 
 import CSLS from "../../../tools/cs_local_storage"
 
-import ScheduleMenu from "../ScheduleMenu"
 import ScheduleShiftsFilter from "./ScheduleShiftsFilter"
 
 import { 
@@ -162,8 +161,6 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
                   <ScheduleShiftsFilter data={data} refetch={refetch} />
                 </div>
               : ""}
-              <h5>{t("general.menu")}</h5>
-              <ScheduleMenu activeLink='shifts'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

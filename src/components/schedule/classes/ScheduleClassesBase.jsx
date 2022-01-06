@@ -18,7 +18,6 @@ import CSDatePicker from "../../ui/CSDatePicker"
 
 import CSLS from "../../../tools/cs_local_storage"
 
-import ScheduleMenu from "../ScheduleMenu"
 import ScheduleClassesFilter from "./ScheduleClassesFilter"
 
 import { 
@@ -162,8 +161,6 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                   <ScheduleClassesFilter data={data} refetch={refetch} />
                 </div>
               : ""}
-              <h5>{t("general.menu")}</h5>
-              <ScheduleMenu activeLink='classes'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

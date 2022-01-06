@@ -34,7 +34,6 @@ import CSLS from "../../../tools/cs_local_storage"
 
 import BadgeBoolean from "../../ui/BadgeBoolean"
 import ContentCard from "../../general/ContentCard"
-import ScheduleMenu from "../ScheduleMenu"
 import ScheduleShiftsFilter from "./ScheduleShiftsFilter"
 import ScheduleShiftsBase from './ScheduleShiftsBase'
 
@@ -415,7 +414,6 @@ export default withTranslation()(withRouter(ScheduleShifts))
 //                   <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
 //                   <ScheduleClassesFilter data={data} refetch={refetch} />
 //                   <h5>{t("general.menu")}</h5>
-//                   <ScheduleMenu activeLink='shifts'/>
 //               </Grid.Col>
 //             </Grid.Row>
 //           </Container>
