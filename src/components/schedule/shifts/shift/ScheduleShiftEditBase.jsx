@@ -12,7 +12,7 @@ import SiteWrapper from "../../../SiteWrapper"
 import ScheduleShiftBack from "./ScheduleShiftBack"
 
 
-function ScheduleShiftEditBase({ t, match, history, children, sitebarButton="", subTitle="" }) {
+function ScheduleShiftEditBase({ t, match, history, children, sidebarButton="", subTitle="" }) {
   // const scheduleItemId = match.params.class_id
   // const classDate = match.params.date
 
