@@ -16,6 +16,7 @@ import { SHIFT_SCHEMA } from '../../yupSchema'
 import ScheduleShiftForm from '../../ScheduleShiftForm'
 
 import { dateToLocalISO, dateToLocalISOTime, TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
+import ShiftEditBack from "../ShiftEditBack"
 import ShiftEditBase from '../ShiftEditBase'
 import { Card } from 'tabler-react';
 
@@ -25,13 +26,14 @@ function ScheduleShiftEditAll({t, match}) {
   const menuActiveLink = "edit"
   const returnUrl = "/schedule/shifts"
   const cardTitle = t('schedule.shifts.title_edit')
+  const pageHeaderButtonList = <ShiftEditBack />
   const { loading, error, data } = useQuery(GET_SHIFT_QUERY, {
     variables: { id: id }
   })
   const [ updateScheduleShift ] = useMutation(UPDATE_SHIFT)
 
   if (loading) return (
-    <ShiftEditBase menu_activeLink={menuActiveLink}>
+    <ShiftEditBase menu_activeLink={menuActiveLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card.Body>
         <p>{t('general.loading_with_dots')}</p>
       </Card.Body>
@@ -39,7 +41,7 @@ function ScheduleShiftEditAll({t, match}) {
   )
 
   if (error) return (
-    <ShiftEditBase menu_activeLink={menuActiveLink}>
+    <ShiftEditBase menu_activeLink={menuActiveLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card.Body>
         <p>{t('general.error_sad_smiley')}</p>
       </Card.Body>
@@ -69,6 +71,7 @@ function ScheduleShiftEditAll({t, match}) {
     <ShiftEditBase 
       menuActiveLink={menuActiveLink}
       defaultCard={false}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card title={cardTitle}>
         <Formik
