@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import { Card } from 'tabler-react';
 
 import { GET_SCHEDULE_SHIFT_ACCOUNTS_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_SHIFT_ACCOUNT } from './queries'
-import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
+import { SCHEDULE_SHIFT_EMPLOYEE_SCHEMA } from './yupSchema'
 import ScheduleShiftEmployeeForm from './ScheduleShiftEmployeeForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
@@ -65,7 +65,7 @@ function ScheduleShiftEmployeeAdd({ t, history, match }) {
           account: "",
           account2: "",
         }}
-        // validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+        validationSchema={SCHEDULE_SHIFT_EMPLOYEE_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
 
             let dateEnd

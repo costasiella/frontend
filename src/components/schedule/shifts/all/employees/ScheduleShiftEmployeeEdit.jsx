@@ -6,7 +6,7 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_SCHEDULE_SHIFT_ACCOUNTS_QUERY, GET_SINGLE_SCHEDULE_SHIFT_ACCOUNTS_QUERY, UPDATE_SCHEDULE_SHIFT_ACCOUNT } from './queries'
-import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
+import { SCHEDULE_SHIFT_EMPLOYEE_SCHEMA } from './yupSchema'
 import ScheduleShiftEmployeeForm from './ScheduleShiftEmployeeForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
@@ -87,7 +87,7 @@ function ScheduleShiftEmployeeEdit({ t, match, history }) {
           account: initialData.account.id,
           account2: initialAccount2,
         }}
-        // validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+        validationSchema={SCHEDULE_SHIFT_EMPLOYEE_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
 
             let dateEnd
