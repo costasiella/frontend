@@ -111,6 +111,7 @@ function ScheduleShiftEmployeeEdit({ t, match, history }) {
             ]})
             .then(({ data }) => {
                 console.log('got data', data);
+                history.push(returnUrl)
                 toast.success((t('schedule.shifts.employees.toast_edit_success')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
