@@ -1,6 +1,4 @@
-// @flow
-
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -17,6 +15,7 @@ import {
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { represent_teacher_role } from "../tools"
+import AppSettingsContext from '../../../../context/AppSettingsContext'
 import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
@@ -25,9 +24,11 @@ import ClassEditBase from "../ClassEditBase"
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
 
 
-// TODO: Add date format
 
 function ScheduleClassTeachers({ t, match, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+
   const classId = match.params.class_id
   const menuActiveLink = "teachers"
   const cardTitle = t('schedule.classes.teachers.title')
@@ -134,10 +135,10 @@ function ScheduleClassTeachers({ t, match, history}) {
                 <Table.Row key={v4()}>
                   {console.log(node)}
                   <Table.Col key={v4()}> 
-                    {moment(node.dateStart).format('LL')}
+                    {moment(node.dateStart).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}> 
-                    {(node.dateEnd) ? moment(node.dateEnd).format('LL') : ""}
+                    {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
                   </Table.Col>
                   <Table.Col>
                     {node.account.fullName} <br />
