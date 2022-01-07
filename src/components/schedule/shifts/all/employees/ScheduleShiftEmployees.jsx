@@ -1,6 +1,4 @@
-// @flow
-
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -13,11 +11,13 @@ import {
   Dimmer,
   Button,
   Table,
-  Card
+  Card,
+  List
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import confirm_delete from "../../../../../tools/confirm_delete"
+import AppSettingsContext from '../../../../context/AppSettingsContext'
 
+import confirm_delete from "../../../../../tools/confirm_delete"
 import ContentCard from "../../../../general/ContentCard"
 import ShiftEditBack from "../ShiftEditBack"
 import ShiftEditBase from "../ShiftEditBase"
@@ -25,9 +25,10 @@ import ShiftEditBase from "../ShiftEditBase"
 import { GET_SCHEDULE_SHIFT_ACCOUNTS_QUERY, DELETE_SCHEDULE_SHIFT_ACCOUNT } from "./queries"
 
 
-// TODO: Add date format
-
 function ScheduleShiftEmployees({ t, match, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+
   const shiftId = match.params.shift_id
   const menuActiveLink = "employees"
   const cardTitle = t('schedule.shifts.employees.title')
@@ -130,7 +131,7 @@ function ScheduleShiftEmployees({ t, match, history}) {
                 <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
                 <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
                 <Table.ColHeader>{t('general.employee')}</Table.ColHeader>
-                <Table.ColHeader>{t('general.employee_2')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.employee2')}</Table.ColHeader>
                 <Table.ColHeader></Table.ColHeader>
               </Table.Row>
             </Table.Header>
@@ -139,10 +140,10 @@ function ScheduleShiftEmployees({ t, match, history}) {
                 <Table.Row key={v4()}>
                   {console.log(node)}
                   <Table.Col key={v4()}> 
-                    {moment(node.dateStart).format('LL')}
+                    {moment(node.dateStart).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}> 
-                    {(node.dateEnd) ? moment(node.dateEnd).format('LL') : ""}
+                    {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
                   </Table.Col>
                   <Table.Col>
                     {node.account.fullName}
@@ -165,7 +166,11 @@ function ScheduleShiftEmployees({ t, match, history}) {
                           confirm_delete({
                             t: t,
                             msgConfirm: t('schedule.shifts.employees.delete_confirm_msg'),
-                            msgDescription: <p>{t('schedule.shifts.employees.delete_confirm_description')}</p>,
+                            msgDescription: <List>
+                                <List.Item>{t("general.start")}: {moment(node.dateStart).format(dateFormat)}</List.Item>
+                                <List.Item>{node.account.fullName} </List.Item>
+                               {(node.account2) ? <List.Item>{node.account2.fullName}</List.Item> : ""}
+                              </List>,
                             msgSuccess: t('schedule.shifts.employees.deleted'),
                             deleteFunction: deleteScheduleItemAccount,
                             functionVariables: { variables: {
