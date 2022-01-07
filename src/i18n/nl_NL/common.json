@@ -410,7 +410,8 @@
         "confirm_unarchive_yes": "__STRING_NOT_TRANSLATED__",
         "classpass_group": "__STRING_NOT_TRANSLATED__",
         "subscription_group": "__STRING_NOT_TRANSLATED__",
-        "shift": "__STRING_NOT_TRANSLATED__"
+        "shift": "__STRING_NOT_TRANSLATED__",
+        "employee2": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1203,7 +1204,6 @@
             "restored": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
@@ -1868,10 +1868,6 @@
             "all_shifts_in_series": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__",
-            "tooltip_sort_by_location": "__STRING_NOT_TRANSLATED__",
-            "tooltip_sort_by_starttime": "__STRING_NOT_TRANSLATED__",
-            "go_to_date": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__",
             "filter_all_locations": "__STRING_NOT_TRANSLATED__",
             "filter_all_shifts": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
@@ -1883,6 +1879,18 @@
                     "delete_success": "__STRING_NOT_TRANSLATED__",
                     "delete_all_changes": "__STRING_NOT_TRANSLATED__"
                 }
+            },
+            "employees": {
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+                "title": "__STRING_NOT_TRANSLATED__",
+                "error_loading": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_description": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shiftes": {

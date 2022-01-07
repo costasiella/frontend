@@ -503,7 +503,8 @@
         "revenue": "Revenue",
         "classpass_group": "Classpass group",
         "subscription_group": "Subscription group",
-        "shift": "Shift"
+        "shift": "Shift",
+        "employee2": "Employee 2"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -870,7 +871,6 @@
             "empty_archive": "No accounts have been deleted yet",
             "delete_confirm_msg": "Are you sure you wish to delete this account and all associated data?",
             "deleted": "Deleted account",
-            "add": "Add account",
             "profile": "Profile",
             "toast_edit_success": "Saved profile",
             "deactivated": "Moved account to deleted",
@@ -1311,10 +1311,6 @@
             "all_shifts_in_series": "All shifts",
             "delete_confirm_msg": "Are you sure you wish to delete this shift?",
             "deleted": "Deleted shift",
-            "tooltip_sort_by_location": "Sort by location",
-            "tooltip_sort_by_starttime": "Sort by start time",
-            "go_to_date": "Go to date",
-            "add": "Add shift",
             "filter_all_locations": "All locations",
             "filter_all_shifts": "All shifts",
             "title_edit": "Edit shift",
@@ -1326,6 +1322,18 @@
                     "delete_success": "Deleted shift changes",
                     "delete_all_changes": "Remove all changes on this date"
                 }
+            },
+            "employees": {
+                "title_add": "Add employee(s) to shift",
+                "toast_add_success": "Added employees to shift",
+                "title_edit": "Edit shift employee(s)",
+                "toast_edit_success": "Saved",
+                "title": "Shift assignment",
+                "error_loading": "Error loading shift employee(s)... :(",
+                "empty_list": "No employees have been added to this shift yet",
+                "delete_confirm_msg": "Are you sure you wish to remove these employees from this shift?",
+                "delete_confirm_description": "",
+                "deleted": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shiftes": {
