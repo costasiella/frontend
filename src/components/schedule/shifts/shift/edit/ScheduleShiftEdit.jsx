@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 import { GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY, UPDATE_SCHEDULE_ITEM_WEEKLY_OTC } from './queries'
 import { GET_SHIFTS_QUERY } from '../../queries'
 import { get_list_query_variables } from '../../tools'
-import { SCHEDULE_CLASS_EDIT_OTC_SCHEMA } from './yupSchema'
+// import { SCHEDULE_CLASS_EDIT_OTC_SCHEMA } from './yupSchema'
 import ScheduleShiftEditForm from './ScheduleShiftEditForm'
 import { TimeStringToJSDateOBJ, dateToLocalISOTime } from '../../../../../tools/date_tools'
 
