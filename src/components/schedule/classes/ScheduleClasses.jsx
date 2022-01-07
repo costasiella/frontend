@@ -13,17 +13,10 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import {
   Badge,
   Dropdown,
-  Page,
-  Grid,
   Icon,
-  Dimmer,
-  Button,
   Card,
-  Container,
   Table,
-  Text,
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import CSDatePicker from "../../ui/CSDatePicker"
 import { confirmAlert } from 'react-confirm-alert'
@@ -33,8 +26,6 @@ import CSLS from "../../../tools/cs_local_storage"
 
 
 import BadgeBoolean from "../../ui/BadgeBoolean"
-import ContentCard from "../../general/ContentCard"
-import ScheduleClassesFilter from "./ScheduleClassesFilter"
 import ScheduleClassesBase from './ScheduleClassesBase'
 
 import { GET_CLASSES_QUERY } from "./queries"
