@@ -64,7 +64,7 @@ export const GET_SINGLE_SCHEDULE_SHIFT_ACCOUNTS_QUERY = gql`
       dateStart
       dateEnd       
     }
-    accounts(first: 100, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 100, before: $before, after: $after, isActive: true, employee: true) {
       pageInfo {
         startCursor
         endCursor
