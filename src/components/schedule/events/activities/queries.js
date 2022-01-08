@@ -73,7 +73,7 @@ query ScheduleEventActivity($before:String, $after:String, $id:ID!) {
       fullName
     }
   }
-  accounts(first: 100, before: $before, after: $after, isActive:true, teacher: true) {
+  accounts(first: 100, before: $before, after: $after, isActive:true, instructor: true) {
     pageInfo {
       startCursor
       endCursor
@@ -120,7 +120,7 @@ export const DELETE_SCHEDULE_EVENT_ACTIVITY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query ScheduleEventActivityInputValues($after: String, $before: String) {
-    accounts(first: 100, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 100, before: $before, after: $after, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor

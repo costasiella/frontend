@@ -9,18 +9,18 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY } from './queries'
-import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
-import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
+import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
+import ScheduleClassInstructorForm from './ScheduleClassInstructorForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
 
 import SiteWrapper from "../../../../SiteWrapper"
 
 import ClassEditBase from "../ClassEditBase"
-import ScheduleClassTeacherBack from "./ScheduleClassTeacherBack"
+import ScheduleClassInstructorBack from "./ScheduleClassInstructorBack"
 
 
-const UPDATE_SCHEDULE_CLASS_TEACHER = gql`
+const UPDATE_SCHEDULE_CLASS_INSTRUCTOR = gql`
   mutation UpdateScheduleItemAccount($input: UpdateScheduleItemAccountInput!) {
     updateScheduleItemAccount(input:$input) {
       scheduleItemAccount {
@@ -31,10 +31,10 @@ const UPDATE_SCHEDULE_CLASS_TEACHER = gql`
 `
 
 
-class ScheduleClassTeacherEdit extends Component {
+class ScheduleClassInstructorEdit extends Component {
   constructor(props) {
     super(props)
-    console.log("Schedule class teacher edit props:")
+    console.log("Schedule class instructor edit props:")
     console.log(props)
   }
 
@@ -44,7 +44,7 @@ class ScheduleClassTeacherEdit extends Component {
     const history = this.props.history
     const id = match.params.id
     const class_id = match.params.class_id
-    const return_url = "/schedule/classes/all/teachers/" + class_id
+    const return_url = "/schedule/classes/all/instructors/" + class_id
 
     return (
       <SiteWrapper>
@@ -71,12 +71,12 @@ class ScheduleClassTeacherEdit extends Component {
     
               return (
                 <ClassEditBase 
-                  card_title={t('schedule.classes.teachers.title_edit')}
-                  menu_activeLink="teachers"
-                  sidebar_button={<ScheduleClassTeacherBack classId={class_id} />}
+                  card_title={t('schedule.classes.instructors.title_edit')}
+                  menu_activeLink="instructors"
+                  sidebar_button={<ScheduleClassInstructorBack classId={class_id} />}
                 >
-                  <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(return_url)}> 
-                    {(addScheduleClassTeacher, { data }) => (
+                  <Mutation mutation={UPDATE_SCHEDULE_CLASS_INSTRUCTOR} onCompleted={() => history.push(return_url)}> 
+                    {(addScheduleClassInstructor, { data }) => (
                         <Formik
                             initialValues={{  
                               dateStart: initialData.dateStart,
@@ -86,7 +86,7 @@ class ScheduleClassTeacherEdit extends Component {
                               account2: initialAccount2,
                               role2: initialData.role2,
                             }}
-                            validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+                            validationSchema={SCHEDULE_CLASS_INSTRUCTOR_SCHEMA}
                             onSubmit={(values, { setSubmitting }) => {
     
                                 let dateEnd
@@ -96,7 +96,7 @@ class ScheduleClassTeacherEdit extends Component {
                                   dateEnd = values.dateEnd
                                 }
     
-                                addScheduleClassTeacher({ variables: {
+                                addScheduleClassInstructor({ variables: {
                                   input: {
                                     id: match.params.id,
                                     account: values.account,
@@ -112,7 +112,7 @@ class ScheduleClassTeacherEdit extends Component {
                                 ]})
                                 .then(({ data }) => {
                                     console.log('got data', data);
-                                    toast.success((t('schedule.classes.teachers.toast_edit_success')), {
+                                    toast.success((t('schedule.classes.instructors.toast_edit_success')), {
                                         position: toast.POSITION.BOTTOM_RIGHT
                                       })
                                   }).catch((error) => {
@@ -125,7 +125,7 @@ class ScheduleClassTeacherEdit extends Component {
                             }}
                             >
                             {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-                              <ScheduleClassTeacherForm
+                              <ScheduleClassInstructorForm
                                 inputData={inputData}
                                 isSubmitting={isSubmitting}
                                 setFieldTouched={setFieldTouched}
@@ -135,7 +135,7 @@ class ScheduleClassTeacherEdit extends Component {
                                 return_url={return_url}
                               >
                                 {console.log(errors)}
-                              </ScheduleClassTeacherForm>
+                              </ScheduleClassInstructorForm>
                             )}
                         </Formik>
                     )}
@@ -151,4 +151,4 @@ class ScheduleClassTeacherEdit extends Component {
 }
 
 
-export default withTranslation()(withRouter(ScheduleClassTeacherEdit))
+export default withTranslation()(withRouter(ScheduleClassInstructorEdit))

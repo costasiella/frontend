@@ -20,7 +20,7 @@ function ScheduleShiftEmployeeEdit({ t, match, history }) {
   const shiftId = match.params.shift_id
   const returnUrl = `/schedule/shifts/all/employees/${shiftId}`
   const cardTitle = t('schedule.shifts.employees.title_edit')
-  const menuActiveLink = "teachers"
+  const menuActiveLink = "instructors"
   const pageHeaderButtonList = <ScheduleShiftEmployeeBack shiftId={shiftId} />
 
   const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_SHIFT_ACCOUNTS_QUERY, {
@@ -77,7 +77,7 @@ function ScheduleShiftEmployeeEdit({ t, match, history }) {
   return (
     <ShiftEditBase 
       cardTitle={cardTitle}
-      menuActiveLink="teachers"
+      menuActiveLink="instructors"
       pageHeaderButtonList={pageHeaderButtonList}
     >
       <Formik

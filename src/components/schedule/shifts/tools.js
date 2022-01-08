@@ -39,7 +39,7 @@ export function get_list_query_variables() {
 }
 
 
-export function represent_teacher(name, role) {
+export function represent_instructor(name, role) {
   let textColor = false
 
   switch (role) {

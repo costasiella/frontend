@@ -1,34 +1,31 @@
 // @flow
 
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import { Card } from 'tabler-react';
 
-import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY, UPDATE_SCHEDULE_CLASS_TEACHER } from './queries'
-import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
-import ScheduleClassTeacherForm from './ScheduleClassTeacherForm'
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_CLASS_INSTRUCTOR } from './queries'
+import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
+import ScheduleClassInstructorForm from './ScheduleClassInstructorForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
 import ClassEditBase from "../ClassEditBase"
-import ScheduleClassTeacherBack from "./ScheduleClassTeacherBack"
-import { Card } from 'tabler-react';
+import ScheduleClassInstructorBack from "./ScheduleClassInstructorBack"
 
 
-function ScheduleClassTeacherEdit({ t, match, history }) {
-  const id = match.params.id
+function ScheduleClassInstructorAdd({ t, history, match }) {
   const classId = match.params.class_id
-  const returnUrl = `/schedule/classes/all/teachers/${classId}`
-  const cardTitle = t('schedule.classes.teachers.title_edit')
-  const menuActiveLink = "teachers"
-  const sidebarButton = <ScheduleClassTeacherBack classId={classId} />
+  const returnUrl = `/schedule/classes/all/instructors/${classId}`
+  const cardTitle = t('schedule.classes.instructors.title_add')
+  const menuActiveLink = "instructors" 
+  const sidebarButton = <ScheduleClassInstructorBack classId={classId} />
 
-  const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY, {
-    variables: { id: id }
-  })
-  const [updateScheduleClassTeacher] = useMutation(UPDATE_SCHEDULE_CLASS_TEACHER)
+  const {loading, error, data} = useQuery(GET_INPUT_VALUES_QUERY)
+  const [addScheduleClassInstructor] = useMutation(ADD_SCHEDULE_CLASS_INSTRUCTOR)
 
   if (loading) return (
     <ClassEditBase
@@ -57,41 +54,23 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
   console.log('query data')
   console.log(data)
   const inputData = data
-  const initialData = data.scheduleItemAccount
-
-  let initialAccount2 = ""
-  if (initialData.account2) {
-    initialAccount2 =  initialData.account2.id
-  } 
-
-  // DatePicker doesn't like a string as an initial value
-  // This makes it a happy DatePicker :)
-  let dateStart = null
-  if (initialData.dateStart) {
-    dateStart = new Date(initialData.dateStart)
-  }
-  
-  let dateEnd = null
-  if (initialData.dateEnd) {
-    dateEnd = new Date(initialData.dateEnd)
-  }
 
   return (
-    <ClassEditBase 
+    <ClassEditBase
       cardTitle={cardTitle}
-      menuActiveLink="teachers"
+      menuActiveLink={menuActiveLink}
       sidebarButton={sidebarButton}
     >
       <Formik
-        initialValues={{  
-          dateStart: dateStart,
-          dateEnd: dateEnd,
-          account: initialData.account.id,
-          role: initialData.role,
-          account2: initialAccount2,
-          role2: initialData.role2,
+        initialValues={{ 
+          price: "", 
+          dateStart: new Date() ,
+          account: "",
+          role: "",
+          account2: "",
+          role2: "",
         }}
-        validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+        validationSchema={SCHEDULE_CLASS_INSTRUCTOR_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
 
             let dateEnd
@@ -101,9 +80,9 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
               dateEnd = values.dateEnd
             }
 
-            updateScheduleClassTeacher({ variables: {
+            addScheduleClassInstructor({ variables: {
               input: {
-                id: match.params.id,
+                scheduleItem: match.params.class_id,
                 account: values.account,
                 role: values.role,
                 account2: values.account2,
@@ -117,7 +96,8 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
             ]})
             .then(({ data }) => {
                 console.log('got data', data);
-                toast.success((t('schedule.classes.teachers.toast_edit_success')), {
+                history.push(returnUrl)
+                toast.success((t('schedule.classes.instructors.toast_add_success')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
               }).catch((error) => {
@@ -130,7 +110,7 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
         }}
         >
         {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-          <ScheduleClassTeacherForm
+          <ScheduleClassInstructorForm
             inputData={inputData}
             isSubmitting={isSubmitting}
             setFieldTouched={setFieldTouched}
@@ -138,14 +118,11 @@ function ScheduleClassTeacherEdit({ t, match, history }) {
             errors={errors}
             values={values}
             returnUrl={returnUrl}
-          >
-            {console.log(errors)}
-          </ScheduleClassTeacherForm>
+          />
         )}
       </Formik>
     </ClassEditBase>
   )
 }
 
-
-export default withTranslation()(withRouter(ScheduleClassTeacherEdit))
+export default withTranslation()(withRouter(ScheduleClassInstructorAdd))

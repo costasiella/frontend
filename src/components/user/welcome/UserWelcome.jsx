@@ -41,7 +41,7 @@ function Welcome({t, match, history}) {
   const user = data.user
   console.log(user)
 
-  if (!user.employee && !user.teacher) {
+  if (!user.employee && !user.instructor) {
     history.push("/")
   } 
 

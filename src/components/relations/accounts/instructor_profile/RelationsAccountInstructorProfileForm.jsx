@@ -19,7 +19,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 
 
-const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, values, return_url, setFieldTouched, setFieldValue }) => (
+const RelationsAccountInstructorProfileForm = ({ t, history, isSubmitting, errors, values, return_url, setFieldTouched, setFieldValue }) => (
   <FoForm>
       <Card.Body>
         <Grid.Row>
@@ -32,7 +32,7 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
                   name="classes" 
                   checked={values.classes} />
                   <span className="custom-switch-indicator" ></span>
-                  <span className="custom-switch-description">{t('relations.account.teacher_profile.classes')}</span>
+                  <span className="custom-switch-description">{t('relations.account.instructor_profile.classes')}</span>
               </Form.Label>
               <ErrorMessage name="classes" component="div" />   
             </Form.Group>  
@@ -46,7 +46,7 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
                   name="events" 
                   checked={values.events} />
                   <span className="custom-switch-indicator" ></span>
-                  <span className="custom-switch-description">{t('relations.account.teacher_profile.events')}</span>
+                  <span className="custom-switch-description">{t('relations.account.instructor_profile.events')}</span>
               </Form.Label>
               <ErrorMessage name="events" component="div" />   
             </Form.Group>  
@@ -60,7 +60,7 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
                   name="appointments" 
                   checked={values.appointments} />
                   <span className="custom-switch-indicator" ></span>
-                  <span className="custom-switch-description">{t('relations.account.teacher_profile.appointments')}</span>
+                  <span className="custom-switch-description">{t('relations.account.instructor_profile.appointments')}</span>
               </Form.Label>
               <ErrorMessage name="appointments" component="div" />   
             </Form.Group>  
@@ -105,7 +105,7 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
         </Form.Group>
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={t('relations.account.teacher_profile.url_bio')}>
+            <Form.Group label={t('relations.account.instructor_profile.url_bio')}>
               <Field type="text" 
                       name="urlBio" 
                       className={(errors.urlBio) ? "form-control is-invalid" : "form-control"} 
@@ -114,7 +114,7 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
             </Form.Group>
           </Grid.Col>
           <Grid.Col>
-            <Form.Group label={t('relations.account.teacher_profile.url_website')}>
+            <Form.Group label={t('relations.account.instructor_profile.url_website')}>
               <Field type="text" 
                       name="urlWebsite" 
                       className={(errors.urlWebsite) ? "form-control is-invalid" : "form-control"} 
@@ -141,5 +141,5 @@ const RelationsAccountTeacherProfileForm = ({ t, history, isSubmitting, errors, 
   </FoForm>
 )
 
-export default withTranslation()(withRouter(RelationsAccountTeacherProfileForm))
+export default withTranslation()(withRouter(RelationsAccountInstructorProfileForm))
 

@@ -28,7 +28,7 @@ const ScheduleShiftEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
                       autoComplete="off">
                 <option value="" key={v4()}>{t('')}</option>
                 <option value="CANCELLED" key={v4()}>{t('general.cancelled')}</option>
-                <option value="OPEN" key={v4()}>{t('schedule.classes.no_teacher')}</option>
+                <option value="OPEN" key={v4()}>{t('schedule.classes.no_instructor')}</option>
               </Field>
               <ErrorMessage name="status" component="span" className="invalid-feedback" />
             </Form.Group>
@@ -45,12 +45,12 @@ const ScheduleShiftEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
         </Grid.Row>
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={t('general.teacher')}>
+            <Form.Group label={t('general.instructor')}>
               <Field component="select" 
                       name="account" 
                       className={(errors.account) ? "form-control is-invalid" : "form-control"} 
                       autoComplete="off">
-                {console.log("query data in schedule class teacher add:")}
+                {console.log("query data in schedule class instructor add:")}
                 {console.log(inputData)}
                 <option value="" key={v4()}>{t('general.please_select')}</option>
                 {inputData.accounts.edges.map(({ node }) =>
@@ -61,7 +61,7 @@ const ScheduleShiftEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
             </Form.Group>
           </Grid.Col>
           <Grid.Col>
-            <Form.Group label={t('general.teacher2')}>
+            <Form.Group label={t('general.instructor2')}>
               <Field component="select" 
                       name="account2" 
                       className={(errors.account2) ? "form-control is-invalid" : "form-control"} 

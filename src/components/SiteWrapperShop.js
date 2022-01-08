@@ -195,7 +195,7 @@ function SiteWrapperShop({t, match, history, children}) {
           imageURL: headerImageUrl, // Set logo url here
           navItems: (
             <Nav.Item type="div" className="d-none d-md-flex">
-              {(data.user) ? (data.user.teacher || data.user.employee) ? <Link to="/user/welcome">
+              {(data.user) ? (data.user.instructor || data.user.employee) ? <Link to="/user/welcome">
                 <Button
                   className="mr-2"
                   icon="link"

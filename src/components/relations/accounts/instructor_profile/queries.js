@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client"
 
 
-export const GET_ACCOUNT_TEACHER_PROFILE_QUERY = gql`
-  query AccountTeacherProfileQuery($id: ID!) {
-    accountTeacherProfiles(account:$id) {
+export const GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY = gql`
+  query AccountInstructorProfileQuery($id: ID!) {
+    accountInstructorProfiles(account:$id) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -28,7 +28,7 @@ export const GET_ACCOUNT_TEACHER_PROFILE_QUERY = gql`
     }
     account(id:$id) {
       id
-      teacher
+      instructor
       firstName
       lastName
       email
@@ -41,10 +41,10 @@ export const GET_ACCOUNT_TEACHER_PROFILE_QUERY = gql`
 `
 
 
-export const UPDATE_ACCOUNT_TEACHER_PROFILE = gql`
-  mutation UpdateAccountTeacherProfile($input:UpdateAccountTeacherProfileInput!) {
-    updateAccountTeacherProfile(input: $input) {
-      accountTeacherProfile {
+export const UPDATE_ACCOUNT_INSTRUCTOR_PROFILE = gql`
+  mutation UpdateAccountInstructorProfile($input:UpdateAccountInstructorProfileInput!) {
+    updateAccountInstructorProfile(input: $input) {
+      accountInstructorProfile {
         id
       }
     }

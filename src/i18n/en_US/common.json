@@ -119,7 +119,7 @@
             "TRIALCLASSES": "Trial classes",
             "EVENT_TICKETS": "Event tickets",
             "SHOP_SALES": "Shop sales",
-            "TEACHER_PAYMENTS": "Teacher payments",
+            "INSTRUCTOR_PAYMENTS": "Instructor payments",
             "EMPLOYEE_EXPENSES": "Employee expenses",
             "TYPE_NOT_FOUND": "Type not found...",
             "title": "Default invoice groups",
@@ -354,18 +354,18 @@
         "menu": "Menu",
         "clear": "Clear",
         "customer": "Customer",
-        "teacher": "Teacher",
+        "instructor": "Instructor",
         "employee": "Employee",
         "info": "Info",
         "all_accounts": "All accounts",
         "customers": "Customers",
-        "teachers": "Teachers",
+        "instructors": "Instructors",
         "employees": "Employees",
         "classpass": "Class pass",
-        "teacher_role": "Teacher role",
-        "teacher2": "Teacher 2",
-        "teacher_role2": "Teacher role 2",
-        "teacher_2": "Teacher 2",
+        "instructor_role": "Instructor role",
+        "instructor2": "Instructor 2",
+        "instructor_role2": "Instructor role 2",
+        "instructor_2": "Instructor 2",
         "subscriptions": "Subscriptions",
         "enroll": "Enroll",
         "attend": "Attend",
@@ -395,7 +395,7 @@
         "quantity_short_and_price": "QTY & Price",
         "product": "Product",
         "finance_invoice_group": "Invoice group",
-        "teachers_available": "Teachers available",
+        "instructors_available": "Instructors available",
         "search_results": "Search results",
         "checkin": "Check-in",
         "attendance": "Attendance",
@@ -725,7 +725,7 @@
             "title_edit": "Edit appointment",
             "toast_edit_success": "Saved",
             "public": "This is a public appointment",
-            "teacher_prices": "Teacher prices"
+            "instructor_prices": "Instructor prices"
         },
         "appointment_category": {
             "public": "This is a public appointment category"
@@ -738,7 +738,7 @@
             "title": "Appointment prices",
             "error_loading": "Error loading prices for this appointment :(",
             "empty_list": "No prices have been defined for this appointment",
-            "delete_confirm_msg": "Are you sure you wish to delete the price for this teacher?",
+            "delete_confirm_msg": "Are you sure you wish to delete the price for this instructor?",
             "deleted": "Deleted appointment price",
             "add": "Add appointment price"
         },
@@ -877,7 +877,7 @@
             "restored": "Restored account",
             "emergency": "Emergency",
             "profile_image": "Profile picture",
-            "explanation": "Customer, teacher & employee accounts"
+            "explanation": "Customer, instructor & employee accounts"
         },
         "account": {
             "subscriptions": {
@@ -967,8 +967,8 @@
                 "deleted": "Deleted membership",
                 "add": "Add membership"
             },
-            "teacher_profile": {
-                "title": "Teacher profile",
+            "instructor_profile": {
+                "title": "Instructor profile",
                 "toast_edit_success": "Saved",
                 "classes": "Teaches classes",
                 "events": "Teaches events",
@@ -1037,7 +1037,7 @@
                 "title_add": "Add note",
                 "toast_add_success": "Added note",
                 "backoffice": "Backoffice",
-                "teachers": "Teachers",
+                "instructors": "Instructors",
                 "delete_confirm_msg": "Are you sure you wish to delete this note?",
                 "deleted": "Deleted note",
                 "title_edit": "Edit note",
@@ -1105,20 +1105,20 @@
             "filter_all_locations": "All locations",
             "filter_all_classtypes": "All classtypes",
             "filter_all_levels": "All levels",
-            "teachers": {
-                "title_add": "Add teacher(s)",
-                "toast_add_success": "Added teacher(s)",
-                "title_edit": "Edit teacher(s)",
-                "toast_edit_success": "Saved teacher(s)",
-                "add": "Add teacher",
-                "title": "Teachers",
-                "error_loading": "Error loading teachers for this class :(",
-                "empty_list": "No teachers have been added to this class yet",
-                "delete_confirm_msg": "Are you sure you wish to delete this teachers entry?",
+            "instructors": {
+                "title_add": "Add instructor(s)",
+                "toast_add_success": "Added instructor(s)",
+                "title_edit": "Edit instructor(s)",
+                "toast_edit_success": "Saved instructor(s)",
+                "add": "Add instructor",
+                "title": "Instructors",
+                "error_loading": "Error loading instructors for this class :(",
+                "empty_list": "No instructors have been added to this class yet",
+                "delete_confirm_msg": "Are you sure you wish to delete this instructors entry?",
                 "delete_confirm_description": "",
-                "deleted": "Deleted teacher entry"
+                "deleted": "Deleted instructor entry"
             },
-            "teacher_roles": {
+            "instructor_roles": {
                 "sub": "Substitute",
                 "assistant": "Assistant",
                 "karma": "Karma"
@@ -1176,7 +1176,7 @@
                     "title": "Attendance chart"
                 }
             },
-            "no_teacher": "No teacher",
+            "no_instructor": "No instructor",
             "prices": {
                 "add": "Add price",
                 "title_add": "Add price",
@@ -1298,7 +1298,7 @@
         },
         "event": {
             "location_please_select": "Please select...",
-            "teacher_please_select": "Please select...",
+            "instructor_please_select": "Please select...",
             "error_loading": "Error loading event... :("
         },
         "shifts": {

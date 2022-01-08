@@ -54,7 +54,7 @@ export const GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY = gql`
       timeStart
       timeEnd
     }
-    accounts(first: 100, isActive: true, teacher: true) {
+    accounts(first: 100, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor

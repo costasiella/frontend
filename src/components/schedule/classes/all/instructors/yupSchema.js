@@ -1,7 +1,7 @@
 import { t } from 'i18next'
 import * as Yup from 'yup'
 
-export const SCHEDULE_CLASS_TEACHER_SCHEMA = Yup.object().shape({
+export const SCHEDULE_CLASS_INSTRUCTOR_SCHEMA = Yup.object().shape({
   account: Yup.string()
     .required(t('yup.field_required')),
   role: Yup.string(),

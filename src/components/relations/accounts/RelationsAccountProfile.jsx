@@ -80,7 +80,7 @@ function RelationsAccountProfile({t, match}) {
 
   let initialValues = { 
     customer: account.customer, 
-    teacher: account.teacher, 
+    instructor: account.instructor, 
     employee: account.employee, 
     firstName: account.firstName, 
     lastName: account.lastName, 
@@ -125,7 +125,7 @@ function RelationsAccountProfile({t, match}) {
                 let input_vars = {
                   id: accountId,
                   customer: values.customer,
-                  teacher: values.teacher,
+                  instructor: values.instructor,
                   employee: values.employee,
                   firstName: values.firstName,
                   lastName: values.lastName,

@@ -159,7 +159,7 @@ const OrganizationAppointments = ({ t, history, match, archived=false }) => (
                                       <Button className='btn-sm' 
                                               onClick={() => history.push("/organization/appointment_categories/" + match.params.category_id + "/appointments/prices/" + node.id)}
                                               color="secondary">
-                                        {t('organization.appointments.teacher_prices')}
+                                        {t('organization.appointments.instructor_prices')}
                                       </Button>
                                     </span>
                                   }

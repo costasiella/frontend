@@ -73,7 +73,7 @@ export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
       dateStart
       dateEnd       
     }
-    accounts(first: 15, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 100, before: $before, after: $after, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor
@@ -93,7 +93,7 @@ export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query InputValues($after: String, $before: String) {
-    accounts(first: 15, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 1000, before: $before, after: $after, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor
@@ -108,4 +108,35 @@ export const GET_INPUT_VALUES_QUERY = gql`
       }
     }
   }
+`
+
+
+export const ADD_SCHEDULE_CLASS_INSTRUCTOR = gql`
+mutation CreateScheduleItemAccount($input:CreateScheduleItemAccountInput!) {
+  createScheduleItemAccount(input:$input) {
+    scheduleItemAccount {
+      id
+    } 
+  }
+}
+`
+
+
+export const UPDATE_SCHEDULE_CLASS_INSTRUCTOR = gql`
+mutation UpdateScheduleItemAccount($input: UpdateScheduleItemAccountInput!) {
+  updateScheduleItemAccount(input:$input) {
+    scheduleItemAccount {
+      id
+    } 
+  }
+}
+`
+
+
+export const DELETE_SCHEDULE_CLASS_INSTRUCTOR = gql`
+mutation DeleteScheduleClassInstructor($input: DeleteScheduleItemAccountInput!) {
+  deleteScheduleItemAccount(input: $input) {
+    ok
+  }
+}
 `

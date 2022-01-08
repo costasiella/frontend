@@ -43,7 +43,7 @@ function ShopAccountHome({t, match, history}) {
 
   return (
     <ShopAccountHomeBase subTitle={user.fullName}>
-      {(user.teacher || user.employee) ?
+      {(user.instructor || user.employee) ?
         <div>
           <Grid.Row>
             <Grid.Col xs={12} sm={12} md={4} lg={4}>

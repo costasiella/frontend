@@ -28,11 +28,11 @@ export const GET_SCHEDULE_EVENTS_QUERY = gql`
             id
             name
           }
-          teacher {
+          instructor {
             id 
             fullName
           }
-          teacher2 {
+          instructor2 {
             id
             fullName
           }
@@ -76,11 +76,11 @@ export const GET_SCHEDULE_EVENT_QUERY = gql`
         id
         name
       }
-      teacher {
+      instructor {
         id 
         fullName
       }
-      teacher2 {
+      instructor2 {
         id
         fullName
       }
@@ -129,7 +129,7 @@ export const GET_SCHEDULE_EVENT_QUERY = gql`
         }
       }
     }
-    accounts(first: 100, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 100, before: $before, after: $after, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor
@@ -179,7 +179,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    accounts(first: 100, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 100, before: $before, after: $after, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor

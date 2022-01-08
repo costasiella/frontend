@@ -88,15 +88,15 @@ function AccountNotes({ t, history, match }) {
               }>
                 {t('relations.account.notes.backoffice')}
               </Button>
-              <Button color={(localStorage.getItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE) === "TEACHERS") ? 'primary': 'secondary'} 
+              <Button color={(localStorage.getItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE) === "INSTRUCTORS") ? 'primary': 'secondary'} 
                       size="" 
                       className="ml-2" 
                       onClick={() => {
-                        localStorage.setItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE, "TEACHERS")
+                        localStorage.setItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE, "INSTRUCTORS")
                         refetch(get_list_query_variables(accountId))
                       }
               }>
-                {t('relations.account.notes.teachers')}
+                {t('relations.account.notes.instructors')}
               </Button>
             </Button.List>
           </div>

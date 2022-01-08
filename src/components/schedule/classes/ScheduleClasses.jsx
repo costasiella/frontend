@@ -33,7 +33,7 @@ import {
   get_class_messages,
   get_list_query_variables, 
   represent_class_status,
-  represent_teacher 
+  represent_instructor 
 } from './tools'
 
 import moment from 'moment'
@@ -151,7 +151,7 @@ function ScheduleClasses ({ t, history }) {
                     <Table.ColHeader>{t('general.time')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.location')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.class')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
+                    <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.public')}</Table.ColHeader>
                     <Table.ColHeader></Table.ColHeader>
                   </Table.Row>
@@ -199,13 +199,13 @@ function ScheduleClasses ({ t, history }) {
                         </small>
                       </Table.Col>
                       <Table.Col>
-                        {/* Teacher(s) */}
+                        {/* Instructor(s) */}
                         { (account) ? 
-                            represent_teacher(account.fullName, role) : 
-                            <span className="text-red">{t("schedule.classes.no_teacher")}</span>
+                            represent_instructor(account.fullName, role) : 
+                            <span className="text-red">{t("schedule.classes.no_instructor")}</span>
                         } <br />
                         <small className="text-muted">
-                          {(account2) ? represent_teacher(account2.fullName, role2) : ""}
+                          {(account2) ? represent_instructor(account2.fullName, role2) : ""}
                         </small>
                       </Table.Col>
                       <Table.Col>

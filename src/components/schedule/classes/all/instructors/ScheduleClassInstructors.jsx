@@ -14,32 +14,32 @@ import {
   Card
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import { represent_teacher_role } from "../tools"
+import { represent_instructor_role } from "../tools"
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
 import ClassEditBase from "../ClassEditBase"
 
-import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
+import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_INSTRUCTOR } from "./queries"
 
 
-function ScheduleClassTeachers({ t, match, history}) {
+function ScheduleClassInstructors({ t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
 
   const classId = match.params.class_id
-  const menuActiveLink = "teachers"
-  const cardTitle = t('schedule.classes.teachers.title')
+  const menuActiveLink = "instructors"
+  const cardTitle = t('schedule.classes.instructors.title')
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, {
     variables: {scheduleItem: classId}
   })
-  const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_CLASS_TEACHER)
+  const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_CLASS_INSTRUCTOR)
 
-  const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleitemteacher">
-    <Link to={`/schedule/classes/all/teachers/${classId}/add` } >
+  const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleiteminstructor">
+    <Link to={`/schedule/classes/all/instructors/${classId}/add` } >
       <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.teachers.add')}
+      <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.instructors.add')}
       </Button>
     </Link>
   </HasPermissionWrapper>
@@ -64,7 +64,7 @@ function ScheduleClassTeachers({ t, match, history}) {
       sidebarButton={ButtonAdd}
     >
       <Card.Body>
-        <p>{t('schedule.classes.teachers.error_loading')}</p>
+        <p>{t('schedule.classes.instructors.error_loading')}</p>
       </Card.Body>
     </ClassEditBase>
   )
@@ -77,7 +77,7 @@ function ScheduleClassTeachers({ t, match, history}) {
       sidebarButton={ButtonAdd}
     >
       <Card.Body>
-        <p>{t('schedule.classes.teachers.empty_list')}</p>
+        <p>{t('schedule.classes.instructors.empty_list')}</p>
       </Card.Body>
     </ClassEditBase>
   )
@@ -123,8 +123,8 @@ function ScheduleClassTeachers({ t, match, history}) {
               <Table.Row>
                 <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
                 <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
-                <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
-                <Table.ColHeader>{t('general.teacher_2')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.instructor_2')}</Table.ColHeader>
                 <Table.ColHeader></Table.ColHeader>
                 <Table.ColHeader></Table.ColHeader>
               </Table.Row>
@@ -142,7 +142,7 @@ function ScheduleClassTeachers({ t, match, history}) {
                   <Table.Col>
                     {node.account.fullName} <br />
                     <span className="text-muted">
-                      {represent_teacher_role(t, node.role)}
+                      {represent_instructor_role(t, node.role)}
                     </span>
                   </Table.Col>
                   <Table.Col>
@@ -150,13 +150,13 @@ function ScheduleClassTeachers({ t, match, history}) {
                       <span>
                         {node.account2.fullName} <br />
                         <span className="text-muted">
-                          {represent_teacher_role(t, node.role2)}
+                          {represent_instructor_role(t, node.role2)}
                         </span>
                       </span> : ""
                     }
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
-                    <Link to={`/schedule/classes/all/teachers/${classId}/edit/${node.id}`}>
+                    <Link to={`/schedule/classes/all/instructors/${classId}/edit/${node.id}`}>
                       <Button className='btn-sm' 
                               color="secondary"
                       >
@@ -171,9 +171,9 @@ function ScheduleClassTeachers({ t, match, history}) {
                         onClick={() => {
                           confirm_delete({
                             t: t,
-                            msgConfirm: t('schedule.classes.teachers.delete_confirm_msg'),
-                            msgDescription: <p>{t('schedule.classes.teachers.delete_confirm_description')}</p>,
-                            msgSuccess: t('schedule.classes.teachers.deleted'),
+                            msgConfirm: t('schedule.classes.instructors.delete_confirm_msg'),
+                            msgDescription: <p>{t('schedule.classes.instructors.delete_confirm_description')}</p>,
+                            msgSuccess: t('schedule.classes.instructors.deleted'),
                             deleteFunction: deleteScheduleItemAccount,
                             functionVariables: { variables: {
                               input: {
@@ -200,4 +200,4 @@ function ScheduleClassTeachers({ t, match, history}) {
 }
 
 
-export default withTranslation()(withRouter(ScheduleClassTeachers))
+export default withTranslation()(withRouter(ScheduleClassInstructors))

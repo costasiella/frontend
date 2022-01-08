@@ -28,7 +28,7 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
-import { class_edit_all_subtitle, represent_teacher_role } from "../../tools"
+import { class_edit_all_subtitle, represent_instructor_role } from "../../tools"
 import confirm_delete from "../../../../../tools/confirm_delete"
 
 import { class_subtitle, get_accounts_query_variables } from "../tools"

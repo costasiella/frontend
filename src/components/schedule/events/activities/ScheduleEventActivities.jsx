@@ -107,7 +107,7 @@ function ScheduleItems({t, match, history}) {
             <Table.ColHeader>{t('general.time')}</Table.ColHeader>
             <Table.ColHeader>{t('general.name')}</Table.ColHeader>
             <Table.ColHeader>{t('general.location')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
             <Table.ColHeader>{t('general.filled')}</Table.ColHeader>
             <Table.ColHeader>{t('general.public')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>

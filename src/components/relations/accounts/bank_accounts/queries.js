@@ -48,7 +48,7 @@ export const GET_ACCOUNT_BANK_ACCOUNTS_QUERY = gql`
 //     account(id:$id) {
 //       id
 //       customer
-//       teacher
+//       instructor
 //       employee
 //       firstName
 //       lastName

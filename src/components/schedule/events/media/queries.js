@@ -51,7 +51,7 @@ export const DELETE_SCHEDULE_EVENT_MEDIA   = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query ScheduleEventActivityInputValues($after: String, $before: String) {
-    accounts(first: 100, before: $before, after: $after, isActive: true, teacher: true) {
+    accounts(first: 100, before: $before, after: $after, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor

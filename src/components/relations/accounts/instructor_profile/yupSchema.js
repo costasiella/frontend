@@ -1,7 +1,7 @@
 import { t } from 'i18next'
 import * as Yup from 'yup'
 
-export const ACCOUNT_TEACHER_PROFILE_SCHEMA = Yup.object().shape({
+export const ACCOUNT_INSTRUCTOR_PROFILE_SCHEMA = Yup.object().shape({
   classes: Yup.boolean(),  
   appointments: Yup.boolean(),  
   events: Yup.boolean(),  

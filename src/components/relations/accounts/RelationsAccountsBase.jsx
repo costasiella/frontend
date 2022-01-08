@@ -45,7 +45,7 @@ function RelationsAccountsBase({t, history, children, refetch}) {
               >
                 <option value="">{t("general.all_accounts")}</option>
                 <option value="customer">{t("general.customers")}</option>
-                <option value="teacher">{t("general.teachers")}</option>
+                <option value="instructor">{t("general.instructors")}</option>
                 <option value="employee">{t("general.employees")}</option>
               </Form.Select>
               <HasPermissionWrapper permission="add"

@@ -125,7 +125,7 @@ mutation UpdateScheduleItemAccount($input: UpdateScheduleItemAccountInput!) {
 
 
 export const DELETE_SCHEDULE_SHIFT_ACCOUNT = gql`
-mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemAccountInput!) {
+mutation DeleteScheduleClassInstructor($input: DeleteScheduleItemAccountInput!) {
   deleteScheduleItemAccount(input: $input) {
     ok
   }

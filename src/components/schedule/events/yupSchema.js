@@ -8,8 +8,8 @@ export const SCHEDULE_EVENT_EDIT_SCHEMA = Yup.object().shape({
   organizationLocation: Yup.string()
     .required(t('yup.field_required')),
   organizationLevel: Yup.string(),
-  teacher: Yup.string(),
-  teacher2: Yup.string(),
+  instructor: Yup.string(),
+  instructor2: Yup.string(),
   name: Yup.string()
       .min(3, t('yup.min_len_3'))
       .required(t('yup.field_required')),

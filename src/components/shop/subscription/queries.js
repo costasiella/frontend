@@ -50,7 +50,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       phone
       mobile
       emergency
-      teacher
+      instructor
       employee
       hasBankAccountInfo
     }

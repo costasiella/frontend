@@ -19,13 +19,13 @@ import {
 const OrganizationAppointmentForm = ({ t, history, match, inputData, isSubmitting, errors, values, return_url }) => (
   <FoForm>
       <Card.Body>
-         <Form.Group label={t('general.teacher')}>
+         <Form.Group label={t('general.instructor')}>
             <Field component="select" 
                     name="account" 
                     className={(errors.account) ? "form-control is-invalid" : "form-control"} 
                     autoComplete="off">
               <option value="" key={v4()}>{t('general.please_select')}</option>
-              {inputData.accountTeacherProfiles.edges.map(({ node }) =>
+              {inputData.accountInstructorProfiles.edges.map(({ node }) =>
                 <option value={node.account.id} key={v4()}>{node.account.fullName}</option>
               )}
             </Field>

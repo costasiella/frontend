@@ -44,12 +44,12 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
                   <Field 
                   className="custom-switch-input"
                   type="checkbox" 
-                  name="teacher" 
-                  checked={values.teacher} />
+                  name="instructor" 
+                  checked={values.instructor} />
                   <span className="custom-switch-indicator" ></span>
-                  <span className="custom-switch-description">{t('general.teacher')}</span>
+                  <span className="custom-switch-description">{t('general.instructor')}</span>
               </Form.Label>
-              <ErrorMessage name="teacher" component="div" />   
+              <ErrorMessage name="instructor" component="div" />   
             </Form.Group>  
           </Grid.Col>
           <Grid.Col>

@@ -42,7 +42,7 @@ import {
   get_class_messages,
   get_list_query_variables, 
   represent_shift_status,
-  represent_teacher 
+  represent_instructor 
 } from './tools'
 
 import moment from 'moment'
@@ -114,7 +114,7 @@ function ScheduleShifts ({ t, history }) {
                     <Table.ColHeader>{t('general.time')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.location')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.shift')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
+                    <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
                     <Table.ColHeader></Table.ColHeader>
                   </Table.Row>
                 </Table.Header>

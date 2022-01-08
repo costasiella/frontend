@@ -9,7 +9,7 @@ export function get_list_query_variables() {
   let queryVars = {
     isActive: (isActive === "true") ? true : false,
     customer: undefined,
-    teacher: undefined,
+    instructor: undefined,
     employee: undefined
   }
 
@@ -21,8 +21,8 @@ export function get_list_query_variables() {
     case "customer":
       queryVars.customer = true
       break
-    case "teacher":
-      queryVars.teacher = true
+    case "instructor":
+      queryVars.instructor = true
       break
     case "employee":
       queryVars.employee = true

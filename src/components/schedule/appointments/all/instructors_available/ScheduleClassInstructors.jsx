@@ -26,7 +26,7 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
-import { class_edit_all_subtitle, represent_teacher_role } from "../tools"
+import { class_edit_all_subtitle, represent_instructor_role } from "../tools"
 import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
@@ -34,8 +34,8 @@ import ClassEditBase from "../ClassEditBase"
 
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY } from "./queries"
 
-const DELETE_SCHEDULE_CLASS_TEACHER = gql`
-  mutation DeleteScheduleClassTeacher($input: DeleteScheduleItemAccountInput!) {
+const DELETE_SCHEDULE_CLASS_INSTRUCTOR = gql`
+  mutation DeleteScheduleClassInstructor($input: DeleteScheduleItemAccountInput!) {
     deleteScheduleItemAccount(input: $input) {
       ok
     }
@@ -43,10 +43,10 @@ const DELETE_SCHEDULE_CLASS_TEACHER = gql`
 `
 
 
-class ScheduleClassTeachers extends Component {
+class ScheduleClassInstructors extends Component {
   constructor(props) {
     super(props)
-    console.log("Schedule classs teachers props:")
+    console.log("Schedule classs instructors props:")
     console.log(props)
   }
 
@@ -56,10 +56,10 @@ class ScheduleClassTeachers extends Component {
     const history = this.props.history
     const classId = match.params.class_id
 
-    const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleitemteacher">
-      <Link to={"/schedule/classes/all/teachers/" + classId + "/add" } >
+    const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleiteminstructor">
+      <Link to={"/schedule/classes/all/instructors/" + classId + "/add" } >
         <Button color="primary btn-block mb-6">
-        <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.teachers.add')}
+        <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.instructors.add')}
         </Button>
       </Link>
     </HasPermissionWrapper>
@@ -74,14 +74,14 @@ class ScheduleClassTeachers extends Component {
   
             // Loading
             if (loading) return (
-              <ClassEditBase menu_activeLink="teachers" card_title={t('schedule.classes.teachers.title')} sidebar_button={ButtonAdd}>
+              <ClassEditBase menu_activeLink="instructors" card_title={t('schedule.classes.instructors.title')} sidebar_button={ButtonAdd}>
                 <Dimmer active={true} loader={true} />
               </ClassEditBase>
             )
             // Error
             if (error) return (
-              <ClassEditBase menu_activeLink="teachers" card_title={t('schedule.classes.teachers.title')} sidebar_button={ButtonAdd}>
-                <p>{t('schedule.classes.teachers.error_loading')}</p>
+              <ClassEditBase menu_activeLink="instructors" card_title={t('schedule.classes.instructors.title')} sidebar_button={ButtonAdd}>
+                <p>{t('schedule.classes.instructors.error_loading')}</p>
               </ClassEditBase>
             )
             // const headerOptions = <Card.Options>
@@ -109,14 +109,14 @@ class ScheduleClassTeachers extends Component {
   
             // Empty list
             if (!data.scheduleItemAccounts.edges.length) { return (
-              <ClassEditBase menu_activeLink="teachers" card_title={t('schedule.classes.teachers.title')} sidebar_button={ButtonAdd}>
-                <p>{t('schedule.classes.teachers.empty_list')}</p>
+              <ClassEditBase menu_activeLink="instructors" card_title={t('schedule.classes.instructors.title')} sidebar_button={ButtonAdd}>
+                <p>{t('schedule.classes.instructors.empty_list')}</p>
               </ClassEditBase>
             )} else {   
             // Life's good! :)
               return (
                 <ClassEditBase 
-                  menu_activeLink="teachers" 
+                  menu_activeLink="instructors" 
                   default_card={false} 
                   subtitle={subtitle}
                   sidebar_button={ButtonAdd}
@@ -156,8 +156,8 @@ class ScheduleClassTeachers extends Component {
                         <Table.Row>
                           <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
                           <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
-                          <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
-                          <Table.ColHeader>{t('general.teacher_2')}</Table.ColHeader>
+                          <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
+                          <Table.ColHeader>{t('general.instructor_2')}</Table.ColHeader>
                           <Table.ColHeader></Table.ColHeader>
                           <Table.ColHeader></Table.ColHeader>
                         </Table.Row>
@@ -175,7 +175,7 @@ class ScheduleClassTeachers extends Component {
                             <Table.Col>
                               {node.account.fullName} <br />
                               <span className="text-muted">
-                                {represent_teacher_role(t, node.role)}
+                                {represent_instructor_role(t, node.role)}
                               </span>
                             </Table.Col>
                             <Table.Col>
@@ -183,19 +183,19 @@ class ScheduleClassTeachers extends Component {
                                 <span>
                                   {node.account2.fullName} <br />
                                   <span className="text-muted">
-                                    {represent_teacher_role(t, node.role2)}
+                                    {represent_instructor_role(t, node.role2)}
                                   </span>
                                 </span> : ""
                               }
                             </Table.Col>
                             <Table.Col className="text-right" key={v4()}>
                               <Button className='btn-sm' 
-                                      onClick={() => history.push("/schedule/classes/all/teachers/" + match.params.class_id + '/edit/' + node.id)}
+                                      onClick={() => history.push("/schedule/classes/all/instructors/" + match.params.class_id + '/edit/' + node.id)}
                                       color="secondary">
                                 {t('general.edit')}
                               </Button>
                             </Table.Col>
-                            <Mutation mutation={DELETE_SCHEDULE_CLASS_TEACHER} key={v4()}>
+                            <Mutation mutation={DELETE_SCHEDULE_CLASS_INSTRUCTOR} key={v4()}>
                               {(deleteScheduleItemAccount, { data }) => (
                                 <Table.Col className="text-right" key={v4()}>
                                   <button className="icon btn btn-link btn-sm" 
@@ -204,9 +204,9 @@ class ScheduleClassTeachers extends Component {
                                       onClick={() => {
                                         confirm_delete({
                                           t: t,
-                                          msgConfirm: t('schedule.classes.teachers.delete_confirm_msg'),
-                                          msgDescription: <p>{t('schedule.classes.teachers.delete_confirm_description')}</p>,
-                                          msgSuccess: t('schedule.classes.teachers.deleted'),
+                                          msgConfirm: t('schedule.classes.instructors.delete_confirm_msg'),
+                                          msgDescription: <p>{t('schedule.classes.instructors.delete_confirm_description')}</p>,
+                                          msgSuccess: t('schedule.classes.instructors.deleted'),
                                           deleteFunction: deleteScheduleItemAccount,
                                           functionVariables: { variables: {
                                             input: {
@@ -241,4 +241,4 @@ class ScheduleClassTeachers extends Component {
 
 };
 
-export default withTranslation()(withRouter(ScheduleClassTeachers))
+export default withTranslation()(withRouter(ScheduleClassInstructors))

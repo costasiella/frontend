@@ -7,24 +7,24 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_ACCOUNT_TEACHER_PROFILE_QUERY, UPDATE_ACCOUNT_TEACHER_PROFILE } from './queries'
-import { ACCOUNT_TEACHER_PROFILE_SCHEMA } from './yupSchema'
+import { GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY, UPDATE_ACCOUNT_INSTRUCTOR_PROFILE } from './queries'
+import { ACCOUNT_INSTRUCTOR_PROFILE_SCHEMA } from './yupSchema'
 
 import {
   Card,
 } from "tabler-react"
 
-import RelationsAccountProfileForm from "./RelationsAccountTeacherProfileForm"
+import RelationsAccountProfileForm from "./RelationsAccountInstructorProfileForm"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 
 
-function RelationsAccountTeacherProfile({ t, match}) {
+function RelationsAccountInstructorProfile({ t, match}) {
   const accountId = match.params.account_id
-  const activeLink = "teacher_profile"
-  const { loading, error, data } = useQuery(GET_ACCOUNT_TEACHER_PROFILE_QUERY, {
+  const activeLink = "instructor_profile"
+  const { loading, error, data } = useQuery(GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY, {
     variables: { id: accountId }
   })
-  const [updateAccountTeacherProfile] = useMutation(UPDATE_ACCOUNT_TEACHER_PROFILE)
+  const [updateAccountInstructorProfile] = useMutation(UPDATE_ACCOUNT_INSTRUCTOR_PROFILE)
 
   if (loading) return (
     <RelationsAccountProfileBase activeLink={activeLink}>
@@ -54,7 +54,7 @@ function RelationsAccountTeacherProfile({ t, match}) {
   )
 
   const account = data.account
-  const initialData = data.accountTeacherProfiles.edges[0].node
+  const initialData = data.accountInstructorProfiles.edges[0].node
 
   return (
     <RelationsAccountProfileBase
@@ -76,12 +76,12 @@ function RelationsAccountTeacherProfile({ t, match}) {
             urlBio: initialData.urlBio,
             urlWebsite: initialData.urlWebsite,
           }}
-          validationSchema={ACCOUNT_TEACHER_PROFILE_SCHEMA}
+          validationSchema={ACCOUNT_INSTRUCTOR_PROFILE_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
               console.log('submit values:')
               console.log(values)
 
-              updateAccountTeacherProfile({ variables: {
+              updateAccountInstructorProfile({ variables: {
                 input: {
                   account: initialData.account.id,
                   classes: values.classes, 
@@ -94,12 +94,12 @@ function RelationsAccountTeacherProfile({ t, match}) {
                   urlWebsite: values.urlWebsite,
                 }
               }, refetchQueries: [
-                  // Refresh local cached results for this account teacher profile
-                  {query: GET_ACCOUNT_TEACHER_PROFILE_QUERY, variables: {id: accountId}}
+                  // Refresh local cached results for this account instructor profile
+                  {query: GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY, variables: {id: accountId}}
               ]})
               .then(({ data }) => {
                   console.log('got data', data)
-                  toast.success((t('relations.account.teacher_profile.toast_edit_success')), {
+                  toast.success((t('relations.account.instructor_profile.toast_edit_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                   setSubmitting(false)
@@ -128,7 +128,7 @@ function RelationsAccountTeacherProfile({ t, match}) {
 }
 
 
-// class RelationsAccountTeacherProfile extends Component {
+// class RelationsAccountInstructorProfile extends Component {
 //   constructor(props) {
 //     super(props)
 //     console.log("Organization profile props:")
@@ -145,7 +145,7 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //       <SiteWrapper>
 //         <div className="my-3 my-md-5">
 //           <Container>
-//             <Query query={GET_ACCOUNT_TEACHER_PROFILE_QUERY} variables={{ id: account_id }} >
+//             <Query query={GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY} variables={{ id: account_id }} >
 //               {({ loading, error, data, refetch }) => {
 //                   // Loading
 //                   if (loading) return <p>{t('general.loading_with_dots')}</p>
@@ -159,7 +159,7 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //                   console.log(data)
                   
 //                   const account = data.account
-//                   const initialData = data.accountTeacherProfiles.edges[0].node
+//                   const initialData = data.accountInstructorProfiles.edges[0].node
 //                   console.log(initialData)
 
 
@@ -172,11 +172,11 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //                         <Grid.Col md={9}>
 //                         <Card>
 //                           <Card.Header>
-//                             <Card.Title>{t('relations.account.teacher_profile.title')}</Card.Title>
+//                             <Card.Title>{t('relations.account.instructor_profile.title')}</Card.Title>
 //                             {console.log(match.params.account_id)}
 //                           </Card.Header>
-//                         <Mutation mutation={UPDATE_ACCOUNT_TEACHER_PROFILE}> 
-//                          {(updateAccountTeacherProfile, { data }) => (
+//                         <Mutation mutation={UPDATE_ACCOUNT_INSTRUCTOR_PROFILE}> 
+//                          {(updateAccountInstructorProfile, { data }) => (
 //                           <Formik
 //                             initialValues={{ 
 //                               classes: initialData.classes, 
@@ -188,12 +188,12 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //                               urlBio: initialData.urlBio,
 //                               urlWebsite: initialData.urlWebsite,
 //                             }}
-//                             validationSchema={ACCOUNT_TEACHER_PROFILE_SCHEMA}
+//                             validationSchema={ACCOUNT_INSTRUCTOR_PROFILE_SCHEMA}
 //                             onSubmit={(values, { setSubmitting }) => {
 //                                 console.log('submit values:')
 //                                 console.log(values)
 
-//                                 updateAccountTeacherProfile({ variables: {
+//                                 updateAccountInstructorProfile({ variables: {
 //                                   input: {
 //                                     account: initialData.account.id,
 //                                     classes: values.classes, 
@@ -206,12 +206,12 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //                                     urlWebsite: values.urlWebsite,
 //                                   }
 //                                 }, refetchQueries: [
-//                                     // Refresh local cached results for this account teacher profile
-//                                     {query: GET_ACCOUNT_TEACHER_PROFILE_QUERY, variables: {id: account_id}}
+//                                     // Refresh local cached results for this account instructor profile
+//                                     {query: GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY, variables: {id: account_id}}
 //                                 ]})
 //                                 .then(({ data }) => {
 //                                     console.log('got data', data)
-//                                     toast.success((t('relations.account.teacher_profile.toast_edit_success')), {
+//                                     toast.success((t('relations.account.instructor_profile.toast_edit_success')), {
 //                                         position: toast.POSITION.BOTTOM_RIGHT
 //                                       })
 //                                     setSubmitting(false)
@@ -241,7 +241,7 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //                     <Grid.Col md={3}>
 //                       <ProfileCardSmall user={account}/>
 //                       <ProfileMenu 
-//                         activeLink='teacher_profile'
+//                         activeLink='instructor_profile'
 //                         account_id={account_id}
 //                       /> 
 //                     </Grid.Col>
@@ -256,4 +256,4 @@ function RelationsAccountTeacherProfile({ t, match}) {
 //   }
 
 
-export default withTranslation()(withRouter(RelationsAccountTeacherProfile))
+export default withTranslation()(withRouter(RelationsAccountInstructorProfile))

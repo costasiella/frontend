@@ -20,7 +20,7 @@ let classpasses_active
 let classes_active
 let documents_active
 let tickets_active
-let teacher_profile_active
+let instructor_profile_active
 let orders_active
 let invoices_active
 let bank_account_active
@@ -52,7 +52,7 @@ function ProfileMenu({t, accountId, activeLink}) {
         {(activeLink === 'classes') ? classes_active = true: classes_active = false}
         {(activeLink === 'documents') ? documents_active = true: documents_active = false}
         {(activeLink === 'tickets') ? tickets_active = true: tickets_active = false}
-        {(activeLink === 'teacher_profile') ? teacher_profile_active = true: teacher_profile_active = false}
+        {(activeLink === 'instructor_profile') ? instructor_profile_active = true: instructor_profile_active = false}
         {(activeLink === 'orders') ? orders_active = true: orders_active = false}
         {(activeLink === 'invoices') ? invoices_active = true: invoices_active = false}
         {(activeLink === 'bank_account') ? bank_account_active = true: bank_account_active = false}
@@ -189,18 +189,18 @@ function ProfileMenu({t, accountId, activeLink}) {
             {t('relations.account.finance_payment_batch_category_items.title')}
             </List.GroupItem>
         </HasPermissionWrapper>
-        { (account.teacher) ?
+        { (account.instructor) ?
             <HasPermissionWrapper 
                 permission="view"
-                resource="accountteacherprofile">
+                resource="accountinstructorprofile">
                 <List.GroupItem
                     key={v4()}
                     className="d-flex align-items-center"
-                    to={"#/relations/accounts/" + accountId + "/teacher_profile"}
+                    to={"#/relations/accounts/" + accountId + "/instructor_profile"}
                     icon="paperclip"
-                    active={teacher_profile_active}
+                    active={instructor_profile_active}
                     >
-                {t('relations.account.teacher_profile.title')}
+                {t('relations.account.instructor_profile.title')}
                 </List.GroupItem>
             </HasPermissionWrapper>
         : "" }

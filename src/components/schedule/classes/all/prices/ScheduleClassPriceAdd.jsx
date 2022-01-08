@@ -13,7 +13,7 @@ import {
 } from "tabler-react";
 
 import { GET_SCHEDULE_ITEM_PRICES_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_ITEM_PRICE } from './queries'
-import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
+import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
 import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
@@ -69,7 +69,7 @@ function ScheduleClassPriceAdd({ t, history, match }) {
           organizationClasspassDropin: "",
           organizationClasspassTrial: "",
         }}
-        // validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+        // validationSchema={SCHEDULE_CLASS_INSTRUCTOR_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
 
             let dateEnd
