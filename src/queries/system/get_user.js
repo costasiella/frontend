@@ -9,7 +9,7 @@ const GET_USER = gql`
       firstName
       lastName
       employee
-      teacher
+      instructor
       urlImageThumbnailSmall
       groups {
         edges {
