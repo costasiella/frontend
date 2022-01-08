@@ -1889,12 +1889,8 @@
                 "error_loading": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-                "delete_confirm_description": "__STRING_NOT_TRANSLATED__",
                 "deleted": "__STRING_NOT_TRANSLATED__"
             }
-        },
-        "shiftes": {
-            "title_edit": "__STRING_NOT_TRANSLATED__"
         }
     },
     "genders": {

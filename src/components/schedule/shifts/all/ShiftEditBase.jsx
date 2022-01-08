@@ -19,7 +19,7 @@ function ShiftEditBase({t, match, children, menuActiveLink="", defaultCard=true,
   }})
 
   if (!cardTitle) {
-    cardTitle = t('schedule.shiftes.title_edit')
+    cardTitle = t('schedule.shifts.title_edit')
   }
 
   if (loading) return (

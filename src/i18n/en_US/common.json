@@ -1332,12 +1332,8 @@
                 "error_loading": "Error loading shift employee(s)... :(",
                 "empty_list": "No employees have been added to this shift yet",
                 "delete_confirm_msg": "Are you sure you wish to remove these employees from this shift?",
-                "delete_confirm_description": "",
-                "deleted": "__STRING_NOT_TRANSLATED__"
+                "deleted": "Deleted employees for this shift"
             }
-        },
-        "shiftes": {
-            "title_edit": "__STRING_NOT_TRANSLATED__"
         }
     },
     "countries": {
