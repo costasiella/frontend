@@ -24,7 +24,6 @@ import ClassEditBase from "../ClassEditBase"
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_TEACHER } from "./queries"
 
 
-
 function ScheduleClassTeachers({ t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
