@@ -103,6 +103,8 @@ function ScheduleClassAdd({t, history}) {
               ]})
               .then(({ data }) => {
                   console.log('got data', data)
+                  const classId = data.createScheduleClass.scheduleItem.id
+                  history.push(`/schedule/classes/all/edit/${classId}`)
                   toast.success((t('schedule.classes.toast_add_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
