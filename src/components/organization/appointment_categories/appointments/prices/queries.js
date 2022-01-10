@@ -62,7 +62,7 @@ export const GET_APPOINTMENT_PRICE_QUERY = gql`
         }
       }
     }
-    accountTeacherProfiles(first: 100, before: $before, after: $after, appointments: true, account_IsActive: true) {
+    accountInstructorProfiles(first: 100, before: $before, after: $after, appointments: true, account_IsActive: true) {
       pageInfo {
         startCursor
         endCursor
@@ -101,7 +101,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    accountTeacherProfiles(first: 100, before: $before, after: $after, appointments: true, account_IsActive: true) {
+    accountInstructorProfiles(first: 100, before: $before, after: $after, appointments: true, account_IsActive: true) {
       pageInfo {
         startCursor
         endCursor

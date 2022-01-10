@@ -25,7 +25,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from '../OrganizationMenu'
 import { dateToLocalISO } from '../../../tools/date_tools'
 
 function OrganizationAnnouncementAdd({t, history}) {
@@ -109,7 +108,6 @@ function OrganizationAnnouncementAdd({t, history}) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              <OrganizationMenu activeLink='announcements'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

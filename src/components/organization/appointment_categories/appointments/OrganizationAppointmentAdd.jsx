@@ -25,8 +25,6 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../OrganizationMenu"
-
 
 const ADD_APPOINTMENT = gql`
   mutation CreateOrganizationAppointment($input: CreateOrganizationAppointmentInput!) {
@@ -129,7 +127,6 @@ const OrganizationAppointmentAdd = ({ t, history, match }) => (
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='appointments'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

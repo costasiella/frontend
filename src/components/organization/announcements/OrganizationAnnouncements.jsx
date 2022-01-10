@@ -344,7 +344,6 @@ function OrganizationAnnouncements({ t, history }) {
 //                 <Icon prefix="fe" name="plus-circle" /> {t('organization.levels.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu activeLink='levels'/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

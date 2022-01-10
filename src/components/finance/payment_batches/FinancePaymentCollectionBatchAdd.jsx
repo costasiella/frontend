@@ -27,7 +27,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { dateToLocalISO } from '../../../tools/date_tools'
 
-import FinanceMenu from '../FinanceMenu'
 import FinancePaymentBatchesBase from './FinancePaymentBatchesBase'
 import FinancePaymentCollectionBatchForm from './FinancePaymentCollectionBatchForm'
 

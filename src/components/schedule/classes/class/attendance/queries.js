@@ -71,9 +71,9 @@ export const UPDATE_SCHEDULE_ITEM_ATTENDANCE = gql`
 `
 
 
-// export const GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY = gql`
-//   query ScheduleItemTeacher($before: String, $after: String, $id: ID!) {
-//     scheduleItemTeacher(id: $id) {
+// export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
+//   query ScheduleItemAccount($before: String, $after: String, $id: ID!) {
+//     scheduleItemAccount(id: $id) {
 //       id
 //       account {
 //         id
@@ -88,7 +88,7 @@ export const UPDATE_SCHEDULE_ITEM_ATTENDANCE = gql`
 //       dateStart
 //       dateEnd       
 //     }
-//     accounts(first: 15, before: $before, after: $after, isActive: true, teacher: true) {
+//     accounts(first: 15, before: $before, after: $after, isActive: true, instructor: true) {
 //       pageInfo {
 //         startCursor
 //         endCursor
@@ -108,7 +108,7 @@ export const UPDATE_SCHEDULE_ITEM_ATTENDANCE = gql`
 
 // export const GET_INPUT_VALUES_QUERY = gql`
 //   query InputValues($after: String, $before: String) {
-//     accounts(first: 15, before: $before, after: $after, isActive: true, teacher: true) {
+//     accounts(first: 15, before: $before, after: $after, isActive: true, instructor: true) {
 //       pageInfo {
 //         startCursor
 //         endCursor

@@ -1,9 +1,6 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
 
 import {
   Page,
@@ -16,7 +13,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import InputSearch from "../../general/InputSearch"
-import RelationsMenu from "../RelationsMenu"
 
 import CSLS from "../../../tools/cs_local_storage"
 import { get_list_query_variables } from "./tools"
@@ -29,20 +25,6 @@ function RelationsAccountsBase({t, history, children, refetch}) {
         <Container>
           <Page.Header title={t("relations.title")}>
             <div className="page-options d-flex">
-              <Form.Select
-                className="w-auto mr-2"
-                onChange={(event) => {
-                  console.log(event.target.value)
-                  localStorage.setItem(CSLS.RELATIONS_ACCOUNTS_FILTER_TYPE, event.target.value)
-                  console.log('fire refetch')
-                  console.log(refetch(get_list_query_variables()))
-                }}
-              >
-                <option value="">{t("general.all_accounts")}</option>
-                <option value="customer">{t("general.customers")}</option>
-                <option value="teacher">{t("general.teachers")}</option>
-                <option value="employee">{t("general.employees")}</option>
-              </Form.Select>
               <InputSearch 
                 initialValueKey={CSLS.RELATIONS_ACCOUNTS_SEARCH}
                 placeholder="Search..."
@@ -52,21 +34,32 @@ function RelationsAccountsBase({t, history, children, refetch}) {
                   refetch(get_list_query_variables())
                 }}
               />
+              <Form.Select
+                className="w-auto ml-2"
+                onChange={(event) => {
+                  console.log(event.target.value)
+                  localStorage.setItem(CSLS.RELATIONS_ACCOUNTS_FILTER_TYPE, event.target.value)
+                  console.log('fire refetch')
+                  console.log(refetch(get_list_query_variables()))
+                }}
+              >
+                <option value="">{t("general.all_accounts")}</option>
+                <option value="customer">{t("general.customers")}</option>
+                <option value="instructor">{t("general.instructors")}</option>
+                <option value="employee">{t("general.employees")}</option>
+              </Form.Select>
+              <HasPermissionWrapper permission="add"
+                                    resource="account">
+                <Button color="primary ml-2"
+                        onClick={() => history.push("/relations/accounts/add")}>
+                  <Icon prefix="fe" name="plus-circle" /> {t('general.add')}
+                </Button>
+              </HasPermissionWrapper>
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="account">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/relations/accounts/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('relations.accounts.add')}
-                </Button>
-              </HasPermissionWrapper>
-              <RelationsMenu activeLink='accounts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>        

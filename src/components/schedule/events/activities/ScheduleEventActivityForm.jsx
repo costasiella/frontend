@@ -133,12 +133,12 @@ function ScheduleEventActivityForm ({
         </Grid.Row>
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={t('general.teacher')}>
+            <Form.Group label={t('general.instructor')}>
               <Field component="select" 
                       name="account" 
                       className={(errors.account) ? "form-control is-invalid" : "form-control"} 
                       autoComplete="off">
-                {console.log("query data in schedule class teacher add:")}
+                {console.log("query data in schedule class instructor add:")}
                 {console.log(inputData)}
                 <option value="" key={v4()}>{t('general.please_select')}</option>
                 {inputData.accounts.edges.map(({ node }) =>
@@ -149,7 +149,7 @@ function ScheduleEventActivityForm ({
             </Form.Group>
           </Grid.Col>
           <Grid.Col>
-            <Form.Group label={t('general.teacher2')}>
+            <Form.Group label={t('general.instructor2')}>
               <Field component="select" 
                       name="account2" 
                       className={(errors.account2) ? "form-control is-invalid" : "form-control"} 

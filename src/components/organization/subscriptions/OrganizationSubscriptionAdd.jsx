@@ -161,7 +161,6 @@ function OrganizationSubscriptionAdd({ t, history }) {
 //                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
 //                   </Button>
 //                 </HasPermissionWrapper>
-//                 <OrganizationMenu activeLink='subscriptions'/>
 //               </Grid.Col>
 //             </Grid.Row>
 //           </Container>

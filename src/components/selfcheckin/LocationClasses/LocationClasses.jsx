@@ -68,7 +68,7 @@ function LocationClasses({ t, match, history }) {
               { t("general.class") }
             </Table.ColHeader>
             <Table.ColHeader>
-              { t("general.teacher") }
+              { t("general.instructor") }
             </Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -104,9 +104,9 @@ function LocationClasses({ t, match, history }) {
                         { organizationClasstype.name }
                       </Table.Col>
                       <Table.Col>
-                        {/* Teacher(s) */}
+                        {/* Instructor(s) */}
                         { (account) ? account.fullName : 
-                          <span className="text-red">{t("schedule.classes.no_teacher")}</span>
+                          <span className="text-red">{t("schedule.classes.no_instructor")}</span>
                         }
                       </Table.Col>
                       <Table.Col>

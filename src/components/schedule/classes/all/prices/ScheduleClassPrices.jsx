@@ -10,7 +10,8 @@ import moment from 'moment'
 import {
   Dimmer,
   Button,
-  Table
+  Table,
+  Card
 } from "tabler-react";
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
@@ -43,7 +44,9 @@ function ScheduleClassPrices({t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <Dimmer active={true} loader={true} />
+      <Card.Body>
+        <Dimmer active={true} loader={true} />
+      </Card.Body>
     </ClassEditBase>
   )
   // Error
@@ -53,7 +56,9 @@ function ScheduleClassPrices({t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <p>{t('schedule.classes.prices.error_loading')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.prices.error_loading')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
@@ -74,7 +79,9 @@ function ScheduleClassPrices({t, match, history}) {
       cardTitle={cardTitle} 
       sidebarButton={sidebarButton}
     >
-      <p>{t('schedule.classes.prices.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.classes.prices.empty_list')}</p>
+      </Card.Body>
     </ClassEditBase>
   )}
 
@@ -88,6 +95,7 @@ function ScheduleClassPrices({t, match, history}) {
     <ContentCard 
       cardTitle={t('schedule.classes.title_edit')}
       // headerContent={headerOptions}
+      hasCardBody={false}
       pageInfo={data.scheduleItemPrices.pageInfo}
       onLoadMore={() => {
       fetchMore({
@@ -115,7 +123,7 @@ function ScheduleClassPrices({t, match, history}) {
         })
       }} >
       <div>
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row>
               <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
@@ -131,10 +139,10 @@ function ScheduleClassPrices({t, match, history}) {
               <Table.Row key={v4()}>
                 {console.log(node)}
                 <Table.Col key={v4()}> 
-                  {moment(node.dateStart).format('LL')}
+                  {moment(node.dateStart).format(dateFormat)}
                 </Table.Col>
                 <Table.Col key={v4()}> 
-                  {(node.dateEnd) ? moment(node.dateEnd).format('LL') : ""}
+                  {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
                 </Table.Col>
                 <Table.Col>
                   {node.organizationClasspassDropin.name}

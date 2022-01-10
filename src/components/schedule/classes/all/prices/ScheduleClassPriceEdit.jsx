@@ -13,7 +13,7 @@ import {
 } from "tabler-react";
 
 import { GET_SCHEDULE_ITEM_PRICES_QUERY, GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, UPDATE_SCHEDULE_ITEM_PRICE } from './queries'
-import { SCHEDULE_CLASS_TEACHER_SCHEMA } from './yupSchema'
+import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
 import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
@@ -98,7 +98,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
         organizationClasspassDropin: initialOrganizationClasspassDropin,
         organizationClasspassTrial: initialOrganizationClasspassTrial,
       }}
-      // validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+      // validationSchema={SCHEDULE_CLASS_INSTRUCTOR_SCHEMA}
       onSubmit={(values, { setSubmitting }) => {
 
           let dateEnd
@@ -151,10 +151,10 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 }
 
 
-// class ScheduleClassTeacherEdit extends Component {
+// class ScheduleClassInstructorEdit extends Component {
 //   constructor(props) {
 //     super(props)
-//     console.log("Schedule class teacher edit props:")
+//     console.log("Schedule class instructor edit props:")
 //     console.log(props)
 //   }
 
@@ -164,12 +164,12 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //     const history = this.props.history
 //     const id = match.params.id
 //     const class_id = match.params.class_id
-//     const returnUrl = "/schedule/classes/all/teachers/" + class_id
+//     const returnUrl = "/schedule/classes/all/instructors/" + class_id
 
 //     return (
 //       <SiteWrapper>
 //         <div className="my-3 my-md-5">
-//           <Query query={GET_SINGLE_SCHEDULE_CLASS_TEACHERS_QUERY} variables={{id: id}}>
+//           <Query query={GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY} variables={{id: id}}>
 //             {({ loading, error, data, refetch }) => {
 //               // Loading
 //               if (loading) return <p>{t('general.loading_with_dots')}</p>
@@ -182,7 +182,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //               console.log('query data')
 //               console.log(data)
 //               const inputData = data
-//               const initialData = data.scheduleItemTeacher
+//               const initialData = data.scheduleItemAccount
 
 //               let initialAccount2 = ""
 //               if (initialData.account2) {
@@ -191,12 +191,12 @@ function ScheduleClassPriceEdit({ t, history, match }) {
     
 //               return (
 //                 <ClassEditBase 
-//                   card_title={t('schedule.classes.teachers.title_edit')}
-//                   menu_activeLink="teachers"
-//                   sidebar_button={<ScheduleClassTeacherBack classId={class_id} />}
+//                   card_title={t('schedule.classes.instructors.title_edit')}
+//                   menu_activeLink="instructors"
+//                   sidebar_button={<ScheduleClassInstructorBack classId={class_id} />}
 //                 >
-//                   <Mutation mutation={UPDATE_SCHEDULE_CLASS_TEACHER} onCompleted={() => history.push(returnUrl)}> 
-//                     {(addScheduleClassTeacher, { data }) => (
+//                   <Mutation mutation={UPDATE_SCHEDULE_CLASS_INSTRUCTOR} onCompleted={() => history.push(returnUrl)}> 
+//                     {(addScheduleClassInstructor, { data }) => (
 //                         <Formik
 //                             initialValues={{  
 //                               dateStart: initialData.dateStart,
@@ -206,7 +206,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                               account2: initialAccount2,
 //                               role2: initialData.role2,
 //                             }}
-//                             validationSchema={SCHEDULE_CLASS_TEACHER_SCHEMA}
+//                             validationSchema={SCHEDULE_CLASS_INSTRUCTOR_SCHEMA}
 //                             onSubmit={(values, { setSubmitting }) => {
     
 //                                 let dateEnd
@@ -216,7 +216,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                                   dateEnd = values.dateEnd
 //                                 }
     
-//                                 addScheduleClassTeacher({ variables: {
+//                                 addScheduleClassInstructor({ variables: {
 //                                   input: {
 //                                     id: match.params.id,
 //                                     account: values.account,
@@ -227,12 +227,12 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                                     dateEnd: dateEnd
 //                                   }
 //                                 }, refetchQueries: [
-//                                     {query: GET_SCHEDULE_CLASS_TEACHERS_QUERY, variables: { scheduleItem: match.params.class_id }},
+//                                     {query: GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, variables: { scheduleItem: match.params.class_id }},
 //                                     // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
 //                                 ]})
 //                                 .then(({ data }) => {
 //                                     console.log('got data', data);
-//                                     toast.success((t('schedule.classes.teachers.toast_edit_success')), {
+//                                     toast.success((t('schedule.classes.instructors.toast_edit_success')), {
 //                                         position: toast.POSITION.BOTTOM_RIGHT
 //                                       })
 //                                   }).catch((error) => {
@@ -245,7 +245,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                             }}
 //                             >
 //                             {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-//                               <ScheduleClassTeacherForm
+//                               <ScheduleClassInstructorForm
 //                                 inputData={inputData}
 //                                 isSubmitting={isSubmitting}
 //                                 setFieldTouched={setFieldTouched}
@@ -255,7 +255,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
 //                                 returnUrl={returnUrl}
 //                               >
 //                                 {console.log(errors)}
-//                               </ScheduleClassTeacherForm>
+//                               </ScheduleClassInstructorForm>
 //                             )}
 //                         </Formik>
 //                     )}

@@ -29,10 +29,6 @@ export const GET_CLASSPASSES_QUERY = gql`
           validityUnitDisplay
           classes
           unlimited
-          organizationMembership {
-            id
-            name
-          }
           quickStatsAmount
           financeGlaccount {
             id 
@@ -69,10 +65,6 @@ export const GET_CLASSPASS_QUERY = gql`
       validityUnitDisplay
       classes
       unlimited
-      organizationMembership {
-        id
-        name
-      }
       quickStatsAmount
       financeGlaccount {
         id 
@@ -81,21 +73,6 @@ export const GET_CLASSPASS_QUERY = gql`
       financeCostcenter {
         id
         name
-      }
-    }
-    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id
-          archived
-          name
-        }
       }
     }
     financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
@@ -152,21 +129,6 @@ export const GET_CLASSPASS_QUERY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query InputValues($after: String, $before: String) {
-    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id
-          archived
-          name
-        }
-      }
-    }
     financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
@@ -224,32 +186,6 @@ mutation CreateClasspass($input: CreateOrganizationClasspassInput!) {
   createOrganizationClasspass(input: $input) {
     organizationClasspass {
       id
-      displayPublic
-      displayShop
-      name
-      description
-      price
-      financeTaxRate {
-        id
-        name
-      }
-      validity
-      validityUnit
-      classes
-      unlimited
-      organizationMembership {
-        id
-        name
-      }
-      quickStatsAmount
-      financeGlaccount {
-        id
-        name
-      }
-      financeCostcenter {
-        id
-        name
-      }
     }
   }
 }
@@ -260,32 +196,6 @@ export const UPDATE_CLASSPASS = gql`
     updateOrganizationClasspass(input: $input) {
       organizationClasspass {
         id
-        displayPublic
-        displayShop
-        name
-        description
-        price
-        financeTaxRate {
-          id
-          name
-        }
-        validity
-        validityUnit
-        classes
-        unlimited
-        organizationMembership {
-          id
-          name
-        }
-        quickStatsAmount
-        financeGlaccount {
-          id
-          name
-        }
-        financeCostcenter {
-          id
-          name
-        }
       }
     }
   }

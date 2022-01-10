@@ -17,8 +17,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HomeItemButton from "../../ui/HomeItemButton"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-// import RelationsMenu from "../RelationsMenu"
-
 function SettingsHome({ t, match, params }) {
   return (
     <SiteWrapper>

@@ -87,7 +87,6 @@ class AppointmentEditBase extends Component {
                 </Grid.Col>
                 <Grid.Col md={3}>
                   {sidebar_button}
-                  <h5>{t('general.menu')}</h5>
                   <AppointmentEditMenu activeLink={menu_activeLink} appointmentId={appointmentId}/>
                 </Grid.Col>
               </Grid.Row>

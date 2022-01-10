@@ -80,14 +80,14 @@ function ScheduleEventEdit({t, match, history}) {
     initialOrgranizationlevel = initialData.organizationLevel.id
   }
 
-  let initialTeacher = ""
-  if (initialData.teacher) {
-    initialTeacher = initialData.teacher.id
+  let initialInstructor = ""
+  if (initialData.instructor) {
+    initialInstructor = initialData.instructor.id
   }
 
-  let initialTeacher2 = ""
-  if (initialData.teacher2) {
-    initialTeacher2 = initialData.teacher2.id
+  let initialInstructor2 = ""
+  if (initialData.instructor2) {
+    initialInstructor2 = initialData.instructor2.id
   }
 
   return (
@@ -103,8 +103,8 @@ function ScheduleEventEdit({t, match, history}) {
             tagline: initialData.tagline,
             preview: initialData.preview,
             description: initialData.description,
-            teacher: initialTeacher,
-            teacher2: initialTeacher2,
+            instructor: initialInstructor,
+            instructor2: initialInstructor2,
             infoMailContent: initialData.infoMailContent,
           }}
           validationSchema={SCHEDULE_EVENT_EDIT_SCHEMA}
@@ -126,12 +126,12 @@ function ScheduleEventEdit({t, match, history}) {
                 infoMailContent: values.infoMailContent,
               }
 
-              if (values.teacher) {
-                inputValues['teacher'] = values.teacher
+              if (values.instructor) {
+                inputValues['instructor'] = values.instructor
               }
 
-              if (values.teacher2) {
-                inputValues['teacher2'] = values.teacher2
+              if (values.instructor2) {
+                inputValues['instructor2'] = values.instructor2
               }
 
               updateScheduleEvent({ variables: {

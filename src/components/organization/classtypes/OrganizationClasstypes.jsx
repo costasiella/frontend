@@ -1,6 +1,4 @@
-// @flow
-
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -26,7 +24,8 @@ import { GET_CLASSTYPES_QUERY, ARCHIVE_CLASSTYPE } from "./queries"
 import OrganizationClasstypesBase from "./OrganizationClasstypesBase"
 
 
-function OrganizationClasstypes({t, history, archived=false}) {
+function OrganizationClasstypes({t, history}) {
+  let [archived, setArchived] = useState(false)
   const {loading, error, data, refetch, fetchMore} = useQuery(GET_CLASSTYPES_QUERY, { 
     variables: get_list_query_variables()
   })
@@ -50,26 +49,19 @@ function OrganizationClasstypes({t, history, archived=false}) {
     </OrganizationClasstypesBase>
   )
   const headerOptions = <Card.Options>
-    <Button color={(localStorage.getItem(CSLS.ORGANIZATION_CLASSTYPES_ARCHIVED) === "false") ? 'primary': 'secondary'}  
+    <Button color={(!archived) ? 'primary': 'secondary'}  
             size="sm"
-            onClick={() => {
-              localStorage.setItem(CSLS.ORGANIZATION_CLASSTYPES_ARCHIVED, false)
-              refetch(get_list_query_variables())
-            }
-    }>
-      {t('general.active')}
+            onClick={() => {setArchived(false); refetch({archived: false});}}>
+      {t('general.current')}
     </Button>
-    <Button color={(localStorage.getItem(CSLS.ORGANIZATION_CLASSTYPES_ARCHIVED) === "true") ? 'primary': 'secondary'} 
+    <Button color={(archived) ? 'primary': 'secondary'} 
             size="sm" 
             className="ml-2" 
-            onClick={() => {
-              localStorage.setItem(CSLS.ORGANIZATION_CLASSTYPES_ARCHIVED, true)
-              refetch(get_list_query_variables())
-            }
-    }>
+            onClick={() => {setArchived(true); refetch({archived: true});}}>
       {t('general.archive')}
     </Button>
   </Card.Options>
+
   
   const classtypes = data.organizationClasstypes
   // Empty list
@@ -120,6 +112,7 @@ function OrganizationClasstypes({t, history, archived=false}) {
               <Table.ColHeader>{t('')}</Table.ColHeader>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('general.public')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -137,23 +130,21 @@ function OrganizationClasstypes({t, history, archived=false}) {
                       <Badge color="danger">{t('general.no')}</Badge>}
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
-                    {(localStorage.getItem(CSLS.ORGANIZATION_CLASSTYPES_ARCHIVED) === "true") ? 
+                    {(node.archived) ? 
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                      <div>
-                        <Button className='btn-sm' 
-                                onClick={() => history.push("/organization/classtypes/edit/" + node.id)}
-                                color="secondary">
-                          {t('general.edit')}
-                        </Button>
-                        <Button className='btn-sm' 
-                                onClick={() => history.push("/organization/classtypes/edit_image/" + node.id)}
-                                color="secondary">
-                          {t('organization.classtypes.edit_image')}
-                        </Button>
-                      </div>
+                        <React.Fragment>
+                          <Button className='btn-sm' 
+                                  onClick={() => history.push("/organization/classtypes/edit_image/" + node.id)}
+                                  color="secondary">
+                            <Icon name="image" />
+                          </Button>
+                          <Button className='btn-sm' 
+                                  onClick={() => history.push("/organization/classtypes/edit/" + node.id)}
+                                  color="secondary">
+                            {t('general.edit')}
+                          </Button>
+                        </React.Fragment>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         onClick={() => {

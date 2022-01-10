@@ -74,7 +74,7 @@ function ShopEvent({ t, match, history }) {
           : "" )}
           <Card title={t("general.info")}>
             <Card.Body>
-              <h6>{t('general.teacher')}: {(event.teacher) ? event.teacher.fullName: ""}</h6>
+              <h6>{t('general.instructor')}: {(event.instructor) ? event.instructor.fullName: ""}</h6>
               <h6>{t('general.start')}: {(event.dateStart) ? moment(event.dateStart).format(dateFormat): ""}</h6>
               <h6>{t('general.end')}: {(event.dateEnd) ? moment(event.dateEnd).format(dateFormat): ""}</h6>
             </Card.Body>

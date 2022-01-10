@@ -25,7 +25,7 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from "../OrganizationMenu"
+
 import OrganizationAppointmentCategoryForm from "./OrganizationAppointmentCategoryForm"
 
 
@@ -142,7 +142,6 @@ class OrganizationAppointmentCategoryEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu activeLink='appointment_categories'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

@@ -27,10 +27,6 @@ export const GET_ORGANIZATION_SUBSCRIPTIONS_QUERY = gql`
           unlimited
           termsAndConditions
           registrationFee
-          organizationMembership {
-            id
-            name
-          }
           quickStatsAmount
           financeGlaccount {
             id 

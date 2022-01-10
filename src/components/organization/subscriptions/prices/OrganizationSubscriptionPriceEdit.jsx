@@ -26,7 +26,7 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../OrganizationMenu"
+
 
 
 const UPDATE_SUBSCRIPTION_PRICE = gql`
@@ -182,7 +182,6 @@ class OrganizationSubscriptionPriceEdit extends Component {
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>
-                <OrganizationMenu activeLink='locations'/>
               </Grid.Col>
             </Grid.Row>
           </Container>

@@ -78,10 +78,10 @@ function ScheduleClassEdit({ t, match, history }) {
   
   let initialData
   var initialValues = {}
-  if (queryData.scheduleClassWeeklyOtcs.edges.length) {
+  if (queryData.scheduleItemWeeklyOtcs.edges.length) {
     showDelete = true
 
-    initialData = queryData.scheduleClassWeeklyOtcs.edges[0].node
+    initialData = queryData.scheduleItemWeeklyOtcs.edges[0].node
 
     initialValues.status = initialData.status
     initialValues.description = initialData.description

@@ -26,7 +26,7 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationEditBase from "./OrganizationEditBase"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 const UPDATE_ORGANIZATION = gql`

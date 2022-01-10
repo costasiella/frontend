@@ -5,7 +5,7 @@ export const GET_ACCOUNTS_QUERY = gql`
     $after: String, 
     $before: String, 
     $searchName: String,
-    $teacher: Boolean,
+    $instructor: Boolean,
     $employee: Boolean
   ) {
     accounts(
@@ -15,7 +15,7 @@ export const GET_ACCOUNTS_QUERY = gql`
       isActive: true, 
       fullName_Icontains: $searchName,
       customer: true,
-      teacher: $teacher,
+      instructor: $instructor,
       employee: $employee
     ) {
       pageInfo {

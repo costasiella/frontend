@@ -21,11 +21,11 @@ query ScheduleEvent($id: ID!) {
       id
       name
     }
-    teacher {
+    instructor {
       id 
       fullName
     }
-    teacher2 {
+    instructor2 {
       id
       fullName
     }

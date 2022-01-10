@@ -18,7 +18,6 @@ import {
 import { dateToLocalISO } from '../../../tools/date_tools'
 import SiteWrapper from '../../SiteWrapper'
 import FinanceTaxRatesSummaryFilter from "./FinanceTaxRatesSummaryFilter"
-import FinanceMenu from "../FinanceMenu"
 
 
 function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
@@ -73,7 +72,6 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
               </Formik>
               <br /><br /><br />
               <h5>{t("general.menu")}</h5>
-              <FinanceMenu activeLink='taxrates_summary'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

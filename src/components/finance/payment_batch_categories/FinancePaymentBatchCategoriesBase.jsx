@@ -15,8 +15,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import FinanceMenu from "../FinanceMenu"
-
 
 function FinancePaymentBatchCategoriesBase({t, history, children, showAdd=false, showBack=false}) {
   return (
@@ -51,7 +49,6 @@ function FinancePaymentBatchCategoriesBase({t, history, children, showAdd=false,
                 </HasPermissionWrapper>
                 : "" 
               }
-              <FinanceMenu activeLink='payment_batch_categories'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

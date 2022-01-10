@@ -14,7 +14,6 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import FinanceMenu from "../FinanceMenu"
 
 
 function FinancePaymentMethodsBase({ t, history, children, showBack=false }) {
@@ -44,7 +43,6 @@ function FinancePaymentMethodsBase({ t, history, children, showBack=false }) {
                   </Link>
                 </HasPermissionWrapper>
               }
-              <FinanceMenu activeLink='payment_methods'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

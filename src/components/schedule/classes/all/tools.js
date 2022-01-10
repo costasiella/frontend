@@ -5,17 +5,17 @@ export function class_edit_all_subtitle({t, location, locationRoom, classtype, s
 }
 
 
-export function represent_teacher_role(t, role) {
+export function represent_instructor_role(t, role) {
   console.log(role)
   switch (role) {
     case "SUB":
-      return t('schedule.classes.teacher_roles.sub')
+      return t('schedule.classes.instructor_roles.sub')
       break
     case "ASSISTANT":
-      return t('schedule.classes.teacher_roles.assistant')
+      return t('schedule.classes.instructor_roles.assistant')
       break
     case "KARMA":
-      return t('schedule.classes.teacher_roles.karma')
+      return t('schedule.classes.instructor_roles.karma')
       break
     default:
       return ""

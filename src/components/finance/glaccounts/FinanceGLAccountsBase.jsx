@@ -15,8 +15,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import FinanceMenu from "../FinanceMenu"
-
 
 function FinanceGLAccountsBase({ t, history, children, showBack=false }) {
   return (
@@ -45,7 +43,6 @@ function FinanceGLAccountsBase({ t, history, children, showBack=false }) {
                   </Link>
                 </HasPermissionWrapper>
               }
-              <FinanceMenu activeLink='glaccounts'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

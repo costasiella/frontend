@@ -14,8 +14,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import FinanceMenu from "../FinanceMenu"
-
 
 function FinanceCostCentersBase({t, history, children, showBack=false}) {
   return (
@@ -44,7 +42,6 @@ function FinanceCostCentersBase({t, history, children, showBack=false}) {
                   </Link>
                 </HasPermissionWrapper>
               }
-              <FinanceMenu activeLink='costcenters'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

@@ -27,8 +27,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { dateToLocalISO, dateToLocalISOTime } from '../../../tools/date_tools'
 
-import ScheduleMenu from '../ScheduleMenu'
-
 
 const CREATE_APPOINTMENT = gql`
   mutation CreateScheduleAppointment($input:CreateScheduleAppointmentInput!) {
@@ -195,7 +193,6 @@ class ScheduleAppointmentAdd extends Component {
                             <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                           </Button>
                         </HasPermissionWrapper>
-                        <ScheduleMenu activeLink='appointments'/>
                       </Grid.Col>
                     </Grid.Row>
                   </Container>

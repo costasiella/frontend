@@ -24,7 +24,6 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../../../general/ContentCard"
-import FinanceMenu from "../../../FinanceMenu"
 import FinanceInvoiceGroupDefaultsBase from './FinanceInvoiceGroupDefaultsBase'
 import FinanceInvoiceGroupDefaultForm from './FinanceInvoiceGroupDefaultForm'
 
@@ -56,8 +55,8 @@ const fetch_default_type_name = (t, itemType) => {
     case "SHOP_SALES":
       return t('finance.invoice_groups_defaults.SHOP_SALES')
       break
-    case "TEACHER_PAYMENTS":
-      return t('finance.invoice_groups_defaults.TEACHER_PAYMENTS')
+    case "INSTRUCTOR_PAYMENTS":
+      return t('finance.invoice_groups_defaults.INSTRUCTOR_PAYMENTS')
       break
     case "EMPLOYEE_EXPENSES":
       return t('finance.invoice_groups_defaults.EMPLOYEE_EXPENSES')

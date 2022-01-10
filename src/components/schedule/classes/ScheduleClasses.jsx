@@ -13,17 +13,10 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import {
   Badge,
   Dropdown,
-  Page,
-  Grid,
   Icon,
-  Dimmer,
-  Button,
   Card,
-  Container,
   Table,
-  Text,
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import CSDatePicker from "../../ui/CSDatePicker"
 import { confirmAlert } from 'react-confirm-alert'
@@ -33,9 +26,6 @@ import CSLS from "../../../tools/cs_local_storage"
 
 
 import BadgeBoolean from "../../ui/BadgeBoolean"
-import ContentCard from "../../general/ContentCard"
-import ScheduleMenu from "../ScheduleMenu"
-import ScheduleClassesFilter from "./ScheduleClassesFilter"
 import ScheduleClassesBase from './ScheduleClassesBase'
 
 import { GET_CLASSES_QUERY } from "./queries"
@@ -43,7 +33,7 @@ import {
   get_class_messages,
   get_list_query_variables, 
   represent_class_status,
-  represent_teacher 
+  represent_instructor 
 } from './tools'
 
 import moment from 'moment'
@@ -161,7 +151,7 @@ function ScheduleClasses ({ t, history }) {
                     <Table.ColHeader>{t('general.time')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.location')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.class')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
+                    <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.public')}</Table.ColHeader>
                     <Table.ColHeader></Table.ColHeader>
                   </Table.Row>
@@ -209,13 +199,13 @@ function ScheduleClasses ({ t, history }) {
                         </small>
                       </Table.Col>
                       <Table.Col>
-                        {/* Teacher(s) */}
+                        {/* Instructor(s) */}
                         { (account) ? 
-                            represent_teacher(account.fullName, role) : 
-                            <span className="text-red">{t("schedule.classes.no_teacher")}</span>
+                            represent_instructor(account.fullName, role) : 
+                            <span className="text-red">{t("schedule.classes.no_instructor")}</span>
                         } <br />
                         <small className="text-muted">
-                          {(account2) ? represent_teacher(account2.fullName, role2) : ""}
+                          {(account2) ? represent_instructor(account2.fullName, role2) : ""}
                         </small>
                       </Table.Col>
                       <Table.Col>
@@ -250,7 +240,7 @@ function ScheduleClasses ({ t, history }) {
                                 </Dropdown.Item>
                               </Link>
                             </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleclassweeklyotc">
+                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemweeklyotc">
                               <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
                                 <Dropdown.Item
                                   key={v4()}
@@ -491,8 +481,6 @@ export default withTranslation()(withRouter(ScheduleClasses))
 //                   </div>
 //                   <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
 //                   <ScheduleClassesFilter data={data} refetch={refetch} />
-//                   <h5>{t("general.menu")}</h5>
-//                   <ScheduleMenu activeLink='classes'/>
 //               </Grid.Col>
 //             </Grid.Row>
 //           </Container>

@@ -6,7 +6,6 @@ import { v4 } from 'uuid'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-
 import {
   Button,
   Card,
@@ -45,12 +44,12 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
                   <Field 
                   className="custom-switch-input"
                   type="checkbox" 
-                  name="teacher" 
-                  checked={values.teacher} />
+                  name="instructor" 
+                  checked={values.instructor} />
                   <span className="custom-switch-indicator" ></span>
-                  <span className="custom-switch-description">{t('general.teacher')}</span>
+                  <span className="custom-switch-description">{t('general.instructor')}</span>
               </Form.Label>
-              <ErrorMessage name="teacher" component="div" />   
+              <ErrorMessage name="instructor" component="div" />   
             </Form.Group>  
           </Grid.Col>
           <Grid.Col>
@@ -239,9 +238,6 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
               <ErrorMessage name="keyNumber" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          <Grid.Col>
-
-          </Grid.Col>
         </Grid.Row>
       </Card.Body>
       <Card.Footer>
@@ -253,10 +249,6 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
           >
             {t('general.submit')}
           </Button>
-          
-          {/* <Button color="link" onClick={() => history.push(return_url)}>
-              {t('general.cancel')}
-          </Button> */}
       </Card.Footer>
   </FoForm>
 )

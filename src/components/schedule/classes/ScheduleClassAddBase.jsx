@@ -15,8 +15,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import ScheduleMenu from '../ScheduleMenu'
-
 
 function ScheduleClassAddBase({t, children}) {
   const returnUrl = "/schedule/classes"
@@ -39,7 +37,6 @@ function ScheduleClassAddBase({t, children}) {
                   </Button>
                 </Link>
               </HasPermissionWrapper>
-              <ScheduleMenu activeLink='classes'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

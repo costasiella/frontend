@@ -32,13 +32,17 @@ function ScheduleClassEditAll({t, match}) {
 
   if (loading) return (
     <ClassEditBase menu_activeLink={menuActiveLink}>
-      <p>{t('general.loading_with_dots')}</p>
+      <Card.Body>
+        <p>{t('general.loading_with_dots')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 
   if (error) return (
     <ClassEditBase menu_activeLink={menuActiveLink}>
-      <p>{t('general.error_sad_smiley')}</p>
+      <Card.Body>
+        <p>{t('general.error_sad_smiley')}</p>
+      </Card.Body>
     </ClassEditBase>
   )
 

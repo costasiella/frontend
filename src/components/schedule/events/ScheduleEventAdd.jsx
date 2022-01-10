@@ -109,8 +109,8 @@ function ScheduleEventAdd({ t, history }) {
                   tagline: values.tagline,
                   preview: values.preview,
                   description: values.description,
-                  teacher: values.teacher,
-                  teacher2: values.teacher2,
+                  instructor: values.instructor,
+                  instructor2: values.instructor2,
                   infoMailContent: values.infoMailContent,
                 }
               }, refetchQueries: [

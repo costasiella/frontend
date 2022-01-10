@@ -1,24 +1,16 @@
-// @flow
-
 import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Card,
   Container,
-  StampCard
 } from "tabler-react";
 import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-
-import ScheduleMenu from "../ScheduleMenu"
 
 
 class ScheduleHome extends Component {
@@ -42,13 +34,13 @@ class ScheduleHome extends Component {
           <Container>
             <Page.Header title={t("schedule.title")} />
             <Grid.Row>
-              <Grid.Col md={9}>
+              <Grid.Col md={12}>
                 <Grid.Row>
                   <HasPermissionWrapper
                     resource="scheduleclass"
                     permission="view"
                   >
-                    <Grid.Col md={4} lg={4}>
+                    <Grid.Col md={3} lg={3}>
                       <Card>
                         <Card.Body>
                           <h5>{t("schedule.classes.title")}</h5>
@@ -63,7 +55,7 @@ class ScheduleHome extends Component {
                     resource="scheduleevent"
                     permission="view"
                   >
-                    <Grid.Col md={4} lg={4}>
+                    <Grid.Col md={3} lg={3}>
                       <Card>
                         <Card.Body>
                           <h5>{t("schedule.events.title")}</h5>
@@ -74,20 +66,32 @@ class ScheduleHome extends Component {
                       </Card>
                     </Grid.Col>
                   </HasPermissionWrapper>
+                  <HasPermissionWrapper
+                    resource="scheduleshift"
+                    permission="view"
+                  >
+                    <Grid.Col md={3} lg={3}>
+                      <Card>
+                        <Card.Body>
+                          <h5>{t("schedule.shifts.title")}</h5>
+                          {t("schedule.shifts.explanation")}
+                          <br /><br />
+                          <HomeItemButton linkTitle={linkTitle} link="/schedule/shifts" />
+                        </Card.Body>
+                      </Card>
+                    </Grid.Col>
+                  </HasPermissionWrapper>
                   {/* <HasPermissionWrapper
                     resource="scheduleappointment"
                     permission="view"
                   >
-                    <Grid.Col md={4} lg={4}>
+                    <Grid.Col md={3} lg={3}>
                       <Link to='/schedule/appointments')}>
                         <StampCard header={<small>{t('schedule.appointments.title')}</small>} footer={t('')} color="blue" icon="calendar" />
                       </div>
                     </Grid.Col>
                   </HasPermissionWrapper> */}
                 </Grid.Row>
-              </Grid.Col>
-              <Grid.Col md={3}>
-                <ScheduleMenu />
               </Grid.Col>
             </Grid.Row>
           </Container>

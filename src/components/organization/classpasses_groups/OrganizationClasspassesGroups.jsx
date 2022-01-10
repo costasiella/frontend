@@ -89,6 +89,8 @@ function OrganizationClasspassesGroups({ t, history}) {
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.name')}</Table.ColHeader>
                   <Table.ColHeader>{t('general.description')}</Table.ColHeader>
+                  <Table.ColHeader></Table.ColHeader>
+                  <Table.ColHeader></Table.ColHeader>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -286,7 +288,6 @@ function OrganizationClasspassesGroups({ t, history}) {
 //                 <Icon prefix="fe" name="plus-circle" /> {t('organization.classpass_groups.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu activeLink=''/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

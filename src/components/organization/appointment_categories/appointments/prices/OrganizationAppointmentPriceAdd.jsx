@@ -25,9 +25,6 @@ import {
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../../OrganizationMenu"
-
-
 const ADD_APPOINTMENT_PRICE = gql`
   mutation CreateOrganizationAppointmentPrice($input: CreateOrganizationAppointmentPriceInput!) {
     createOrganizationAppointmentPrice(input: $input) {
@@ -140,7 +137,6 @@ const OrganizationAppointmentPriceAdd = ({ t, history, match }) => (
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='appointments'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

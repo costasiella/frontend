@@ -27,7 +27,7 @@ import { toast } from 'react-toastify'
 import confirm_delete from "../../../tools/confirm_delete"
 import ContentCard from "../../general/ContentCard"
 import CardHeaderSeparator from "../../general/CardHeaderSeparator"
-import OrganizationMenu from "../OrganizationMenu"
+
 import OrganizationGroupsSubscriptionsBase from "./OrganizationSubscriptionsGroupsBase"
 
 import { GET_SUBSCRIPTION_GROUPS_QUERY, DELETE_SUBSCRIPTION_GROUP } from "./queries"

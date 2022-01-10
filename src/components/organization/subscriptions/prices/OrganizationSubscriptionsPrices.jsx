@@ -25,7 +25,7 @@ import { toast } from 'react-toastify'
 import { confirmAlert } from 'react-confirm-alert'
 
 import ContentCard from "../../../general/ContentCard"
-import OrganizationMenu from "../../OrganizationMenu"
+
 import AlertInfo from "../../../ui/AlertInfo"
 
 import { GET_SUBSCRIPTION_PRICES_QUERY } from "./queries"
@@ -238,7 +238,6 @@ function OrganizationSubscriptionsPrices ({ t, history, match, archived=false })
                   <Icon prefix="fe" name="plus-circle" /> {t('organization.subscription_prices.add')}
                 </Button>
               </HasPermissionWrapper>
-              <OrganizationMenu activeLink='subscriptions'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

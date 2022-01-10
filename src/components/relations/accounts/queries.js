@@ -7,7 +7,7 @@ query Accounts(
   $isActive: Boolean!, 
   $searchName: String,
   $customer: Boolean,
-  $teacher: Boolean,
+  $instructor: Boolean,
   $employee: Boolean
   
 ) {
@@ -18,7 +18,7 @@ query Accounts(
     isActive: $isActive, 
     fullName_Icontains: $searchName,
     customer: $customer,
-    teacher: $teacher,
+    instructor: $instructor,
     employee: $employee
   ) {
     pageInfo {
@@ -31,7 +31,7 @@ query Accounts(
       node {
         id
         customer
-        teacher
+        instructor
         employee
         firstName
         lastName
@@ -78,7 +78,7 @@ export const GET_ACCOUNT_QUERY = gql`
     account(id:$id) {
       id
       customer
-      teacher
+      instructor
       employee
       firstName
       lastName

@@ -3,7 +3,7 @@ import { gql } from "@apollo/client"
 
 export const GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY = gql`
   query ScheduleClassWeeklyOTCs($scheduleItem: ID!, $date: Date!) {
-    scheduleClassWeeklyOtcs(first:1, scheduleItem: $scheduleItem, date:$date) {
+    scheduleItemWeeklyOtcs(first:1, scheduleItem: $scheduleItem, date:$date) {
       edges {
         node {
           id 
@@ -66,7 +66,7 @@ export const GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY = gql`
       timeEnd
       displayPublic
     }
-    accounts(first: 100, isActive: true, teacher: true) {
+    accounts(first: 100, isActive: true, instructor: true) {
       pageInfo {
         startCursor
         endCursor
@@ -133,8 +133,8 @@ export const GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY = gql`
 `
 
 export const DELETE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
-  mutation DeleteScheduleClassWeeklyOTC($input: DeleteScheduleClassWeeklyOTCInput!) {
-    deleteScheduleClassWeeklyOtc(input: $input) {
+  mutation DeleteScheduleClassWeeklyOTC($input: DeleteScheduleItemWeeklyOTCInput!) {
+    deleteScheduleItemWeeklyOtc(input: $input) {
       ok
     }
   }
@@ -142,9 +142,9 @@ export const DELETE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
 
 
 export const UPDATE_SCHEDULE_CLASS_WEEKLY_OTC = gql`
-  mutation UpdateScheduleClassWeeklyOTC($input: UpdateScheduleClassWeeklyOTCInput!) {
-    updateScheduleClassWeeklyOtc(input:$input) {
-      scheduleClassWeeklyOtc {
+  mutation UpdateScheduleClassWeeklyOTC($input: UpdateScheduleItemWeeklyOTCInput!) {
+    updateScheduleItemWeeklyOtc(input:$input) {
+      scheduleItemWeeklyOtc {
         id
       }
     }

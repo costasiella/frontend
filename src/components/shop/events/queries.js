@@ -28,11 +28,11 @@ export const GET_SCHEDULE_EVENTS_QUERY = gql`
             id
             name
           }
-          teacher {
+          instructor {
             id 
             fullName
           }
-          teacher2 {
+          instructor2 {
             id
             fullName
           }

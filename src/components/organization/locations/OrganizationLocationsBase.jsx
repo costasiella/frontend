@@ -12,7 +12,7 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationLocationsBase({t, history, children, showBack=false}) {
@@ -42,7 +42,6 @@ function OrganizationLocationsBase({t, history, children, showBack=false}) {
                   </Link>
                 </HasPermissionWrapper>
               }
-              <OrganizationMenu activeLink='locations'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

@@ -119,7 +119,7 @@
             "TRIALCLASSES": "Trial classes",
             "EVENT_TICKETS": "Event tickets",
             "SHOP_SALES": "Shop sales",
-            "TEACHER_PAYMENTS": "Teacher payments",
+            "INSTRUCTOR_PAYMENTS": "Instructor payments",
             "EMPLOYEE_EXPENSES": "Employee expenses",
             "TYPE_NOT_FOUND": "Type not found...",
             "title": "Default invoice groups",
@@ -354,18 +354,18 @@
         "menu": "Menu",
         "clear": "Clear",
         "customer": "Customer",
-        "teacher": "Teacher",
+        "instructor": "Instructor",
         "employee": "Employee",
         "info": "Info",
         "all_accounts": "All accounts",
         "customers": "Customers",
-        "teachers": "Teachers",
+        "instructors": "Instructors",
         "employees": "Employees",
         "classpass": "Class pass",
-        "teacher_role": "Teacher role",
-        "teacher2": "Teacher 2",
-        "teacher_role2": "Teacher role 2",
-        "teacher_2": "Teacher 2",
+        "instructor_role": "Instructor role",
+        "instructor2": "Instructor 2",
+        "instructor_role2": "Instructor role 2",
+        "instructor_2": "Instructor 2",
         "subscriptions": "Subscriptions",
         "enroll": "Enroll",
         "attend": "Attend",
@@ -395,7 +395,7 @@
         "quantity_short_and_price": "QTY & Price",
         "product": "Product",
         "finance_invoice_group": "Invoice group",
-        "teachers_available": "Teachers available",
+        "instructors_available": "Instructors available",
         "search_results": "Search results",
         "checkin": "Check-in",
         "attendance": "Attendance",
@@ -500,7 +500,11 @@
         "months": "Months",
         "first_month": "First month",
         "registration_fee": "Registration fee",
-        "revenue": "Revenue"
+        "revenue": "Revenue",
+        "classpass_group": "Classpass group",
+        "subscription_group": "Subscription group",
+        "shift": "Shift",
+        "employee2": "Employee 2"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -721,7 +725,7 @@
             "title_edit": "Edit appointment",
             "toast_edit_success": "Saved",
             "public": "This is a public appointment",
-            "teacher_prices": "Teacher prices"
+            "instructor_prices": "Instructor prices"
         },
         "appointment_category": {
             "public": "This is a public appointment category"
@@ -734,7 +738,7 @@
             "title": "Appointment prices",
             "error_loading": "Error loading prices for this appointment :(",
             "empty_list": "No prices have been defined for this appointment",
-            "delete_confirm_msg": "Are you sure you wish to delete the price for this teacher?",
+            "delete_confirm_msg": "Are you sure you wish to delete the price for this instructor?",
             "deleted": "Deleted appointment price",
             "add": "Add appointment price"
         },
@@ -822,6 +826,18 @@
                 "delete_from_holiday": "Remove from holiday",
                 "deleted_from_holiday": "Saved holiday locations"
             }
+        },
+        "shifts": {
+            "title": "Staff shifts",
+            "explanation": "Shift types available in the staff schedule",
+            "title_add": "Add shift",
+            "toast_add_success": "Added shift",
+            "title_edit": "Edit shift",
+            "toast_edit_success": "Saved",
+            "error_loading": "Error loading shifts... :(",
+            "empty_list": "No shifts have been created yet.",
+            "empty_archive": "No shifts have been archived yet",
+            "add": "Add shift"
         }
     },
     "validity": {
@@ -855,14 +871,13 @@
             "empty_archive": "No accounts have been deleted yet",
             "delete_confirm_msg": "Are you sure you wish to delete this account and all associated data?",
             "deleted": "Deleted account",
-            "add": "Add account",
             "profile": "Profile",
             "toast_edit_success": "Saved profile",
             "deactivated": "Moved account to deleted",
             "restored": "Restored account",
             "emergency": "Emergency",
             "profile_image": "Profile picture",
-            "explanation": "User accounts that can log in"
+            "explanation": "Customer, instructor & employee accounts"
         },
         "account": {
             "subscriptions": {
@@ -952,8 +967,8 @@
                 "deleted": "Deleted membership",
                 "add": "Add membership"
             },
-            "teacher_profile": {
-                "title": "Teacher profile",
+            "instructor_profile": {
+                "title": "Instructor profile",
                 "toast_edit_success": "Saved",
                 "classes": "Teaches classes",
                 "events": "Teaches events",
@@ -1022,7 +1037,7 @@
                 "title_add": "Add note",
                 "toast_add_success": "Added note",
                 "backoffice": "Backoffice",
-                "teachers": "Teachers",
+                "instructors": "Instructors",
                 "delete_confirm_msg": "Are you sure you wish to delete this note?",
                 "deleted": "Deleted note",
                 "title_edit": "Edit note",
@@ -1054,7 +1069,7 @@
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
             "archived": "Archived B2B relation",
-            "explanation": "Business to Business relations"
+            "explanation": "Businesses this organization is connected to"
         },
         "suppliers": {
             "title": "Suppliers"
@@ -1090,20 +1105,20 @@
             "filter_all_locations": "All locations",
             "filter_all_classtypes": "All classtypes",
             "filter_all_levels": "All levels",
-            "teachers": {
-                "title_add": "Add teacher(s)",
-                "toast_add_success": "Added teacher(s)",
-                "title_edit": "Edit teacher(s)",
-                "toast_edit_success": "Saved teacher(s)",
-                "add": "Add teacher",
-                "title": "Teachers",
-                "error_loading": "Error loading teachers for this class :(",
-                "empty_list": "No teachers have been added to this class yet",
-                "delete_confirm_msg": "Are you sure you wish to delete this teachers entry?",
+            "instructors": {
+                "title_add": "Add instructor(s)",
+                "toast_add_success": "Added instructor(s)",
+                "title_edit": "Edit instructor(s)",
+                "toast_edit_success": "Saved instructor(s)",
+                "add": "Add instructor",
+                "title": "Instructors",
+                "error_loading": "Error loading instructors for this class :(",
+                "empty_list": "No instructors have been added to this class yet",
+                "delete_confirm_msg": "Are you sure you wish to delete this instructors entry?",
                 "delete_confirm_description": "",
-                "deleted": "Deleted teacher entry"
+                "deleted": "Deleted instructor entry"
             },
-            "teacher_roles": {
+            "instructor_roles": {
                 "sub": "Substitute",
                 "assistant": "Assistant",
                 "karma": "Karma"
@@ -1161,7 +1176,7 @@
                     "title": "Attendance chart"
                 }
             },
-            "no_teacher": "No teacher",
+            "no_instructor": "No instructor",
             "prices": {
                 "add": "Add price",
                 "title_add": "Add price",
@@ -1192,16 +1207,16 @@
             "add": "Add appointment",
             "filter_all_locations": "All locations",
             "filter_all_appointments": "All appointment types",
-            "title_edit": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-            "title_add": "__STRING_NOT_TRANSLATED__",
-            "toast_add_success": "__STRING_NOT_TRANSLATED__",
-            "public": "__STRING_NOT_TRANSLATED__",
-            "frequencyType": "__STRING_NOT_TRANSLATED__",
-            "select_specific": "__STRING_NOT_TRANSLATED__",
-            "select_weekly": "__STRING_NOT_TRANSLATED__",
-            "frequencyInterval": "__STRING_NOT_TRANSLATED__",
-            "placeholder_enddate": "__STRING_NOT_TRANSLATED__"
+            "title_edit": "Edit appointment",
+            "toast_edit_success": "Saved",
+            "title_add": "Add appoinement",
+            "toast_add_success": "Added appoinement",
+            "public": "Public",
+            "frequencyType": "Recurring",
+            "select_specific": "Once",
+            "select_weekly": "Weekly",
+            "frequencyInterval": "Week day",
+            "placeholder_enddate": "Click to select a date or leave empty for no enddate"
         },
         "events": {
             "title": "Events",
@@ -1283,8 +1298,42 @@
         },
         "event": {
             "location_please_select": "Please select...",
-            "teacher_please_select": "Please select...",
+            "instructor_please_select": "Please select...",
             "error_loading": "Error loading event... :("
+        },
+        "shifts": {
+            "title": "Staff",
+            "explanation": "Manage staff shifts",
+            "title_add": "Add shift",
+            "toast_add_success": "Added shift",
+            "empty_list": "No shifts scheduled on this day.",
+            "no_employee": "Not assigned",
+            "all_shifts_in_series": "All shifts",
+            "delete_confirm_msg": "Are you sure you wish to delete this shift?",
+            "deleted": "Deleted shift",
+            "filter_all_locations": "All locations",
+            "filter_all_shifts": "All shifts",
+            "title_edit": "Edit shift",
+            "toast_edit_success": "Saved",
+            "shift": {
+                "edit": {
+                    "toast_edit_success": "Saved",
+                    "delete_confirm_msg": "Are you sure you wish to remove all changes made to this shift?",
+                    "delete_success": "Deleted shift changes",
+                    "delete_all_changes": "Remove all changes on this date"
+                }
+            },
+            "employees": {
+                "title_add": "Add employee(s) to shift",
+                "toast_add_success": "Added employees to shift",
+                "title_edit": "Edit shift employee(s)",
+                "toast_edit_success": "Saved",
+                "title": "Shift assignment",
+                "error_loading": "Error loading shift employee(s)... :(",
+                "empty_list": "No employees have been added to this shift yet",
+                "delete_confirm_msg": "Are you sure you wish to remove these employees from this shift?",
+                "deleted": "Deleted employees for this shift"
+            }
         }
     },
     "countries": {

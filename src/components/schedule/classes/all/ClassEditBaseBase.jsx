@@ -34,15 +34,12 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           <Grid.Col md={9}>
             {(!defaultCard) ? children :
               <Card title={cardTitle}>
-                <Card.Body>
-                  {children}
-                </Card.Body>
+                {children}
               </Card>
             }
           </Grid.Col>
           <Grid.Col md={3}>
             {sidebarButton}
-            <h5>{t('general.menu')}</h5>
             <ClassEditMenu activeLink={menuActiveLink} classId={classId}/>
           </Grid.Col>
         </Grid.Row>

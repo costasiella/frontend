@@ -11,12 +11,12 @@ import {
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 let edit_active
-let teachers_available_active
+let instructors_available_active
 
 const AppointmentEditMenu = ({ t, activeLink, appointmentId }) => (
     <List.Group transparent={true}>
         {(activeLink === 'edit') ? edit_active = true: edit_active = false}
-        {(activeLink === 'teachers_available') ? teachers_available_active = true: teachers_available_active = false}
+        {(activeLink === 'instructors_available') ? instructors_available_active = true: instructors_available_active = false}
         
         <HasPermissionWrapper
           resource="scheduleappointment"
@@ -39,11 +39,11 @@ const AppointmentEditMenu = ({ t, activeLink, appointmentId }) => (
           <List.GroupItem
               key={v4()}
               className="d-flex align-items-center"
-              to={"#/schedule/appointments/all/teachers_available/" + appointmentId}
+              to={"#/schedule/appointments/all/instructors_available/" + appointmentId}
               icon="users"
-              active={teachers_available_active}
+              active={instructors_available_active}
               >
-              {t('general.teachers_available')}
+              {t('general.instructors_available')}
           </List.GroupItem>
         </HasPermissionWrapper>
     </List.Group>

@@ -176,8 +176,6 @@ function RelationsAccounts({t, history}) {
               <Table.ColHeader>{t('general.account')}</Table.ColHeader>
               <Table.ColHeader>{t('general.products')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
-              {/* <Table.ColHeader>{t('general.info')}</Table.ColHeader> */}
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -199,8 +197,8 @@ function RelationsAccounts({t, history}) {
                     {(node.customer) ? <span>
                         <Badge color="primary" className="mr-1">{t("general.customer")}</Badge>
                       </span> : null}
-                    {(node.teacher) ? <span>
-                        <Badge color="info" className="mr-1">{t("general.teacher")}</Badge>
+                    {(node.instructor) ? <span>
+                        <Badge color="info" className="mr-1">{t("general.instructor")}</Badge>
                       </span> : null}
                     {(node.employee) ? <span>
                         <Badge color="secondary">{t("general.employee")}</Badge>
@@ -252,8 +250,8 @@ function RelationsAccounts({t, history}) {
                     {(node.customer) ? <span>
                         <Badge color="primary" className="mb-1">{t("general.customer")}</Badge> <br />
                       </span> : null}
-                    {(node.teacher) ? <span>
-                        <Badge color="info" className="mb-1">{t("general.teacher")}</Badge> <br />
+                    {(node.instructor) ? <span>
+                        <Badge color="info" className="mb-1">{t("general.instructor")}</Badge> <br />
                       </span> : null}
                     {(node.employee) ? <span>
                         <Badge color="secondary" className="mb-1">{t("general.employee")}</Badge> <br />
@@ -269,8 +267,6 @@ function RelationsAccounts({t, history}) {
                         </Button>
                       </Link>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.deactivate')} 
                       href=""

@@ -16,8 +16,6 @@ import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import RelationsMenu from "../RelationsMenu"
-
 
 class RelationsHome extends Component {
   constructor(props) {
@@ -39,44 +37,37 @@ class RelationsHome extends Component {
           <Container>
             <Page.Header title={t("relations.title")} />
             <Grid.Row>
-              <Grid.Col md={9}>
-                <Grid.Row>
-                  <Grid.Col md={4} lg={4}>
-                    <Card>
-                      <Card.Body>
-                        <h5>{t("relations.accounts.title")}</h5>
-                        {t("relations.accounts.explanation")}
-                        <br /><br />
-                        <HomeItemButton linkTitle={linkTitle} link="/relations/accounts" />
-                      </Card.Body>
-                    </Card>
-                  </Grid.Col>
-                  {/* <HasPermissionWrapper permission="view"
-                                        resource="business">
-                    <Grid.Col md={4} lg={4}>
-                      <Link to='/relations/suppliers')}>
-                        <StampCard header={<small>{t('relations.suppliers.title')}</small>} footer={t('')} color="blue" icon="package" />
-                      </Link>
-                    </Grid.Col>
-                  </HasPermissionWrapper> */}
-                  <HasPermissionWrapper permission="view"
-                                        resource="business">
-                    <Grid.Col md={4} lg={4}>
-                      <Card>
-                        <Card.Body>
-                          <h5>{t("relations.b2b.title")}</h5>
-                          {t("relations.b2b.explanation")}
-                          <br /><br />
-                          <HomeItemButton linkTitle={linkTitle} link="/relations/b2b" />
-                        </Card.Body>
-                      </Card>
-                    </Grid.Col>
-                  </HasPermissionWrapper>
-                </Grid.Row>
+              <Grid.Col md={3} lg={3}>
+                <Card>
+                  <Card.Body>
+                    <h5>{t("relations.accounts.title")}</h5>
+                    {t("relations.accounts.explanation")}
+                    <br /><br />
+                    <HomeItemButton linkTitle={linkTitle} link="/relations/accounts" />
+                  </Card.Body>
+                </Card>
               </Grid.Col>
-              <Grid.Col md={3}>
-                <RelationsMenu />
-              </Grid.Col>
+              {/* <HasPermissionWrapper permission="view"
+                                    resource="business">
+                <Grid.Col md={4} lg={4}>
+                  <Link to='/relations/suppliers')}>
+                    <StampCard header={<small>{t('relations.suppliers.title')}</small>} footer={t('')} color="blue" icon="package" />
+                  </Link>
+                </Grid.Col>
+              </HasPermissionWrapper> */}
+              <HasPermissionWrapper permission="view"
+                                    resource="business">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("relations.b2b.title")}</h5>
+                      {t("relations.b2b.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/relations/b2b" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
             </Grid.Row>
           </Container>
         </div>

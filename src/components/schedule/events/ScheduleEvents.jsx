@@ -147,7 +147,7 @@ function ScheduleEvents({t, history}) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.start')}</Table.ColHeader>
               <Table.ColHeader>{t('general.event')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.teacher')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
               <Table.ColHeader>{t('general.shop')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>  
             </Table.Row>
@@ -166,7 +166,7 @@ function ScheduleEvents({t, history}) {
                 </Table.Col>
                 <Table.Col>
                   {
-                    (node.teacher) ? node.teacher.fullName.trunc(30) : ""
+                    (node.instructor) ? node.instructor.fullName.trunc(30) : ""
                   }
                 </Table.Col>
                 <Table.Col>
@@ -351,7 +351,6 @@ export default withTranslation()(withRouter(ScheduleEvents))
 //                 <Icon prefix="fe" name="plus-circle" /> {t('organization.levels.add')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu activeLink='levels'/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>

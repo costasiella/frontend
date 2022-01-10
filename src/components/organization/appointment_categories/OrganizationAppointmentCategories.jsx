@@ -25,7 +25,7 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../general/ContentCard"
-import OrganizationMenu from "../OrganizationMenu"
+
 
 import { GET_APPOINTMENT_CATEGORIES_QUERY } from "./queries"
 
@@ -201,7 +201,6 @@ const OrganizationAppointmentCategories = ({ t, history, archived=false }) => (
                 <Icon prefix="fe" name="plus-circle" /> {t('organization.appointment_categories.add')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='appointments'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

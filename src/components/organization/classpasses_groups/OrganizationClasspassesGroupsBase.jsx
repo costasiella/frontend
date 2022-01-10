@@ -17,7 +17,7 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 
-import OrganizationMenu from "../OrganizationMenu"
+
 
 
 function OrganizationClasspassesGroupsBase({ t, history, children, showBack=false }) {
@@ -53,7 +53,6 @@ function OrganizationClasspassesGroupsBase({ t, history, children, showBack=fals
                   </Button>
                 </HasPermissionWrapper>              
               }
-              <OrganizationMenu activeLink=''/>
             </Grid.Col>
           </Grid.Row>
         </Container>

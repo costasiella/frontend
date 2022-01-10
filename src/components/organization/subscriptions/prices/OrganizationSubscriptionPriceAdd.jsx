@@ -27,7 +27,7 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import OrganizationMenu from "../../OrganizationMenu"
+
 
 
 const ADD_SUBSCRIPTION_PRICE = gql`
@@ -145,7 +145,6 @@ const OrganizationSubscriptionPriceAdd = ({ t, history, match }) => (
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>
-            <OrganizationMenu activeLink='subscriptions'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

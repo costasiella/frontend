@@ -56,7 +56,7 @@ function ShopEvents({ t, match, history }) {
                 </GalleryCard.Footer>
                 <GalleryCard.Footer>                  
                   <GalleryCard.Details
-                    fullName={<span className="">{(node.teacher) ? node.teacher.fullName: ""}</span>}
+                    fullName={<span className="">{(node.instructor) ? node.instructor.fullName: ""}</span>}
                     dateString={node.organizationLocation.name}
                   />
                   <GalleryCard.IconGroup>

@@ -94,31 +94,31 @@ const ScheduleEventForm = ({ t, history, inputData, isSubmitting, setFieldValue,
       </Grid.Row>
       <Grid.Row>
         <Grid.Col>
-          <Form.Group label={t('general.teacher')}>
+          <Form.Group label={t('general.instructor')}>
             <Field component="select" 
-                  name="teacher" 
-                  className={(errors.teacher) ? "form-control is-invalid" : "form-control"} 
+                  name="instructor" 
+                  className={(errors.instructor) ? "form-control is-invalid" : "form-control"} 
                   autoComplete="off">
-              <option value="" key={v4()}>{t("schedule.event.teacher_please_select")}</option>
+              <option value="" key={v4()}>{t("schedule.event.instructor_please_select")}</option>
               {inputData.accounts.edges.map(({ node }) =>
                 <option value={node.id} key={v4()}>{node.fullName}</option>
               )}
             </Field>
-            <ErrorMessage name="teacher" component="span" className="invalid-feedback" />
+            <ErrorMessage name="instructor" component="span" className="invalid-feedback" />
           </Form.Group> 
         </Grid.Col>
         <Grid.Col>
-          <Form.Group label={t('general.teacher2')}>
+          <Form.Group label={t('general.instructor2')}>
             <Field component="select" 
-                  name="teacher2" 
-                  className={(errors.teacher2) ? "form-control is-invalid" : "form-control"} 
+                  name="instructor2" 
+                  className={(errors.instructor2) ? "form-control is-invalid" : "form-control"} 
                   autoComplete="off">
               <option value="" key={v4()}></option>
               {inputData.accounts.edges.map(({ node }) =>
                 <option value={node.id} key={v4()}>{node.fullName}</option>
               )}
             </Field>
-            <ErrorMessage name="teacher2" component="span" className="invalid-feedback" />
+            <ErrorMessage name="instructor2" component="span" className="invalid-feedback" />
           </Form.Group> 
         </Grid.Col>
       </Grid.Row>

@@ -18,7 +18,6 @@ import CSDatePicker from "../../ui/CSDatePicker"
 
 import CSLS from "../../../tools/cs_local_storage"
 
-import ScheduleMenu from "../ScheduleMenu"
 import ScheduleClassesFilter from "./ScheduleClassesFilter"
 
 import { 
@@ -41,7 +40,7 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("schedule.title")}>
+          <Page.Header title={t("schedule.title")} subTitle={t("schedule.classes.title")}>
             <div className="page-options d-flex">
               <span title={t("schedule.classes.tooltip_sort_by_location")}>
                 <Button 
@@ -142,28 +141,8 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                 </Button>
               </HasPermissionWrapper>
               {(data) ? 
-                <div>
-                  <div>
-                    <Button
-                      className="float-right"
-                      color="link"
-                      size="sm"
-                      onClick={() => {
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE, "")
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL, "")
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION, "")
-                        refetch(get_list_query_variables())
-                      }}
-                    >
-                      {t("general.clear")}
-                    </Button>
-                  </div>
-                  <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-                  <ScheduleClassesFilter data={data} refetch={refetch} />
-                </div>
+                <ScheduleClassesFilter data={data} refetch={refetch} />
               : ""}
-              <h5>{t("general.menu")}</h5>
-              <ScheduleMenu activeLink='classes'/>
           </Grid.Col>
         </Grid.Row>
       </Container>

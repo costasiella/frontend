@@ -13,7 +13,7 @@ import {
 let edit_active
 let classpasses_active
 let subscriptions_active
-let teachers_active
+let instructors_active
 let prices_active
 
 const ClassEditMenu = ({ t, activeLink, classId }) => (
@@ -21,7 +21,7 @@ const ClassEditMenu = ({ t, activeLink, classId }) => (
         {(activeLink === 'edit') ? edit_active = true: edit_active = false}
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
-        {(activeLink === 'teachers') ? teachers_active = true: teachers_active = false}
+        {(activeLink === 'instructors') ? instructors_active = true: instructors_active = false}
         {(activeLink === 'prices') ? prices_active = true: prices_active = false}        
 
         <List.GroupItem
@@ -36,11 +36,11 @@ const ClassEditMenu = ({ t, activeLink, classId }) => (
         <List.GroupItem
             key={v4()}
             className="d-flex align-items-center"
-            to={"#/schedule/classes/all/teachers/" + classId}
+            to={"#/schedule/classes/all/instructors/" + classId}
             icon="users"
-            active={teachers_active}
+            active={instructors_active}
             >
-            {t('general.teachers')}
+            {t('general.instructors')}
         </List.GroupItem>
         <List.GroupItem
             key={v4()}

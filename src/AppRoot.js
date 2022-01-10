@@ -134,6 +134,9 @@ import OrganizationLevelEdit from './components/organization/levels/Organization
 import OrganizationMemberships from './components/organization/memberships/OrganizationMemberships'
 import OrganizationMembershipAdd from './components/organization/memberships/OrganizationMembershipAdd'
 import OrganizationMembershipEdit from './components/organization/memberships/OrganizationMembershipEdit'
+import OrganizationShifts from './components/organization/shifts/OrganizationShifts'
+import OrganizationShiftAdd from './components/organization/shifts/OrganizationShiftAdd'
+import OrganizationShiftEdit from './components/organization/shifts/OrganizationShiftEdit'
 import OrganizationSubscriptions from './components/organization/subscriptions/OrganizationSubscriptions'
 import OrganizationSubscriptionAdd from './components/organization/subscriptions/OrganizationSubscriptionAdd'
 import OrganizationSubscriptionEdit from './components/organization/subscriptions/OrganizationSubscriptionEdit'
@@ -195,7 +198,7 @@ import AccountSubscriptionEditInvoiceAdd from './components/relations/accounts/s
 import AccountSubscriptionEditPauses from './components/relations/accounts/subscriptions/edit/pauses/AccountSubscriptionEditPauses'
 import AccountSubscriptionEditPauseAdd from './components/relations/accounts/subscriptions/edit/pauses/AccountSubscriptionEditPauseAdd'
 import AccountSubscriptionEditPauseEdit from './components/relations/accounts/subscriptions/edit/pauses/AccountSubscriptionEditPauseEdit'
-import RelationsAccountTeacherProfile from './components/relations/accounts/teacher_profile/RelationsAccountTeacherProfile'
+import RelationsAccountInstructorProfile from './components/relations/accounts/instructor_profile/RelationsAccountInstructorProfile'
 import RelationsB2B from './components/relations/b2b/RelationsB2B'
 import RelationsB2BAdd from './components/relations/b2b/RelationsB2BAdd.jsx'
 import RelationsB2BEdit from './components/relations/b2b/RelationsB2BEdit.jsx'
@@ -209,9 +212,9 @@ import ScheduleClassAdd from './components/schedule/classes/ScheduleClassAdd'
 import ScheduleClassEditAll from './components/schedule/classes/all/edit/ScheduleClassEditAll'
 import ScheduleClassClasspasses from './components/schedule/classes/all/classpasses/ScheduleClassClasspasses'
 import ScheduleClassSubscriptions from './components/schedule/classes/all/subscriptions/ScheduleClassSubscriptions'
-import ScheduleClassTeachers from './components/schedule/classes/all/teachers/ScheduleClassTeachers'
-import ScheduleClassTeacherAdd from './components/schedule/classes/all/teachers/ScheduleClassTeacherAdd'
-import ScheduleClassTeacherEdit from './components/schedule/classes/all/teachers/ScheduleClassTeacherEdit'
+import ScheduleClassInstructors from './components/schedule/classes/all/instructors/ScheduleClassInstructors'
+import ScheduleClassInstructorAdd from './components/schedule/classes/all/instructors/ScheduleClassInstructorAdd'
+import ScheduleClassInstructorEdit from './components/schedule/classes/all/instructors/ScheduleClassInstructorEdit'
 import ScheduleClassAttendance from './components/schedule/classes/class/attendance/ScheduleClassAttendance'
 import ScheduleClassAttendanceChart from './components/schedule/classes/class/attendance_chart/ScheduleClassAttendanceChart'
 import ScheduleClassBook from './components/schedule/classes/class/book/ScheduleClassBook'
@@ -237,6 +240,13 @@ import ScheduleEventTicketAdd from './components/schedule/events/tickets/Schedul
 import ScheduleEventTicketEdit from './components/schedule/events/tickets/ScheduleEventTicketEdit'
 import ScheduleEventTicketEditActivities from './components/schedule/events/tickets/activities/ScheduleEventTicketEditActivities'
 import ScheduleEventTicketEditCustomers from './components/schedule/events/tickets/customers/ScheduleEventTicketEditCustomers'
+import ScheduleShifts from './components/schedule/shifts/ScheduleShifts'
+import ScheduleShiftAdd from './components/schedule/shifts/ScheduleShiftAdd'
+import ScheduleShiftEditAll from './components/schedule/shifts/all/edit/ScheduleShiftEditAll'
+import ScheduleShiftEdit from './components/schedule/shifts/shift/edit/ScheduleShiftEdit'
+import ScheduleShiftEmployees from './components/schedule/shifts/all/employees/ScheduleShiftEmployees'
+import ScheduleShiftEmployeeAdd from './components/schedule/shifts/all/employees/ScheduleShiftEmployeeAdd'
+import ScheduleShiftEmployeeEdit from './components/schedule/shifts/all/employees/ScheduleShiftEmployeeEdit'
 
 import SelfCheckinCheckin from './components/selfcheckin/Checkin/Checkin'
 import SelfCheckinBookingOptions from './components/selfcheckin/BookingOptions/BookingOptions'
@@ -519,9 +529,12 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/locations/rooms/:location_id" component={OrganizationLocationRooms} />
             <PrivateRoute exact path="/organization/locations/rooms/add/:location_id" component={OrganizationLocationRoomAdd} />
             <PrivateRoute exact path="/organization/locations/rooms/edit/:location_id/:id" component={OrganizationLocationRoomEdit} />
-            <PrivateRoute exact path="/organization/memberships" component={OrganizationMemberships} />
+            <PrivateRoute exact path="/organization/shifts" component={OrganizationShifts} />
+            <PrivateRoute exact path="/organization/shifts/add" component={OrganizationShiftAdd} />
+            <PrivateRoute exact path="/organization/shifts/edit/:id" component={OrganizationShiftEdit} /> 
+            {/* <PrivateRoute exact path="/organization/memberships" component={OrganizationMemberships} />
             <PrivateRoute exact path="/organization/memberships/add" component={OrganizationMembershipAdd} />
-            <PrivateRoute exact path="/organization/memberships/edit/:id" component={OrganizationMembershipEdit} /> 
+            <PrivateRoute exact path="/organization/memberships/edit/:id" component={OrganizationMembershipEdit} />  */}
             <PrivateRoute exact path="/organization/subscriptions" component={OrganizationSubscriptions} />
             <PrivateRoute exact path="/organization/subscriptions/add" component={OrganizationSubscriptionAdd} />
             <PrivateRoute exact path="/organization/subscriptions/edit/:id" component={OrganizationSubscriptionEdit} />
@@ -595,7 +608,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/edit/:subscription_id/pauses/add" component={AccountSubscriptionEditPauseAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/edit/:subscription_id/pauses/edit/:id" 
                           component={AccountSubscriptionEditPauseEdit} />
-            <PrivateRoute exact path="/relations/accounts/:account_id/teacher_profile" component={RelationsAccountTeacherProfile} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/instructor_profile" component={RelationsAccountInstructorProfile} />
             <PrivateRoute exact path="/relations/b2b" component={RelationsB2B} />
             <PrivateRoute exact path="/relations/b2b/add" component={RelationsB2BAdd} />
             <PrivateRoute exact path="/relations/b2b/:business_id/edit" component={RelationsB2BEdit} />
@@ -613,9 +626,9 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/add" component={ScheduleClassPriceAdd} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/edit/:id" component={ScheduleClassPriceEdit} />
             <PrivateRoute exact path="/schedule/classes/all/subscriptions/:class_id/" component={ScheduleClassSubscriptions} />
-            <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/" component={ScheduleClassTeachers} />
-            <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/add" component={ScheduleClassTeacherAdd} />
-            <PrivateRoute exact path="/schedule/classes/all/teachers/:class_id/edit/:id" component={ScheduleClassTeacherEdit} />
+            <PrivateRoute exact path="/schedule/classes/all/instructors/:class_id/" component={ScheduleClassInstructors} />
+            <PrivateRoute exact path="/schedule/classes/all/instructors/:class_id/add" component={ScheduleClassInstructorAdd} />
+            <PrivateRoute exact path="/schedule/classes/all/instructors/:class_id/edit/:id" component={ScheduleClassInstructorEdit} />
             <PrivateRoute exact path="/schedule/classes/class/attendance/:class_id/:date" component={ScheduleClassAttendance} />
             <PrivateRoute exact path="/schedule/classes/class/attendance_chart/:class_id/:date" 
                           component={ScheduleClassAttendanceChart} />
@@ -640,6 +653,14 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id" component={ScheduleEventTicketEdit} />
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/activities" component={ScheduleEventTicketEditActivities} />
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/customers" component={ScheduleEventTicketEditCustomers} />
+            <PrivateRoute exact path="/schedule/shifts" component={ScheduleShifts} />
+            <PrivateRoute exact path="/schedule/shifts/add" component={ScheduleShiftAdd} />
+            <PrivateRoute exact path="/schedule/shifts/all/edit/:shift_id/" component={ScheduleShiftEditAll} />
+            <PrivateRoute exact path="/schedule/shifts/shift/edit/:shift_id/:date" component={ScheduleShiftEdit} />
+            <PrivateRoute exact path="/schedule/shifts/all/employees/:shift_id/" component={ScheduleShiftEmployees} />
+            <PrivateRoute exact path="/schedule/shifts/all/employees/:shift_id/add" component={ScheduleShiftEmployeeAdd} />
+            <PrivateRoute exact path="/schedule/shifts/all/employees/:shift_id/edit/:id" component={ScheduleShiftEmployeeEdit} />
+
 
             {/* Insight */}
             <PrivateRoute exact path="/insight" component={InsightHome} />

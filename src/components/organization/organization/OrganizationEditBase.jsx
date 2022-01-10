@@ -16,7 +16,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import OrganizationMenu from "../OrganizationMenu"
 
 
 function OrganizationEditBase({t, match, history, children}) {
@@ -31,17 +30,13 @@ function OrganizationEditBase({t, match, history, children}) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
             <Card>
               <Card.Header>
                 <Card.Title>{t('organization.organization.title_edit')}</Card.Title>
               </Card.Header>
               {children}
             </Card>
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <h5>{t("general.menu")}</h5>
-              <OrganizationMenu activeLink='organization'/>
             </Grid.Col>
           </Grid.Row>
         </Container>

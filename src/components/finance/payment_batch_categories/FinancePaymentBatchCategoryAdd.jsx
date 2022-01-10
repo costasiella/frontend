@@ -25,7 +25,6 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-import FinanceMenu from '../FinanceMenu'
 import FinancePaymentBatchCategoriesBase from './FinancePaymentBatchCategoriesBase'
 import FinancePaymentBatchCategoryForm from './FinancePaymentBatchCategoryForm'
 

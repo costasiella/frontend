@@ -261,7 +261,6 @@ export default withTranslation()(OrganizationDocumentAdd)
 //                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
 //               </Button>
 //             </HasPermissionWrapper>
-//             <OrganizationMenu activeLink='levels'/>
 //           </Grid.Col>
 //         </Grid.Row>
 //       </Container>
