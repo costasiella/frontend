@@ -142,25 +142,7 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
             </Grid.Col>
             <Grid.Col md={3}>
               {(data) ? 
-                <div>
-                  <div>
-                    <Button
-                      className="float-right"
-                      color="link"
-                      size="sm"
-                      onClick={() => {
-                        localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_CLASSTYPE, "")
-                        localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_LEVEL, "")
-                        localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_LOCATION, "")
-                        refetch(get_list_query_variables())
-                      }}
-                    >
-                      {t("general.clear")}
-                    </Button>
-                  </div>
-                  <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-                  <ScheduleShiftsFilter data={data} refetch={refetch} />
-                </div>
+                <ScheduleShiftsFilter data={data} refetch={refetch} />
               : ""}
           </Grid.Col>
         </Grid.Row>
