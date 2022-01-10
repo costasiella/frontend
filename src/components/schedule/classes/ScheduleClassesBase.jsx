@@ -141,25 +141,7 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                 </Button>
               </HasPermissionWrapper>
               {(data) ? 
-                <div>
-                  <div>
-                    <Button
-                      className="float-right"
-                      color="link"
-                      size="sm"
-                      onClick={() => {
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE, "")
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL, "")
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION, "")
-                        refetch(get_list_query_variables())
-                      }}
-                    >
-                      {t("general.clear")}
-                    </Button>
-                  </div>
-                  <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-                  <ScheduleClassesFilter data={data} refetch={refetch} />
-                </div>
+                <ScheduleClassesFilter data={data} refetch={refetch} />
               : ""}
           </Grid.Col>
         </Grid.Row>
