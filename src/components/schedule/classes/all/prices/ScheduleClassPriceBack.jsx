@@ -1,23 +1,12 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
+import ButtonBack from '../../../../ui/ButtonBack'
 
 
 const ScheduleClassPriceBack = ({ t, classId }) => (
-  <Link to={"/schedule/classes/all/prices/" + classId } >
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-    </Button>
-  </Link>
+  <ButtonBack returnUrl={`/schedule/classes/all/prices/${classId}`} />
 )
 
 export default withTranslation()(withRouter(ScheduleClassPriceBack))

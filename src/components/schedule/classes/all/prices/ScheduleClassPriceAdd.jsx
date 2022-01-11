@@ -26,7 +26,7 @@ function ScheduleClassPriceAdd({ t, history, match }) {
   const returnUrl = `/schedule/classes/all/prices/${classId}`
   const cardTitle = t('schedule.classes.prices.title_add')
   const menuActiveLink = "prices"
-  const sidebarButton = <ScheduleClassPriceBack classId={classId} />
+  const pageHeaderButtonList = <ScheduleClassPriceBack classId={classId} />
   const { loading, error, data, } = useQuery(GET_INPUT_VALUES_QUERY)
   const [addScheduleClassPrice] = useMutation(ADD_SCHEDULE_ITEM_PRICE, {
     onCompleted: () => history.push(returnUrl),
@@ -36,7 +36,7 @@ function ScheduleClassPriceAdd({ t, history, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Dimmer active={true} loader={true} />
     </ClassEditBase>
@@ -46,7 +46,7 @@ function ScheduleClassPriceAdd({ t, history, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <p>{t('general.error_sad_smiley')}</p>
     </ClassEditBase>
@@ -61,7 +61,7 @@ function ScheduleClassPriceAdd({ t, history, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Formik
         initialValues={{ 

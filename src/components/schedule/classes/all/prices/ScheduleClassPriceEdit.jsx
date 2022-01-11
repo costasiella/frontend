@@ -1,7 +1,4 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -26,7 +23,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
   const returnUrl = `/schedule/classes/all/prices/${classId}`
   const menuActiveLink = "prices"
   const cardTitle = t('schedule.classes.prices.title_edit')
-  const sidebarButton = <ScheduleClassPriceBack classId={match.params.class_id} />
+  const pageHeaderButtonList = <ScheduleClassPriceBack classId={match.params.class_id} />
   const { loading, error, data, } = useQuery(GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, {
     variables: {
       id: id
@@ -41,7 +38,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Dimmer active={true} loader={true} />
     </ClassEditBase>
@@ -51,7 +48,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <p>{t('general.error_sad_smiley')}</p>
     </ClassEditBase>
@@ -89,7 +86,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
   <ClassEditBase 
     cardTitle={cardTitle}
     menu_activeLink={menuActiveLink}
-    sidebarButton={sidebarButton}
+    pageHeaderButtonList={pageHeaderButtonList}
   >
     <Formik
       initialValues={{ 
