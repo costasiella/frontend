@@ -72,21 +72,6 @@ export const GET_SUBSCRIPTION_QUERY = gql`
         name
       }
     }
-    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id
-          archived
-          name
-        }
-      }
-    }
     financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
@@ -124,21 +109,6 @@ export const GET_SUBSCRIPTION_QUERY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query SubscriptionInputValues($after: String, $before: String) {
-    organizationMemberships(first: 15, before: $before, after: $after, archived: false) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id
-          archived
-          name
-        }
-      }
-    }
     financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
@@ -193,10 +163,6 @@ export const CREATE_SUBSCRIPTION = gql`
         creditValidity
         unlimited
         termsAndConditions
-        organizationMembership {
-          id
-          name
-        }
         quickStatsAmount
         financeGlaccount {
           id
@@ -230,10 +196,6 @@ export const UPDATE_SUBSCRIPTION = gql`
         creditValidity
         unlimited
         termsAndConditions
-        organizationMembership {
-          id
-          name
-        }
         quickStatsAmount
         financeGlaccount {
           id
