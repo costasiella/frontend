@@ -13,7 +13,7 @@ import {
   Form,
 } from "tabler-react"
 
-
+import ButtonFormCancel from '../../../../ui/ButtonFormCancel'
 import CSDatePicker from "../../../../ui/CSDatePicker"
 
 const ScheduleClassPriceForm = ({ t, history, match, isSubmitting, errors, values, inputData, returnUrl, setFieldTouched, setFieldValue }) => (
@@ -83,9 +83,7 @@ const ScheduleClassPriceForm = ({ t, history, match, isSubmitting, errors, value
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(returnUrl)} role="button">
-              {t('general.cancel')}
-          </Button>
+          <ButtonFormCancel returnUrl={returnUrl} />
       </Card.Footer>
   </FoForm>
 );
