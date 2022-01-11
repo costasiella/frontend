@@ -64,7 +64,7 @@ const ClassEditMenu = ({ t, activeLink, classId }) => (
             key={v4()}
             className="d-flex align-items-center"
             to={"#/schedule/classes/all/classpasses/" + classId}
-            icon="edit"
+            icon="credit-card"
             active={classpasses_active}
             >
             {t('general.classpasses')}
