@@ -15,11 +15,12 @@ import {
 } from "tabler-react";
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
-import ButtonAdd from "./ButtonAdd"
+import ButtonAdd from "../../../../ui/ButtonAdd"
 import { class_edit_all_subtitle } from "../tools"
 import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
+import ClassEditBack from "../ClassEditBack"
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassPriceDelete from './ScheduleClassPriceDelete'
 
@@ -32,7 +33,10 @@ function ScheduleClassPrices({t, match, history}) {
   const classId = match.params.class_id
   const menuActiveLink = "prices" 
   const cardTitle = t('schedule.classes.prices.title')
-  const sidebarButton = <ButtonAdd classId={classId}/>
+  const pageHeaderButtonList = <React.Fragment>
+    <ClassEditBack />
+    <ButtonAdd addUrl={`/schedule/classes/all/prices/${classId}/add`} className="ml-2" />
+  </React.Fragment>
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_ITEM_PRICES_QUERY, {
     variables: { scheduleItem: classId }
@@ -42,7 +46,7 @@ function ScheduleClassPrices({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <Dimmer active={true} loader={true} />
@@ -54,7 +58,7 @@ function ScheduleClassPrices({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.prices.error_loading')}</p>
@@ -77,7 +81,7 @@ function ScheduleClassPrices({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.prices.empty_list')}</p>
@@ -89,7 +93,7 @@ function ScheduleClassPrices({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
       defaultCard={false}
     >
     <ContentCard 
