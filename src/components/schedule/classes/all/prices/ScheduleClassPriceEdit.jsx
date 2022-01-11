@@ -85,7 +85,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
   return (
   <ClassEditBase 
     cardTitle={cardTitle}
-    menu_activeLink={menuActiveLink}
+    menuActiveLink={menuActiveLink}
     pageHeaderButtonList={pageHeaderButtonList}
   >
     <Formik
