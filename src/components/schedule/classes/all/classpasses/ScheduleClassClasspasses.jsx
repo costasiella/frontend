@@ -1,17 +1,12 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 
 import {
-  Icon,
   Dimmer,
-  Button,
   Table,
   Card
 } from "tabler-react";
@@ -20,6 +15,7 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../../../general/ContentCard"
+import ClassEditBack from '../ClassEditBack'
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassClasspassForm from "./ScheduleClassClasspassForm"
 
@@ -36,20 +32,14 @@ function ScheduleClassClasspasses({ t, match }) {
   })
   const [ updateScheduleClassClasspass ] = useMutation(UPDATE_SCHEDULE_CLASS_CLASSPASS)
 
-  const sidebarButton = <HasPermissionWrapper permission="add" resource="scheduleitemclasspass">
-    <Link to={"/schedule/classes/all/classpasses/" + classId + "/add" } >
-      <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.classpasses.add')}
-      </Button>
-    </Link>
-  </HasPermissionWrapper>
+  const pageHeaderButtonList = <ClassEditBack />
 
   // Loading
   if (loading) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <Dimmer active={true} loader={true} />
@@ -61,7 +51,7 @@ function ScheduleClassClasspasses({ t, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.classpasses.error_loading')}</p>
@@ -74,7 +64,7 @@ function ScheduleClassClasspasses({ t, match }) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.classpasses.empty_list')}</p>
@@ -86,7 +76,7 @@ function ScheduleClassClasspasses({ t, match }) {
     <ClassEditBase 
       defaultCard={false} 
       menuActiveLink={menuActiveLink} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
     <ContentCard 
       cardTitle={cardTitle}

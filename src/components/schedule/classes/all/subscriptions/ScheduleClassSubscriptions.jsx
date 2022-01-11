@@ -1,33 +1,21 @@
-// @flow
-
-import React, { Component } from 'react'
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 
 import {
-  Alert,
-  Page,
-  Grid,
-  Icon,
   Dimmer,
-  Badge,
-  Button,
   Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 // import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
-import { class_edit_all_subtitle } from "../tools"
 
 import ContentCard from "../../../../general/ContentCard"
+import ClassEditBack from '../ClassEditBack'
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassSubscriptionForm from "./ScheduleClassSubscriptionForm"
 
@@ -44,20 +32,14 @@ function ScheduleClassSubscriptions({t, match, history}) {
   })
   const [ updateScheduleClassSubscription ] = useMutation(UPDATE_SCHEDULE_CLASS_SUBSCRIPTION)
 
-  const sidebarButton = <HasPermissionWrapper permission="add" resource="scheduleitemsubscription">
-    <Link to={"/schedule/classes/all/subscriptions/" + classId + "/add" } >
-      <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.subscriptions.add')}
-      </Button>
-    </Link>
-  </HasPermissionWrapper>
+  const pageHeaderButtonList = <ClassEditBack />
 
   // Loading
   if (loading) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <Dimmer active={true} loader={true} />
@@ -69,7 +51,7 @@ function ScheduleClassSubscriptions({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.subscriptions.error_loading')}</p>
@@ -82,7 +64,7 @@ function ScheduleClassSubscriptions({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.subscriptions.empty_list')}</p>
@@ -94,7 +76,7 @@ function ScheduleClassSubscriptions({t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       defaultCard={false} 
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={cardTitle}
