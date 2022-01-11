@@ -14,6 +14,7 @@ import {
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ButtonAdd from "../../../../ui/ButtonAdd"
+import ButtonEdit from "../../../../ui/ButtonEdit"
 import { class_edit_all_subtitle } from "../tools"
 
 import ContentCard from "../../../../general/ContentCard"
@@ -151,11 +152,7 @@ function ScheduleClassPrices({t, match, history}) {
                   {(node.organizationClasspassTrial) ? node.organizationClasspassTrial.name : ""}
                 </Table.Col>
                 <Table.Col className="text-right" key={v4()}>
-                  <Button className='btn-sm' 
-                          onClick={() => history.push("/schedule/classes/all/prices/" + match.params.class_id + '/edit/' + node.id)}
-                          color="secondary">
-                    {t('general.edit')}
-                  </Button>
+                  <ButtonEdit editUrl={`/schedule/classes/all/prices/${classId}/edit/${node.id}`} />
                   <ScheduleClassPriceDelete id={node.id} />
                 </Table.Col>
               </Table.Row>
