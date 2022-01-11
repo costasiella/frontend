@@ -129,7 +129,6 @@ function ScheduleClassInstructors({ t, match, history}) {
                 <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
                 <Table.ColHeader>{t('general.instructor_2')}</Table.ColHeader>
                 <Table.ColHeader></Table.ColHeader>
-                <Table.ColHeader></Table.ColHeader>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -166,8 +165,6 @@ function ScheduleClassInstructors({ t, match, history}) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.delete')} 
                         href=""
