@@ -30,7 +30,6 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
 
   return (
     <div>
-      <h5>{t("general.menu")}</h5>
       <List.Group transparent={true}>   
         <HasPermissionWrapper 
             resource="scheduleitemattendance"
