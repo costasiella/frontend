@@ -23,7 +23,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
   const returnUrl = `/schedule/classes/all/prices/${classId}`
   const menuActiveLink = "prices"
   const cardTitle = t('schedule.classes.prices.title_edit')
-  const pageHeaderButtonList = <ScheduleClassPriceBack classId={match.params.class_id} />
+  const pageHeaderButtonList = <ScheduleClassPriceBack classId={classId} />
   const { loading, error, data, } = useQuery(GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, {
     variables: {
       id: id
@@ -139,7 +139,7 @@ function ScheduleClassPriceEdit({ t, history, match }) {
           setFieldValue={setFieldValue}
           errors={errors}
           values={values}
-          returnUrl={returnUrl + match.params.class_id}
+          returnUrl={returnUrl}
         />
       )}
   </Formik>
