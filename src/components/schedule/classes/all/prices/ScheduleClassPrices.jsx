@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -17,7 +15,6 @@ import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ButtonAdd from "../../../../ui/ButtonAdd"
 import { class_edit_all_subtitle } from "../tools"
-import confirm_delete from "../../../../../tools/confirm_delete"
 
 import ContentCard from "../../../../general/ContentCard"
 import ClassEditBack from "../ClassEditBack"
@@ -135,7 +132,6 @@ function ScheduleClassPrices({t, match, history}) {
               <Table.ColHeader>{t('general.dropin')}</Table.ColHeader>
               <Table.ColHeader>{t('general.trial')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -160,8 +156,6 @@ function ScheduleClassPrices({t, match, history}) {
                           color="secondary">
                     {t('general.edit')}
                   </Button>
-                </Table.Col>
-                <Table.Col>
                   <ScheduleClassPriceDelete id={node.id} />
                 </Table.Col>
               </Table.Row>
