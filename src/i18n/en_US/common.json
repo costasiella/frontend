@@ -504,7 +504,8 @@
         "classpass_group": "Classpass group",
         "subscription_group": "Subscription group",
         "shift": "Shift",
-        "employee2": "Employee 2"
+        "employee2": "Employee 2",
+        "enrollments": "Enrollments"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -849,8 +850,7 @@
     "system": {
         "user": {
             "error_loading": "Error loading user :("
-        },
-        "datepicker_timeformat": "h:mm aa"
+        }
     },
     "subscription_unit": {
         "week": "Week",
@@ -1125,7 +1125,6 @@
             },
             "subscriptions": {
                 "attend_disabled": "Can't change",
-                "add": "Add",
                 "title": "Subscriptions",
                 "error_loading": "Error loading subscriptions groups for this class :(",
                 "empty_list": "No subscription groups have been defined yet.",
@@ -1178,7 +1177,6 @@
             },
             "no_instructor": "No instructor",
             "prices": {
-                "add": "Add price",
                 "title_add": "Add price",
                 "toast_add_success": "Added price",
                 "title_edit": "Edit price",

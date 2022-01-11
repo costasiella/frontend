@@ -411,7 +411,8 @@
         "classpass_group": "__STRING_NOT_TRANSLATED__",
         "subscription_group": "__STRING_NOT_TRANSLATED__",
         "shift": "__STRING_NOT_TRANSLATED__",
-        "employee2": "__STRING_NOT_TRANSLATED__"
+        "employee2": "__STRING_NOT_TRANSLATED__",
+        "enrollments": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1704,7 +1705,6 @@
             },
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "prices": {
-                "add": "__STRING_NOT_TRANSLATED__",
                 "title_add": "__STRING_NOT_TRANSLATED__",
                 "toast_add_success": "__STRING_NOT_TRANSLATED__",
                 "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
@@ -1722,7 +1722,6 @@
                 "attend_disabled": "__STRING_NOT_TRANSLATED__",
                 "attend_disabled_help": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
-                "add": "__STRING_NOT_TRANSLATED__",
                 "error_loading": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
@@ -1924,8 +1923,7 @@
     "system": {
         "user": {
             "error_loading": "__STRING_NOT_TRANSLATED__"
-        },
-        "datepicker_timeformat": "__STRING_NOT_TRANSLATED__"
+        }
     },
     "user": {
         "change_password": {

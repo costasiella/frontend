@@ -41,10 +41,10 @@ const ClassEditMenu = ({ t, activeLink, classId }) => (
               key={v4()}
               className="d-flex align-items-center"
               to={"#/schedule/classes/all/enrollments/" + classId}
-              icon="users"
+              icon="check-square"
               active={activeLink === 'enrollments'}
               >
-              {t('general.instructors')}
+              {t('general.enrollments')}
           </List.GroupItem>
         </HasPermissionWrapper>
         <HasPermissionWrapper 
