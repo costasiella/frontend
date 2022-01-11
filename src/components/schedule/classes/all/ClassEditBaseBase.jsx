@@ -28,7 +28,9 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           title={t("schedule.title")} 
           subTitle={subTitle}
         >
-          <ClassEditBack />
+          <div className='page-options d-flex'>
+            <ClassEditBack />
+          </div>
         </Page.Header>
         <Grid.Row>
           <Grid.Col md={9}>

@@ -1,23 +1,12 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
+import ButtonBack from '../../../ui/ButtonBack'
 
 
 const ScheduleClassBack = ({ t, classId }) => (
-  <Link to={"/schedule/classes/"} >
-    <Button color="link mr-2">
-      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-    </Button>
-  </Link>
+  <ButtonBack className="mr-2" returnUrl="/schedule/classes" />
 )
 
 export default withTranslation()(withRouter(ScheduleClassBack))
