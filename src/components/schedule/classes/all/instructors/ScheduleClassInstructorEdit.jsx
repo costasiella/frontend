@@ -23,7 +23,7 @@ function ScheduleClassInstructorEdit({ t, match, history }) {
   const returnUrl = `/schedule/classes/all/instructors/${classId}`
   const cardTitle = t('schedule.classes.instructors.title_edit')
   const menuActiveLink = "instructors"
-  const sidebarButton = <ScheduleClassInstructorBack classId={classId} />
+  const pageHeaderButtonList = <ScheduleClassInstructorBack classId={classId} />
 
   const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY, {
     variables: { id: id }
@@ -34,7 +34,7 @@ function ScheduleClassInstructorEdit({ t, match, history }) {
     <ClassEditBase
       cardTitle={cardTitle}
       menuActiveLink={menuActiveLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('general.loading_with_dots')}</p>
@@ -46,7 +46,7 @@ function ScheduleClassInstructorEdit({ t, match, history }) {
     <ClassEditBase
       cardTitle={cardTitle}
       menuActiveLink={menuActiveLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('general.error_sad_smiley')}</p>
@@ -80,7 +80,7 @@ function ScheduleClassInstructorEdit({ t, match, history }) {
     <ClassEditBase 
       cardTitle={cardTitle}
       menuActiveLink="instructors"
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Formik
         initialValues={{  
@@ -117,6 +117,7 @@ function ScheduleClassInstructorEdit({ t, match, history }) {
             ]})
             .then(({ data }) => {
                 console.log('got data', data);
+                history.push(returnUrl)
                 toast.success((t('schedule.classes.instructors.toast_edit_success')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
