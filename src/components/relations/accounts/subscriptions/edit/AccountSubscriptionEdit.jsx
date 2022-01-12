@@ -122,6 +122,7 @@ function AccountSubscriptionEdit({t, match, history}) {
                 toast.success((t('relations.account.subscriptions.toast_edit_success')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
+                setSubmitting(false)
               }).catch((error) => {
                 toast.error((t('general.toast_server_error')) +  error, {
                     position: toast.POSITION.BOTTOM_RIGHT

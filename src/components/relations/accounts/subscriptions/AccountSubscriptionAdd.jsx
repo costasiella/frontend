@@ -31,14 +31,9 @@ function AccountSubscriptionAdd({t, history, match}) {
     variables: { archived: false, accountId: accountId }
   })
   const [createAccountSubscription] = useMutation(CREATE_ACCOUNT_SUBSCRIPTION)
-  const sidebarButton = <Link to={returnUrl}>
-      <Button color="primary btn-block mb-6">
-        <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-      </Button>
-    </Link>
 
   if (loading) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       <Card title={cardTitle}>
         {t('general.loading_with_dots')}
       </Card>
@@ -46,7 +41,7 @@ function AccountSubscriptionAdd({t, history, match}) {
   )
 
   if (error) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       {console.log(error)}
       <Card title={cardTitle}>
         {t('general.error_sad_smiley')}
@@ -61,7 +56,7 @@ function AccountSubscriptionAdd({t, history, match}) {
     <RelationsAccountProfileBase
       activeLink={activeLink}
       user={account}
-      sidebarButton={sidebarButton} 
+      returnUrl={returnUrl} 
     >
       <Card>
         <Card.Header>
@@ -96,8 +91,7 @@ function AccountSubscriptionAdd({t, history, match}) {
                     financePaymentMethod: values.financePaymentMethod,
                     dateStart: dateToLocalISO(values.dateStart),
                     dateEnd: dateEnd,
-                    note: values.note,
-                    registrationFeePaid: values.registrationFeePaid
+                    note: values.note
                   }
                 }, refetchQueries: [
                     {query: GET_ACCOUNT_SUBSCRIPTIONS_QUERY, variables: {accountId: accountId}}
@@ -120,6 +114,7 @@ function AccountSubscriptionAdd({t, history, match}) {
             >
             {({ isSubmitting, setFieldValue, setFieldTouched, errors, values }) => (
               <AccountSubscriptionForm
+                create={true}
                 inputData={inputData}
                 isSubmitting={isSubmitting}
                 setFieldValue={setFieldValue}

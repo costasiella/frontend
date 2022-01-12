@@ -22,6 +22,7 @@ import confirm_delete from "../../../../tools/confirm_delete"
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
+import ButtonAdd from "../../../ui/ButtonAdd"
 
 import { GET_ACCOUNT_SUBSCRIPTIONS_QUERY, DELETE_ACCOUNT_SUBSCRIPTION } from "./queries"
 
@@ -57,22 +58,17 @@ function AccountSubscriptions({t, match}) {
 
   const account = data.account
   const accountSubscriptions = data.accountSubscriptions
-  const sidebarButton = <HasPermissionWrapper 
+  const pageHeaderButtonList = <HasPermissionWrapper 
     permission="add"
     resource="accountsubscription">
-      <Link to={"/relations/accounts/" + match.params.account_id + "/subscriptions/add"}>
-      <Button color="primary btn-block mb-6">
-      {/* //  onClick={() => history.push("/organization/subscriptions/add")}> */}
-      <Icon prefix="fe" name="plus-circle" /> {t('relations.account.subscriptions.add')}
-      </Button>
-      </Link>
+      <ButtonAdd addUrl={`/relations/accounts/${accountId}/subscriptions/add`} className='ml-2' />
   </HasPermissionWrapper>
 
   return (
     <RelationsAccountProfileBase
       activeLink={activeLink}
       user={account}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={t('relations.account.subscriptions.title')}
@@ -138,8 +134,6 @@ function AccountSubscriptions({t, match}) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.delete')} 
                       href=""
