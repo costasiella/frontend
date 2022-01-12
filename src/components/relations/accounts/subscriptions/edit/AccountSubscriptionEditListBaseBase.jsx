@@ -19,6 +19,7 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AccountSubscriptionEditTabs from "./AccountSubscriptionEditTabs"
 import ContentCard from "../../../../general/ContentCard"
 
+import ButtonBack from '../../../../ui/ButtonBack'
 import ProfileCardSmall from "../../../../ui/ProfileCardSmall"
 import ProfileMenu from "../../ProfileMenu"
 import moment from 'moment'
@@ -33,7 +34,9 @@ function AccountSubscriptionEditBaseBase({
   subscription=null, 
   pageInfo, 
   onLoadMore, 
-  activeTab}
+  activeTab,
+  returnUrl,
+  pageHeaderButtonList=""}
   ){
 
   const appSettings = useContext(AppSettingsContext)
@@ -41,7 +44,6 @@ function AccountSubscriptionEditBaseBase({
   
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
-  const returnUrl = "/relations/accounts/" + accountId + "/subscriptions"
   const cardTitle = (subscription) ? 
     <span className="text-muted">
       - {subscription.organizationSubscription.name + " " + moment(subscription.dateStart).format(dateFormat)} - {subscription.creditTotal} {t("general.credits")}
@@ -51,13 +53,19 @@ function AccountSubscriptionEditBaseBase({
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={(account) ? account.firstName + " " + account.lastName : ""} />
+          <Page.Header title={(account) ? account.firstName + " " + account.lastName : ""} >
+            <div className='page-options d-flex'>
+              {(returnUrl) ? <ButtonBack returnUrl={returnUrl} /> : ""}
+              {pageHeaderButtonList}
+            </div>
+          </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
               <ContentCard 
                 cardTitle={<span>{t('relations.account.subscriptions.title_edit')} {cardTitle}</span>}
                 pageInfo={pageInfo}
                 onLoadMore={onLoadMore}
+                hasCardBody={false}
                 cardTabs={<AccountSubscriptionEditTabs 
                   account_id={accountId}
                   subscription_id={subscriptionId}
@@ -68,14 +76,6 @@ function AccountSubscriptionEditBaseBase({
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-              <HasPermissionWrapper permission="change"
-                                    resource="accountsubscription">
-                <Link to={returnUrl}>
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-              </HasPermissionWrapper>
               <ProfileMenu 
                 activeLink='subscriptions'
                 accountId={accountId}

@@ -1,36 +1,13 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, Mutation } from "@apollo/client";
+import React from 'react'
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
 
 import { GET_ACCOUNT_SUBSCRIPTION_QUERY } from '../queries'
-import AccountSubscriptionForm from '../AccountSubscriptionForm'
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-} from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../../../tools/date_tools'
-import AccountSubscriptionEditTabs from "./AccountSubscriptionEditTabs"
 import AccountSubscriptionEditListBaseBase from "./AccountSubscriptionEditListBaseBase"
 
-import ProfileMenu from "../../ProfileMenu"
 
-
-function AccountSubscriptionEditListBase({t, history, match, children, pageInfo, onLoadMore, activeTab}) {
+function AccountSubscriptionEditListBase({t, history, match, children, pageInfo, onLoadMore, activeTab, returnUrl, pageHeaderButtonList=""}) {
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const { loading, error, data } = useQuery(GET_ACCOUNT_SUBSCRIPTION_QUERY, {
@@ -41,12 +18,12 @@ function AccountSubscriptionEditListBase({t, history, match, children, pageInfo,
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBaseBase activeTab={activeTab}>
+    <AccountSubscriptionEditListBaseBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBaseBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBaseBase activeTab={activeTab}>
+    <AccountSubscriptionEditListBaseBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBaseBase>
@@ -63,6 +40,8 @@ function AccountSubscriptionEditListBase({t, history, match, children, pageInfo,
       subscription={subscription}
       pageInfo={pageInfo}
       onLoaMore={onLoadMore}
+      returnUrl={returnUrl}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       {children}
     </AccountSubscriptionEditListBaseBase>
