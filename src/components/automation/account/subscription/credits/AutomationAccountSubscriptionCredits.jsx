@@ -53,20 +53,9 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
     }
   })
 
-  const headerOptions = <Card.Options>
-    <Link to={"/automation/account/subscriptions/credits/add"}>
-      <Button color="primary" 
-              size="sm"
-      >
-      {t('general.new_task')}
-      </Button>
-    </Link>
-  </Card.Options>
-
-
   // Loading
   if (loading) return (
-    <AutomationAccountSubscriptionCreditsBase>
+    <AutomationAccountSubscriptionCreditsBase showNewTask={true}>
       <p>{t('general.loading_with_dots')}</p>
     </AutomationAccountSubscriptionCreditsBase>
   )
@@ -74,7 +63,7 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
   if (error) {
     console.log(error)
     return (
-      <AutomationAccountSubscriptionCreditsBase>
+      <AutomationAccountSubscriptionCreditsBase showNewTask={true}>
         <p>{t('general.error_sad_smiley')}</p>
       </AutomationAccountSubscriptionCreditsBase>
     )
@@ -88,11 +77,10 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
   
 
   return (
-    <AutomationAccountSubscriptionCreditsBase>
+    <AutomationAccountSubscriptionCreditsBase showNewTask={true}>
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.credits.title_card')}
         pageInfo={taskResults.pageInfo}
-        headerContent={headerOptions}
         onLoadMore={() => {
           fetchMore({
             variables: {
