@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 import ButtonBack from '../../../../ui/ButtonBack'
 
 const ScheduleClassEnrollmentBack = ({ t, classId }) => (
-  <ButtonBack returnUrl={ "/schedule/classes/all/enrollment/" + classId } />
+  <ButtonBack returnUrl={ "/schedule/classes/all/enrollments/" + classId } />
 )
 
 export default withTranslation()(withRouter(ScheduleClassEnrollmentBack))
