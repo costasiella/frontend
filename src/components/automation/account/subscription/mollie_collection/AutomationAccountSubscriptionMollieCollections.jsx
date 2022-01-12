@@ -43,20 +43,9 @@ function AutomationAccountSubscriptionMollieCollections({t, history, match}) {
     }
   })
 
-  const headerOptions = <Card.Options>
-    <Link to={"/automation/account/subscriptions/mollie_collections/add"}>
-      <Button color="primary" 
-              size="sm"
-      >
-      {t('general.new_task')}
-      </Button>
-    </Link>
-  </Card.Options>
-
-
   // Loading
   if (loading) return (
-    <AutomationAccountSubscriptionMollieCollectionBase>
+    <AutomationAccountSubscriptionMollieCollectionBase showNewTask={true}>
       <p>{t('general.loading_with_dots')}</p>
     </AutomationAccountSubscriptionMollieCollectionBase>
   )
@@ -64,7 +53,7 @@ function AutomationAccountSubscriptionMollieCollections({t, history, match}) {
   if (error) {
     console.log(error)
     return (
-      <AutomationAccountSubscriptionMollieCollectionBase>
+      <AutomationAccountSubscriptionMollieCollectionBase showNewTask={true}>
         <p>{t('general.error_sad_smiley')}</p>
       </AutomationAccountSubscriptionMollieCollectionBase>
     )
@@ -77,11 +66,10 @@ function AutomationAccountSubscriptionMollieCollections({t, history, match}) {
   // const scheduleItemAttendances = data.scheduleItemAttendances
   
   return (
-    <AutomationAccountSubscriptionMollieCollectionBase>
+    <AutomationAccountSubscriptionMollieCollectionBase showNewTask={true}>
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.mollie_collection.title_card')}
         pageInfo={taskResults.pageInfo}
-        headerContent={headerOptions}
         onLoadMore={() => {
           fetchMore({
             variables: {

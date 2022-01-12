@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -11,14 +9,9 @@ import AppSettingsContext from '../../../../context/AppSettingsContext'
 
 
 import {
-  Button,
-  Card,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 
 import ContentCard from "../../../../general/ContentCard"
 

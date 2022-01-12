@@ -28,7 +28,6 @@ function AutomationAccountSubscriptionCreditExpirationBase({t, history, match, c
                   </Button>
                 </Link>
                 : "" }
-              
             </div>
           </Page.Header>
           <Grid.Row>
