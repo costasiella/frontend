@@ -30,7 +30,7 @@ function FinanceInvoiceGroupEdit({t, history, match}) {
   const [ updateInvoiceGroup ] = useMutation(UPDATE_INVOICE_GROUP)
 
   if (loading) return (
-    <FinanceInvoiceGroupsBase showBack={true}>
+    <FinanceInvoiceGroupsBase showEditBack={true}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -40,7 +40,7 @@ function FinanceInvoiceGroupEdit({t, history, match}) {
   )
 
   if (error) return (
-    <FinanceInvoiceGroupsBase showBack={true}>
+    <FinanceInvoiceGroupsBase showEditBack={true}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('finance.invoice_groups.error_loading')}</p>
       </ContentCard>
@@ -52,7 +52,7 @@ function FinanceInvoiceGroupEdit({t, history, match}) {
   console.log(data)
 
   return (
-    <FinanceInvoiceGroupsBase showBack={true}>
+    <FinanceInvoiceGroupsBase showEditBack={true}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 

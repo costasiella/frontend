@@ -30,46 +30,37 @@ import BadgeBoolean from "../../../ui/BadgeBoolean"
 import ContentCard from "../../../general/ContentCard"
 
 import { GET_INVOICE_GROUPS_QUERY, ARCHIVE_INVOICE_GROUP } from "./queries"
+import ButtonAdd from '../../../ui/ButtonAdd'
+import ButtonBack from '../../../ui/ButtonBack'
 
 
-function FinanceInvoiceGroupsBase({t, history, children, showBack=true}) {
+function FinanceInvoiceGroupsBase({t, history, children, showEditBack=false}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
-              <Link to="/finance/invoices" 
-                    className='btn btn-outline-secondary btn-sm mr-2'>
-                  <Icon prefix="fe" name="arrow-left" /> {t('general.back_to')} {t('finance.invoices.title')}
-              </Link>
+              {(showEditBack) ? 
+                // Back for add or edit component
+                <ButtonBack returnUrl="/finance/invoices/groups" className="mr-2" />
+              :
+                // Back for list
+                <ButtonBack returnUrl="/finance/invoices" className="mr-2" />
+              }
               <Link to="/finance/invoices/groups/defaults" 
-                    className='btn btn-outline-secondary btn-sm'>
+                    className='btn btn-secondary mr-2'>
                   <Icon prefix="fe" name="settings" /> {t('finance.invoice_groups_defaults.title')}
               </Link> 
+              <HasPermissionWrapper permission="add"
+                                      resource="financeinvoicegroup">
+                <ButtonAdd addUrl="/finance/invoices/groups/add" />
+              </HasPermissionWrapper>
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              {(showBack) ?
-                <Link to="/finance/invoices/groups">
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-                :
-                <HasPermissionWrapper permission="add"
-                                      resource="financeinvoicegroup">
-                  <Link to="/finance/invoices/groups/add">
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('finance.invoice_groups.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-              }
             </Grid.Col>
           </Grid.Row>
         </Container>

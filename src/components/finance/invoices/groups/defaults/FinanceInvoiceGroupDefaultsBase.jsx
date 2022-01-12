@@ -11,6 +11,7 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+import ButtonBack from '../../../../ui/ButtonBack';
 
 
 function FinanceInvoiceGroupsDefaultsBase({ t, history, children }) {
@@ -20,10 +21,7 @@ function FinanceInvoiceGroupsDefaultsBase({ t, history, children }) {
         <Container>
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
-              <Link to="/finance/invoices/groups" 
-                    className='btn btn-outline-secondary btn-sm'>
-                  <Icon prefix="fe" name="arrow-left" /> {t('general.back_to')} {t('finance.invoice_groups.title')}
-              </Link>
+              <ButtonBack returnUrl="/finance/invoices/groups" />
             </div>
           </Page.Header>
           <Grid.Row>
