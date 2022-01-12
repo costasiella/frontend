@@ -1,10 +1,7 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
@@ -15,8 +12,6 @@ import AccountClasspassForm from './AccountClasspassForm'
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
 
 import {
-  Icon,
-  Button,
   Card,
 } from "tabler-react";
 import { dateToLocalISO } from '../../../../tools/date_tools'
@@ -34,14 +29,8 @@ function AccountClasspassAdd({t, match, history}) {
   })
   const [createAccountClasspass] = useMutation(CREATE_ACCOUNT_CLASSPASS)
 
-  const sidebarButton = <Link to={returnUrl}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-    </Button>
-  </Link>
-
   if (loading) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       <Card title={cardTitle}>
         {t('general.loading_with_dots')}
       </Card>
@@ -49,7 +38,7 @@ function AccountClasspassAdd({t, match, history}) {
   )
 
   if (error) return (
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       {console.log(error)}
       <Card title={cardTitle}>
         {t('general.error_sad_smiley')}
@@ -64,7 +53,7 @@ function AccountClasspassAdd({t, match, history}) {
     <RelationsAccountProfileBase
       activeLink={activeLink}
       user={account}
-      sidebarButton={sidebarButton} 
+      returnUrl={returnUrl} 
     >
       <Card>
         <Card.Header>

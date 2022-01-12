@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useMutation, useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -18,6 +16,7 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import confirm_delete from "../../../../tools/confirm_delete"
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
+import ButtonAdd from "../../../ui/ButtonAdd"
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 
@@ -31,14 +30,10 @@ function AccountClasspasses({t, match}) {
   const accountId = match.params.account_id
   const activeLink = "classpasses"
   const cardTitle = t('relations.account.classpasses.title')
-  const sidebarButton = <HasPermissionWrapper 
+  const pageHeaderButtonList = <HasPermissionWrapper 
     permission="add"
     resource="accountclasspass">
-      <Link to={`/relations/accounts/${accountId}/classpasses/add`}>
-        <Button color="primary btn-block mb-6">
-          <Icon prefix="fe" name="plus-circle" /> {t('relations.account.classpasses.add')}
-        </Button>
-      </Link>
+      <ButtonAdd addUrl={`/relations/accounts/${accountId}/classpasses/add`} className="ml-2" />
   </HasPermissionWrapper>
 
   const {loading, error, data, fetchMore} = useQuery(GET_ACCOUNT_CLASSPASSES_QUERY, {
@@ -47,7 +42,7 @@ function AccountClasspasses({t, match}) {
   const [deleteAccountClasspass] = useMutation(DELETE_ACCOUNT_CLASSPASS)
 
   if (loading) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         {t('general.loading_with_dots')}
       </Card>
@@ -55,7 +50,7 @@ function AccountClasspasses({t, match}) {
   )
 
   if (error) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} pageHeaderButtonList={pageHeaderButtonList}>
       {console.log(error)}
       <Card title={cardTitle}>
         {t('general.error_sad_smiley')}
@@ -70,7 +65,7 @@ function AccountClasspasses({t, match}) {
     <RelationsAccountProfileBase 
       user={account}
       activeLink={activeLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={t('relations.account.classpasses.title')}
