@@ -13,7 +13,7 @@ import {
   Container,
 } from "tabler-react"
 import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
+import ButtonBack from "../../ui/ButtonBack"
 
 
 function ScheduleClassAddBase({t, children}) {
@@ -23,20 +23,14 @@ function ScheduleClassAddBase({t, children}) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("schedule.title")} />
+          <Page.Header title={t("schedule.title")} subTitle={t("general.classes")}>
+            <div className='page-options d-flex'>
+              <ButtonBack returnUrl={returnUrl} />
+            </div>
+          </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="scheduleclass">
-                <Link to={returnUrl}>
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-              </HasPermissionWrapper>
             </Grid.Col>
           </Grid.Row>
         </Container>
