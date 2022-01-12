@@ -1,38 +1,24 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-import FinanceInvoicesStatus from "../../../../../ui/FinanceInvoiceStatus"
-import ButtonAddSecondaryMenu from '../../../../../ui/ButtonAddSecondaryMenu'
-
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
-
-import { GET_FINANCE_INVOICE_ITEM_QUERY } from './queries'
-
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Table,
   Text
 } from "tabler-react";
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
+import FinanceInvoicesStatus from "../../../../../ui/FinanceInvoiceStatus"
+import AppSettingsContext from '../../../../../context/AppSettingsContext'
+import { GET_FINANCE_INVOICE_ITEM_QUERY } from './queries'
 import CSLS from "../../../../../../tools/cs_local_storage"
 import AccountSubscriptionEditInvoiceDelete from "./AccountSubscriptionEditInvoiceDelete"
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
-// import AccountSubscriptionEditCreditDelete from "./AccountSubscriptionEditCreditDelete"
+import ButtonAdd from '../../../../../ui/ButtonAdd';
 import moment from 'moment';
 
 
@@ -49,8 +35,10 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`
   const activeTab = "invoices"
 
-  const buttonAdd = <ButtonAddSecondaryMenu 
-                     linkTo={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/invoices/add`} />
+  const pageHeaderButtonList = <ButtonAdd
+    addUrl={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/invoices/add`} 
+    className="ml-2"  
+  />
 
   const { loading, error, data, fetchMore } = useQuery(GET_FINANCE_INVOICE_ITEM_QUERY, {
     variables: {
@@ -59,12 +47,12 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBase activeTab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBase activeTab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
@@ -77,6 +65,15 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
 
   const financeInvoiceItems = data.financeInvoiceItems
   const pageInfo = data.financeInvoiceItems.pageInfo
+
+
+  // Empty list
+  if (!financeInvoiceItems.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList} >
+
+      <Card.Body>{t('relations.account.subscriptions.invoices.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
   // const inputData = data
   // const account = data.account
   // const initialdata = data.accountSubscription
@@ -111,10 +108,15 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditListBase activeTab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
-      <div className="pull-right">{buttonAdd}</div>
-      <h5>{t('relations.account.subscriptions.invoices.title_list')}</h5>
-      <Table>
+    <AccountSubscriptionEditListBase 
+      activeTab={activeTab} 
+      pageInfo={pageInfo} 
+      onLoadMore={onLoadMore}
+      returnUrl={returnUrl} 
+      pageHeaderButtonList={pageHeaderButtonList}  
+    >
+      <br />
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.status')}</Table.ColHeader>
@@ -123,7 +125,6 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
             {/* <Table.ColHeader>{t('finance.invoices.due')}</Table.ColHeader> */}
             <Table.ColHeader>{t('general.total')}</Table.ColHeader>
             <Table.ColHeader>{t('general.balance')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -154,8 +155,6 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
                           color="secondary">
                     {t('general.edit')}
                   </Button>
-                </Table.Col>
-                <Table.Col>
                   <AccountSubscriptionEditInvoiceDelete id={node.financeInvoice.id} />
                 </Table.Col>
                 {/* <Table.Col>

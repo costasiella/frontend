@@ -62,14 +62,14 @@ function AccountSubscriptionEditPauses({t, match, history}) {
   const accountSubscriptionPauses = data.accountSubscriptionPauses
   const pageInfo = data.accountSubscriptionPauses.pageInfo
 
-    // Empty list
-    if (!accountSubscriptionPauses.edges.length) { return (
-      <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList} >
-        {/* <div className="pull-right">{buttonAdd}</div> */}
-        {/* <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5> */}
-        <Card.Body>{t('relations.account.subscriptions.pauses.empty_list')}</Card.Body>
-      </AccountSubscriptionEditListBase>
-    )}
+  // Empty list
+  if (!accountSubscriptionPauses.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList} >
+      {/* <div className="pull-right">{buttonAdd}</div> */}
+      {/* <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5> */}
+      <Card.Body>{t('relations.account.subscriptions.pauses.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
   // const inputData = data
   // const account = data.account
   // const initialdata = data.accountSubscription

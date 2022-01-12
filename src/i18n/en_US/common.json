@@ -888,7 +888,6 @@
                 "toast_edit_success": "Saved subscription",
                 "delete_confirm_msg": "Are you sure you with to delete this subscription and all associated data?",
                 "deleted": "Deleted subscription",
-                "add": "Add subscription",
                 "title_edit": "Edit subscription",
                 "registration_fee_paid": "Registration fee paid",
                 "credits": {
@@ -926,7 +925,6 @@
                     "toast_edit_success": "Saved",
                     "add": "Add block",
                     "edit": "Edit block",
-                    "title_list": "Blocked periods",
                     "empty_list": "This subscription hasn't been blocked before."
                 },
                 "alt_prices": {
@@ -936,14 +934,13 @@
                     "toast_edit_success": "Saved",
                     "add": "Add alt. price",
                     "edit": "Edit alt. price",
-                    "title_list": "Alt. prices",
                     "empty_list": "No alternative prices have been defined for this subscription."
                 },
                 "invoices": {
-                    "title_list": "Invoices",
                     "toast_add_success": "Added invoice",
                     "toast_you_are_now_editing": "You're now editing the added invoice",
-                    "add": "Add invoice"
+                    "add": "Add invoice",
+                    "empty_list": "No invoices have been created yet for this subscription"
                 }
             },
             "classpasses": {
@@ -1195,7 +1192,11 @@
             "classpass_trial": "Trial classpass",
             "spaces": "Total spaces",
             "spaces_walk_in": "Walk-in spaces (Not bookable online)",
-            "explanation": "Weekly & one time classes"
+            "explanation": "Weekly & one time classes",
+            "enrollments": {
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "appointments": {
             "title": "Appointments",
