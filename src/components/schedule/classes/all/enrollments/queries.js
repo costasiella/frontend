@@ -1,7 +1,5 @@
 import { gql } from "@apollo/client"
 
-// TODO simplify enrollments by querying "enrollments" on scheduleItem
-
 
 export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
   query ScheduleItemEnrollments($after: String, $before: String, $scheduleItem: ID!) {
