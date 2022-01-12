@@ -1,47 +1,21 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { gql } from "@apollo/client"
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 
 import {
   Page,
   Grid,
-  Icon,
-  Dimmer,
-  Button,
-  Card,
   Container,
-  Table
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
-import BadgeBoolean from "../../../ui/BadgeBoolean"
 import RelationsAccountsBack from "../RelationsAccountsBack"
-import confirm_delete from "../../../../tools/confirm_delete"
 
-import ContentCard from "../../../general/ContentCard"
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
-
-import { GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY } from "./queries"
 import { GET_ACCOUNT } from "../../../../queries/accounts/get_account"
-import ScheduleEventTickets from './AccountScheduleEventTickets'
-
-// const CANCEL_SCHEDULE_EVENT_TICKET = gql`
-//   mutation DeleteAccountClasspass($input: DeleteAccountClasspassInput!) {
-//     deleteAccountClasspass(input: $input) {
-//       ok
-//     }
-//   }
-// `
 
 
 function AccountScheduleEventTicketsBase({t, history, match, children}) {
@@ -70,7 +44,9 @@ function AccountScheduleEventTicketsBase({t, history, match, children}) {
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={account.firstName + " " + account.lastName} >
-            <RelationsAccountsBack />
+            <div className='page-options d-flex'>
+              <RelationsAccountsBack />
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
