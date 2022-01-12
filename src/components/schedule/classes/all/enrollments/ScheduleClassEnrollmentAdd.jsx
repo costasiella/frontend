@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import { Card } from 'tabler-react';
 
 import { GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, CREATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
-import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
+import { SCHEDULE_CLASS_ENROLLMENT_SCHEMA } from './yupSchema'
 import ScheduleClassEnrollmentForm from './ScheduleClassEnrollmentForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 
@@ -17,10 +17,13 @@ import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
 
 function ScheduleClassEnrollmentAdd({ t, history, match }) {
   const classId = match.params.class_id
+  const accountSubscriptionId = match.params.account_subscription_id
   const returnUrl = `/schedule/classes/all/enrollments/${classId}`
   const cardTitle = t('schedule.classes.enrollments.title_add')
   const menuActiveLink = "enrollments" 
   const pageHeaderButtonList = <ScheduleClassEnrollmentBack classId={classId} />
+  
+  // TODO: Add account subscription to sent values
 
   const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
 
@@ -35,7 +38,7 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
           price: "", 
           dateStart: new Date() ,
         }}
-        validationSchema={SCHEDULE_CLASS_INSTRUCTOR_SCHEMA}
+        validationSchema={SCHEDULE_CLASS_ENROLLMENT_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
 
             let dateEnd
