@@ -53,20 +53,10 @@ function AutomationAccountSubscriptionInvoices({t, history, match}) {
     }
   })
 
-  const headerOptions = <Card.Options>
-    <Link to={"/automation/account/subscriptions/invoices/add"}>
-      <Button color="primary" 
-              size="sm"
-      >
-      {t('general.new_task')}
-      </Button>
-    </Link>
-  </Card.Options>
-
 
   // Loading
   if (loading) return (
-    <AutomationAccountSubscriptionInvoicesBase>
+    <AutomationAccountSubscriptionInvoicesBase showNewTask={true}>
       <p>{t('general.loading_with_dots')}</p>
     </AutomationAccountSubscriptionInvoicesBase>
   )
@@ -74,7 +64,7 @@ function AutomationAccountSubscriptionInvoices({t, history, match}) {
   if (error) {
     console.log(error)
     return (
-      <AutomationAccountSubscriptionInvoicesBase>
+      <AutomationAccountSubscriptionInvoicesBase showNewTask={true}>
         <p>{t('general.error_sad_smiley')}</p>
       </AutomationAccountSubscriptionInvoicesBase>
     )
@@ -88,11 +78,10 @@ function AutomationAccountSubscriptionInvoices({t, history, match}) {
   
 
   return (
-    <AutomationAccountSubscriptionInvoicesBase>
+    <AutomationAccountSubscriptionInvoicesBase showNewTask={true}>
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.invoices.title_card')}
         pageInfo={taskResults.pageInfo}
-        headerContent={headerOptions}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -129,7 +118,6 @@ function AutomationAccountSubscriptionInvoices({t, history, match}) {
                   <Table.ColHeader>{t('automation.general.time_completed')}</Table.ColHeader>
                   <Table.ColHeader>{t('automation.general.task_kwargs')}</Table.ColHeader>
                   <Table.ColHeader>{t('automation.general.task_result')}</Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -146,9 +134,6 @@ function AutomationAccountSubscriptionInvoices({t, history, match}) {
                     </Table.Col>
                     <Table.Col>
                       {node.result}
-                    </Table.Col>
-                    <Table.Col>
-
                     </Table.Col>
                   </Table.Row>
                 ))}

@@ -413,7 +413,8 @@
         "shift": "__STRING_NOT_TRANSLATED__",
         "employee2": "__STRING_NOT_TRANSLATED__",
         "enrollments": "__STRING_NOT_TRANSLATED__",
-        "reset_filter": "__STRING_NOT_TRANSLATED__"
+        "reset_filter": "__STRING_NOT_TRANSLATED__",
+        "start_task": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -697,7 +698,6 @@
             "due_after_days": "__STRING_NOT_TRANSLATED__",
             "prefix_year": "__STRING_NOT_TRANSLATED__",
             "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__"
         },

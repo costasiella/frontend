@@ -100,7 +100,6 @@
             "error_loading": "Error loading invoice groups :(",
             "empty_list": "No invoice groups have been defined yet",
             "empty_archive": "Invoice group archive is empty",
-            "add": "Add invoice group",
             "next_id": "Next #",
             "due_after_days": "Due after days",
             "auto_reset_prefix_year": "Reset to 1 on January 1st",
@@ -506,7 +505,8 @@
         "shift": "Shift",
         "employee2": "Employee 2",
         "enrollments": "Enrollments",
-        "reset_filter": "Reset filter"
+        "reset_filter": "Reset filter",
+        "run_task": "Run task"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
