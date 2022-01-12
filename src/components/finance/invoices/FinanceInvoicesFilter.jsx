@@ -33,10 +33,10 @@ const selectClass = "form-control mb-2"
 
 
 const FinanceInvoicesFilter = ({ t, history, data, refetch }) => (
-  <div>
+  <div className="mr-2">
     {/* Status */}
     <select 
-      className={selectClass}
+      className={`${selectClass}`}
       value={getDefaultValue(CSLS.FINANCE_INVOICES_FILTER_STATUS)}
       onChange={ (event) => {
         updateLocalStorageAndRefetch(
