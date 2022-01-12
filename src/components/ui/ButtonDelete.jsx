@@ -20,7 +20,7 @@ function ButtonDelete({t, match, history, msgConfirm, msgDescription, msgSuccess
           msgDescription: msgDescription,
           msgSuccess: msgSuccess,
           deleteFunction: deleteFunction,
-          deleteFunctionVariables: deleteFunctionVariables
+          functionVariables: deleteFunctionVariables
         })
     }}>
       <span className="text-red">
