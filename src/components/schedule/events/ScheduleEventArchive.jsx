@@ -21,7 +21,7 @@ function ScheduleEventArchive({t, match, history, node}) {
 
   if (!node.archived) {
     return (
-      <button className="icon btn btn-warning btn-sm mb-3 pull-right" 
+      <button className="icon btn btn-link btn-sm mb-3 pull-right" 
           title={t('general.unarchive')} 
           onClick={() => {
             confirm_archive({
@@ -41,13 +41,13 @@ function ScheduleEventArchive({t, match, history, node}) {
               }
             })
         }}>
-        <span className="text-white"><Icon prefix="fe" name="inbox" /> {" "} {t("")}</span>
+        <Icon prefix="fe" name="inbox" /> {" "} {t("")}
       </button>
     )
 
   } else {
     return (
-      <button className="icon btn btn-warning btn-sm mb-3 pull-right" 
+      <button className="icon btn btn-link btn-sm mb-3 pull-right" 
         title={t('general.archive')} 
         onClick={() => {
           confirm_unarchive({
@@ -67,7 +67,7 @@ function ScheduleEventArchive({t, match, history, node}) {
             }
           })
       }}>
-        <span className="text-white"><Icon prefix="fe" name="inbox" /> {" "} {t("")}</span>
+        <Icon prefix="fe" name="inbox" /> {" "} {t("")}
       </button>
     )
   }

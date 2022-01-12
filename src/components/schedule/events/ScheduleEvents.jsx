@@ -35,6 +35,7 @@ import ScheduleEventsBase from "./ScheduleEventsBase"
 import ScheduleEventArchive from "./ScheduleEventArchive"
 
 import ButtonAdd from '../../ui/ButtonAdd'
+import ButtonEdit from '../../ui/ButtonEdit'
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
@@ -115,6 +116,7 @@ function ScheduleEvents({t, history}) {
       <ContentCard 
         cardTitle={t('schedule.events.title')}
         headerContent={cardHeaderContent}
+        hasCardBody={false}
         pageInfo={scheduleEvents.pageInfo}
             onLoadMore={() => {
               fetchMore({
@@ -140,7 +142,7 @@ function ScheduleEvents({t, history}) {
               })
             }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.start')}</Table.ColHeader>
@@ -179,14 +181,8 @@ function ScheduleEvents({t, history}) {
                 <Table.Col className="text-right" key={v4()}>
                   {(node.archived) ? 
                     <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                    <Button className='btn-sm' 
-                            onClick={() => history.push("/schedule/events/edit/" + node.id)}
-                            color="secondary">
-                      {t('general.edit')}
-                    </Button>
+                    <ButtonEdit editUrl={`/schedule/events/edit/${node.id}`} />
                   }
-                </Table.Col>
-                <Table.Col>
                   <ScheduleEventArchive node={node} />
                 </Table.Col>
               </Table.Row>
