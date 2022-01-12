@@ -24,7 +24,9 @@ function AccountOrdersBase({ t, match, history, children, account={} }) {
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={account.fullName} >
-            <RelationsAccountsBack />
+            <div className='page-options d-flex'>
+              <RelationsAccountsBack />
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>

@@ -29,6 +29,7 @@ export const GET_ACCOUNT_ORDERS_QUERY = gql`
       id
       firstName
       lastName
+      fullName
       email
       phone
       mobile
