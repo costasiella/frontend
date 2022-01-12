@@ -44,7 +44,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
   const subtitle = ''
 
   const [showSearch, setShowSearch] = useState(false)
-  const return_url = "/schedule/classes/"
+  const returnUrl = "/schedule/classes/"
   const scheduleItemId = match.params.class_id
   const { refetch: refetchEnrollments, loading: queryEnrollmentsLoading, error: queryEnrollmentsError, data: queryEnrollmentsData } = useQuery(
     GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, {
@@ -79,14 +79,15 @@ function ScheduleClassEnrollments({ t, match, history }) {
     return <p>{t('general.error_sad_smiley')}</p>
   }
   
-  console.log(queryEnrollmentsData)
-  let checkedInIds = []
-  queryEnrollmentsData.scheduleItemEnrollments.edges.map(({ node }) => (
-    checkedInIds.push(node.account.id)
-  ))
-  console.log(checkedInIds)
+  // console.log(queryEnrollmentsData)
+  // let checkedInIds = []
+  // enrollments.edges.map(({ node }) => (
+  //   checkedInIds.push(node.account.id)
+  // ))
+  // console.log(checkedInIds)
 
   const scheduleItem = queryEnrollmentsData.scheduleItem
+  const enrollments = scheduleItem.enrollments
   // const subtitle = classSubtitle({
   //   t: t,
   //   location: scheduleItem.organizationLocationRoom.organizationLocation.name, 
@@ -103,7 +104,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
         <Container>
           <Page.Header title={t('schedule.title')} subTitle={subtitle}>
             <div className="page-options d-flex">       
-              <ClassEditBack />
+              <ClassEditBack className={'mr-2'} />
               <InputSearch 
                 initialValueKey={CSLS.SCHEDULE_CLASSES_CLASS_ENROLLMENTS_SEARCH}
                 placeholder="Search..."
@@ -185,15 +186,16 @@ function ScheduleClassEnrollments({ t, match, history }) {
                 }
                 {/* Enrollments */}
                 <ContentCard cardTitle={t('general.enrollments')}
-                             pageInfo={queryEnrollmentsData.scheduleItemEnrollments.pageInfo}
+                             pageInfo={enrollments.pageInfo}
+                             hasCardBody={false}
                              onLoadMore={() => {
                                 fetchMoreAccounts({
                                 variables: {
-                                  after: queryEnrollmentsData.scheduleItemEnrollments.pageInfo.endCursor
+                                  after: enrollments.pageInfo.endCursor
                                 },
                                 updateQuery: (previousResult, { fetchMoreResult }) => {
-                                  const newEdges = fetchMoreResult.scheduleItemEnrollments.edges
-                                  const pageInfo = fetchMoreResult.scheduleItemEnrollments.pageInfo 
+                                  const newEdges = fetchMoreResult.scheduleItem.enrollments.edges
+                                  const pageInfo = fetchMoreResult.scheduleItem.enrollments.pageInfo 
 
                                   return newEdges.length
                                     ? {
@@ -201,8 +203,8 @@ function ScheduleClassEnrollments({ t, match, history }) {
                                         // so we have the new `endCursor` and `hasNextPage` values
                                         queryEnrollmentsData: {
                                           scheduleItemEnrollments: {
-                                            __typename: previousResult.scheduleItemEnrollments.__typename,
-                                            edges: [ ...previousResult.scheduleItemEnrollments.edges, ...newEdges ],
+                                            __typename: previousResult.scheduleItem.enrollments.__typename,
+                                            edges: [ ...previousResult.scheduleItem.enrollments.edges, ...newEdges ],
                                             pageInfo
                                           }
                                         }
@@ -211,7 +213,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
                                 }
                               })
                             }} >
-                  <Table>
+                  <Table cards>
                     <Table.Header>
                       <Table.Row key={v4()}>
                         <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -221,7 +223,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                      {queryEnrollmentsData.scheduleItemEnrollments.edges.map(({ node }) => (
+                      {enrollments.edges.map(({ node }) => (
                           <Table.Row key={v4()}>
                             <Table.Col>
                               {node.account.fullName}
