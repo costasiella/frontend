@@ -65,7 +65,7 @@ function ScheduleEvents({t, history}) {
               refetch(get_list_query_variables())
             }
     }>
-      {t('general.active')}
+      {t('general.current')}
     </Button>
     <Button color={(localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED) === "true") ? 'primary': 'secondary'} 
             size="sm" 
