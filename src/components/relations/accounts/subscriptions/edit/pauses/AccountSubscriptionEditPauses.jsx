@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
@@ -111,11 +111,11 @@ function AccountSubscriptionEditPauses({t, match, history}) {
       returnUrl={returnUrl}
       pageHeaderButtonList={pageHeaderButtonList} 
     >
-      {/* <div className="pull-right">{buttonAdd}</div> */}
-      {/* <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5> */}
+      <br />
       <Table cards>
         <Table.Header>
-          <Table.Row key={v4()}>
+          <Table.Row key={v4()}>{/* <div className="pull-right">{buttonAdd}</div> */}
+      {/* <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5> */}
             <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
             <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
