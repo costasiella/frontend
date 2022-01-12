@@ -131,9 +131,6 @@ import OrganizationLocationRoomEdit from './components/organization/locations/ro
 import OrganizationLevels from './components/organization/levels/OrganizationLevels'
 import OrganizationLevelAdd from './components/organization/levels/OrganizationLevelAdd'
 import OrganizationLevelEdit from './components/organization/levels/OrganizationLevelEdit'
-import OrganizationMemberships from './components/organization/memberships/OrganizationMemberships'
-import OrganizationMembershipAdd from './components/organization/memberships/OrganizationMembershipAdd'
-import OrganizationMembershipEdit from './components/organization/memberships/OrganizationMembershipEdit'
 import OrganizationShifts from './components/organization/shifts/OrganizationShifts'
 import OrganizationShiftAdd from './components/organization/shifts/OrganizationShiftAdd'
 import OrganizationShiftEdit from './components/organization/shifts/OrganizationShiftEdit'
@@ -222,6 +219,7 @@ import ScheduleClassEdit from './components/schedule/classes/class/edit/Schedule
 import ScheduleClassPrices from './components/schedule/classes/all/prices/ScheduleClassPrices'
 import ScheduleClassPriceAdd from './components/schedule/classes/all/prices/ScheduleClassPriceAdd'
 import ScheduleClassPriceEdit from './components/schedule/classes/all/prices/ScheduleClassPriceEdit'
+import ScheduleClassEnrollments from './components/schedule/classes/all/enrollments/ScheduleClassEnrollments'
 import ScheduleEvents from './components/schedule/events/ScheduleEvents'
 import ScheduleEventAdd from './components/schedule/events/ScheduleEventAdd'
 import ScheduleEventEdit from './components/schedule/events/edit/ScheduleEventEdit'
@@ -622,6 +620,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/add/" component={ScheduleClassAdd} />
             <PrivateRoute exact path="/schedule/classes/all/edit/:class_id/" component={ScheduleClassEditAll} />
             <PrivateRoute exact path="/schedule/classes/all/classpasses/:class_id/" component={ScheduleClassClasspasses} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/" component={ScheduleClassEnrollments} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/" component={ScheduleClassPrices} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/add" component={ScheduleClassPriceAdd} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/edit/:id" component={ScheduleClassPriceEdit} />
