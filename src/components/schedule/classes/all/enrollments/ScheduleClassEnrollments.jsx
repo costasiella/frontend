@@ -174,8 +174,12 @@ function ScheduleClassEnrollments({ t, match, history }) {
                               <Table.Col key={v4()}>
                                 {node.email}
                               </Table.Col>
-                              <Table.Col key={v4()}>
-                                Enroll button here
+                              <Table.Col className="text-right" key={v4()}>
+                                <Link to={`/schedule/classes/all/enrollments/${scheduleItemId}/add/${node.id}`}>
+                                  <Button color="secondary">
+                                    {t("general.enroll")} <Icon name="chevron-right" />
+                                  </Button>
+                                </Link>
                               </Table.Col>
                             </Table.Row>
                           ))}
