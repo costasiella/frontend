@@ -14,7 +14,7 @@ function AccountSubscriptionEditBlockBase({ t, history, match, children}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/blocks/`
 
   return (
-    <AccountSubscriptionEditBase activeTab={activeTab}>
+    <AccountSubscriptionEditBase activeTab={activeTab} returnUrl={returnUrl}>
       {children}
     </AccountSubscriptionEditBase>
   )
