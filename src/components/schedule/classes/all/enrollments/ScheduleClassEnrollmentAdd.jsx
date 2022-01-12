@@ -22,36 +22,7 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
   const menuActiveLink = "enrollments" 
   const pageHeaderButtonList = <ScheduleClassEnrollmentBack classId={classId} />
 
-  const {loading, error, data} = useQuery(GET_INPUT_VALUES_QUERY)
   const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
-
-  if (loading) return (
-    <ClassEditBase
-      cardTitle={cardTitle}
-      menuActiveLink={menuActiveLink}
-      pageHeaderButtonList={pageHeaderButtonList}
-    >
-      <Card.Body>
-        <p>{t('general.loading_with_dots')}</p>
-      </Card.Body>
-    </ClassEditBase>
-  )
-
-  if (error) return (
-    <ClassEditBase
-      cardTitle={cardTitle}
-      menuActiveLink={menuActiveLink}
-      pageHeaderButtonList={pageHeaderButtonList}
-    >
-      <Card.Body>
-        <p>{t('general.error_sad_smiley')}</p>
-      </Card.Body>
-    </ClassEditBase>
-  )
-
-  console.log('query data')
-  console.log(data)
-  const inputData = data
 
   return (
     <ClassEditBase
