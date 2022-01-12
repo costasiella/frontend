@@ -3,8 +3,8 @@ import { withTranslation } from 'react-i18next'
 
 import ButtonBack from '../../../ui/ButtonBack'
 
-const ClassEditBack = ({ t }) => (
-  <ButtonBack returnUrl="/schedule/classes" />
+const ClassEditBack = ({ t, className }) => (
+  <ButtonBack returnUrl="/schedule/classes" className={className} />
 )
 
 export default withTranslation()(ClassEditBack)
