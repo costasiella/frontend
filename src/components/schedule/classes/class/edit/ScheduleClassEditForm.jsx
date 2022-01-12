@@ -52,7 +52,7 @@ const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
                       autoComplete="off">
                 {console.log("query data in schedule class instructor add:")}
                 {console.log(inputData)}
-                <option value="" key={v4()}>{t('general.please_select')}</option>
+                <option value="" key={v4()}></option>
                 {inputData.accounts.edges.map(({ node }) =>
                   <option value={node.id} key={v4()}>{node.fullName}</option>
                 )}
