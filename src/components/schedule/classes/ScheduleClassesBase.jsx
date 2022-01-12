@@ -15,6 +15,7 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import CSDatePicker from "../../ui/CSDatePicker"
+import ButtonAdd from '../../ui/ButtonAdd';
 
 import CSLS from "../../../tools/cs_local_storage"
 
@@ -126,6 +127,10 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                     refetch(get_list_query_variables())
                 }} />
               </Button.List> 
+              <HasPermissionWrapper permission="add"
+                                    resource="scheduleclass">
+                <ButtonAdd addUrl={"/schedule/classes/add"} className="ml-2" />
+              </HasPermissionWrapper>
             </div>
           </Page.Header>
           <Grid.Row>
@@ -133,13 +138,6 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
               {children}
             </Grid.Col>
             <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="scheduleclass">
-                <Button color="primary btn-block mb-1"
-                        onClick={() => history.push("/schedule/classes/add")}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.add')}
-                </Button>
-              </HasPermissionWrapper>
               {(data) ? 
                 <ScheduleClassesFilter data={data} refetch={refetch} />
               : ""}
