@@ -2,7 +2,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
-import confirm_unarchive from "../../../tools/confirm_unarchive"
+import confirm_unarchive from "../../tools/confirm_unarchive"
 
 import {
   Icon
