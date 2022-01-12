@@ -1,38 +1,10 @@
 import { gql } from "@apollo/client"
 
+// TODO simplify enrollments by querying "enrollments" on scheduleItem
+
 
 export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
-  query ScheduleItemEnrollments($after: String, $before: String, $scheduleItem: ID!, $date: Date!) {
-    scheduleItemEnrollments(first: 100, before: $before, after: $after, scheduleItem: $scheduleItem) {
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        node {
-          id 
-          dateStart
-          dateEnd
-          accountSubscription {
-            id
-            dateStart
-            dateEnd
-            organizationSubscription {
-              id
-              name
-            }
-            account {
-              id
-              fullName
-            }            
-          }
-          dateStart
-          dateEnd
-        }
-      }
-    }
+  query ScheduleItemEnrollments($after: String, $before: String, $scheduleItem: ID!) {
     scheduleItem(id:$scheduleItem) {
       id
       frequencyType
@@ -58,6 +30,36 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
       timeStart
       timeEnd
       displayPublic
+      enrollments(first: 1000, before: $before, after: $after) {
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+        edges {
+          node {
+            id 
+            dateStart
+            dateEnd
+            accountSubscription {
+              id
+              dateStart
+              dateEnd
+              organizationSubscription {
+                id
+                name
+              }
+              account {
+                id
+                fullName
+              }            
+            }
+            dateStart
+            dateEnd
+          }
+        }
+      }
     }
   }
 `
