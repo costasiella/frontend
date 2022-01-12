@@ -891,7 +891,6 @@
                 "title_edit": "Edit subscription",
                 "registration_fee_paid": "Registration fee paid",
                 "credits": {
-                    "title_list": "Credit mutations",
                     "toast_add_success": "Added credit mutation",
                     "delete_confirm_msg": "Are you sure you wish to delete this credit mutation?",
                     "delete_success": "Deleted credit mutation",
@@ -985,8 +984,7 @@
             },
             "classes": {
                 "empty_list": "This customer hasn't attended any classes yet...",
-                "title": "Classes",
-                "add": "Add class"
+                "title": "Classes"
             },
             "orders": {
                 "title": "Orders",
@@ -995,7 +993,8 @@
                 "empty_list": "No orders placed yet..."
             },
             "event_tickets": {
-                "title": "Event tickets"
+                "title": "Event tickets",
+                "empty_list": "This customer hasn't attended any events yet"
             },
             "error_loading": "Error loading account info... :(",
             "bank_accounts": {

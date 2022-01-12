@@ -1043,8 +1043,7 @@
             },
             "classes": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__",
-                "add": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "classpasses": {
                 "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
@@ -1154,8 +1153,7 @@
                     "toast_edit_success": "__STRING_NOT_TRANSLATED__",
                     "add": "__STRING_NOT_TRANSLATED__",
                     "edit": "__STRING_NOT_TRANSLATED__",
-                    "mutationType": "__STRING_NOT_TRANSLATED__",
-                    "title_list": "__STRING_NOT_TRANSLATED__"
+                    "mutationType": "__STRING_NOT_TRANSLATED__"
                 },
                 "invoices": {
                     "toast_add_success": "__STRING_NOT_TRANSLATED__",
@@ -1175,7 +1173,8 @@
                 }
             },
             "event_tickets": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "instructor_profile": {
                 "title": "__STRING_NOT_TRANSLATED__",
