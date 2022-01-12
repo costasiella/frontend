@@ -120,7 +120,6 @@ function AccountSubscriptionEditPauses({t, match, history}) {
             <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -142,8 +141,6 @@ function AccountSubscriptionEditPauses({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <AccountSubscriptionEditPauseDelete id={node.id} />
                 </Table.Col>
               </Table.Row>
