@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,24 +5,18 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
-import ButtonAddSecondaryMenu from '../../../../../ui/ButtonAddSecondaryMenu'
-
-import { GET_ACCOUNT_SUBSCRIPTION_ALT_PRICES_QUERY } from './queries'
-
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Table,
 } from "tabler-react";
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+import ButtonAdd from '../../../../../ui/ButtonAdd';
+import AppSettingsContext from '../../../../../context/AppSettingsContext'
+import { GET_ACCOUNT_SUBSCRIPTION_ALT_PRICES_QUERY } from './queries'
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
 import AccountSubscriptionEditAltPriceDelete from "./AccountSubscriptionEditAltPriceDelete"
-import moment from 'moment';
+
 
 
 function AccountSubscriptionEditAltPrices({t, match, history}) {
@@ -38,8 +30,10 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`
   const activeTab = "alt_prices"
 
-  const buttonAdd = <ButtonAddSecondaryMenu 
-                      linkTo={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/alt_prices/add`} />
+  const pageHeaderButtonList = <ButtonAdd
+    addUrl={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/alt_prices/add`} 
+    className="ml-2"
+   />
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SUBSCRIPTION_ALT_PRICES_QUERY, {
     variables: {
@@ -48,12 +42,12 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBase activeTab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBase activeTab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
@@ -67,10 +61,8 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
 
     // Empty list
     if (!accountSubscriptionAltPrices.edges.length) { return (
-      <AccountSubscriptionEditListBase activeTab={activeTab}>
-        <div className="pull-right">{buttonAdd}</div>
-        <h5>{t('relations.account.subscriptions.alt_prices.title_list')}</h5>
-        <p>{t('relations.account.subscriptions.alt_prices.empty_list')}</p>
+      <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+        <Card.Body>{t('relations.account.subscriptions.alt_prices.empty_list')}</Card.Body>
       </AccountSubscriptionEditListBase>
     )}
 
@@ -99,17 +91,21 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditListBase activeTab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
-      <div className="pull-right">{buttonAdd}</div>
-      <h5>{t('relations.account.subscriptions.alt_prices.title_list')}</h5>
-      <Table>
+    <AccountSubscriptionEditListBase 
+      activeTab={activeTab} 
+      pageInfo={pageInfo} 
+      onLoadMore={onLoadMore}
+      returnUrl={returnUrl} 
+      pageHeaderButtonList={pageHeaderButtonList}
+    >
+      <br />
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.subscription_year')}</Table.ColHeader>
             <Table.ColHeader>{t('general.subscription_month')}</Table.ColHeader>
             <Table.ColHeader>{t('general.amount')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -135,8 +131,6 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <AccountSubscriptionEditAltPriceDelete id={node.id} />
                 </Table.Col>
               </Table.Row>
