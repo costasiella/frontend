@@ -134,13 +134,11 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
-              {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              {(data) ? 
-                <ScheduleClassesFilter data={data} refetch={refetch} />
-              : ""}
+          <Grid.Col md={12}>
+            {(data) ? 
+              <ScheduleClassesFilter data={data} refetch={refetch} />
+            : ""}
+            {children}
           </Grid.Col>
         </Grid.Row>
       </Container>

@@ -412,7 +412,8 @@
         "subscription_group": "__STRING_NOT_TRANSLATED__",
         "shift": "__STRING_NOT_TRANSLATED__",
         "employee2": "__STRING_NOT_TRANSLATED__",
-        "enrollments": "__STRING_NOT_TRANSLATED__"
+        "enrollments": "__STRING_NOT_TRANSLATED__",
+        "reset_filter": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1671,6 +1672,9 @@
                     "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
                     "delete_success": "__STRING_NOT_TRANSLATED__",
                     "delete_all_changes": "__STRING_NOT_TRANSLATED__"
+                },
+                "enrollments": {
+                    "search_result_empty": "__STRING_NOT_TRANSLATED__"
                 }
             },
             "placeholder_enddate": "__STRING_NOT_TRANSLATED__",
