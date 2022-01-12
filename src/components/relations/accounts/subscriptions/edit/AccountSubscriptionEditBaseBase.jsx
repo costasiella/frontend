@@ -25,7 +25,7 @@ import moment from 'moment'
 import ButtonBack from '../../../../ui/ButtonBack'
 
 
-function AccountSubscriptionEditBaseBase({t, history, match, children, returnUrl, account=null, subscription=null, active_tab}) {
+function AccountSubscriptionEditBaseBase({t, history, match, children, returnUrl, account=null, subscription=null, activeTab}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   
@@ -54,7 +54,7 @@ function AccountSubscriptionEditBaseBase({t, history, match, children, returnUrl
                 <AccountSubscriptionEditTabs 
                   account_id={accountId}
                   subscription_id={subscriptionId}
-                  active={active_tab}
+                  active={activeTab}
                 />
                 {children}
               </Card>

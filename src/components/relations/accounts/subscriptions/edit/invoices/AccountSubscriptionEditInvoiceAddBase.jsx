@@ -14,7 +14,7 @@ function AccountSubscriptionEditInvoiceAddBase({ t, history, match, children}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/invoices/`
 
   return (
-    <AccountSubscriptionEditBase active_tab={activeTab}>
+    <AccountSubscriptionEditBase activeTab={activeTab}>
       {children}
     </AccountSubscriptionEditBase>
   )

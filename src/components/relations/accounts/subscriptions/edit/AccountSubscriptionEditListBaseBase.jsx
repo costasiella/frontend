@@ -33,7 +33,7 @@ function AccountSubscriptionEditBaseBase({
   subscription=null, 
   pageInfo, 
   onLoadMore, 
-  active_tab}
+  activeTab}
   ){
 
   const appSettings = useContext(AppSettingsContext)
@@ -61,7 +61,7 @@ function AccountSubscriptionEditBaseBase({
                 cardTabs={<AccountSubscriptionEditTabs 
                   account_id={accountId}
                   subscription_id={subscriptionId}
-                  active={active_tab} /> }
+                  active={activeTab} /> }
               >
                 {children}
               </ContentCard>

@@ -46,12 +46,12 @@ function AccountSubscriptionEdit({t, match, history}) {
   const [ updateSubscription ] = useMutation(UPDATE_ACCOUNT_SUBSCRIPTION)
   
   if (loading) return (
-    <AccountSubscriptionEditBase active_tab={activeTab} returnUrl={returnUrl}>
+    <AccountSubscriptionEditBase activeTab={activeTab} returnUrl={returnUrl}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditBase>
   )
   if (error) return (
-    <AccountSubscriptionEditBase active_tab={activeTab} returnUrl={returnUrl}>
+    <AccountSubscriptionEditBase activeTab={activeTab} returnUrl={returnUrl}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditBase>
@@ -80,7 +80,7 @@ function AccountSubscriptionEdit({t, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditBase active_tab={activeTab} returnUrl={returnUrl}>
+    <AccountSubscriptionEditBase activeTab={activeTab} returnUrl={returnUrl}>
       <Formik
         initialValues={{ 
           organizationSubscription: initialdata.organizationSubscription.id,

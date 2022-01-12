@@ -14,7 +14,7 @@ function AccountSubscriptionEditAltPriceBase({ t, history, match, children}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/alt_prices/`
 
   return (
-    <AccountSubscriptionEditBase active_tab={activeTab}>
+    <AccountSubscriptionEditBase activeTab={activeTab}>
       {children}
     </AccountSubscriptionEditBase>
   )

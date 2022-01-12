@@ -59,12 +59,12 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
@@ -111,7 +111,7 @@ function AccountSubscriptionEditInvoices({t, location, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditListBase active_tab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
       <div className="pull-right">{buttonAdd}</div>
       <h5>{t('relations.account.subscriptions.invoices.title_list')}</h5>
       <Table>

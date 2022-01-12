@@ -14,7 +14,7 @@ function AccountSubscriptionEditCreditBase({ t, history, match, children}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/credits/`
 
   return (
-    <AccountSubscriptionEditBase active_tab={activeTab}>
+    <AccountSubscriptionEditBase activeTab={activeTab}>
       {children}
     </AccountSubscriptionEditBase>
   )
