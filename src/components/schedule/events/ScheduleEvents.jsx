@@ -34,6 +34,7 @@ import ContentCard from "../../general/ContentCard"
 import ScheduleEventsBase from "./ScheduleEventsBase"
 import ScheduleEventArchive from "./ScheduleEventArchive"
 
+import ButtonAdd from '../../ui/ButtonAdd'
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
@@ -51,11 +52,8 @@ function ScheduleEvents({t, history}) {
     variables: get_list_query_variables()
   })
 
-  const sidebarContent = <HasPermissionWrapper permission="add" resource="scheduleevent">
-    <Button color="primary btn-block mb-1"
-            onClick={() => history.push("/schedule/events/add")}>
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.events.add')}
-    </Button>
+  const pageHeaderButtonList = <HasPermissionWrapper permission="add" resource="scheduleevent">
+    <ButtonAdd addUrl="/schedule/events/add" />
   </HasPermissionWrapper>
 
   const cardHeaderContent = <Card.Options>
@@ -82,7 +80,7 @@ function ScheduleEvents({t, history}) {
 
   if (loading) {
     return (
-      <ScheduleEventsBase sidebarContent={sidebarContent}>
+      <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
         <ContentCard 
           cardTitle={t('schedule.events.title')}
           headerContent={cardHeaderContent}
@@ -97,7 +95,7 @@ function ScheduleEvents({t, history}) {
 
   if (error) {
     return (
-      <ScheduleEventsBase sidebarContent={sidebarContent}>
+      <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
         <ContentCard 
           cardTitle={t('schedule.events.title')}
           headerContent={cardHeaderContent}
@@ -113,7 +111,7 @@ function ScheduleEvents({t, history}) {
   const scheduleEvents = data.scheduleEvents
 
   return (
-    <ScheduleEventsBase sidebarContent={sidebarContent}>
+    <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={t('schedule.events.title')}
         headerContent={cardHeaderContent}
