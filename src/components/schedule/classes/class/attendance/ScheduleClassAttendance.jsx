@@ -162,6 +162,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                 {(showSearch && (queryAccountsData) && (!queryAccountsLoading) && (!queryAccountsError)) ?
                   <ContentCard cardTitle={t('general.search_results')}
                               pageInfo={queryAccountsData.accounts.pageInfo}
+                              hasCardBody={false}
                               onLoadMore={() => {
                                 fetchMoreAccounts({
                                   variables: {
@@ -189,7 +190,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                             }} >
                     { (!queryAccountsData.accounts.edges.length) ? 
                       t('schedule.classes.class.attendance.search_result_empty') : 
-                      <Table>
+                      <Table cards>
                         <Table.Header>
                           <Table.Row key={v4()}>
                             <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -227,6 +228,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                 {/* Attendance */}
                 <ContentCard cardTitle={t('general.attendance')}
                              pageInfo={queryAttendanceData.scheduleItemAttendances.pageInfo}
+                             hasCardBody={false}
                              onLoadMore={() => {
                                 fetchMoreAccounts({
                                 variables: {
@@ -252,7 +254,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                                 }
                               })
                             }} >
-                  <Table>
+                  <Table cards>
                     <Table.Header>
                       <Table.Row key={v4()}>
                         <Table.ColHeader>{t('general.name')}</Table.ColHeader>
