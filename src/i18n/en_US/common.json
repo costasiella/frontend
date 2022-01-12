@@ -1176,7 +1176,7 @@
                     "title": "Attendance chart"
                 },
                 "enrollments": {
-                    "search_result_empty": "__STRING_NOT_TRANSLATED__"
+                    "search_result_empty": "No customers found matching your search"
                 }
             },
             "no_instructor": "No instructor",

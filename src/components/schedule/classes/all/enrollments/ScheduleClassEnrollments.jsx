@@ -129,6 +129,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
                 {(showSearch && (queryAccountsData) && (!queryAccountsLoading) && (!queryAccountsError)) ?
                   <ContentCard cardTitle={t('general.search_results')}
                               pageInfo={queryAccountsData.accounts.pageInfo}
+                              hasCardBody={false}
                               onLoadMore={() => {
                                 fetchMoreAccounts({
                                   variables: {
@@ -155,8 +156,8 @@ function ScheduleClassEnrollments({ t, match, history }) {
                               })
                             }} >
                     { (!queryAccountsData.accounts.edges.length) ? 
-                      t('schedule.classes.class.enrollments.search_result_empty') : 
-                      <Table>
+                      <Card.Body>{t('schedule.classes.class.enrollments.search_result_empty')}</Card.Body> : 
+                      <Table cards>
                         <Table.Header>
                           <Table.Row key={v4()}>
                             <Table.ColHeader>{t('general.name')}</Table.ColHeader>
