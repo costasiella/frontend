@@ -306,10 +306,8 @@ function RelationsAccounts({t, history}) {
                           t("general.restore")
                       }
                     </button>
-                  </Table.Col>
                   {
                     (node.isActive) ? '' :
-                      <Table.Col className="text-right" key={v4()}>
                         <button className="icon btn btn-link btn-sm" 
                           title={t('general.delete')} 
                           href=""
@@ -331,8 +329,8 @@ function RelationsAccounts({t, history}) {
                         }}>
                           <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
                         </button>
-                      </Table.Col>
                   }
+                  </Table.Col>
                 </Table.Row>
               ))}
           </Table.Body>
