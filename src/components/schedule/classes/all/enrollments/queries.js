@@ -63,6 +63,28 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
 `
 
 
+export const GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY = gql`
+  query ScheduleItemEnrollmentOptions($after: String, $before: String, $account: ID!, $scheduleItem: ID!, $date: Date!) {
+    scheduleClassEnrollmentOptions(account: $account, scheduleItem: $scheduleItem, date: $date) {
+      date
+      subscriptions {
+        allowed
+        blocked
+        paused
+        accountSubscription {
+          id
+          dateStart
+          dateEnd
+          organizationSubscription {
+            name
+          }
+        }
+      }
+    }
+  }
+`
+
+
 
 export const CREATE_SCHEDULE_ITEM_ENROLLMENT = gql`
   mutation CreateScheduleItemEnrollment($input: CreateScheduleItemEnrollmentInput!) {
