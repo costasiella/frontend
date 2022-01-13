@@ -21,11 +21,12 @@ import RelationsAccountsBack from "../RelationsAccountsBack"
 
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
-
+import ButtonAdd from '../../../ui/ButtonAdd'
+import ButtonBack from '../../../ui/ButtonBack'
 import { GET_ACCOUNT_QUERY } from '../queries'
 
 
-function AccountNotesBase({ t, history, match, children, showBack=false }) {
+function AccountNotesBase({ t, history, match, children, showEditBack=false }) {
   const accountId = match.params.account_id
 
   const { loading, error, data } = useQuery(GET_ACCOUNT_QUERY, {
@@ -46,7 +47,16 @@ function AccountNotesBase({ t, history, match, children, showBack=false }) {
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={account.firstName + " " + account.lastName}>
-            <RelationsAccountsBack />
+            <div className='page-options d-flex'>
+              {(showEditBack) ?
+                <ButtonBack returnUrl={`/relations/accounts/${accountId}/notes/`} />
+              :
+                <React.Fragment>
+                  <RelationsAccountsBack />
+                  <ButtonAdd addUrl={`/relations/accounts/${accountId}/notes/add`} className='ml-2' />
+                </React.Fragment>
+              }
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
@@ -54,28 +64,6 @@ function AccountNotesBase({ t, history, match, children, showBack=false }) {
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-              {!(showBack) ?
-                <HasPermissionWrapper permission="add"
-                                      resource="accountnote">
-                  <Link to={`/relations/accounts/${match.params.account_id}/notes/add`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('relations.account.notes.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-                : "" 
-              }
-              {(showBack) ?
-                <HasPermissionWrapper permission="view"
-                                      resource="accountnote">
-                  <Link to={`/relations/accounts/${match.params.account_id}/notes/`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-                : ""
-              }
               <ProfileMenu 
                 activeLink='notes'
                 accountId={accountId}

@@ -43,7 +43,7 @@ function AccountNoteAdd({ t, history, match }) {
   )
 
   return (
-    <AccountNotesBase showBack={true}>
+    <AccountNotesBase showEditBack={true}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 
