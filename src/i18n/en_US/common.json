@@ -1048,9 +1048,9 @@
                 "toast_add_success": "Added document",
                 "title_edit": "Edit document",
                 "toast_edit_success": "Saved",
-                "add": "Add document",
                 "delete_confirm_msg": "Are you sure you wish to delete this document?",
-                "deleted": "Deleted document"
+                "deleted": "Deleted document",
+                "empty_list": "No documents have been uploaded yet for this customer"
             }
         },
         "b2b": {

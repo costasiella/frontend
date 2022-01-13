@@ -66,6 +66,19 @@ function AccountDocuments({t, match}) {
   const accountDocuments = data.accountDocuments
   console.log(accountDocuments)
 
+  // Empty list
+  if (!accountDocuments.edges.length) {
+    return (
+      <RelationsAccountProfileBase activeLink={activeLink} user={account} pageHeaderButtonList={pageHeaderButtonList}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.documents.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </RelationsAccountProfileBase>
+    )
+  }
+
   return (
     <RelationsAccountProfileBase 
       user={account}
