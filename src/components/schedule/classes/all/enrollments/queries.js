@@ -81,6 +81,12 @@ export const GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY = gql`
         }
       }
     }
+    account(id:$account) {
+      id
+      firstName
+      lastName
+      fullName
+    }
   }
 `
 
