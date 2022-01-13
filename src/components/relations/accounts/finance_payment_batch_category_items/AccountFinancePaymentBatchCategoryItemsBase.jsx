@@ -21,11 +21,13 @@ import RelationsAccountsBack from "../RelationsAccountsBack"
 
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
+import ButtonAdd from '../../../ui/ButtonAdd'
+import ButtonBack from '../../../ui/ButtonBack'
 
 import { GET_ACCOUNT_QUERY } from '../queries'
 
 
-function AccountFinancePaymentBatchcAtegoryItemsBase({ t, history, match, children, showBack=false }) {
+function AccountFinancePaymentBatchcAtegoryItemsBase({ t, history, match, children, showEditBack=false }) {
   const accountId = match.params.account_id
 
   const { loading, error, data } = useQuery(GET_ACCOUNT_QUERY, {
@@ -46,7 +48,26 @@ function AccountFinancePaymentBatchcAtegoryItemsBase({ t, history, match, childr
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={account.firstName + " " + account.lastName}>
-            <RelationsAccountsBack />
+            <div className='page-options d-flex'>
+              {(showEditBack) ?
+                <HasPermissionWrapper permission="view"
+                                      resource="accountfinancepaymentbatchcategoryitem">
+                  <ButtonBack returnUrl={`/relations/accounts/${accountId}/finance_payment_batch_category_items/`} />
+                </HasPermissionWrapper>
+                : 
+                <RelationsAccountsBack />
+              }
+              {!(showEditBack) ?
+                <HasPermissionWrapper permission="add"
+                                      resource="accountfinancepaymentbatchcategoryitem">
+                  <ButtonAdd 
+                    addUrl={`/relations/accounts/${accountId}/finance_payment_batch_category_items/add`}
+                    className="ml-2"
+                  />
+                </HasPermissionWrapper>
+                : "" 
+              }
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
@@ -54,28 +75,6 @@ function AccountFinancePaymentBatchcAtegoryItemsBase({ t, history, match, childr
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-              {!(showBack) ?
-                <HasPermissionWrapper permission="add"
-                                      resource="accountfinancepaymentbatchcategoryitem">
-                  <Link to={`/relations/accounts/${match.params.account_id}/finance_payment_batch_category_items/add`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('relations.account.finance_payment_batch_category_items.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-                : "" 
-              }
-              {(showBack) ?
-                <HasPermissionWrapper permission="view"
-                                      resource="accountfinancepaymentbatchcategoryitem">
-                  <Link to={`/relations/accounts/${match.params.account_id}/finance_payment_batch_category_items/`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-                : ""
-              }
               <ProfileMenu 
                 activeLink='finance_payment_batch_category_item'
                 accountId={accountId}

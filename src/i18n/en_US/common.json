@@ -1027,7 +1027,8 @@
                 "title_edit": "Edit batch item",
                 "toast_edit_success": "Saved",
                 "delete_confirm_msg": "Are you sure you wish to delete this batch item?",
-                "deleted": "Deleted batch item"
+                "deleted": "Deleted batch item",
+                "empty_list": "No batch category items have been created yet for this account"
             },
             "notes": {
                 "title": "Notes",

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 
 import {
   Button,
+  Card,
   Icon,
   Table
 } from "tabler-react";
@@ -29,6 +30,7 @@ import {
 
 function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
   const accountId = match.params.account_id
+  const cardTitle = t('relations.account.finance_payment_batch_category_items.title')
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEMS_QUERY, {
     variables: { account: accountId }
@@ -37,7 +39,9 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
 
   if (loading) return (
     <AccountFinancePaymentBatchCategoryItemsBase>
-      <p>{t('general.loading_with_dots')}</p>
+      <Card title={cardTitle}>
+        <Card.Body><p>{t('general.loading_with_dots')}</p></Card.Body>
+      </Card>
     </AccountFinancePaymentBatchCategoryItemsBase>
   )
   // Error
@@ -45,17 +49,33 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
     console.log(error)
     return (
       <AccountFinancePaymentBatchCategoryItemsBase>
-        <p>{t('general.error_sad_smiley')}</p>
+        <Card title={cardTitle}>
+          <Card.Body><p>{t('general.error_sad_smiley')}</p></Card.Body>
+        </Card>
       </AccountFinancePaymentBatchCategoryItemsBase>
     )
   }
 
   let batchCategoryItems = data.accountFinancePaymentBatchCategoryItems
 
+    
+  // Empty list
+  if (!batchCategoryItems.edges.length) {
+    return (
+      <AccountFinancePaymentBatchCategoryItemsBase>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.finance_payment_batch_category_items.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </AccountFinancePaymentBatchCategoryItemsBase>
+    )
+  }
+
   return (
     <AccountFinancePaymentBatchCategoryItemsBase>
       <ContentCard 
-        cardTitle={t('relations.account.finance_payment_batch_category_items.title')}
+        cardTitle={cardTitle}
         hasCardBody={false}
         pageInfo={batchCategoryItems.pageInfo}
         onLoadMore={() => {
@@ -91,7 +111,6 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
               <Table.ColHeader>{t('general.category')}</Table.ColHeader>
               <Table.ColHeader>{t('general.description')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader> 
-              <Table.ColHeader></Table.ColHeader> 
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -119,8 +138,6 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col>
                     <button 
                       className="icon btn btn-link btn-sm" 
                       title={t('general.delete')} 
