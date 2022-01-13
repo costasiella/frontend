@@ -1,11 +1,7 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
@@ -15,18 +11,8 @@ import AccountDocumentFormEdit from './AccountDocumentFormEdit'
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../../tools/date_tools'
-
-import ProfileMenu from "../ProfileMenu"
 
 
 function AccountDocumentEdit({t, history, match}) {
@@ -41,14 +27,9 @@ function AccountDocumentEdit({t, history, match}) {
   })
   const [updateDocument] = useMutation(UPDATE_DOCUMENT)
 
-  const sidebarButton = <Link to={returnUrl}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-    </Button>
-  </Link>
 
   if (loading) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       <Card title={cardTitle}>
         {t('general.loading_with_dots')}
       </Card>
@@ -56,7 +37,7 @@ function AccountDocumentEdit({t, history, match}) {
   )
 
   if (error) return (
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       {console.log(error)}
       <Card title={cardTitle}>
         {t('general.error_sad_smiley')}
@@ -72,7 +53,7 @@ function AccountDocumentEdit({t, history, match}) {
     <RelationsAccountProfileBase
       activeLink={activeLink}
       user={account}
-      sidebarButton={sidebarButton} 
+      returnUrl={returnUrl} 
     >
       <Card>
         <Card.Header>

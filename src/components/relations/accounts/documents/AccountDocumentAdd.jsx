@@ -1,10 +1,7 @@
-// @flow
-
 import React, { useState, useRef } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
@@ -16,8 +13,6 @@ import AccountClasspassForm from './AccountDocumentForm'
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
 
 import {
-  Icon,
-  Button,
   Card,
 } from "tabler-react";
 
@@ -43,14 +38,8 @@ function AccountDocumentAdd({t, match, history}) {
     setFileName(event.target.files[0].name)
   }
 
-  const sidebarButton = <Link to={returnUrl}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-    </Button>
-  </Link>
-
   if (loading) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       <Card title={cardTitle}>
         {t('general.loading_with_dots')}
       </Card>
@@ -58,7 +47,7 @@ function AccountDocumentAdd({t, match, history}) {
   )
 
   if (error) return (
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
       {console.log(error)}
       <Card title={cardTitle}>
         {t('general.error_sad_smiley')}
@@ -73,7 +62,7 @@ function AccountDocumentAdd({t, match, history}) {
     <RelationsAccountProfileBase
       activeLink={activeLink}
       user={account}
-      sidebarButton={sidebarButton} 
+      returnUrl={returnUrl} 
     >
       <Card>
         <Card.Header>
