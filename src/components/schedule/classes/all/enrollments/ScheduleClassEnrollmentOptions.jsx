@@ -18,7 +18,6 @@ import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
 function ScheduleClassEnrollmentOptions({ t, history, match }) {
   const classId = match.params.class_id
   const returnUrl = `/schedule/classes/all/enrollments/${classId}`
-  const cardTitle = t('schedule.classes.enrollments.title_add')
   const menuActiveLink = "enrollments" 
   const pageHeaderButtonList = <ScheduleClassEnrollmentBack classId={classId} />
   // Fetch 
@@ -32,57 +31,9 @@ function ScheduleClassEnrollmentOptions({ t, history, match }) {
       pageHeaderButtonList={pageHeaderButtonList}
     >
       <h4>Enrollment options for (account here)</h4>
-      <Formik
-        initialValues={{ 
-          price: "", 
-          dateStart: new Date() ,
-        }}
-        validationSchema={SCHEDULE_CLASS_ENROLLMENT_SCHEMA}
-        onSubmit={(values, { setSubmitting }) => {
+      {/* {enrollments.edges.map(({ node }) => (
 
-            let dateEnd
-            if (values.dateEnd) {
-              dateEnd = dateToLocalISO(values.dateEnd)
-            } else {
-              dateEnd = values.dateEnd
-            }
-
-            addScheduleClassEnrollment({ variables: {
-              input: {
-                scheduleItem: classId,
-                dateStart: dateToLocalISO(values.dateStart),
-                dateEnd: dateEnd
-              }
-            }, refetchQueries: [
-                {query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, variables: { scheduleItem: classId }},
-                // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
-            ]})
-            .then(({ data }) => {
-                console.log('got data', data);
-                history.push(returnUrl)
-                toast.success((t('schedule.classes.enrollments.toast_add_success')), {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                  })
-              }).catch((error) => {
-                toast.error((t('general.toast_server_error')) +  error, {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                  })
-                console.log('there was an error sending the query', error)
-                setSubmitting(false)
-              })
-        }}
-        >
-        {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-          <ScheduleClassEnrollmentForm
-            isSubmitting={isSubmitting}
-            setFieldTouched={setFieldTouched}
-            setFieldValue={setFieldValue}
-            errors={errors}
-            values={values}
-            returnUrl={returnUrl}
-          />
-        )}
-      </Formik>
+      )} */}
     </ClassEditBase>
   )
 }
