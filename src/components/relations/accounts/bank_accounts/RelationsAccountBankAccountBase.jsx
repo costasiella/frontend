@@ -17,13 +17,15 @@ import {
 } from "tabler-react"
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
+import ButtonAdd from '../../../ui/ButtonAdd';
+import ButtonBack from '../../../ui/ButtonBack';
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
-
 import RelationsAccountsBack from "../RelationsAccountsBack"
 import ProfileMenu from "../ProfileMenu"
 
 
-function RelationsAccountBankAccountBase({ t, match, history, children, bankAccountId="", showBack=false }) {
+
+function RelationsAccountBankAccountBase({ t, match, history, children, bankAccountId="", pageHeaderButtonList, showEditBack=false }) {
   const accountId = match.params.account_id
 
   const { loading, error, data } = useQuery(GET_ACCOUNT_QUERY, {
@@ -44,7 +46,24 @@ function RelationsAccountBankAccountBase({ t, match, history, children, bankAcco
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={account.firstName + " " + account.lastName}>
-            <RelationsAccountsBack />
+            <div className='page-options d-flex'>
+              {(showEditBack) ? 
+                <ButtonBack returnUrl={`/relations/accounts/${accountId}/bank_accounts/`} /> :
+                <RelationsAccountsBack />  
+              }
+              {pageHeaderButtonList}
+              {((bankAccountId) && !(showEditBack)) ?
+                <HasPermissionWrapper permission="add"
+                                      resource="accountbankaccountmandate">
+                  <ButtonAdd 
+                    addUrl={`/relations/accounts/${match.params.account_id}/bank_accounts/${bankAccountId}/mandates/add`}
+                    buttonText={t('relations.account.bank_accounts.mandates.add')}
+                    className="ml-2"
+                  />
+                </HasPermissionWrapper>
+                : "" 
+              }
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
@@ -52,28 +71,6 @@ function RelationsAccountBankAccountBase({ t, match, history, children, bankAcco
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-              {((bankAccountId) && !(showBack)) ?
-                <HasPermissionWrapper permission="add"
-                                      resource="accountbankaccountmandate">
-                  <Link to={`/relations/accounts/${match.params.account_id}/bank_accounts/${bankAccountId}/mandates/add`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('relations.account.bank_accounts.mandates.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-                : "" 
-              }
-              {(showBack) ?
-                <HasPermissionWrapper permission="view"
-                                      resource="accountbankaccount">
-                  <Link to={`/relations/accounts/${match.params.account_id}/bank_accounts/`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-                : ""
-              }
               <ProfileMenu 
                 activeLink='bank_account'
                 accountId={accountId}

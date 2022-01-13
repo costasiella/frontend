@@ -39,7 +39,7 @@ function RelationsAccountBankAccountMandateAdd({ t, match, history }) {
  
 
   return (
-    <RelationsAccountBankAccountBase showBack={true}>
+    <RelationsAccountBankAccountBase showEditBack={true}>
       <Card>
         <Card.Header>
           <Card.Title>{t('relations.account.bank_accounts.mandates.title_add')}</Card.Title>

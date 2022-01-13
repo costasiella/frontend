@@ -6,15 +6,21 @@ import {
   Button
 } from "tabler-react"
 
-const ButtonAdd = ({ t, addUrl, className="" }) => (
-  <Link to={addUrl}>
-    <Button
-      className={className}
-      color="primary"
-      icon="plus-circle">
-        {t("general.add")}
-    </Button>
-  </Link>
-)
+function ButtonAdd({ t, addUrl, className="", buttonText="" }) {
+  if (!buttonText) {
+    buttonText = t("general.add")
+  }
+
+  return (
+    <Link to={addUrl}>
+      <Button
+        className={className}
+        color="primary"
+        icon="plus-circle">
+          {buttonText}
+      </Button>
+    </Link>
+  )
+}
 
 export default withTranslation()(ButtonAdd)

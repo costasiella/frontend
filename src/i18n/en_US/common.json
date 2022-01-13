@@ -1014,7 +1014,8 @@
                     "toast_edit_success": "Saved",
                     "delete_confirm_msg": "Are you sure you wish to delete this mandate?",
                     "deleted": "Deleted mandate",
-                    "add": "Add mandate"
+                    "add": "Add mandate",
+                    "title_edit": "Edit mandate"
                 }
             },
             "finance_payment_batch_category_items": {
