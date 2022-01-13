@@ -1040,7 +1040,8 @@
             },
             "accepted_documents": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "accepted_from_address": "__STRING_NOT_TRANSLATED__"
+                "accepted_from_address": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "classes": {
                 "title": "__STRING_NOT_TRANSLATED__",
@@ -1077,7 +1078,6 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
                 "deleted": "__STRING_NOT_TRANSLATED__",
-                "add": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "invoices": {
