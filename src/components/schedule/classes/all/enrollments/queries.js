@@ -64,9 +64,8 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
 
 
 export const GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY = gql`
-  query ScheduleItemEnrollmentOptions($after: String, $before: String, $account: ID!, $scheduleItem: ID!, $date: Date!) {
-    scheduleClassEnrollmentOptions(account: $account, scheduleItem: $scheduleItem, date: $date) {
-      date
+  query ScheduleItemEnrollmentOptions($account: ID!, $scheduleItem: ID!) {
+    scheduleClassEnrollmentOptions(account: $account, scheduleItem: $scheduleItem) {
       subscriptions {
         allowed
         blocked
@@ -90,6 +89,31 @@ export const GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY = gql`
   }
 `
 
+export const GET_ACCOUNT_SUBSCRIPTION_QUERY = gql`
+  query AccountSubscription($id: ID!) {
+    accountSubscription(id:$id) {
+      id
+      account {
+        id
+        fullName
+      }
+      organizationSubscription {
+        id
+        name
+      }
+      financePaymentMethod {
+        id
+        name
+      }
+      dateStart
+      dateEnd
+      note
+      creditTotal
+      registrationFeePaid
+      createdAt
+    }
+  }
+`
 
 
 export const CREATE_SCHEDULE_ITEM_ENROLLMENT = gql`
