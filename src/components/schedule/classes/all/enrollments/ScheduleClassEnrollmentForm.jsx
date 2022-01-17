@@ -11,6 +11,7 @@ import {
 } from "tabler-react"
 
 import CSDatePicker from "../../../../ui/CSDatePicker"
+import ButtonFormCancel from '../../../../ui/ButtonFormCancel'
 
 
 const ScheduleClassEnrollmentForm = ({ t, history, match, isSubmitting, errors, values, returnUrl, setFieldTouched, setFieldValue }) => (
@@ -48,9 +49,7 @@ const ScheduleClassEnrollmentForm = ({ t, history, match, isSubmitting, errors, 
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(returnUrl)} role="button">
-              {t('general.cancel')}
-          </Button>
+          <ButtonFormCancel returnUrl={returnUrl} />
       </Card.Footer>
   </FoForm>
 );
