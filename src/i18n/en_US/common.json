@@ -1032,7 +1032,6 @@
             },
             "notes": {
                 "title": "Notes",
-                "add": "Add note",
                 "title_add": "Add note",
                 "toast_add_success": "Added note",
                 "backoffice": "Backoffice",
@@ -1175,6 +1174,9 @@
                 },
                 "enrollments": {
                     "search_result_empty": "No customers found matching your search"
+                },
+                "enroll": {
+                    "subscription_not_allowed": "Not allowed for this class"
                 }
             },
             "no_instructor": "No instructor",
@@ -1195,8 +1197,9 @@
             "spaces_walk_in": "Walk-in spaces (Not bookable online)",
             "explanation": "Weekly & one time classes",
             "enrollments": {
-                "title_add": "__STRING_NOT_TRANSLATED__",
-                "toast_add_success": "__STRING_NOT_TRANSLATED__"
+                "title_add": "Enroll",
+                "toast_add_success": "Added enrollment",
+                "enrollment_options_for": "Enrollment options for"
             }
         },
         "appointments": {
