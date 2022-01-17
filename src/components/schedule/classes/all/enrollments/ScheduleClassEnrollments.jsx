@@ -231,11 +231,13 @@ function ScheduleClassEnrollments({ t, match, history }) {
                       {enrollments.edges.map(({ node }) => (
                           <Table.Row key={v4()}>
                             <Table.Col>
-                              {node.account.fullName}
+                              {node.accountSubscription.account.fullName}
                             </Table.Col>
                             <Table.Col>
                             </Table.Col>
                             <Table.Col>
+                            </Table.Col>
+                            <Table.Col className="text-right">
                               {/* Edit */}
                               edit
                               {/* Delete */}
