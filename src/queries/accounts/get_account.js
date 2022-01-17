@@ -6,6 +6,7 @@ export const GET_ACCOUNT = gql`
       id
       firstName
       lastName
+      fullName
       email
       phone
       mobile
