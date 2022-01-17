@@ -623,7 +623,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/all/edit/:class_id/" component={ScheduleClassEditAll} />
             <PrivateRoute exact path="/schedule/classes/all/classpasses/:class_id/" component={ScheduleClassClasspasses} />
             <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/" component={ScheduleClassEnrollments} />
-            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/add/:account_id" component={ScheduleClassEnrollmentAdd} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/add/:account_id/:account_subscription_id" 
+                          component={ScheduleClassEnrollmentAdd} />
             <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/options/:account_id" component={ScheduleClassEnrollmentOptions} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/" component={ScheduleClassPrices} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/add" component={ScheduleClassPriceAdd} />
