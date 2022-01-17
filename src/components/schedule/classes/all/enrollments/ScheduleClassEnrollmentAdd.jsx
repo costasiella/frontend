@@ -51,7 +51,9 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
   )
 
   const account = data.accountSubscription.account
-  cardTitle = `${cardTitle} ${account.fullName}`
+  const accountSubscription = data.accountSubscription
+  const using = t("general.using")
+  cardTitle = `${cardTitle} ${account.fullName} ${using} ${accountSubscription.organizationSubscription.name}`
   
   // TODO: Add account subscription to sent values
   

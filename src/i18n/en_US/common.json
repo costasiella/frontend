@@ -506,7 +506,8 @@
         "employee2": "Employee 2",
         "enrollments": "Enrollments",
         "reset_filter": "Reset filter",
-        "run_task": "Run task"
+        "run_task": "Run task",
+        "using": "using"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
