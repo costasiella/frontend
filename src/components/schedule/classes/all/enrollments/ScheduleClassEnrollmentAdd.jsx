@@ -4,28 +4,59 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Card } from 'tabler-react';
+import { Dimmer } from 'tabler-react';
 
-import { GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, CREATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
+import { GET_ACCOUNT_SUBSCRIPTION_QUERY, GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, CREATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
 import { SCHEDULE_CLASS_ENROLLMENT_SCHEMA } from './yupSchema'
 import ScheduleClassEnrollmentForm from './ScheduleClassEnrollmentForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
+import ButtonBack from '../../../../ui/ButtonBack';
 
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
 
 
 function ScheduleClassEnrollmentAdd({ t, history, match }) {
+  const accountId = match.params.account_id
   const classId = match.params.class_id
   const accountSubscriptionId = match.params.account_subscription_id
-  const returnUrl = `/schedule/classes/all/enrollments/${classId}`
-  const cardTitle = t('schedule.classes.enrollments.title_add')
+  const returnUrl = `/schedule/classes/all/enrollments/${classId}/options/${accountId}`
+  const nextUrl = `/schedule/classes/all/enrollments/${classId}`
+  let cardTitle = t('schedule.classes.enrollments.title_add')
   const menuActiveLink = "enrollments" 
-  const pageHeaderButtonList = <ScheduleClassEnrollmentBack classId={classId} />
+  const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
+  const { loading, error, data } = useQuery(GET_ACCOUNT_SUBSCRIPTION_QUERY, {
+    variables: { id: accountSubscriptionId}
+  })
+  const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
+
+  if (loading) return (
+    <ClassEditBase
+      cardTitle={cardTitle}
+      menuActiveLink={menuActiveLink}
+      pageHeaderButtonList={pageHeaderButtonList}
+    >
+      <Dimmer loader={true} active={true} />
+    </ClassEditBase>
+  )
+
+  if (error) return (
+    <ClassEditBase
+      cardTitle={cardTitle}
+      menuActiveLink={menuActiveLink}
+      pageHeaderButtonList={pageHeaderButtonList}
+    >
+      <p>{t('general.error_sad_smiley')}</p>
+    </ClassEditBase>
+  )
+
+  const account = data.accountSubscription.account
+  cardTitle = `${cardTitle} ${account.fullName}`
   
   // TODO: Add account subscription to sent values
+  
 
-  const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
+  
 
   return (
     <ClassEditBase
@@ -51,6 +82,7 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
             addScheduleClassEnrollment({ variables: {
               input: {
                 scheduleItem: classId,
+                accountSubscription: accountSubscriptionId,
                 dateStart: dateToLocalISO(values.dateStart),
                 dateEnd: dateEnd
               }
@@ -60,7 +92,7 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
             ]})
             .then(({ data }) => {
                 console.log('got data', data);
-                history.push(returnUrl)
+                history.push(nextUrl)
                 toast.success((t('schedule.classes.enrollments.toast_add_success')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
