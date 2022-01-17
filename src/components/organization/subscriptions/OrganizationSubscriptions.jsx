@@ -34,13 +34,13 @@ function OrganizationSubscriptions({t, history}) {
   const headerOptions = <Card.Options>
     <Button color={(!archived) ? 'primary': 'secondary'}  
             size="sm"
-            onClick={() => {setArchived(false); refetch({archived: archived});}}>
+            onClick={() => {setArchived(false); refetch({archived: false});}}>
       {t('general.current')}
     </Button>
     <Button color={(archived) ? 'primary': 'secondary'} 
             size="sm" 
             className="ml-2" 
-            onClick={() => {setArchived(true); refetch({archived: archived});}}>
+            onClick={() => {setArchived(true); refetch({archived: true});}}>
       {t('general.archive')}
     </Button>
   </Card.Options>
@@ -114,6 +114,7 @@ function OrganizationSubscriptions({t, history}) {
               <Table.ColHeader>{t('general.shop')}</Table.ColHeader>
               <Table.ColHeader>{t('general.classes')}</Table.ColHeader>
               <Table.ColHeader><span className="pull-right">{t('general.price')}</span></Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -154,8 +155,6 @@ function OrganizationSubscriptions({t, history}) {
                       {t('general.edit')}
                     </Button>
                   }
-                </Table.Col>
-                <Table.Col className="text-right" key={v4()}>
                   <button className="icon btn btn-link btn-sm" 
                       title={t('general.archive')} 
                       href=""
@@ -182,7 +181,7 @@ function OrganizationSubscriptions({t, history}) {
                     console.log('there was an error sending the query', error);
                   })
                   }}>
-                    <Icon prefix="fa" name="inbox" />
+                    <Icon name="inbox" />
                   </button>
                 </Table.Col>
               </Table.Row>
