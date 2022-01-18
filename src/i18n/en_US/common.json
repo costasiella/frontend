@@ -1174,7 +1174,9 @@
                     "title": "Attendance chart"
                 },
                 "enrollments": {
-                    "search_result_empty": "No customers found matching your search"
+                    "search_result_empty": "No customers found matching your search",
+                    "delete_confirm_msg": "Are you sure you wish to delete this enrollment?",
+                    "delete_success": "Deleted enrollment"
                 },
                 "enroll": {
                     "subscription_not_allowed": "Not allowed for this class"
@@ -1200,7 +1202,9 @@
             "enrollments": {
                 "title_add": "Enroll",
                 "toast_add_success": "Added enrollment",
-                "enrollment_options_for": "Enrollment options for"
+                "enrollment_options_for": "Enrollment options for",
+                "title_edit": "Edit enrollment",
+                "toast_edit_success": "Saved"
             }
         },
         "appointments": {
