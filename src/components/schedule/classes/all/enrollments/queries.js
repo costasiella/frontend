@@ -62,6 +62,27 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
   }
 `
 
+export const GET_SCHEDULE_ITEM_ENROLLMENT_QUERY = gql`
+  query ScheduleItemEnrollment($id: ID!) {
+    scheduleItemEnrollment(id: $id) {
+      id
+      dateStart
+      dateEnd
+      accountSubscription {
+        id
+        organizationSubscription {
+          id
+          name
+        }
+        account {
+          id
+          fullName
+        }
+      }   
+    }
+  }
+`
+
 
 export const GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY = gql`
   query ScheduleItemEnrollmentOptions($account: ID!, $scheduleItem: ID!) {
@@ -143,58 +164,3 @@ export const DELETE_SCHEDULE_ITEM_ENROLLMENT = gql`
     }
   }
 `
-
-
-// export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
-//   query ScheduleItemAccount($before: String, $after: String, $id: ID!) {
-//     scheduleItemAccount(id: $id) {
-//       id
-//       account {
-//         id
-//         fullName
-//       }
-//       role
-//       account2 {
-//         id
-//         fullName
-//       }
-//       role2
-//       dateStart
-//       dateEnd       
-//     }
-//     accounts(first: 15, before: $before, after: $after, isActive: true, instructor: true) {
-//       pageInfo {
-//         startCursor
-//         endCursor
-//         hasNextPage
-//         hasPreviousPage
-//       }
-//       edges {
-//         node {
-//           id
-//           fullName
-//         }
-//       }
-//     }
-//   }
-// `
-
-
-// export const GET_INPUT_VALUES_QUERY = gql`
-//   query InputValues($after: String, $before: String) {
-//     accounts(first: 15, before: $before, after: $after, isActive: true, instructor: true) {
-//       pageInfo {
-//         startCursor
-//         endCursor
-//         hasNextPage
-//         hasPreviousPage
-//       }
-//       edges {
-//         node {
-//           id
-//           fullName
-//         }
-//       }
-//     }
-//   }
-// `
