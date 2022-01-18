@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useQuery, useLazyQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -20,29 +20,27 @@ import {
   Table
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
+import AppSettingsContext from '../../../../context/AppSettingsContext'
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
-// import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
 import { getAccountsQueryVariables, getEnrollmentsListQueryVariables } from "./tools"
-
-// import { classSubtitle } from "../tools"
 
 import ClassEditBack from "../ClassEditBack"
 import ClassEditMenu from "../ClassEditMenu"
 import ContentCard from "../../../../general/ContentCard"
 import InputSearch from "../../../../general/InputSearch"
-// import ScheduleClassEnrollmentsDelete from "./ScheduleClassEnrollmentsDelete"
-// import ClassEditBase from "../ClassEditBase"
-
+import ScheduleClassEnrollmentDelete from "./ScheduleClassEnrollmentDelete"
+import ButtonEdit from '../../../../ui/ButtonEdit'
 import { GET_ACCOUNTS_QUERY } from "../../../../../queries/accounts/account_search_queries"
 import { GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY } from "./queries"
 import CSLS from "../../../../../tools/cs_local_storage"
 
 
 function ScheduleClassEnrollments({ t, match, history }) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+  
   const subtitle = ''
-
   const [showSearch, setShowSearch] = useState(false)
   const returnUrl = "/schedule/classes/"
   const scheduleItemId = match.params.class_id
@@ -222,6 +220,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
                     <Table.Header>
                       <Table.Row key={v4()}>
                         <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+                        <Table.ColHeader>{t('general.subscription')}</Table.ColHeader>
                         <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
                         <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
                         <Table.ColHeader></Table.ColHeader>
@@ -234,14 +233,19 @@ function ScheduleClassEnrollments({ t, match, history }) {
                               {node.accountSubscription.account.fullName}
                             </Table.Col>
                             <Table.Col>
+                              {node.accountSubscription.organizationSubscription.name}
                             </Table.Col>
                             <Table.Col>
+                              {moment(node.dateStart).format(dateFormat)}
+                            </Table.Col>
+                            <Table.Col>
+                              {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
                             </Table.Col>
                             <Table.Col className="text-right">
                               {/* Edit */}
-                              edit
+                              <ButtonEdit editUrl={`/schedule/classes/all/enrollments/${scheduleItemId}/edit/${node.id}`} />
                               {/* Delete */}
-                              delete
+                              <ScheduleClassEnrollmentDelete node={node} />
                               {/* <ScheduleClassEnrollmentsDelete node={node} /> */}                            
                             </Table.Col>
                           </Table.Row>
