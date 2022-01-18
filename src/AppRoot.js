@@ -209,6 +209,7 @@ import ScheduleClassAdd from './components/schedule/classes/ScheduleClassAdd'
 import ScheduleClassEditAll from './components/schedule/classes/all/edit/ScheduleClassEditAll'
 import ScheduleClassEnrollments from './components/schedule/classes/all/enrollments/ScheduleClassEnrollments'
 import ScheduleClassEnrollmentAdd from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentAdd'
+import ScheduleClassEnrollmentEdit from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentEdit'
 import ScheduleClassEnrollmentOptions from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentOptions'
 import ScheduleClassClasspasses from './components/schedule/classes/all/classpasses/ScheduleClassClasspasses'
 import ScheduleClassSubscriptions from './components/schedule/classes/all/subscriptions/ScheduleClassSubscriptions'
@@ -625,6 +626,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/" component={ScheduleClassEnrollments} />
             <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/add/:account_id/:account_subscription_id" 
                           component={ScheduleClassEnrollmentAdd} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/edit/:id" 
+                          component={ScheduleClassEnrollmentEdit} />
             <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/options/:account_id" component={ScheduleClassEnrollmentOptions} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/" component={ScheduleClassPrices} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/add" component={ScheduleClassPriceAdd} />
