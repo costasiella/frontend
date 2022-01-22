@@ -93,3 +93,11 @@ export const GET_INPUT_VALUES_QUERY = gql`
     }
   }
 `
+
+export const DELETE_SUBSCRIPTION_PRICE = gql`
+  mutation DeleteOrganizationSubscriptionPrice($input: DeleteOrganizationSubscriptionPriceInput!) {
+    deleteOrganizationSubscriptionPrice(input: $input) {
+      ok
+    }
+  }
+`

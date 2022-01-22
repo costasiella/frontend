@@ -1,8 +1,5 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { Query, Mutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -28,19 +25,11 @@ import ContentCard from "../../../general/ContentCard"
 
 import AlertInfo from "../../../ui/AlertInfo"
 
-import { GET_SUBSCRIPTION_PRICES_QUERY } from "./queries"
+import { GET_SUBSCRIPTION_PRICES_QUERY, DELETE_SUBSCRIPTION_PRICE } from "./queries"
 import { GET_SUBSCRIPTIONS_QUERY } from "../queries"
 
 import moment from 'moment'
 
-
-const DELETE_SUBSCRIPTION_PRICE = gql`
-  mutation DeleteOrganizationSubscriptionPrice($input: DeleteOrganizationSubscriptionPriceInput!) {
-    deleteOrganizationSubscriptionPrice(input: $input) {
-      ok
-    }
-  }
-`
 
 
 const confirmDelete = (t, match, deleteSubscriptionPrice, node) => {
