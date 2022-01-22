@@ -507,7 +507,8 @@
         "enrollments": "Enrollments",
         "reset_filter": "Reset filter",
         "run_task": "Run task",
-        "using": "using"
+        "using": "using",
+        "past": "__STRING_NOT_TRANSLATED__"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -673,7 +674,8 @@
                 "deleted": "Deleted subscriptions group"
             },
             "credit_accumulation_days": "Credit accumulation in days",
-            "explanation": "A number of or unlimited classes for a monthly fee"
+            "explanation": "A number of or unlimited classes for a monthly fee",
+            "reconciliation_classes": "Reconciliation classes"
         },
         "subscription": {
             "public": "This is a public subscription",

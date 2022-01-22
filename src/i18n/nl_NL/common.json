@@ -415,7 +415,8 @@
         "enrollments": "__STRING_NOT_TRANSLATED__",
         "reset_filter": "__STRING_NOT_TRANSLATED__",
         "run_task": "__STRING_NOT_TRANSLATED__",
-        "using": "__STRING_NOT_TRANSLATED__"
+        "using": "__STRING_NOT_TRANSLATED__",
+        "past": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1459,7 +1460,8 @@
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
             "add": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "reconciliation_classes": "__STRING_NOT_TRANSLATED__"
         },
         "languages": {
             "title": "__STRING_NOT_TRANSLATED__",
