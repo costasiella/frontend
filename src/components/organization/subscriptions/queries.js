@@ -150,28 +150,6 @@ export const CREATE_SUBSCRIPTION = gql`
     createOrganizationSubscription(input: $input) {
       organizationSubscription {
         id
-        displayPublic
-        displayShop
-        name
-        description
-        sortOrder
-        minDuration
-        classes
-        subscriptionUnit
-        subscriptionUnitDisplay
-        reconciliationClasses
-        creditValidity
-        unlimited
-        termsAndConditions
-        quickStatsAmount
-        financeGlaccount {
-          id
-          name
-        }
-        financeCostcenter {
-          id
-          name
-        }
       }
     }
   }
@@ -183,28 +161,6 @@ export const UPDATE_SUBSCRIPTION = gql`
     updateOrganizationSubscription(input: $input) {
       organizationSubscription {
         id
-        displayPublic
-        displayShop
-        name
-        description
-        sortOrder
-        minDuration
-        classes
-        subscriptionUnit
-        subscriptionUnitDisplay
-        reconciliationClasses
-        creditValidity
-        unlimited
-        termsAndConditions
-        quickStatsAmount
-        financeGlaccount {
-          id
-          name
-        }
-        financeCostcenter {
-          id
-          name
-        }
       }
     }
   }

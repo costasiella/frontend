@@ -102,7 +102,7 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
       { (values.unlimited) ? ""
         : 
         // Show if not unlimited
-        <span>
+        <React.Fragment>
           <Grid.Row>
             <Grid.Col>
               <Form.Group label={t('general.classes')}>
@@ -126,14 +126,27 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
               </Form.Group>
             </Grid.Col>
           </Grid.Row>
-          <Form.Group label={t('organization.subscriptions.credit_accumulation_days')}>
-            <Field type="text" 
-                  name="creditAccumulationDays" 
-                  className={(errors.creditAccumulationDays) ? "form-control is-invalid" : "form-control"} 
-                  autoComplete="off" />
-            <ErrorMessage name="creditAccumulationDays" component="span" className="invalid-feedback" />
-          </Form.Group>
-        </span>
+          <Grid.Row>
+            <Grid.Col>
+              <Form.Group label={t('organization.subscriptions.credit_accumulation_days')}>
+                <Field type="text" 
+                      name="creditAccumulationDays" 
+                      className={(errors.creditAccumulationDays) ? "form-control is-invalid" : "form-control"} 
+                      autoComplete="off" />
+                <ErrorMessage name="creditAccumulationDays" component="span" className="invalid-feedback" />
+              </Form.Group>
+            </Grid.Col>
+            <Grid.Col>
+              <Form.Group label={t('organization.subscriptions.reconciliation_classes')}>
+                <Field type="text" 
+                      name="reconciliationClasses" 
+                      className={(errors.reconciliationClasses) ? "form-control is-invalid" : "form-control"} 
+                      autoComplete="off" />
+                <ErrorMessage name="reconciliationClasses" component="span" className="invalid-feedback" />
+              </Form.Group>
+            </Grid.Col>
+          </Grid.Row>
+        </React.Fragment>
       } 
       <Form.Group label={t('general.terms_and_conditions')}>
         <Editor

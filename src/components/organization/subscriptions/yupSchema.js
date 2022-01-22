@@ -16,6 +16,8 @@ export const SUBSCRIPTION_SCHEMA = Yup.object().shape({
     subscriptionUnit: Yup.string(),
     creditValidity: Yup.number()
       .min(0),
+    reconciliationClasses: Yup.number()
+      .min(0),
     quickStatsAmount: Yup.number()
       .min(0),
     termsAndConditions: Yup.string()
