@@ -115,6 +115,27 @@ mutation CreateOrganizationSubscriptionPrice($input: CreateOrganizationSubscript
 }
 `
 
+export const UPDATE_SUBSCRIPTION_PRICE = gql`
+mutation UpdateOrganizationSubscriptionPrice($input: UpdateOrganizationSubscriptionPriceInput!) {
+  updateOrganizationSubscriptionPrice(input: $input) {
+    organizationSubscriptionPrice {
+      id
+      organizationSubscription {
+        id
+        name
+      }
+      price
+      financeTaxRate {
+        id
+        name
+      }
+      dateStart
+      dateEnd
+    }
+  }
+}
+`
+
 export const DELETE_SUBSCRIPTION_PRICE = gql`
   mutation DeleteOrganizationSubscriptionPrice($input: DeleteOrganizationSubscriptionPriceInput!) {
     deleteOrganizationSubscriptionPrice(input: $input) {

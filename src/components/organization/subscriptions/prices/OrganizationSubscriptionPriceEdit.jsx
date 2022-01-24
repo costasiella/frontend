@@ -8,7 +8,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SUBSCRIPTION_PRICES_QUERY, GET_SUBSCRIPTION_PRICE_QUERY } from './queries'
+import { GET_SUBSCRIPTION_PRICES_QUERY, GET_SUBSCRIPTION_PRICE_QUERY, UPDATE_SUBSCRIPTION_PRICE } from './queries'
 import { GET_SUBSCRIPTIONS_QUERY } from '../queries'
 
 import { SUBSCRIPTION_PRICE_SCHEMA } from './yupSchema'
@@ -27,28 +27,6 @@ import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 
-
-
-const UPDATE_SUBSCRIPTION_PRICE = gql`
-  mutation UpdateOrganizationSubscriptionPrice($input: UpdateOrganizationSubscriptionPriceInput!) {
-    updateOrganizationSubscriptionPrice(input: $input) {
-      organizationSubscriptionPrice {
-        id
-        organizationSubscription {
-          id
-          name
-        }
-        price
-        financeTaxRate {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-      }
-    }
-  }
-`
 
 
 class OrganizationSubscriptionPriceEdit extends Component {
