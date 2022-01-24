@@ -94,6 +94,27 @@ export const GET_INPUT_VALUES_QUERY = gql`
   }
 `
 
+export const ADD_SUBSCRIPTION_PRICE = gql`
+mutation CreateOrganizationSubscriptionPrice($input: CreateOrganizationSubscriptionPriceInput!) {
+  createOrganizationSubscriptionPrice(input: $input) {
+    organizationSubscriptionPrice {
+      id
+      organizationSubscription {
+        id
+        name
+      }
+      price
+      financeTaxRate {
+        id
+        name
+      }
+      dateStart
+      dateEnd
+    }
+  }
+}
+`
+
 export const DELETE_SUBSCRIPTION_PRICE = gql`
   mutation DeleteOrganizationSubscriptionPrice($input: DeleteOrganizationSubscriptionPriceInput!) {
     deleteOrganizationSubscriptionPrice(input: $input) {

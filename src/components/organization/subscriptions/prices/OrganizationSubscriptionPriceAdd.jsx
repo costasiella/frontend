@@ -9,7 +9,7 @@ import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
 
 
-import { GET_SUBSCRIPTION_PRICES_QUERY, GET_INPUT_VALUES_QUERY } from './queries'
+import { GET_SUBSCRIPTION_PRICES_QUERY, ADD_SUBSCRIPTION_PRICE, GET_INPUT_VALUES_QUERY } from './queries'
 import { GET_SUBSCRIPTIONS_QUERY } from '../queries'
 import { SUBSCRIPTION_PRICE_SCHEMA } from './yupSchema'
 import OrganizationSubscriptionPriceForm from './OrganizationSubscriptionPriceForm'
@@ -27,29 +27,6 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-
-
-
-const ADD_SUBSCRIPTION_PRICE = gql`
-  mutation CreateOrganizationSubscriptionPrice($input: CreateOrganizationSubscriptionPriceInput!) {
-    createOrganizationSubscriptionPrice(input: $input) {
-      organizationSubscriptionPrice {
-        id
-        organizationSubscription {
-          id
-          name
-        }
-        price
-        financeTaxRate {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-      }
-    }
-  }
-`
 
 const return_url = "/organization/subscriptions/prices/"
 
