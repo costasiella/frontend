@@ -51,7 +51,7 @@ export const GET_SUBSCRIPTION_PRICE_QUERY = gql`
       dateStart
       dateEnd
     }
-    financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
+    financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor

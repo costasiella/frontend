@@ -28,7 +28,7 @@ function OrganizationSubscriptionPriceAdd({ t, history, match }) {
   const [ addSubscriptionPrice ] = useMutation(ADD_SUBSCRIPTION_PRICE)
 
   if (loading) return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             <Dimmer active={true} loader={true} />
@@ -38,7 +38,7 @@ function OrganizationSubscriptionPriceAdd({ t, history, match }) {
   )
 
   if (error) return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('organization.subscription_prices.error_loading')}</p>
@@ -48,7 +48,7 @@ function OrganizationSubscriptionPriceAdd({ t, history, match }) {
   )
 
   return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase returnUrl={returnUrl}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ price: "", dateStart: new Date() }}

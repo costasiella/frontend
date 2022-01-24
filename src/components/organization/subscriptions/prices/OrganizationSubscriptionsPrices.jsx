@@ -99,7 +99,7 @@ function OrganizationSubscriptionsPrices ({ t, history, match, archived=false })
   const [deleteSubscriptionPrice] = useMutation(DELETE_SUBSCRIPTION_PRICE)
 
   if (loading) return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase showAdd={true}>
         <Card title={cardTitle}>
           <Card.Body>
             <Dimmer active={true} loader={true} />
@@ -109,7 +109,7 @@ function OrganizationSubscriptionsPrices ({ t, history, match, archived=false })
   )
 
   if (error) return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase showAdd={true}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('organization.subscription_prices.error_loading')}</p>
@@ -123,7 +123,7 @@ function OrganizationSubscriptionsPrices ({ t, history, match, archived=false })
   
 
   if (!subscriptionPrices.edges.length) return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase showAdd={true}>
       <Card title={cardTitle}>
         <Card.Body>
           {t('organization.subscription_prices.empty_list')}
@@ -133,7 +133,7 @@ function OrganizationSubscriptionsPrices ({ t, history, match, archived=false })
   )
 
   return (
-    <OrganizationSubscriptionsPricesBase>
+    <OrganizationSubscriptionsPricesBase showAdd={true}>
       <ContentCard cardTitle={cardTitle}
         pageInfo={subscriptionPrices.pageInfo}
         hasCardBody={false}

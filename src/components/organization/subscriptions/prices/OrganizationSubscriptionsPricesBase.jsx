@@ -13,7 +13,7 @@ import ButtonAdd from "../../../ui/ButtonAdd"
 import ButtonBack from '../../../ui/ButtonBack'
 
 
-function OrganizationSubscriptionsPricesBase ({ t, history, match, children }) {
+function OrganizationSubscriptionsPricesBase ({ t, history, match, children, showAdd=false, returnUrl="/organization/subscriptions" }) {
   const subscriptionId = match.params.subscription_id
 
   return (
@@ -22,11 +22,13 @@ function OrganizationSubscriptionsPricesBase ({ t, history, match, children }) {
         <Container>
           <Page.Header title={t("organization.title")}>
             <div className="page-options d-flex">
-              <ButtonBack returnUrl="/organization/subscriptions" />
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationsubscriptionprice">
-                <ButtonAdd addUrl={`/organization/subscriptions/prices/add/${subscriptionId}`} className="ml-2" />
-              </HasPermissionWrapper>
+              <ButtonBack returnUrl={returnUrl} />
+              {(showAdd) ?
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationsubscriptionprice">
+                  <ButtonAdd addUrl={`/organization/subscriptions/prices/add/${subscriptionId}`} className="ml-2" />
+                </HasPermissionWrapper>
+              : "" }
             </div>
           </Page.Header>
           <Grid.Row>
