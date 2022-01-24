@@ -1,132 +1,110 @@
-// @flow
-
 import React from 'react'
-import { Query, Mutation } from "@apollo/client";
-import { gql } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
 
 
+import {
+  Card,
+  Dimmer
+} from "tabler-react"
+import { dateToLocalISO } from '../../../../tools/date_tools'
+
 import { GET_SUBSCRIPTION_PRICES_QUERY, ADD_SUBSCRIPTION_PRICE, GET_INPUT_VALUES_QUERY } from './queries'
 import { GET_SUBSCRIPTIONS_QUERY } from '../queries'
 import { SUBSCRIPTION_PRICE_SCHEMA } from './yupSchema'
+import OrganizationSubscriptionsPricesBase from './OrganizationSubscriptionsPricesBase';
 import OrganizationSubscriptionPriceForm from './OrganizationSubscriptionPriceForm'
-import { dateToLocalISO } from '../../../../tools/date_tools'
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-  Form,
-} from "tabler-react"
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 
-const return_url = "/organization/subscriptions/prices/"
+function OrganizationSubscriptionPriceAdd({ t, history, match }) {
+  const subscriptionId = match.params.subscription_id
+  const cardTitle = t('organization.subscription_prices.title_add')
+  const returnUrl = `/organization/subscriptions/prices/${subscriptionId}`
 
-const OrganizationSubscriptionPriceAdd = ({ t, history, match }) => (
-  <SiteWrapper>
-    <div className="my-3 my-md-5">
-      <Container>
-        <Page.Header title="Organization" />
-        <Grid.Row>
-          <Grid.Col md={9}>
-          <Card>
-            <Card.Header>
-              <Card.Title>{t('organization.subscription_prices.title_add')}</Card.Title>
-            </Card.Header>
-            <Query query={GET_INPUT_VALUES_QUERY} variables={{ archived: false }} >
-              {({ loading, error, data, refetch }) => {
-                  // Loading
-                  if (loading) return <p>{t('general.loading_with_dots')}</p>
-                  // Error
-                  if (error) {
-                    console.log(error)
-                    return <p>{t('general.error_sad_smiley')}</p>
-                  }
-                  
-                  console.log('query data')
-                  console.log(data)
-                  const inputData = data
+  const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY)
+  const [ addSubscriptionPrice ] = useMutation(ADD_SUBSCRIPTION_PRICE)
 
-                  return (
-                    <Mutation mutation={ADD_SUBSCRIPTION_PRICE} onCompleted={() => history.push(return_url + match.params.subscription_id)}> 
-                      {(addSubscription, { data }) => (
-                          <Formik
-                              initialValues={{ price: "", dateStart: new Date() }}
-                              validationSchema={SUBSCRIPTION_PRICE_SCHEMA}
-                              onSubmit={(values, { setSubmitting }) => {
+  if (loading) return (
+    <OrganizationSubscriptionsPricesBase>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <Dimmer active={true} loader={true} />
+          </Card.Body>
+        </Card>
+    </OrganizationSubscriptionsPricesBase>
+  )
 
-                                  let dateEnd
-                                  if (values.dateEnd) {
-                                    dateEnd = dateToLocalISO(values.dateEnd)
-                                  } else {
-                                    dateEnd = values.dateEnd
-                                  }
+  if (error) return (
+    <OrganizationSubscriptionsPricesBase>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('organization.subscription_prices.error_loading')}</p>
+          </Card.Body>
+        </Card>
+    </OrganizationSubscriptionsPricesBase>
+  )
 
-                                  addSubscription({ variables: {
-                                    input: {
-                                      organizationSubscription: match.params.subscription_id,
-                                      price: values.price,
-                                      financeTaxRate: values.financeTaxRate,
-                                      dateStart: dateToLocalISO(values.dateStart),
-                                      dateEnd: dateEnd
-                                    }
-                                  }, refetchQueries: [
-                                      {query: GET_SUBSCRIPTION_PRICES_QUERY, variables: {"organizationSubscription": match.params.subscription_id }},
-                                      {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
-                                  ]})
-                                  .then(({ data }) => {
-                                      console.log('got data', data);
-                                      toast.success((t('organization.subscription_prices.toast_add_success')), {
-                                          position: toast.POSITION.BOTTOM_RIGHT
-                                        })
-                                    }).catch((error) => {
-                                      toast.error((t('general.toast_server_error')) +  error, {
-                                          position: toast.POSITION.BOTTOM_RIGHT
-                                        })
-                                      console.log('there was an error sending the query', error)
-                                      setSubmitting(false)
-                                    })
-                              }}
-                              >
-                              {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-                                <OrganizationSubscriptionPriceForm
-                                  inputData={inputData}
-                                  isSubmitting={isSubmitting}
-                                  setFieldTouched={setFieldTouched}
-                                  setFieldValue={setFieldValue}
-                                  errors={errors}
-                                  values={values}
-                                  return_url={return_url}
-                                />
-                              )}
-                          </Formik>
-                      )}
-                    </Mutation>
-                  )}}
-                </Query>
-          </Card>
-          </Grid.Col>
-          <Grid.Col md={3}>
-            <HasPermissionWrapper permission="add"
-                                  resource="organizationsubscriptionprice">
-              <Button color="primary btn-block mb-6"
-                      onClick={() => history.push(return_url + match.params.subscription_id)}>
-                <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-              </Button>
-            </HasPermissionWrapper>
-          </Grid.Col>
-        </Grid.Row>
-      </Container>
-    </div>
-  </SiteWrapper>
-);
+  return (
+    <OrganizationSubscriptionsPricesBase>
+      <Card title={cardTitle}>
+        <Formik
+          initialValues={{ price: "", dateStart: new Date() }}
+          validationSchema={SUBSCRIPTION_PRICE_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
+
+              let dateEnd
+              if (values.dateEnd) {
+                dateEnd = dateToLocalISO(values.dateEnd)
+              } else {
+                dateEnd = values.dateEnd
+              }
+
+              addSubscriptionPrice({ variables: {
+                input: {
+                  organizationSubscription: match.params.subscription_id,
+                  price: values.price,
+                  financeTaxRate: values.financeTaxRate,
+                  dateStart: dateToLocalISO(values.dateStart),
+                  dateEnd: dateEnd
+                }
+              }, refetchQueries: [
+                  {query: GET_SUBSCRIPTION_PRICES_QUERY, variables: {"organizationSubscription": match.params.subscription_id }},
+                  {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data);
+                  history.push(returnUrl)
+                  toast.success((t('organization.subscription_prices.toast_add_success')), {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                }).catch((error) => {
+                  toast.error((t('general.toast_server_error')) +  error, {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
+                })
+          }}
+          >
+          {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+            <OrganizationSubscriptionPriceForm
+              inputData={data}
+              isSubmitting={isSubmitting}
+              setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              values={values}
+              returnUrl={returnUrl}
+            />
+          )}
+        </Formik>
+      </Card>
+    </OrganizationSubscriptionsPricesBase>
+  )
+}
+
 
 export default withTranslation()(withRouter(OrganizationSubscriptionPriceAdd))
