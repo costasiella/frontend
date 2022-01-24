@@ -23,17 +23,15 @@ function OrganizationSubscriptionsPricesBase ({ t, history, match, children }) {
           <Page.Header title={t("organization.title")}>
             <div className="page-options d-flex">
               <ButtonBack returnUrl="/organization/subscriptions" />
+              <HasPermissionWrapper permission="add"
+                                    resource="organizationsubscriptionprice">
+                <ButtonAdd addUrl={`/organization/subscriptions/prices/add/${subscriptionId}`} className="ml-2" />
+              </HasPermissionWrapper>
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationsubscriptionprice">
-                <ButtonAdd addUrl={`/organization/subscriptions/prices/add/${subscriptionId}`} />
-              </HasPermissionWrapper>
             </Grid.Col>
           </Grid.Row>
         </Container>

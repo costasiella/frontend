@@ -4,32 +4,33 @@ import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { confirmAlert } from 'react-confirm-alert'
+import moment from 'moment'
 
-import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
+  Card,
+  Dimmer,
   Page,
   Grid,
   Icon,
-  Dimmer,
   Button,
   Container,
   Table
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
-import { confirmAlert } from 'react-confirm-alert'
 
+import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 
-import AlertInfo from "../../../ui/AlertInfo"
-
+import OrganizationSubscriptionsPricesBase from './OrganizationSubscriptionsPricesBase'
 import { GET_SUBSCRIPTION_PRICES_QUERY, DELETE_SUBSCRIPTION_PRICE } from "./queries"
 import { GET_SUBSCRIPTIONS_QUERY } from "../queries"
 
-import moment from 'moment'
-
+import AlertInfo from "../../../ui/AlertInfo"
+import ButtonDelete from '../../../ui/ButtonDelete'
 
 
 const confirmDelete = (t, match, deleteSubscriptionPrice, node) => {
@@ -87,151 +88,132 @@ const confirmDelete = (t, match, deleteSubscriptionPrice, node) => {
 function OrganizationSubscriptionsPrices ({ t, history, match, archived=false }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
+  const subscriptionId = match.params.subscription_id
+  let cardTitle = t('organization.subscription_prices.title')
+
+  const { loading, error, data, fetchMore } = useQuery(GET_SUBSCRIPTION_PRICES_QUERY, {
+    variables: {
+      organizationSubscription: subscriptionId
+    }
+  })
+  const [deleteSubscriptionPrice] = useMutation(DELETE_SUBSCRIPTION_PRICE)
+
+  if (loading) return (
+    <OrganizationSubscriptionsPricesBase>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <Dimmer active={true} loader={true} />
+          </Card.Body>
+        </Card>
+    </OrganizationSubscriptionsPricesBase>
+  )
+
+  if (error) return (
+    <OrganizationSubscriptionsPricesBase>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('organization.subscription_prices.error_loading')}</p>
+          </Card.Body>
+        </Card>
+    </OrganizationSubscriptionsPricesBase>
+  )
+
+  const subscriptionPrices = data.organizationSubscriptionPrices
+  cardTitle = `${cardTitle} - ${data.organizationSubscription.name}`
+  
+
+  if (!subscriptionPrices.edges.length) return (
+    <OrganizationSubscriptionsPricesBase>
+      <Card title={cardTitle}>
+        <Card.Body>
+          {t('organization.subscription_prices.empty_list')}
+        </Card.Body>
+      </Card>
+    </OrganizationSubscriptionsPricesBase>
+  )
 
   return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <Container>
-          <Page.Header title={t("organization.title")}>
-            <div className="page-options d-flex">
-              <Link to="/organization/subscriptions" 
-                    className='btn btn-outline-secondary btn-sm'>
-                  <Icon prefix="fe" name="arrow-left" /> {t('general.back_to')} {t('organization.subscriptions.title')}
-              </Link>
-            </div>
-          </Page.Header>
-          <Grid.Row>
-            <Grid.Col md={9}>
-              <Query query={GET_SUBSCRIPTION_PRICES_QUERY} variables={{ organizationSubscription: match.params.subscription_id }}>
-              {({ loading, error, data: {organizationSubscriptionPrices: subscription_prices, organizationSubscription: subscription}, refetch, fetchMore }) => {
-                  // Loading
-                  if (loading) return (
-                    <ContentCard cardTitle={t('organization.subscription_prices.title')}>
-                      <Dimmer active={true}
-                              loader={true}>
-                      </Dimmer>
-                    </ContentCard>
-                  )
-                  // Error
-                  if (error) return (
-                    <ContentCard cardTitle={t('organization.subscription_prices.title')}>
-                      <p>{t('organization.subscription_prices.error_loading')}</p>
-                    </ContentCard>
-                  )
-                  const headerOptions = null
+    <OrganizationSubscriptionsPricesBase>
+      <ContentCard cardTitle={cardTitle}
+        pageInfo={subscriptionPrices.pageInfo}
+        hasCardBody={false}
+        onLoadMore={() => {
+          fetchMore({
+            variables: {
+              after: subscriptionPrices.pageInfo.endCursor
+            },
+            updateQuery: (previousResult, { fetchMoreResult }) => {
+              const newEdges = fetchMoreResult.organizationSubscriptionsPrices.edges
+              const pageInfo = fetchMoreResult.organizationSubscriptionsPrices.pageInfo
 
-                  // Empty list
-                  if (!subscription_prices.edges.length) { return (
-                    <ContentCard cardTitle={t('organization.subscription_prices.title')}
-                                headerContent={headerOptions}>
-                      <AlertInfo title={t('general.subscription')} message={subscription.name} />
-                      <p>
-                      {(!archived) ? t('organization.subscription_prices.empty_list') : t("organization.subscription_prices.empty_archive")}
-                      </p>
-                    
-                    </ContentCard>
-                  )} else {   
-                  // Life's good! :)
-                  return (
-                    <ContentCard cardTitle={t('organization.subscription_prices.title')}
-                                headerContent={headerOptions}
-                                pageInfo={subscription_prices.pageInfo}
-                                onLoadMore={() => {
-                                  fetchMore({
-                                    variables: {
-                                      after: subscription_prices.pageInfo.endCursor
-                                    },
-                                    updateQuery: (previousResult, { fetchMoreResult }) => {
-                                      const newEdges = fetchMoreResult.organizationSubscriptionsPrices.edges
-                                      const pageInfo = fetchMoreResult.organizationSubscriptionsPrices.pageInfo
-
-                                      return newEdges.length
-                                        ? {
-                                            // Put the new subscriptions at the end of the list and update `pageInfo`
-                                            // so we have the new `endCursor` and `hasNextPage` values
-                                            organizationSubscriptionsPrices: {
-                                              __typename: previousResult.organizationSubscriptionsPrices.__typename,
-                                              edges: [ ...previousResult.organizationSubscriptionsPrices.edges, ...newEdges ],
-                                              pageInfo
-                                            }
-                                          }
-                                        : previousResult
-                                    }
-                                  })
-                                }} >
-                      <div>
-                        <AlertInfo title={t('general.subscription')} message={subscription.name} />
-
-                        <Table>
-                          <Table.Header>
-                            <Table.Row key={v4()}>
-                              <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
-                              <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
-                              <Table.ColHeader>{t('general.price')}</Table.ColHeader>
-                              <Table.ColHeader></Table.ColHeader>
-                            </Table.Row>
-                          </Table.Header>
-                          <Table.Body>
-                              {subscription_prices.edges.map(({ node }) => (
-                                <Table.Row key={v4()}>
-                                  <Table.Col key={v4()}>
-                                    {moment(node.dateStart).format(dateFormat)}
-                                  </Table.Col>
-                                  <Table.Col key={v4()}>
-                                    {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
-                                  </Table.Col>
-                                  <Table.Col key={v4()}>
-                                    {node.priceDisplay} <br />
-                                    <span className="text-muted">{node.financeTaxRate.name}</span>
-                                  </Table.Col>
-                                  <Table.Col className="text-right" key={v4()}>
-                                    {(node.archived) ? 
-                                      <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                                      <Button className='btn-sm' 
-                                              onClick={() => history.push("/organization/subscriptions/prices/edit/" + match.params.subscription_id + '/' + node.id)}
-                                              color="secondary">
-                                        {t('general.edit')}
-                                      </Button>
-                                    }
-                                  </Table.Col>
-                                  <Mutation mutation={DELETE_SUBSCRIPTION_PRICE} key={v4()}>
-                                      {(deleteSubscriptionPrice, { data }) => (
-                                        <Table.Col className="text-right" key={v4()}>
-                                          <button className="icon btn btn-link btn-sm" 
-                                            title={t('general.delete')} 
-                                            href=""
-                                            onClick={() => {confirmDelete(t, match, deleteSubscriptionPrice, node)}}
-                                          >
-                                            <span className="text-red">
-                                              <Icon prefix="fe" name="trash-2" />
-                                            </span>
-                                          </button>
-                                        </Table.Col>
-                                      )}
-                                    </Mutation>
-                                </Table.Row>
-                              ))}
-                          </Table.Body>
-                        </Table>
-                        </div>
-                    </ContentCard>
-                  )}}
-              }
-              </Query>
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationsubscriptionprice">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push("/organization/subscriptions/prices/add/" + match.params.subscription_id)}>
-                  <Icon prefix="fe" name="plus-circle" /> {t('organization.subscription_prices.add')}
-                </Button>
-              </HasPermissionWrapper>
-            </Grid.Col>
-          </Grid.Row>
-        </Container>
-      </div>
-    </SiteWrapper>
+              return newEdges.length
+                ? {
+                    // Put the new subscriptions at the end of the list and update `pageInfo`
+                    // so we have the new `endCursor` and `hasNextPage` values
+                    organizationSubscriptionsPrices: {
+                      __typename: previousResult.organizationSubscriptionsPrices.__typename,
+                      edges: [ ...previousResult.organizationSubscriptionsPrices.edges, ...newEdges ],
+                      pageInfo
+                    }
+                  }
+                : previousResult
+            }
+          })
+        }} 
+      >
+        <Table cards>
+          <Table.Header>
+            <Table.Row key={v4()}>
+              <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.price')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+              {subscriptionPrices.edges.map(({ node }) => (
+                <Table.Row key={v4()}>
+                  <Table.Col key={v4()}>
+                    {moment(node.dateStart).format(dateFormat)}
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {node.priceDisplay} <br />
+                    <span className="text-muted">{node.financeTaxRate.name}</span>
+                  </Table.Col>
+                  <Table.Col className="text-right" key={v4()}>
+                    {(node.archived) ? 
+                      <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
+                      <Button className='btn-sm' 
+                              onClick={() => history.push("/organization/subscriptions/prices/edit/" + match.params.subscription_id + '/' + node.id)}
+                              color="secondary">
+                        {t('general.edit')}
+                      </Button>
+                    }
+                  </Table.Col>
+                  {/* <Mutation mutation={DELETE_SUBSCRIPTION_PRICE} key={v4()}>
+                      {(deleteSubscriptionPrice, { data }) => (
+                        <Table.Col className="text-right" key={v4()}>
+                          <button className="icon btn btn-link btn-sm" 
+                            title={t('general.delete')} 
+                            href=""
+                            onClick={() => {confirmDelete(t, match, deleteSubscriptionPrice, node)}}
+                          >
+                            <span className="text-red">
+                              <Icon prefix="fe" name="trash-2" />
+                            </span>
+                          </button>
+                        </Table.Col>
+                      )}
+                    </Mutation> */}
+                </Table.Row>
+              ))}
+          </Table.Body>
+        </Table>
+      </ContentCard>
+    </OrganizationSubscriptionsPricesBase>
   )
 }
 
