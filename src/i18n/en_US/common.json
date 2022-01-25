@@ -987,7 +987,7 @@
                 "empty_list": "This customer hasn't accepted any documents yet"
             },
             "classes": {
-                "empty_list": "This customer hasn't attended any classes yet",
+                "empty_list": "This customer hasn't booked or attended any classes yet",
                 "title": "Classes"
             },
             "orders": {
