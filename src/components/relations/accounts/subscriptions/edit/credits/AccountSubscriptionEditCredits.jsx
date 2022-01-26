@@ -70,6 +70,13 @@ function AccountSubscriptionEditCredits({t, match, history}) {
   //   initialPaymentMethod = initialdata.financePaymentMethod.id
   // }
 
+    // Empty list
+    if (!accountSubscriptionCredits.edges.length) { return (
+      <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+        <Card.Body>{t('relations.account.subscriptions.credits.empty_list')}</Card.Body>
+      </AccountSubscriptionEditListBase>
+    )}
+
   const onLoadMore = () => {
     fetchMore({
       variables: {

@@ -68,12 +68,12 @@ function AccountSubscriptionEditBlocks({t, match, history}) {
   const accountSubscriptionBlocks = data.accountSubscriptionBlocks
   const pageInfo = data.accountSubscriptionBlocks.pageInfo
 
-    // Empty list
-    if (!accountSubscriptionBlocks.edges.length) { return (
-      <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
-        <Card.Body>{t('relations.account.subscriptions.blocks.empty_list')}</Card.Body>
-      </AccountSubscriptionEditListBase>
-    )}
+  // Empty list
+  if (!accountSubscriptionBlocks.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+      <Card.Body>{t('relations.account.subscriptions.blocks.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
 
   const onLoadMore = () => {
     fetchMore({

@@ -508,7 +508,7 @@
         "reset_filter": "Reset filter",
         "run_task": "Run task",
         "using": "using",
-        "past": "__STRING_NOT_TRANSLATED__"
+        "past": "Past"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -703,8 +703,6 @@
             "title": "Subscription prices",
             "error_loading": "Error loading subscription prices :(",
             "empty_list": "No subscription prices found",
-            "empty_archive": "No subscription prices have been archived yet",
-            "add": "Add subscription price",
             "delete_confirm_msg": "Are you sure you wish to delete this price?",
             "deleted": "Deleted subscription price"
         },
@@ -900,7 +898,8 @@
                     "toast_edit_success": "Saved",
                     "add": "Add credit mutation",
                     "edit": "Edit credit mutation",
-                    "mutationType": "Mutation type"
+                    "mutationType": "Mutation type",
+                    "empty_list": "This subscription hasn't had any credit mutations."
                 },
                 "pauses": {
                     "empty_list": "This subscription hasn't been paused before.",

@@ -1156,7 +1156,8 @@
                     "toast_edit_success": "__STRING_NOT_TRANSLATED__",
                     "add": "__STRING_NOT_TRANSLATED__",
                     "edit": "__STRING_NOT_TRANSLATED__",
-                    "mutationType": "__STRING_NOT_TRANSLATED__"
+                    "mutationType": "__STRING_NOT_TRANSLATED__",
+                    "empty_list": "__STRING_NOT_TRANSLATED__"
                 },
                 "invoices": {
                     "toast_add_success": "__STRING_NOT_TRANSLATED__",
@@ -1532,9 +1533,7 @@
             "deleted": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__",
             "error_loading": "__STRING_NOT_TRANSLATED__",
-            "empty_list": "__STRING_NOT_TRANSLATED__",
-            "empty_archive": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__"
+            "empty_list": "__STRING_NOT_TRANSLATED__"
         },
         "shifts": {
             "title": "__STRING_NOT_TRANSLATED__",
