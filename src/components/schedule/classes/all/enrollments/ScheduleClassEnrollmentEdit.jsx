@@ -4,6 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import { Card } from 'tabler-react';
 
 import { GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, GET_SCHEDULE_ITEM_ENROLLMENT_QUERY, UPDATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
 import { SCHEDULE_CLASS_ENROLLMENT_SCHEMA } from './yupSchema'
@@ -12,7 +13,7 @@ import { dateToLocalISO } from '../../../../../tools/date_tools'
 
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
-import { Card } from 'tabler-react';
+import { getEnrollmentsListQueryVariables } from "./tools"
 
 
 function ScheduleClassEnrollmentEdit({ t, match, history }) {
@@ -103,7 +104,7 @@ function ScheduleClassEnrollmentEdit({ t, match, history }) {
                 dateEnd: dateEnd
               }
             }, refetchQueries: [
-                {query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, variables: { scheduleItem: match.params.class_id }},
+                {query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, variables: getEnrollmentsListQueryVariables(classId)},
             ]})
             .then(({ data }) => {
                 console.log('got data', data);

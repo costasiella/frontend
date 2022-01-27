@@ -14,6 +14,7 @@ import ButtonBack from '../../../../ui/ButtonBack';
 
 import ClassEditBase from "../ClassEditBase"
 import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
+import { getEnrollmentsListQueryVariables } from "./tools"
 
 
 function ScheduleClassEnrollmentAdd({ t, history, match }) {
@@ -89,7 +90,7 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
                 dateEnd: dateEnd
               }
             }, refetchQueries: [
-                {query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, variables: { scheduleItem: classId }},
+                {query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, variables: getEnrollmentsListQueryVariables(classId)},
                 // {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }},
             ]})
             .then(({ data }) => {

@@ -7,13 +7,9 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import {
-  Alert,
-  Dropdown,
   Page,
   Grid,
   Icon,
-  Dimmer,
-  Badge,
   Button,
   Card,
   Container,
@@ -21,8 +17,6 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
 import AppSettingsContext from '../../../../context/AppSettingsContext'
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 import { getAccountsQueryVariables, getEnrollmentsListQueryVariables } from "./tools"
 
 import ClassEditBack from "../ClassEditBack"
@@ -41,6 +35,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
   const dateFormat = appSettings.dateFormat
   
   const subtitle = ''
+  const [showCurrent, setShowCurrent] = useState(true)
   const [showSearch, setShowSearch] = useState(false)
   const returnUrl = "/schedule/classes/"
   const scheduleItemId = match.params.class_id
@@ -60,6 +55,32 @@ function ScheduleClassEnrollments({ t, match, history }) {
            error: queryAccountsError, 
            data: queryAccountsData 
          }] = useLazyQuery( GET_ACCOUNTS_QUERY )
+
+  const headerOptions = <Card.Options>
+    <Button color={(showCurrent) ? 'primary': 'secondary'}  
+            size="sm"
+            onClick={() => {
+              setShowCurrent(true); 
+              let queryVars = getEnrollmentsListQueryVariables(scheduleItemId)
+              console.log(queryVars)
+              refetchEnrollments(queryVars); 
+            }}
+    >
+      {t('general.current')}
+    </Button>
+    <Button color={(!showCurrent) ? 'primary': 'secondary'} 
+            size="sm" 
+            className="ml-2" 
+            onClick={() => {
+              setShowCurrent(false); 
+              let queryVars = getEnrollmentsListQueryVariables(scheduleItemId, true)
+              console.log(queryVars)
+              refetchEnrollments(queryVars); 
+            }}
+    >
+      {t('general.ended')}
+    </Button>
+  </Card.Options>
 
   console.log('queryAccountsData')
   console.log(queryAccountsData)
@@ -84,6 +105,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
   // ))
   // console.log(checkedInIds)
 
+  console.log(queryEnrollmentsData)
   const scheduleItem = queryEnrollmentsData.scheduleItem
   const enrollments = scheduleItem.enrollments
   // const subtitle = classSubtitle({
@@ -191,6 +213,7 @@ function ScheduleClassEnrollments({ t, match, history }) {
                 <ContentCard cardTitle={t('general.enrollments')}
                              pageInfo={enrollments.pageInfo}
                              hasCardBody={false}
+                             headerContent={headerOptions}
                              onLoadMore={() => {
                                 fetchMoreAccounts({
                                 variables: {

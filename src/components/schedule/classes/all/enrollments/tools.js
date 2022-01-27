@@ -1,4 +1,5 @@
 import CSLS from "../../../../../tools/cs_local_storage"
+import { dateToLocalISO } from "../../../../../tools/date_tools"
 import { withRouter } from "react-router"
 
 export function getAccountsQueryVariables() {
@@ -16,8 +17,15 @@ export function getAccountsQueryVariables() {
   return queryVars
 }
 
-export function getEnrollmentsListQueryVariables(scheduleItemId) {
-  return {
+export function getEnrollmentsListQueryVariables(scheduleItemId, showEnded=false) {
+  let queryVars = {
     scheduleItem: scheduleItemId,
+    dateEnd_Isnull: true
   }
+
+  if (showEnded) {
+    queryVars.dateEnd_Isnull = false
+  } 
+
+  return queryVars
 }
