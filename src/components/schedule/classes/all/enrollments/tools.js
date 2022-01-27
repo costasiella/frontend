@@ -1,18 +1,11 @@
-import CSLS from "../../../../../tools/cs_local_storage"
-import { dateToLocalISO } from "../../../../../tools/date_tools"
-import { withRouter } from "react-router"
-
-export function getAccountsQueryVariables() {
+export function getAccountsQueryVariables(searchName) {
   let queryVars = {
     instructor: undefined,
     employee: undefined,
     searchName: undefined
   }
 
-  let search = localStorage.getItem(CSLS.SCHEDULE_CLASSES_CLASS_ENROLLMENTS_SEARCH)
-  queryVars.searchName = search
-
-  console.log(queryVars)
+  queryVars.searchName = searchName
 
   return queryVars
 }
