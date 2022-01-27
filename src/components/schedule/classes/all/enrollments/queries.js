@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 
 export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
-  query ScheduleItemEnrollments($after: String, $before: String, $scheduleItem: ID!) {
+  query ScheduleItemEnrollments($after: String, $before: String, $scheduleItem: ID!, $dateEnd_Isnull:Boolean) {
     scheduleItem(id:$scheduleItem) {
       id
       frequencyType
@@ -28,7 +28,7 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
       timeStart
       timeEnd
       displayPublic
-      enrollments(first: 1000, before: $before, after: $after, scheduleItem: $scheduleItem) {
+      enrollments(first: 1000, before: $before, after: $after, scheduleItem: $scheduleItem, dateEnd_Isnull: $dateEnd_Isnull) {
         pageInfo {
           startCursor
           endCursor
