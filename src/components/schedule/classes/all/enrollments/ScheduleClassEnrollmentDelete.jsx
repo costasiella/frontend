@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 
 import { DELETE_SCHEDULE_ITEM_ENROLLMENT, GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY } from "./queries"
 import ButtonDelete from '../../../../ui/ButtonDelete'
-
+import { getEnrollmentsListQueryVariables } from './tools'
 
 function ScheduleClassEnrollmentDelete({t, match, node}) {
   const scheduleItemId = match.params.class_id
@@ -25,9 +25,7 @@ function ScheduleClassEnrollmentDelete({t, match, node}) {
             }, 
             refetchQueries: [
               { query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, 
-                variables: {
-                  scheduleItem: scheduleItemId
-                }},
+                variables: getEnrollmentsListQueryVariables(scheduleItemId)},
             ]
           }}
       />
