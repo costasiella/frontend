@@ -416,7 +416,7 @@
         "reset_filter": "__STRING_NOT_TRANSLATED__",
         "run_task": "__STRING_NOT_TRANSLATED__",
         "using": "__STRING_NOT_TRANSLATED__",
-        "past": "__STRING_NOT_TRANSLATED__"
+        "ended": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
