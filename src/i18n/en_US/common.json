@@ -1205,7 +1205,9 @@
                 "toast_add_success": "Added enrollment",
                 "enrollment_options_for": "Enrollment options for",
                 "title_edit": "Edit enrollment",
-                "toast_edit_success": "Saved"
+                "toast_edit_success": "Saved",
+                "error_loading": "Error loading enrollments... :(",
+                "empty_list": "No customers have been enrolled in this class yet"
             }
         },
         "appointments": {

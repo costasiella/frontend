@@ -87,9 +87,9 @@ function ScheduleClassInstructors({ t, match, history}) {
 
   return (
     <ClassEditBase 
-    menuActiveLink={menuActiveLink} 
-    defaultCard={false}
-    pageHeaderButtonList={pageHeaderButtonList}
+      menuActiveLink={menuActiveLink} 
+      defaultCard={false}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={cardTitle}
