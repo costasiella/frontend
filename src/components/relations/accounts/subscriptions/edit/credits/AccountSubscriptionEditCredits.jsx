@@ -61,21 +61,13 @@ function AccountSubscriptionEditCredits({t, match, history}) {
 
   const accountSubscriptionCredits = data.accountSubscriptionCredits
   const pageInfo = data.accountSubscriptionCredits.pageInfo
-  // const inputData = data
-  // const account = data.account
-  // const initialdata = data.accountSubscription
 
-  // let initialPaymentMethod = ""
-  // if (initialdata.financePaymentMethod) {
-  //   initialPaymentMethod = initialdata.financePaymentMethod.id
-  // }
-
-    // Empty list
-    if (!accountSubscriptionCredits.edges.length) { return (
-      <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
-        <Card.Body>{t('relations.account.subscriptions.credits.empty_list')}</Card.Body>
-      </AccountSubscriptionEditListBase>
-    )}
+  // Empty list
+  if (!accountSubscriptionCredits.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+      <Card.Body>{t('relations.account.subscriptions.credits.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
 
   const onLoadMore = () => {
     fetchMore({
