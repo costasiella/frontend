@@ -1,36 +1,27 @@
 import React, { useState, useContext } from 'react'
-import { useQuery, useLazyQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
   Dimmer,
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import SiteWrapper from "../../../../SiteWrapper"
 import AppSettingsContext from '../../../../context/AppSettingsContext'
-import { getAccountsQueryVariables, getEnrollmentsListQueryVariables } from "./tools"
+import { getEnrollmentsListQueryVariables } from "./tools"
 
 import ClassEditBack from "../ClassEditBack"
 import ClassEditBase from "../ClassEditBase"
-import ClassEditMenu from "../ClassEditMenu"
 import ContentCard from "../../../../general/ContentCard"
-import InputSearch from "../../../../general/InputSearch"
 import ScheduleClassEnrollmentDelete from "./ScheduleClassEnrollmentDelete"
 import ButtonAdd from '../../../../ui/ButtonAdd'
 import ButtonEdit from '../../../../ui/ButtonEdit'
-import { GET_ACCOUNTS_QUERY } from "../../../../../queries/accounts/account_search_queries"
 import { GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY } from "./queries"
-import CSLS from "../../../../../tools/cs_local_storage"
 
 
 function ScheduleClassEnrollments({ t, match, history }) {
@@ -39,10 +30,8 @@ function ScheduleClassEnrollments({ t, match, history }) {
   
   const [showCurrent, setShowCurrent] = useState(true)
   const scheduleItemId = match.params.class_id
-  const subtitle = ''
   const cardTitle = t('general.enrollments')
   const menuActiveLink = "enrollments"
-  const returnUrl = "/schedule/classes/"
   
   const { loading, error, data, refetch, fetchMore } = useQuery(
     GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, {
