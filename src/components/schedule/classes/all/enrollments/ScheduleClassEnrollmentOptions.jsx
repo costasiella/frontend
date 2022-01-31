@@ -7,15 +7,15 @@ import { Dimmer, Grid } from 'tabler-react';
 import ScheduleClassEnrollSubscriptions from "./ScheduleClassEnrollSubscriptions"
 import { GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY, CREATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
 import ClassEditBase from "../ClassEditBase"
-import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
+import ButtonBack from '../../../../ui/ButtonBack';
 
 
 function ScheduleClassEnrollmentOptions({ t, history, match }) {
   const classId = match.params.class_id
   const accountId = match.params.account_id
-  const returnUrl = `/schedule/classes/all/enrollments/${classId}`
+  const returnUrl = `/schedule/classes/all/enrollments/${classId}/search`
   const menuActiveLink = "enrollments" 
-  const pageHeaderButtonList = <ScheduleClassEnrollmentBack classId={classId} />
+  const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
   const { loading, error, data } = useQuery(GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY, {
     variables: {
       account: accountId,
@@ -49,7 +49,6 @@ function ScheduleClassEnrollmentOptions({ t, history, match }) {
   const subscriptions = data.scheduleClassEnrollmentOptions.subscriptions
 
   
-
   return (
     <ClassEditBase
       defaultCard={false}

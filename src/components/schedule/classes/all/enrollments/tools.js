@@ -5,7 +5,9 @@ export function getAccountsQueryVariables(searchName) {
     searchName: undefined
   }
 
-  queryVars.searchName = searchName
+  if (searchName) {
+    queryVars.searchName = searchName
+  }
 
   return queryVars
 }
