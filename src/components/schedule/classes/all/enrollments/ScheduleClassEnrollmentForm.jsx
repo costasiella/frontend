@@ -31,6 +31,7 @@ const ScheduleClassEnrollmentForm = ({ t, history, match, isSubmitting, errors, 
           <Grid.Col>
             <Form.Group label={t('general.date_end')}>
               <CSDatePicker 
+                placeholderText={t('schedule.classes.enrollments.placeholder_date_end')}
                 selected={values.dateEnd}
                 onChange={(date) => setFieldValue("dateEnd", date)}
                 onBlur={() => setFieldTouched("dateEnd", true)}

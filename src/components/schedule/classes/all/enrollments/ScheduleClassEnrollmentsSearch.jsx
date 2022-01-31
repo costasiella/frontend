@@ -32,7 +32,7 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
   let [searchName, setSearchName] = useState("")
   
   const scheduleItemId = match.params.class_id
-  const cardTitle = t('general.enrollments.search.title')
+  const cardTitle = t('schedule.classes.enrollments.search.title')
   const menuActiveLink = "enrollments"
   const returnUrl = `/schedule/classes/all/enrollments/${scheduleItemId}`
   

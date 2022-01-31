@@ -1175,7 +1175,6 @@
                     "title": "Attendance chart"
                 },
                 "enrollments": {
-                    "search_result_empty": "No customers found matching your search",
                     "delete_confirm_msg": "Are you sure you wish to delete this enrollment?",
                     "delete_success": "Deleted enrollment"
                 },
@@ -1207,7 +1206,13 @@
                 "title_edit": "Edit enrollment",
                 "toast_edit_success": "Saved",
                 "error_loading": "Error loading enrollments... :(",
-                "empty_list": "No customers have been enrolled in this class yet"
+                "empty_list": "No customers have been enrolled in this class yet",
+                "placeholder_date_end": "No end date",
+                "search": {
+                    "title": "Search for customers to enroll",
+                    "error_loading": "Error loading accounts... :(",
+                    "empty_list": "Your search didn't return any results"
+                }
             }
         },
         "appointments": {
