@@ -149,21 +149,6 @@ function OrganizationSubscriptionsPrices ({ t, history, match }) {
                       ]}}
                     />
                   </Table.Col>
-                  {/* <Mutation mutation={DELETE_SUBSCRIPTION_PRICE} key={v4()}>
-                      {(deleteSubscriptionPrice, { data }) => (
-                        <Table.Col className="text-right" key={v4()}>
-                          <button className="icon btn btn-link btn-sm" 
-                            title={t('general.delete')} 
-                            href=""
-                            onClick={() => {confirmDelete(t, match, deleteSubscriptionPrice, node)}}
-                          >
-                            <span className="text-red">
-                              <Icon prefix="fe" name="trash-2" />
-                            </span>
-                          </button>
-                        </Table.Col>
-                      )}
-                    </Mutation> */}
                 </Table.Row>
               ))}
           </Table.Body>
