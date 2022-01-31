@@ -53,8 +53,6 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
                 fullName
               }            
             }
-            dateStart
-            dateEnd
           }
         }
       }
