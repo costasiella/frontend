@@ -1,5 +1,3 @@
-// @flow
-
 import * as React from "react";
 
 import { Error404Page } from "tabler-react";
