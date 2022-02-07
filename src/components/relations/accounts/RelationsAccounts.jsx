@@ -83,7 +83,7 @@ function RelationsAccounts({t, history}) {
   const [deleteAccount] = useMutation(DELETE_ACCOUNT)
 
   if (loading || (data && !data.accounts)) return (
-    <RelationsAccountsBase>
+    <RelationsAccountsBase refetch={refetch}>
       <ContentCard cardTitle={t('relations.accounts.title')}>
         <Dimmer active={true}
                 loader={true}>
@@ -93,7 +93,7 @@ function RelationsAccounts({t, history}) {
   )
   
   if (error) return (
-    <RelationsAccountsBase>
+    <RelationsAccountsBase refetch={refetch}>
       <Container>
         <ContentCard cardTitle={t('relations.accounts.title')}>
           <p>{t('relations.accounts.error_loading')}</p>
