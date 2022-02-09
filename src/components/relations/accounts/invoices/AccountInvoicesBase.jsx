@@ -13,12 +13,10 @@ import {
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import RelationsAccountsBack from "../RelationsAccountsBack"
-
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
 
-function AccountInvoicesBase({ t, match, history, children, account={} }) {
+function AccountInvoicesBase({ t, match, history, children, account={}, pageHeaderButtonList="" }) {
   const accountId = match.params.account_id
   let pageHeader
   if (account) {
@@ -31,7 +29,7 @@ function AccountInvoicesBase({ t, match, history, children, account={} }) {
         <Container>
           <Page.Header title={pageHeader} >
             <div className='page-options d-flex'>
-              <RelationsAccountsBack />
+              { pageHeaderButtonList }
             </div>
           </Page.Header>
           <Grid.Row>
@@ -40,14 +38,7 @@ function AccountInvoicesBase({ t, match, history, children, account={} }) {
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-                <HasPermissionWrapper permission="add"
-                                      resource="financeinvoice">
-                  <Link to={`/relations/accounts/${accountId}/invoices/add`}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('relations.account.invoices.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
+
               <ProfileMenu 
                 activeLink='invoices' 
                 accountId={accountId}

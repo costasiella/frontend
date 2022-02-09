@@ -20,11 +20,13 @@ import confirm_delete from "../../../../tools/confirm_delete"
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 
+import RelationsAccountsBack from "../RelationsAccountsBack"
 import { GET_ACCOUNT_INVOICES_QUERY } from "./queries"
 import CSLS from "../../../../tools/cs_local_storage"
 import { DELETE_FINANCE_INVOICE } from "../../../finance/invoices/queries"
 import FinanceInvoiceStatus from "../../../ui/FinanceInvoiceStatus"
 import AccountInvoicesBase from './AccountInvoicesBase'
+import ButtonAdd from "../../../ui/ButtonAdd"
 
 
 function AccountInvoices({ t, location, match, history }) {
@@ -33,6 +35,10 @@ function AccountInvoices({ t, location, match, history }) {
 
   const accountId = match.params.account_id
   const cardTitle = t('relations.account.invoices.title')
+  const pageHeaderButtonList = <React.Fragment>
+    <RelationsAccountsBack />
+    <ButtonAdd addUrl={`/relations/accounts/${accountId}/invoices/add`} className="ml-2" />
+  </React.Fragment>
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_INVOICES_QUERY, {
     variables: {accountId: accountId},
@@ -42,7 +48,7 @@ function AccountInvoices({ t, location, match, history }) {
 
   // Loading
   if (loading) return (
-    <AccountInvoicesBase>
+    <AccountInvoicesBase pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         <Card.Body>
           <p>{t('general.loading_with_dots')}</p>
@@ -54,7 +60,7 @@ function AccountInvoices({ t, location, match, history }) {
   if (error) {
     console.log(error)
     return (
-      <AccountInvoicesBase>
+      <AccountInvoicesBase pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.error_sad_smiley')}</p>
@@ -71,7 +77,7 @@ function AccountInvoices({ t, location, match, history }) {
   const account = data.account
   
   return (
-    <AccountInvoicesBase account={account}>
+    <AccountInvoicesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={financeInvoices.pageInfo}
