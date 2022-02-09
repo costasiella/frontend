@@ -27,7 +27,7 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import { dateToLocalISO } from '../../../../tools/date_tools'
 
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
-import ProfileMenu from "../ProfileMenu"
+import ButtonBack from '../../../ui/ButtonBack'
 
 
 
@@ -36,11 +36,6 @@ function AccountInvoiceAdd({ t, match, history }) {
   const activeLink = "invoices"
   const cardTitle = t('relations.account.invoices.title_add')
   const returnUrl = `/relations/accounts/${account_id}/invoices`
-  const sidebarButton = <Link to={returnUrl}>
-      <Button color="primary btn-block mb-6">
-        <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-      </Button>
-    </Link>
 
   const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY, {
       variables: {
@@ -55,7 +50,7 @@ function AccountInvoiceAdd({ t, match, history }) {
   // Query
   // Loading
   if (loading) {
-    return <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    return <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.loading_with_dots')}</p>
@@ -66,7 +61,7 @@ function AccountInvoiceAdd({ t, match, history }) {
   // Error
   if (error) {
     console.log(error)
-    return <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    return <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.error_sad_smiley')}</p>
@@ -80,7 +75,7 @@ function AccountInvoiceAdd({ t, match, history }) {
 
 
   return (
-    <RelationsAccountProfileBase activeLink={activeLink} user={account} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} user={account} returnUrl={returnUrl}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{
