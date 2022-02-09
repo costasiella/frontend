@@ -131,9 +131,6 @@ import OrganizationLocationRoomEdit from './components/organization/locations/ro
 import OrganizationLevels from './components/organization/levels/OrganizationLevels'
 import OrganizationLevelAdd from './components/organization/levels/OrganizationLevelAdd'
 import OrganizationLevelEdit from './components/organization/levels/OrganizationLevelEdit'
-import OrganizationMemberships from './components/organization/memberships/OrganizationMemberships'
-import OrganizationMembershipAdd from './components/organization/memberships/OrganizationMembershipAdd'
-import OrganizationMembershipEdit from './components/organization/memberships/OrganizationMembershipEdit'
 import OrganizationShifts from './components/organization/shifts/OrganizationShifts'
 import OrganizationShiftAdd from './components/organization/shifts/OrganizationShiftAdd'
 import OrganizationShiftEdit from './components/organization/shifts/OrganizationShiftEdit'
@@ -210,6 +207,11 @@ import ScheduleAppointmentEditAll from './components/schedule/appointments/all/e
 import ScheduleClasses from './components/schedule/classes/ScheduleClasses'
 import ScheduleClassAdd from './components/schedule/classes/ScheduleClassAdd'
 import ScheduleClassEditAll from './components/schedule/classes/all/edit/ScheduleClassEditAll'
+import ScheduleClassEnrollments from './components/schedule/classes/all/enrollments/ScheduleClassEnrollments'
+import ScheduleClassEnrollmentsSearch from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentsSearch'
+import ScheduleClassEnrollmentAdd from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentAdd'
+import ScheduleClassEnrollmentEdit from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentEdit'
+import ScheduleClassEnrollmentOptions from './components/schedule/classes/all/enrollments/ScheduleClassEnrollmentOptions'
 import ScheduleClassClasspasses from './components/schedule/classes/all/classpasses/ScheduleClassClasspasses'
 import ScheduleClassSubscriptions from './components/schedule/classes/all/subscriptions/ScheduleClassSubscriptions'
 import ScheduleClassInstructors from './components/schedule/classes/all/instructors/ScheduleClassInstructors'
@@ -622,6 +624,13 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/classes/add/" component={ScheduleClassAdd} />
             <PrivateRoute exact path="/schedule/classes/all/edit/:class_id/" component={ScheduleClassEditAll} />
             <PrivateRoute exact path="/schedule/classes/all/classpasses/:class_id/" component={ScheduleClassClasspasses} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/" component={ScheduleClassEnrollments} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/search" component={ScheduleClassEnrollmentsSearch} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/add/:account_id/:account_subscription_id" 
+                          component={ScheduleClassEnrollmentAdd} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/edit/:id" 
+                          component={ScheduleClassEnrollmentEdit} />
+            <PrivateRoute exact path="/schedule/classes/all/enrollments/:class_id/options/:account_id" component={ScheduleClassEnrollmentOptions} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/" component={ScheduleClassPrices} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/add" component={ScheduleClassPriceAdd} />
             <PrivateRoute exact path="/schedule/classes/all/prices/:class_id/edit/:id" component={ScheduleClassPriceEdit} />

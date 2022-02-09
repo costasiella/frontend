@@ -34,7 +34,7 @@ function AccountFinancePaymentBatchCategoryItemAdd({ t, history, match }) {
 
   if (loading) {
     return (
-      <AccountFinancePaymentBatchCategoryItemsBase showBack={true}>
+      <AccountFinancePaymentBatchCategoryItemsBase showEditBack={true}>
         <Card title={t('relations.account.finance_payment_batch_category_items.title_add')}>
           <Card.Body>
             {t("general.loading_with_dots")}
@@ -46,7 +46,7 @@ function AccountFinancePaymentBatchCategoryItemAdd({ t, history, match }) {
 
   if (error) {
     return (
-      <AccountFinancePaymentBatchCategoryItemsBase showBack={true}>
+      <AccountFinancePaymentBatchCategoryItemsBase showEditBack={true}>
         <Card title={t('relations.account.finance_payment_batch_category_items.title_add')}>
           <Card.Body>
             {t("relations.account.finance_payment_batch_category_items.error_loading")}
@@ -59,7 +59,7 @@ function AccountFinancePaymentBatchCategoryItemAdd({ t, history, match }) {
   const inputData = data
 
   return (
-    <AccountFinancePaymentBatchCategoryItemsBase showBack={true}>
+    <AccountFinancePaymentBatchCategoryItemsBase showEditBack={true}>
       <Card title={t('relations.account.finance_payment_batch_category_items.title_add')}>
         <Formik
           initialValues={{ 

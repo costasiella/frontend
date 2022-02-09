@@ -81,7 +81,7 @@ function AutomationAccountSubscriptionCreditExpirationAdd({ t, history }) {
                 })
             }}
           >
-            {t('general.new_task')} <Icon name="chevron-right" />
+            {t('general.run_task')} <Icon name="chevron-right" />
           </Button>
           <Link to={returnUrl}>
             <Button color="link">

@@ -68,6 +68,7 @@ function FinanceOrders({t, match, history}) {
       <ContentCard 
         cardTitle={t('finance.orders.title')} 
         pageInfo={orders.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -92,7 +93,7 @@ function FinanceOrders({t, match, history}) {
           })
         }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               {/* <Table.ColHeader>{t('general.status')}</Table.ColHeader> */}

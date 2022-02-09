@@ -59,7 +59,7 @@ function AccountNoteEdit({ t, history, match }) {
   const note = data.accountNote
 
   return (
-    <AccountNotesBase showBack={true}>
+    <AccountNotesBase showEditBack={true}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 

@@ -1,12 +1,10 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useMutation, useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
+import moment from 'moment'
 
 import {
   Icon,
@@ -19,11 +17,12 @@ import confirm_delete from "../../../../tools/confirm_delete"
 
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
+import ButtonAdd from '../../../ui/ButtonAdd'
 import FileDownloadTableButton from "../../../ui/FileDownloadTableButton"
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import { GET_DOCUMENTS_QUERY, DELETE_DOCUMENT } from "./queries"
-import moment from 'moment'
+
 
 import FileProtectedDownloadTableButton from "../../../ui/FileProtectedDownloadTableButton"
 
@@ -35,14 +34,10 @@ function AccountDocuments({t, match}) {
   const accountId = match.params.account_id
   const activeLink = "documents"
   const cardTitle = t('relations.account.documents.title')
-  const sidebarButton = <HasPermissionWrapper 
+  const pageHeaderButtonList = <HasPermissionWrapper 
     permission="add"
     resource="accountdocument">
-      <Link to={`/relations/accounts/${accountId}/documents/add`}>
-        <Button color="primary btn-block mb-6">
-          <Icon prefix="fe" name="plus-circle" /> {t('relations.account.documents.add')}
-        </Button>
-      </Link>
+      <ButtonAdd addUrl={`/relations/accounts/${accountId}/documents/add`} className='ml-2' />
   </HasPermissionWrapper>
 
   const {loading, error, data, fetchMore} = useQuery(GET_DOCUMENTS_QUERY, {
@@ -51,7 +46,7 @@ function AccountDocuments({t, match}) {
   const [deleteAccountDocument] = useMutation(DELETE_DOCUMENT)
 
   if (loading) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         {t('general.loading_with_dots')}
       </Card>
@@ -59,7 +54,7 @@ function AccountDocuments({t, match}) {
   )
 
   if (error) return(
-    <RelationsAccountProfileBase activeLink={activeLink} sidebarButton={sidebarButton}>
+    <RelationsAccountProfileBase activeLink={activeLink} pageHeaderButtonList={pageHeaderButtonList}>
       {console.log(error)}
       <Card title={cardTitle}>
         {t('general.error_sad_smiley')}
@@ -71,11 +66,24 @@ function AccountDocuments({t, match}) {
   const accountDocuments = data.accountDocuments
   console.log(accountDocuments)
 
+  // Empty list
+  if (!accountDocuments.edges.length) {
+    return (
+      <RelationsAccountProfileBase activeLink={activeLink} user={account} pageHeaderButtonList={pageHeaderButtonList}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.documents.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </RelationsAccountProfileBase>
+    )
+  }
+
   return (
     <RelationsAccountProfileBase 
       user={account}
       activeLink={activeLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={t('relations.account.documents.title')}
@@ -133,8 +141,6 @@ function AccountDocuments({t, match}) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.delete')} 
                       href=""

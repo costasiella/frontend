@@ -1,35 +1,23 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-import ButtonAddSecondaryMenu from '../../../../../ui/ButtonAddSecondaryMenu'
-
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
-
-
-import { GET_ACCOUNT_SUBSCRIPTION_PAUSES_QUERY } from './queries'
 
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Table,
 } from "tabler-react";
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+import AppSettingsContext from '../../../../../context/AppSettingsContext'
+import { GET_ACCOUNT_SUBSCRIPTION_PAUSES_QUERY } from './queries'
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
 import AccountSubscriptionEditPauseDelete from "./AccountSubscriptionEditPauseDelete"
 import moment from 'moment';
+import ButtonAdd from '../../../../../ui/ButtonAdd';
 
 
 function AccountSubscriptionEditPauses({t, match, history}) {
@@ -45,8 +33,10 @@ function AccountSubscriptionEditPauses({t, match, history}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`
   const activeTab = "pauses"
 
-  const buttonAdd = <ButtonAddSecondaryMenu 
-                      linkTo={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/pauses/add`} />
+  const pageHeaderButtonList = <ButtonAdd 
+    addUrl={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/pauses/add`} 
+    className='ml-2'
+  />
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SUBSCRIPTION_PAUSES_QUERY, {
     variables: {
@@ -55,12 +45,12 @@ function AccountSubscriptionEditPauses({t, match, history}) {
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList} >
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList} >
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
@@ -72,14 +62,14 @@ function AccountSubscriptionEditPauses({t, match, history}) {
   const accountSubscriptionPauses = data.accountSubscriptionPauses
   const pageInfo = data.accountSubscriptionPauses.pageInfo
 
-    // Empty list
-    if (!accountSubscriptionPauses.edges.length) { return (
-      <AccountSubscriptionEditListBase active_tab={activeTab}>
-        <div className="pull-right">{buttonAdd}</div>
-        <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5>
-        <p>{t('relations.account.subscriptions.pauses.empty_list')}</p>
-      </AccountSubscriptionEditListBase>
-    )}
+  // Empty list
+  if (!accountSubscriptionPauses.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList} >
+      {/* <div className="pull-right">{buttonAdd}</div> */}
+      {/* <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5> */}
+      <Card.Body>{t('relations.account.subscriptions.pauses.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
   // const inputData = data
   // const account = data.account
   // const initialdata = data.accountSubscription
@@ -114,16 +104,21 @@ function AccountSubscriptionEditPauses({t, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditListBase active_tab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
-      <div className="pull-right">{buttonAdd}</div>
-      <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5>
-      <Table>
+    <AccountSubscriptionEditListBase 
+      activeTab={activeTab} 
+      pageInfo={pageInfo} 
+      onLoadMore={onLoadMore} 
+      returnUrl={returnUrl}
+      pageHeaderButtonList={pageHeaderButtonList} 
+    >
+      <br />
+      <Table cards>
         <Table.Header>
-          <Table.Row key={v4()}>
+          <Table.Row key={v4()}>{/* <div className="pull-right">{buttonAdd}</div> */}
+      {/* <h5>{t('relations.account.subscriptions.pauses.title_list')}</h5> */}
             <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
             <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -146,8 +141,6 @@ function AccountSubscriptionEditPauses({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <AccountSubscriptionEditPauseDelete id={node.id} />
                 </Table.Col>
               </Table.Row>

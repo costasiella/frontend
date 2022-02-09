@@ -13,39 +13,19 @@ import SiteWrapper from "../../SiteWrapper"
 // import ShopAccountBack from "../ShopAccountBack"
 
 
-function ScheduleEventsBase({ t, match, history, children, sidebarContent="" }) {
+function ScheduleEventsBase({ t, match, history, children, pageHeaderButtonList="" }) {
   return (
       <SiteWrapper>
         <div className="my-3 my-md-5">
           <Container>
             <Page.Header title={t("schedule.title")} subTitle={t("schedule.events.title")}>
               <div className="page-options d-flex">
-                {/* Page options can go here... */}
+                {pageHeaderButtonList}
               </div>
             </Page.Header>
             <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               { children }
-            </Grid.Col>
-            <Grid.Col md={3}>
-              { sidebarContent }
-                  {/* <div>
-                    <Button
-                      className="pull-right"
-                      color="link"
-                      size="sm"
-                      onClick={() => {
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE, "")
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL, "")
-                        localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION, "")
-                        refetch(get_list_query_variables())
-                      }}
-                    >
-                      {t("general.clear")}
-                    </Button>
-                  </div> */}
-                  {/* <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-                  <ScheduleClassesFilter data={data} refetch={refetch} /> */}
             </Grid.Col>
             </Grid.Row>
           </Container>

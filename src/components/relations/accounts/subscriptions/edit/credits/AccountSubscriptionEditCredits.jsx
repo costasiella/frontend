@@ -1,41 +1,29 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-import SubscriptionCreditsMutationType from "../../../../../ui/SubscriptionCreditsMutationType"
-import ButtonAddSecondaryMenu from '../../../../../ui/ButtonAddSecondaryMenu'
-
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
-
-import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY } from './queries'
+import moment from 'moment'
 
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Table,
 } from "tabler-react";
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+
+import ButtonAdd from '../../../../../ui/ButtonAdd';
+import SubscriptionCreditsMutationType from "../../../../../ui/SubscriptionCreditsMutationType"
+import AppSettingsContext from '../../../../../context/AppSettingsContext'
+import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY } from './queries'
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
 import AccountSubscriptionEditCreditDelete from "./AccountSubscriptionEditCreditDelete"
-import moment from 'moment';
+
 
 
 function AccountSubscriptionEditCredits({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
   console.log(appSettings)
   
@@ -45,8 +33,10 @@ function AccountSubscriptionEditCredits({t, match, history}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`
   const activeTab = "credits"
 
-  const buttonAdd = <ButtonAddSecondaryMenu 
-                     linkTo={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/credits/add`} />
+  const pageHeaderButtonList = <ButtonAdd
+    addUrl={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/credits/add`} 
+    className="ml-2"
+  />
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, {
     variables: {
@@ -55,12 +45,12 @@ function AccountSubscriptionEditCredits({t, match, history}) {
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
@@ -71,14 +61,13 @@ function AccountSubscriptionEditCredits({t, match, history}) {
 
   const accountSubscriptionCredits = data.accountSubscriptionCredits
   const pageInfo = data.accountSubscriptionCredits.pageInfo
-  // const inputData = data
-  // const account = data.account
-  // const initialdata = data.accountSubscription
 
-  // let initialPaymentMethod = ""
-  // if (initialdata.financePaymentMethod) {
-  //   initialPaymentMethod = initialdata.financePaymentMethod.id
-  // }
+  // Empty list
+  if (!accountSubscriptionCredits.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+      <Card.Body>{t('relations.account.subscriptions.credits.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
 
   const onLoadMore = () => {
     fetchMore({
@@ -105,17 +94,21 @@ function AccountSubscriptionEditCredits({t, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditListBase active_tab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
-      <div className="pull-right">{buttonAdd}</div>
-      <h5>{t('relations.account.subscriptions.credits.title_list')}</h5>
-      <Table>
+    <AccountSubscriptionEditListBase 
+      activeTab={activeTab} 
+      pageInfo={pageInfo} 
+      onLoadMore={onLoadMore}
+      returnUrl={returnUrl} 
+      pageHeaderButtonList={pageHeaderButtonList}  
+    >
+      <br />
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.time')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
             <Table.ColHeader>{t('general.credits')}</Table.ColHeader>
             <Table.ColHeader>{t('general.mutation')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -141,8 +134,6 @@ function AccountSubscriptionEditCredits({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <AccountSubscriptionEditCreditDelete id={node.id} />
                 </Table.Col>
               </Table.Row>

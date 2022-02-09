@@ -18,7 +18,7 @@ import ClassEditMenu from './ClassEditMenu'
 import ClassEditBack from './ClassEditBack';
 
 
-function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", sidebarButton=""}) {
+function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", pageHeaderButtonList=""}) {
   const classId = match.params.class_id
   
   return (
@@ -28,7 +28,9 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           title={t("schedule.title")} 
           subTitle={subTitle}
         >
-          <ClassEditBack />
+          <div className='page-options d-flex'>
+            {pageHeaderButtonList}
+          </div>
         </Page.Header>
         <Grid.Row>
           <Grid.Col md={9}>
@@ -39,7 +41,6 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
             }
           </Grid.Col>
           <Grid.Col md={3}>
-            {sidebarButton}
             <ClassEditMenu activeLink={menuActiveLink} classId={classId}/>
           </Grid.Col>
         </Grid.Row>

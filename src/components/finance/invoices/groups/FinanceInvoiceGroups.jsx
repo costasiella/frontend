@@ -142,8 +142,6 @@ function FinanceInvoiceGroups({t, history}) {
                         {t('general.edit')}
                       </Button>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""
@@ -170,7 +168,7 @@ function FinanceInvoiceGroups({t, history}) {
                       console.log('there was an error sending the query', error);
                     })
                     }}>
-                      <Icon prefix="fa" name="inbox" />
+                      <Icon name="inbox" />
                     </button>
                   </Table.Col>
                 </Table.Row>

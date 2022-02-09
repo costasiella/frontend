@@ -1,15 +1,8 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 import { v4 } from "uuid"
-
-import { Editor } from '@tinymce/tinymce-react'
-import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
-import CSDatePicker from "../../../ui/CSDatePicker"
-
 
 import {
   Button,
@@ -18,8 +11,14 @@ import {
   Grid,
 } from "tabler-react";
 
+import { Editor } from '@tinymce/tinymce-react'
+import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
+import CSDatePicker from "../../../ui/CSDatePicker"
 
-const AccountSubscriptionForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, return_url }) => (
+import ButtonFormCancel from "../../../ui/ButtonFormCancel"
+
+
+const AccountSubscriptionForm = ({ t, history, create, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
   <FoForm>
     <Card.Body> 
       <Grid.Row>
@@ -97,18 +96,20 @@ const AccountSubscriptionForm = ({ t, history, inputData, isSubmitting, setField
           />
         <ErrorMessage name="note" component="span" className="invalid-feedback" />
       </Form.Group>
-      <Form.Group>
-        <Form.Label className="custom-switch">
-            <Field 
-              className="custom-switch-input"
-              type="checkbox" 
-              name="registrationFeePaid" 
-              checked={values.registrationFeePaid} />
-            <span className="custom-switch-indicator" ></span>
-            <span className="custom-switch-description">{t('relations.account.subscriptions.registration_fee_paid')}</span>
-          </Form.Label>
-        <ErrorMessage name="registrationFeePaid" component="div" />   
-      </Form.Group> 
+      {(create) ? "" : 
+        <Form.Group>
+          <Form.Label className="custom-switch">
+              <Field 
+                className="custom-switch-input"
+                type="checkbox" 
+                name="registrationFeePaid" 
+                checked={values.registrationFeePaid} />
+              <span className="custom-switch-indicator" ></span>
+              <span className="custom-switch-description">{t('relations.account.subscriptions.registration_fee_paid')}</span>
+            </Form.Label>
+          <ErrorMessage name="registrationFeePaid" component="div" />   
+        </Form.Group> 
+      }
     </Card.Body>
     <Card.Footer>
         <Button 
@@ -119,13 +120,7 @@ const AccountSubscriptionForm = ({ t, history, inputData, isSubmitting, setField
         >
           {t('general.submit')}
         </Button>
-        <Button
-          type="button" 
-          color="link" 
-          onClick={() => history.push(return_url)}
-        >
-            {t('general.cancel')}
-        </Button>
+        <ButtonFormCancel returnUrl={returnUrl} />
     </Card.Footer>
   </FoForm>
 )

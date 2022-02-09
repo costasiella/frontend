@@ -83,7 +83,7 @@ function RelationsAccounts({t, history}) {
   const [deleteAccount] = useMutation(DELETE_ACCOUNT)
 
   if (loading || (data && !data.accounts)) return (
-    <RelationsAccountsBase>
+    <RelationsAccountsBase refetch={refetch}>
       <ContentCard cardTitle={t('relations.accounts.title')}>
         <Dimmer active={true}
                 loader={true}>
@@ -93,7 +93,7 @@ function RelationsAccounts({t, history}) {
   )
   
   if (error) return (
-    <RelationsAccountsBase>
+    <RelationsAccountsBase refetch={refetch}>
       <Container>
         <ContentCard cardTitle={t('relations.accounts.title')}>
           <p>{t('relations.accounts.error_loading')}</p>
@@ -306,10 +306,8 @@ function RelationsAccounts({t, history}) {
                           t("general.restore")
                       }
                     </button>
-                  </Table.Col>
                   {
                     (node.isActive) ? '' :
-                      <Table.Col className="text-right" key={v4()}>
                         <button className="icon btn btn-link btn-sm" 
                           title={t('general.delete')} 
                           href=""
@@ -331,8 +329,8 @@ function RelationsAccounts({t, history}) {
                         }}>
                           <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
                         </button>
-                      </Table.Col>
                   }
+                  </Table.Col>
                 </Table.Row>
               ))}
           </Table.Body>

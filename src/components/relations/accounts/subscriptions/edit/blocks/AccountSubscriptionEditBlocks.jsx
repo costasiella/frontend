@@ -25,6 +25,7 @@ import {
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
 import AccountSubscriptionEditBlockDelete from "./AccountSubscriptionEditBlockDelete"
 import moment from 'moment';
+import ButtonAdd from '../../../../../ui/ButtonAdd';
 
 
 function AccountSubscriptionEditBlocks({t, match, history}) {
@@ -38,8 +39,10 @@ function AccountSubscriptionEditBlocks({t, match, history}) {
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`
   const activeTab = "blocks"
 
-  const buttonAdd = <ButtonAddSecondaryMenu 
-                      linkTo={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/blocks/add`} />
+  const pageHeaderButtonList = <ButtonAdd 
+    addUrl={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/blocks/add`} 
+    className="ml-2"
+  />
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SUBSCRIPTION_BLOCKS_QUERY, {
     variables: {
@@ -48,12 +51,12 @@ function AccountSubscriptionEditBlocks({t, match, history}) {
   })
   
   if (loading) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditListBase>
   )
   if (error) return (
-    <AccountSubscriptionEditListBase active_tab={activeTab}>
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
@@ -65,14 +68,12 @@ function AccountSubscriptionEditBlocks({t, match, history}) {
   const accountSubscriptionBlocks = data.accountSubscriptionBlocks
   const pageInfo = data.accountSubscriptionBlocks.pageInfo
 
-    // Empty list
-    if (!accountSubscriptionBlocks.edges.length) { return (
-      <AccountSubscriptionEditListBase active_tab={activeTab}>
-        <div className="pull-right">{buttonAdd}</div>
-        <h5>{t('relations.account.subscriptions.blocks.title_list')}</h5>
-        <p>{t('relations.account.subscriptions.blocks.empty_list')}</p>
-      </AccountSubscriptionEditListBase>
-    )}
+  // Empty list
+  if (!accountSubscriptionBlocks.edges.length) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+      <Card.Body>{t('relations.account.subscriptions.blocks.empty_list')}</Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
 
   const onLoadMore = () => {
     fetchMore({
@@ -99,16 +100,20 @@ function AccountSubscriptionEditBlocks({t, match, history}) {
   }
 
   return (
-    <AccountSubscriptionEditListBase active_tab={activeTab} pageInfo={pageInfo} onLoadMore={onLoadMore}>
-      <div className="pull-right">{buttonAdd}</div>
-      <h5>{t('relations.account.subscriptions.blocks.title_list')}</h5>
-      <Table>
+    <AccountSubscriptionEditListBase 
+      activeTab={activeTab} 
+      pageInfo={pageInfo} 
+      onLoadMore={onLoadMore}
+      returnUrl={returnUrl} 
+      pageHeaderButtonList={pageHeaderButtonList}
+    >
+      <br />
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
             <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -131,8 +136,6 @@ function AccountSubscriptionEditBlocks({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <AccountSubscriptionEditBlockDelete id={node.id} />
                 </Table.Col>
               </Table.Row>

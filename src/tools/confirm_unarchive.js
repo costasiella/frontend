@@ -6,7 +6,7 @@ import {
 } from "tabler-react";
 
 
-const confirm_unarchive = ({t, msgConfirm, msgDescription, msgSuccess, archiveFunction, functionVariables}) => {
+const confirm_unarchive = ({t, msgConfirm, msgDescription, msgSuccess, unArchiveFunction, functionVariables}) => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
@@ -18,7 +18,7 @@ const confirm_unarchive = ({t, msgConfirm, msgDescription, msgSuccess, archiveFu
             <button
               className="btn btn-warning"
               onClick={() => {
-                archiveFunction(functionVariables)
+                unArchiveFunction(functionVariables)
                   .then(({ data }) => {
                     console.log('got data', data);
                     toast.success(

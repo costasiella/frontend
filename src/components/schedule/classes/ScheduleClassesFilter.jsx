@@ -5,6 +5,7 @@ import { withRouter } from "react-router"
 
 import {
   Button,
+  Grid,
 } from "tabler-react";
 
 import CSLS from "../../../tools/cs_local_storage"
@@ -36,77 +37,89 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
 
   return (
     <React.Fragment>
-      <Button
-        className="float-right"
-        color="link"
-        size="sm"
-        onClick={() => {
-          localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE, "")
-          localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL, "")
-          localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION, "")
-          setLocation("")
-          setClasstype("")
-          setLevel("")
-          refetch(get_list_query_variables())
-        }}
-      >
-        {t("general.clear")}
-      </Button>
-      <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-      {/* Locations */}
-      <select 
-        className={selectClass}
-        value={location}
-        onChange={ (event) => {
-          setLocation(event.target.value)
-          updateLocalStorageAndRefetch(
-            CSLS.SCHEDULE_CLASSES_FILTER_LOCATION,
-            event.target.value,
-            refetch
-          )
-        }}
-      >
-        <option value="" key={v4()}>{t("schedule.classes.filter_all_locations")}</option>
-        {data.organizationLocations.edges.map(({ node }) =>
-          <option value={node.id} key={v4()}>{node.name}</option>
-        )}
-      </select>
-      {/* Classtypes */}
-      <select 
-        className={selectClass}
-        value={classtype}
-        onChange={ (event) => {
-          setClasstype(event.target.value)
-          updateLocalStorageAndRefetch(
-            CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE,
-            event.target.value,
-            refetch
-          )
-        }}
-      >
-        <option value="" key={v4()}>{t("schedule.classes.filter_all_classtypes")}</option>
-        {data.organizationClasstypes.edges.map(({ node }) =>
-          <option value={node.id} key={v4()}>{node.name}</option>
-        )}
-      </select>
-      {/* Levels */}
-      <select 
-        className={selectClass}
-        value={level}
-        onChange={ (event) => {
-          setLevel(event.target.value)
-          updateLocalStorageAndRefetch(
-            CSLS.SCHEDULE_CLASSES_FILTER_LEVEL,
-            event.target.value,
-            refetch
-          )
-        }}
-      >
-        <option value="" key={v4()}>{t("schedule.classes.filter_all_levels")}</option>
-        {data.organizationLevels.edges.map(({ node }) =>
-          <option value={node.id} key={v4()}>{node.name}</option>
-        )}
-      </select>
+      <Grid.Row>
+        <Grid.Col md={12}>
+          <Button
+            className="float-right"
+            color="link"
+            size="sm"
+            onClick={() => {
+              localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE, "")
+              localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL, "")
+              localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION, "")
+              setLocation("")
+              setClasstype("")
+              setLevel("")
+              refetch(get_list_query_variables())
+            }}
+          >
+            {t("general.reset_filter")}
+          </Button>
+          <h6 className="mt-2 pt-1">{t("general.filter")}</h6>
+        </Grid.Col>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Col>
+          {/* Locations */}
+          <select 
+            className={selectClass}
+            value={location}
+            onChange={ (event) => {
+              setLocation(event.target.value)
+              updateLocalStorageAndRefetch(
+                CSLS.SCHEDULE_CLASSES_FILTER_LOCATION,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("schedule.classes.filter_all_locations")}</option>
+            {data.organizationLocations.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.name}</option>
+            )}
+          </select>
+        </Grid.Col>
+        <Grid.Col>
+          {/* Classtypes */}
+          <select 
+            className={selectClass}
+            value={classtype}
+            onChange={ (event) => {
+              setClasstype(event.target.value)
+              updateLocalStorageAndRefetch(
+                CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("schedule.classes.filter_all_classtypes")}</option>
+            {data.organizationClasstypes.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.name}</option>
+            )}
+          </select>
+        </Grid.Col>
+        <Grid.Col>
+          {/* Levels */}
+          <select 
+            className={selectClass}
+            value={level}
+            onChange={ (event) => {
+              setLevel(event.target.value)
+              updateLocalStorageAndRefetch(
+                CSLS.SCHEDULE_CLASSES_FILTER_LEVEL,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("schedule.classes.filter_all_levels")}</option>
+            {data.organizationLevels.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.name}</option>
+            )}
+          </select>
+        </Grid.Col>
+      </Grid.Row>
     </React.Fragment>
   )
 }

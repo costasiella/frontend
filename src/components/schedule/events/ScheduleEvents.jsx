@@ -34,6 +34,8 @@ import ContentCard from "../../general/ContentCard"
 import ScheduleEventsBase from "./ScheduleEventsBase"
 import ScheduleEventArchive from "./ScheduleEventArchive"
 
+import ButtonAdd from '../../ui/ButtonAdd'
+import ButtonEdit from '../../ui/ButtonEdit'
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
@@ -51,11 +53,8 @@ function ScheduleEvents({t, history}) {
     variables: get_list_query_variables()
   })
 
-  const sidebarContent = <HasPermissionWrapper permission="add" resource="scheduleevent">
-    <Button color="primary btn-block mb-1"
-            onClick={() => history.push("/schedule/events/add")}>
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.events.add')}
-    </Button>
+  const pageHeaderButtonList = <HasPermissionWrapper permission="add" resource="scheduleevent">
+    <ButtonAdd addUrl="/schedule/events/add" />
   </HasPermissionWrapper>
 
   const cardHeaderContent = <Card.Options>
@@ -66,7 +65,7 @@ function ScheduleEvents({t, history}) {
               refetch(get_list_query_variables())
             }
     }>
-      {t('general.active')}
+      {t('general.current')}
     </Button>
     <Button color={(localStorage.getItem(CSLS.SCHEDULE_EVENTS_ARCHIVED) === "true") ? 'primary': 'secondary'} 
             size="sm" 
@@ -82,7 +81,7 @@ function ScheduleEvents({t, history}) {
 
   if (loading) {
     return (
-      <ScheduleEventsBase sidebarContent={sidebarContent}>
+      <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
         <ContentCard 
           cardTitle={t('schedule.events.title')}
           headerContent={cardHeaderContent}
@@ -97,7 +96,7 @@ function ScheduleEvents({t, history}) {
 
   if (error) {
     return (
-      <ScheduleEventsBase sidebarContent={sidebarContent}>
+      <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
         <ContentCard 
           cardTitle={t('schedule.events.title')}
           headerContent={cardHeaderContent}
@@ -113,10 +112,11 @@ function ScheduleEvents({t, history}) {
   const scheduleEvents = data.scheduleEvents
 
   return (
-    <ScheduleEventsBase sidebarContent={sidebarContent}>
+    <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={t('schedule.events.title')}
         headerContent={cardHeaderContent}
+        hasCardBody={false}
         pageInfo={scheduleEvents.pageInfo}
             onLoadMore={() => {
               fetchMore({
@@ -142,7 +142,7 @@ function ScheduleEvents({t, history}) {
               })
             }} 
       >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.start')}</Table.ColHeader>
@@ -181,14 +181,8 @@ function ScheduleEvents({t, history}) {
                 <Table.Col className="text-right" key={v4()}>
                   {(node.archived) ? 
                     <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                    <Button className='btn-sm' 
-                            onClick={() => history.push("/schedule/events/edit/" + node.id)}
-                            color="secondary">
-                      {t('general.edit')}
-                    </Button>
+                    <ButtonEdit editUrl={`/schedule/events/edit/${node.id}`} />
                   }
-                </Table.Col>
-                <Table.Col>
                   <ScheduleEventArchive node={node} />
                 </Table.Col>
               </Table.Row>

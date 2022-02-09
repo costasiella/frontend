@@ -4,13 +4,10 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import { ARCHIVE_SCHEDULE_EVENT, GET_SCHEDULE_EVENTS_QUERY } from "./queries"
-import confirm_archive from "../../../tools/confirm_archive"
-import confirm_unarchive from "../../../tools/confirm_unarchive"
-
-import {
-  Icon
-} from "tabler-react"
 import { get_list_query_variables } from './tools'
+
+import ButtonArchive from '../../ui/ButtonArchive'
+import ButtonUnArchive from '../../ui/ButtonUnArchive'
 
 
 function ScheduleEventArchive({t, match, history, node}) {
@@ -21,54 +18,40 @@ function ScheduleEventArchive({t, match, history, node}) {
 
   if (!node.archived) {
     return (
-      <button className="icon btn btn-warning btn-sm mb-3 pull-right" 
-          title={t('general.unarchive')} 
-          onClick={() => {
-            confirm_archive({
-              t: t,
-              msgConfirm: t("schedule.events.archive_confirm_msg"),
-              msgDescription: <p></p>,
-              msgSuccess: t('general.archived'),
-              archiveFunction: archiveScheduleEvent,
-              functionVariables: { 
-                variables: {
-                  input: {
-                    id: node.id,
-                    archived: true
-                  },
-                }, 
-                refetchQueries: refetchQueries,
-              }
-            })
-        }}>
-        <span className="text-white"><Icon prefix="fe" name="inbox" /> {" "} {t("")}</span>
-      </button>
+      <ButtonArchive
+        msgConfirm={t("schedule.events.archive_confirm_msg")}
+        msgSuccess={t("general.archived")}
+        archiveFunction={archiveScheduleEvent}
+        archiveFunctionVariables={{ 
+            variables: {
+              input: {
+                id: node.id,
+                archived: true
+              },
+            }, 
+            refetchQueries: refetchQueries,
+          }
+        }
+      />
     )
 
   } else {
     return (
-      <button className="icon btn btn-warning btn-sm mb-3 pull-right" 
-        title={t('general.archive')} 
-        onClick={() => {
-          confirm_unarchive({
-            t: t,
-            msgConfirm: t("schedule.events.unarchive_confirm_msg"),
-            msgDescription: <p></p>,
-            msgSuccess: t('general.unarchived'),
-            archiveFunction: archiveScheduleEvent,
-            functionVariables: { 
-              variables: {
-                input: {
-                  id: node.id,
-                  archived: false
-                },
-              }, 
-              refetchQueries: refetchQueries,
-            }
-          })
-      }}>
-        <span className="text-white"><Icon prefix="fe" name="inbox" /> {" "} {t("")}</span>
-      </button>
+      <ButtonUnArchive
+        msgConfirm={t("schedule.events.unarchive_confirm_msg")}
+        msgSuccess={t("general.unarchived")}
+        unArchiveFunction={archiveScheduleEvent}
+        unArchiveFunctionVariables={{ 
+            variables: {
+              input: {
+                id: node.id,
+                archived: false
+              },
+            }, 
+            refetchQueries: refetchQueries,
+          }
+        }
+      />
     )
   }
 }

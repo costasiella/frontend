@@ -22,7 +22,7 @@ function ScheduleClassInstructorAdd({ t, history, match }) {
   const returnUrl = `/schedule/classes/all/instructors/${classId}`
   const cardTitle = t('schedule.classes.instructors.title_add')
   const menuActiveLink = "instructors" 
-  const sidebarButton = <ScheduleClassInstructorBack classId={classId} />
+  const pageHeaderButtonList = <ScheduleClassInstructorBack classId={classId} />
 
   const {loading, error, data} = useQuery(GET_INPUT_VALUES_QUERY)
   const [addScheduleClassInstructor] = useMutation(ADD_SCHEDULE_CLASS_INSTRUCTOR)
@@ -31,7 +31,7 @@ function ScheduleClassInstructorAdd({ t, history, match }) {
     <ClassEditBase
       cardTitle={cardTitle}
       menuActiveLink={menuActiveLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('general.loading_with_dots')}</p>
@@ -43,7 +43,7 @@ function ScheduleClassInstructorAdd({ t, history, match }) {
     <ClassEditBase
       cardTitle={cardTitle}
       menuActiveLink={menuActiveLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('general.error_sad_smiley')}</p>
@@ -59,7 +59,7 @@ function ScheduleClassInstructorAdd({ t, history, match }) {
     <ClassEditBase
       cardTitle={cardTitle}
       menuActiveLink={menuActiveLink}
-      sidebarButton={sidebarButton}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Formik
         initialValues={{ 

@@ -100,7 +100,6 @@
             "error_loading": "Error loading invoice groups :(",
             "empty_list": "No invoice groups have been defined yet",
             "empty_archive": "Invoice group archive is empty",
-            "add": "Add invoice group",
             "next_id": "Next #",
             "due_after_days": "Due after days",
             "auto_reset_prefix_year": "Reset to 1 on January 1st",
@@ -504,7 +503,12 @@
         "classpass_group": "Classpass group",
         "subscription_group": "Subscription group",
         "shift": "Shift",
-        "employee2": "Employee 2"
+        "employee2": "Employee 2",
+        "enrollments": "Enrollments",
+        "reset_filter": "Reset filter",
+        "run_task": "Run task",
+        "using": "using",
+        "ended": "Ended"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -670,7 +674,8 @@
                 "deleted": "Deleted subscriptions group"
             },
             "credit_accumulation_days": "Credit accumulation in days",
-            "explanation": "A number of or unlimited classes for a monthly fee"
+            "explanation": "A number of or unlimited classes for a monthly fee",
+            "reconciliation_classes": "Reconciliation classes"
         },
         "subscription": {
             "public": "This is a public subscription",
@@ -698,8 +703,6 @@
             "title": "Subscription prices",
             "error_loading": "Error loading subscription prices :(",
             "empty_list": "No subscription prices found",
-            "empty_archive": "No subscription prices have been archived yet",
-            "add": "Add subscription price",
             "delete_confirm_msg": "Are you sure you wish to delete this price?",
             "deleted": "Deleted subscription price"
         },
@@ -849,8 +852,7 @@
     "system": {
         "user": {
             "error_loading": "Error loading user :("
-        },
-        "datepicker_timeformat": "h:mm aa"
+        }
     },
     "subscription_unit": {
         "week": "Week",
@@ -867,8 +869,8 @@
             "toast_add_success": "Created account",
             "title": "Accounts",
             "error_loading": "Error loading accounts :(",
-            "empty_list": "No accounts found",
-            "empty_archive": "No accounts have been deleted yet",
+            "empty_list": "No accounts found. There are no active accounts or your search didn't return a result.",
+            "empty_archive": "No accounts found. No accounts have been deleted yet or your search didn't return a result.",
             "delete_confirm_msg": "Are you sure you wish to delete this account and all associated data?",
             "deleted": "Deleted account",
             "profile": "Profile",
@@ -887,18 +889,17 @@
                 "toast_edit_success": "Saved subscription",
                 "delete_confirm_msg": "Are you sure you with to delete this subscription and all associated data?",
                 "deleted": "Deleted subscription",
-                "add": "Add subscription",
                 "title_edit": "Edit subscription",
                 "registration_fee_paid": "Registration fee paid",
                 "credits": {
-                    "title_list": "Credit mutations",
                     "toast_add_success": "Added credit mutation",
                     "delete_confirm_msg": "Are you sure you wish to delete this credit mutation?",
                     "delete_success": "Deleted credit mutation",
                     "toast_edit_success": "Saved",
                     "add": "Add credit mutation",
                     "edit": "Edit credit mutation",
-                    "mutationType": "Mutation type"
+                    "mutationType": "Mutation type",
+                    "empty_list": "This subscription hasn't had any credit mutations."
                 },
                 "pauses": {
                     "empty_list": "This subscription hasn't been paused before.",
@@ -925,7 +926,6 @@
                     "toast_edit_success": "Saved",
                     "add": "Add block",
                     "edit": "Edit block",
-                    "title_list": "Blocked periods",
                     "empty_list": "This subscription hasn't been blocked before."
                 },
                 "alt_prices": {
@@ -935,14 +935,13 @@
                     "toast_edit_success": "Saved",
                     "add": "Add alt. price",
                     "edit": "Edit alt. price",
-                    "title_list": "Alt. prices",
                     "empty_list": "No alternative prices have been defined for this subscription."
                 },
                 "invoices": {
-                    "title_list": "Invoices",
                     "toast_add_success": "Added invoice",
                     "toast_you_are_now_editing": "You're now editing the added invoice",
-                    "add": "Add invoice"
+                    "add": "Add invoice",
+                    "empty_list": "No invoices have been created yet for this subscription"
                 }
             },
             "classpasses": {
@@ -983,12 +982,12 @@
             },
             "accepted_documents": {
                 "title": "Accepted documents",
-                "accepted_from_address": "Accepted from address"
+                "accepted_from_address": "Accepted from address",
+                "empty_list": "This customer hasn't accepted any documents yet"
             },
             "classes": {
-                "empty_list": "This customer hasn't attended any classes yet...",
-                "title": "Classes",
-                "add": "Add class"
+                "empty_list": "This customer hasn't booked or attended any classes yet",
+                "title": "Classes"
             },
             "orders": {
                 "title": "Orders",
@@ -997,7 +996,8 @@
                 "empty_list": "No orders placed yet..."
             },
             "event_tickets": {
-                "title": "Event tickets"
+                "title": "Event tickets",
+                "empty_list": "This customer hasn't attended any events yet"
             },
             "error_loading": "Error loading account info... :(",
             "bank_accounts": {
@@ -1017,23 +1017,23 @@
                     "toast_edit_success": "Saved",
                     "delete_confirm_msg": "Are you sure you wish to delete this mandate?",
                     "deleted": "Deleted mandate",
-                    "add": "Add mandate"
+                    "add": "Add mandate",
+                    "title_edit": "Edit mandate"
                 }
             },
             "finance_payment_batch_category_items": {
                 "title": "Payment batch items",
-                "add": "Add batch item",
                 "title_add": "Add batch item",
                 "error_loading": "Error loading payment batch item...",
                 "toast_add_success": "Added batch item",
                 "title_edit": "Edit batch item",
                 "toast_edit_success": "Saved",
                 "delete_confirm_msg": "Are you sure you wish to delete this batch item?",
-                "deleted": "Deleted batch item"
+                "deleted": "Deleted batch item",
+                "empty_list": "No batch category items have been created yet for this account"
             },
             "notes": {
                 "title": "Notes",
-                "add": "Add note",
                 "title_add": "Add note",
                 "toast_add_success": "Added note",
                 "backoffice": "Backoffice",
@@ -1049,9 +1049,9 @@
                 "toast_add_success": "Added document",
                 "title_edit": "Edit document",
                 "toast_edit_success": "Saved",
-                "add": "Add document",
                 "delete_confirm_msg": "Are you sure you wish to delete this document?",
-                "deleted": "Deleted document"
+                "deleted": "Deleted document",
+                "empty_list": "No documents have been uploaded yet for this customer"
             }
         },
         "b2b": {
@@ -1125,7 +1125,6 @@
             },
             "subscriptions": {
                 "attend_disabled": "Can't change",
-                "add": "Add",
                 "title": "Subscriptions",
                 "error_loading": "Error loading subscriptions groups for this class :(",
                 "empty_list": "No subscription groups have been defined yet.",
@@ -1174,11 +1173,17 @@
                 },
                 "attendance_chart": {
                     "title": "Attendance chart"
+                },
+                "enrollments": {
+                    "delete_confirm_msg": "Are you sure you wish to delete this enrollment?",
+                    "delete_success": "Deleted enrollment"
+                },
+                "enroll": {
+                    "subscription_not_allowed": "Not allowed for this class"
                 }
             },
             "no_instructor": "No instructor",
             "prices": {
-                "add": "Add price",
                 "title_add": "Add price",
                 "toast_add_success": "Added price",
                 "title_edit": "Edit price",
@@ -1193,7 +1198,22 @@
             "classpass_trial": "Trial classpass",
             "spaces": "Total spaces",
             "spaces_walk_in": "Walk-in spaces (Not bookable online)",
-            "explanation": "Weekly & one time classes"
+            "explanation": "Weekly & one time classes",
+            "enrollments": {
+                "title_add": "Enroll",
+                "toast_add_success": "Added enrollment",
+                "enrollment_options_for": "Enrollment options for",
+                "title_edit": "Edit enrollment",
+                "toast_edit_success": "Saved",
+                "error_loading": "Error loading enrollments... :(",
+                "empty_list": "No customers have been enrolled in this class yet",
+                "placeholder_date_end": "No end date",
+                "search": {
+                    "title": "Search for customers to enroll",
+                    "error_loading": "Error loading accounts... :(",
+                    "empty_list": "Your search didn't return any results"
+                }
+            }
         },
         "appointments": {
             "title": "Appointments",

@@ -14,10 +14,10 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import ProfileCardSmall from "../../ui/ProfileCardSmall"
 
-import RelationsAccountsBack from "./RelationsAccountsBack"
+import ButtonBack from '../../ui/ButtonBack'
 import ProfileMenu from "./ProfileMenu"
 
-function RelationsAccountProfileBase({t, match, children, back, sidebarButton="", activeLink="", user={}}) {
+function RelationsAccountProfileBase({t, match, children, back, returnUrl='/relations/accounts', pageHeaderButtonList="", activeLink="", user={}}) {
   const accountId = match.params.account_id
   let headerTitle = ""
   if (user) {
@@ -29,7 +29,10 @@ function RelationsAccountProfileBase({t, match, children, back, sidebarButton=""
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={headerTitle}>
-            {(back) ? back : <RelationsAccountsBack />}
+            <div className="page-options d-flex">
+              {(back) ? back : <ButtonBack returnUrl={returnUrl} />}
+              {pageHeaderButtonList}
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
@@ -37,7 +40,6 @@ function RelationsAccountProfileBase({t, match, children, back, sidebarButton=""
             </Grid.Col>                                    
             <Grid.Col md={3}>
               <ProfileCardSmall user={user}/>
-              {sidebarButton}
               <ProfileMenu 
                 activeLink={activeLink}
                 accountId={accountId}

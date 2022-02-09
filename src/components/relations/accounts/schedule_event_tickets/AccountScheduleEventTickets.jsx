@@ -1,8 +1,5 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -13,20 +10,16 @@ import moment from 'moment'
 import {
   Badge,
   Button,
+  Card,
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
-
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBoolean from "../../../ui/BadgeBoolean"
-import RelationsAccountsBack from "../RelationsAccountsBack"
-
 import ContentCard from "../../../general/ContentCard"
 import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
-
 import AccountScheduleEventTicketsBase from "./AccountScheduleEventTicketsBase"
-
 
 import { UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET } from "../../../schedule/events/tickets/customers/queries"
 import { GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY } from "./queries"
@@ -38,6 +31,7 @@ function AccountScheduleEventTickets({t, history, match}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
+  const cardTitle = t('relations.account.event_tickets.title')
 
   const accountId = match.params.account_id
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, { variables: {
@@ -61,11 +55,23 @@ function AccountScheduleEventTickets({t, history, match}) {
   const accountScheduleEventTickets = data.accountScheduleEventTickets
   console.log(accountScheduleEventTickets)
 
+  // Empty list
+  if (!accountScheduleEventTickets.edges.length) {
+    return (
+      <AccountScheduleEventTicketsBase>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.event_tickets.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </AccountScheduleEventTicketsBase>
+    )
+  }
 
   return (
     <AccountScheduleEventTicketsBase>
       <ContentCard 
-        cardTitle={t('relations.account.event_tickets.title')}
+        cardTitle={cardTitle}
         pageInfo={accountScheduleEventTickets.pageInfo}
         hasCardBody={false}
         onLoadMore={() => {

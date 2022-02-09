@@ -22,14 +22,15 @@ import ProfileCardSmall from "../../../../ui/ProfileCardSmall"
 import ProfileMenu from "../../ProfileMenu"
 import moment from 'moment'
 
+import ButtonBack from '../../../../ui/ButtonBack'
 
-function AccountSubscriptionEditBaseBase({t, history, match, children, account=null, subscription=null, active_tab}) {
+
+function AccountSubscriptionEditBaseBase({t, history, match, children, returnUrl, account=null, subscription=null, activeTab}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
-  const returnUrl = "/relations/accounts/" + accountId + "/subscriptions"
   const cardTitle = (subscription) ? 
     <span className="text-muted">
       - {subscription.organizationSubscription.name + " " + moment(subscription.dateStart).format(dateFormat)} - {subscription.creditTotal} {t("general.credits")}
@@ -39,7 +40,11 @@ function AccountSubscriptionEditBaseBase({t, history, match, children, account=n
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={(account) ? account.firstName + " " + account.lastName : ""} />
+          <Page.Header title={(account) ? account.firstName + " " + account.lastName : ""} >
+            <div className='page-options d-flex'>
+              {(returnUrl) ? <ButtonBack returnUrl={returnUrl} /> : ""}
+            </div>
+          </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
               <Card>
@@ -49,21 +54,21 @@ function AccountSubscriptionEditBaseBase({t, history, match, children, account=n
                 <AccountSubscriptionEditTabs 
                   account_id={accountId}
                   subscription_id={subscriptionId}
-                  active={active_tab}
+                  active={activeTab}
                 />
                 {children}
               </Card>
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-              <HasPermissionWrapper permission="change"
+              {/* <HasPermissionWrapper permission="change"
                                     resource="accountsubscription">
                 <Link to={returnUrl}>
                   <Button color="primary btn-block mb-6">
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </Link>
-              </HasPermissionWrapper>
+              </HasPermissionWrapper> */}
               <ProfileMenu 
                 activeLink='subscriptions'
                 accountId={accountId}

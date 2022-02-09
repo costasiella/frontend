@@ -45,7 +45,7 @@ function AutomationAccountSubscriptionCreditForm({ t, history, isSubmitting, err
           type="submit" 
           disabled={isSubmitting}
           >
-          {t('general.new_task')} <Icon name="chevron-right" />
+          {t('general.run_task')} <Icon name="chevron-right" />
         </Button>
         <Link to={returnUrl}>
           <Button color="link">

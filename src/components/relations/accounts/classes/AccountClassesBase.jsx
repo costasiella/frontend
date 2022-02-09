@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -24,7 +22,9 @@ function AccountClassesBase({ t, match, history, children, account={} }) {
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={account.fullName} >
-            <RelationsAccountsBack />
+            <div className="page-options d-flex">
+              <RelationsAccountsBack />
+            </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
@@ -32,14 +32,6 @@ function AccountClassesBase({ t, match, history, children, account={} }) {
             </Grid.Col>
             <Grid.Col md={3}>
               <ProfileCardSmall user={account}/>
-                {/* <HasPermissionWrapper permission="view"
-                                      resource="scheduleitemattendance">
-                  <Link to={"/relations/accounts/" + match.params.account_id + "/classes/add"}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('relations.account.classes.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper> */}
               <ProfileMenu 
                 activeLink='classes' 
                 accountId={accountId}

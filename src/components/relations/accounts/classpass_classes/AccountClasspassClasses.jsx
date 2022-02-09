@@ -64,10 +64,12 @@ function AccountClasspassClasses({t, match}) {
   const classes = accountClasspass.classes
   console.log(classes)
 
+  const cardTitleWithCardInfo = `${cardTitle} ${accountClasspass.organizationClasspass.name} (${moment(accountClasspass.dateStart).format(dateFormat)})`
+
   if (!classes.edges.length) return (
     <RelationsAccountProfileBase user={account} activeLink={activeLink} back={back}>
       {console.log(error)}
-      <Card title={cardTitle}>
+      <Card title={cardTitleWithCardInfo}>
         <Card.Body>
           {t("relations.account.classpasses.no_classes_taken_yet")}
         </Card.Body>
@@ -80,7 +82,7 @@ function AccountClasspassClasses({t, match}) {
   return (
     <RelationsAccountProfileBase user={account} activeLink={activeLink} back={back}>
       <ContentCard 
-        cardTitle={`${cardTitle} ${accountClasspass.organizationClasspass.name} (${moment(accountClasspass.dateStart).format(dateFormat)})`}
+        cardTitle={cardTitleWithCardInfo}
         pageInfo={classes.pageInfo}
         hasCardBody={false}
         onLoadMore={() => {

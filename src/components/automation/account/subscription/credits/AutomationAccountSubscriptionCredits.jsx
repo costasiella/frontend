@@ -1,47 +1,20 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 import moment from 'moment'
-import AppSettingsContext from '../../../../context/AppSettingsContext'
-
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Dimmer,
-  Badge,
-  Button,
-  Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 
+import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ContentCard from "../../../../general/ContentCard"
-
 import { GET_TASK_RESULT_QUERY } from "../../../queries"
 import AutomationAccountSubscriptionCreditsBase from './AutomationAccountSubscriptionCreditsBase'
 import AutomationTaskResultStatus from "../../../AutomationTaskResultStatus"
 
-// const ARCHIVE_LEVEL = gql`
-//   mutation ArchiveOrganizationLevel($input: ArchiveOrganizationLevelInput!) {
-//     archiveOrganizationLevel(input: $input) {
-//       organizationLevel {
-//         id
-//         archived
-//       }
-//     }
-//   }
-// `
 
 function AutomationAccountSubscriptionCredits({t, history, match}) {
   const appSettings = useContext(AppSettingsContext)
@@ -53,20 +26,9 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
     }
   })
 
-  const headerOptions = <Card.Options>
-    <Link to={"/automation/account/subscriptions/credits/add"}>
-      <Button color="primary" 
-              size="sm"
-      >
-      {t('general.new_task')}
-      </Button>
-    </Link>
-  </Card.Options>
-
-
   // Loading
   if (loading) return (
-    <AutomationAccountSubscriptionCreditsBase>
+    <AutomationAccountSubscriptionCreditsBase showNewTask={true}>
       <p>{t('general.loading_with_dots')}</p>
     </AutomationAccountSubscriptionCreditsBase>
   )
@@ -74,7 +36,7 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
   if (error) {
     console.log(error)
     return (
-      <AutomationAccountSubscriptionCreditsBase>
+      <AutomationAccountSubscriptionCreditsBase showNewTask={true}>
         <p>{t('general.error_sad_smiley')}</p>
       </AutomationAccountSubscriptionCreditsBase>
     )
@@ -83,16 +45,13 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
   console.log("Automation credits data:")
   console.log(data)
   const taskResults = data.djangoCeleryResultTaskResults
-  // const account = data.account
-  // const scheduleItemAttendances = data.scheduleItemAttendances
   
 
   return (
-    <AutomationAccountSubscriptionCreditsBase>
+    <AutomationAccountSubscriptionCreditsBase showNewTask={true}>
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.credits.title_card')}
         pageInfo={taskResults.pageInfo}
-        headerContent={headerOptions}
         onLoadMore={() => {
           fetchMore({
             variables: {

@@ -21,7 +21,7 @@ function FinanceInvoiceGroupAdd({ t, history }) {
   const [addInvoiceGroup] = useMutation(ADD_INVOICE_GROUP)
 
   return (
-    <FinanceInvoiceGroupsBase showBack={true}>
+    <FinanceInvoiceGroupsBase showEditBack={true}>
       <Card title={t('finance.invoice_groups.title_add')}>
         <Formik
           initialValues={{ 

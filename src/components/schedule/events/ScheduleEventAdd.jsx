@@ -30,6 +30,7 @@ import { SCHEDULE_EVENT_EDIT_SCHEMA } from './yupSchema'
 import ScheduleEventForm from './ScheduleEventForm'
 import ScheduleEventsBase from './ScheduleEventsBase'
 import FormatISODateStr from '../../ui/ISODateString';
+import ButtonBack from '../../ui/ButtonBack';
 
 
 const CREATE_SCHEDULE_EVENT = gql`
@@ -42,22 +43,17 @@ const CREATE_SCHEDULE_EVENT = gql`
   }
 `
 
-const return_url = "/organization/events"
 
 function ScheduleEventAdd({ t, history }) {
   const returnUrl = "/schedule/events"
-  const sidebarContent = <Link to={returnUrl}>
-      <Button color="primary btn-block mb-6">
-        <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-      </Button>
-    </Link>
+  const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
 
   const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY)
   const [ createScheduleEvent ] = useMutation(CREATE_SCHEDULE_EVENT)
 
   if (loading) {
     return (
-      <ScheduleEventsBase sidebarContent={sidebarContent}>
+      <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={t("schedule.events.add")}>
           <Card.Body>
             <Dimmer loading={true} active={true} />
@@ -69,7 +65,7 @@ function ScheduleEventAdd({ t, history }) {
 
   if (error) {
     return (
-      <ScheduleEventsBase sidebarContent={sidebarContent}>
+      <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={t("schedule.events.add")}>
           <Card.Body>
             {t("schedule.events.error_loading")}
@@ -84,7 +80,7 @@ function ScheduleEventAdd({ t, history }) {
   const inputData = data
 
   return (
-    <ScheduleEventsBase sidebarContent={sidebarContent}>
+    <ScheduleEventsBase pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={t("schedule.events.add")}>
         <Formik
           initialValues={{ 

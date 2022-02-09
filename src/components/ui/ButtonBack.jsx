@@ -6,9 +6,10 @@ import {
   Button
 } from "tabler-react"
 
-const ButtonBack = ({ t, returnUrl }) => (
+const ButtonBack = ({ t, returnUrl, className="" }) => (
   <Link to={returnUrl}>
     <Button
+      className={className}
       color="secondary"
       icon="arrow-left">
         {t("general.back")}

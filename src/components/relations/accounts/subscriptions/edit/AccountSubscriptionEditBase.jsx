@@ -30,7 +30,7 @@ import AccountSubscriptionEditBaseBase from "./AccountSubscriptionEditBaseBase"
 import ProfileMenu from "../../ProfileMenu"
 
 
-function AccountSubscriptionEditBase({t, history, match, children, active_tab}) {
+function AccountSubscriptionEditBase({t, history, match, children, activeTab, returnUrl}) {
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const { loading, error, data } = useQuery(GET_ACCOUNT_SUBSCRIPTION_QUERY, {
@@ -41,12 +41,12 @@ function AccountSubscriptionEditBase({t, history, match, children, active_tab}) 
   })
   
   if (loading) return (
-    <AccountSubscriptionEditBaseBase active_tab={active_tab}>
+    <AccountSubscriptionEditBaseBase activeTab={activeTab} returnUrl={returnUrl}>
       {t("general.loading_with_dots")}
     </AccountSubscriptionEditBaseBase>
   )
   if (error) return (
-    <AccountSubscriptionEditBaseBase active_tab={active_tab}>
+    <AccountSubscriptionEditBaseBase activeTab={activeTab} returnUrl={returnUrl}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </AccountSubscriptionEditBaseBase>
@@ -57,7 +57,12 @@ function AccountSubscriptionEditBase({t, history, match, children, active_tab}) 
   const subscription = data.accountSubscription
 
   return (
-    <AccountSubscriptionEditBaseBase active_tab={active_tab} account={account} subscription={subscription}>
+    <AccountSubscriptionEditBaseBase 
+      activeTab={activeTab} 
+      account={account} 
+      subscription={subscription}
+      returnUrl={returnUrl}  
+    >
       {children}
     </AccountSubscriptionEditBaseBase>
   )

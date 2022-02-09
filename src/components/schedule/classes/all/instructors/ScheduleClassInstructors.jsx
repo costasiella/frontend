@@ -18,7 +18,9 @@ import { represent_instructor_role } from "../tools"
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import confirm_delete from "../../../../../tools/confirm_delete"
 
+import ButtonAdd from '.././../../../ui/ButtonAdd'
 import ContentCard from "../../../../general/ContentCard"
+import ClassEditBack from "../ClassEditBack"
 import ClassEditBase from "../ClassEditBase"
 
 import { GET_SCHEDULE_CLASS_ACCOUNTS_QUERY, DELETE_SCHEDULE_CLASS_INSTRUCTOR } from "./queries"
@@ -36,20 +38,21 @@ function ScheduleClassInstructors({ t, match, history}) {
   })
   const [ deleteScheduleItemAccount ] = useMutation(DELETE_SCHEDULE_CLASS_INSTRUCTOR)
 
-  const ButtonAdd = <HasPermissionWrapper permission="add" resource="scheduleiteminstructor">
-    <Link to={`/schedule/classes/all/instructors/${classId}/add` } >
-      <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.classes.instructors.add')}
-      </Button>
-    </Link>
+  const ButtonAddInstructor = <HasPermissionWrapper permission="add" resource="scheduleitemaccount">
+    <ButtonAdd addUrl={`/schedule/classes/all/instructors/${classId}/add`} className='ml-2' />
   </HasPermissionWrapper>
+
+  const pageHeaderButtonList = <React.Fragment>
+    <ClassEditBack />
+    {ButtonAddInstructor}
+  </React.Fragment>
 
   // Loading
   if (loading) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={ButtonAdd}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <Dimmer active={true} loader={true} />
@@ -61,7 +64,7 @@ function ScheduleClassInstructors({ t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={ButtonAdd}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.instructors.error_loading')}</p>
@@ -74,7 +77,7 @@ function ScheduleClassInstructors({ t, match, history}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
       cardTitle={cardTitle} 
-      sidebarButton={ButtonAdd}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
         <p>{t('schedule.classes.instructors.empty_list')}</p>
@@ -84,9 +87,9 @@ function ScheduleClassInstructors({ t, match, history}) {
 
   return (
     <ClassEditBase 
-    menuActiveLink={menuActiveLink} 
-    defaultCard={false}
-    sidebarButton={ButtonAdd}
+      menuActiveLink={menuActiveLink} 
+      defaultCard={false}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <ContentCard 
         cardTitle={cardTitle}
@@ -126,7 +129,6 @@ function ScheduleClassInstructors({ t, match, history}) {
                 <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
                 <Table.ColHeader>{t('general.instructor_2')}</Table.ColHeader>
                 <Table.ColHeader></Table.ColHeader>
-                <Table.ColHeader></Table.ColHeader>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -163,8 +165,6 @@ function ScheduleClassInstructors({ t, match, history}) {
                         {t('general.edit')}
                       </Button>
                     </Link>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.delete')} 
                         href=""

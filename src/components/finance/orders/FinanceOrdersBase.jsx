@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -21,15 +19,12 @@ const FinanceOrdersBase = ({ t, history, children, refetch }) => (
       <Container>
         <Page.Header title={t("finance.title")}>
           <div className="page-options d-flex">
+            <FinanceOrdersFilter refetch={refetch}/>
           </div>
         </Page.Header>
         <Grid.Row>
-          <Grid.Col md={9}>
+          <Grid.Col md={12}>
             {children}
-          </Grid.Col>
-          <Grid.Col md={3}>
-            <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-            <FinanceOrdersFilter refetch={refetch}/>
           </Grid.Col>
         </Grid.Row>
       </Container>
