@@ -28,7 +28,7 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("finance.title")}>
+          <Page.Header title={t("finance.title")} subTitle={t('finance.taxrates_summary.title')}>
             <div className="page-options d-flex">
               {/* <Link to="/finance/invoices/groups" 
                     className='btn btn-outline-secondary btn-sm'>
@@ -37,11 +37,7 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
-              {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              {/* <h5 className="mt-2 pt-1">{t("general.filter")}</h5> */}
+            <Grid.Col md={12}>
               <Formik 
                 initialValues={{
                   dateStart: new Date(dateStart),
@@ -70,8 +66,7 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
                 />
                 )}
               </Formik>
-              <br /><br /><br />
-              <h5>{t("general.menu")}</h5>
+              {children}
             </Grid.Col>
           </Grid.Row>
         </Container>
