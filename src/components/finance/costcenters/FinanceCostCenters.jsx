@@ -110,6 +110,7 @@ function FinanceCostCenters({t, history}) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.code')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -130,8 +131,6 @@ function FinanceCostCenters({t, history}) {
                         {t('general.edit')}
                       </Button>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""
