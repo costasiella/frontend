@@ -33,7 +33,7 @@ import FinancePaymentCollectionBatchForm from './FinancePaymentCollectionBatchFo
 
 function FinancePaymentCollectionBatchAdd({ t, history, match }) {
   const batchType = match.params.batch_type
-  const returnUrl = `/finance/paymentbatches/${batchType}`
+  const returnUrl = `/finance/paymentbatches/${batchType}/add_what`
   const categoryType = match.params.category_type
   const cardTitle = t('finance.payment_batch.title_add')
 
@@ -70,7 +70,7 @@ function FinancePaymentCollectionBatchAdd({ t, history, match }) {
 
   // Loading
   if (loading) return (
-    <FinancePaymentBatchesBase showAdd={true}>
+    <FinancePaymentBatchesBase showAdd={true} returnUrl={returnUrl}>
       <Card cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -80,7 +80,7 @@ function FinancePaymentCollectionBatchAdd({ t, history, match }) {
   )
   // Error
   if (error) return (
-    <FinancePaymentBatchesBase showAdd={true}>
+    <FinancePaymentBatchesBase showAdd={true} returnUrl={returnUrl}>
       <Card cardTitle={cardTitle}>
         <p>{t('finance.payment_batches.error_loading_input_values')}</p>
       </Card>
@@ -100,7 +100,7 @@ function FinancePaymentCollectionBatchAdd({ t, history, match }) {
   }
 
   return (
-    <FinancePaymentBatchesBase showBack={true}>
+    <FinancePaymentBatchesBase showBack={true} returnUrl={returnUrl}>
       <Card>
         <Card.Header>
           <Card.Title>{cardTitle}</Card.Title>

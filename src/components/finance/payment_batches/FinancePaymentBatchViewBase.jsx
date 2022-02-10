@@ -97,23 +97,29 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
                     <Icon prefix="fe" name="download" /> {t('general.export')} 
                 </a>
                 <Link to={`/finance/paymentbatches/${batchType}/edit/${batchId}`} 
-                      className='btn btn-secondary mr-2'>
+                      className='btn btn-secondary'>
                   <Icon name="edit-2" /> {t('general.edit')}
                 </Link>
-                {(status) ? 
-                  (status == "SENT_TO_BANK") ?
-                    <Button.List>
-                      <Button 
-                        icon="mail"
-                        disabled={true}
-                        color={sentToBankColor}
-                        onClick={() => onClickStatusButton("SENT_TO_BANK")}
-                      >
-                        {t('finance.payment_batch.status.SENT_TO_BANK')}
-                      </Button>
-                    </Button.List>
-                  :
-                    <Button.List>
+            </div>
+          </Page.Header>
+            {(status) ? 
+              (status == "SENT_TO_BANK") ?
+                <Button.List>
+                  <Button 
+                    icon="mail"
+                    disabled={true}
+                    color={sentToBankColor}
+                    onClick={() => onClickStatusButton("SENT_TO_BANK")}
+                  >
+                    {t('finance.payment_batch.status.SENT_TO_BANK')}
+                  </Button>
+                </Button.List>
+              :
+                <Grid.Row>
+                  <Grid.Col md={12} className="mb-2 ">
+                    
+
+                    <Button.List className="float-right">
                       <Button 
                         icon="mail"
                         disabled={disabled}
@@ -147,10 +153,11 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
                         {t('finance.payment_batch.status.REJECTED')}
                       </Button>
                     </Button.List>
-                  : ""
-                }
-            </div>
-          </Page.Header>
+                    <h6 className="float-right mr-2">{t("general.status")}</h6>
+                  </Grid.Col>
+                </Grid.Row>
+              : ""
+            }
           {children}
         </Container>
       </div>
