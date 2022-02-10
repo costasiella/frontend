@@ -24,7 +24,7 @@ function FinanceGLAccountAdd({t, history}) {
   const [ addGlaccount ] = useMutation(ADD_GLACCOUNT)
 
   return (
-    <FinanceGLAccountsBase>
+    <FinanceGLAccountsBase showBack={true}>
       <Card title={t('finance.glaccounts.title_add')}>
         <Formik
           initialValues={{ name: '', code: '' }}
