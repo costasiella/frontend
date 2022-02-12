@@ -51,9 +51,9 @@ function OrganizationClasspassEdit({ t, match, history}) {
   console.log(data)
   const initialData = data
 
-  let initialMembership = ""
-  if (initialData.organizationClasspass.organizationMembership) {
-    initialMembership = initialData.organizationClasspass.organizationMembership.id
+  let initialTaxRate = ""
+  if (initialData.organizationClasspass.financeTaxRate) {
+    initialTaxRate = initialData.organizationClasspass.financeTaxRate.id
   }
 
   let initialGlaccount = ""
@@ -77,12 +77,11 @@ function OrganizationClasspassEdit({ t, match, history}) {
             name: initialData.organizationClasspass.name,
             description: initialData.organizationClasspass.description,
             price: initialData.organizationClasspass.price,
-            financeTaxRate: initialData.organizationClasspass.financeTaxRate.id,
+            financeTaxRate: initialTaxRate,
             validity: initialData.organizationClasspass.validity,
             validityUnit: initialData.organizationClasspass.validityUnit,
             classes: initialData.organizationClasspass.classes,
             unlimited: initialData.organizationClasspass.unlimited,
-            organizationMembership: initialMembership,
             quickStatsAmount: initialData.organizationClasspass.quickStatsAmount,
             financeGlaccount:  initialGlaccount,
             financeCostcenter: initialCostcenter
@@ -106,7 +105,6 @@ function OrganizationClasspassEdit({ t, match, history}) {
                   validityUnit: values.validityUnit,
                   classes: values.classes,
                   unlimited: values.unlimited,
-                  organizationMembership: values.organizationMembership,
                   quickStatsAmount: values.quickStatsAmount,
                   financeGlaccount: values.financeGlaccount,
                   financeCostcenter: values.financeCostcenter
