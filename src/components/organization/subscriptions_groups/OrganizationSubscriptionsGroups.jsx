@@ -1,32 +1,19 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 
 import {
-  Page,
-  Grid,
   Icon,
   Dimmer,
-  Badge,
   Button,
-  Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 
 import confirm_delete from "../../../tools/confirm_delete"
 import ContentCard from "../../general/ContentCard"
-import CardHeaderSeparator from "../../general/CardHeaderSeparator"
 
 import OrganizationGroupsSubscriptionsBase from "./OrganizationSubscriptionsGroupsBase"
 
@@ -38,7 +25,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
   const [deleteSubscriptionGroup] = useMutation(DELETE_SUBSCRIPTION_GROUP)
 
   if (loading) return (
-    <OrganizationGroupsSubscriptionsBase>
+    <OrganizationGroupsSubscriptionsBase showAdd={true}>
       <ContentCard cardTitle={t('organization.subscription_groups.title')}>
         <Dimmer active={true}
                 loader={true}>
@@ -48,7 +35,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
   )
   // Error
   if (error) return (
-    <OrganizationGroupsSubscriptionsBase>
+    <OrganizationGroupsSubscriptionsBase showAdd={true}>
       <ContentCard cardTitle={t('organization.subscription_groups.title')}>
         <p>{t('organization.subscription_groups.error_loading')}</p>
       </ContentCard>
@@ -59,7 +46,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
   
   // Empty list
   if (!subscription_groups.edges.length) return (
-    <OrganizationGroupsSubscriptionsBase>
+    <OrganizationGroupsSubscriptionsBase showAdd={true}>
       <ContentCard cardTitle={t('organization.subscription_groups.title')}>
         <p>{t('organization.subscription_groups.empty_list')}</p>
       </ContentCard>
@@ -67,7 +54,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
   )
 
   return (
-    <OrganizationGroupsSubscriptionsBase>
+    <OrganizationGroupsSubscriptionsBase showAdd={true}>
       <ContentCard cardTitle={t('organization.subscription_groups.title')}
             hasCardBody={false}
             pageInfo={subscription_groups.pageInfo}
@@ -99,6 +86,7 @@ function OrganizationSubscriptionsGroups({ t, history }) {
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.name')}</Table.ColHeader>
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
+            <Table.ColHeader></Table.ColHeader>
           </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -123,8 +111,6 @@ function OrganizationSubscriptionsGroups({ t, history }) {
                       {t('organization.subscriptions.groups.edit_subscriptions')}
                     </Button>
                   </span>
-                </Table.Col>
-                <Table.Col>
                   <button className="icon btn btn-link btn-sm float-right" 
                     title={t('general.delete')} 
                     href=""

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -15,44 +13,33 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import ButtonAdd from '../../ui/ButtonAdd'
+import ButtonBack from '../../ui/ButtonBack'
 
 
 
-
-function OrganizationSubscriptionsGroupsBase({ t, history, children, showBack=false }) {
+function OrganizationSubscriptionsGroupsBase({ 
+  t, history, children, showAdd=false, returnUrl="/organization/subscriptions" 
+}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={t("organization.title")}>
             <div className="page-options d-flex">
-              <Link to="/organization/subscriptions" 
-                    className='btn btn-outline-secondary btn-sm'>
-                  <Icon prefix="fe" name="arrow-left" /> {t('general.back_to')} {t('organization.subscriptions.title')}
-              </Link>
+              <ButtonBack returnUrl={returnUrl} />
+              {(showAdd) ? 
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationsubscriptiongroup">
+                  <ButtonAdd addUrl="/organization/subscriptions/groups/add" className="ml-2" />
+                </HasPermissionWrapper>
+                : ""
+              }
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              {(showBack) ? 
-                <Link to="/organization/subscriptions/groups">
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-                :
-                <HasPermissionWrapper permission="add"
-                                      resource="organizationsubscriptiongroup">
-                  <Link to="/organization/subscriptions/groups/add">
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('organization.subscription_groups.add')}
-                    </Button>
-                  </Link>
-                </HasPermissionWrapper>
-              }
             </Grid.Col>
           </Grid.Row>
         </Container>
