@@ -804,7 +804,7 @@
             "title_edit": "Edit Language",
             "toast_edit_success": "Saved",
             "add": "Add Language",
-            "explanation": "Manage contact languages for accounts"
+            "explanation": "Contact languages for accounts"
         },
         "holidays": {
             "title": "Holidays",
