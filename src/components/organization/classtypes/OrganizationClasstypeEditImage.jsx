@@ -72,7 +72,7 @@ function OrganizationClasstypeEditImage({t, history, match}) {
   console.log(data)
 
   return (
-    <OrganizationClasstypesBase>
+    <OrganizationClasstypesBase showBack={true}>
       <Card title={cardTitle}>
        <Formik
           initialValues={{}}
