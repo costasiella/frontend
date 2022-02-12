@@ -112,7 +112,6 @@ function OrganizationLocations({t, history}) {
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('general.public')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -129,7 +128,7 @@ function OrganizationLocations({t, history}) {
                   <Table.Col className="text-right" key={v4()}>
                     {(node.archived) ? 
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                      <div>
+                      <React.Fragment>
                         <Button className='btn-sm' 
                                 onClick={() => history.push("/organization/locations/edit/" + node.id)}
                                 color="secondary">
@@ -140,10 +139,8 @@ function OrganizationLocations({t, history}) {
                                 color="secondary">
                           {t('general.rooms')}
                         </Button>
-                      </div>
+                      </React.Fragment>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""
