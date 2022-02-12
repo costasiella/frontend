@@ -1,13 +1,9 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { toast } from 'react-toastify'
-
-import { GET_CLASSPASS_GROUP_PASSES_QUERY, ADD_CARD_TO_GROUP, DELETE_CARD_FROM_GROUP } from './queries'
 
 import {
   Dimmer,
@@ -18,6 +14,8 @@ import {
   Table,
 } from "tabler-react";
 
+import { GET_CLASSPASS_GROUP_PASSES_QUERY, ADD_CARD_TO_GROUP, DELETE_CARD_FROM_GROUP } from './queries'
+
 import ContentCard from "../../general/ContentCard"
 import OrganizationClasspassesGroupsBase from './OrganizationClasspassesGroupsBase';
 
@@ -25,7 +23,7 @@ import OrganizationClasspassesGroupsBase from './OrganizationClasspassesGroupsBa
 function OrganizationClasspassGroupEditPasses({ t, match, history }) {
   const groupId = match.params.id
   const returnUrl = "/organization/classpasses/groups"
-  const cardTitle = t('organization.classpass_group_classpasses.title_edit')
+  let cardTitle = t('organization.classpass_group_classpasses.title_edit')
   const { loading, error, data } = useQuery(GET_CLASSPASS_GROUP_PASSES_QUERY, { 
     variables: { id: groupId }
   })
@@ -34,7 +32,7 @@ function OrganizationClasspassGroupEditPasses({ t, match, history }) {
 
   // Loading
   if (loading) return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -44,7 +42,7 @@ function OrganizationClasspassGroupEditPasses({ t, match, history }) {
   )
   // Error
   if (error) return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('general.error_sad_smiley')}</p>
       </ContentCard>
@@ -56,6 +54,7 @@ function OrganizationClasspassGroupEditPasses({ t, match, history }) {
   const passes = data.organizationClasspasses
   const group = data.organizationClasspassGroup
 
+  cardTitle = `${cardTitle} - ${group.name}`
   let group_passes = {}
   if (group.organizationClasspasses.edges) {
     group.organizationClasspasses.edges.map(({ node}) => (
@@ -64,13 +63,9 @@ function OrganizationClasspassGroupEditPasses({ t, match, history }) {
   }
 
   return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <Card title={cardTitle}>
-        <Card.Body>
-          <Alert type="primary">
-            <strong>{t('general.group')}</strong> {group.name}
-          </Alert>
-          <Table>
+          <Table cards>
             <Table.Header>
               <Table.Row key={v4()}>
                 <Table.ColHeader>{t('')}</Table.ColHeader>
@@ -162,7 +157,6 @@ function OrganizationClasspassGroupEditPasses({ t, match, history }) {
                 ))}
             </Table.Body>
           </Table>
-        </Card.Body>
       </Card>
     </OrganizationClasspassesGroupsBase>
   )

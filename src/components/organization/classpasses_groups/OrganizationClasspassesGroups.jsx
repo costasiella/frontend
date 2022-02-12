@@ -26,7 +26,7 @@ function OrganizationClasspassesGroups({ t, history}) {
 
   // Loading
   if (loading) return (
-    <OrganizationClasspassesGroupsBase>
+    <OrganizationClasspassesGroupsBase showAdd={true}>
       <ContentCard cardTitle={t('organization.classpass_groups.title')}>
         <Dimmer active={true}
                 loader={true}>
@@ -36,7 +36,7 @@ function OrganizationClasspassesGroups({ t, history}) {
   )
   // Error
   if (error) return (
-    <OrganizationClasspassesGroupsBase>
+    <OrganizationClasspassesGroupsBase  showAdd={true}>
       <ContentCard cardTitle={t('organization.classpass_groups.title')}>
         <p>{t('organization.classpass_groups.error_loading')}</p>
       </ContentCard>
@@ -47,7 +47,7 @@ function OrganizationClasspassesGroups({ t, history}) {
 
   // Empty list
   if (!classpass_groups.edges.length) { return (
-    <OrganizationClasspassesGroupsBase>
+    <OrganizationClasspassesGroupsBase  showAdd={true}>
       <ContentCard cardTitle={t('organization.classpass_groups.title')}>
         <p>{t('organization.classpass_groups.empty_list')}</p>
       </ContentCard>
@@ -57,7 +57,7 @@ function OrganizationClasspassesGroups({ t, history}) {
   
   // We have data
   return (
-    <OrganizationClasspassesGroupsBase>
+    <OrganizationClasspassesGroupsBase  showAdd={true}>
       <ContentCard cardTitle={t('organization.classpass_groups.title')}
                     pageInfo={classpass_groups.pageInfo}
                     hasCardBody={false}
@@ -90,7 +90,6 @@ function OrganizationClasspassesGroups({ t, history}) {
                   <Table.ColHeader>{t('general.name')}</Table.ColHeader>
                   <Table.ColHeader>{t('general.description')}</Table.ColHeader>
                   <Table.ColHeader></Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -113,8 +112,6 @@ function OrganizationClasspassesGroups({ t, history}) {
                                 color="secondary">
                           {t('organization.classpasses.groups.edit_passes')}
                         </Button>
-                    </Table.Col>
-                    <Table.Col>
                       <button className="icon btn btn-link btn-sm float-right" 
                         title={t('general.delete')} 
                         href=""

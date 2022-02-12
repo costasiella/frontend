@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,9 +5,6 @@ import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
-
-import { GET_CLASSPASS_GROUPS_QUERY, GET_CLASSPASS_GROUP_QUERY, UPDATE_CLASSPASS_GROUP } from './queries'
-import { CLASSPASS_GROUP_SCHEMA } from './yupSchema'
 
 import {
   Card,
@@ -20,6 +15,8 @@ import {
 
 import ContentCard from "../../general/ContentCard"
 import OrganizationClasspassesGroupsBase from './OrganizationClasspassesGroupsBase';
+import { GET_CLASSPASS_GROUPS_QUERY, GET_CLASSPASS_GROUP_QUERY, UPDATE_CLASSPASS_GROUP } from './queries'
+import { CLASSPASS_GROUP_SCHEMA } from './yupSchema'
 
 
 function OrganizationClasspassGroupEdit({t, match, history}) {
@@ -33,7 +30,7 @@ function OrganizationClasspassGroupEdit({t, match, history}) {
 
   // Loading
   if (loading) return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -43,7 +40,7 @@ function OrganizationClasspassGroupEdit({t, match, history}) {
   )
   // Error
   if (error) return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('general.error_sad_smiley')}</p>
       </ContentCard>
@@ -56,7 +53,7 @@ function OrganizationClasspassGroupEdit({t, match, history}) {
   console.log(data)
 
   return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 
