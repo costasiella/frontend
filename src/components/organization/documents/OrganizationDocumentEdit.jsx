@@ -1,8 +1,6 @@
-// @flow
-
 import React from 'react'
+import { withTranslation } from 'react-i18next';
 import { useMutation, useQuery } from "@apollo/client";
-import { withTranslation } from 'react-i18next'
 import { 
   Formik,
   Form as FoForm, 
@@ -15,17 +13,15 @@ import { Link } from 'react-router-dom'
 import { UPDATE_DOCUMENT, GET_DOCUMENT_QUERY, GET_DOCUMENTS_QUERY } from "./queries"
 import { DOCUMENT_SCHEMA } from './yupSchema'
 import { dateToLocalISO } from "../../../tools/date_tools"
-// import OrganizationDocumentForm from './OrganizationDocumentForm'
+import ButtonBack from '../../ui/ButtonBack'
 import CSDatePicker from "../../ui/CSDatePicker"
 
 import {
   Grid,
-  Icon,
   Button,
   Card,
   Form,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import { getSubtitle } from './tools'
@@ -38,15 +34,7 @@ function OrganizationDocumentEdit({ t, match, history }) {
   const subTitle = getSubtitle(t, documentType)
   
   const returnUrl = `/organization/documents/${organizationId}/${documentType}`
-  const sidebarButton = <HasPermissionWrapper 
-    permission="change"
-    resource="organizationdocument">
-      <Link to={returnUrl} >
-        <Button color="primary btn-block mb-6" >
-          <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-        </Button>
-      </Link>
-  </HasPermissionWrapper>
+  const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
 
   const [updateDocument, { data: dataUpdate }] = useMutation(UPDATE_DOCUMENT, {
     onCompleted: () => history.push(returnUrl)
@@ -57,7 +45,7 @@ function OrganizationDocumentEdit({ t, match, history }) {
 
   if (loading) {
     return (
-      <OrganizationDocumentsBase sidebarButton={sidebarButton}>
+      <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
         {t("general.loading_with_dots")}
       </OrganizationDocumentsBase>
     )
@@ -65,15 +53,21 @@ function OrganizationDocumentEdit({ t, match, history }) {
 
   if (error) {
     return (
-      <OrganizationDocumentsBase sidebarButton={sidebarButton}>
+      <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
         {t("organization.documents.error_loading")}
       </OrganizationDocumentsBase>
     )
   }
 
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let dateEnd = null
+  if (data.organizationDocument.dateEnd) {
+    dateEnd = new Date(data.organizationDocument.dateEnd)
+  }
 
   return (
-    <OrganizationDocumentsBase sidebarButton={sidebarButton}>
+    <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
       <Card>
         <Card.Header>
           <Card.Title>
@@ -83,8 +77,8 @@ function OrganizationDocumentEdit({ t, match, history }) {
         <Formik
           initialValues={{ 
             version: data.organizationDocument.version,
-            dateStart: data.organizationDocument.dateStart, 
-            dateEnd: data.organizationDocument.dateEnd,
+            dateStart: new Date(data.organizationDocument.dateStart), 
+            dateEnd: dateEnd,
           }}
           // validationSchema={DOCUMENT_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
