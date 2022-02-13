@@ -1,10 +1,6 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
-import { v4 } from 'uuid'
 
-// import {
-//   Badge
-// } from "tabler-react"
 
 const FormHelp = ({ t, message }) => (
     <span className="form-help" 
