@@ -68,100 +68,98 @@ function OrganizationHolidayEditLocations({ t, match, history }) {
   return (
     <OrganizationHolidaysBase showBack={true}>
       <Card title={cardTitle}>
-        <Card.Body>
-          <Table>
-            <Table.Header>
-              <Table.Row key={v4()}>
-                <Table.ColHeader>{t('')}</Table.ColHeader>
-                <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-                <Table.ColHeader>{t('')}</Table.ColHeader>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-                {locations.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    <Table.Col key={v4()}>
-                      {(node.id in holiday_locations) ? 
-                        <Icon name="check-circle" className="text-green" /> : <Icon name="x-circle" className="text-red" />
-                      }
-                    </Table.Col>
-                    <Table.Col key={v4()}>
-                      {node.name}
-                    </Table.Col>
-                    {console.log((node.id in holiday_locations))}
-                    {(!(node.id in holiday_locations)) ?
-                      // Add
-                      <Table.Col className="text-right text-green" key={v4()}>
-                        <Button color="link"
-                          size="sm"
-                          title={t('organization.holiday.locations.add_to_holiday')} 
-                          href=""
-                          onClick={() => {
-                            console.log("clicked add")
-                            let locationId = node.id
-                            addLocationToHoliday({ variables: {
-                              input: {
-                                organizationHoliday: holidayId,
-                                organizationLocation: locationId
-                              }
-                        }, refetchQueries: [
-                            {query: GET_HOLIDAY_LOCATIONS_QUERY, variables: {"id": holidayId }}
-                        ]}).then(({ data }) => {
-                          console.log('got data', data);
-                          toast.success(t('organization.holiday.locations.added_to_holiday'), {
+        <Table cards>
+          <Table.Header>
+            <Table.Row key={v4()}>
+              <Table.ColHeader>{t('')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader>{t('')}</Table.ColHeader>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+              {locations.edges.map(({ node }) => (
+                <Table.Row key={v4()}>
+                  <Table.Col key={v4()}>
+                    {(node.id in holiday_locations) ? 
+                      <Icon name="check-circle" className="text-green" /> : <Icon name="x-circle" className="text-red" />
+                    }
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {node.name}
+                  </Table.Col>
+                  {console.log((node.id in holiday_locations))}
+                  {(!(node.id in holiday_locations)) ?
+                    // Add
+                    <Table.Col className="text-right text-green" key={v4()}>
+                      <Button color="link"
+                        size="sm"
+                        title={t('organization.holiday.locations.add_to_holiday')} 
+                        href=""
+                        onClick={() => {
+                          console.log("clicked add")
+                          let locationId = node.id
+                          addLocationToHoliday({ variables: {
+                            input: {
+                              organizationHoliday: holidayId,
+                              organizationLocation: locationId
+                            }
+                      }, refetchQueries: [
+                          {query: GET_HOLIDAY_LOCATIONS_QUERY, variables: {"id": holidayId }}
+                      ]}).then(({ data }) => {
+                        console.log('got data', data);
+                        toast.success(t('organization.holiday.locations.added_to_holiday'), {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        })
+                      }).catch((error) => {
+                        toast.error((t('general.toast_server_error')) +  error, {
                             position: toast.POSITION.BOTTOM_RIGHT
                           })
-                        }).catch((error) => {
-                          toast.error((t('general.toast_server_error')) +  error, {
-                              position: toast.POSITION.BOTTOM_RIGHT
-                            })
-                          console.log('there was an error sending the query', error);
+                        console.log('there was an error sending the query', error);
+                      })
+                      }}>
+                        <Icon prefix="fe" name="plus-circle" /> { ' ' }
+                        {t('organization.holiday.locations.add_to_holiday')} 
+                      </Button>
+                    </Table.Col>
+                    :
+                    // Delete
+                    <Table.Col className="text-right text-red" key={v4()}>
+                      <Button color="link"
+                        size="sm"
+                        title={t('organization.holiday.locations.delete_from_holiday')} 
+                        href=""
+                        onClick={() => {
+                          console.log("clicked delete")
+                          console.log(node.id)
+                          let locationId = node.id
+                          deleteLocationFromHoliday({ variables: {
+                            input: {
+                              organizationHoliday: holidayId,
+                              organizationLocation: locationId
+                            }
+                      }, refetchQueries: [
+                          {query: GET_HOLIDAY_LOCATIONS_QUERY, variables: {"id": holidayId }}
+                      ]}).then(({ data }) => {
+                        console.log('got data', data);
+                        toast.success(t('organization.holiday.locations.deleted_from_holiday'), {
+                          position: toast.POSITION.BOTTOM_RIGHT
                         })
-                        }}>
-                          <Icon prefix="fe" name="plus-circle" /> { ' ' }
-                          {t('organization.holiday.locations.add_to_holiday')} 
-                        </Button>
-                      </Table.Col>
-                      :
-                      // Delete
-                      <Table.Col className="text-right text-red" key={v4()}>
-                        <Button color="link"
-                          size="sm"
-                          title={t('organization.holiday.locations.delete_from_holiday')} 
-                          href=""
-                          onClick={() => {
-                            console.log("clicked delete")
-                            console.log(node.id)
-                            let locationId = node.id
-                            deleteLocationFromHoliday({ variables: {
-                              input: {
-                                organizationHoliday: holidayId,
-                                organizationLocation: locationId
-                              }
-                        }, refetchQueries: [
-                            {query: GET_HOLIDAY_LOCATIONS_QUERY, variables: {"id": holidayId }}
-                        ]}).then(({ data }) => {
-                          console.log('got data', data);
-                          toast.success(t('organization.holiday.locations.deleted_from_holiday'), {
+                      }).catch((error) => {
+                        toast.error((t('general.toast_server_error')) +  error, {
                             position: toast.POSITION.BOTTOM_RIGHT
                           })
-                        }).catch((error) => {
-                          toast.error((t('general.toast_server_error')) +  error, {
-                              position: toast.POSITION.BOTTOM_RIGHT
-                            })
-                          console.log('there was an error sending the query', error);
-                        })
-                        }}>
-                          <Icon prefix="fe" name="minus-circle" /> { ' ' }
-                          {t('organization.holiday.locations.delete_from_holiday')}
-                        </Button>
-                      </Table.Col>
-                      }
-                  </Table.Row>
-                ))}
-            </Table.Body>
-          </Table>
-        </Card.Body>
+                        console.log('there was an error sending the query', error);
+                      })
+                      }}>
+                        <Icon prefix="fe" name="minus-circle" /> { ' ' }
+                        {t('organization.holiday.locations.delete_from_holiday')}
+                      </Button>
+                    </Table.Col>
+                    }
+                </Table.Row>
+              ))}
+          </Table.Body>
+        </Table>
       </Card>
     </OrganizationHolidaysBase>
   )
