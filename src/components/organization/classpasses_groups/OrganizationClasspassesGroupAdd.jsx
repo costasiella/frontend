@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -8,9 +6,6 @@ import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
-import { GET_CLASSPASS_GROUPS_QUERY, ADD_CLASSPASS_GROUP } from './queries'
-import { CLASSPASS_GROUP_SCHEMA } from './yupSchema'
-
 import {
   Alert,
   Button,
@@ -18,6 +13,8 @@ import {
   Form,
 } from "tabler-react"
 
+import { GET_CLASSPASS_GROUPS_QUERY, ADD_CLASSPASS_GROUP } from './queries'
+import { CLASSPASS_GROUP_SCHEMA } from './yupSchema'
 import OrganizationClasspassesGroupsBase from './OrganizationClasspassesGroupsBase';
 
 
@@ -26,7 +23,7 @@ function OrganizationClasspassGroupAdd({t, history}) {
   const [ addClasspassGroup ] = useMutation(ADD_CLASSPASS_GROUP)
 
   return (
-    <OrganizationClasspassesGroupsBase showBack={true}>
+    <OrganizationClasspassesGroupsBase returnUrl={returnUrl}>
       <Card title={t('organization.classpass_groups.title_add')}>
         <Formik
           initialValues={{ name: '', description: '' }}

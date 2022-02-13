@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -14,7 +12,6 @@ import OrganizationSubscriptionGroupForm from './OrganizationSubscriptionsGroupF
 import {
   Card,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationSubscriptionsGroupsBase from './OrganizationSubscriptionsGroupsBase';
 
@@ -23,7 +20,7 @@ function OrganizationSubscriptionGroupAdd({t, history}) {
   const [addSubscriptionGroup] = useMutation(ADD_SUBSCRIPTION_GROUP)
 
   return (
-    <OrganizationSubscriptionsGroupsBase showBack={true}>
+    <OrganizationSubscriptionsGroupsBase returnUrl={returnUrl}>
       <Card>
         <Card.Header>
           <Card.Title>{t('organization.subscription_groups.title_add')}</Card.Title>

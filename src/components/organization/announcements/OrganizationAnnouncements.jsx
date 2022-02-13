@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -13,10 +11,7 @@ import {
   Button,
   Icon,
   Table
-} from "tabler-react";
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
+} from "tabler-react"
 
 import confirm_delete from "../../../tools/confirm_delete"
 import AppSettingsContext from '../../context/AppSettingsContext'
@@ -104,7 +99,6 @@ function OrganizationAnnouncements({ t, history }) {
                   <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
                   <Table.ColHeader>{t('general.priority')}</Table.ColHeader>
                   <Table.ColHeader></Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -126,8 +120,6 @@ function OrganizationAnnouncements({ t, history }) {
                             {t('general.edit')}
                           </Button>
                         </Link>
-                      </Table.Col>
-                      <Table.Col>
                         <button 
                           className="icon btn btn-link btn-sm" 
                           title={t('general.delete')} 
@@ -151,40 +143,6 @@ function OrganizationAnnouncements({ t, history }) {
                           <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
                         </button>
                       </Table.Col>
-                      {/* <Mutation mutation={ARCHIVE_LEVEL} key={v4()}>
-                        {(archiveCostcenter, { data }) => (
-                          <Table.Col className="text-right" key={v4()}>
-                            <button className="icon btn btn-link btn-sm" 
-                                title={t('general.archive')} 
-                                href=""
-                                onClick={() => {
-                                  console.log("clicked archived")
-                                  let id = node.id
-                                  archiveCostcenter({ variables: {
-                                    input: {
-                                    id,
-                                    archived: !archived
-                                    }
-                            }, refetchQueries: [
-                                {query: GET_LEVELS_QUERY, variables: {"archived": archived }}
-                            ]}).then(({ data }) => {
-                              console.log('got data', data);
-                              toast.success(
-                                (archived) ? t('general.unarchived'): t('general.archived'), {
-                                  position: toast.POSITION.BOTTOM_RIGHT
-                                })
-                            }).catch((error) => {
-                              toast.error((t('general.toast_server_error')) +  error, {
-                                  position: toast.POSITION.BOTTOM_RIGHT
-                                })
-                              console.log('there was an error sending the query', error);
-                            })
-                            }}>
-                              <Icon prefix="fa" name="inbox" />
-                            </button>
-                          </Table.Col>
-                        )}
-                      </Mutation> */}
                     </Table.Row>
                   ))}
               </Table.Body>

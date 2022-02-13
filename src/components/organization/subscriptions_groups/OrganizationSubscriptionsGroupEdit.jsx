@@ -31,7 +31,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
   const [ updateSubscriptionGroup ] = useMutation(UPDATE_SUBSCRIPTION_GROUP)
   
   if (loading) return (
-    <OrganizationSubscriptionsGroupsBase>
+    <OrganizationSubscriptionsGroupsBase returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -41,7 +41,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
   )
   // Error
   if (error) return (
-    <OrganizationSubscriptionsGroupsBase>
+    <OrganizationSubscriptionsGroupsBase returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('organization.subscription_groups.error_loading')}</p>
       </ContentCard>
@@ -51,7 +51,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
   const initialData = data.organizationSubscriptionGroup;
 
   return (
-    <OrganizationSubscriptionsGroupsBase>
+    <OrganizationSubscriptionsGroupsBase returnUrl={returnUrl}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 

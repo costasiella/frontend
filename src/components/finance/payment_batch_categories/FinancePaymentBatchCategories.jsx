@@ -1,8 +1,5 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -10,19 +7,12 @@ import { Link } from 'react-router-dom'
 
 
 import {
-  Page,
-  Grid,
   Icon,
   Dimmer,
-  Badge,
   Button,
   Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
 
 import { get_list_query_variables } from "./tools"
@@ -132,7 +122,6 @@ function FinancePaymentBatchCategories({t, history}) {
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.payment_batch_categories.batch_category_type')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -151,8 +140,6 @@ function FinancePaymentBatchCategories({t, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right" key={v4()}>
                   <button className="icon btn btn-link btn-sm" 
                       title={t('general.archive')} 
                       onClick={() => {

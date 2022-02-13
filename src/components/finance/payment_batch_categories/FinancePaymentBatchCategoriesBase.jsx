@@ -1,19 +1,16 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import ButtonAdd from "../../ui/ButtonAdd"
+import ButtonBack from "../../ui/ButtonBack"
 
 
 function FinancePaymentBatchCategoriesBase({t, history, children, showAdd=false, showBack=false}) {
@@ -21,34 +18,27 @@ function FinancePaymentBatchCategoriesBase({t, history, children, showAdd=false,
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("finance.title")} />
-          <Grid.Row>
-            <Grid.Col md={9}>
-              {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
+          <Page.Header title={t("finance.title")} >
+            <div className={'page-options d-flex'}>
               {(showAdd) ?
                 <HasPermissionWrapper permission="add"
                                       resource="financepaymentbatchcategory">
-                  <Link to={"/finance/paymentbatchcategories/add"}>
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="plus-circle" /> {t('finance.payment_batch_categories.add')}
-                    </Button>
-                  </Link>
+                  <ButtonAdd addUrl={'/finance/paymentbatchcategories/add'} />
                 </HasPermissionWrapper>
                 : "" 
               }
               {(showBack) ?
                 <HasPermissionWrapper permission="view"
                                       resource="financepaymentbatchcategory">
-                  <Link to="/finance/paymentbatchcategories">
-                    <Button color="primary btn-block mb-6">
-                      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                    </Button>
-                  </Link>
+                  <ButtonBack returnUrl="/finance/paymentbatchcategories" />
                 </HasPermissionWrapper>
                 : "" 
               }
+            </div>
+          </Page.Header>
+          <Grid.Row>
+            <Grid.Col md={12}>
+              {children}
             </Grid.Col>
           </Grid.Row>
         </Container>

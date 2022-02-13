@@ -34,7 +34,7 @@ function FinanceGLAccountEdit({t, history, match}) {
   const [ updateGlaccount ] = useMutation(UPDATE_GLACCOUNT)
 
   if (loading) return (
-    <FinanceGLAccountsBase>
+    <FinanceGLAccountsBase showBack={true}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -44,7 +44,7 @@ function FinanceGLAccountEdit({t, history, match}) {
   )
 
   if (error) return (
-    <FinanceGLAccountsBase>
+    <FinanceGLAccountsBase showBack={true}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('general.error_sad_smiley')}</p>
       </ContentCard>
@@ -56,7 +56,7 @@ function FinanceGLAccountEdit({t, history, match}) {
   console.log(data)
 
   return (
-    <FinanceGLAccountsBase>
+    <FinanceGLAccountsBase showBack={true}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 

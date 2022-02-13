@@ -25,7 +25,7 @@ import OrganizationLocationRoomsBase from './OrganizationLocationRoomsBase'
 
 function OrganizationLocationsRooms({ t, history, match }) {
   const organizationLocationId = match.params.location_id
-  const cardTitle = t('organization.location_rooms.title')
+  let cardTitle = t('organization.location_rooms.title')
   let [archived, setArchived] = useState(false)
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_LOCATION_ROOMS_QUERY, {
     variables: { archived: archived, organizationLocation: organizationLocationId }
@@ -48,7 +48,7 @@ function OrganizationLocationsRooms({ t, history, match }) {
 
   // Loading
   if (loading) return (
-    <OrganizationLocationRoomsBase>
+    <OrganizationLocationRoomsBase showAdd={true}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -58,7 +58,7 @@ function OrganizationLocationsRooms({ t, history, match }) {
   )
   // Error
   if (error) return (
-    <OrganizationLocationRoomsBase>
+    <OrganizationLocationRoomsBase showAdd={true}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('organization.location_rooms.error_loading')}</p>
       </ContentCard>
@@ -68,9 +68,11 @@ function OrganizationLocationsRooms({ t, history, match }) {
   let locationRooms = data.organizationLocationRooms
   let location = data.organizationLocation
 
+  cardTitle = `${cardTitle} - ${location.name}`
+
   // Empty list
   if (!locationRooms.edges.length) { return (
-    <OrganizationLocationRoomsBase>
+    <OrganizationLocationRoomsBase showAdd={true}>
       <ContentCard cardTitle={cardTitle}
                   headerContent={headerOptions}>
         <p>
@@ -81,7 +83,7 @@ function OrganizationLocationsRooms({ t, history, match }) {
   )}
 
   return (
-    <OrganizationLocationRoomsBase>
+    <OrganizationLocationRoomsBase showAdd={true}>
       <ContentCard 
         cardTitle={cardTitle}
                     headerContent={headerOptions}
@@ -109,80 +111,72 @@ function OrganizationLocationsRooms({ t, history, match }) {
                           : previousResult
                       }
                     })
-                  }} >
-        <div>
-          <Alert type="primary">
-            <strong>{t('general.location')}</strong> {location.name}
-          </Alert>
-
-          <Table cards>
-            <Table.Header>
-              <Table.Row key={v4()}>
-                <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-                <Table.ColHeader>{t('general.public')}</Table.ColHeader>
-                <Table.ColHeader></Table.ColHeader>
-                <Table.ColHeader></Table.ColHeader>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-                {locationRooms.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    <Table.Col key={v4()}>
-                      {node.name}
+                  }} 
+      >
+        <Table cards>
+          <Table.Header>
+            <Table.Row key={v4()}>
+              <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.public')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+              {locationRooms.edges.map(({ node }) => (
+                <Table.Row key={v4()}>
+                  <Table.Col key={v4()}>
+                    {node.name}
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {(node.displayPublic) ? 
+                      <Badge color="success">{t('general.yes')}</Badge>: 
+                      <Badge color="danger">{t('general.no')}</Badge>}
+                  </Table.Col>
+                  <Table.Col className="text-right" key={v4()}>
+                    {(node.archived) ? 
+                      <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
+                      <Button className='btn-sm' 
+                              onClick={() => history.push("/organization/locations/rooms/edit/" + match.params.location_id + '/' + node.id)}
+                              color="secondary">
+                        {t('general.edit')}
+                      </Button>
+                    }
+                      <button className="icon btn btn-link btn-sm" 
+                          title={t('general.archive')} 
+                          href=""
+                          onClick={() => {
+                            console.log("clicked archived")
+                            let id = node.id
+                            archiveLocationRoom({ variables: {
+                              input: {
+                              id,
+                              archived: !archived
+                              }
+                      }, refetchQueries: [
+                          { 
+                            query: GET_LOCATION_ROOMS_QUERY, 
+                            variables: {archived: archived, organizationLocation: organizationLocationId }
+                          }
+                      ]}).then(({ data }) => {
+                        console.log('got data', data);
+                        toast.success(
+                          (archived) ? t('general.unarchived'): t('general.archived'), {
+                            position: toast.POSITION.BOTTOM_RIGHT
+                          })
+                      }).catch((error) => {
+                        toast.error((t('general.toast_server_error')) +  error, {
+                            position: toast.POSITION.BOTTOM_RIGHT
+                          })
+                        console.log('there was an error sending the query', error);
+                      })
+                      }}>
+                        <Icon prefix="fa" name="inbox" />
+                      </button>
                     </Table.Col>
-                    <Table.Col key={v4()}>
-                      {(node.displayPublic) ? 
-                        <Badge color="success">{t('general.yes')}</Badge>: 
-                        <Badge color="danger">{t('general.no')}</Badge>}
-                    </Table.Col>
-                    <Table.Col className="text-right" key={v4()}>
-                      {(node.archived) ? 
-                        <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                        <Button className='btn-sm' 
-                                onClick={() => history.push("/organization/locations/rooms/edit/" + match.params.location_id + '/' + node.id)}
-                                color="secondary">
-                          {t('general.edit')}
-                        </Button>
-                      }
-                    </Table.Col>
-                      <Table.Col className="text-right" key={v4()}>
-                        <button className="icon btn btn-link btn-sm" 
-                            title={t('general.archive')} 
-                            href=""
-                            onClick={() => {
-                              console.log("clicked archived")
-                              let id = node.id
-                              archiveLocationRoom({ variables: {
-                                input: {
-                                id,
-                                archived: !archived
-                                }
-                        }, refetchQueries: [
-                            { 
-                              query: GET_LOCATION_ROOMS_QUERY, 
-                              variables: {archived: archived, organizationLocation: organizationLocationId }
-                            }
-                        ]}).then(({ data }) => {
-                          console.log('got data', data);
-                          toast.success(
-                            (archived) ? t('general.unarchived'): t('general.archived'), {
-                              position: toast.POSITION.BOTTOM_RIGHT
-                            })
-                        }).catch((error) => {
-                          toast.error((t('general.toast_server_error')) +  error, {
-                              position: toast.POSITION.BOTTOM_RIGHT
-                            })
-                          console.log('there was an error sending the query', error);
-                        })
-                        }}>
-                          <Icon prefix="fa" name="inbox" />
-                        </button>
-                      </Table.Col>
-                  </Table.Row>
-                ))}
-            </Table.Body>
-          </Table>
-          </div>
+                </Table.Row>
+              ))}
+          </Table.Body>
+        </Table>
       </ContentCard>
     </OrganizationLocationRoomsBase>
   )

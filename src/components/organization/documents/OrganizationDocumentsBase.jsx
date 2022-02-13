@@ -14,22 +14,19 @@ import SiteWrapper from "../../SiteWrapper"
 
 
 
-function OrganizationDocumentsBase({ t, children, headerLinks, sidebarButton }) {
+function OrganizationDocumentsBase({ t, children, pageHeaderButtonList }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={t('organization.title')}>
             <div className="page-options d-flex">
-              {headerLinks}
+              {pageHeaderButtonList}
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}        
-            </Grid.Col>
-            <Grid.Col md={3}>
-              {sidebarButton}
             </Grid.Col>
           </Grid.Row>
         </Container>

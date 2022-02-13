@@ -35,7 +35,7 @@ function OrganizationLocationRoomAdd({ t, history, match }) {
   const [ addLocationRoom ] = useMutation(ADD_LOCATION_ROOM)
 
   return (
-    <OrganizationLocationRoomsBase showBack={true}>
+    <OrganizationLocationRoomsBase showBack={true} returnUrl={returnUrl}>
       <Card title={t("organization.location_rooms.title_add")}>
         <Formik
           initialValues={{ name: '', displayPublic: true }}

@@ -1,29 +1,18 @@
-// @flow
-
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
-
 import {
-  Page,
-  Grid,
-  Icon,
-  Dimmer,
-  Badge,
   Button,
-  Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
+import ButtonAdd from '../../ui/ButtonAdd'
+import ButtonBack from '../../ui/ButtonBack'
 import ISODateString from "../../ui/ISODateString"
 import FileDownloadTableButton from "../../ui/FileDownloadTableButton"
 import ContentCard from "../../general/ContentCard"
@@ -39,26 +28,17 @@ function OrganizationListDocuments({ t, match, history }) {
   const organizationId = match.params.organization_id
   const documentType = match.params.document_type
   const subTitle = getSubtitle(t, documentType)
+  const cardTitle = t('organization.documents.title') + ' - ' + subTitle
 
-  const back = <Link to={`/organization/documents/${organizationId}`}>
-    <Button 
-      icon="arrow-left"
-      className="mr-2"
-      outline
-      color="secondary"
-    >
-      {t('general.back_to')} {t('organization.documents.title')}
-    </Button>
-  </Link>
-  const sidebarButton = <HasPermissionWrapper 
-    permission="add"
-    resource="organizationdocument">
-      <Link to={`/organization/documents/${organizationId}/${documentType}/add`} >
-        <Button color="primary btn-block mb-6" >
-          <Icon prefix="fe" name="plus-circle" /> {t('organization.documents.add')}
-        </Button>
-      </Link>
-  </HasPermissionWrapper>
+  const pageHeaderButtonList = <React.Fragment>
+      <ButtonBack returnUrl={`/organization/documents/${organizationId}`} />
+      <HasPermissionWrapper 
+        permission="add"
+        resource="organizationdocument"
+      >
+        <ButtonAdd addUrl={`/organization/documents/${organizationId}/${documentType}/add`} className="ml-2" />
+      </HasPermissionWrapper>
+    </React.Fragment>
 
   const { loading, error, data, fetchMore } = useQuery(GET_DOCUMENTS_QUERY, {
     variables: { documentType: documentType }
@@ -66,7 +46,7 @@ function OrganizationListDocuments({ t, match, history }) {
 
   if (loading) {
     return (
-      <OrganizationDocumentsBase headerLinks={back}>
+      <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
         {t('general.loading_with_dots')}
       </OrganizationDocumentsBase>
     )
@@ -74,17 +54,28 @@ function OrganizationListDocuments({ t, match, history }) {
 
   if (error) {
     return (
-      <OrganizationDocumentsBase headerLinks={back}>
+      <OrganizationDocumentsBase  pageHeaderButtonList={pageHeaderButtonList}>
         {t('organization.documents.error_loading')}
       </OrganizationDocumentsBase>
     )
   }
+
+  // Empty list
+  if (!data.organizationDocuments.edges.length) { return (
+    <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
+      <ContentCard cardTitle={cardTitle}>
+        <p>
+         {t('organization.documents.empty_list')}
+        </p>
+      </ContentCard>
+    </OrganizationDocumentsBase>
+  )}   
   
 
   return (
-    <OrganizationDocumentsBase headerLinks={back} sidebarButton={sidebarButton}>
+    <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
-        cardTitle={t('organization.documents.title') + ' - ' + subTitle}
+        cardTitle={cardTitle}
         pageInfo={data.organizationDocuments.pageInfo}
         hasCardBody={false}
         onLoadMore={() => {
@@ -112,39 +103,37 @@ function OrganizationListDocuments({ t, match, history }) {
         }}
       >
         <Table cards>
-              <Table.Header>
+          <Table.Header>
+            <Table.Row key={v4()}>
+              <Table.ColHeader>{t('general.date')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.version')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+              {data.organizationDocuments.edges.map(({ node }) => (
                 <Table.Row key={v4()}>
-                  <Table.ColHeader>{t('general.date')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.version')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.download')}</Table.ColHeader>
+                  <Table.Col key={v4()}>
+                    <ISODateString ISODateStr={node.dateStart} />
+                    {(node.dateEnd) ? <span> - <ISODateString ISODateStr={node.dateEnd} /></span> : ""}
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {node.version}
+                  </Table.Col>
+                  <Table.Col className="text-right" key={v4()}>
+                    <FileDownloadTableButton mediaUrl={node.urlDocument} />
+                    <Link to={`/organization/documents/${organizationId}/${documentType}/edit/${node.id}`} >
+                      <Button className='btn-sm' 
+                              color="secondary">
+                        {t('general.edit')}
+                      </Button>
+                    </Link>
+                    <OrganizationDocumentsDelete node={node} />
+                  </Table.Col>
                 </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                  {data.organizationDocuments.edges.map(({ node }) => (
-                    <Table.Row key={v4()}>
-                      <Table.Col key={v4()}>
-                        <ISODateString ISODateStr={node.dateStart} />
-                        {(node.dateEnd) ? <span> - <ISODateString ISODateStr={node.dateEnd} /></span> : ""}
-                      </Table.Col>
-                      <Table.Col key={v4()}>
-                        {node.version}
-                      </Table.Col>
-                      <Table.Col key={v4()}>
-                        <FileDownloadTableButton mediaUrl={node.urlDocument} />
-                      </Table.Col>
-                      <Table.Col className="text-right" key={v4()}>
-                        <Link to={`/organization/documents/${organizationId}/${documentType}/edit/${node.id}`} >
-                          <Button className='btn-sm' 
-                                  color="secondary">
-                            {t('general.edit')}
-                          </Button>
-                        </Link>
-                        <OrganizationDocumentsDelete node={node} />
-                      </Table.Col>
-                    </Table.Row>
-                  ))}
-              </Table.Body>
-            </Table>
+              ))}
+          </Table.Body>
+        </Table>
       </ContentCard>
     </OrganizationDocumentsBase>
   )

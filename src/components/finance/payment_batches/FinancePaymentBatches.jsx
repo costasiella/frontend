@@ -90,6 +90,7 @@ function FinancePaymentBatches({t, history, match }) {
     <FinancePaymentBatchesBase showAdd={true}>
       <ContentCard cardTitle={cardTitle}
         pageInfo={financePaymentBatches.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
         fetchMore({
           variables: {
@@ -113,14 +114,13 @@ function FinancePaymentBatches({t, history, match }) {
             }
         })
       }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.status')}</Table.ColHeader>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.payment_batches.execution_date')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.payment_batches.batch_category')}</Table.ColHeader>             
-              <Table.ColHeader></Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -140,15 +140,13 @@ function FinancePaymentBatches({t, history, match }) {
                   {(node.financePaymentBatchCategory) ? node.financePaymentBatchCategory.name : t("general.invoices")}
                   {(node.year) ? <div><small className="text-muted">{node.year} - {node.month}</small></div> : ""}
                 </Table.Col>
-                <Table.Col>
+                <Table.Col className="text-right">
                   <Link to={`/finance/paymentbatches/${batchType}/view/${node.id}`}>
                     <Button className='btn-sm' 
                             color="secondary">
                       {t('general.view')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right" key={v4()}>
                   <button className="icon btn btn-link btn-sm" 
                     title={t('general.delete')} 
                     href=""

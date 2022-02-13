@@ -110,6 +110,7 @@ function FinancePaymentMethods({ t, history }) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.code')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -131,10 +132,7 @@ function FinancePaymentMethods({ t, history }) {
                         </Button>
                       </Link>
                     }
-                  </Table.Col>
-                  {(node.systemMethod) ? 
-                    <Table.Col></Table.Col> :
-                    <Table.Col className="text-right" key={v4()}>
+                    {(node.systemMethod) ? "" :
                       <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""
@@ -163,8 +161,8 @@ function FinancePaymentMethods({ t, history }) {
                       }}>
                         <Icon prefix="fa" name="inbox" />
                       </button>
-                    </Table.Col>
-                  }
+                    }
+                  </Table.Col>
                 </Table.Row>
               ))}
           </Table.Body>

@@ -80,6 +80,7 @@ function FinanceTaxRates({t, history}) {
       <ContentCard cardTitle={cardTitle}
                     headerContent={headerOptions}
                     pageInfo={taxrates.pageInfo}
+                    hasCardBody={false}
                     onLoadMore={() => {
                     fetchMore({
                       variables: {
@@ -103,13 +104,14 @@ function FinanceTaxRates({t, history}) {
                       }
                     })
                   }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.taxrates.percentage')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.taxrates.rateType')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.code')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -136,8 +138,6 @@ function FinanceTaxRates({t, history}) {
                         {t('general.edit')}
                       </Button>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""

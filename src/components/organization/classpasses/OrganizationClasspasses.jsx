@@ -118,7 +118,6 @@ function OrganizationClasspasses({t, history}) {
               <Table.ColHeader>{t('general.price')}</Table.ColHeader>
               <Table.ColHeader>{t('general.validity')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -161,8 +160,6 @@ function OrganizationClasspasses({t, history}) {
                         {t('general.edit')}
                       </Button>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""

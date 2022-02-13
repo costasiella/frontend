@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState, useRef } from 'react'
 import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -17,6 +15,7 @@ import { ADD_DOCUMENT, GET_DOCUMENTS_QUERY } from "./queries"
 import { DOCUMENT_SCHEMA } from './yupSchema'
 import { dateToLocalISO } from "../../../tools/date_tools"
 // import OrganizationDocumentForm from './OrganizationDocumentForm'
+import ButtonBack from '../../ui/ButtonBack'
 import CSDatePicker from "../../ui/CSDatePicker"
 
 import {
@@ -59,22 +58,14 @@ function OrganizationDocumentAdd({ t, match, history }) {
   // Vars for document file input field end
   
   const returnUrl = `/organization/documents/${organizationId}/${documentType}`
-  const sidebarButton = <HasPermissionWrapper 
-    permission="add"
-    resource="organizationdocument">
-      <Link to={returnUrl} >
-        <Button color="primary btn-block mb-6" >
-          <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-        </Button>
-      </Link>
-  </HasPermissionWrapper>
+  const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
 
   const [addDocument, { data }] = useMutation(ADD_DOCUMENT, {
     onCompleted: () => history.push(returnUrl)
   })
 
   return (
-    <OrganizationDocumentsBase sidebarButton={sidebarButton}>
+    <OrganizationDocumentsBase pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={t('organization.documents.add') + ' - ' + subTitle}>
         <Formik
           initialValues={{ 
@@ -200,72 +191,5 @@ function OrganizationDocumentAdd({ t, match, history }) {
   )
 }
 
-export default withTranslation()(OrganizationDocumentAdd)
+export default withTranslation()(withRouter(OrganizationDocumentAdd))
 
-
-// const OrganizationLevelAdd = ({ t, history }) => (
-//   <SiteWrapper>
-//     <div className="my-3 my-md-5">
-//       <Container>
-//         <Page.Header title={t('organization.title')} />
-//         <Grid.Row>
-//           <Grid.Col md={9}>
-//           <Card>
-//             <Card.Header>
-//               <Card.Title>{t('organization.levels.title_add')}</Card.Title>
-//             </Card.Header>
-//             <Mutation mutation={ADD_LEVEL} onCompleted={() => history.push(return_url)}> 
-//                 {(addLocation, { data }) => (
-//                     <Formik
-//                         initialValues={{ name: '', code: '' }}
-//                         validationSchema={LEVEL_SCHEMA}
-//                         onSubmit={(values, { setSubmitting }) => {
-//                             addLocation({ variables: {
-//                               input: {
-//                                 name: values.name, 
-//                               }
-//                             }, refetchQueries: [
-//                                 {query: GET_LEVELS_QUERY, variables: {"archived": false }}
-//                             ]})
-//                             .then(({ data }) => {
-//                                 console.log('got data', data);
-//                                 toast.success((t('organization.levels.toast_add_success')), {
-//                                     position: toast.POSITION.BOTTOM_RIGHT
-//                                   })
-//                               }).catch((error) => {
-//                                 toast.error((t('general.toast_server_error')) +  error, {
-//                                     position: toast.POSITION.BOTTOM_RIGHT
-//                                   })
-//                                 console.log('there was an error sending the query', error)
-//                                 setSubmitting(false)
-//                               })
-//                         }}
-//                         >
-//                         {({ isSubmitting, errors }) => (
-//                             <OrganizationLevelForm 
-//                               isSubmitting={isSubmitting}
-//                               errors={errors}
-//                               return_url={return_url}
-//                             />
-//                         )}
-//                     </Formik>
-//                 )}
-//                 </Mutation>
-//           </Card>
-//           </Grid.Col>
-//           <Grid.Col md={3}>
-//             <HasPermissionWrapper permission="add"
-//                                   resource="organizationlevel">
-//               <Button color="primary btn-block mb-6"
-//                       onClick={() => history.push(return_url)}>
-//                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-//               </Button>
-//             </HasPermissionWrapper>
-//           </Grid.Col>
-//         </Grid.Row>
-//       </Container>
-//     </div>
-//   </SiteWrapper>
-// )
-
-// export default withTranslation()(withRouter(OrganizationLevelAdd))

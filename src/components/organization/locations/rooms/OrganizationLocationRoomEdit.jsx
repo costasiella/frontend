@@ -32,7 +32,7 @@ function OrganizationLocationRoomEdit({t, history, match}) {
 
   // Loading
   if (loading) return (
-    <OrganizationLocationRoomsBase showBack={true}>
+    <OrganizationLocationRoomsBase showBack={true} returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -42,7 +42,7 @@ function OrganizationLocationRoomEdit({t, history, match}) {
   )
   // Error
   if (error) return (
-    <OrganizationLocationRoomsBase showBack={true}>
+    <OrganizationLocationRoomsBase showBack={true} returnUrl={returnUrl}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('general.error_sad_smiley')}</p>
       </ContentCard>
@@ -54,7 +54,7 @@ function OrganizationLocationRoomEdit({t, history, match}) {
   console.log(data)
 
   return (
-    <OrganizationLocationRoomsBase showBack={true}>
+    <OrganizationLocationRoomsBase showBack={true} returnUrl={returnUrl}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 
