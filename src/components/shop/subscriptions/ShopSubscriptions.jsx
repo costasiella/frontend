@@ -1,10 +1,7 @@
-// @flow
-
-import React, {Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-import { Link } from 'react-router-dom'
 
 import {
   Grid,
