@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -8,14 +6,10 @@ import { withRouter } from "react-router"
 
 
 import {
-  Page,
-  Grid,
   Icon,
   Dimmer,
-  Badge,
   Button,
   Card,
-  Container,
   Table
 } from "tabler-react";
 import { toast } from 'react-toastify'
@@ -113,6 +107,7 @@ function OrganizationDiscoveries({ t, history }) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -130,8 +125,6 @@ function OrganizationDiscoveries({ t, history }) {
                         {t('general.edit')}
                       </Button>
                     }
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                         title={t('general.archive')} 
                         href=""
@@ -158,7 +151,7 @@ function OrganizationDiscoveries({ t, history }) {
                       console.log('there was an error sending the query', error);
                     })
                     }}>
-                      <Icon prefix="fa" name="inbox" />
+                      <Icon name="inbox" />
                     </button>
                   </Table.Col>
                 </Table.Row>

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -14,7 +12,8 @@ import {
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-
+import ButtonAdd from "../../ui/ButtonAdd"
+import ButtonBack from "../../ui/ButtonBack"
 
 
 
@@ -23,28 +22,21 @@ function OrganizationDiscoveriesBase({ t, history, children, showBack=false }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("organization.title")} />
-          <Grid.Row>
-            <Grid.Col md={9}>
-              {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
+          <Page.Header title={t("organization.title")} >
+            <div className='page-options d-flex'>
               {(showBack) ?
-                <Link to="/organization/discoveries">
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-             :
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationdiscovery">
-                <Link to="/organization/discoveries/add">
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="plus-circle" /> {t('organization.discoveries.add')}
-                  </Button>
-                </Link>
-              </HasPermissionWrapper>
+                <ButtonBack returnUrl="/organization/discoveries" />  
+              :
+                <HasPermissionWrapper permission="add"
+                                      resource="organizationdiscovery">
+                  <ButtonAdd addUrl="/organization/discoveries/add" />
+                </HasPermissionWrapper>
               }
+            </div>
+          </Page.Header>
+          <Grid.Row>
+            <Grid.Col md={12}>
+              {children}
             </Grid.Col>
           </Grid.Row>
         </Container>
