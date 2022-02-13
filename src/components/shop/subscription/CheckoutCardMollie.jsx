@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -10,13 +8,13 @@ import { toast } from 'react-toastify'
 import {
   Card,
 } from "tabler-react"
-import ShopCheckoutForm from "../ShopCheckoutForm"
 
+import ShopCheckoutForm from "../ShopCheckoutForm"
 import { CREATE_ORDER } from "../queries"
 
 
 function CheckoutCardMollie({ t, match, history, organizationSubscriptionId }) {
-  const [createOrder, { data: createOrderData }] = useMutation(CREATE_ORDER)
+  const [createOrder] = useMutation(CREATE_ORDER)
 
   return (
     <Card title={t("shop.checkout.title")}>

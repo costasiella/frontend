@@ -1,45 +1,25 @@
-// @flow
-
-import React, { useContext } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { useQuery, useMutation } from '@apollo/client'
-import { Link } from 'react-router-dom'
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
-import moment from 'moment'
+import { useQuery } from '@apollo/client'
 
 import {
   Card,
   Grid,
-  Icon,
-  List
 } from "tabler-react"
-import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
-import AppSettingsContext from '../../context/AppSettingsContext'
 
 import CSLS from "../../../tools/cs_local_storage"
 import CheckoutCardMollie from './CheckoutCardMollie'
 import CheckoutCardBankAccountRequired from './CheckoutCardBankAccountRequired'
 import CheckoutCardDirectDebit from './CheckoutCardDirectDebit'
 import ShopSubscriptionBase from "./ShopSubscriptionBase"
-import ShopCheckoutForm from "../ShopCheckoutForm"
 import ShopSubscriptionPricingCard from "./ShopSubscriptionPricingCard"
 
 import { GET_SUBSCRIPTION_QUERY } from "./queries"
-// import { GET_CLASS_QUERY } from "../queries"
 
 function ShopSubscription({ t, match, history }) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
-
   const title = t("shop.home.title")
   const id = match.params.id
-  // const scheduleItemId = match.params.class_id
-  // const classDate = match.params.date
-
 
   // fetchPolicy network-only prevents caching. Need fresh results when coming back after setting bank account.
   const { loading, error, data } = useQuery(GET_SUBSCRIPTION_QUERY, {
@@ -106,30 +86,3 @@ function ShopSubscription({ t, match, history }) {
 
 
 export default withTranslation()(withRouter(ShopSubscription))
-
-
-{/* <Grid.Col sm={6} lg={3}>
-<PricingCard active>
-  <PricingCard.Category>{"Premium"}</PricingCard.Category>
-  <PricingCard.Price>{"$49"} </PricingCard.Price>
-  <PricingCard.AttributeList>
-    <PricingCard.AttributeItem>
-      <strong>10 </strong>
-      {"Users"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Sharing Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Design Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Private Messages"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Twitter API"}
-    </PricingCard.AttributeItem>
-  </PricingCard.AttributeList>
-  <PricingCard.Button active>{"Choose plan"} </PricingCard.Button>
-</PricingCard>
-</Grid.Col> */}

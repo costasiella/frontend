@@ -1,9 +1,7 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Form as FoForm, ErrorMessage } from 'formik'
 
 import {
   Button,
@@ -29,10 +27,20 @@ const ShopClasspassForm = ({ t, isSubmitting, errors, values, setFieldTouched, s
         {t("shop.order.by_placing_this_order")} <br />
         <ul>
           <li>{t("shop.order.agree_terms")} {" "}
-            <a target="_blank" href={cs_django_links.EXPORT_TERMS_AND_CONDITIONS}>{t("general.terms_and_conditions")}</a>
+            <a target="_blank" 
+              rel="noreferrer" 
+              href={cs_django_links.EXPORT_TERMS_AND_CONDITIONS}
+            >
+              {t("general.terms_and_conditions")}
+            </a>
           </li>
           <li>{t("shop.order.agree_privacy")} {" "}
-            <a target="_blank" href={cs_django_links.EXPORT_PRIVACY_POLICY}>{t("general.privacy_policy")}</a>
+            <a target="_blank" 
+              rel="noreferrer" 
+              href={cs_django_links.EXPORT_PRIVACY_POLICY}
+            >
+              {t("general.privacy_policy")}
+            </a>
           </li>
         </ul>
       </small>
