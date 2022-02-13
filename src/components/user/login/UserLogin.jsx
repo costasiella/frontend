@@ -4,16 +4,14 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
 import {
   Button,
   Icon,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import OrganizationContext from '../../context/OrganizationContext'
 
-import { TOKEN_AUTH, TOKEN_REFRESH } from "../../../queries/system/auth"
+import { TOKEN_AUTH } from "../../../queries/system/auth"
 import { CSAuth } from "../../../tools/authentication"
 import CSLS from "../../../tools/cs_local_storage"
 
@@ -23,11 +21,7 @@ import CSStandaloneFormPage from "../../ui/CSStandaloneFormPage"
 
 function UserLogin({t, match, history}) {
   const organization = useContext(OrganizationContext)
-  console.log(organization)
-
-  let errorMessage
   const [ doTokenAuth ] = useMutation(TOKEN_AUTH)
-  const [ doTokenRefresh ] = useMutation(TOKEN_REFRESH)
 
   return (
     <CSStandaloneFormPage urlLogo={organization.urlLogoLogin} >

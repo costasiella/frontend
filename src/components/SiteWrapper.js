@@ -1,5 +1,3 @@
-// @flow
-
 import * as React from "react"
 import { withTranslation } from 'react-i18next'
 import { NavLink, withRouter } from "react-router-dom"

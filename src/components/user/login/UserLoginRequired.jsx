@@ -1,33 +1,17 @@
-// @flow
-
-import React, { useContext, useState } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import React, { useState } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik } from 'formik'
 import { ToastContainer, Slide} from 'react-toastify'
-import { toast } from 'react-toastify'
-
-// import { GET_ACCOUNTS_QUERY, GET_ACCOUNT_QUERY } from './queries'
-// import { ACCOUNT_SCHEMA } from './yupSchema'
-
 import {
   Card,
   Button,
   Icon,
-  StandaloneFormPage,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-// import OrganizationContext from '../../context/OrganizationContext'
-import { CSAuth } from "../../../tools/authentication"
 import CSStandaloneFormPage from "../../ui/CSStandaloneFormPage"
 
-function UserLoginRequired({t, match, history}) {
-  // const organization = useContext(OrganizationContext)
-  // console.log(organization)
 
+function UserLoginRequired({t, match, history}) {
   const [active, setActive] = useState(false);
 
   return (

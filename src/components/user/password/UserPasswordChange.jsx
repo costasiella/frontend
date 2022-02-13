@@ -1,8 +1,5 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
@@ -13,26 +10,17 @@ import OrganizationContext from '../../context/OrganizationContext'
 
 import {
   Button,
-  Card,
-  Icon,
   List,
-  StandaloneFormPage,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import { UPDATE_ACCOUNT_PASSWORD } from "../../../queries/system/auth"
-import CSLS from "../../../tools/cs_local_storage"
 import UserPasswordChangeForm from './UserPasswordChangeForm';
-
 import CSStandaloneFormPage from "../../ui/CSStandaloneFormPage"
 
 
 function UserChangePassword({t, match, history}) {
   const organization = useContext(OrganizationContext)
-  console.log(organization)
-
-  let errorMessage
-  const [updatePassword, { data }] = useMutation(UPDATE_ACCOUNT_PASSWORD)
+  const [updatePassword] = useMutation(UPDATE_ACCOUNT_PASSWORD)
 
   return (
     <CSStandaloneFormPage urlLogo={organization.urlLogoLogin} >

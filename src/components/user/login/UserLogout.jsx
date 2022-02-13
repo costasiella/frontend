@@ -1,29 +1,16 @@
-// @flow
-
 import React, { useContext, useState } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
-import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-// import { GET_ACCOUNTS_QUERY, GET_ACCOUNT_QUERY } from './queries'
-// import { ACCOUNT_SCHEMA } from './yupSchema'
-
-import OrganizationContext from '../../context/OrganizationContext'
-
 import {
   Card,
   Button,
-  StandaloneFormPage,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
+import OrganizationContext from '../../context/OrganizationContext'
 import { CSAuth } from "../../../tools/authentication"
 import { TOKEN_COOKIE_DELETE, TOKEN_REFRESH_COOKIE_DELETE } from "../../../queries/system/auth"
-
 import CSStandaloneFormPage from "../../ui/CSStandaloneFormPage"
 
 
