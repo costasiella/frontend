@@ -20,10 +20,10 @@ import {
   Button,
   Card,
   Container,
-  Form,
 } from "tabler-react"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import OrganizationAnnouncementsBase from './OrganizationAnnouncementsBase';
 
 import { dateToLocalISO } from '../../../tools/date_tools'
 
@@ -32,87 +32,68 @@ function OrganizationAnnouncementAdd({t, history}) {
   const [addAnnouncement] = useMutation(ADD_ANNOUNCEMENT)
   
   return (
-    <SiteWrapper>
-      <div className="my-3 my-md-5">
-        <Container>
-          <Page.Header title={t('organization.title')} />
-          <Grid.Row>
-            <Grid.Col md={9}>
-            <Card>
-              <Card.Header>
-                <Card.Title>{t('organization.announcements.title_add')}</Card.Title>
-              </Card.Header>
-                <Formik
-                    initialValues={{ 
-                      displayPublic: false,
-                      displayShop: false,
-                      displayBackend: false,
-                      title: '', 
-                      content: '',
-                      dateStart: new Date(),
-                      dateEnd: new Date(),
-                      priority: 100,
-                    }}
-                    validationSchema={ANNOUNCEMENT_SCHEMA}
-                    onSubmit={(values, { setSubmitting }) => {
-                      let inputValues = {
-                        displayPublic: values.displayPublic,
-                        displayBackend: values.displayBackend,
-                        displayShop: values.displayShop,
-                        title: values.title, 
-                        content: values.content,
-                        dateStart: dateToLocalISO(values.dateStart),
-                        dateEnd: dateToLocalISO(values.dateEnd),
-                        priority: values.priority
-                      }
+    <OrganizationAnnouncementsBase showEditBack={true}>
+      <Card>
+        <Card.Header>
+          <Card.Title>{t('organization.announcements.title_add')}</Card.Title>
+        </Card.Header>
+        <Formik
+            initialValues={{ 
+              displayPublic: false,
+              displayShop: false,
+              displayBackend: false,
+              title: '', 
+              content: '',
+              dateStart: new Date(),
+              dateEnd: new Date(),
+              priority: 100,
+            }}
+            validationSchema={ANNOUNCEMENT_SCHEMA}
+            onSubmit={(values, { setSubmitting }) => {
+              let inputValues = {
+                displayPublic: values.displayPublic,
+                displayBackend: values.displayBackend,
+                displayShop: values.displayShop,
+                title: values.title, 
+                content: values.content,
+                dateStart: dateToLocalISO(values.dateStart),
+                dateEnd: dateToLocalISO(values.dateEnd),
+                priority: values.priority
+              }
 
-                      addAnnouncement({ variables: {
-                        input: inputValues
-                      }, refetchQueries: [
-                          {query: GET_ANNOUNCEMENTS_QUERY}
-                      ]})
-                      .then(({ data }) => {
-                          console.log('got data', data)
-                          history.push(returnUrl)
-                          toast.success((t('organization.announcements.toast_add_success')), {
-                              position: toast.POSITION.BOTTOM_RIGHT
-                            })
-                        }).catch((error) => {
-                          toast.error((t('general.toast_server_error')) +  error, {
-                              position: toast.POSITION.BOTTOM_RIGHT
-                            })
-                          console.log('there was an error sending the query', error)
-                          setSubmitting(false)
-                        })
-                    }}
-                    >
-                    {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-                        <OrganizationAnnouncementForm 
-                          isSubmitting={isSubmitting}
-                          values={values}
-                          errors={errors}
-                          setFieldTouched={setFieldTouched}
-                          setFieldValue={setFieldValue}
-                          returnUrl={returnUrl}
-                        />
-                    )}
-                </Formik>
-            </Card>
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="organizationannouncement">
-                <Link to={returnUrl}>
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-              </HasPermissionWrapper>
-            </Grid.Col>
-          </Grid.Row>
-        </Container>
-      </div>
-    </SiteWrapper>
+              addAnnouncement({ variables: {
+                input: inputValues
+              }, refetchQueries: [
+                  {query: GET_ANNOUNCEMENTS_QUERY}
+              ]})
+              .then(({ data }) => {
+                  console.log('got data', data)
+                  history.push(returnUrl)
+                  toast.success((t('organization.announcements.toast_add_success')), {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                }).catch((error) => {
+                  toast.error((t('general.toast_server_error')) +  error, {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  console.log('there was an error sending the query', error)
+                  setSubmitting(false)
+                })
+            }}
+            >
+            {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+                <OrganizationAnnouncementForm 
+                  isSubmitting={isSubmitting}
+                  values={values}
+                  errors={errors}
+                  setFieldTouched={setFieldTouched}
+                  setFieldValue={setFieldValue}
+                  returnUrl={returnUrl}
+                />
+            )}
+        </Formik>
+      </Card>
+    </OrganizationAnnouncementsBase>
   )
 }
 
