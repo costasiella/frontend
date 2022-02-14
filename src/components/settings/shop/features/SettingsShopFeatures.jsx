@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -15,8 +13,6 @@ import {
   Card,
   Dimmer,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 import SettingsBase from "../../SettingsBase"
 import SettingsShopFeaturesForm from "./SettingsShopFeaturesForm"
@@ -29,9 +25,6 @@ function SettingsShopFeatures({ t, match, history }) {
 
   const { loading, error, data } = useQuery(GET_SHOP_FEATURES_QUERY)
   const [ updateSettings ] = useMutation(UPDATE_SHOP_FEATURES)
-
-  console.log('query data app settings')
-  console.log(data)
 
   if (loading) {
     return (
@@ -78,10 +71,6 @@ function SettingsShopFeatures({ t, match, history }) {
       }}
       validationSchema={SHOP_FEATURES_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
-          console.log('submit values:')
-          console.log(values)
-          console.log(errors)
-
           updateSettings({ variables: {
             input: {
               memberships: values.memberships,
@@ -94,7 +83,6 @@ function SettingsShopFeatures({ t, match, history }) {
               {query: GET_SHOP_FEATURES_QUERY}
           ]})
           .then(({ data }) => {
-              console.log('got data', data)
               toast.success((t('settings.general.toast_edit_success')), {
                   position: toast.POSITION.BOTTOM_RIGHT
               })

@@ -1,5 +1,3 @@
-import React from "react"
-
 
 export function getTemplateInfo(t, template_name) {
   let cardTitle
@@ -62,7 +60,6 @@ export function getTemplateInfo(t, template_name) {
         }),
         comments: t("settings.mail.templates.recurring_payment_failed.help_comments"), 
       }
-      break
       break
     case "system_footer":
       cardTitle = t("settings.mail.templates.system_footer.title")

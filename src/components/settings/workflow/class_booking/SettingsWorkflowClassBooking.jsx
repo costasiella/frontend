@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -13,9 +11,7 @@ import {
   Dimmer,
   Card,
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
 import SettingsWorkflowClassBookingForm from "./SettingsWorkflowClassBookingForm"
 
@@ -42,7 +38,7 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
       setting: "workflow_class_cancel_until"
     }
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
   if ((loadingDaysAdvance) || (loadingCancelUntil)) {
     return (
@@ -71,10 +67,6 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
     )
   }
 
-  console.log('query data app settings')
-  console.log(dataDaysAdvance)
-  console.log(dataCancelUntil)
-
   let initialValues = {
     workflow_class_book_days_advance: "30",
     workflow_class_cancel_until: "2"
@@ -85,8 +77,6 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
   if (dataCancelUntil.systemSettings.edges.length){
     initialValues['workflow_class_cancel_until'] = dataCancelUntil.systemSettings.edges[0].node.value
   } 
-    
-
 
   return (
     <SettingsBase 
@@ -100,23 +90,12 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
-          console.log('submit values:')
-          console.log(values)
-          console.log(errors)
-
           const settings = [
             { setting: "workflow_class_book_days_advance", value: values.workflow_class_book_days_advance },
             { setting: "workflow_class_cancel_until", value: values.workflow_class_cancel_until },
           ]
 
-          let error = false
-
           for (let i in settings) {
-
-            console.log(i)
-            console.log(settings[i].setting)
-            console.log(settings[i].value)
-
             updateSettings({ variables: {
               input: {
                 setting: settings[i].setting,
