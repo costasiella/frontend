@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -8,7 +7,7 @@ import {
   Container,
   Grid
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
+
 import SiteWrapper from "../../../SiteWrapper"
 import ScheduleEventEditMenu from "./ScheduleEventEditMenu"
 import ScheduleEventEditBack from "./ScheduleEventEditBack"

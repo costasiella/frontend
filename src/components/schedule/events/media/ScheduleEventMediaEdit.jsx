@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState, useRef } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -7,12 +5,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
 
 import { GET_SCHEDULE_EVENT_MEDIAS_QUERY, GET_SCHEDULE_EVENT_MEDIA_QUERY } from "./queries"
 import { SCHEDULE_EVENT_MEDIA_SCHEMA } from './yupSchema'
@@ -41,7 +33,7 @@ function ScheduleEventMediaEdit({ t, history, match }) {
   const cardTitle = t("schedule.events.media.edit")
 
   const [updateScheduleEventMedia] = useMutation(UPDATE_SCHEDULE_EVENT_MEDIA)
-  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_MEDIA_QUERY, {
+  const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_MEDIA_QUERY, {
     variables: {
       id: scheduleEventMediaId
   }})

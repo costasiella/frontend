@@ -1,33 +1,17 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik } from 'formik'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
-
-import AppSettingsContext from '../../../context/AppSettingsContext'
-
-import { GET_SCHEDULE_EVENT_MEDIA_QUERY } from './queries'
-import { GET_SCHEDULE_EVENT_QUERY } from '../queries'
-
 import moment from 'moment'
-
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
+import AppSettingsContext from '../../../context/AppSettingsContext'
+import { GET_SCHEDULE_EVENT_MEDIA_QUERY } from './queries'
+import { GET_SCHEDULE_EVENT_QUERY } from '../queries'
 import ScheduleEventMediaBack from "./ScheduleEventMediaBack"
 import ScheduleEventEditBaseBase from "../edit/ScheduleEventEditBaseBase"
 
