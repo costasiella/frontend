@@ -1,4 +1,4 @@
-import React, {Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
@@ -9,11 +9,9 @@ import {
   Button,
   Grid,
   Icon,
-  List,
   GalleryCard
 } from "tabler-react";
 import ShopEventsBase from "./ShopEventsBase"
-// import ShopClasspassPricingCard from "../classpass/ShopClasspassPricingCard"
 
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 

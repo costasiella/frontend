@@ -1,22 +1,11 @@
-// @flow
-
-import React, { useContext } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-import { Link } from 'react-router-dom'
-import { v4 } from 'uuid'
-import moment from 'moment'
 
 
 import {
-  Button,
   Card, 
-  Grid,
-  Icon,
-  List,
-  Media,
-  Table,
 } from "tabler-react";
 import ShopContactBase from "./ShopContactBase"
 
@@ -25,7 +14,7 @@ import { GET_ORGANIZATION_QUERY } from "../../organization/organization/queries"
 
 function ShopContact({ t, match, history }) {
   // The ID is fixed, as there's only one organization supported at the moment... easy peasy.
-  const { loading, error, data, refetch } = useQuery(GET_ORGANIZATION_QUERY, {
+  const { loading, error, data } = useQuery(GET_ORGANIZATION_QUERY, {
     variables: { id: "T3JnYW5pemF0aW9uTm9kZToxMDA="}
   })
 

@@ -1,10 +1,7 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import moment from 'moment'
 
@@ -15,18 +12,13 @@ import {
   Button,
   Card, 
   Grid,
-  Icon,
-  List,
-  Media,
   Table,
 } from "tabler-react";
 import ShopClassesScheduleBase from "./ShopClassesScheduleBase"
 import ShopClassesScheduleFilter from "./ShopClassesScheduleFilter"
 import ShopClassesScheduleButtonBook from "./ShopClassesScheduleButtonBook"
-import CSDatePicker from "../../../ui/CSDatePicker"
 
 import { GET_CLASSES_QUERY } from "../../../schedule/classes/queries"
-
 import { get_list_query_variables } from './tools'
 
 
@@ -53,7 +45,6 @@ if (!localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)) {
 
 function ShopClassesSchedule({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
 
   const title = t("shop.home.title")

@@ -1,23 +1,13 @@
-// @flow
-
-import React, { useContext } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
-import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-import moment from 'moment'
-
 import {
   Card,
   Grid,
-  Icon,
-  List
 } from "tabler-react"
-import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
-import AppSettingsContext from '../../context/AppSettingsContext'
 
 import ShopEventTicketBase from "./ShopEventTicketBase"
 import ShopCheckoutForm from "../ShopCheckoutForm"
@@ -28,20 +18,15 @@ import { CREATE_ORDER } from "../queries"
 
 
 function ShopEventTicket({ t, match, history }) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
-
   const title = t("shop.home.title")
   const scheduleEventTicketId = match.params.id
   const eventId = match.params.event_id
-  const classDate = match.params.date
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_TICKET_QUERY, {
     variables: { id: scheduleEventTicketId }
   })
 
-  const [createOrder, { data: createOrderData }] = useMutation(CREATE_ORDER)
+  const [createOrder] = useMutation(CREATE_ORDER)
 
 
   if (loading) return (
@@ -103,7 +88,6 @@ function ShopEventTicket({ t, match, history }) {
                       scheduleEventTicket: match.params.id,
                     }
 
-
                     createOrder({ variables: {
                       input: createOrderInput,
                       // file: values.image
@@ -142,32 +126,4 @@ function ShopEventTicket({ t, match, history }) {
   )
 }
 
-
 export default withTranslation()(withRouter(ShopEventTicket))
-
-
-{/* <Grid.Col sm={6} lg={3}>
-<PricingCard active>
-  <PricingCard.Category>{"Premium"}</PricingCard.Category>
-  <PricingCard.Price>{"$49"} </PricingCard.Price>
-  <PricingCard.AttributeList>
-    <PricingCard.AttributeItem>
-      <strong>10 </strong>
-      {"Users"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Sharing Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Design Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Private Messages"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Twitter API"}
-    </PricingCard.AttributeItem>
-  </PricingCard.AttributeList>
-  <PricingCard.Button active>{"Choose plan"} </PricingCard.Button>
-</PricingCard>
-</Grid.Col> */}

@@ -1,9 +1,6 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import moment from 'moment'
 
 import {
   Grid,
@@ -14,8 +11,6 @@ import ShopClassBookSubscriptionBtn from "./ShopClassBookSubscriptionBtn"
 
 
 function ShopClassBookSubscriptions({ t, match, history, subscriptions }) {
-  console.log("SUBSCRIPTIONS")
-  console.log(subscriptions)
 
   return (
     subscriptions.map((subscription) =>(

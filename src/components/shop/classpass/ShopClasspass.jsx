@@ -1,10 +1,7 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
-import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
@@ -13,9 +10,8 @@ import moment from 'moment'
 import {
   Card,
   Grid,
-  Icon,
-  List
 } from "tabler-react"
+
 import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
 import AppSettingsContext from '../../context/AppSettingsContext'
 
@@ -47,7 +43,7 @@ function ShopClasspass({ t, match, history }) {
     skip: (!scheduleItemId || !classDate)
   })
 
-  const [createOrder, { data: createOrderData }] = useMutation(CREATE_ORDER)
+  const [createOrder] = useMutation(CREATE_ORDER)
 
 
   if (loading) return (
@@ -61,13 +57,8 @@ function ShopClasspass({ t, match, history }) {
     </ShopClasspassBase>
   )
 
-  console.log(data)
   const classpass = data.organizationClasspass
   const user = data.user
-  console.log(classpass)
-
-  console.log('DATA CLASS')
-  console.log(dataClass)
 
   if (user.hasReachedTrialLimit && classpass.trialPass) {
     return (
@@ -166,32 +157,4 @@ function ShopClasspass({ t, match, history }) {
   )
 }
 
-
 export default withTranslation()(withRouter(ShopClasspass))
-
-
-{/* <Grid.Col sm={6} lg={3}>
-<PricingCard active>
-  <PricingCard.Category>{"Premium"}</PricingCard.Category>
-  <PricingCard.Price>{"$49"} </PricingCard.Price>
-  <PricingCard.AttributeList>
-    <PricingCard.AttributeItem>
-      <strong>10 </strong>
-      {"Users"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Sharing Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Design Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Private Messages"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Twitter API"}
-    </PricingCard.AttributeItem>
-  </PricingCard.AttributeList>
-  <PricingCard.Button active>{"Choose plan"} </PricingCard.Button>
-</PricingCard>
-</Grid.Col> */}

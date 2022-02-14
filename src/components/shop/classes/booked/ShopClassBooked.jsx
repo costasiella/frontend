@@ -1,12 +1,8 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 import {
   Button,
@@ -14,15 +10,10 @@ import {
   Grid,
   Icon
 } from "tabler-react";
-import { TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-// import { toast } from 'react-toastify'
-import AppSettingsContext from '../../../context/AppSettingsContext'
 
+import AppSettingsContext from '../../../context/AppSettingsContext'
 import ShopClassBookedBase from "./ShopClassBookedBase"
 import { GET_CLASS_QUERY } from "../../queries"
-// import CSLS from "../../../../../tools/cs_local_storage"
-
 import { DisplayClassInfo } from "../../tools"
 
 
