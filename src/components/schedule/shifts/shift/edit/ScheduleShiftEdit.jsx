@@ -5,6 +5,10 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
+import {
+  Card,
+} from "tabler-react";
+
 import { GET_SCHEDULE_SHIFT_WEEKLY_OTCS_QUERY, UPDATE_SCHEDULE_ITEM_WEEKLY_OTC } from './queries'
 import { GET_SHIFTS_QUERY } from '../../queries'
 import { get_list_query_variables } from '../../tools'
@@ -14,11 +18,6 @@ import { TimeStringToJSDateOBJ, dateToLocalISOTime } from '../../../../../tools/
 
 import { shiftSubtitle } from "../tools"
 
-
-import {
-  Card,
-} from "tabler-react";
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import ScheduleShiftEditBase from "../ScheduleShiftEditBase"
 import ScheduleShiftWeeklyOTCDelete from './ScheduleShiftWeeklyOTCDelete'
 

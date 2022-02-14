@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -12,37 +10,21 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import {
   Badge,
   Dropdown,
-  Page,
-  Grid,
-  Icon,
-  Dimmer,
-  Button,
   Card,
-  Container,
   Table,
-  Text,
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import CSDatePicker from "../../ui/CSDatePicker"
-import confirm_delete from "../../../tools/confirm_delete"
-import { confirmAlert } from 'react-confirm-alert'
-import { toast } from 'react-toastify'
 
+import HasPermissionWrapper from "../../HasPermissionWrapper"
+import confirm_delete from "../../../tools/confirm_delete"
 import CSLS from "../../../tools/cs_local_storage"
 
-
-import BadgeBoolean from "../../ui/BadgeBoolean"
-import ContentCard from "../../general/ContentCard"
-import ScheduleShiftsFilter from "./ScheduleShiftsFilter"
 import ScheduleShiftsBase from './ScheduleShiftsBase'
 
 import { GET_SHIFTS_QUERY, DELETE_SCHEDULE_SHIFT } from "./queries"
 import { 
   get_class_messages,
   get_list_query_variables, 
-  represent_shift_status,
-  represent_instructor 
+  represent_shift_status
 } from './tools'
 
 import moment from 'moment'
@@ -58,7 +40,6 @@ if (!localStorage.getItem(CSLS.SCHEDULE_SHIFTS_DATE_FROM)) {
 
 function ScheduleShifts ({ t, history }) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
 
   const {loading, error, data, refetch} = useQuery(GET_SHIFTS_QUERY, {

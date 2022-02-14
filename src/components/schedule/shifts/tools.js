@@ -52,6 +52,8 @@ export function represent_instructor(name, role) {
     case "KARMA":
       textColor = "text-orange"
       break
+    default:
+      break
   }
 
   if (textColor) {
@@ -84,12 +86,11 @@ export function represent_shift_status(status) {
 
 
 export function get_class_messages(t, status, description, holiday, holidayName) {
-  let messages
   if (holiday) {
     return <span>{t("general.holiday")} ({holidayName})</span>
   }
 
-  if (status == 'CANCELED') {
+  if (status === 'CANCELED') {
     return description
   }
 }

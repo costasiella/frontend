@@ -1,13 +1,9 @@
-// @flow
-
 import React, { useState } from 'react'
 import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
 import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
 import {
@@ -64,8 +60,7 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
 
 
   const [ getAccounts, 
-    { refetch: refetchAccounts, 
-      fetchMore: fetchMoreAccounts,
+    { fetchMore: fetchMoreAccounts,
       loading: queryAccountsLoading, 
       error: queryAccountsError, 
       data: queryAccountsData 
@@ -96,11 +91,7 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
     </ScheduleEventTicketEditBase>
   )
 
-  console.log('query data')
-  console.log(data)
-  const inputData = data
   const accountScheduleEventTickets = data.accountScheduleEventTickets
-  console.log(accountScheduleEventTickets)
 
   let accountIdsWithTickets = []
   accountScheduleEventTickets.edges.map(({ node }) => (
