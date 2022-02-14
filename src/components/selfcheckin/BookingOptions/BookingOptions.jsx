@@ -1,24 +1,14 @@
-// @flow
-
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 import {
   Grid,
 } from "tabler-react";
+
 import SelfCheckinBase from "../SelfCheckinBase"
-// import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
-import { toast } from 'react-toastify'
-
 import AppSettingsContext from '../../context/AppSettingsContext'
-
-import { get_accounts_query_variables } from "../../schedule/classes/class/tools"
 import { getSubtitle } from "../Checkin/tools"
 
 import ScheduleClassBookClasspasses from "../../schedule/classes/class/book/ScheduleClassBookClasspasses"
@@ -31,13 +21,11 @@ import { GET_BOOKING_OPTIONS_QUERY } from "./queries"
 
 
 function SelfCheckinBookingOptions({ t, match, history }) {
-  const [showSearch, setShowSearch] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormat = dateFormat + " " + timeFormat
 
-  const return_url = "/schedule/classes/"
   const account_id = match.params.account_id
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date

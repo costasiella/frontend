@@ -1,6 +1,4 @@
-// @flow
-
-import React, {Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
@@ -10,9 +8,8 @@ import {
   Icon,
   List
 } from "tabler-react";
-import SelfCheckinBase from "../SelfCheckinBase"
 
-import HasPermissionWrapper from "../../HasPermissionWrapper"
+import SelfCheckinBase from "../SelfCheckinBase"
 import { GET_ORGANIZATION_LOCATIONS_QUERY } from "./queries"
 
 

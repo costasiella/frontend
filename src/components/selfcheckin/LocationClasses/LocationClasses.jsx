@@ -1,11 +1,8 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
-
 import moment from 'moment'
 
 import {
@@ -14,18 +11,15 @@ import {
   Icon,
   Table
 } from "tabler-react";
+
 import SelfCheckinBase from "../SelfCheckinBase"
-
 import AppSettingsContext from '../../context/AppSettingsContext'
-
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { GET_LOCATION_CLASSES_QUERY } from "./queries"
 
 
 function LocationClasses({ t, match, history }) {
   const locationId = match.params.location_id
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const today = moment().format('YYYY-MM-DD')
 

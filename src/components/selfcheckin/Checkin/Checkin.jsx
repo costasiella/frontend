@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext, useState } from 'react'
 import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
 import { v4 } from "uuid"
@@ -8,20 +6,15 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-
-import moment from 'moment'
-
 import {
   Button,
-  Card,
   Dropdown,
   Icon,
   Table
 } from "tabler-react";
+
 import SelfCheckinBase from "../SelfCheckinBase"
-
 import AppSettingsContext from '../../context/AppSettingsContext'
-
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { GET_ACCOUNTS_QUERY, GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, UPDATE_SCHEDULE_ITEM_ATTENDANCE } from "./queries"
 import { get_attendance_list_query_variables, get_accounts_query_variables, getSubtitle } from "./tools"
@@ -29,7 +22,6 @@ import CSLS from "../../../tools/cs_local_storage"
 import BadgeBookingStatus from "../../ui/BadgeBookingStatus"
 import ContentCard from "../../general/ContentCard"
 import InputSearch from "../../general/InputSearch"
-import ScheduleClassAttendanceDelete from "../../schedule/classes/class/attendance/ScheduleClassAttendanceDelete"
 
 
 function setAttendanceStatus({t, updateAttendance, node, status}) {
@@ -76,13 +68,10 @@ function SelfCheckinCheckin({ t, match, history }) {
     }
   )
 
-  const [ updateAttendance, 
-    { loading: mutationAttendanceLoading, error: mutationAttendanceError },
-  ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
+  const [ updateAttendance ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
 
   const [ getAccounts, 
-    { refetch: refetchAccounts, 
-      fetchMore: fetchMoreAccounts,
+    { fetchMore: fetchMoreAccounts,
       loading: queryAccountsLoading, 
       error: queryAccountsError, 
       data: queryAccountsData 
@@ -224,7 +213,7 @@ function SelfCheckinCheckin({ t, match, history }) {
                           </HasPermissionWrapper>,
                         ]}
                       />
-                      {(node.bookingStatus == "BOOKED") ?
+                      {(node.bookingStatus === "BOOKED") ?
                         <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
                           <Button
                             key={v4()}
