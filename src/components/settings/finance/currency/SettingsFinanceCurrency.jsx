@@ -1,28 +1,16 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
-
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
+import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 import SettingsBase from "../../SettingsBase"
 import SettingsFinanceCurrencyForm from "./SettingsFinanceCurrencyForm"
 
@@ -50,7 +38,7 @@ function SettingsFinanceCurrency({ t, match, history }) {
       setting: "finance_currency_symbol"
     }
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
   if ((loadingCurrency) || (loadingSymbol)) {
     return (
@@ -79,10 +67,6 @@ function SettingsFinanceCurrency({ t, match, history }) {
     )
   }
 
-  console.log('query data app settings')
-  console.log(dataCurrency)
-  console.log(dataSymbol)
-
   let initialValues = {
     currency: "EUR",
     symbol: "€"
@@ -109,22 +93,12 @@ function SettingsFinanceCurrency({ t, match, history }) {
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
-          console.log('submit values:')
-          console.log(values)
-          console.log(errors)
-
           const settings = [
             { setting: "finance_currency", value: values.finance_currency },
             { setting: "finance_currency_symbol", value: values.finance_currency_symbol },
           ]
 
-          let error = false
-
           for (let i in settings) {
-
-            console.log(i)
-            console.log(settings[i].setting)
-            console.log(settings[i].value)
 
             updateSettings({ variables: {
               input: {

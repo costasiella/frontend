@@ -23,7 +23,7 @@ function SettingsIntegrationMollieCreateAccount({ t, match, history, mollieApiKe
       <p>
         {t("settings.integration.mollie.create_account_message")}
       </p>
-      <a href="https://www.mollie.com/dashboard/signup/2488481" target="_blank">
+      <a href="https://www.mollie.com/dashboard/signup/2488481" target="_blank" rel="noreferrer" >
         <Button color="success" RootComponent="button">
           {t("settings.integration.mollie.to_mollie")} <Icon name="chevron-right" />
         </Button>
