@@ -1,19 +1,10 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
-import { Link } from 'react-router-dom'
-
 
 import {
-  Button,
   Card,
-  Grid,
-  Icon,
-  Table
 } from "tabler-react"
 
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"

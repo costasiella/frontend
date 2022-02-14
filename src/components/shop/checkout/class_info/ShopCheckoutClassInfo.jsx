@@ -1,16 +1,10 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-import { v4 } from 'uuid'
-import moment from 'moment'
 
 import {
-  Card,
   Icon,
-  Table,
 } from "tabler-react";
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
@@ -22,10 +16,6 @@ function ShopCheckoutClassInfo({ t, scheduleItemId, date, complete=true}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-
-
-  console.log(scheduleItemId)
-  console.log(date)
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_CLASS_QUERY, {
     variables: { 

@@ -3,10 +3,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
-  Page,
-  Grid,
   Icon,
-  Container,
   Tag,
 } from "tabler-react";
 
@@ -28,7 +25,9 @@ function ShopCheckoutProgress({ t, match, history, checkoutProgress="" }) {
       color_order = "success"
       color_payment = "success"
       color_complete = "success"
-      break      
+      break
+    default:
+      break
   }
 
   return (

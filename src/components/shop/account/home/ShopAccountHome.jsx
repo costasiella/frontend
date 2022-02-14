@@ -1,15 +1,11 @@
-// @flow
-
-import React, {Component } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import React from 'react'
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
   Card,
-  Page,
-  Grid,
-  Container
+  Grid
 } from "tabler-react";
 
 import CSLS from '../../../../tools/cs_local_storage';

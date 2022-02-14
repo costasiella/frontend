@@ -1,6 +1,4 @@
-// @flow
-
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
@@ -19,9 +17,9 @@ import { GET_ORDER_QUERY } from "../queries"
 
 
 function ShopCheckoutComplete({ t, match, history }) {
-  const btnPayNow = useRef(null);
-  const initialBtnText = <span><Icon name="credit-card" /> {t('shop.checkout.payment.to_payment')} <Icon name="chevron-right" /></span>
-  const [btn_text, setBtnText] = useState(initialBtnText)
+  // const btnPayNow = useRef(null);
+  // const initialBtnText = <span><Icon name="credit-card" /> {t('shop.checkout.payment.to_payment')} <Icon name="chevron-right" /></span>
+  // const [btn_text, setBtnText] = useState(initialBtnText)
   const title = t("shop.home.title")
   const id = match.params.id
   const { loading, error, data } = useQuery(GET_ORDER_QUERY, {
@@ -60,7 +58,7 @@ function ShopCheckoutComplete({ t, match, history }) {
   let complete = false
 
   // Success!
-  if (order.status == "DELIVERED") {
+  if (order.status === "DELIVERED") {
     // Thank you message
     subHeader = t("shop.checkout.complete.success_subheader") 
     // Something to explain the user what's next
@@ -115,32 +113,4 @@ function ShopCheckoutComplete({ t, match, history }) {
   )
 }
 
-
 export default withTranslation()(withRouter(ShopCheckoutComplete))
-
-
-{/* <Grid.Col sm={6} lg={3}>
-<PricingCard active>
-  <PricingCard.Category>{"Premium"}</PricingCard.Category>
-  <PricingCard.Price>{"$49"} </PricingCard.Price>
-  <PricingCard.AttributeList>
-    <PricingCard.AttributeItem>
-      <strong>10 </strong>
-      {"Users"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Sharing Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Design Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Private Messages"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Twitter API"}
-    </PricingCard.AttributeItem>
-  </PricingCard.AttributeList>
-  <PricingCard.Button active>{"Choose plan"} </PricingCard.Button>
-</PricingCard>
-</Grid.Col> */}

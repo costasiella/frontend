@@ -1,10 +1,7 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
@@ -19,9 +16,8 @@ import {
   Grid,
   Icon,
   Table,
-  Text
 } from "tabler-react"
-import { QUERY_ACCOUNT_INVOICES, CREATE_PAYMENT_LINK } from "./queries"
+import { QUERY_ACCOUNT_INVOICES } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 import LoadMoreOnBottomScroll from "../../../general/LoadMoreOnBottomScroll"
 
@@ -31,8 +27,6 @@ import ShopAccountInvoicesBase from "./ShopAccountInvoicesBase"
 function ShopAccountInvoices({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
-  const dateTimeFormat = dateFormat + ' ' + timeFormat
   const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
 
   // Chain queries. First query user data and then query invoices for that user once we have the account Id.
@@ -147,7 +141,7 @@ function ShopAccountInvoices({t, match, history}) {
                         </Table.Body>
                       </Table>
                     <Card.Footer>
-                      {(node.status == "SENT" && onlinePaymentsAvailable) ?
+                      {(node.status === "SENT" && onlinePaymentsAvailable) ?
                         <Link to={"/shop/account/invoice_payment/" + node.id}>
                           <Button
                             className="float-right"

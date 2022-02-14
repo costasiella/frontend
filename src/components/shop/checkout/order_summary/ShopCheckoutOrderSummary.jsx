@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -14,8 +12,6 @@ import {
 
 import { GET_ORDER_QUERY } from "../queries"
 import ShopCheckoutClassInfo from "../class_info/ShopCheckoutClassInfo"
-import { dateToLocalISO } from '../../../../tools/date_tools'
-import { DisplayClassInfo } from '../../tools'
 
 
 function ShopCheckoutOrderSummary({ t, id, complete=false }) {

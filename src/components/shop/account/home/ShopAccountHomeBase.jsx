@@ -1,13 +1,9 @@
-// @flow
-
-import React, {Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
-  Card,
   Page,
-  Grid,
   Container
 } from "tabler-react";
 import SiteWrapperShop from "../../../SiteWrapperShop"

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -8,20 +6,14 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import {
-  Card,
-  Page,
   Grid,
-  Container
 } from "tabler-react";
-import SiteWrapperShop from "../../../SiteWrapperShop"
+
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 import { UPDATE_PROFILE } from "./queries"
-
 import ShopAccountProfileBase from "./ShopAccountProfileBase"
 import ShopAccountProfileForm from "./ShopAccountProfileForm"
-
 import { dateToLocalISO } from '../../../../tools/date_tools'
-
 import { ACCOUNT_SCHEMA } from "./yupSchema"
 
 
