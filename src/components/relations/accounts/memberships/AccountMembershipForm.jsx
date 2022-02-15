@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -9,7 +7,6 @@ import { v4 } from "uuid"
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 import CSDatePicker from "../../../ui/CSDatePicker"
-
 
 import {
   Button,
@@ -54,7 +51,7 @@ const AccountMembershipForm = ({ t, history, inputData, isSubmitting, setFieldVa
       </Grid.Row> 
       <Grid.Row>
           <Grid.Col>
-            <Form.Group label={(values.frequencyType == "SPECIFIC") ? t('general.date') : t('general.date_start')}>
+            <Form.Group label={(values.frequencyType === "SPECIFIC") ? t('general.date') : t('general.date_start')}>
               <CSDatePicker 
                 className={(errors.dateStart) ? "form-control is-invalid" : "form-control"} 
                 selected={values.dateStart}
@@ -67,7 +64,7 @@ const AccountMembershipForm = ({ t, history, inputData, isSubmitting, setFieldVa
               <ErrorMessage name="dateStart" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          { (values.frequencyType == "SPECIFIC") ? "" :
+          { (values.frequencyType === "SPECIFIC") ? "" :
             <Grid.Col>
               <Form.Group label={t('general.date_end')}>
                 <CSDatePicker 
