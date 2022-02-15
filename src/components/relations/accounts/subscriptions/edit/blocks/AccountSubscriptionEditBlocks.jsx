@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,21 +5,14 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
-import ButtonAddSecondaryMenu from '../../../../../ui/ButtonAddSecondaryMenu'
-
-import { GET_ACCOUNT_SUBSCRIPTION_BLOCKS_QUERY } from './queries'
-
 import {
-  Page,
-  Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Table,
 } from "tabler-react";
-// import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+
+import AppSettingsContext from '../../../../../context/AppSettingsContext'
+import { GET_ACCOUNT_SUBSCRIPTION_BLOCKS_QUERY } from './queries'
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
 import AccountSubscriptionEditBlockDelete from "./AccountSubscriptionEditBlockDelete"
 import moment from 'moment';
@@ -31,9 +22,7 @@ import ButtonAdd from '../../../../../ui/ButtonAdd';
 function AccountSubscriptionEditBlocks({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  console.log(appSettings)
   
-  const id = match.params.subscription_id
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`

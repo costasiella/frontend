@@ -53,7 +53,7 @@ const AccountSubscriptionForm = ({ t, history, create, inputData, isSubmitting, 
       </Grid.Row> 
       <Grid.Row>
           <Grid.Col>
-            <Form.Group label={(values.frequencyType == "SPECIFIC") ? t('general.date') : t('general.date_start')}>
+            <Form.Group label={(values.frequencyType === "SPECIFIC") ? t('general.date') : t('general.date_start')}>
               <CSDatePicker 
                 className={(errors.dateStart) ? "form-control is-invalid" : "form-control"} 
                 selected={values.dateStart}
@@ -66,7 +66,7 @@ const AccountSubscriptionForm = ({ t, history, create, inputData, isSubmitting, 
               <ErrorMessage name="dateStart" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          { (values.frequencyType == "SPECIFIC") ? "" :
+          { (values.frequencyType === "SPECIFIC") ? "" :
             <Grid.Col>
               <Form.Group label={t('general.date_end')}>
                 <CSDatePicker 

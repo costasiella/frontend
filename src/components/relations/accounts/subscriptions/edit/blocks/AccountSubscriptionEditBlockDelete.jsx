@@ -13,7 +13,7 @@ import {
 
 function AccountSubscriptionEditBlockDelete({t, match, history, id}) {
   const subscriptionId = match.params.subscription_id
-  const [deleteAccountSubscriptionBlock, { data }] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION_BLOCK)
+  const [deleteAccountSubscriptionBlock] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION_BLOCK)
   const query_vars = {
     accountSubscription: subscriptionId
   }

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -20,7 +18,6 @@ import {
   Card,
 } from "tabler-react";
 
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import AccountNotesBase from "./AccountNotesBase"
 
 import { get_list_query_variables } from "./tools"
