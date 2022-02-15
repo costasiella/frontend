@@ -1,14 +1,10 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import {
   Page,
   Grid,
-  Icon,
   Button,
   Container,
 } from "tabler-react";
@@ -18,7 +14,6 @@ import CSDatePicker from "../../ui/CSDatePicker"
 import ButtonAdd from '../../ui/ButtonAdd';
 
 import CSLS from "../../../tools/cs_local_storage"
-
 import ScheduleClassesFilter from "./ScheduleClassesFilter"
 
 import { 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { t } from 'i18next'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
