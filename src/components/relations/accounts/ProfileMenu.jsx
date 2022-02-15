@@ -43,7 +43,6 @@ function ProfileMenu({t, accountId, activeLink}) {
     return (
       <List.Group transparent={true}>
         {(activeLink === 'profile') ? profile_active = true: profile_active = false}
-        {(activeLink === 'memberships') ? memberships_active = true: memberships_active = false}
         {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'classes') ? classes_active = true: classes_active = false}
