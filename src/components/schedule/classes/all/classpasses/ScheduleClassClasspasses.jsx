@@ -10,8 +10,7 @@ import {
   Table,
   Card
 } from "tabler-react";
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
+
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../../../general/ContentCard"

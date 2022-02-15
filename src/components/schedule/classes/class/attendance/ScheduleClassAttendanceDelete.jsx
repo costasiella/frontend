@@ -16,7 +16,7 @@ import {
 function ScheduleClassAttendanceDelete({t, match, node}) {
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
-  const [deleteScheduleItemAttendance, { data }] = useMutation(DELETE_SCHEDULE_CLASS_ATTENDANCE)
+  const [deleteScheduleItemAttendance ] = useMutation(DELETE_SCHEDULE_CLASS_ATTENDANCE)
 
     return (
       <button className="icon btn btn-link btn-sm pull-right" 

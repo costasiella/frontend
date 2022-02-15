@@ -7,15 +7,13 @@ import moment from 'moment'
 
 import {
   Dimmer,
-  Button,
   Table,
   Card
 } from "tabler-react";
-import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
+
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ButtonAdd from "../../../../ui/ButtonAdd"
 import ButtonEdit from "../../../../ui/ButtonEdit"
-import { class_edit_all_subtitle } from "../tools"
 
 import ContentCard from "../../../../general/ContentCard"
 import ClassEditBack from "../ClassEditBack"
@@ -63,16 +61,6 @@ function ScheduleClassPrices({t, match, history}) {
       </Card.Body>
     </ClassEditBase>
   )
-
-
-  const initialTimeStart = TimeStringToJSDateOBJ(data.scheduleItem.timeStart)
-  const subtitle = class_edit_all_subtitle({
-    t: t,
-    location: data.scheduleItem.organizationLocationRoom.organizationLocation.name,
-    locationRoom: data.scheduleItem.organizationLocationRoom.name,
-    classtype: data.scheduleItem.organizationClasstype.name,
-    starttime: initialTimeStart
-  })
 
   // Empty list
   if (!data.scheduleItemPrices.edges.length) { return (

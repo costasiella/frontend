@@ -1,33 +1,24 @@
-// @flow
-
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 import {
-  Alert,
   Dropdown,
   Page,
   Grid,
   Icon,
-  Dimmer,
-  Badge,
   Button,
-  Card,
   Container,
   Table
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
-// import { confirmAlert } from 'react-confirm-alert'; // Import
 import { toast } from 'react-toastify'
 import { get_attendance_list_query_variables } from "./tools"
-import confirm_delete from "../../../../../tools/confirm_delete"
 
 import { get_accounts_query_variables } from "./tools"
 import { class_subtitle } from "../tools"
@@ -38,7 +29,6 @@ import ContentCard from "../../../../general/ContentCard"
 import InputSearch from "../../../../general/InputSearch"
 import BadgeBookingStatus from "../../../../ui/BadgeBookingStatus"
 import ScheduleClassAttendanceDelete from "./ScheduleClassAttendanceDelete"
-// import ClassEditBase from "../ClassEditBase"
 
 import { GET_ACCOUNTS_QUERY } from "../../../../../queries/accounts/account_search_queries"
 import { GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, UPDATE_SCHEDULE_ITEM_ATTENDANCE } from "./queries"
@@ -77,21 +67,17 @@ function setAttendanceStatus({t, match, updateAttendance, node, status}) {
 
 function ScheduleClassAttendance({ t, match, history }) {
   const [showSearch, setShowSearch] = useState(false)
-  const return_url = "/schedule/classes/"
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
-  const { refetch: refetchAttendance, loading: queryAttendanceLoading, error: queryAttendanceError, data: queryAttendanceData } = useQuery(
+  const { loading: queryAttendanceLoading, error: queryAttendanceError, data: queryAttendanceData } = useQuery(
     GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, {
       variables: get_attendance_list_query_variables(schedule_item_id, class_date)
     }
   )
-  const [ updateAttendance, 
-    { loading: mutationAttendanceLoading, error: mutationAttendanceError },
-  ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
+  const [ updateAttendance ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
 
   const [ getAccounts, 
-         { refetch: refetchAccounts, 
-           fetchMore: fetchMoreAccounts,
+         { fetchMore: fetchMoreAccounts,
            loading: queryAccountsLoading, 
            error: queryAccountsError, 
            data: queryAccountsData 
@@ -333,7 +319,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                                   </HasPermissionWrapper>,
                                 ]}
                               />
-                              {(node.bookingStatus == "BOOKED") ?
+                              {(node.bookingStatus === "BOOKED") ?
                                 <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
                                   <Button
                                     key={v4()}

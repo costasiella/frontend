@@ -16,7 +16,7 @@ import {
 function ScheduleClassWeeklyOTCDelete({t, match, history}) {
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
-  const [deleteClassOTC, { data }] = useMutation(DELETE_SCHEDULE_CLASS_WEEKLY_OTC, {
+  const [deleteClassOTC] = useMutation(DELETE_SCHEDULE_CLASS_WEEKLY_OTC, {
     onCompleted: () => { history.push("/schedule/classes/") }
   })
   const query_vars = {

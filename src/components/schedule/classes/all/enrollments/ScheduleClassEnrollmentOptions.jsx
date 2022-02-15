@@ -1,11 +1,11 @@
 import React from 'react'
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Dimmer, Grid } from 'tabler-react';
 
 import ScheduleClassEnrollSubscriptions from "./ScheduleClassEnrollSubscriptions"
-import { GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY, CREATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
+import { GET_SCHEDULE_ITEM_ENROLLMENT_OPTIONS_QUERY } from './queries'
 import ClassEditBase from "../ClassEditBase"
 import ButtonBack from '../../../../ui/ButtonBack';
 
@@ -23,7 +23,7 @@ function ScheduleClassEnrollmentOptions({ t, history, match }) {
       
     }
   })
-  const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
+  // const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
 
   if (loading) return (
     <ClassEditBase
