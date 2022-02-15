@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react'
 import { Query, Mutation } from "@apollo/client";
 import { gql } from "@apollo/client"
@@ -13,17 +11,7 @@ import { get_list_query_variables } from '../../tools'
 import { APPOINTMENT_SCHEMA } from '../../yupSchema'
 import ScheduleAppointmentForm from '../../ScheduleAppointmentForm'
 
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-  Form,
-} from "tabler-react"
 import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { dateToLocalISO, dateToLocalISOTime, TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 
 import AppointmentEditBase from '../AppointmentEditBase'
@@ -122,7 +110,7 @@ class ScheduleAppointmentEditAll extends Component {
                           console.log(values)
 
                           let frequencyInterval = values.frequencyInterval
-                          if (values.frequencyType == 'SPECIFIC')
+                          if (values.frequencyType === 'SPECIFIC')
                             frequencyInterval = 0
 
                           let dateEnd

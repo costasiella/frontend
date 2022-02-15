@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react'
 import { Query, Mutation } from "@apollo/client";
 import { gql } from "@apollo/client"
@@ -20,8 +18,7 @@ import {
   Icon,
   Button,
   Card,
-  Container,
-  Form,
+  Container
 } from "tabler-react"
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
@@ -124,7 +121,7 @@ class ScheduleAppointmentAdd extends Component {
                           console.log(values)
 
                           let frequencyInterval = values.frequencyInterval
-                          if (values.frequencyType == 'SPECIFIC')
+                          if (values.frequencyType === 'SPECIFIC')
                             frequencyInterval = 0
 
                           let dateEnd

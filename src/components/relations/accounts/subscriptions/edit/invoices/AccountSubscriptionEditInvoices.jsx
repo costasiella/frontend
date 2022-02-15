@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -13,7 +13,6 @@ import {
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
 import FinanceInvoicesStatus from "../../../../../ui/FinanceInvoiceStatus"
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
 import { GET_FINANCE_INVOICE_ITEM_QUERY } from './queries'
 import CSLS from "../../../../../../tools/cs_local_storage"
 import AccountSubscriptionEditInvoiceDelete from "./AccountSubscriptionEditInvoiceDelete"
@@ -22,14 +21,7 @@ import ButtonAdd from '../../../../../ui/ButtonAdd';
 import moment from 'moment';
 
 
-function AccountSubscriptionEditInvoices({t, location, match, history}) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
-  const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
-  console.log(appSettings)
-  
-  const id = match.params.subscription_id
+function AccountSubscriptionEditInvoices({t, location, match, history}) {  
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`

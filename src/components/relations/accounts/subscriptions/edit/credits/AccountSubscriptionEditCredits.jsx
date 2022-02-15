@@ -25,9 +25,7 @@ import AccountSubscriptionEditCreditDelete from "./AccountSubscriptionEditCredit
 function AccountSubscriptionEditCredits({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
-  console.log(appSettings)
   
-  const id = match.params.subscription_id
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`

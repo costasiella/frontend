@@ -1,7 +1,4 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -9,23 +6,13 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_BUSINESSES_QUERY, GET_BUSINESS_QUERY, UPDATE_BUSINESS } from './queries'
-// import { ACCOUNT_SCHEMA } from './yupSchema'
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../tools/date_tools'
 
 import { get_list_query_variables } from "./tools"
 import RelationsB2BEditBase from './RelationsB2BEditBase'
-// import RelationsAccountsBack from "./RelationsAccountsBack"
 import RelationsB2BEditForm from "./RelationsB2BEditForm"
 
 // 
@@ -34,7 +21,7 @@ import RelationsB2BEditForm from "./RelationsB2BEditForm"
 function RelationsB2BEdit({ t, match, history}) {
   const businessId = match.params.business_id
   const [updateBusiness] = useMutation(UPDATE_BUSINESS)
-  const { loading, error, data, refetch } = useQuery(GET_BUSINESS_QUERY, {
+  const { loading, error, data } = useQuery(GET_BUSINESS_QUERY, {
     variables: {
       id: businessId
     }

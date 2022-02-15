@@ -1,17 +1,10 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client";
 import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-
-import { GET_BUSINESSES_QUERY } from './queries'
-// import { ACCOUNT_SCHEMA } from './yupSchema'
-
 
 import {
   Page,
@@ -20,8 +13,9 @@ import {
   Button,
   Card,
   Container,
-  Form,
 } from "tabler-react"
+
+import { GET_BUSINESSES_QUERY } from './queries'
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 

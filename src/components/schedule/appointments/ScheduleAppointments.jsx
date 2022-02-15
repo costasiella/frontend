@@ -1,13 +1,9 @@
-// @flow
-
 import React from 'react'
 import { Query, Mutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
 
 import {
   Badge,
@@ -15,22 +11,17 @@ import {
   Page,
   Grid,
   Icon,
-  Dimmer,
   Button,
   Card,
   Container,
   Table,
-  Text,
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import CSDatePicker from "../../ui/CSDatePicker"
 import confirm_delete from "../../../tools/confirm_delete"
-import { confirmAlert } from 'react-confirm-alert'
-import { toast } from 'react-toastify'
 
 import CSLS from "../../../tools/cs_local_storage"
-
 
 import BadgeBoolean from "../../ui/BadgeBoolean"
 import ContentCard from "../../general/ContentCard"

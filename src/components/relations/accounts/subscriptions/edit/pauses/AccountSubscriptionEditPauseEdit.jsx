@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -58,12 +56,7 @@ function AccountSubscriptionEditPauseEdit({ t, history, match }) {
     )
   }
 
-  console.log('query data')
-  console.log(data)
-  const inputData = data
   const accountSubscriptionPause = data.accountSubscriptionPause
-
-
 
   return (
     <AccountSubscriptionEditPauseBase>
