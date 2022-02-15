@@ -1,29 +1,16 @@
-// @flow
-
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-
 
 import {
   Table
 } from "tabler-react"
 
-// import { dateToLocalISO, dateToLocalISOTime, TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
-
 import { GET_SCHEDULE_ITEM_ATTENDANCES_QUERY } from "./queries"
-// import { SCHEDULE_EVENT_ACTIVITY_SCHEMA } from './yupSchema'
-
 import ScheduleEventActivityBack from "../ScheduleEventActivityBack"
 import ScheduleEventActivityAttendanceBase from "./ScheduleEventActivityAttendanceBase"
-// import ScheduleEventEditBase from "../edit/ScheduleEventEditBase"
-// import ScheduleEventActivityForm from "./ScheduleEventActivityForm"
 import BadgeBookingStatus from "../../../../ui/BadgeBookingStatus"
 
 

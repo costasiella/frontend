@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { gql } from "@apollo/client"
@@ -7,29 +5,18 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
-
 
 import {
-  Page,
   Dimmer,
-  Icon,
-  Button,
   Card,
-  Container,
-  Form,
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import { get_list_query_variables } from "./tools"
-
 
 import { GET_SCHEDULE_EVENTS_QUERY, GET_INPUT_VALUES_QUERY } from './queries'
 import { SCHEDULE_EVENT_EDIT_SCHEMA } from './yupSchema'
 import ScheduleEventForm from './ScheduleEventForm'
 import ScheduleEventsBase from './ScheduleEventsBase'
-import FormatISODateStr from '../../ui/ISODateString';
 import ButtonBack from '../../ui/ButtonBack';
 
 

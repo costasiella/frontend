@@ -1,21 +1,10 @@
-// @flow
-
-import React, { useState, useRef } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import React from 'react'
+import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
-
 import { dateToLocalISO } from '../../../../tools/date_tools'
-
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
 
 import { ADD_SCHEDULE_EVENT_EARLYBIRD, GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY } from "./queries"
 import { SCHEDULE_EVENT_EARLYBIRDS_SCHEMA } from './yupSchema'

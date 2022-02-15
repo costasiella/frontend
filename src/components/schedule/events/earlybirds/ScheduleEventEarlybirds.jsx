@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,23 +5,14 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
-import AppSettingsContext from '../../../context/AppSettingsContext'
-import ButtonAddSecondaryMenu from '../../../ui/ButtonAddSecondaryMenu'
-import BadgeBoolean from "../../../ui/BadgeBoolean"
-
-import { GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY } from './queries'
-
 import {
-  Avatar,
-  Page,
-  Grid,
   Icon,
   Button,
-  Card,
-  Container,
   Table,
 } from "tabler-react";
-// import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+
+import AppSettingsContext from '../../../context/AppSettingsContext'
+import { GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 // import ScheduleEventTicketListBase from "./ScheduleEventTicketListBase"
 import ScheduleEventEarlybirdDelete from "./ScheduleEventEarlybirdDelete"
@@ -33,7 +22,6 @@ import moment from 'moment';
 function ScheduleEventEarlybirds({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
   console.log(appSettings)
   
   const eventId = match.params.event_id

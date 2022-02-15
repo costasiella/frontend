@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,24 +5,16 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
-import AppSettingsContext from '../../../context/AppSettingsContext'
-import ButtonAddSecondaryMenu from '../../../ui/ButtonAddSecondaryMenu'
-import BadgeBoolean from "../../../ui/BadgeBoolean"
-
-import { GET_SCHEDULE_EVENT_ACTIVITIES_QUERY } from './queries'
-
 import {
-  Page,
-  Grid,
   Icon,
   Button,
-  Card,
-  Container,
   Table,
 } from "tabler-react";
-// import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+
+import AppSettingsContext from '../../../context/AppSettingsContext'
+import BadgeBoolean from "../../../ui/BadgeBoolean"
+import { GET_SCHEDULE_EVENT_ACTIVITIES_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
-// import ScheduleEventTicketListBase from "./ScheduleEventTicketListBase"
 import ScheduleEventActivityDelete from "./ScheduleEventActivityDelete"
 import moment from 'moment';
 
