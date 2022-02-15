@@ -21,12 +21,7 @@ function AccountClassDelete({t, match, node, account}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-  const [deleteScheduleItemAttendance, { data }] = useMutation(DELETE_SCHEDULE_CLASS_ATTENDANCE)
-
-  console.log("AccountClassDelete")
-  console.log(node)
-  console.log(account)
-  console.log("---")
+  const [deleteScheduleItemAttendance] = useMutation(DELETE_SCHEDULE_CLASS_ATTENDANCE)
 
   return (
     <button className="icon btn btn-link btn-sm pull-right" 

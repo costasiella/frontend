@@ -1,16 +1,10 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
-
 import { GET_ACCOUNT_QUERY } from '../queries'
 
 import {
-  Button,
-  Icon,
   Page,
   Grid,
   Container
@@ -22,7 +16,6 @@ import ButtonBack from '../../../ui/ButtonBack';
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
 import RelationsAccountsBack from "../RelationsAccountsBack"
 import ProfileMenu from "../ProfileMenu"
-
 
 
 function RelationsAccountBankAccountBase({ t, match, history, children, bankAccountId="", pageHeaderButtonList, showEditBack=false }) {

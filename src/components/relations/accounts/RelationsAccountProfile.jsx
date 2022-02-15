@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -11,30 +9,18 @@ import { GET_ACCOUNTS_QUERY, GET_ACCOUNT_QUERY, UPDATE_ACCOUNT } from './queries
 import { ACCOUNT_SCHEMA } from './yupSchema'
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
+
 import { dateToLocalISO } from '../../../tools/date_tools'
-import ProfileCardSmall from "../../ui/ProfileCardSmall"
-
 import { get_list_query_variables } from "./tools"
-import RelationsAccountsBack from "./RelationsAccountsBack"
 import RelationsAccountProfileForm from "./RelationsAccountProfileForm"
-
-// 
-import ProfileMenu from "./ProfileMenu"
 import RelationsAccountProfileBase from './RelationsAccountProfileBase'
+
 
 function RelationsAccountProfile({t, match}) {
   const accountId = match.params.account_id
   const activeLink = "profile"
-  const returnUrl = "/relations/accounts"
 
   const {loading, error, data} = useQuery(GET_ACCOUNT_QUERY, {
     variables: {id: accountId}

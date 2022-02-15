@@ -1,6 +1,5 @@
 import { t } from 'i18next'
 import * as Yup from 'yup'
-import { yupToFormErrors } from 'formik';
 
 export const CLASSPASS_SCHEMA = Yup.object().shape({
   organizationClasspass: Yup.string()

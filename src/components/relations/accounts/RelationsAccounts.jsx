@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -18,7 +16,7 @@ import {
   Container,
   Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../HasPermissionWrapper"
+
 import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'
 
@@ -271,10 +269,9 @@ function RelationsAccounts({t, history}) {
                       title={t('general.deactivate')} 
                       href=""
                       onClick={() => {
-                        console.log("clicked isActive")
                         let id = node.id
                         let isActive 
-                        if (localStorage.getItem(CSLS.RELATIONS_ACCOUNTS_IS_ACTIVE) == "true") {
+                        if (localStorage.getItem(CSLS.RELATIONS_ACCOUNTS_IS_ACTIVE) === "true") {
                           isActive = true
                         } else {
                           isActive = false
