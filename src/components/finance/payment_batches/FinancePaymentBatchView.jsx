@@ -1,51 +1,30 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client";
-import { gql } from "@apollo/client"
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
 import moment from 'moment'
 
-import { GET_PAYMENT_BATCHES_QUERY, GET_PAYMENT_BATCH_QUERY } from './queries'
-// import { PAYMENT_BATCH_CATEGORY_SCHEMA } from './yupSchema'
-import { get_list_query_variables } from "./tools"
-
-
 import {
-  Dimmer,
-  Page,
   Grid,
-  Icon,
-  Button,
   Card,
-  Container,
   Table,
   List,
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../tools/date_tools'
-import BooleanBadge from "../../ui/BadgeBoolean"
+
+import { GET_PAYMENT_BATCH_QUERY } from './queries'
 import FinancePaymentBatchCategory from "../../ui/FinancePaymentBatchCategory"
 import AppSettingsContext from '../../context/AppSettingsContext'
-
 import FinancePaymentBatchViewBase from './FinancePaymentBatchViewBase'
-import FinancePaymentCollectionBatchForm from './FinancePaymentCollectionBatchForm'
 import BadgeBoolean from '../../ui/BadgeBoolean';
+
 
 function FinancePaymentBatchView({ t, history, match }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormat = dateFormat + ' ' + timeFormat
-  const batchType = match.params.batch_type
   const batchId = match.params.id
-  const returnUrl = `/finance/paymentbatches/${batchType}`
 
   const { loading, error, data } = useQuery(GET_PAYMENT_BATCH_QUERY, {
     variables: { id: batchId }

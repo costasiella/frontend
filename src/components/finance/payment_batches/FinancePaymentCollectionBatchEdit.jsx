@@ -1,32 +1,18 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
+import {
+  Dimmer,
+  Card,
+} from "tabler-react"
 
 import { UPDATE_PAYMENT_BATCH, GET_PAYMENT_BATCH_QUERY, GET_PAYMENT_BATCHES_QUERY } from './queries'
 import { PAYMENT_BATCH_EDIT_SCHEMA } from './yupSchema'
 import { get_list_query_variables } from "./tools"
-
-
-import {
-  Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-} from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../tools/date_tools'
-
 import FinancePaymentBatchesBase from './FinancePaymentBatchesBase'
 import FinancePaymentCollectionBatchForm from './FinancePaymentCollectionBatchForm'
 
@@ -36,7 +22,6 @@ function FinancePaymentCollectionBatchEdit({ t, history, match }) {
   const batchId = match.params.id
   const returnUrl = `/finance/paymentbatches/${batchType}/view/${batchId}`
   const cardTitle = t('finance.payment_batch.title_edit')
-
 
   const { loading, error, data } = useQuery(GET_PAYMENT_BATCH_QUERY, {
     variables: { id: batchId }

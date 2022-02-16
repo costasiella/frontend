@@ -1,5 +1,3 @@
-// @flow
-
 import React, {useState} from 'react'
 import { withTranslation } from 'react-i18next'
 import { useMutation } from "@apollo/client"
@@ -14,9 +12,8 @@ import {
   Button,
   Container,
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
+import SiteWrapper from "../../SiteWrapper"
 import { UPDATE_PAYMENT_BATCH, GET_PAYMENT_BATCHES_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
@@ -65,7 +62,7 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
         toast.success((t('finance.payment_batches.toast_edit_status_success')), {
             position: toast.POSITION.BOTTOM_RIGHT
           })
-        if (status != "SENT_TO_BANK") {
+        if (status !== "SENT_TO_BANK") {
           console.log(status)
           setDisabled(false)
         }
@@ -74,7 +71,7 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
             position: toast.POSITION.BOTTOM_RIGHT
           })
         console.log('there was an error sending the query', error)
-        if (status != "SENT_TO_BANK") {
+        if (status !== "SENT_TO_BANK") {
           console.log(status)
           setDisabled(false)
         }
@@ -103,7 +100,7 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
             </div>
           </Page.Header>
             {(status) ? 
-              (status == "SENT_TO_BANK") ?
+              (status === "SENT_TO_BANK") ?
                 <Button.List>
                   <Button 
                     icon="mail"

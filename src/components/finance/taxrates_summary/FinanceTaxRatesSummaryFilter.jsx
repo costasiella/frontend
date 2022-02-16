@@ -1,8 +1,7 @@
 import React from 'react'
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Form as FoForm, ErrorMessage } from 'formik'
 
 import {
   Button,
@@ -10,9 +9,6 @@ import {
   Grid
 } from "tabler-react";
 
-
-import CSLS from "../../../tools/cs_local_storage"
-// import { get_list_query_variables } from './tools'
 import CSDatePicker from "../../ui/CSDatePicker"
 
 

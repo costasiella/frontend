@@ -1,32 +1,18 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
+import {
+  Dimmer,
+  Card,
+} from "tabler-react"
 
 import { ADD_PAYMENT_BATCH, GET_PAYMENT_BATCHES_QUERY, GET_INPUT_VALUES } from './queries'
 import { PAYMENT_BATCH_INVOICES_SCHEMA, PAYMENT_BATCH_CATEGORY_SCHEMA } from './yupSchema'
 import { get_list_query_variables } from "./tools"
-
-
-import {
-  Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-} from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { dateToLocalISO } from '../../../tools/date_tools'
-
 import FinancePaymentBatchesBase from './FinancePaymentBatchesBase'
 import FinancePaymentCollectionBatchForm from './FinancePaymentCollectionBatchForm'
 
@@ -91,7 +77,7 @@ function FinancePaymentCollectionBatchAdd({ t, history, match }) {
 
   let initialValues = { name: '', description: '', executionDate: new Date() }
   let yupSchema
-  if (categoryType == "category") {
+  if (categoryType === "category") {
     initialValues.year = new Date().getFullYear()
     initialValues.month = new Date().getMonth() + 1
     yupSchema = PAYMENT_BATCH_CATEGORY_SCHEMA
@@ -118,7 +104,7 @@ function FinancePaymentCollectionBatchAdd({ t, history, match }) {
                 includeZeroAmounts: values.includeZeroAmounts
             }
 
-            if (categoryType == "category") {
+            if (categoryType === "category") {
               input.year = values.year
               input.month = values.month
               input.financePaymentBatchCategory = values.financePaymentBatchCategory
