@@ -12,7 +12,6 @@ import {
 
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../plugin_config/tinymce"
-import { customFileInputLabelStyle } from "../../../tools/custom_file_input_label_style"
 
 
 const OrganizationForm = ({ 

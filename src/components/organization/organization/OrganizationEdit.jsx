@@ -1,33 +1,15 @@
-// @flow
-
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { gql } from "@apollo/client"
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_ORGANIZATION_QUERY } from './queries'
 import { ORGANIZATION_SCHEMA } from './yupSchema'
 import OrganizationForm from './OrganizationForm'
-
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container
-} from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-
 import OrganizationEditBase from "./OrganizationEditBase"
-
-
 
 const UPDATE_ORGANIZATION = gql`
   mutation UpdateOrganization($input: UpdateOrganizationInput!) {
@@ -45,7 +27,7 @@ function OrganizationEdit({t, match, history}) {
   const id = match.params.id
 
   const [updateOrganization] = useMutation(UPDATE_ORGANIZATION)
-  const { loading, error, data, fetchMore } = useQuery(GET_ORGANIZATION_QUERY, {
+  const { loading, error, data } = useQuery(GET_ORGANIZATION_QUERY, {
     variables: {
       id: id
   }})

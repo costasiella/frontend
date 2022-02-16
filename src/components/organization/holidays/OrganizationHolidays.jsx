@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -17,7 +15,6 @@ import {
   Button,
   Table
 } from "tabler-react";
-import { toast } from 'react-toastify'
 
 import confirm_delete from "../../../tools/confirm_delete"
 import ContentCard from "../../general/ContentCard"
@@ -32,7 +29,7 @@ function OrganizationHolidays({t, history}) {
 
   const cardTitle = t('organization.holidays.title')
   
-  const { loading, error, data, refetch, fetchMore } = useQuery(GET_HOLIDAYS_QUERY)
+  const { loading, error, data, fetchMore } = useQuery(GET_HOLIDAYS_QUERY)
   const [ deleteHoliday ] = useMutation(DELETE_HOLIDAY)
 
   if (loading) return (

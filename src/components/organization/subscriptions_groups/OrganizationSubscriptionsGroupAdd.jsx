@@ -2,7 +2,7 @@ import React from 'react'
 import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_SUBSCRIPTION_GROUPS_QUERY, ADD_SUBSCRIPTION_GROUP } from './queries'

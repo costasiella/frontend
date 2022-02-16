@@ -1,10 +1,8 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_SUBSCRIPTION_GROUPS_QUERY, GET_SUBSCRIPTION_GROUP_QUERY, UPDATE_SUBSCRIPTION_GROUP } from './queries'

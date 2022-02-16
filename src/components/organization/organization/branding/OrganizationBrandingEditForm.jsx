@@ -8,7 +8,7 @@ import {
     Form,
     Grid
   } from "tabler-react"
-  import { Form as FoForm, Field, ErrorMessage } from 'formik'
+  import { Form as FoForm } from 'formik'
 
 import { customFileInputLabelStyle } from "../../../../tools/custom_file_input_label_style"
 

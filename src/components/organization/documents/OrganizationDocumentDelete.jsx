@@ -12,7 +12,7 @@ import {
 
 
 function OrganizationDocumentDelete({t, match, node}) {
-  const [deleteOrganizationDocument, { data }] = useMutation(DELETE_DOCUMENT)
+  const [ deleteOrganizationDocument ] = useMutation(DELETE_DOCUMENT)
 
   return (
     <button className="icon btn btn-link btn-sm" 

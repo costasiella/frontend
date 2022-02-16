@@ -1,14 +1,8 @@
-// @flow
-
-import React, { useState, useRef } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client"
+import React from 'react'
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
 import { GET_ORGANIZATION_QUERY } from '../queries'
 
 import {
@@ -17,28 +11,13 @@ import {
   Grid,
   Icon
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 import OrganizationBrandingBase from "./OrganizationBrandingBase"
 
 
-const UPDATE_ORGANIZATION = gql`
-  mutation UpdateOrganization($input: UpdateOrganizationInput!) {
-    updateOrganization(input: $input) {
-      organization {
-        id
-        name
-      }
-    }
-  }
-`
-
-
 function OrganizationBranding({t, match, history}) {
   const id = match.params.id
-
-  const [updateOrganization] = useMutation(UPDATE_ORGANIZATION)
-  const { loading, error, data, fetchMore } = useQuery(GET_ORGANIZATION_QUERY, {
+  const { loading, error, data } = useQuery(GET_ORGANIZATION_QUERY, {
     variables: {
       id: id
   }})

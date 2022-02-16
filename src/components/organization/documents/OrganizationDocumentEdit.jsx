@@ -8,10 +8,8 @@ import {
   ErrorMessage 
 } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
 
 import { UPDATE_DOCUMENT, GET_DOCUMENT_QUERY, GET_DOCUMENTS_QUERY } from "./queries"
-import { DOCUMENT_SCHEMA } from './yupSchema'
 import { dateToLocalISO } from "../../../tools/date_tools"
 import ButtonBack from '../../ui/ButtonBack'
 import CSDatePicker from "../../ui/CSDatePicker"
@@ -36,7 +34,7 @@ function OrganizationDocumentEdit({ t, match, history }) {
   const returnUrl = `/organization/documents/${organizationId}/${documentType}`
   const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
 
-  const [updateDocument, { data: dataUpdate }] = useMutation(UPDATE_DOCUMENT, {
+  const [ updateDocument ] = useMutation(UPDATE_DOCUMENT, {
     onCompleted: () => history.push(returnUrl)
   })
   const { loading, error, data } = useQuery(GET_DOCUMENT_QUERY, {
