@@ -32,7 +32,8 @@ function FinancePaymentBatchCategories({t, history}) {
 
   // TODO: use local storage for archive buttons
   const headerOptions = <Card.Options>
-    <Button color={(localStorage.getItem(CSLS.FINANCE_PAYMENT_BATCH_CATEGORIES_SHOW_ARCHIVE) != "true") ? 'primary': 'secondary'}  
+    <Button color={(localStorage.getItem(CSLS.FINANCE_PAYMENT_BATCH_CATEGORIES_SHOW_ARCHIVE) !== "true") ? 
+      'primary': 'secondary'}  
             size="sm"
             onClick={() => {
               localStorage.setItem(CSLS.FINANCE_PAYMENT_BATCH_CATEGORIES_SHOW_ARCHIVE, false)

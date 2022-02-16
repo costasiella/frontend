@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client";
 import { gql } from "@apollo/client"
@@ -8,25 +6,16 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
+import {
+  Card,
+} from "tabler-react"
 
+import FinancePaymentBatchCategoriesBase from './FinancePaymentBatchCategoriesBase'
+import FinancePaymentBatchCategoryForm from './FinancePaymentBatchCategoryForm'
 import { GET_PAYMENT_BATCH_CATEGORIES_QUERY } from './queries'
 import { PAYMENT_BATCH_CATEGORY_SCHEMA } from './yupSchema'
 import { get_list_query_variables } from "./tools"
 
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-} from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-
-import FinancePaymentBatchCategoriesBase from './FinancePaymentBatchCategoriesBase'
-import FinancePaymentBatchCategoryForm from './FinancePaymentBatchCategoryForm'
 
 const ADD_PAYMENT_BATCH_CATEGORY = gql`
   mutation CreateFinancePaymentBatchCategory($input:CreateFinancePaymentBatchCategoryInput!) {
