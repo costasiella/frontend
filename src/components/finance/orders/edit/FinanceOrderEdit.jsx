@@ -1,11 +1,8 @@
-// @flow
-
 import React, { useContext } from 'react'
 
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import { v4 } from "uuid"
@@ -17,16 +14,11 @@ import FinanceOrderEditForm from "./FinanceOrderEditForm"
 import FinanceOrderEditBase from './FinanceOrderEditBase'
 
 import {
-  Page,
   Grid,
   Icon,
-  Button,
   Card,
-  Container,
   Table,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import { dateToLocalISO } from '../../../../tools/date_tools'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
@@ -62,7 +54,6 @@ function FinanceOrderEdit({t, match, history}) {
     )
   }
 
-  console.log(data) 
   const order = data.financeOrder
   
 
@@ -92,7 +83,7 @@ function FinanceOrderEdit({t, match, history}) {
 
         </Grid.Col>
         <Grid.Col md={6}>
-          {(order.status != "DELIVERED") ? 
+          {(order.status !== "DELIVERED") ? 
             <Formik
               initialValues={{ 
                 status: order.status, 

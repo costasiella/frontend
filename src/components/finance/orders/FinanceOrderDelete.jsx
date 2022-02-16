@@ -1,26 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useMutation } from '@apollo/client';
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
-// import { get_list_query_variables } from "../tools"
-import { DELETE_FINANCE_ORDER, GET_ORDERS_QUERY } from "./queries"
-import confirm_delete from "../../../tools/confirm_delete"
 
 import {
   Icon
 } from "tabler-react"
 
-import moment from 'moment'
-import AppSettingsContext from '../../context/AppSettingsContext'
-
+import { DELETE_FINANCE_ORDER, GET_ORDERS_QUERY } from "./queries"
+import confirm_delete from "../../../tools/confirm_delete"
 import { get_list_query_variables } from "./tools"
 
 
 function FinanceOrderDelete({t, match, node}) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const [deleteOrder, { data }] = useMutation(DELETE_FINANCE_ORDER)
+  const [deleteOrder] = useMutation(DELETE_FINANCE_ORDER)
 
     return (
       <button className="icon btn btn-link btn-sm float-right" 

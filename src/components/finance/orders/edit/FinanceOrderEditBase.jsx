@@ -1,20 +1,14 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import {
-  Button,
   Container,
   Grid,
-  Icon,
   Page
 } from "tabler-react";
 
 import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import ButtonBack from '../../../ui/ButtonBack';
 
 

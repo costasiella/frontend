@@ -1,4 +1,3 @@
-import { t } from 'i18next'
 import * as Yup from 'yup'
 
 export const FINANCE_INVOICE_PAYMENT_SCHEMA = Yup.object().shape({
