@@ -1,28 +1,22 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import C3Chart from "react-c3js"
-
-import AppSettingsContext from '../../context/AppSettingsContext'
-import CSLS from "../../../tools/cs_local_storage"
-import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
-
 import {
   colors,
   Grid,
   Button,
   Card,
 } from "tabler-react";
-// import ContentCard from "../../general/ContentCard"
+
+import CSLS from "../../../tools/cs_local_storage"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
 import { GET_SUBSCRIPTIONS_SOLD_QUERY, GET_SUBSCRIPTIONS_ACTIVE_QUERY } from './queries'
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightSubscriptionsBase from './InsightSubscriptionsBase'
 
 function InsightSubscriptions ({ t, history }) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
   const year = localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)
   const export_url_active = "/d/export/insight/subscriptions/active/" + year
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year

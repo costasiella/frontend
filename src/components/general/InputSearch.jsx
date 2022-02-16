@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react'
 import { withTranslation } from 'react-i18next'
 
@@ -8,7 +6,6 @@ import {
     Icon
   } from "tabler-react"
 
-import CSLS from "../../tools/cs_local_storage"
 
 class InputSearch extends Component {
   constructor(props) {
@@ -61,7 +58,7 @@ class InputSearch extends Component {
 
 
   render() {
-    const t = this.props.t
+    // const t = this.props.t
     const placeholder = this.props.placeholder
 
     return(
