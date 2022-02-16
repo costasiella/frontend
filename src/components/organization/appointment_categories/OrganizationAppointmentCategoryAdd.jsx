@@ -1,18 +1,10 @@
-// @flow
-
 import React from 'react'
 import { Mutation } from "@apollo/client";
 import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-
-import { GET_APPOINTMENT_CATEGORIES_QUERY } from './queries'
-import { APPOINTMENT_CATEGORY_SCHEMA } from './yupSchema'
-
-
 import {
   Page,
   Grid,
@@ -20,13 +12,13 @@ import {
   Button,
   Card,
   Container,
-  Form,
 } from "tabler-react"
+
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-
 import OrganizationAppointmentCategoryForm from "./OrganizationAppointmentCategoryForm"
-
+import { GET_APPOINTMENT_CATEGORIES_QUERY } from './queries'
+import { APPOINTMENT_CATEGORY_SCHEMA } from './yupSchema'
 
 
 const ADD_ORGANIZATION_APPOINTMENT_CATEGORY = gql`

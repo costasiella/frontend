@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -22,7 +20,6 @@ import OrganizationClasspassForm from "./OrganizationClasspassForm"
 
 function OrganizationClasspassEdit({ t, match, history}) {
   const id = match.params.id
-  const returnUrl = "/organization/classpasses"
   const cardTitle = t('organization.classpasses.title_edit')
   const { loading, error, data } = useQuery(GET_CLASSPASS_QUERY, {
     variables: { id: id }

@@ -1,17 +1,10 @@
-// @flow
-
 import React, {Component } from 'react'
 import { gql } from "@apollo/client"
 import { Query, Mutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-import { GET_APPOINTMENTS_QUERY, GET_APPOINTMENT_QUERY } from './queries'
-import { APPOINTMENT_SCHEMA } from './yupSchema'
-import OrganizationAppointmentForm from './OrganizationAppointmentForm'
-
 import {
   Page,
   Grid,
@@ -19,12 +12,14 @@ import {
   Button,
   Card,
   Container,
-  Form
 } from "tabler-react";
+
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-
+import { GET_APPOINTMENTS_QUERY, GET_APPOINTMENT_QUERY } from './queries'
+import { APPOINTMENT_SCHEMA } from './yupSchema'
+import OrganizationAppointmentForm from './OrganizationAppointmentForm'
 
 
 const UPDATE_APPOINTMENT = gql`
@@ -52,7 +47,6 @@ class OrganizationAppointmentEdit extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.id
-    const category_id = match.params.category_id
     const return_url = "/organization/appointment_categories/" + match.params.category_id + "/appointments"
 
     return (

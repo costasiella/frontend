@@ -1,28 +1,24 @@
-// @flow
-
 import React, {Component } from 'react'
 import { gql } from "@apollo/client"
 import { Query, Mutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-import { GET_APPOINTMENT_PRICES_QUERY, GET_APPOINTMENT_PRICE_QUERY } from './queries'
-import { APPOINTMENT_PRICE_SCHEMA } from './yupSchema'
-import OrganizationAppointmentPriceForm from './OrganizationAppointmentPriceForm'
-
 import {
   Page,
   Grid,
   Icon,
   Button,
   Card,
-  Container,
-  Form
+  Container
 } from "tabler-react";
+
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
+import { GET_APPOINTMENT_PRICES_QUERY, GET_APPOINTMENT_PRICE_QUERY } from './queries'
+import { APPOINTMENT_PRICE_SCHEMA } from './yupSchema'
+import OrganizationAppointmentPriceForm from './OrganizationAppointmentPriceForm'
 
 
 

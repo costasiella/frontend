@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 
 import {
   Dimmer,
-  Alert,
   Icon,
   Button,
   Card,
