@@ -1,25 +1,18 @@
-// @flow
-
 import React, {useState} from 'react'
 import { useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
-
-import { GET_TASK_RESULT_QUERY } from "../../../queries"
-
 import {
   Button,
   Card,
   Grid,
   Icon
 } from "tabler-react"
-// import SiteWrapper from "../../SiteWrapper"
-// import HasPermissionWrapper from "../../HasPermissionWrapper"
 
+import { GET_TASK_RESULT_QUERY } from "../../../queries"
 import AutomationAccountSubscriptionCreditExpirationBase from './AutomationAccountSubscriptionCreditExpirationBase'
 
 

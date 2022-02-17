@@ -3,7 +3,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 import { v4 } from "uuid"
-
 import {
     Button,
     Card,
@@ -12,8 +11,6 @@ import {
     Icon
   } from "tabler-react"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
-import CSDatePicker from "../../../../ui/CSDatePicker"
 
 
 function AutomationAccountSubscriptionInvoicesForm({ t, history, isSubmitting, errors, returnUrl}) {

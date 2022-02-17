@@ -2,16 +2,14 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
-
 import {
   Button,
   Page,
   Grid,
   Container,
 } from "tabler-react";
+
 import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AutomationBack from "../../../AutomationBack"
 
 function AutomationAccountSubscriptionInvoicesBase({t, history, match, children, showNewTask=false, returnUrl="/automation"}) {

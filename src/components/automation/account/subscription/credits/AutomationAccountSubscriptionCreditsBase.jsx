@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -12,7 +10,6 @@ import {
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AutomationBack from "../../../AutomationBack"
 
 function AutomationAccountSubscriptionCreditsBase({t, history, match, children, showNewTask=false, returnUrl="/automation"}) {

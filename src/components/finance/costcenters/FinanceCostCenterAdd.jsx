@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,20 +5,15 @@ import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
-
-import { GET_COSTCENTERS_QUERY, ADD_COSTCENTER } from './queries'
-import { COSTCENTER_SCHEMA } from './yupSchema'
-
-
 import {
   Button,
   Card,
   Form,
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 import FinanceCostCentersBase from './FinanceCostCentersBase';
+import { GET_COSTCENTERS_QUERY, ADD_COSTCENTER } from './queries'
+import { COSTCENTER_SCHEMA } from './yupSchema'
 
 
 function FinanceCostCenterAdd({ t, history }) {

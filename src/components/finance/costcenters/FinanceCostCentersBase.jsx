@@ -5,8 +5,6 @@ import { withRouter } from "react-router"
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"

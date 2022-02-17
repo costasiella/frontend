@@ -9,15 +9,10 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import { setContext } from '@apollo/client/link/context';
-// import ApolloClient from "react"
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
-// Import moment locale
-// import moment from 'moment'
-// import 'moment/locale/nl'
 
 import CSLS from "./tools/cs_local_storage"
-import CSEC from "./tools/cs_error_codes"
 import { CSAuth } from './tools/authentication'
 
 // Main app
@@ -37,6 +32,7 @@ import './App.css'
 // registerLocale('nl', nl);
 
 // This allows <string>.trunc(x)
+// eslint-disable-next-line no-extend-native
 String.prototype.trunc = 
   function(n){
       return this.substr(0, n-1) + (this.length > n ? '...' : '')
@@ -47,7 +43,7 @@ function SetCurrentUrlAsNext() {
   const currentUrl = window.location.href
   const next = currentUrl.split("#")[1]
   console.log(next)
-  if ((next != "/user/login") && (next != "/user/session/expired") && (next != "/user/login/required") && (next)) {
+  if ((next !== "/user/login") && (next !== "/user/session/expired") && (next !== "/user/login/required") && (next)) {
     // This is a dirty hack to work around the following, a user refreshes the page but has an expired refreshtoken.
     // This will produce an error on the orinal component, setting the correct next URL in localStorage. However, 
     // the code below will move the user to /user/login, which will also error at first, thus /user/login always
@@ -70,12 +66,12 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
   if (networkError) console.log(`[Network error]: ${networkError}`);
 
   // request size check
-  if (graphQLErrors && graphQLErrors[0].message == "Request body exceeded settings.DATA_UPLOAD_MAX_MEMORY_SIZE.") {
+  if (graphQLErrors && graphQLErrors[0].message === "Request body exceeded settings.DATA_UPLOAD_MAX_MEMORY_SIZE.") {
     console.error('CHOSEN FILE EXCEEDS SIZE LIMIT')
   }
 
   // Token refresh check
-  if (graphQLErrors && graphQLErrors[0].message == "Signature has expired") {
+  if (graphQLErrors && graphQLErrors[0].message === "Signature has expired") {
     console.log(graphQLErrors[0])
     console.log('Time to refresh the token')
 

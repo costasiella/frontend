@@ -1,5 +1,3 @@
-// @flow
-
 import * as React from "react"
 import { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
@@ -13,7 +11,6 @@ import { Link } from 'react-router-dom'
 import { GET_SHOP_FEATURES_QUERY } from "../components/settings/shop/features/queries"
 import OrganizationContext from './context/OrganizationContext'
 import CSLS from "../tools/cs_local_storage"
-import { get_all_permissions, has_permission } from "../tools/user_tools"
 import CSStandalonePageLoader from "./ui/CSStandalonePageLoader"
 
 import {
@@ -25,15 +22,15 @@ import {
   RouterContextProvider,
 } from "tabler-react";
 
-import type { NotificationProps } from "tabler-react";
+// import type { NotificationProps } from "tabler-react";
 
-type Props = {|
-  +children: React.Node,
-|};
+// type Props = {|
+//   +children: React.Node,
+// |};
 
-type State = {|
-  notificationsObjects: Array<NotificationProps>,
-|};
+// type State = {|
+//   notificationsObjects: Array<NotificationProps>,
+// |};
 
 type subNavItem = {|
   +value: string,

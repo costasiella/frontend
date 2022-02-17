@@ -20,15 +20,15 @@ import {
   RouterContextProvider,
 } from "tabler-react";
 
-import type { NotificationProps } from "tabler-react";
+// import type { NotificationProps } from "tabler-react";
 
-type Props = {|
-  +children: React.Node,
-|};
+// type Props = {|
+//   +children: React.Node,
+// |};
 
-type State = {|
-  notificationsObjects: Array<NotificationProps>,
-|};
+// type State = {|
+//   notificationsObjects: Array<NotificationProps>,
+// |};
 
 type subNavItem = {|
   +value: string,
@@ -169,7 +169,7 @@ const getNavBarItems = (t, user) => {
 const now = new Date()
 
 function SiteWrapper({t, match, history, children}) {
-  const { error, loading, data, fetchMore } = useQuery(GET_USER)
+  const { error, loading, data } = useQuery(GET_USER)
 
   if (loading) return <CSStandalonePageLoader/>;
   if (error) return <p>{t('system.user.error_loading')}</p>; 
