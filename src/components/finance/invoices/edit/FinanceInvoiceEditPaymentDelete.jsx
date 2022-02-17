@@ -20,7 +20,7 @@ import { get_list_query_variables } from "../tools"
 function FinanceInvoiceEditPaymentDelete({t, match, node}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const [deleteInvoicePayment, { data }] = useMutation(DELETE_INVOICE_PAYMENT)
+  const [deleteInvoicePayment] = useMutation(DELETE_INVOICE_PAYMENT)
 
     return (
       <button className="icon btn btn-link btn-sm" 

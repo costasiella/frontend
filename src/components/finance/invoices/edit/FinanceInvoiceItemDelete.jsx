@@ -14,7 +14,7 @@ import {
 
 
 function FinanceInvoiceItemDelete({t, match, node}) {
-  const [deleteInvoiceItem, { data }] = useMutation(DELETE_INVOICE_ITEM)
+  const [deleteInvoiceItem] = useMutation(DELETE_INVOICE_ITEM)
 
     return (
       <button className="icon btn btn-link btn-sm" 

@@ -1,26 +1,14 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { v4 } from "uuid"
 import { Formik } from 'formik'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
-
 import {
-  Page,
-  Grid,
-  Icon,
   Dimmer,
-  Container,
   Table,
 } from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
+
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../../../general/ContentCard"
@@ -28,7 +16,6 @@ import FinanceInvoiceGroupDefaultsBase from './FinanceInvoiceGroupDefaultsBase'
 import FinanceInvoiceGroupDefaultForm from './FinanceInvoiceGroupDefaultForm'
 
 import { INVOICE_GROUP_DEFAULT_SCHEMA } from "./yupSchema"
-import { GET_INVOICE_GROUPS_QUERY } from "../queries"
 import { GET_INVOICE_GROUPS_DEFAULTS_QUERY, UPDATE_INVOICE_GROUP_DEFAULT } from "./queries"
 
 
@@ -36,36 +23,26 @@ const fetch_default_type_name = (t, itemType) => {
   switch(itemType) {
     case "MEMBERSHIPS":
       return t('finance.invoice_groups_defaults.MEMBERSHIPS')
-      break
     case "SUBSCRIPTIONS":
       return t('finance.invoice_groups_defaults.SUBSCRIPTIONS')
-      break
     case "CLASSPASSES":
       return t('finance.invoice_groups_defaults.CLASSPASSES')
-      break
     case "DROPINCLASSES":
       return t('finance.invoice_groups_defaults.DROPINCLASSES')
-      break
     case "TRIALCLASSES":
       return t('finance.invoice_groups_defaults.TRIALCLASSES')
-      break
     case "EVENT_TICKETS":
       return t('finance.invoice_groups_defaults.EVENT_TICKETS')
-      break
     case "SHOP_SALES":
       return t('finance.invoice_groups_defaults.SHOP_SALES')
-      break
     case "INSTRUCTOR_PAYMENTS":
       return t('finance.invoice_groups_defaults.INSTRUCTOR_PAYMENTS')
-      break
     case "EMPLOYEE_EXPENSES":
       return t('finance.invoice_groups_defaults.EMPLOYEE_EXPENSES')
-      break
     default:
       return t('finance.invoice_groups_defaults.TYPE_NOT_FOUND')
   }
 }
-
 
 
 function FinanceInvoiceGroupsDefaults({ t, history }) {

@@ -1,10 +1,6 @@
-// @flow
-
-import React, { Fragment } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
-
 import {
   Card
 } from "tabler-react";

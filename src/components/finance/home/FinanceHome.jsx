@@ -1,18 +1,12 @@
-// @flow
-
 import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Card,
-  Container,
-  StampCard
+  Container
 } from "tabler-react";
 import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
@@ -29,9 +23,6 @@ class FinanceHome extends Component {
 
   render() {
     const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const id = match.params.id
     const linkTitle = t("general.manage")
     const linkTitleView = t("general.view")
 
