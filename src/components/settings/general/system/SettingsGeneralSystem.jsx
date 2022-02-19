@@ -1,7 +1,4 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -12,17 +9,9 @@ import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
 import SettingsGeneralSystemForm from "./SettingsGeneralSystemForm"
 
@@ -38,10 +27,7 @@ function SettingsGeneralSystem({ t, match, history }) {
   const { loading, error, data } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
     variables: queryVariables
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
-
-  console.log('query data settings')
-  console.log(data)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
   if (loading) {
     return (

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -11,7 +9,6 @@ import { GET_HOLIDAY_LOCATIONS_QUERY, ADD_LOCATION_TO_HOLIDAY, DELETE_LOCATION_F
 
 import {
   Dimmer,
-  Alert,
   Icon,
   Button,
   Card,
@@ -24,7 +21,6 @@ import OrganizationHolidaysBase from './OrganizationHolidaysBase';
 
 function OrganizationHolidayEditLocations({ t, match, history }) {
   const holidayId = match.params.id
-  const returnUrl = "/organization/holidays"
   let cardTitle = t('organization.holidays.locations.title_edit')
   const { loading, error, data } = useQuery(GET_HOLIDAY_LOCATIONS_QUERY, { 
     variables: { id: holidayId }

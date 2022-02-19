@@ -1,24 +1,14 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-
-import {
-  Card,
-} from "tabler-react"
-
 import { get_list_query_variables } from "../tools"
 
 import { GET_INVOICE_QUERY, GET_INVOICES_QUERY } from "../queries"
 import { GET_INVOICE_PAYMENT_QUERY, UPDATE_FINANCE_INVOICE_PAYMENT } from './queries'
-import { FINANCE_INVOICE_PAYMENT_SCHEMA } from './yupSchema'
-// import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../tools/date_tools'
 
 import SiteWrapper from "../../../SiteWrapper"
@@ -45,7 +35,7 @@ function FinanceInvoicePaymentEdit({ t, history, match }) {
       id: id
     }
   })
-  const [updateInvoicePayment, { mutationData, mutationLoading, mutationError, onCompleted }] = useMutation(UPDATE_FINANCE_INVOICE_PAYMENT, {
+  const [updateInvoicePayment] = useMutation(UPDATE_FINANCE_INVOICE_PAYMENT, {
     onCompleted: () => history.push(return_url),
   })
 

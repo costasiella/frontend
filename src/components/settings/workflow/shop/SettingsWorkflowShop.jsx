@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -13,9 +11,7 @@ import {
   Dimmer,
   Card,
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
 import SettingsWorkflowShopForm from "./SettingsWorkflowShopForm"
 
@@ -62,9 +58,6 @@ function SettingsWorkflowShop({ t, match, history }) {
     )
   }
 
-  console.log('query data settings')
-  console.log(dataSubscriptionPayment)
-
   let initialValues = {
     workflow_shop_subscription_payment_method: "",
   }
@@ -83,16 +76,10 @@ function SettingsWorkflowShop({ t, match, history }) {
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
-          console.log('submit values:')
-          console.log(values)
-          console.log(errors)
-
           const settings = [
             { setting: "workflow_shop_subscription_payment_method", 
               value: values.workflow_shop_subscription_payment_method },
           ]
-
-          let error = false
 
           for (let i in settings) {
 

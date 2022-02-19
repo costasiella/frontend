@@ -1,20 +1,12 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
-
 import {
   Button,
   Dimmer,
   Form,
 } from "tabler-react"
-
-
-let summaryFormTypingTimer
-const formSubmitTimeout = 750
 
 
 const FinanceInvoiceEditSummaryForm = ({ t, isSubmitting, errors, touched, setFieldTouched, handleChange }) => (

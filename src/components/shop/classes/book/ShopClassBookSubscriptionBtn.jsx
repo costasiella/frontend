@@ -1,8 +1,5 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from '@apollo/client'
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
@@ -13,11 +10,9 @@ import {
 import { toast } from 'react-toastify'
 
 import { CREATE_SCHEDULE_ITEM_ATTENDANCE } from "../../../schedule/classes/class/book/queries"
-// import CSLS from "../../../../../tools/cs_local_storage"
 
 
 function ShopClassBookSubscriptionBtn({t, match, history, subscription}) {
-  console.log(subscription)
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
 
@@ -30,14 +25,14 @@ function ShopClassBookSubscriptionBtn({t, match, history, subscription}) {
     "bookingStatus": "BOOKED"
   }
 
-  const [classCheckin, { data, loading, error, onCompleted }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
+  const [classCheckin, { loading, error }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
 
   if (loading) {
-    return "Please wait..."
+    return t("general.please_wait")
   }
 
   if (error) {
-    return "uh oh... error found"
+    return t("general.error_sad_smiley")
   }
 
   return (

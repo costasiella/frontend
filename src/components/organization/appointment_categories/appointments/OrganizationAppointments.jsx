@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { Query, Mutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -7,7 +5,6 @@ import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
 
 import {
   Alert,
@@ -27,7 +24,6 @@ import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 
 import ContentCard from "../../../general/ContentCard"
-import CardHeaderSeparator from "../../../general/CardHeaderSeparator"
 
 import { GET_APPOINTMENTS_QUERY } from "./queries"
 

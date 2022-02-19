@@ -1,7 +1,5 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import { useQuery, } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from "uuid"
@@ -15,7 +13,6 @@ import {
   Button,
   Card,
   Grid,
-  Icon,
   Table
 } from "tabler-react"
 import { GET_ACCOUNT_CLASSES_QUERY } from "./queries"
@@ -29,7 +26,6 @@ function ShopAccountClasses({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-  const dateTimeFormat = dateFormat + ' ' + timeFormat
 
   // Chain queries. First query user data and then query class attendance for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
@@ -142,7 +138,7 @@ function ShopAccountClasses({t, match, history}) {
                     </Table.Col>
                     <Table.Col>
                       {/* TODO: improve this by adding a "Can be cancelled field to GQL schema" */}
-                      {((node.bookingStatus != "CANCELLED") && node.cancellationPossible) ?  
+                      {((node.bookingStatus !== "CANCELLED") && node.cancellationPossible) ?  
                         <div>
                           <Link to={`/shop/account/class_cancel/${node.scheduleItem.id}/${node.date}/${node.id}`}>
                             <Button 

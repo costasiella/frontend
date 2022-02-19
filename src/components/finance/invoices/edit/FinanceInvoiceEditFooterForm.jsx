@@ -1,10 +1,7 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
+import { Form as FoForm, ErrorMessage } from 'formik'
 
 import {
   Button,
@@ -14,7 +11,6 @@ import {
 
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
-
 
 // Use editor as controlled component:
 // https://github.com/tinymce/tinymce-react/blob/master/README.md

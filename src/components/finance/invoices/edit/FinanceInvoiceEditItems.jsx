@@ -1,6 +1,4 @@
-// @flow
-
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { gql } from "@apollo/client"
 import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -31,40 +29,8 @@ export const UPDATE_INVOICE_ITEM = gql`
 `
 
 function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData }) {
-  const [updateItem, { data }] = useMutation(UPDATE_INVOICE_ITEM)
+  const [ updateItem ] = useMutation(UPDATE_INVOICE_ITEM)
   const [ updating, setUpdating ] = useState(false)
-
-  const onDragEnd = useCallback((result) => {
-    // the only one that is required
-    console.log('onDragEnd triggered...')
-    console.log(result)
-    const { draggableId, destination, source, reason } = result
-    console.log(source)
-    console.log(destination)
-    console.log(reason)
-
-    // Nothing to do, nowhere to go...
-    console.log("drop cancelled...")
-    if (!destination || reason === 'CANCEL') {
-      return
-    }
-
-    // Moved back to the same spot
-    console.log("dropped to the same spot")
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return
-    }
-
-    updateLineNumber({
-      node_id: draggableId,
-      line_number: destination.index
-    })
-
-  }, []);
-
 
   const updateLineNumber = ({ node_id, line_number }) => {
     setUpdating(true)
@@ -92,6 +58,66 @@ function FinanceInvoiceEditItems ({ t, history, match, refetchInvoice, inputData
       setTimeout(() => setUpdating(false), 125)
     })
   }
+
+  const onDragEnd = (result) => {
+    // the only one that is required
+    console.log('onDragEnd triggered...')
+    console.log(result)
+    const { draggableId, destination, source, reason } = result
+    console.log(source)
+    console.log(destination)
+    console.log(reason)
+
+    // Nothing to do, nowhere to go...
+    console.log("drop cancelled...")
+    if (!destination || reason === 'CANCEL') {
+      return
+    }
+
+    // Moved back to the same spot
+    console.log("dropped to the same spot")
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return
+    }
+
+    updateLineNumber({
+      node_id: draggableId,
+      line_number: destination.index
+    })
+  }
+  // const onDragEnd = useCallback((result) => {
+  //   // the only one that is required
+  //   console.log('onDragEnd triggered...')
+  //   console.log(result)
+  //   const { draggableId, destination, source, reason } = result
+  //   console.log(source)
+  //   console.log(destination)
+  //   console.log(reason)
+
+  //   // Nothing to do, nowhere to go...
+  //   console.log("drop cancelled...")
+  //   if (!destination || reason === 'CANCEL') {
+  //     return
+  //   }
+
+  //   // Moved back to the same spot
+  //   console.log("dropped to the same spot")
+  //   if (
+  //     destination.droppableId === source.droppableId &&
+  //     destination.index === source.index
+  //   ) {
+  //     return
+  //   }
+
+  //   updateLineNumber({
+  //     node_id: draggableId,
+  //     line_number: destination.index
+  //   })
+  // }, []);
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd} >

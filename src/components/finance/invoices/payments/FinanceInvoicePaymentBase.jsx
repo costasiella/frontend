@@ -1,29 +1,18 @@
-// @flow
-
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
-
-// import { GET_INVOICE_QUERY, GET_INPUT_VALUES_QUERY } from './queries'
-import { GET_INVOICE_QUERY } from "../queries"
-
 import {
   Page,
   Grid,
   Icon,
-  Button,
   Card,
   Container,
-  Table
 } from "tabler-react";
+
 import SiteWrapper from "../../../SiteWrapper"
-// import ScheduleClassPriceBack from "./ScheduleClassPriceBack"
+import { GET_INVOICE_QUERY } from "../queries"
 import FinanceInvoiceEditBalance from "../edit/FinanceInvoiceEditBalance"
 
 
@@ -61,7 +50,7 @@ function FinanceInvoicePaymentBase({ t, history, match, children, form_type="cre
   const invoice_number = inputData.financeInvoice.invoiceNumber
 
   let title
-  if ( form_type == "create" ) {
+  if ( form_type === "create" ) {
     title = t('finance.invoice.payments.add')
   } else {
     title = t('finance.invoice.payments.edit')

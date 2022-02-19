@@ -1,31 +1,20 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
+import moment from 'moment'
 import {
-  Icon,
   Dimmer,
-  Button,
   Table, 
-  Text
 } from "tabler-react";
 
-// import { get_list_query_variables } from "./tools"
+
 import ContentCard from "../../general/ContentCard"
 import FinanceTaxRatesSummaryBase from "./FinanceTaxRatesSummaryBase"
-
 import { GET_INSIGHT_FINANCE_TAX_SUMMARY_QUERY } from "./queries"
-
-
 import { dateToLocalISO } from '../../../tools/date_tools'
-import CSLS from "../../../tools/cs_local_storage"
-import confirm_delete from "../../../tools/confirm_delete"
-import moment from 'moment'
+
 
 
 function FinanceTaxRatesSummary({ t, location, history }) {

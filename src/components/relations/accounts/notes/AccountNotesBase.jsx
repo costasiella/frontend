@@ -1,21 +1,15 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 import RelationsAccountsBack from "../RelationsAccountsBack"
 

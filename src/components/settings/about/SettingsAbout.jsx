@@ -1,23 +1,14 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
-import { GET_SYSTEM_SETTINGS_QUERY } from '../queries'
-
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
+import { GET_SYSTEM_SETTINGS_QUERY } from '../queries'
 import SettingsBase from "../SettingsBase"
 
 
@@ -69,10 +60,6 @@ function SettingsAbout({ t, match, history }) {
     )
   }
 
-  console.log('query data app settings')
-  console.log(dataVersion)
-  console.log(dataPatch)
-
   let version = 0
   let patch = 0
   if (dataVersion.systemSettings.edges.length){
@@ -82,8 +69,6 @@ function SettingsAbout({ t, match, history }) {
     patch = dataPatch.systemSettings.edges[0].node.value
   } 
     
-
-
   return (
     <SettingsBase 
       headerSubTitle={headerSubTitle}

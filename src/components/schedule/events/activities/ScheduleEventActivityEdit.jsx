@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -7,13 +5,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
-
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
 
 import { dateToLocalISO, dateToLocalISOTime, TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
 
@@ -22,7 +13,6 @@ import { SCHEDULE_EVENT_ACTIVITY_SCHEMA } from './yupSchema'
 
 import ScheduleEventActivityBack from "./ScheduleEventActivityBack"
 import ScheduleEventActivityEditBase from "./ScheduleEventActivityEditBase"
-// import ScheduleEventEditBase from "../edit/ScheduleEventEditBase"
 import ScheduleEventActivityForm from "./ScheduleEventActivityForm"
 
 
@@ -45,7 +35,7 @@ function ScheduleEventActivityEdit({ t, history, match }) {
   const cardTitle = t("schedule.events.activities.edit")
 
   const [updateScheduleEventTicket] = useMutation(UPDATE_SCHEDULE_EVENT_ACTIVITY)
-  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_ACTIVITY_QUERY, {
+  const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_ACTIVITY_QUERY, {
     variables: {
       id: scheduleItemId
   }})

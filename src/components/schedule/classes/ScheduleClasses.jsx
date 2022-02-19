@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -18,7 +16,6 @@ import {
   Table,
 } from "tabler-react";
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-import CSDatePicker from "../../ui/CSDatePicker"
 import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'
 
@@ -95,7 +92,6 @@ if (!localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)) {
 
 function ScheduleClasses ({ t, history }) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
 
   const {loading, error, data, refetch} = useQuery(GET_CLASSES_QUERY, {

@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,32 +5,23 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
+import {
+  Icon,
+  Button,
+  Table,
+} from "tabler-react";
+
 import AppSettingsContext from '../../../context/AppSettingsContext'
-import ButtonAddSecondaryMenu from '../../../ui/ButtonAddSecondaryMenu'
 import BadgeBoolean from "../../../ui/BadgeBoolean"
 
 import { GET_SCHEDULE_EVENT_TICKETS_QUERY } from './queries'
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-  Table,
-} from "tabler-react";
-// import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
-import ScheduleEventTicketListBase from "./ScheduleEventTicketListBase"
 import ScheduleEventTicketDelete from "./ScheduleEventTicketDelete"
-import moment from 'moment';
 import BadgeSoldOut from '../../../ui/BadgeSoldOut';
 
 
 function ScheduleEventTickets({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
   console.log(appSettings)
   
   const eventId = match.params.event_id

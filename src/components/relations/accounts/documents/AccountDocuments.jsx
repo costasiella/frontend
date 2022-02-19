@@ -18,12 +18,8 @@ import confirm_delete from "../../../../tools/confirm_delete"
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 import ButtonAdd from '../../../ui/ButtonAdd'
-import FileDownloadTableButton from "../../../ui/FileDownloadTableButton"
-
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import { GET_DOCUMENTS_QUERY, DELETE_DOCUMENT } from "./queries"
-
-
 import FileProtectedDownloadTableButton from "../../../ui/FileProtectedDownloadTableButton"
 
 

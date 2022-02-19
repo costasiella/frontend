@@ -1,8 +1,5 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
@@ -13,7 +10,6 @@ import {
 } from "tabler-react";
 
 import { GET_SCHEDULE_ITEM_PRICES_QUERY, GET_INPUT_VALUES_QUERY, ADD_SCHEDULE_ITEM_PRICE } from './queries'
-import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
 import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 

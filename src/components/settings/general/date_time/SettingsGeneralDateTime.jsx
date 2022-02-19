@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -7,17 +5,13 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_APP_SETTINGS_QUERY, UPDATE_APP_SETTINGS } from './queries'
-import { DATETIME_SCHEMA } from './yupSchema'
-
-
 import {
   Card,
   Dimmer,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
+import { GET_APP_SETTINGS_QUERY, UPDATE_APP_SETTINGS } from './queries'
+import { DATETIME_SCHEMA } from './yupSchema'
 import SettingsBase from "../../SettingsBase"
 import SettingsGeneralDateTimeForm from "./SettingsGeneralDateTimeForm"
 
@@ -28,7 +22,7 @@ function SettingsGeneralDateTime({ t, match, history }) {
   const sidebarActive = "general"
 
   const { loading, error, data } = useQuery(GET_APP_SETTINGS_QUERY)
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_APP_SETTINGS)
+  const [ updateSettings ] = useMutation(UPDATE_APP_SETTINGS)
 
   console.log('query data app settings')
   console.log(data)

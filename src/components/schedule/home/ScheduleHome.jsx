@@ -20,12 +20,8 @@ class ScheduleHome extends Component {
     console.log(props)
   }
 
-
   render() {
     const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const id = match.params.id
     const linkTitle = t('general.manage')
 
     return (

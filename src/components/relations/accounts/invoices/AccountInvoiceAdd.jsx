@@ -1,34 +1,16 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-import { GET_ACCOUNT_SUBSCRIPTIONS_QUERY, GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_INVOICE } from './queries'
-import { SUBSCRIPTION_SCHEMA } from './yupSchema'
-import AccountInvoiceAddForm from './AccountInvoiceAddForm'
-
 import {
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../../tools/date_tools'
 
+import { GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_INVOICE } from './queries'
+import AccountInvoiceAddForm from './AccountInvoiceAddForm'
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
-import ButtonBack from '../../../ui/ButtonBack'
-
 
 
 function AccountInvoiceAdd({ t, match, history }) {

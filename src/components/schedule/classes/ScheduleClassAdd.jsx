@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -73,7 +71,7 @@ function ScheduleClassAdd({t, history}) {
               console.log(values)
 
               let frequencyInterval = values.frequencyInterval
-              if (values.frequencyType == 'SPECIFIC')
+              if (values.frequencyType === 'SPECIFIC')
                 frequencyInterval = 0
 
               let dateEnd

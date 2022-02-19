@@ -1,8 +1,5 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql, useMutation, useQuery } from "@apollo/client"
-import { Query, Mutation } from "@apollo/client";
+import React from 'react'
+import { useMutation, useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'

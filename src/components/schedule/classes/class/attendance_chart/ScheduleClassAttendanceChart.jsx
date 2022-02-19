@@ -105,7 +105,7 @@ function ScheduleClassAttendanceChart({t, history, match}) {
                 // Don't show decimals on ticks, only whole numbers
                 tick: {
                   format: function (d) {
-                      return (parseInt(d) == d) ? d : null;
+                      return (parseInt(d) === d) ? d : null;
                   }
                 }
               },

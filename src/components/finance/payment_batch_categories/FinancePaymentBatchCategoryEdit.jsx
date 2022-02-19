@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { gql } from "@apollo/client"
 import { useQuery, useMutation } from "@apollo/client";
@@ -8,18 +6,14 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_PAYMENT_BATCH_CATEGORIES_QUERY, GET_PAYMENT_BATCH_CATEGORY_QUERY } from './queries'
-import { get_list_query_variables } from './tools'
-import { PAYMENT_BATCH_CATEGORY_SCHEMA } from './yupSchema'
-
-
-
 import {
   Card,
   Dimmer,
 } from "tabler-react";
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
+import { GET_PAYMENT_BATCH_CATEGORIES_QUERY, GET_PAYMENT_BATCH_CATEGORY_QUERY } from './queries'
+import { get_list_query_variables } from './tools'
+import { PAYMENT_BATCH_CATEGORY_SCHEMA } from './yupSchema'
 import FinancePaymentBatchCategoriesBase from './FinancePaymentBatchCategoriesBase'
 import FinancePaymentBatchCategoryForm from './FinancePaymentBatchCategoryForm'
 

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from '@apollo/client';
 import { withTranslation } from 'react-i18next'
@@ -12,7 +10,7 @@ import FinanceInvoiceItemEditForm from './FinanceInvoiceItemEditForm'
 
 
 function FinanceInvoiceItemEdit({t, initialValues, node, inputData}) {
-  const [updateInvoiceItem, { data }] = useMutation(UPDATE_INVOICE_ITEM)
+  const [updateInvoiceItem] = useMutation(UPDATE_INVOICE_ITEM)
 
     return (
       <Formik

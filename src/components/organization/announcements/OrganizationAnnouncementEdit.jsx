@@ -1,24 +1,19 @@
-// @flow
-
 import React from 'react'
 import { useMutation, useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import {
+  Card,
+} from "tabler-react"
 
+import OrganizationAnnouncementsBase from "./OrganizationAnnouncementsBase"
+import { dateToLocalISO } from '../../../tools/date_tools'
 import { GET_ANNOUNCEMENTS_QUERY, GET_ANNOUNCEMENT_QUERY, UPDATE_ANNOUNCEMENT } from './queries'
 import { ANNOUNCEMENT_SCHEMA } from './yupSchema'
 import OrganizationAnnouncementForm from './OrganizationAnnouncementForm'
 
-
-import {
-  Card,
-} from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-
-import OrganizationAnnouncementsBase from "./OrganizationAnnouncementsBase"
-import { dateToLocalISO } from '../../../tools/date_tools'
 
 function OrganizationAnnouncementEdit({t, history, match}) {
   const announcementId = match.params.id

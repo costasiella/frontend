@@ -1,21 +1,14 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 
 import {
   Page,
   Grid,
-  Icon,
-  Button,
-  Card,
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AccountSubscriptionEditTabs from "./AccountSubscriptionEditTabs"
 import ContentCard from "../../../../general/ContentCard"
 

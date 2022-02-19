@@ -1,21 +1,16 @@
-// @flow
-
-import React, {Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
 
 import {
-  Button,
   Card,
   Container,
   Grid,
-  Icon,
   Page,
 } from "tabler-react";
+
 import SiteWrapper from "../../SiteWrapper"
 import AutomationHomeItemButton from "./AutomationHomeItemButton"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 
 function AutomationHome({ t, match, params }) {

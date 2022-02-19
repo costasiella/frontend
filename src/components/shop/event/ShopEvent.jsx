@@ -1,35 +1,24 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { useQuery, useMutation } from '@apollo/client'
-import { Link } from 'react-router-dom'
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
+import { useQuery } from '@apollo/client'
 import moment from 'moment'
 
 import {
   Card,
   GalleryCard,
   Grid,
-  Icon,
-  List
 } from "tabler-react"
-import { TimeStringToJSDateOBJ } from '../../../tools/date_tools'
-import AppSettingsContext from '../../context/AppSettingsContext'
 
+import AppSettingsContext from '../../context/AppSettingsContext'
 import ShopEventBase from "./ShopEventBase"
 import ShopEventTicketPricingCard from "./ShopEventTicketPricingCard"
-
 import { GET_SCHEDULE_EVENT_QUERY } from "./queries"
 
 
 function ShopEvent({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
 
   const title = t("shop.home.title")
   const eventId = match.params.event_id

@@ -1,5 +1,3 @@
-// @flow
-
 import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -16,8 +14,6 @@ import {
   Card,
   Form
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 
 class OrganizationClasspassForm extends Component {
@@ -29,9 +25,7 @@ class OrganizationClasspassForm extends Component {
 
   render() {
     const t = this.props.t
-    const match = this.props.match
     const history = this.props.history
-    const id = match.params.id
     const return_url = "/organization/classpasses"
     const initialData = this.props.initialData
     const isSubmitting = this.props.isSubmitting

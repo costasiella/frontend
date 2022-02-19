@@ -1,10 +1,7 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -12,10 +9,7 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
   Button,
-  Card,
-  Grid,
-  Icon,
-  Table
+  Card
 } from "tabler-react"
 
 import { DisplayClassInfo } from "../../tools"
@@ -62,7 +56,7 @@ function ShopAccountClassCancel({t, match, history}) {
   const scheduleItemAttendance = dataAttendance.scheduleItemAttendance
 
   // Booking already cancelled
-  if (scheduleItemAttendance.bookingStatus == 'CANCELLED') {
+  if (scheduleItemAttendance.bookingStatus === 'CANCELLED') {
     return (
       <ShopAccountClassCancelBase accountName={user.fullName}>
         <Card title={t("shop.account.class_cancel.title_already_cancelled")}>
@@ -139,38 +133,4 @@ function ShopAccountClassCancel({t, match, history}) {
   )
 }
 
-
 export default withTranslation()(withRouter(ShopAccountClassCancel))
-
-
-{/* <Button 
-className="pull-right"
-color="warning"
-onClick={() =>
-  updateAccountScheduleEventTicket({ variables: {
-    input: {
-      id: node.id,
-      cancelled: true
-    }
-  }, refetchQueries: [
-      {query: GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, variables: {
-        scheduleEventTicket: id
-      }},
-  ]})
-  .then(({ data }) => {
-      console.log('got data', data);
-      toast.success((t('schedule.events.tickets.customers.cancelled')), {
-          position: toast.POSITION.BOTTOM_RIGHT
-        })
-      setShowSearch(false)
-    }).catch((error) => {
-      toast.error((t('general.toast_server_error')) +  error, {
-          position: toast.POSITION.BOTTOM_RIGHT
-        })
-      console.log('there was an error sending the query', error)
-      setShowSearch(false)
-    })
-  }
->
-  {t("general.cancel")}
-</Button> */}

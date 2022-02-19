@@ -13,7 +13,7 @@ import {
 
 function AccountSubscriptionEditAltPriceDelete({t, match, history, id}) {
   const subscriptionId = match.params.subscription_id
-  const [deleteAccountSubscriptionAltPrice, { data }] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION_ALT_PRICE)
+  const [deleteAccountSubscriptionAltPrice] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION_ALT_PRICE)
   const query_vars = {
     accountSubscription: subscriptionId
   }

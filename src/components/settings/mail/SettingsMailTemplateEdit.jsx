@@ -1,7 +1,4 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -12,15 +9,8 @@ import { GET_SYSTEM_MAIL_TEMPLATE_QUERY, GET_SYSTEM_MAIL_TEMPLATES_QUERY, UPDATE
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { getTemplateInfo } from './tools'
 
 import SettingsMailTemplateEditBase from "./SettingsMailTemplateEditBase"
@@ -38,7 +28,7 @@ function SettingsMailTemplateEdit({ t, match, history }) {
       id: id
     }
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_MAIL_TEMPLATE)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_MAIL_TEMPLATE)
 
   console.log('query data app settings')
   console.log(data)

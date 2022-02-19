@@ -1,28 +1,17 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
+import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 import SettingsBase from "../../SettingsBase"
 import SettingsFinanceBankAccountsForm from "./SettingsFinanceBankAccountsForm"
 
@@ -31,11 +20,7 @@ function SettingsFinanceIBAN({ t, match, history }) {
   const headerSubTitle = t('settings.finance.title')
   const cardTitle = t("settings.finance.bank_accounts.title")
 
-  const { 
-    loading: loading, 
-    error: error, 
-    data: data 
-  } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
+  const { loading, error, data } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
     variables: {
       setting: "finance_bank_accounts_iban"
     },
@@ -70,9 +55,6 @@ function SettingsFinanceIBAN({ t, match, history }) {
     )
   }
 
-  console.log('query data app settings')
-  console.log(data)
-
   let initialValues = {
     iban: false
   }
@@ -91,22 +73,11 @@ function SettingsFinanceIBAN({ t, match, history }) {
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
-          console.log('submit values:')
-          console.log(values)
-          console.log(errors)
-
           const settings = [
             { setting: "finance_bank_accounts_iban", value: values.finance_bank_accounts_iban },
           ]
 
-          let error = false
-
           for (let i in settings) {
-
-            console.log(i)
-            console.log(settings[i].setting)
-            console.log(settings[i].value)
-
             updateSettings({ variables: {
               input: {
                 setting: settings[i].setting,

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -13,8 +11,6 @@ import {
   Form,
 } from "tabler-react"
 
-import { Editor } from '@tinymce/tinymce-react'
-import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 import CSDatePicker from "../../../ui/CSDatePicker"
 import CSTimePicker from "../../../ui/CSTimePicker"
 

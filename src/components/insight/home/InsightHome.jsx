@@ -1,9 +1,6 @@
-// @flow
-
 import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
 import {
   Card,
   Page,
@@ -16,7 +13,6 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 
-
 class InsightHome extends Component {
   constructor(props) {
     super(props)
@@ -26,8 +22,6 @@ class InsightHome extends Component {
 
   render() {
     const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
     const linkTitle = t("insight.home.link_view")
 
     return (

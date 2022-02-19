@@ -10,11 +10,6 @@ import {
 } from "tabler-react";
 
 
-import CSLS from "../../../tools/cs_local_storage"
-// import { get_list_query_variables } from './tools'
-import CSDatePicker from "../../ui/CSDatePicker"
-
-
 function InsightTrialpassesFilter({ t, history, values, errors, isSubmitting }) {
   return (
     <FoForm>

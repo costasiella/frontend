@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,11 +5,6 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import { toast } from 'react-toastify'
-
-import { GET_INVOICES_QUERY, GET_INVOICE_QUERY, CANCEL_AND_CREATE_CREDIT_INVOICE } from '../queries'
-import { TOKEN_REFRESH } from "../../../../queries/system/auth"
-import { refreshTokenAndOpenExportLinkInNewTab } from "../../../../tools/refresh_token_and_open_export_link"
-
 import {
   Dropdown,
   Page,
@@ -21,6 +14,9 @@ import {
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
+import { GET_INVOICE_QUERY, CANCEL_AND_CREATE_CREDIT_INVOICE } from '../queries'
+import { TOKEN_REFRESH } from "../../../../queries/system/auth"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../../tools/refresh_token_and_open_export_link"
 
 import CSLS from "../../../../tools/cs_local_storage"
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from "uuid"
@@ -41,7 +41,7 @@ const ScheduleAppointmentForm = ({ t, history, inputData, isSubmitting, setField
           </Field>
           <ErrorMessage name="frequencyType" component="span" className="invalid-feedback" />
         </Form.Group>
-        { (values.frequencyType == "SPECIFIC") ? "" :
+        { (values.frequencyType === "SPECIFIC") ? "" :
           <Form.Group label={t('schedule.appointments.frequencyInterval')}>
             <Field component="select" 
                   name="frequencyInterval" 
@@ -88,7 +88,7 @@ const ScheduleAppointmentForm = ({ t, history, inputData, isSubmitting, setField
         </Form.Group>  */}
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={(values.frequencyType == "SPECIFIC") ? t('general.date') : t('general.date_start')}>
+            <Form.Group label={(values.frequencyType === "SPECIFIC") ? t('general.date') : t('general.date_start')}>
               <CSDatePicker 
                 className={(errors.dateStart) ? "form-control is-invalid" : "form-control"} 
                 selected={values.dateStart}
@@ -101,7 +101,7 @@ const ScheduleAppointmentForm = ({ t, history, inputData, isSubmitting, setField
               <ErrorMessage name="dateStart" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          { (values.frequencyType == "SPECIFIC") ? "" :
+          { (values.frequencyType === "SPECIFIC") ? "" :
             <Grid.Col>
               <Form.Group label={t('general.date_end')}>
                 <CSDatePicker 

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -91,7 +89,7 @@ function ScheduleShiftEditAll({t, match}) {
               console.log(values)
 
               let frequencyInterval = values.frequencyInterval
-              if (values.frequencyType == 'SPECIFIC')
+              if (values.frequencyType === 'SPECIFIC')
                 frequencyInterval = 0
 
               let dateEnd

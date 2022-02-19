@@ -1,8 +1,5 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -10,21 +7,13 @@ import moment from 'moment'
 
 
 import {
-  Page,
-  Grid,
-  Icon,
   Dimmer,
-  Badge,
   Button,
   Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 
+import HasPermissionWrapper from "../../HasPermissionWrapper"
 import AppSettingsContext from '../../context/AppSettingsContext'
 
 import CSLS from "../../../tools/cs_local_storage"

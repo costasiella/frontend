@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -7,13 +5,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
-
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
 
 import { dateToLocalISO, dateToLocalISOTime } from '../../../../tools/date_tools'
 
@@ -45,7 +36,7 @@ function ScheduleEventActivityAdd({ t, history, match }) {
   const [addScheduleEventTicket] = useMutation(ADD_SCHEDULE_EVENT_ACTIVITY, {
     onCompleted: () => history.push(returnUrl),
   })
-  const { loading, error, data, fetchMore } = useQuery(GET_INPUT_VALUES_QUERY)
+  const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY)
 
   const sidebarContent = <ScheduleEventActivityBack />
 

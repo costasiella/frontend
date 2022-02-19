@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import React from 'react'
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 import { v4 } from "uuid"
-import C3Chart from "react-c3js"
 import moment from 'moment'
 import {
   Icon,
@@ -13,13 +12,8 @@ import {
 } from "tabler-react";
 
 import { GET_TRIALPASSES_QUERY } from './queries'
-import { TOKEN_REFRESH } from "../../../queries/system/auth"
-
 import ContentCard from '../../general/ContentCard'
-import AppSettingsContext from '../../context/AppSettingsContext'
 import CSLS from "../../../tools/cs_local_storage"
-import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
-
 import InsightTrialpassesBase from './InsightTrialpassesBase'
 import { getListQueryVariables } from './tools'
 
@@ -31,16 +25,11 @@ if (!localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_YEAR)) {
 } 
 
 function InsightTrialpasses ({ t, history }) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
   const year = localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_YEAR)
   const month = localStorage.getItem(CSLS.INSIGHT_TRIALPASSES_MONTH)
   const cardTitle = t("insight.trialpasses.title")
 
   const listVariables = getListQueryVariables()
-
-  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_TRIALPASSES_QUERY, {
     variables: listVariables
   })

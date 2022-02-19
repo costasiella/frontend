@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
+import { toast } from 'react-toastify'
 import {
   Avatar,
   Icon,
@@ -13,12 +13,9 @@ import {
   Card,
   Table
 } from "tabler-react";
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 
-import CSLS from "../../../tools/cs_local_storage"
+
 import ContentCard from "../../general/ContentCard"
-
 import { get_list_query_variables } from './tools'
 import { GET_CLASSTYPES_QUERY, ARCHIVE_CLASSTYPE } from "./queries"
 import OrganizationClasstypesBase from "./OrganizationClasstypesBase"

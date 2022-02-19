@@ -24,7 +24,7 @@ function ShopAccountBankAccount({t, match, history}) {
 
   // Chain queries. First query user data and then query class attendance for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
-  const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_BANK_ACCOUNTS, {
+  const { loading, error, data } = useQuery(GET_ACCOUNT_BANK_ACCOUNTS, {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       account: dataUser && dataUser.user ? dataUser.user.accountId : null

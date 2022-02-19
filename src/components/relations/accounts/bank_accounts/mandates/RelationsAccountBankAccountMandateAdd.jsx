@@ -1,32 +1,17 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from '@apollo/client'
+import React from 'react'
+import { useMutation } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import {
+  Card,
+} from "tabler-react";
 
 import { CREATE_ACCOUNT_BANK_ACCOUNT_MANDATE } from './queries'
 import { GET_ACCOUNT_BANK_ACCOUNTS_QUERY } from '../queries'
-// import { SUBSCRIPTION_SCHEMA } from './yupSchema'
 import RelationsAccountBankAccountMandateForm from './RelationsAccountBankAccountMandateForm'
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-} from "tabler-react";
-
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { dateToLocalISO } from '../../../../../tools/date_tools'
-
 import RelationsAccountBankAccountBase from '../RelationsAccountBankAccountBase'
 
 
@@ -37,7 +22,6 @@ function RelationsAccountBankAccountMandateAdd({ t, match, history }) {
 
   const [createAccountBankAccountMandate] = useMutation(CREATE_ACCOUNT_BANK_ACCOUNT_MANDATE) 
  
-
   return (
     <RelationsAccountBankAccountBase showEditBack={true}>
       <Card>

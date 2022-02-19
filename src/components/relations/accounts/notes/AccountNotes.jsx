@@ -1,9 +1,5 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
@@ -12,22 +8,15 @@ import moment from 'moment'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import CSLS from "../../../../tools/cs_local_storage"
 
-
 import {
-  BlogCard,
   Button,
   Badge,
   Card,
   Grid,
   Icon,
-  Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
 import confirm_delete from "../../../../tools/confirm_delete"
-
-import ContentCard from "../../../general/ContentCard"
 import LoadMoreOnBottomScroll from "../../../general/LoadMoreOnBottomScroll"
 import AccountNotesBase from "./AccountNotesBase"
 

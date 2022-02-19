@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -10,12 +8,9 @@ import {
   Card,
   Container,
 } from "tabler-react"
+
 import SiteWrapper from "../../../SiteWrapper"
-// import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-
-
 import ClassEditMenu from './ClassEditMenu'
-import ClassEditBack from './ClassEditBack';
 
 
 function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defaultCard=true, menuActiveLink="", pageHeaderButtonList=""}) {

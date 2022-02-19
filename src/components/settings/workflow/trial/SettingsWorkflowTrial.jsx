@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -13,7 +11,6 @@ import {
   Dimmer,
   Card,
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 // import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
@@ -33,7 +30,7 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
       setting: "workflow_trial_pass_limit"
     }
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
   if (loadingTrialClassLimit) {
     return (
@@ -62,9 +59,6 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
     )
   }
 
-  console.log('query data app settings')
-  console.log(dataTrialClassLimit)
-
   let initialValues = {
     workflow_trial_pass_limit: "1",
   }
@@ -90,8 +84,6 @@ function SettingsWorkflowClassBooking({ t, match, history }) {
           const settings = [
             { setting: "workflow_trial_pass_limit", value: values.workflow_trial_pass_limit },
           ]
-
-          let error = false
 
           for (let i in settings) {
 

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -7,20 +5,10 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 
-
 import {
-  Page,
-  Grid,
-  Icon,
-  Dimmer,
   Button,
-  Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
 import ContentCard from "../../general/ContentCard"
 import SettingsMailTemplatesBase from "./SettingsMailTemplatesBase"
@@ -43,12 +31,9 @@ function SystemMailTemplates({ t, match, params }) {
     </SettingsMailTemplatesBase>
   )
 
-  console.log(data)
   const mailTemplates = data.systemMailTemplates
 
   // TODO: add empty list message and request import
-
-
 
   return (
     <SettingsMailTemplatesBase title={title} >

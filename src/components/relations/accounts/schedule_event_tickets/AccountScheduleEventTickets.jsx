@@ -13,7 +13,7 @@ import {
   Card,
   Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
+
 import { toast } from 'react-toastify'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBoolean from "../../../ui/BadgeBoolean"
@@ -27,10 +27,8 @@ import { GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY } from "./queries"
 
 
 function AccountScheduleEventTickets({t, history, match}) {
-  // const title = t("relations.account.event_tickets.title")
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
   const cardTitle = t('relations.account.event_tickets.title')
 
   const accountId = match.params.account_id

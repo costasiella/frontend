@@ -13,7 +13,6 @@ import {
 
 
 function AccountSubscriptionEditInvoiceDelete({t, match, history, id}) {
-  const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const [deleteAccountSubscriptionInvoice] = useMutation(DELETE_FINANCE_INVOICE)
   const query_vars = {

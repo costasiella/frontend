@@ -1,28 +1,17 @@
-// @flow
-
-import React, {Component } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
-
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
+
+import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 import SettingsBase from "../../SettingsBase"
 import SettingsIntegrationMollieForm from "./SettingsIntegrationMollieForm"
 import SettingsIntegrationMollieCreateAccount from "./SettingsIntegrationMollieCreateAccount"
@@ -38,7 +27,7 @@ function SettingsIntegrationMollie({ t, match, history }) {
       setting: "integration_mollie_api_key"
     }
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
   console.log('query data app settings')
   console.log(data)

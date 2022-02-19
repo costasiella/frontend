@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -13,7 +11,7 @@ import {
   Card,
   Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
+
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import FinanceOrderStatus from "../../../finance/orders/FinanceOrderStatus"
 
@@ -26,7 +24,6 @@ import { GET_ACCOUNT_ORDERS_QUERY } from "./queries"
 
 function AccountOrders({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
   const dateTimeFormat = appSettings.dateTimeFormatMoment
   const cardTitle = t('relations.account.orders.title')
   const account_id = match.params.account_id

@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -7,7 +5,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
-  Alert,
   Icon,
   Dimmer,
   Badge,

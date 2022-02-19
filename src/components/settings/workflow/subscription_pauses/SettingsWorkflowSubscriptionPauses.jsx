@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -13,9 +11,7 @@ import {
   Dimmer,
   Card,
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-// import FinancePaymentMethodForm from './AppSettingsGeneralForm'
 import SettingsBase from "../../SettingsBase"
 import SettingsWorkflowSubscriptionPausesForm from "./SettingsWorkflowSubscriptionPausesForm"
 
@@ -42,7 +38,7 @@ function SettingsWorkflowSubscriptionPauses({ t, match, history }) {
       setting: "workflow_subscription_pauses_max_pauses_in_year"
     }
   })
-  const [ updateSettings, { data: updateData }] = useMutation(UPDATE_SYSTEM_SETTING)
+  const [ updateSettings ] = useMutation(UPDATE_SYSTEM_SETTING)
 
   if ((loadingMinDuration) || (loadingMaxPauses)) {
     return (
@@ -70,10 +66,6 @@ function SettingsWorkflowSubscriptionPauses({ t, match, history }) {
       </SettingsBase>
     )
   }
-
-  console.log('query data app settings')
-  console.log(dataMinDuration)
-  console.log(dataMaxPauses)
 
   let initialValues = {
     workflow_subscription_pauses_min_duration_in_days: "1",
@@ -110,14 +102,7 @@ function SettingsWorkflowSubscriptionPauses({ t, match, history }) {
               value: values.workflow_subscription_pauses_max_pauses_in_year },
           ]
 
-          let error = false
-
           for (let i in settings) {
-
-            console.log(i)
-            console.log(settings[i].setting)
-            console.log(settings[i].value)
-
             updateSettings({ variables: {
               input: {
                 setting: settings[i].setting,

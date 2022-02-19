@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from "uuid"
@@ -13,7 +13,6 @@ import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../../plugin_config/tinymce"
-import CSDatePicker from "../../../../ui/CSDatePicker"
 import CSTimePicker from "../../../../ui/CSTimePicker"
 
 const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, return_url }) => (

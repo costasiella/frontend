@@ -3,8 +3,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Form as FoForm, Field, ErrorMessage } from 'formik'
-import { v4 } from 'uuid'
+import { Form as FoForm, ErrorMessage } from 'formik'
 
 import {
   Button,
@@ -32,7 +31,7 @@ function AccountSubscriptionEditBlockForm ({
 {
 
   let title
-  if ( formTitle == "create" ) {
+  if ( formTitle === "create" ) {
     title = t('relations.account.subscriptions.blocks.add')
   } else {
     title = t('relations.account.subscriptions.blocks.edit')

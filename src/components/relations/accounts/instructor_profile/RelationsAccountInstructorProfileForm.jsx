@@ -1,11 +1,7 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
-import { v4 } from 'uuid'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
 
 import {
   Button,
@@ -13,7 +9,6 @@ import {
   Form,
   Grid
 } from "tabler-react"
-
 
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"

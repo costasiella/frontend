@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -12,9 +10,7 @@ import {
 } from "tabler-react";
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
-
 let profile_active
-let memberships_active
 let subscriptions_active
 let classpasses_active
 let classes_active
@@ -27,6 +23,7 @@ let bank_account_active
 let notes_active
 let finance_payment_batch_category_item_active
 let accepted_documents_active
+
 
 function ProfileMenu({t, accountId, activeLink}) {
     const {loading, error, data} = useQuery(GET_ACCOUNT_QUERY, {
@@ -46,7 +43,6 @@ function ProfileMenu({t, accountId, activeLink}) {
     return (
       <List.Group transparent={true}>
         {(activeLink === 'profile') ? profile_active = true: profile_active = false}
-        {(activeLink === 'memberships') ? memberships_active = true: memberships_active = false}
         {(activeLink === 'subscriptions') ? subscriptions_active = true: subscriptions_active = false}
         {(activeLink === 'classpasses') ? classpasses_active = true: classpasses_active = false}
         {(activeLink === 'classes') ? classes_active = true: classes_active = false}

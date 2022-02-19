@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { Query, Mutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -7,29 +5,21 @@ import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
-
 import {
   Alert,
   Page,
   Grid,
   Icon,
   Dimmer,
-  Badge,
   Button,
-  Card,
   Container,
   Table
 } from "tabler-react";
+
 import SiteWrapper from "../../../../SiteWrapper"
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 import confirm_delete from "../../../../../tools/confirm_delete"
-
 import ContentCard from "../../../../general/ContentCard"
-import CardHeaderSeparator from "../../../../general/CardHeaderSeparator"
-
 import { GET_APPOINTMENT_PRICES_QUERY } from "./queries"
 
 const DELETE_APPOINTMENT_PRICE = gql`

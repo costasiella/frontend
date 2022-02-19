@@ -1,10 +1,7 @@
-// @flow
-
 import React from 'react'
 import { useMutation, useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
@@ -14,8 +11,6 @@ import { SUBSCRIPTION_SCHEMA } from './yupSchema'
 import AccountSubscriptionForm from './AccountSubscriptionForm'
 
 import {
-  Icon,
-  Button,
   Card,
 } from "tabler-react";
 import { dateToLocalISO } from '../../../../tools/date_tools'

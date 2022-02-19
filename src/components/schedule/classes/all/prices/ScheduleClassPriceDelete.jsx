@@ -10,7 +10,7 @@ import ButtonDelete from '../../../../ui/ButtonDelete';
 
 function ScheduleClassPriceDelete({t, match, history, id}) {
   const classId = match.params.class_id
-  const [deleteClassPrice, { data }] = useMutation(DELETE_SCHEDULE_ITEM_PRICE)
+  const [deleteClassPrice] = useMutation(DELETE_SCHEDULE_ITEM_PRICE)
   const query_vars = {
     scheduleItem: classId
   }

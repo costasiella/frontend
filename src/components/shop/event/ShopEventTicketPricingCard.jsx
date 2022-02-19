@@ -1,18 +1,13 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
 
 import moment from 'moment'
 
 import {
   Badge,
-  Grid,
   Icon,
-  List,
   PricingCard
 } from "tabler-react";
 
@@ -40,7 +35,7 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
         {(eventTicket.isEarlybirdPrice) ? <div><Badge color="primary">{t("shop.event.ticket.earlybird_price")}</Badge></div> : ""}
       </PricingCard.Category>
       <PricingCard.Price>
-        { (eventTicket.price == 0) ? 
+        { (eventTicket.price === 0) ? 
           t("shop.event.ticket.free") :
           eventTicket.totalPriceDisplay 
         }
@@ -87,29 +82,3 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
 
 export default withTranslation()(withRouter(ShopEventTicketPricingCard))
 
-
-{/* <Grid.Col sm={6} lg={3}>
-<PricingCard active>
-  <PricingCard.Category>{"Premium"}</PricingCard.Category>
-  <PricingCard.Price>{"$49"} </PricingCard.Price>
-  <PricingCard.AttributeList>
-    <PricingCard.AttributeItem>
-      <strong>10 </strong>
-      {"Users"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Sharing Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available>
-      {"Design Tools"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Private Messages"}
-    </PricingCard.AttributeItem>
-    <PricingCard.AttributeItem hasIcon available={false}>
-      {"Twitter API"}
-    </PricingCard.AttributeItem>
-  </PricingCard.AttributeList>
-  <PricingCard.Button active>{"Choose plan"} </PricingCard.Button>
-</PricingCard>
-</Grid.Col> */}

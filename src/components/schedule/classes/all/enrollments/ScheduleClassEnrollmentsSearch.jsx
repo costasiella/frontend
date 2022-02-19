@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 import {
   Icon,
@@ -13,11 +12,8 @@ import {
   Dimmer,
   Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import AppSettingsContext from '../../../../context/AppSettingsContext'
 import { getAccountsQueryVariables } from "./tools"
 
-import ClassEditBack from "../ClassEditBack"
 import ClassEditBase from "../ClassEditBase"
 import ButtonBack from '../../../../ui/ButtonBack'
 import ContentCard from "../../../../general/ContentCard"
@@ -26,15 +22,11 @@ import { GET_ACCOUNTS_QUERY } from "../../../../../queries/accounts/account_sear
 
 
 function ScheduleClassEnrollmentsSearch({ t, match, history }) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-
   let [searchName, setSearchName] = useState("")
   
   const scheduleItemId = match.params.class_id
   const cardTitle = t('schedule.classes.enrollments.search.title')
   const menuActiveLink = "enrollments"
-  const returnUrl = `/schedule/classes/all/enrollments/${scheduleItemId}`
   
   const { loading, error, data, refetch, fetchMore } = useQuery(
     GET_ACCOUNTS_QUERY, {

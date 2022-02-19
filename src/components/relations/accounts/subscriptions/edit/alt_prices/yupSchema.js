@@ -1,4 +1,3 @@
-import { t } from 'i18next'
 import * as Yup from 'yup'
 
 export const ACCOUNT_SUBSCRIPTION_ALT_PRICE_SCHEMA = Yup.object().shape({

@@ -1,131 +1,51 @@
-// @flow
-
 import * as React from "react"
 import { withTranslation } from 'react-i18next'
-import { NavLink, withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import { useQuery } from "@apollo/client"
 import { ToastContainer, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import { Link } from 'react-router-dom'
 
 import CSStandalonePageLoader from "./ui/CSStandalonePageLoader"
 import GET_USER from "../queries/system/get_user"
-import { get_all_permissions, has_permission } from "../tools/user_tools"
 
 import {
   Site,
-  Nav,
   Grid,
-  Button,
-  // Page,
   RouterContextProvider,
 } from "tabler-react";
 
-import type { NotificationProps } from "tabler-react";
+// import type { NotificationProps } from "tabler-react";
 
-type Props = {|
-  +children: React.Node,
-|};
+// type Props = {|
+//   +children: React.Node,
+// |};
 
-type State = {|
-  notificationsObjects: Array<NotificationProps>,
-|};
+// type State = {|
+//   notificationsObjects: Array<NotificationProps>,
+// |};
 
-type subNavItem = {|
-  +value: string,
-  +to?: string,
-  +icon?: string,
-  +LinkComponent?: React.ElementType,
-|};
+// type subNavItem = {|
+//   +value: string,
+//   +to?: string,
+//   +icon?: string,
+//   +LinkComponent?: React.ElementType,
+// |};
 
-type navItem = {|
-  +value: string,
-  +to?: string,
-  +icon?: string,
-  +active?: boolean,
-  +LinkComponent?: React.ElementType,
-  +subItems?: Array<subNavItem>,
-  +useExact?: boolean,
-|};
-
-
-const getNavBarItems = (t, user) => {
-  let items: Array<navItem> = []
-  let permissions = get_all_permissions(user)
-
-  items.push({
-    value: t("home.title"),
-    to: "/",
-    icon: "home",
-    LinkComponent: withRouter(NavLink),
-    useExact: true,
-  })
-
-  // Relations
-  if (
-    (has_permission(permissions, 'view', 'account'))
-  ){
-    items.push({
-      value: t("relations.title"),
-      to: "/relations",
-      icon: "users",
-      LinkComponent: withRouter(NavLink),
-    })
-  }
-
-  // Schedule
-  if (
-    (has_permission(permissions, 'view', 'scheduleclass'))
-  ){
-    items.push({
-      value: t("schedule.title"),
-      to: "/schedule",
-      icon: "calendar",
-      LinkComponent: withRouter(NavLink),
-    })
-  }
-
-  // Finance
-  if (
-    (has_permission(permissions, 'view', 'financecostcenter')) ||
-    (has_permission(permissions, 'view', 'financeglaccount')) ||
-    (has_permission(permissions, 'view', 'financetaxrate')) 
-  ){
-    items.push({
-      value: t("finance.title"),
-      to: "/finance",
-      icon: "dollar-sign",
-      LinkComponent: withRouter(NavLink),
-    })
-  }
-
-  // Organization
-  if (
-    (has_permission(permissions, 'view', 'organizationclasspass')) || 
-    (has_permission(permissions, 'view', 'organizationclasstype')) ||
-    (has_permission(permissions, 'view', 'organizationdiscovery')) ||
-    (has_permission(permissions, 'view', 'organizationlocation')) ||
-    (has_permission(permissions, 'view', 'organizationmembership')) 
-   ){
-  items.push({
-    value: t("organization.title"),
-    to: "/organization",
-    icon: "feather",
-    LinkComponent: withRouter(NavLink),
-  })
-}
-
-
-  return items
-
-}
+// type navItem = {|
+//   +value: string,
+//   +to?: string,
+//   +icon?: string,
+//   +active?: boolean,
+//   +LinkComponent?: React.ElementType,
+//   +subItems?: Array<subNavItem>,
+//   +useExact?: boolean,
+// |};
 
 const now = new Date()
 
-
 function SiteWrapperSelfCheckin({t, match, history, children}) {
-  const { error, loading, data, fetchMore } = useQuery(GET_USER)
+  const { error, loading, data } = useQuery(GET_USER)
 
   if (loading) return <CSStandalonePageLoader />
   if (error) return <p>{t('system.user.error_loading')}</p>; 

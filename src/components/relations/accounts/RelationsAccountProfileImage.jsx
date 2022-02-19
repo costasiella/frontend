@@ -1,35 +1,18 @@
-// @flow
-
 import React, { useState, useRef } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import {
+  Card,
+} from "tabler-react"
 
 import { GET_ACCOUNTS_QUERY, GET_ACCOUNT_QUERY, UPDATE_ACCOUNT } from './queries'
-import { ACCOUNT_SCHEMA } from './yupSchema'
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container
-} from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { dateToLocalISO } from '../../../tools/date_tools'
-import ProfileCardSmall from "../../ui/ProfileCardSmall"
-
 import { get_list_query_variables } from "./tools"
-import RelationsAccountsBack from "./RelationsAccountsBack"
 import RelationsAccountProfileImageForm from "./RelationsAccountProfileImageForm"
-
-// 
-import ProfileMenu from "./ProfileMenu"
 import RelationsAccountProfileBase from './RelationsAccountProfileBase'
+
 
 function RelationsAccountProfileImage({t, match, history}) {
   const accountId = match.params.account_id

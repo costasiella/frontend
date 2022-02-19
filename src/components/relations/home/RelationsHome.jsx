@@ -1,16 +1,12 @@
-// @flow
-
 import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 
 import {
   Card,
   Page,
   Grid,
-  Container,
-  StampCard
+  Container
 } from "tabler-react";
 import HomeItemButton from "../../ui/HomeItemButton"
 import SiteWrapper from "../../SiteWrapper"
@@ -27,8 +23,6 @@ class RelationsHome extends Component {
 
   render() {
     const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
     const linkTitle = t("general.manage")
 
     return (

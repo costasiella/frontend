@@ -1,22 +1,16 @@
-// @flow
-
 import React, {Component } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
-
 import {
   Card,
   Page,
   Grid,
   Container,
-  StampCard
 } from "tabler-react";
+
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import HomeItemButton from "../../ui/HomeItemButton"
-
-
 
 
 class OrganizationHome extends Component {
@@ -29,9 +23,6 @@ class OrganizationHome extends Component {
 
   render() {
     const t = this.props.t
-    const match = this.props.match
-    const history = this.props.history
-    const id = match.params.id
     const linkTitle = t("general.manage")
 
     return (

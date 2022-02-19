@@ -13,7 +13,7 @@ import {
 
 function AccountSubscriptionEditPauseDelete({t, match, history, id}) {
   const subscriptionId = match.params.subscription_id
-  const [deleteAccountSubscriptionPause, { data }] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION_PAUSE)
+  const [deleteAccountSubscriptionPause] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION_PAUSE)
   const query_vars = {
     accountSubscription: subscriptionId
   }

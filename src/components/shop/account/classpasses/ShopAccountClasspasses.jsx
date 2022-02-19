@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext} from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'

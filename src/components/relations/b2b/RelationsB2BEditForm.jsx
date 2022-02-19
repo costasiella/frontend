@@ -1,11 +1,8 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { v4 } from 'uuid'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
 
 import {
   Button,
@@ -14,8 +11,6 @@ import {
   Grid
 } from "tabler-react"
 
-
-import CSDatePicker from "../../ui/CSDatePicker"
 import ISO_COUNTRY_CODES from "../../../tools/iso_country_codes"
 
 

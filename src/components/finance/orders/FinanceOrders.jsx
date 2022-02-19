@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -11,8 +9,7 @@ import {
   Button,
   Table, 
 } from "tabler-react";
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
+
 import AppSettingsContext from '../../context/AppSettingsContext'
 
 import { get_list_query_variables } from "./tools"

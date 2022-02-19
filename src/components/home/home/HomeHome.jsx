@@ -1,21 +1,14 @@
-// @flow
-
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
-  Page,
   Grid,
-  Icon,
-  Button,
   Card,
-  Container,
 } from "tabler-react";
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { GET_BACKEND_ANNOUNCEMENTS_QUERY } from "./queries"
 
+import { GET_BACKEND_ANNOUNCEMENTS_QUERY } from "./queries"
 import HomeHomeBase from './HomeHomeBase';
 
 
@@ -32,9 +25,6 @@ function HomeHome({ t, match }) {
       {t("home.home.announcements.error_loading")}
     </HomeHomeBase>
   )
-
-  console.log("%%%%%%%%%%%%%%%%%%%%%")
-  console.log(data)
 
   const announcements = data.organizationAnnouncements
 

@@ -28,10 +28,12 @@ const ShopClasspassForm = ({ t, isSubmitting, errors }) => (
         {t("shop.order.by_placing_this_order")} <br />
         <ul>
           <li>{t("shop.order.agree_terms")} {" "}
-            <a target="_blank" href={cs_django_links.EXPORT_TERMS_AND_CONDITIONS}>{t("general.terms_and_conditions")}</a>
+            <a target="_blank" 
+              rel="noreferrer"
+              href={cs_django_links.EXPORT_TERMS_AND_CONDITIONS}>{t("general.terms_and_conditions")}</a>
           </li>
           <li>{t("shop.order.agree_privacy")} {" "}
-            <a target="_blank" href={cs_django_links.EXPORT_PRIVACY_POLICY}>{t("general.privacy_policy")}</a>
+            <a target="_blank" rel="noreferrer" href={cs_django_links.EXPORT_PRIVACY_POLICY}>{t("general.privacy_policy")}</a>
           </li>
         </ul>
       </small>

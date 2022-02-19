@@ -27,6 +27,8 @@ export function get_list_query_variables() {
     case "employee":
       queryVars.employee = true
       break
+    default:
+      break
   }
 
 

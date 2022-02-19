@@ -1,7 +1,7 @@
 import CSLS from "../../../../tools/cs_local_storage"
 
 export function get_list_query_variables() {
-    let orderBy
+    // let orderBy
     let organizationClasstype
     let organizationLevel
     let organizationLocation

@@ -1,8 +1,5 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from '@apollo/client'
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
@@ -15,7 +12,6 @@ import { toast } from 'react-toastify'
 import { get_attendance_list_query_variables } from "../attendance/tools"
 import { GET_SCHEDULE_CLASS_ATTENDANCE_QUERY } from "../attendance/queries"
 import { CREATE_SCHEDULE_ITEM_ATTENDANCE } from "./queries"
-import CSLS from "../../../../../tools/cs_local_storage"
 
 import { getUrlFromReturnTo } from "./tools"
 
@@ -35,7 +31,7 @@ function SubscriptionCheckinButton({t, match, history, subscription, returnTo, l
     "bookingStatus": "ATTENDING"
   }
 
-  const [classCheckin, { data, loading, error, onCompleted }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
+  const [classCheckin, { loading, error }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
 
   if (loading) {
     return "Please wait..."

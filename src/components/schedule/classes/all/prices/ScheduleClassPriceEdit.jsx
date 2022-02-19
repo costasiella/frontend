@@ -10,7 +10,6 @@ import {
 } from "tabler-react";
 
 import { GET_SCHEDULE_ITEM_PRICES_QUERY, GET_SINGLE_SCHEDULE_ITEM_PRICE_QUERY, UPDATE_SCHEDULE_ITEM_PRICE } from './queries'
-import { SCHEDULE_CLASS_INSTRUCTOR_SCHEMA } from './yupSchema'
 import ScheduleClassPriceForm from './ScheduleClassPriceForm'
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 

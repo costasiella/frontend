@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -120,7 +118,7 @@ function ShopAccountOrders({t, match, history}) {
                   <Card.Header>
                     <Card.Title>{t("general.order") + " #" + node.orderNumber}</Card.Title>
                     <Card.Options>
-                      {(node.status == "RECEIVED" || node.status == "AWAITING_PAYMENT") ?
+                      {(node.status === "RECEIVED" || node.status === "AWAITING_PAYMENT") ?
                         <Button
                           outline
                           color="warning"
@@ -144,7 +142,7 @@ function ShopAccountOrders({t, match, history}) {
                           {t('general.cancel')}
                         </Button>
                       : ""}
-                      {(node.status == "AWAITING_PAYMENT" && onlinePaymentsAvailable) ?
+                      {(node.status === "AWAITING_PAYMENT" && onlinePaymentsAvailable) ?
                         <Link to={"/shop/checkout/payment/" + node.id}>
                           <Button
                             className="ml-4"

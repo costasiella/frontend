@@ -1,10 +1,8 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik, Form as FoForm, Field, ErrorMessage } from 'formik'
+import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_ACCOUNTS_QUERY, ADD_ACCOUNT } from './queries'
@@ -13,20 +11,17 @@ import { ACCOUNT_SCHEMA } from './yupSchema'
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Card,
-  Container,
-  Form,
+  Container
 } from "tabler-react"
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import ButtonBack from '../../ui/ButtonBack';
 
+import SiteWrapper from "../../SiteWrapper"
+import ButtonBack from '../../ui/ButtonBack';
 import { get_list_query_variables } from "./tools"
 import RelationsAccountForm from "./RelationsAccountForm"
 
 const returnUrl = "/relations/accounts"
+
 
 function RelationsAccountAdd({t, history}) {
   const [addAccount] = useMutation(ADD_ACCOUNT)

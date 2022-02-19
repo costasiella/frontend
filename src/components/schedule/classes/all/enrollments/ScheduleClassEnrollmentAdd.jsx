@@ -13,7 +13,6 @@ import { dateToLocalISO } from '../../../../../tools/date_tools'
 import ButtonBack from '../../../../ui/ButtonBack';
 
 import ClassEditBase from "../ClassEditBase"
-import ScheduleClassEnrollmentBack from "./ScheduleClassEnrollmentBack"
 import { getEnrollmentsListQueryVariables } from "./tools"
 
 

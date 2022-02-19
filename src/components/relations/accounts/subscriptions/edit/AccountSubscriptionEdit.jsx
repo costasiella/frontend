@@ -1,11 +1,7 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
@@ -13,20 +9,8 @@ import { GET_ACCOUNT_SUBSCRIPTIONS_QUERY, GET_ACCOUNT_SUBSCRIPTION_QUERY, UPDATE
 import { SUBSCRIPTION_SCHEMA } from '../yupSchema'
 import AccountSubscriptionForm from '../AccountSubscriptionForm'
 
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container,
-} from "tabler-react";
-import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { dateToLocalISO } from '../../../../../tools/date_tools'
 import AccountSubscriptionEditBase from "./AccountSubscriptionEditBase"
-
-import ProfileMenu from "../../ProfileMenu"
 
 
 function AccountSubscriptionEdit({t, match, history}) {
@@ -57,10 +41,7 @@ function AccountSubscriptionEdit({t, match, history}) {
     </AccountSubscriptionEditBase>
   )
 
-  console.log('query data')
-  console.log(data)
   const inputData = data
-  const account = data.account
   const initialdata = data.accountSubscription
 
   let initialPaymentMethod = ""

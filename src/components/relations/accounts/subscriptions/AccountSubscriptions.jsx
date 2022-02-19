@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -16,7 +14,6 @@ import {
 } from "tabler-react";
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import BadgeBoolean from "../../../ui/BadgeBoolean"
 import confirm_delete from "../../../../tools/confirm_delete"
 
 import AppSettingsContext from '../../../context/AppSettingsContext'

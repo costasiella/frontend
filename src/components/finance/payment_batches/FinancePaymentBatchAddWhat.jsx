@@ -1,33 +1,12 @@
-// @flow
-
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client"
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
-
 
 import {
-  Page,
-  Grid,
-  Icon,
-  Dimmer,
-  Badge,
-  Button,
-  Card,
-  Container,
-  Table
+  Card
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-import { toast } from 'react-toastify'
 
-import FinancePaymentBatchCategory from "../../ui/FinancePaymentBatchCategory"
-import ContentCard from "../../general/ContentCard"
 import FinancePaymentBatchesBase from "./FinancePaymentBatchesBase"
-
 import { get_add_options_collection, get_add_options_payment } from './tools'
 
 
@@ -37,7 +16,7 @@ function FinancePaymentBatchAddWhat({t, history, match }) {
 
   let cardTitle
   let options
-  if (batchType == "collection") {
+  if (batchType === "collection") {
     cardTitle = t('finance.payment_batch_collections.title_add_what')
     options = get_add_options_collection(t, batchType)
   } else {

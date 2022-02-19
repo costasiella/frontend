@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -71,12 +69,7 @@ function ScheduleEventTicketEditActivities({ t, history, match }) {
     </ScheduleEventTicketEditBase>
   )
 
-  console.log('query data')
-  console.log(data)
-  const inputData = data
   const scheduleEventTicketActivities = data.scheduleEventTicketScheduleItems
-  console.log(scheduleEventTicketActivities)
-
 
   return (
     <ScheduleEventTicketEditBase 

@@ -1,32 +1,17 @@
-// @flow
-
 import React, { useContext } from 'react'
-import { gql } from "@apollo/client"
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Formik } from 'formik'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import moment from 'moment'
+
+import {
+  Dimmer,
+  Card,
+} from "tabler-react";
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 import { GET_SCHEDULE_EVENT_QUERY } from '../queries'
-
-import moment from 'moment'
-
-
-import {
-  Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container
-} from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-
 import ScheduleEventEditBaseBase from "./ScheduleEventEditBaseBase"
 
 
@@ -34,9 +19,7 @@ function ScheduleEventEditListBase({t, match, history, activeTab, pageInfo, onLo
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const cardTitle = t("schedule.events.edit.title")
-
   const eventId = match.params.event_id
-  const returnUrl = "/schedule/events"
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_QUERY, {
     variables: { id: eventId }

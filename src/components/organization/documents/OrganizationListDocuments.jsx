@@ -21,7 +21,7 @@ import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import OrganizationDocumentsDelete from "./OrganizationDocumentDelete"
 import { getSubtitle } from './tools'
 
-import { GET_DOCUMENTS_QUERY, DELETE_DOCUMENT } from "./queries"
+import { GET_DOCUMENTS_QUERY } from "./queries"
 
 
 function OrganizationListDocuments({ t, match, history }) {

@@ -1,12 +1,9 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
-import AppSettingsContext from '../../../context/AppSettingsContext'
+import moment from 'moment'
 
 import {
   Card,
@@ -15,21 +12,19 @@ import {
   Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import BadgeBoolean from "../../../ui/BadgeBoolean"
+import AppSettingsContext from '../../../context/AppSettingsContext'
+import SiteWrapper from "../../../SiteWrapper"
 import RelationsAccountsBack from "../RelationsAccountsBack"
 import DocumentType from "../../../ui/DocumentType"
 import FileDownloadTableButton from "../../../ui/FileDownloadTableButton"
-
 import ContentCard from "../../../general/ContentCard"
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
 
 import { GET_ACCOUNT_ACCEPTED_DOCUMENTS_QUERY } from "./queries"
 
-import moment from 'moment'
+
 
 
 function AccountAcceptedDocuments({ t, history, match }) {

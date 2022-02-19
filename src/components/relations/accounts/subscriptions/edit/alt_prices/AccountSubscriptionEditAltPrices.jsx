@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -10,21 +10,14 @@ import {
   Card,
   Table,
 } from "tabler-react";
-// import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import ButtonAdd from '../../../../../ui/ButtonAdd';
-import AppSettingsContext from '../../../../../context/AppSettingsContext'
+
+import ButtonAdd from '../../../../../ui/ButtonAdd'
 import { GET_ACCOUNT_SUBSCRIPTION_ALT_PRICES_QUERY } from './queries'
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
 import AccountSubscriptionEditAltPriceDelete from "./AccountSubscriptionEditAltPriceDelete"
 
 
-
 function AccountSubscriptionEditAltPrices({t, match, history}) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  console.log(appSettings)
-  
-  const id = match.params.subscription_id
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
   const returnUrl = `/relations/accounts/${accountId}/subscriptions`

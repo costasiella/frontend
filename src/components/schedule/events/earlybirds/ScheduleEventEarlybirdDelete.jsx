@@ -13,7 +13,7 @@ import {
 
 function ScheduleEventEarlybirdDelete({t, match, history, id}) {
   const eventId = match.params.event_id
-  const [deleteScheduleEventEarlybird, { data }] = useMutation(DELETE_SCHEDULE_EVENT_EARLYBIRD)
+  const [deleteScheduleEventEarlybird] = useMutation(DELETE_SCHEDULE_EVENT_EARLYBIRD)
   const query_vars = {
     scheduleEvent: eventId
   }

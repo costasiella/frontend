@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 // import logo from './logo.svg';
 
-import React, { Component } from 'react'
+import React from 'react'
 import {
   Route, 
   Switch, 
@@ -18,7 +18,7 @@ import { GET_ORGANIZATION_QUERY } from "./components/organization/organization/q
 import { TOKEN_REFRESH } from "./queries/system/auth"
 
 // Import moment locale
-import moment from 'moment'
+// import moment from 'moment'
 import 'moment/locale/nl'
 
 import CSStandalonePageLoader from './components/ui/CSStandalonePageLoader'
@@ -271,7 +271,6 @@ import SettingsWorkflowSubscriptionPauses from './components/settings/workflow/s
 import SettingsWorkflowTrial from './components/settings/workflow/trial/SettingsWorkflowTrial'
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
-import c from './components/shop/account/bank_account/ShopAccountBankAccount'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
 import ShopAccountClassInfo from './components/shop/account/class_info/ShopAccountClassInfo'
 import ShopAccountClasspasses from './components/shop/account/classpasses/ShopAccountClasspasses'
@@ -364,7 +363,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         CSAuth.updateTokenInfo(data.refreshToken)
         return ContinueAsYouAre
       }).catch((error) => {
-        toast.error('general.toast_server_error' + ': ' +  error, {
+        toast.error(error, {
           position: toast.POSITION.BOTTOM_RIGHT
         })
         console.log('there was an error refreshing the token', error) 
@@ -395,7 +394,7 @@ function AppRoot({ t }) {
     )
   }
   if (errorAppSettings || errorOrganization) {
-    if (errorAppSettings.message == "Signature has expired")  {
+    if (errorAppSettings.message === "Signature has expired")  {
       return ""
     } else {
       return (

@@ -1,20 +1,11 @@
-// @flow
-
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
 
 import { dateToLocalISO } from '../../../../tools/date_tools'
-
-import {
-  Button,
-  Icon
-} from "tabler-react"
 
 import { 
   GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY, 
@@ -36,7 +27,7 @@ function ScheduleEventEarlybirdEdit({ t, history, match }) {
   const cardTitle = t("schedule.events.earlybirds.edit")
 
   const [updateScheduleEventEarlybird] = useMutation(UPDATE_SCHEDULE_EVENT_EARLYBIRD)
-  const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_EARLYBIRD_QUERY, {
+  const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_EARLYBIRD_QUERY, {
     variables: {
       id: scheduleEventEarlybirdId
   }})

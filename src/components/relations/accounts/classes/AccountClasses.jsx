@@ -1,11 +1,8 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import {
@@ -14,10 +11,7 @@ import {
 } from "tabler-react";
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-
 import BadgeBookingStatus from "../../../ui/BadgeBookingStatus"
-
 import ContentCard from "../../../general/ContentCard"
 import AccountClassesBase from "./AccountClassesBase"
 import AccountClassDelete from "./AccountClassDelete"

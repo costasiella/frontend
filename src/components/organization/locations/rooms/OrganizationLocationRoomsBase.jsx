@@ -1,13 +1,10 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
@@ -17,8 +14,6 @@ import ButtonBack from '../../../ui/ButtonBack';
 
 
 function OrganizationLocationRoomsBase({t, history, match, children, showAdd=false, returnUrl="/organization/locations"}) {
-  const locationId = match.params.location_id
-
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">

@@ -30,7 +30,7 @@ const ScheduleShiftForm = ({ t, history, inputData, isSubmitting, setFieldValue,
           </Field>
           <ErrorMessage name="frequencyType" component="span" className="invalid-feedback" />
         </Form.Group>
-        { (values.frequencyType == "SPECIFIC") ? "" :
+        { (values.frequencyType === "SPECIFIC") ? "" :
           <Form.Group label={t('schedule.classes.frequencyInterval')}>
             <Field component="select" 
                   name="frequencyInterval" 
@@ -79,7 +79,7 @@ const ScheduleShiftForm = ({ t, history, inputData, isSubmitting, setFieldValue,
         </Grid.Row>
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={(values.frequencyType == "SPECIFIC") ? t('general.date') : t('general.date_start')}>
+            <Form.Group label={(values.frequencyType === "SPECIFIC") ? t('general.date') : t('general.date_start')}>
               <CSDatePicker 
                 className={(errors.dateStart) ? "form-control is-invalid" : "form-control"} 
                 selected={values.dateStart}
@@ -92,7 +92,7 @@ const ScheduleShiftForm = ({ t, history, inputData, isSubmitting, setFieldValue,
               <ErrorMessage name="dateStart" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
-          { (values.frequencyType == "SPECIFIC") ? "" :
+          { (values.frequencyType === "SPECIFIC") ? "" :
             <Grid.Col>
               <Form.Group label={t('general.date_end')}>
                 <CSDatePicker 

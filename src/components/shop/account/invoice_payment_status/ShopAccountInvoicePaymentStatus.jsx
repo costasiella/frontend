@@ -1,16 +1,8 @@
-// @flow
-
-import React, { useContext } from 'react'
-import { useMutation, useQuery } from "@apollo/client"
+import React from 'react'
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
 import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import moment from 'moment'
-
-import AppSettingsContext from '../../../context/AppSettingsContext'
-import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
 
 import {
   Alert,
@@ -18,8 +10,6 @@ import {
   Card,
   Grid,
   Icon,
-  Table,
-  Text
 } from "tabler-react"
 import { GET_INVOICE_QUERY } from "../invoice_payment/queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
@@ -28,18 +18,12 @@ import ShopAccountInvoicePaymentStatusBase from "./ShopAccountInvoicePaymentStat
 
 
 function ShopAccountInvoicePaymentStatus({t, match, history}) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
-  const dateTimeFormat = dateFormat + ' ' + timeFormat
-  const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
-
   const id = match.params.id
   const cardTitleLoadingError = t("shop.account.invoice_payment.title")
 
   // Chain queries. First query user data and then query invoices for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
-  const { loading, error, data, fetchMore } = useQuery(GET_INVOICE_QUERY, {
+  const { loading, error, data } = useQuery(GET_INVOICE_QUERY, {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       id: id
@@ -65,13 +49,11 @@ function ShopAccountInvoicePaymentStatus({t, match, history}) {
     </ShopAccountInvoicePaymentStatusBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
   const user = dataUser.user
   const invoice = data.financeInvoice
 
   let alert
-  if (invoice.status == "PAID") {
+  if (invoice.status === "PAID") {
     alert = <Alert type="success" icon="check">
       {t("shop.account.invoice_payment_status.payment_received")}
     </Alert>
@@ -130,6 +112,5 @@ function ShopAccountInvoicePaymentStatus({t, match, history}) {
     </ShopAccountInvoicePaymentStatusBase>
   )
 }
-
 
 export default withTranslation()(withRouter(ShopAccountInvoicePaymentStatus))

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { Query, Mutation } from "@apollo/client"
 import { gql } from "@apollo/client"
@@ -8,22 +6,17 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 
-
 import {
   Page,
   Grid,
   Icon,
-  Dimmer,
   Button,
-  Card,
   Container,
   Table
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 
-import BadgeBoolean from "../../../ui/BadgeBoolean"
 import RelationsAccountsBack from "../RelationsAccountsBack"
 import confirm_delete from "../../../../tools/confirm_delete"
 

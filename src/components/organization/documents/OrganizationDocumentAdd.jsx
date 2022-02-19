@@ -9,25 +9,17 @@ import {
   ErrorMessage 
 } from 'formik'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
-
-import { ADD_DOCUMENT, GET_DOCUMENTS_QUERY } from "./queries"
-import { DOCUMENT_SCHEMA } from './yupSchema'
-import { dateToLocalISO } from "../../../tools/date_tools"
-// import OrganizationDocumentForm from './OrganizationDocumentForm'
-import ButtonBack from '../../ui/ButtonBack'
-import CSDatePicker from "../../ui/CSDatePicker"
-
 import {
-  Page,
   Grid,
-  Icon,
   Button,
   Card,
-  Container,
   Form,
 } from "tabler-react"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
+
+import { ADD_DOCUMENT, GET_DOCUMENTS_QUERY } from "./queries"
+import { dateToLocalISO } from "../../../tools/date_tools"
+import ButtonBack from '../../ui/ButtonBack'
+import CSDatePicker from "../../ui/CSDatePicker"
 
 import OrganizationDocumentsBase from "./OrganizationDocumentsBase"
 import { getSubtitle } from './tools'
@@ -60,7 +52,7 @@ function OrganizationDocumentAdd({ t, match, history }) {
   const returnUrl = `/organization/documents/${organizationId}/${documentType}`
   const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
 
-  const [addDocument, { data }] = useMutation(ADD_DOCUMENT, {
+  const [addDocument] = useMutation(ADD_DOCUMENT, {
     onCompleted: () => history.push(returnUrl)
   })
 

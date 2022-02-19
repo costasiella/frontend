@@ -12,8 +12,6 @@ import {
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 import SettingsBack from "../SettingsBack"
 
 function SettingsMailTemplatesBase({ t, children, headerSubTitle, help={} }) {

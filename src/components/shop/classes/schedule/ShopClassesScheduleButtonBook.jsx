@@ -1,14 +1,9 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
-import { v4 } from 'uuid'
 import moment from 'moment'
 
-import CSLS from "../../../../tools/cs_local_storage"
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
@@ -20,7 +15,6 @@ import {
 function ShopClassesScheduleButtonBook({ t, match, history, scheduleItemId, classDate, bookingOpenOn, bookingStatus }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
 
   let buttonBook
   // Uncomment the line below when testing the book component statuses. (Development only)
@@ -51,7 +45,6 @@ function ShopClassesScheduleButtonBook({ t, match, history, scheduleItemId, clas
       buttonBook = <span className="pull-right">
           {t("shop.classes.class_booking_status.ongoing")}
         </span>
-      break
       break
     case "FULL":
       buttonBook = <span className="pull-right">

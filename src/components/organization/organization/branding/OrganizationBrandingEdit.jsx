@@ -1,30 +1,14 @@
-// @flow
-
 import React, { useState, useRef } from 'react'
 import { gql } from "@apollo/client"
 import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from "react-router-dom"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_ORGANIZATION_QUERY } from '../queries'
-
-import {
-  Page,
-  Grid,
-  Icon,
-  Button,
-  Card,
-  Container
-} from "tabler-react";
-
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-
 import OrganizationBrandingBase from "./OrganizationBrandingBase"
 import OrganizationBrandingEditForm from "./OrganizationBrandingEditForm"
-import { updateLocale } from 'moment'
 
 
 const UPDATE_ORGANIZATION = gql`

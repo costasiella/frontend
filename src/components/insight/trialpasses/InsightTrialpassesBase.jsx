@@ -2,19 +2,15 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
-
-import moment from 'moment'
-
 import {
-  Button,
   Container,
   Grid,
   Page
 } from "tabler-react";
+
 import SiteWrapper from "../../SiteWrapper"
 import InsightBackHome from '../InsightBackHome'
 
-import { dateToLocalISO, getFirstDayMonth, getLastDayMonth } from '../../../tools/date_tools'
 import CSLS from "../../../tools/cs_local_storage"
 import InsightTrialpassesFilter from './InsightTrialpassesFilter';
 import { getListQueryVariables } from './tools'

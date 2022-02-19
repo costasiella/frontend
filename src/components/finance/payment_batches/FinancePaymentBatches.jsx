@@ -1,55 +1,39 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
-
+import moment from 'moment'
 import {
-  Page,
-  Grid,
   Icon,
   Dimmer,
-  Badge,
   Button,
-  Card,
-  Container,
   Table
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
-// import { confirmAlert } from 'react-confirm-alert'; // Import
 
 import AppSettingsContext from '../../context/AppSettingsContext'
-
 import { get_list_query_variables } from "./tools"
-
-// import FinancePaymentBatchCategory from "../../ui/FinancePaymentBatchCategory"
 import BadgeFinancePaymentBatchStatus from "../../ui/BadgeFinancePaymentBatchStatus"
 import ContentCard from "../../general/ContentCard"
 import FinancePaymentBatchesBase from "./FinancePaymentBatchesBase"
-import CSLS from "../../../tools/cs_local_storage"
 import confirm_delete from "../../../tools/confirm_delete"
-
 import { GET_PAYMENT_BATCHES_QUERY, DELETE_PAYMENT_BATCH } from "./queries"
-import moment from 'moment'
+
 
 function FinancePaymentBatches({t, history, match }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const batchType = match.params.batch_type
 
-  const { loading, error, data, fetchMore, refetch } = useQuery(GET_PAYMENT_BATCHES_QUERY, {
+  const { loading, error, data, fetchMore } = useQuery(GET_PAYMENT_BATCHES_QUERY, {
     variables: get_list_query_variables(batchType),
   })
   const [deletePaymentBatch] = useMutation(DELETE_PAYMENT_BATCH)
 
   let cardTitle
   let msgEmptyList
-  if (batchType == "collection") {
+  if (batchType === "collection") {
     cardTitle = t('finance.payment_batch_collections.title')
     msgEmptyList = t('finance.payment_batch_collections.empty_list')
   } else {

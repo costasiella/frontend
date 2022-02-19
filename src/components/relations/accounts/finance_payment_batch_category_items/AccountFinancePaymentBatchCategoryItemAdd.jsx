@@ -1,12 +1,12 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import {
+  Card,
+} from "tabler-react";
 
 import { 
   GET_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEMS_QUERY, 
@@ -15,13 +15,8 @@ import {
 } from './queries'
 import { ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEM_SCHEMA } from './yupSchema'
 import AccountFinancePaymentBatchCategoryItemsForm from './AccountFinancePaymentBatchCategoryItemsForm'
-
-import {
-  Card,
-} from "tabler-react";
-
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 import AccountFinancePaymentBatchCategoryItemsBase from "./AccountFinancePaymentBatchCategoryItemsBase"
+
 
 function AccountFinancePaymentBatchCategoryItemAdd({ t, history, match }) {
   const accountId = match.params.account_id

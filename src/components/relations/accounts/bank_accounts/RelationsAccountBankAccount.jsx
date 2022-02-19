@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -7,23 +5,18 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-
-import AppSettingsContext from '../../../context/AppSettingsContext'
 import moment from 'moment'
-
-import { GET_ACCOUNT_BANK_ACCOUNTS_QUERY, UPDATE_ACCOUNT_BANK_ACCOUNT } from './queries'
-import { DELETE_ACCOUNT_BANK_ACCOUNT_MANDATE } from './mandates/queries'
-// import { ACCOUNT_SCHEMA } from './yupSchema'
-
 import {
   Button,
   Card, 
   Grid,
   Icon
 } from "tabler-react"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import confirm_delete from "../../../../tools/confirm_delete"
 
+import AppSettingsContext from '../../../context/AppSettingsContext'
+import { GET_ACCOUNT_BANK_ACCOUNTS_QUERY, UPDATE_ACCOUNT_BANK_ACCOUNT } from './queries'
+import { DELETE_ACCOUNT_BANK_ACCOUNT_MANDATE } from './mandates/queries'
+import confirm_delete from "../../../../tools/confirm_delete"
 import RelationsAccountBankAccountBase from "./RelationsAccountBankAccountBase"
 import RelationsAccountBankAccountForm from "./RelationsAccountBankAccountForm"
 
@@ -32,9 +25,7 @@ import RelationsAccountBankAccountForm from "./RelationsAccountBankAccountForm"
 function RelationsAccountBankAccount({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  
   const accountId = match.params.account_id
-  const returnUrl = "/relations/accounts"
 
   const { loading, error, data } = useQuery(GET_ACCOUNT_BANK_ACCOUNTS_QUERY, {
     variables: { account: accountId }

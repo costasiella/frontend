@@ -1,12 +1,9 @@
-// @flow
-
 import React from 'react'
 import { gql } from "@apollo/client"
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { GET_SCHEDULE_EVENTS_QUERY, GET_SCHEDULE_EVENT_QUERY } from '../queries'
@@ -15,15 +12,8 @@ import { SCHEDULE_EVENT_EDIT_SCHEMA } from '../yupSchema'
 
 import {
   Dimmer,
-  Page,
-  Grid,
-  Icon,
-  Button,
   Card,
-  Container
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 import ScheduleEventEditBase from "./ScheduleEventEditBase"
 import ScheduleEventForm from "../ScheduleEventForm"

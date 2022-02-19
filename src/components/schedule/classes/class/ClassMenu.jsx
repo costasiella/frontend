@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -25,6 +23,8 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
       break
     case "edit":
       edit_active = true
+      break
+    default:
       break
   }
 

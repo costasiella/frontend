@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState, useRef } from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
@@ -9,8 +7,6 @@ import { Link } from 'react-router-dom'
 import { 
   Formik,
   Form as FoForm, 
-  Field, 
-  ErrorMessage 
 } from 'formik'
 
 
@@ -32,7 +28,7 @@ import { customFileInputLabelStyle } from "../../../tools/custom_file_input_labe
 function OrganizationClasstypeEditImage({t, history, match}) {
   const classtypeId = match.params.id
   const returnUrl = "/organization/classtypes"
-  const cardTitle = t('organization.classtypes.edit_image')
+  let cardTitle = t('organization.classtypes.edit_image')
   const { loading, error, data } = useQuery(GET_CLASSTYPE_QUERY, {
     variables: { id: classtypeId }
   })
@@ -67,9 +63,7 @@ function OrganizationClasstypeEditImage({t, history, match}) {
     </OrganizationClasstypesBase>
   )
 
-  const initialData = data.organizationClasstype
-  console.log('query data')
-  console.log(data)
+  cardTitle = `${cardTitle} - ${data.organizationClasstype.name}`
 
   return (
     <OrganizationClasstypesBase showBack={true}>

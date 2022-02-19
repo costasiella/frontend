@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -11,7 +9,6 @@ import {
   Container,
 } from "tabler-react";
 import SiteWrapper from "../SiteWrapper"
-import HasPermissionWrapper from "../HasPermissionWrapper"
 import SettingsBack from "./SettingsBack"
 
 
@@ -41,6 +38,5 @@ function SettingsBase({ t, children, headerSubTitle="", cardTitle, alertBanner="
     </SiteWrapper>
   )
 }
-
 
 export default withTranslation()(withRouter(SettingsBase))

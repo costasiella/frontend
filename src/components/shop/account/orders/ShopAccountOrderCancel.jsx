@@ -1,12 +1,8 @@
 import React from 'react'
-import { withTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import { confirmAlert } from 'react-confirm-alert'
 import { v4 } from 'uuid'
 
-import {
-  Icon,
-} from "tabler-react";
 
 export function cancelOrder({t, msgConfirm, msgDescription, msgSuccess, cancelFunction, functionVariables}) {
   return (

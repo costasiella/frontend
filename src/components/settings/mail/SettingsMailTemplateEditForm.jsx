@@ -1,11 +1,8 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
-import { v4 } from "uuid"
 
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../plugin_config/tinymce"

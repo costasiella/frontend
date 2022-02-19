@@ -1,25 +1,13 @@
-// @flow
-
-import React, { useContext, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useMutation, useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import moment from 'moment'
-
-import AppSettingsContext from '../../../context/AppSettingsContext'
-import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
-import ContentCard from "../../../general/ContentCard"
 
 import {
-  Button,
   Card,
   Grid,
   Icon,
-  Table,
-  Text
 } from "tabler-react"
 import { GET_INVOICE_QUERY, CREATE_PAYMENT_LINK } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
@@ -28,12 +16,6 @@ import ShopAccountInvoicePaymentBase from "./ShopAccountInvoicePaymentBase"
 
 
 function ShopAccountInvoicePayment({t, match, history}) {
-  const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
-  const timeFormat = appSettings.timeFormatMoment
-  const dateTimeFormat = dateFormat + ' ' + timeFormat
-  const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
-
   const id = match.params.id
   const cardTitleLoadingError = t("shop.account.invoice_payment.title")
 
@@ -43,7 +25,7 @@ function ShopAccountInvoicePayment({t, match, history}) {
 
   // Chain queries. First query user data and then query invoices for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
-  const { loading, error, data, fetchMore } = useQuery(GET_INVOICE_QUERY, {
+  const { loading, error, data } = useQuery(GET_INVOICE_QUERY, {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       id: id

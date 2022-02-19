@@ -1,8 +1,5 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from '@apollo/client'
-import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
@@ -32,7 +29,7 @@ function ScheduleClassBookPriceBtn({t, match, history, price, returnTo, location
     "bookingStatus": "ATTENDING"
   }
 
-  const [classCheckin, { data, loading, error, onCompleted }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
+  const [classCheckin, { loading, error }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
 
   if (loading) {
     return "Please wait..."

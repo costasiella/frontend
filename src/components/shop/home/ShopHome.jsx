@@ -1,6 +1,4 @@
-// @flow
-
-import React, {Component } from 'react'
+import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
@@ -11,10 +9,9 @@ import {
   Grid,
 } from "tabler-react";
 
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { GET_SHOP_ANNOUNCEMENTS_QUERY } from "./queries"
-
 import ShopHomeBase from "./ShopHomeBase"
+
 
 function ShopHome({ t, match, history }) {
   

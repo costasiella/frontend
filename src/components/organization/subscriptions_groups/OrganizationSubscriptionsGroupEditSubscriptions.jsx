@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation, useQuery } from "@apollo/client"
 import { v4 } from "uuid"
@@ -11,7 +9,6 @@ import { GET_SUBSCRIPTION_GROUP_SUBSCRIPTIONS_QUERY, ADD_CARD_TO_GROUP, DELETE_C
 
 
 import {
-  Alert,
   Icon,
   Button,
   Card,

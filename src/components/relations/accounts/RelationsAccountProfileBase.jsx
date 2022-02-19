@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -7,15 +5,14 @@ import { withRouter } from "react-router"
 import {
   Page,
   Grid,
-  Card,
   Container
 } from "tabler-react"
 import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 import ProfileCardSmall from "../../ui/ProfileCardSmall"
 
 import ButtonBack from '../../ui/ButtonBack'
 import ProfileMenu from "./ProfileMenu"
+
 
 function RelationsAccountProfileBase({t, match, children, back, returnUrl='/relations/accounts', pageHeaderButtonList="", activeLink="", user={}}) {
   const accountId = match.params.account_id

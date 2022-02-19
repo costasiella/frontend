@@ -13,7 +13,7 @@ import {
 
 function ScheduleEventActivityDelete({t, match, history, id}) {
   const eventId = match.params.event_id
-  const [deleteScheduleEventActivity, { data }] = useMutation(DELETE_SCHEDULE_EVENT_ACTIVITY)
+  const [deleteScheduleEventActivity] = useMutation(DELETE_SCHEDULE_EVENT_ACTIVITY)
   const query_vars = {
     scheduleEvent: eventId
   }

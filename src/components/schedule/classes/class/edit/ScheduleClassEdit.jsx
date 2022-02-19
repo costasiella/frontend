@@ -1,7 +1,4 @@
-// @flow
-
-import React, { useState } from 'react'
-import { gql } from "@apollo/client"
+import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -19,21 +16,12 @@ import { class_subtitle } from "../tools"
 
 
 import {
-  Alert,
-  Dropdown,
   Page,
   Grid,
-  Icon,
-  Dimmer,
-  Badge,
-  Button,
   Card,
   Container,
-  Table
 } from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-// import ClassEditBase from "../ClassEditBase"
 import ScheduleClassWeeklyOTCDelete from './ScheduleClassWeeklyOTCDelete'
 import ScheduleClassBack from "../ScheduleClassBack"
 import ClassMenu from "../ClassMenu"
@@ -54,7 +42,7 @@ function ScheduleClassEdit({ t, match, history }) {
   const { loading: queryLoading, error: queryError, data: queryData } = useQuery(GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY, {
     variables: query_vars,
   })
-  const [ updateScheduleClassWeeklyOTC, { data } ] = useMutation(UPDATE_SCHEDULE_CLASS_WEEKLY_OTC)
+  const [ updateScheduleClassWeeklyOTC ] = useMutation(UPDATE_SCHEDULE_CLASS_WEEKLY_OTC)
 
   if (queryLoading) return <p>{t('general.loading_with_dots')}</p>
   // Error

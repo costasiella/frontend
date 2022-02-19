@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import {
@@ -9,14 +7,13 @@ import {
 import CSStandalonePageWide from './CSStandalonePageWide'
 
 
-function CSStandalonePageLoader({}) {
-
+function CSStandalonePageLoader() {
   return (
     <CSStandalonePageWide>
-    <div className='text-center'>
-      <Dimmer active={true} loader={true} />
-    </div>
-  </CSStandalonePageWide>
+      <div className='text-center'>
+        <Dimmer active={true} loader={true} />
+      </div>
+    </CSStandalonePageWide>
   )
 }
 

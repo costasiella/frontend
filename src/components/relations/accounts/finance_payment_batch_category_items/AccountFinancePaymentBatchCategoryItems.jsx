@@ -1,20 +1,15 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
-
 import {
   Button,
   Card,
   Icon,
   Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 import confirm_delete from "../../../../tools/confirm_delete"
 
@@ -25,7 +20,6 @@ import {
   GET_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEMS_QUERY,
   DELETE_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEM
 } from "./queries"
-
 
 
 function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {

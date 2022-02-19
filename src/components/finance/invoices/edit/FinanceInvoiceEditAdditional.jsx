@@ -1,20 +1,15 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
-
 import {
   Tab,
   TabbedCard
 } from "tabler-react"
 
 
-import { get_list_query_variables } from "../tools"
 import { UPDATE_INVOICE, GET_INVOICE_QUERY } from "../queries"
 import FinanceInvoiceEditTermsForm from "./FinanceInvoiceEditTermsForm"
 import FinanceInvoiceEditFooterForm from "./FinanceInvoiceEditFooterForm"

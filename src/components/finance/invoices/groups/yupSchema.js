@@ -1,6 +1,5 @@
 import { t } from 'i18next'
 import * as Yup from 'yup'
-import { yupToFormErrors } from 'formik';
 
 export const INVOICE_GROUP_SCHEMA = Yup.object().shape({
     name: Yup.string()
