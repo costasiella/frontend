@@ -35,7 +35,8 @@ function ShopClassBook({ t, match, history }) {
         scheduleItem: schedule_item_id,
         date: class_date,
         listType: "SHOP_BOOK"
-      }
+      },
+      fetchPolicy: "network-only"
     }
   )
 
