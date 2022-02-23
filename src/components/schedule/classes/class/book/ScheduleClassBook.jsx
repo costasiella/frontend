@@ -34,7 +34,8 @@ function ScheduleClassBook({ t, match, history }) {
         scheduleItem: schedule_item_id,
         date: class_date,
         listType: "ATTEND"
-      }
+      },
+      fetchPolicy: "network-only"
     }
   )
 
