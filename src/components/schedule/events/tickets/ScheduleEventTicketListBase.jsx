@@ -16,7 +16,7 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 import { GET_SCHEDULE_EVENT_QUERY } from '../queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
-
+import ButtonBack from '../../../ui/ButtonBack';
 
 function ScheduleEventTicketListBase({t, match, history, activeTab, pageInfo, onLoadMore, children}) {
   const appSettings = useContext(AppSettingsContext)
@@ -31,15 +31,11 @@ function ScheduleEventTicketListBase({t, match, history, activeTab, pageInfo, on
     variables: { id: eventId }
   })
 
-  const sidebarContent = <Link to={returnUrl}>
-      <Button color="primary btn-block mb-6">
-        <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-      </Button>
-    </Link>
+  const pageHeaderOptions = <ButtonBack returnUrl={returnUrl} />
 
 if (loading) {
   return (
-    <ScheduleEventEditListBase sidebarContent={sidebarContent} activeLink={activeLink}>
+    <ScheduleEventEditListBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink}>
       <Card title={cardTitle}>
         <Card.Body>
           <Dimmer loading={true} active={true} />
@@ -51,7 +47,7 @@ if (loading) {
 
 if (error) {
   return (
-    <ScheduleEventEditListBase sidebarContent={sidebarContent} activeLink={activeLink}>
+    <ScheduleEventEditListBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink}>
       <Card title={cardTitle}>
         <Card.Body>
           {t("schedule.events.error_loading")}
@@ -69,7 +65,7 @@ const cardSubTitle = (event) ?
 </span> : ""
 
 return (
-  <ScheduleEventEditListBase sidebarContent={sidebarContent} activeLink={activeLink}>
+  <ScheduleEventEditListBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink}>
     <ContentCard 
       cardTitle={<span>{cardTitle} {cardSubTitle}</span>}
       pageInfo={pageInfo}

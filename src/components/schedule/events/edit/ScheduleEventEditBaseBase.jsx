@@ -10,10 +10,17 @@ import {
 
 import SiteWrapper from "../../../SiteWrapper"
 import ScheduleEventEditMenu from "./ScheduleEventEditMenu"
-import ScheduleEventEditBack from "./ScheduleEventEditBack"
+import ButtonBack from '../../../ui/ButtonBack';
 
-
-function ScheduleEventEditBaseBase({ t, match, history, children, pageHeaderOptions, sidebarContent="", activeLink }) {
+function ScheduleEventEditBaseBase({ 
+  t, 
+  match, 
+  history, 
+  children, 
+  returnUrl="/schedule/events", 
+  pageHeaderOptions, 
+  activeLink
+ }) {
   const eventId = match.params.event_id
 
   return (
@@ -23,7 +30,7 @@ function ScheduleEventEditBaseBase({ t, match, history, children, pageHeaderOpti
             <Page.Header title={t("schedule.events.title")} >
               <div className="page-options d-flex">
                 {/* Page options can go here... */}
-                <ScheduleEventEditBack />
+                <ButtonBack returnUrl={returnUrl} />
                 { pageHeaderOptions }
               </div>
             </Page.Header>
@@ -32,8 +39,6 @@ function ScheduleEventEditBaseBase({ t, match, history, children, pageHeaderOpti
               { children }
             </Grid.Col>
             <Grid.Col md={3}>
-              { sidebarContent }
-              <h5>{t("general.edit_menu")}</h5>
               <ScheduleEventEditMenu activeLink={activeLink} eventId={eventId}/>
             </Grid.Col>
             </Grid.Row>

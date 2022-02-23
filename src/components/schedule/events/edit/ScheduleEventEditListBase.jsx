@@ -15,7 +15,7 @@ import { GET_SCHEDULE_EVENT_QUERY } from '../queries'
 import ScheduleEventEditBaseBase from "./ScheduleEventEditBaseBase"
 
 
-function ScheduleEventEditListBase({t, match, history, activeTab, pageInfo, onLoadMore, activeLink, children, sidebarContent=""}) {
+function ScheduleEventEditListBase({t, match, history, activeTab, pageInfo, onLoadMore, activeLink, children, pageHeaderOptions=""}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const cardTitle = t("schedule.events.edit.title")
@@ -28,7 +28,7 @@ function ScheduleEventEditListBase({t, match, history, activeTab, pageInfo, onLo
 
 if (loading) {
   return (
-    <ScheduleEventEditBaseBase sidebarContent={sidebarContent} activeLink={activeLink}>
+    <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink}>
       <Card title={cardTitle}>
         <Card.Body>
           <Dimmer loading={true} active={true} />
@@ -40,7 +40,7 @@ if (loading) {
 
 if (error) {
   return (
-    <ScheduleEventEditBaseBase sidebarContent={sidebarContent} activeLink={activeLink}>
+    <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink}>
       <Card title={cardTitle}>
         <Card.Body>
           {t("schedule.events.error_loading")}
@@ -58,7 +58,7 @@ const cardSubTitle = (event) ?
 </span> : ""
 
 return (
-  <ScheduleEventEditBaseBase sidebarContent={sidebarContent} activeLink={activeLink}>
+  <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink}>
     <ContentCard 
       cardTitle={<span>{cardTitle} {cardSubTitle}</span>}
       pageInfo={pageInfo}

@@ -23,7 +23,6 @@ function ScheduleEventEditBase({
     activeLink, 
     cardTitle, 
     pageHeaderOptions,
-    sidebarContent, 
     returnUrl="/schedule/events"}) 
   {
   const appSettings = useContext(AppSettingsContext)
@@ -41,7 +40,7 @@ function ScheduleEventEditBase({
 
   if (loading) {
     return (
-      <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} sidebarContent={sidebarContent} activeLink={activeLink}>
+      <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} returnUrl={returnUrl} activeLink={activeLink}>
         <Card title={cardTitle}>
           <Card.Body>
             <Dimmer loading={true} active={true} />
@@ -53,7 +52,7 @@ function ScheduleEventEditBase({
 
   if (error) {
     return (
-      <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} sidebarContent={sidebarContent} activeLink={activeLink}>
+      <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} returnUrl={returnUrl} activeLink={activeLink}>
         <Card title={cardTitle}>
           <Card.Body>
             {t("schedule.events.error_loading")}
@@ -71,7 +70,12 @@ function ScheduleEventEditBase({
   </span> : ""
 
   return (
-    <ScheduleEventEditBaseBase cardTitle={cardTitle} pageHeaderOptions={pageHeaderOptions} sidebarContent={sidebarContent} activeLink={activeLink}>
+    <ScheduleEventEditBaseBase 
+      cardTitle={cardTitle} 
+      pageHeaderOptions={pageHeaderOptions} 
+      returnUrl={returnUrl} 
+      activeLink={activeLink}
+    >
       <Card>
         <Card.Header>
           <Card.Title>{cardTitle} {cardSubTitle}</Card.Title>

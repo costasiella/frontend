@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
 import {
-  Icon,
   Button,
   Table,
 } from "tabler-react";
@@ -17,6 +16,7 @@ import BadgeBoolean from "../../../ui/BadgeBoolean"
 import { GET_SCHEDULE_EVENT_TICKETS_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 import ScheduleEventTicketDelete from "./ScheduleEventTicketDelete"
+import ButtonAdd from '../../../ui/ButtonAdd';
 import BadgeSoldOut from '../../../ui/BadgeSoldOut';
 
 
@@ -27,11 +27,7 @@ function ScheduleEventTickets({t, match, history}) {
   const eventId = match.params.event_id
   const activeLink = "tickets"
 
-  const sidebarContent = <Link to={`/schedule/events/edit/${eventId}/tickets/add`}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.events.tickets.add')}
-    </Button>
-  </Link>
+  const pageHeaderOptions = <ButtonAdd addUrl={`/schedule/events/edit/${eventId}/tickets/add`} className="ml-2" />
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_TICKETS_QUERY, {
     variables: {
@@ -40,12 +36,12 @@ function ScheduleEventTickets({t, match, history}) {
   })
   
   if (loading) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       {t("general.loading_with_dots")}
     </ScheduleEventEditListBase>
   )
   if (error) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </ScheduleEventEditListBase>
@@ -59,7 +55,7 @@ function ScheduleEventTickets({t, match, history}) {
 
   // Empty list
   if (!scheduleEventTickets.edges.length) { return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <p>{t('schedule.events.tickets.empty_list')}</p>
     </ScheduleEventEditListBase>
   )}
@@ -89,7 +85,7 @@ function ScheduleEventTickets({t, match, history}) {
   }
 
   return (
-    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} pageHeaderOptions={pageHeaderOptions}>
       <Table>
         <Table.Header>
           <Table.Row key={v4()}>
