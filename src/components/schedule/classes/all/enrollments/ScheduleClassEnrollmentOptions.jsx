@@ -20,8 +20,8 @@ function ScheduleClassEnrollmentOptions({ t, history, match }) {
     variables: {
       account: accountId,
       scheduleItem: classId,
-      
-    }
+    },
+    fetchPolicy: "network-only"
   })
   // const [addScheduleClassEnrollment] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
 
