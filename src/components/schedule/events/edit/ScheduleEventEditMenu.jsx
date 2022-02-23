@@ -1,30 +1,14 @@
-// @flow
-
 import React from 'react'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
-
-
 import {
   List
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-let general_active
-let tickets_active
-let earlybirds_active
-let activities_active
-let media_active
+import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
   <List.Group transparent={true}>
-    {(activeLink === 'general') ? general_active = true: general_active = false}
-    {(activeLink === 'tickets') ? tickets_active = true: tickets_active = false}
-    {(activeLink === 'earlybirds') ? earlybirds_active = true: earlybirds_active = false}
-    {(activeLink === 'activities') ? activities_active = true: activities_active = false}
-    {(activeLink === 'media') ? media_active = true: media_active = false}
-    
-
     <HasPermissionWrapper 
         resource="scheduleevent"
         permission="change" 
@@ -34,7 +18,7 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           className="d-flex align-items-center"
           to={`#/schedule/events/edit/${eventId}`}
           icon="edit-2"
-          active={general_active}
+          active={(activeLink === 'general')}
           >
           {t('schedule.events.edit.title')}
       </List.GroupItem>
@@ -48,7 +32,7 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           className="d-flex align-items-center"
           to={`#/schedule/events/edit/${eventId}/tickets`}
           icon="clipboard"
-          active={tickets_active}
+          active={(activeLink === 'tickets')}
           >
           {t('schedule.events.tickets.title')}
       </List.GroupItem>
@@ -62,7 +46,7 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           className="d-flex align-items-center"
           to={`#/schedule/events/edit/${eventId}/earlybirds`}
           icon="clock"
-          active={earlybirds_active}
+          active={(activeLink === 'earlybirds')}
           >
           {t('schedule.events.earlybirds.title')}
       </List.GroupItem>
@@ -76,7 +60,7 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           className="d-flex align-items-center"
           to={`#/schedule/events/edit/${eventId}/activities`}
           icon="calendar"
-          active={activities_active}
+          active={(activeLink === 'activities')}
           >
           {t('schedule.events.activities.title')}
       </List.GroupItem>
@@ -90,7 +74,7 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           className="d-flex align-items-center"
           to={`#/schedule/events/edit/${eventId}/media`}
           icon="image"
-          active={media_active}
+          active={(activeLink === 'media')}
           >
           {t('schedule.events.media.title')}
       </List.GroupItem>
