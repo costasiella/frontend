@@ -130,7 +130,6 @@ function RelationsB2B({ t, history }) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -149,9 +148,7 @@ function RelationsB2B({ t, history }) {
                         </Button>
                       </Link>
                     }
-                  </Table.Col>
-                  {/* Archive / restore buttons */}
-                  <Table.Col className="text-right" key={v4()}>
+                    {/* Archive / restore buttons */}
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.archive')} 
                       href=""

@@ -18,6 +18,7 @@ import {
 import { GET_BUSINESSES_QUERY } from './queries'
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
+import ButtonBack from '../../ui/ButtonBack';
 
 import { get_list_query_variables } from "./tools"
 import RelationsB2BAddForm from "./RelationB2BAddForm"
@@ -33,7 +34,7 @@ const ADD_BUSINESS = gql`
   }
 `
 
-const return_url = "/relations/b2b"
+const returnUrl = "/relations/b2b"
 
 function RelationsB2BAdd({ t, history }) {
   const [addBusiness] = useMutation(ADD_BUSINESS)
@@ -42,9 +43,13 @@ function RelationsB2BAdd({ t, history }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t('relations.title')} />
+          <Page.Header title={t('relations.title')} >
+            <div className='page-options d-flex'>
+              <ButtonBack returnUrl={returnUrl} />
+            </div>
+          </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
             <Card>
               <Card.Header>
                 <Card.Title>{t('relations.b2b.title_add')}</Card.Title>
@@ -81,20 +86,11 @@ function RelationsB2BAdd({ t, history }) {
                         <RelationsB2BAddForm
                           isSubmitting={isSubmitting}
                           errors={errors}
-                          return_url={return_url}
+                          returnUrl={returnUrl}
                         />
                     )}
                 </Formik>
             </Card>
-            </Grid.Col>
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="add"
-                                    resource="business">
-                <Button color="primary btn-block mb-6"
-                        onClick={() => history.push(return_url)}>
-                  <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                </Button>
-              </HasPermissionWrapper>
             </Grid.Col>
           </Grid.Row>
         </Container>

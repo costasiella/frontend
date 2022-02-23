@@ -13,6 +13,7 @@ import {
 import CSLS from "../../../tools/cs_local_storage"
 import InputSearch from "../../general/InputSearch"
 import { get_list_query_variables } from "./tools"
+import ButtonAdd from '../../ui/ButtonAdd';
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 
@@ -32,20 +33,12 @@ const RelationsB2BBase = ({t, history, refetch, children }) => (
                 refetch(get_list_query_variables())
               }}
             />
+            <ButtonAdd addUrl="/relations/b2b/add" className='ml-2 '/>
           </div>
         </Page.Header>
         <Grid.Row>
-          <Grid.Col md={9}>
+          <Grid.Col md={12}>
             {children}
-          </Grid.Col>
-          <Grid.Col md={3}>
-            <HasPermissionWrapper permission="add"
-                                  resource="business">
-              <Button color="primary btn-block mb-6"
-                      onClick={() => history.push("/relations/b2b/add")}>
-                <Icon prefix="fe" name="plus-circle" /> {t('relations.b2b.add')}
-              </Button>
-            </HasPermissionWrapper>
           </Grid.Col>
         </Grid.Row>
       </Container>

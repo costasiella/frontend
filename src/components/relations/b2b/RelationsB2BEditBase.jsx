@@ -14,11 +14,10 @@ import {
   Card,
   Container
 } from "tabler-react"
+
 import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
-
-// 
-// import ProfileMenu from "./ProfileMenu"
+import ButtonBack from '../../ui/ButtonBack'
 
 
 function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
@@ -29,10 +28,12 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={t("relations.title")}>
-            {/* <RelationsAccountsBack /> */}
+            <div className="page-options d-flex">
+              <ButtonBack returnUrl={returnUrl} />
+            </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
             <Card>
               <Card.Header>
                 <Card.Title>{cardTitle}</Card.Title>
@@ -40,16 +41,6 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
               {children}
             </Card>
             </Grid.Col>                                    
-            <Grid.Col md={3}>
-              <HasPermissionWrapper permission="change"
-                                    resource="business">
-                <Link to={returnUrl}>
-                  <Button color="primary btn-block mb-6">
-                    <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-                  </Button>
-                </Link>
-              </HasPermissionWrapper>
-            </Grid.Col>
           </Grid.Row>
         </Container>
       </div>
