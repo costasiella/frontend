@@ -95,7 +95,6 @@ function ScheduleEventTickets({t, match, history}) {
             <Table.ColHeader>{t('general.glaccount')}</Table.ColHeader>
             <Table.ColHeader>{t('general.costcenter')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -131,8 +130,6 @@ function ScheduleEventTickets({t, match, history}) {
                     {t('general.edit')}
                   </Button>
                 </Link>
-              </Table.Col>
-              <Table.Col className="text-right">
                 {/* Check for fullEvent / deletable before showing delete button */}
                 {(node.deletable) ? <ScheduleEventTicketDelete id={node.id} /> : ""}
               </Table.Col>

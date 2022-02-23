@@ -27,6 +27,8 @@ function ScheduleEventActivityAttendanceBase({t, match, history, activeTab, onLo
   const cardTitle = t("schedule.events.activities.edit")
   const activeLink = "activities"
 
+  console.log(activeTab)
+
   const eventId = match.params.event_id
   const scheduleItemId = match.params.id
 
@@ -46,7 +48,7 @@ function ScheduleEventActivityAttendanceBase({t, match, history, activeTab, onLo
     return (
       <ScheduleEventEditBaseBase  activeLink={activeLink} sidebarContent={sidebarContent}>
         <Card title={cardTitle}>
-          <ScheduleEventActivityTabs active={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
+          <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
           <Card.Body>
             <Dimmer loading={true} active={true} />
           </Card.Body>
@@ -59,7 +61,7 @@ function ScheduleEventActivityAttendanceBase({t, match, history, activeTab, onLo
     return (
       <ScheduleEventEditBaseBase activeLink={activeLink} sidebarContent={sidebarContent}>
         <Card title={cardTitle}>
-          <ScheduleEventActivityTabs active={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
+          <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
           <Card.Body>
             {t("schedule.event.error_loading")}
           </Card.Body>
@@ -85,7 +87,7 @@ function ScheduleEventActivityAttendanceBase({t, match, history, activeTab, onLo
     <ScheduleEventEditBaseBase activeLink={activeLink} sidebarContent={sidebarContent}>
       <ContentCard 
         cardTitle={<span>{cardTitle} {cardSubTitle} {cardActivitySubtitle}</span>}
-        cardTabs={<ScheduleEventActivityTabs active={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>}
+        cardTabs={<ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>}
         pageInfo={pageInfo}
         onLoadMore={onLoadMore}
       >

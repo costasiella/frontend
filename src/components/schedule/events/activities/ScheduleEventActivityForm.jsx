@@ -60,31 +60,6 @@ function ScheduleEventActivityForm ({
         </Grid.Row>
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={t('general.location')}>
-              <Field component="select" 
-                    name="organizationLocationRoom" 
-                    className={(errors.organizationLocationRoom) ? "form-control is-invalid" : "form-control"} 
-                    autoComplete="off">
-                <option value="" key={v4()}>{t("general.please_select")}</option>
-                {inputData.organizationLocationRooms.edges.map(({ node }) =>
-                  <option value={node.id} key={v4()}>{node.organizationLocation.name} - {node.name}</option>
-                )}
-              </Field>
-              <ErrorMessage name="organizationLocationRoom" component="span" className="invalid-feedback" />
-            </Form.Group> 
-          </Grid.Col>
-          <Grid.Col>
-            <Form.Group label={t('general.spaces')}>
-                <Field type="text" 
-                    name="spaces" 
-                    className={(errors.spaces) ? "form-control is-invalid" : "form-control"} 
-                    autoComplete="off" />
-                <ErrorMessage name="spaces" component="span" className="invalid-feedback" />
-            </Form.Group>
-          </Grid.Col>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Col>
             <Form.Group label={t('general.date')}>
               <CSDatePicker 
                 className={(errors.dateStart) ? "form-control is-invalid" : "form-control"} 
@@ -124,6 +99,31 @@ function ScheduleEventActivityForm ({
                 clearable={false}
               />
               <ErrorMessage name="timeEnd" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Col>
+            <Form.Group label={t('general.location')}>
+              <Field component="select" 
+                    name="organizationLocationRoom" 
+                    className={(errors.organizationLocationRoom) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off">
+                <option value="" key={v4()}>{t("general.please_select")}</option>
+                {inputData.organizationLocationRooms.edges.map(({ node }) =>
+                  <option value={node.id} key={v4()}>{node.organizationLocation.name} - {node.name}</option>
+                )}
+              </Field>
+              <ErrorMessage name="organizationLocationRoom" component="span" className="invalid-feedback" />
+            </Form.Group> 
+          </Grid.Col>
+          <Grid.Col>
+            <Form.Group label={t('general.spaces')}>
+                <Field type="text" 
+                    name="spaces" 
+                    className={(errors.spaces) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off" />
+                <ErrorMessage name="spaces" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
         </Grid.Row>

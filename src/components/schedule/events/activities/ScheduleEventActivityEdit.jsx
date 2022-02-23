@@ -27,6 +27,7 @@ const UPDATE_SCHEDULE_EVENT_ACTIVITY = gql`
 `
 
 
+
 function ScheduleEventActivityEdit({ t, history, match }) {
   const eventId = match.params.event_id
   const scheduleItemId = match.params.id
@@ -68,6 +69,13 @@ function ScheduleEventActivityEdit({ t, history, match }) {
   const scheduleItem = data.scheduleItem
   console.log(inputData)
 
+// DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let initialDateStart = null
+  if (scheduleItem.dateStart) {
+    initialDateStart = new Date(scheduleItem.dateStart)
+  }
+
   let initialTimeStart = null
   if (scheduleItem.timeStart) {
     initialTimeStart = TimeStringToJSDateOBJ(scheduleItem.timeStart)
@@ -91,7 +99,7 @@ function ScheduleEventActivityEdit({ t, history, match }) {
           name: scheduleItem.name,
           spaces: scheduleItem.spaces,
           organizationLocationRoom: scheduleItem.organizationLocationRoom.id,
-          dateStart: scheduleItem.dateStart,
+          dateStart: initialDateStart,
           timeStart: initialTimeStart,
           timeEnd: initialTimeEnd,
           account: (scheduleItem.account) ? scheduleItem.account.id : '',

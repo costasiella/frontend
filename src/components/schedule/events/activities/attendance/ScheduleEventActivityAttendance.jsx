@@ -59,7 +59,7 @@ function ScheduleEventActivityAttendance({ t, history, match }) {
 
   // Empty list
   if (!scheduleItemAttendances.edges.length) { return (
-    <ScheduleEventActivityAttendanceBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventActivityAttendanceBase activeLink={activeLink} activeTab={activeTab} sidebarContent={sidebarContent}>
       <p>{t('schedule.events.activities.attendance.empty_list')}</p>
     </ScheduleEventActivityAttendanceBase>
   )}
@@ -92,7 +92,7 @@ function ScheduleEventActivityAttendance({ t, history, match }) {
     <ScheduleEventActivityAttendanceBase 
       // sidebarContent={sidebarContent} 
       // cardTitle={cardTitle} 
-      activeTab={activeTab} 
+      activeTab={activeTab}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}
     >

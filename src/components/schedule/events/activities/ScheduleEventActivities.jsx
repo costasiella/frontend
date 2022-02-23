@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 
 import {
-  Icon,
   Button,
   Table,
 } from "tabler-react";
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBoolean from "../../../ui/BadgeBoolean"
+import ButtonAdd from "../../../ui/ButtonAdd"
 import { GET_SCHEDULE_EVENT_ACTIVITIES_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 import ScheduleEventActivityDelete from "./ScheduleEventActivityDelete"
@@ -28,11 +28,7 @@ function ScheduleItems({t, match, history}) {
   const eventId = match.params.event_id
   const activeLink = "activities"
 
-  const sidebarContent = <Link to={`/schedule/events/edit/${eventId}/activities/add`}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.events.activities.add')}
-    </Button>
-  </Link>
+  const pageHeaderOptions = <ButtonAdd addUrl={`/schedule/events/edit/${eventId}/activities/add`} className="ml-2" />
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_ACTIVITIES_QUERY, {
     variables: {
@@ -41,12 +37,12 @@ function ScheduleItems({t, match, history}) {
   })
   
   if (loading) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       {t("general.loading_with_dots")}
     </ScheduleEventEditListBase>
   )
   if (error) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </ScheduleEventEditListBase>
@@ -60,7 +56,7 @@ function ScheduleItems({t, match, history}) {
 
   // Empty list
   if (!scheduleItems.edges.length) { return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <p>{t('schedule.events.tickets.empty_list')}</p>
     </ScheduleEventEditListBase>
   )}
@@ -90,7 +86,7 @@ function ScheduleItems({t, match, history}) {
   }
 
   return (
-    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} pageHeaderOptions={pageHeaderOptions}>
       <Table>
         <Table.Header>
           <Table.Row key={v4()}>
@@ -100,7 +96,6 @@ function ScheduleItems({t, match, history}) {
             <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
             <Table.ColHeader>{t('general.filled')}</Table.ColHeader>
             <Table.ColHeader>{t('general.public')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -140,8 +135,6 @@ function ScheduleItems({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <ScheduleEventActivityDelete id={node.id} />
                 </Table.Col>
               </Table.Row>

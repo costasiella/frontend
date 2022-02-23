@@ -44,7 +44,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
     return (
       <ScheduleEventEditBaseBase sidebarContent={sidebarContent}>
         <Card title={cardTitle}>
-          <ScheduleEventActivityTabs active={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
+          <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
           <Card.Body>
             <Dimmer loading={true} active={true} />
           </Card.Body>
@@ -57,7 +57,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
     return (
       <ScheduleEventEditBaseBase sidebarContent={sidebarContent}>
         <Card title={cardTitle}>
-          <ScheduleEventActivityTabs active={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
+          <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
           <Card.Body>
             {t("schedule.events.error_loading")}
           </Card.Body>
@@ -85,7 +85,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
         <Card.Header>
           <Card.Title>{cardTitle} {cardSubTitle} {cardActivitySubtitle}</Card.Title>
         </Card.Header>
-        <ScheduleEventActivityTabs active={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
+        <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
         {children}
       </Card>
     </ScheduleEventEditBaseBase>
