@@ -70,7 +70,7 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
               icon="edit-3"
               active={edit_active}
               >
-              {t("general.edit")}
+              {t("schedule.classes.class.menu.edit_this_class")}
           </List.GroupItem>
         </HasPermissionWrapper>
 

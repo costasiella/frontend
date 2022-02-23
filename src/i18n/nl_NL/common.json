@@ -694,9 +694,7 @@
             "next_id": "__STRING_NOT_TRANSLATED__",
             "due_after_days": "__STRING_NOT_TRANSLATED__",
             "prefix_year": "__STRING_NOT_TRANSLATED__",
-            "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__",
-            "empty_list": "__STRING_NOT_TRANSLATED__",
-            "empty_archive": "__STRING_NOT_TRANSLATED__"
+            "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__"
         },
         "payment_batches": {
             "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -1211,10 +1209,8 @@
             "restored": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__",
-            "deactivated": "__STRING_NOT_TRANSLATED__",
             "title_add": "__STRING_NOT_TRANSLATED__",
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__"
@@ -1247,7 +1243,6 @@
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
@@ -1663,6 +1658,9 @@
                 },
                 "enroll": {
                     "subscription_not_allowed": "__STRING_NOT_TRANSLATED__"
+                },
+                "menu": {
+                    "edit_this_class": "__STRING_NOT_TRANSLATED__"
                 }
             },
             "placeholder_enddate": "__STRING_NOT_TRANSLATED__",

@@ -95,8 +95,6 @@
         "invoice_groups": {
             "title": "Invoice groups",
             "error_loading": "Error loading invoice groups :(",
-            "empty_list": "No invoice groups have been defined yet",
-            "empty_archive": "Invoice group archive is empty",
             "next_id": "Next #",
             "due_after_days": "Due after days",
             "auto_reset_prefix_year": "Reset to 1 on January 1st",
@@ -774,7 +772,6 @@
             "display_backend": "Show in backend home",
             "error_loading": "Error loading announcements... :(",
             "empty_list": "No announcements have been created yet.",
-            "add": "Add announcement",
             "content": "Announcement text",
             "title_add": "Add announcement",
             "toast_edit_success": "Saved",
@@ -1044,13 +1041,11 @@
             "error_loading": "Error loading business to business relations... :(",
             "empty_archive": "No business to business relations have been archived yet.",
             "empty_list": "No business to business relations have been added yet.",
-            "deactivated": "Deactivated b2b relation",
             "restored": "Moved b2b relation to current",
             "delete_confirm_msg": "Are you sure you with to delete this b2b relation?",
             "deleted": "B2B relation deleted",
             "title_add": "Add Business-to-Business relation",
             "toast_add_success": "Added Business-to-Business relation. You're now editing the new relation.",
-            "add": "Add",
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
             "archived": "Archived B2B relation",
@@ -1165,6 +1160,9 @@
                 },
                 "enroll": {
                     "subscription_not_allowed": "Not allowed for this class"
+                },
+                "menu": {
+                    "edit_this_class": "Edit this class"
                 }
             },
             "no_instructor": "No instructor",
