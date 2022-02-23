@@ -9,15 +9,12 @@ import { toast } from 'react-toastify'
 import {
   Page,
   Grid,
-  Icon,
-  Button,
   Card,
   Container,
 } from "tabler-react"
 
 import { GET_BUSINESSES_QUERY } from './queries'
 import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 import ButtonBack from '../../ui/ButtonBack';
 
 import { get_list_query_variables } from "./tools"

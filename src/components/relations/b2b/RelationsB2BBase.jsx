@@ -5,8 +5,6 @@ import { withRouter } from "react-router"
 import {
     Page,
     Grid,
-    Icon,
-    Button,
     Container,
   } from "tabler-react";
 
@@ -15,7 +13,6 @@ import InputSearch from "../../general/InputSearch"
 import { get_list_query_variables } from "./tools"
 import ButtonAdd from '../../ui/ButtonAdd';
 import SiteWrapper from "../../SiteWrapper"
-import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 
 const RelationsB2BBase = ({t, history, refetch, children }) => (
