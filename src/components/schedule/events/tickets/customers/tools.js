@@ -5,7 +5,8 @@ export function getAccountsQueryVariables(ticketId) {
   let queryVars = {
     instructor: undefined,
     employee: undefined,
-    searchName: undefined
+    searchName: undefined,
+    ticketId: ticketId
   }
 
   let search = localStorage.getItem(CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH)
