@@ -26,6 +26,7 @@ import ScheduleEventTicketEditBase from "../ScheduleEventTicketEditBase"
 // import ScheduleEventTicketEditActivityForm from "./ScheduleEventTicketEditActivityForm"
 
 import CSLS from "../../../../../tools/cs_local_storage"
+import ButtonAdd from '../../../../ui/ButtonAdd'
 
 
 const ADD_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
@@ -46,7 +47,6 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
   const returnUrl = `/schedule/events/edit/${eventId}/tickets/`
   const activeTab = "customers"
   const activeLink = 'tickets'
-  const sidebarContent = <ScheduleEventTicketBack />
 
   const { loading, error, data } = useQuery(GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, {
     variables: {
@@ -71,7 +71,6 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
 
   if (loading) return (
     <ScheduleEventTicketEditBase 
-      sidebarContent={sidebarContent} 
       activeTab={activeTab} 
       activeLink={activeLink} 
       returnUrl={returnUrl}
@@ -81,7 +80,6 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
   )
   if (error) return (
     <ScheduleEventTicketEditBase 
-      sidebarContent={sidebarContent} 
       activeTab={activeTab} 
       activeLink={activeLink} 
       returnUrl={returnUrl}
@@ -99,22 +97,27 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
   ))
   console.log(accountIdsWithTickets)
 
-  const pageHeaderOptions = <InputSearch 
-    initialValueKey={CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH}
-    placeholder="Search..."
-    onChange={(value) => {
-      console.log(value)
-      localStorage.setItem(CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH, value)
-      if (value) {
-        // {console.log('showSearch')}
-        // {console.log(showSearch)}
-        setShowSearch(true)
-        getAccounts({ variables: get_accounts_query_variables()})
-      } else {
-        setShowSearch(false)
-      }
-    }}
-  />
+  // const pageHeaderOptions = <InputSearch 
+  //   initialValueKey={CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH}
+  //   placeholder="Search..."
+  //   onChange={(value) => {
+  //     console.log(value)
+  //     localStorage.setItem(CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH, value)
+  //     if (value) {
+  //       // {console.log('showSearch')}
+  //       // {console.log(showSearch)}
+  //       setShowSearch(true)
+  //       getAccounts({ variables: get_accounts_query_variables()})
+  //     } else {
+  //       setShowSearch(false)
+  //     }
+  //   }}
+  // />
+
+  const pageHeaderOptions = <React.Fragment>
+    <ButtonAdd addUrl={`/schedule/events/edit/${eventId}/tickets/edit/${id}/customers/search`}
+      className="ml-2" />
+  </React.Fragment>
 
   // const searchResults = <div>hello world for search results</div>
 
@@ -248,7 +251,6 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
   // Data
   return (
     <ScheduleEventTicketEditBase 
-      sidebarContent={sidebarContent} 
       activeTab={activeTab} 
       activeLink={activeLink} 
       returnUrl={returnUrl}
@@ -263,7 +265,6 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
               <Table.ColHeader>{t('general.invoice')}</Table.ColHeader>
               <Table.ColHeader>{t('schedule.events.tickets.info_mail_sent')}</Table.ColHeader> 
               <Table.ColHeader></Table.ColHeader> 
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>

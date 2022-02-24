@@ -25,71 +25,124 @@ query AccountScheduleEventTickets($before:String, $after:String, $scheduleEventT
 }
 `
 
-export const GET_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEM_QUERY = gql`
-query ScheduleEventTicket($before:String, $after:String, $id:ID!) {
-  scheduleEventTicket(id: $id) {
-    id
-    displayPublic
-    name
-    description
-    price
-    financeTaxRate {
+
+export const GET_ACCOUNTS_QUERY = gql`
+  query AccountsAndTicketInfo(
+    $after: String, 
+    $before: String, 
+    $searchName: String,
+    $ticketId: ID!
+  ) {
+    accounts(
+      first: 25, 
+      before: $before, 
+      after: $after, 
+      isActive: true, 
+      fullName_Icontains: $searchName,
+      customer: true
+    ) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          fullName
+          email
+          isActive
+        }
+      }
+    }
+    scheduleEventTicket(id: $ticketId) {
       id
+      displayPublic
       name
-    }
-    financeGlaccount {
-      id
-      name
-    }
-    financeCostcenter {
-      id
-      name
-    }
-  }
-  financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
-    pageInfo {
-      startCursor
-      endCursor
-      hasNextPage
-      hasPreviousPage
-    }
-    edges {
-      node {
+      description
+      price
+      financeTaxRate {
+        id
+        name
+      }
+      financeGlaccount {
+        id
+        name
+      }
+      financeCostcenter {
         id
         name
       }
     }
   }
-  financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
-    pageInfo {
-      startCursor
-      endCursor
-      hasNextPage
-      hasPreviousPage
-    }
-    edges {
-      node {
-        id
-        name
-      }
-    }
-  }
-  financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
-    pageInfo {
-      startCursor
-      endCursor
-      hasNextPage
-      hasPreviousPage
-    }
-    edges {
-      node {
-        id
-        name
-      }
-    }
-  }
-}
 `
+
+// export const GET_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEM_QUERY = gql`
+// query ScheduleEventTicket($before:String, $after:String, $id:ID!) {
+//   scheduleEventTicket(id: $id) {
+//     id
+//     displayPublic
+//     name
+//     description
+//     price
+//     financeTaxRate {
+//       id
+//       name
+//     }
+//     financeGlaccount {
+//       id
+//       name
+//     }
+//     financeCostcenter {
+//       id
+//       name
+//     }
+//   }
+//   financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
+//     pageInfo {
+//       startCursor
+//       endCursor
+//       hasNextPage
+//       hasPreviousPage
+//     }
+//     edges {
+//       node {
+//         id
+//         name
+//       }
+//     }
+//   }
+//   financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
+//     pageInfo {
+//       startCursor
+//       endCursor
+//       hasNextPage
+//       hasPreviousPage
+//     }
+//     edges {
+//       node {
+//         id
+//         name
+//       }
+//     }
+//   }
+//   financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
+//     pageInfo {
+//       startCursor
+//       endCursor
+//       hasNextPage
+//       hasPreviousPage
+//     }
+//     edges {
+//       node {
+//         id
+//         name
+//       }
+//     }
+//   }
+// }
+// `
 
 export const UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
   mutation UpdateAccountScheduleEventTicket($input:UpdateAccountScheduleEventTicketInput!) {
@@ -101,11 +154,11 @@ export const UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
   }
 `
 
-export const DELETE_SCHEDULE_EVENT_TICKET = gql`
-  mutation DeleteScheduleEventTicket($input: DeleteScheduleEventTicketInput!) {
-    deleteScheduleEventTicket(input: $input) {
-      ok
-    }
-  }
-`
+// export const DELETE_SCHEDULE_EVENT_TICKET = gql`
+//   mutation DeleteScheduleEventTicket($input: DeleteScheduleEventTicketInput!) {
+//     deleteScheduleEventTicket(input: $input) {
+//       ok
+//     }
+//   }
+// `
 

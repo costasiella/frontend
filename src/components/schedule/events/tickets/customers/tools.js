@@ -1,6 +1,7 @@
 import CSLS from "../../../../../tools/cs_local_storage"
 
-export function get_accounts_query_variables() {
+
+export function getAccountsQueryVariables(ticketId) {
   let queryVars = {
     instructor: undefined,
     employee: undefined,
