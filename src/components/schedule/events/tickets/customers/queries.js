@@ -62,17 +62,9 @@ export const GET_ACCOUNTS_QUERY = gql`
       name
       description
       price
-      financeTaxRate {
-        id
+      scheduleEvent {
         name
-      }
-      financeGlaccount {
-        id
-        name
-      }
-      financeCostcenter {
-        id
-        name
+        dateStart
       }
     }
   }

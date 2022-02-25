@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 import {
   Icon,
@@ -14,6 +15,7 @@ import {
 } from "tabler-react";
 import { getAccountsQueryVariables } from "./tools"
 
+import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ScheduleEventEditBaseBase from '../../edit/ScheduleEventEditBaseBase'
 import ContentCard from "../../../../general/ContentCard"
 import InputSearch from "../../../../general/InputSearch"
@@ -22,6 +24,8 @@ import { GET_ACCOUNTS_QUERY } from "./queries"
 
 function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
   let [searchName, setSearchName] = useState("")
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
   
   const ticketId = match.params.id
   const eventId = match.params.event_id
@@ -79,12 +83,17 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
 
   console.log(data)
   const accounts = data.accounts
+  const ticket = data.scheduleEventTicket
+  const event = ticket.scheduleEvent
+  const dateStart = moment(event.dateStart).format(dateFormat)
+  // TODO: Add date to page subtitle
+  const pageSubTitle = `${ticket.scheduleEvent.name} ${dateStart} - ${ticket.name}`
 
   // Empty list
   if (!accounts.edges.length) return (
     <ScheduleEventEditBaseBase 
       activeLink={activeLink} 
-      defaultCard={false}
+      pageSubTitle={pageSubTitle}
       returnUrl={returnUrl}
     >
       <ContentCard cardTitle={cardTitle}
@@ -103,7 +112,7 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
     <ScheduleEventEditBaseBase 
       activeLink={activeLink} 
       cardTitle={cardTitle} 
-      defaultCard={false}
+      pageSubTitle={pageSubTitle}
       returnUrl={returnUrl}
     >
       <ContentCard cardTitle={cardTitle}
