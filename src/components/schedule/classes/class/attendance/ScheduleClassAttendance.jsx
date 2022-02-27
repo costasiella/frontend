@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 
 import {
+  Card,
   Dropdown,
   Page,
   Grid,
@@ -175,7 +176,7 @@ function ScheduleClassAttendance({ t, match, history }) {
                               })
                             }} >
                     { (!queryAccountsData.accounts.edges.length) ? 
-                      t('schedule.classes.class.attendance.search_result_empty') : 
+                      <Card.Body>{t('schedule.classes.class.attendance.search_result_empty')}</Card.Body> : 
                       <Table cards>
                         <Table.Header>
                           <Table.Row key={v4()}>

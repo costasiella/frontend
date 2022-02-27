@@ -47,6 +47,7 @@ class InputSearch extends Component {
     this.typingTimer = setTimeout(() => {
       // console.log(this.input.current.value)  
       this.setState({submitValue: this.input.current.value})
+      // Trigger onChange after typing timer timeout
       this.props.onChange(this.state.submitValue)
     }, this.state.doneTypingInterval)
   }
