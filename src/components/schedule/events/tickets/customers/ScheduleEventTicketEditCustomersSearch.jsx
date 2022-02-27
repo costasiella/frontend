@@ -15,6 +15,7 @@ import {
 } from "tabler-react";
 import { getAccountsQueryVariables } from "./tools"
 
+import CSLS from "../../../../../tools/cs_local_storage"
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ScheduleEventEditBaseBase from '../../edit/ScheduleEventEditBaseBase'
 import ContentCard from "../../../../general/ContentCard"
@@ -31,18 +32,18 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
   const eventId = match.params.event_id
   const returnUrl = `/schedule/events/edit/${eventId}/tickets/edit/${ticketId}/customers`
   const activeLink = 'tickets'
-  const cardTitle = t('schedule.events.tickets.customers.search')
+  const cardTitle = t('schedule.events.tickets.customers.search.title')
 
   
   const { loading, error, data, refetch, fetchMore } = useQuery(
     GET_ACCOUNTS_QUERY, {
-      variables: getAccountsQueryVariables(ticketId)
+      variables: getAccountsQueryVariables(ticketId, searchName)
     }
   )
 
   const headerOptions = <Card.Options>
     <InputSearch 
-      initialValueKey={searchName}
+      initialValueKey={CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH}
       placeholder="Search..."
       onChange={(value) => {
         console.log(value)
@@ -50,7 +51,8 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
           // {console.log('showSearch')}
           // {console.log(showSearch)}
           setSearchName(value)
-          refetch({ variables: getAccountsQueryVariables(ticketId)})
+          console.log("Executing refetch")
+          refetch({ variables: getAccountsQueryVariables(ticketId, value)})
         } 
       }}
     />
@@ -163,7 +165,7 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
                   {node.email}
                 </Table.Col>
                 <Table.Col className="text-right" key={v4()}>
-                  Sell >
+                  Sell &gt;
                   {/* <Link to={`/schedule/classes/all/enrollments/${scheduleItemId}/options/${node.id}`}>
                     <Button color="secondary">
                       {t("general.enroll")} <Icon name="chevron-right" />
