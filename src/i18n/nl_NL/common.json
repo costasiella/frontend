@@ -365,7 +365,6 @@
         "holiday": "__STRING_NOT_TRANSLATED__",
         "filled": "__STRING_NOT_TRANSLATED__",
         "spaces": "__STRING_NOT_TRANSLATED__",
-        "edit_menu": "__STRING_NOT_TRANSLATED__",
         "unarchive": "__STRING_NOT_TRANSLATED__",
         "tagline": "__STRING_NOT_TRANSLATED__",
         "preview": "__STRING_NOT_TRANSLATED__",
@@ -1751,7 +1750,8 @@
                 "search": {
                     "title": "__STRING_NOT_TRANSLATED__",
                     "error_loading": "__STRING_NOT_TRANSLATED__",
-                    "empty_list": "__STRING_NOT_TRANSLATED__"
+                    "empty_list": "__STRING_NOT_TRANSLATED__",
+                    "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 }
             }
         },
@@ -1762,7 +1762,12 @@
                     "uncancelled": "__STRING_NOT_TRANSLATED__",
                     "cancelled": "__STRING_NOT_TRANSLATED__",
                     "search_results_already_bought": "__STRING_NOT_TRANSLATED__",
-                    "toast_add_success": "__STRING_NOT_TRANSLATED__"
+                    "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                    "search": {
+                        "title": "__STRING_NOT_TRANSLATED__",
+                        "error_loading": "__STRING_NOT_TRANSLATED__",
+                        "empty_list": "__STRING_NOT_TRANSLATED__"
+                    }
                 },
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "edit_menu": {

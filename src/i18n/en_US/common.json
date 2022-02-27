@@ -450,7 +450,6 @@
         "preview": "Preview",
         "infoMailContent": "Info mail content",
         "start": "Start",
-        "edit_menu": "Edit menu",
         "spaces": "Spaces",
         "included": "Included",
         "filled": "Filled",
@@ -1194,7 +1193,8 @@
                 "search": {
                     "title": "Search for customers to enroll",
                     "error_loading": "Error loading accounts... :(",
-                    "empty_list": "Your search didn't return any results"
+                    "empty_list": "Your search didn't return any results",
+                    "search_to_find_customers_to_enroll": "Use the search box to find customers to enroll."
                 }
             }
         },
@@ -1255,7 +1255,12 @@
                     "search_results_already_bought": "Already bought this ticket",
                     "toast_add_success": "Added customer",
                     "uncancelled": "Uncancelled",
-                    "cancelled": "Cancelled"
+                    "cancelled": "Cancelled",
+                    "search": {
+                        "title": "__STRING_NOT_TRANSLATED__",
+                        "error_loading": "__STRING_NOT_TRANSLATED__",
+                        "empty_list": "__STRING_NOT_TRANSLATED__"
+                    }
                 },
                 "info_mail_sent": "Info mail sent"
             },
