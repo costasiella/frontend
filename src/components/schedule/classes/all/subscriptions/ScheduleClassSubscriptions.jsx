@@ -161,9 +161,10 @@ function ScheduleClassSubscriptions({t, match, history}) {
                             })
                       }}
                       >
-                      {({ isSubmitting, errors, values, setFieldTouched, setFieldValue, submitForm }) => (
+                      {({ isSubmitting, setSubmitting, errors, values, setFieldTouched, setFieldValue, submitForm }) => (
                         <ScheduleClassSubscriptionForm
                           isSubmitting={isSubmitting}
+                          setSubmitting={setSubmitting}
                           setFieldTouched={setFieldTouched}
                           setFieldValue={setFieldValue}
                           errors={errors}

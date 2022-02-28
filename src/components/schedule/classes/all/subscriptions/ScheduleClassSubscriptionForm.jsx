@@ -13,7 +13,7 @@ import {
 import FormHelp from "../../../../ui/FormHelp"
 
 
-const ScheduleClassSubscriptionForm = ({ t, history, match, isSubmitting, submitForm, errors, values, setFieldTouched, setFieldValue }) => (
+const ScheduleClassSubscriptionForm = ({ t, history, match, isSubmitting, setSubmitting, submitForm, errors, values, setFieldTouched, setFieldValue }) => (
   <FoForm>
     <Dimmer active={isSubmitting} loader={isSubmitting} >
       <Grid.Row>
@@ -31,6 +31,7 @@ const ScheduleClassSubscriptionForm = ({ t, history, match, isSubmitting, submit
                     setFieldValue('attend', true)
                     setFieldTouched('attend', true)
                   }
+                  setSubmitting(true)
                   setTimeout(() => {submitForm()}, 200)
                 }}
                 checked={values.enroll} />
@@ -54,6 +55,7 @@ const ScheduleClassSubscriptionForm = ({ t, history, match, isSubmitting, submit
                     setFieldValue('attend', true)
                     setFieldTouched('attend', true)
                   }
+                  setSubmitting(true)
                   setTimeout(() => {submitForm()}, 200)
                 }}
                 checked={values.shopBook} />
@@ -74,6 +76,7 @@ const ScheduleClassSubscriptionForm = ({ t, history, match, isSubmitting, submit
                 onChange={() => {
                   setFieldValue('attend', !values.attend)
                   setFieldTouched('attend', true)
+                  setSubmitting(true)
                   setTimeout(() => {submitForm()}, 200)
                 }}
                 checked={values.attend} />
