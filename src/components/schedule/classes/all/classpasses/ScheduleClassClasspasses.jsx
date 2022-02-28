@@ -158,9 +158,10 @@ function ScheduleClassClasspasses({ t, match }) {
                           })
                     }}
                     >
-                    {({ isSubmitting, errors, values, setFieldTouched, setFieldValue, submitForm }) => (
+                    {({ isSubmitting, setSubmitting, errors, values, setFieldTouched, setFieldValue, submitForm }) => (
                       <ScheduleClassClasspassForm
                         isSubmitting={isSubmitting}
+                        setSubmitting={setSubmitting}
                         setFieldTouched={setFieldTouched}
                         setFieldValue={setFieldValue}
                         errors={errors}
