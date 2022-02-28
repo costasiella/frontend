@@ -4,10 +4,12 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
+import moment from 'moment';
 
 import {
   Icon,
   Button,
+  Card,
   Table,
 } from "tabler-react";
 
@@ -16,7 +18,7 @@ import { GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 // import ScheduleEventTicketListBase from "./ScheduleEventTicketListBase"
 import ScheduleEventEarlybirdDelete from "./ScheduleEventEarlybirdDelete"
-import moment from 'moment';
+import ButtonAdd from '../../../ui/ButtonAdd';
 
 
 function ScheduleEventEarlybirds({t, match, history}) {
@@ -27,11 +29,10 @@ function ScheduleEventEarlybirds({t, match, history}) {
   const eventId = match.params.event_id
   const activeLink = "earlybirds"
 
-  const sidebarContent = <Link to={`/schedule/events/edit/${eventId}/earlybirds/add`}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.events.earlybirds.add')}
-    </Button>
-  </Link>
+  const pageHeaderOptions = <ButtonAdd 
+    addUrl={`/schedule/events/edit/${eventId}/earlybirds/add`} 
+    className="ml-2"
+  />
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY, {
     variables: {
@@ -40,12 +41,12 @@ function ScheduleEventEarlybirds({t, match, history}) {
   })
   
   if (loading) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       {t("general.loading_with_dots")}
     </ScheduleEventEditListBase>
   )
   if (error) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </ScheduleEventEditListBase>
@@ -59,8 +60,10 @@ function ScheduleEventEarlybirds({t, match, history}) {
 
   // Empty list
   if (!scheduleEventEarlybirds.edges.length) { return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
-      <p>{t('schedule.events.earlybirds.empty_list')}</p>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
+      <Card.Body>
+        <p>{t('schedule.events.earlybirds.empty_list')}</p>
+      </Card.Body>
     </ScheduleEventEditListBase>
   )}
 
@@ -89,14 +92,13 @@ function ScheduleEventEarlybirds({t, match, history}) {
   }
 
   return (
-    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} sidebarContent={sidebarContent}>
-      <Table>
+    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} pageHeaderOptions={pageHeaderOptions}>
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
             <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
             <Table.ColHeader>{t('schedule.events.earlybirds.discountPercentage')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -119,8 +121,6 @@ function ScheduleEventEarlybirds({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <ScheduleEventEarlybirdDelete id={node.id} />
                 </Table.Col>
               </Table.Row>

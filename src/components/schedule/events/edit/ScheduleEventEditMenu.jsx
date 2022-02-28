@@ -38,20 +38,6 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
       </List.GroupItem>
     </HasPermissionWrapper>
     <HasPermissionWrapper 
-        resource="scheduleeventearlybird"
-        permission="view" 
-    >
-      <List.GroupItem
-          key={v4()}
-          className="d-flex align-items-center"
-          to={`#/schedule/events/edit/${eventId}/earlybirds`}
-          icon="clock"
-          active={(activeLink === 'earlybirds')}
-          >
-          {t('schedule.events.earlybirds.title')}
-      </List.GroupItem>
-    </HasPermissionWrapper>
-    <HasPermissionWrapper 
         resource="scheduleevent"
         permission="view" 
     >
@@ -78,6 +64,20 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           >
           {t('schedule.events.media.title')}
       </List.GroupItem>
+      <HasPermissionWrapper 
+        resource="scheduleeventearlybird"
+        permission="view" 
+    >
+      <List.GroupItem
+          key={v4()}
+          className="d-flex align-items-center"
+          to={`#/schedule/events/edit/${eventId}/earlybirds`}
+          icon="clock"
+          active={(activeLink === 'earlybirds')}
+          >
+          {t('schedule.events.earlybirds.title')}
+      </List.GroupItem>
+    </HasPermissionWrapper>
     </HasPermissionWrapper>
   </List.Group>
 );
