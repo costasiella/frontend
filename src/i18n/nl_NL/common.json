@@ -1766,7 +1766,8 @@
                     "search": {
                         "title": "__STRING_NOT_TRANSLATED__",
                         "error_loading": "__STRING_NOT_TRANSLATED__",
-                        "empty_list": "__STRING_NOT_TRANSLATED__"
+                        "empty_list": "__STRING_NOT_TRANSLATED__",
+                        "search_to_find_customers_to_sell_to": "__STRING_NOT_TRANSLATED__"
                     }
                 },
                 "empty_list": "__STRING_NOT_TRANSLATED__",

@@ -1257,9 +1257,10 @@
                     "uncancelled": "Uncancelled",
                     "cancelled": "Cancelled",
                     "search": {
-                        "title": "__STRING_NOT_TRANSLATED__",
-                        "error_loading": "__STRING_NOT_TRANSLATED__",
-                        "empty_list": "__STRING_NOT_TRANSLATED__"
+                        "title": "Sell ticket",
+                        "error_loading": "Error loading customers :(",
+                        "empty_list": "Your search didn't return any results",
+                        "search_to_find_customers_to_sell_to": "Use the search box to find customers to sell this ticket to"
                     }
                 },
                 "info_mail_sent": "Info mail sent"
