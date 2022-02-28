@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import {
+  Alert,
   Icon,
   Button,
   Card,
@@ -47,13 +48,10 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
       placeholder="Search..."
       onChange={(value) => {
         console.log(value)
-        if (value) {
-          // {console.log('showSearch')}
-          // {console.log(showSearch)}
-          setSearchName(value)
-          console.log("Executing refetch")
-          refetch({ variables: getAccountsQueryVariables(ticketId, value)})
-        } 
+        localStorage.setItem(CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH, value)
+        setSearchName(value)
+        console.log("Executing refetch")
+        refetch({ variables: getAccountsQueryVariables(ticketId, value)})
       }}
     />
   </Card.Options>
@@ -91,6 +89,26 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
   // TODO: Add date to page subtitle
   const pageSubTitle = `${ticket.scheduleEvent.name} ${dateStart} - ${ticket.name}`
 
+  // No search name entered
+  if (!searchName) return (
+    <ScheduleEventEditBaseBase 
+      activeLink={activeLink} 
+      pageSubTitle={pageSubTitle}
+      returnUrl={returnUrl}
+    >
+      <ContentCard cardTitle={cardTitle}
+                   hasCardBody={false}
+                   headerContent={headerOptions}
+      >
+        <Card.Body>
+          <Alert type="primary" icon="info">
+            {t('schedule.events.tickets.customers.search.search_to_find_customers_to_sell_to')}
+          </Alert> 
+        </Card.Body>
+      </ContentCard>
+    </ScheduleEventEditBaseBase>
+  )
+
   // Empty list
   if (!accounts.edges.length) return (
     <ScheduleEventEditBaseBase 
@@ -103,7 +121,7 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
                    headerContent={headerOptions}
       >
         <Card.Body>
-          <p>{t('schedule.events.tickets.customers.search.empty_list')}</p>
+          <Alert type="secondary">{t('schedule.events.tickets.customers.search.empty_list')}</Alert>
         </Card.Body>
       </ContentCard>
     </ScheduleEventEditBaseBase>

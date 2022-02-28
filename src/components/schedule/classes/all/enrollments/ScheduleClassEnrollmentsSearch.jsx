@@ -81,7 +81,7 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
   console.log(data)
   const accounts = data.accounts
 
-  // No search list
+  // No search name entered
   if (!searchName) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
@@ -101,7 +101,7 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
     </ClassEditBase>
   )
 
-  // No Search query
+  // Empty list / No search results
   if (!accounts.edges.length) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
