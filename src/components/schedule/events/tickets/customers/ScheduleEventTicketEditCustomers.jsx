@@ -14,7 +14,7 @@ import {
 } from "tabler-react";
 
 import { GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET } from "./queries"
-
+import CSLS from '../../../../../tools/cs_local_storage'
 import BadgeBoolean from "../../../../ui/BadgeBoolean"
 import ScheduleEventTicketEditBase from "../ScheduleEventTicketEditBase"
 import ButtonAdd from '../../../../ui/ButtonAdd'
@@ -37,6 +37,9 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
   const [updateAccountScheduleEventTicket] = useMutation(UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET)
   // const [updateScheduleEventTicketScheduleItem] = useMutation(UPDATE_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEM)
 
+  // set returnURL for invoice links
+  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, 
+    `/schedule/events/edit/${eventId}/tickets/edit/${id}/customers`)
 
   if (loading) return (
     <ScheduleEventTicketEditBase 
