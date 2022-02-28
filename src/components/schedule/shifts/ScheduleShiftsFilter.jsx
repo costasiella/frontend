@@ -3,7 +3,7 @@ import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import {
-  Button,
+  Button, Grid,
 } from "tabler-react";
 
 import CSLS from "../../../tools/cs_local_storage"
@@ -35,57 +35,67 @@ function ScheduleShiftsFilter({ t, history, data, refetch }) {
 
   return (
     <React.Fragment>
-        <Button
-          className="float-right"
-          color="link"
-          size="sm"
-          onClick={() => {
-            localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_LOCATION, "")
-            localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_SHIFT, "")
-            setLocation("")
-            setShift("")
-            refetch(get_list_query_variables())
-          }}
-        >
-          {t("general.clear")}
-        </Button>
-      <h5 className="mt-2 pt-1">{t("general.filter")}</h5>
-      {/* Locations */}
-      <select 
-        className={selectClass}
-        value={location}
-        onChange={ (event) => {
-          setLocation(event.target.value)
-          updateLocalStorageAndRefetch(
-            CSLS.SCHEDULE_SHIFTS_FILTER_LOCATION,
-            event.target.value,
-            refetch
-          )
-        }}
-      >
-        <option value="" key={v4()}>{t("schedule.shifts.filter_all_locations")}</option>
-        {data.organizationLocations.edges.map(({ node }) =>
-          <option value={node.id} key={v4()}>{node.name}</option>
-        )}
-      </select>
-      {/* Shifts */}
-      <select 
-        className={selectClass}
-        value={shift}
-        onChange={ (event) => {
-          setShift(event.target.value)
-          updateLocalStorageAndRefetch(
-            CSLS.SCHEDULE_SHIFTS_FILTER_SHIFT,
-            event.target.value,
-            refetch
-          )
-        }}
-      >
-        <option value="" key={v4()}>{t("schedule.shifts.filter_all_shifts")}</option>
-        {data.organizationShifts.edges.map(({ node }) =>
-          <option value={node.id} key={v4()}>{node.name}</option>
-        )}
-      </select>
+      <Grid.Row>
+        <Grid.Col md={12}>
+          <Button
+            className="float-right"
+            color="link"
+            size="sm"
+            onClick={() => {
+              localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_LOCATION, "")
+              localStorage.setItem(CSLS.SCHEDULE_SHIFTS_FILTER_SHIFT, "")
+              setLocation("")
+              setShift("")
+              refetch(get_list_query_variables())
+            }}
+          >
+            {t("general.clear")}
+          </Button>
+          <h6 className="mt-2 pt-1">{t("general.filter")}</h6 >
+        </Grid.Col>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Col>
+          {/* Locations */}
+          <select 
+            className={selectClass}
+            value={location}
+            onChange={ (event) => {
+              setLocation(event.target.value)
+              updateLocalStorageAndRefetch(
+                CSLS.SCHEDULE_SHIFTS_FILTER_LOCATION,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("schedule.shifts.filter_all_locations")}</option>
+            {data.organizationLocations.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.name}</option>
+            )}
+          </select>
+        </Grid.Col>
+        <Grid.Col>
+          {/* Shifts */}
+          <select 
+            className={selectClass}
+            value={shift}
+            onChange={ (event) => {
+              setShift(event.target.value)
+              updateLocalStorageAndRefetch(
+                CSLS.SCHEDULE_SHIFTS_FILTER_SHIFT,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("schedule.shifts.filter_all_shifts")}</option>
+            {data.organizationShifts.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.name}</option>
+            )}
+          </select>
+        </Grid.Col>
+      </Grid.Row>
     </React.Fragment>
   )
 }
