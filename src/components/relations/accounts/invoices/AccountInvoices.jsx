@@ -115,7 +115,6 @@ function AccountInvoices({ t, location, match, history }) {
               <Table.ColHeader>{t('general.total')}</Table.ColHeader>
               <Table.ColHeader>{t('general.balance')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -144,8 +143,6 @@ function AccountInvoices({ t, location, match, history }) {
                             color="secondary">
                       {t('general.edit')}
                     </Button>
-                  </Table.Col>
-                  <Table.Col className="text-right" key={v4()}>
                     <button className="icon btn btn-link btn-sm" 
                       title={t('general.delete')} 
                       href=""
