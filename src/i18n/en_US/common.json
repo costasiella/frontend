@@ -1134,7 +1134,8 @@
                     "delete_confirm_msg": "Are you sure you wish to remove this customer from the attendance list?",
                     "delete_success": "Customer removed from list",
                     "search_result_empty": "No customers found matching your search",
-                    "search_results_already_checked_in": "Already checked-in"
+                    "search_results_already_checked_in": "Already checked-in",
+                    "empty_list": "No attendance registered yet"
                 },
                 "book": {
                     "toast_success": "Check-in success",

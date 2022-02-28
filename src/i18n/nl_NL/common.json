@@ -1632,7 +1632,8 @@
                         "BOOKED": "__STRING_NOT_TRANSLATED__",
                         "CANCELLED": "__STRING_NOT_TRANSLATED__",
                         "invalid_type": "__STRING_NOT_TRANSLATED__"
-                    }
+                    },
+                    "empty_list": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"

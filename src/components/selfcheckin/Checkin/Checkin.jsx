@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 
 import {
   Button,
+  Card,
   Dropdown,
   Icon,
   Table
@@ -108,6 +109,7 @@ function SelfCheckinCheckin({ t, match, history }) {
   return (
     <SelfCheckinBase title={t("selfcheckin.classes.title")} subTitle={subTitle}>
       <ContentCard cardTitle={t('general.attendance')}
+                   hasCardBody={false}
                     pageInfo={queryAttendanceData.scheduleItemAttendances.pageInfo}
                     onLoadMore={() => {
                       fetchMoreAccounts({
@@ -134,7 +136,9 @@ function SelfCheckinCheckin({ t, match, history }) {
                       }
                     })
         }} >
-          <Table>
+        { (!queryAttendanceData.scheduleItemAttendances.edges.length) ? 
+            <Card.Body>{t('schedule.classes.class.attendance.empty_list')}</Card.Body> : 
+          <Table cards>
             <Table.Header>
               <Table.Row key={v4()}>
                 <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -237,6 +241,7 @@ function SelfCheckinCheckin({ t, match, history }) {
                 ))}
             </Table.Body>
           </Table>
+      }
       </ContentCard>
       <h3>{t("selfcheckin.checkin.title_not_on_list")}</h3>
       <InputSearch 
@@ -259,6 +264,7 @@ function SelfCheckinCheckin({ t, match, history }) {
       {(showSearch && (queryAccountsData) && (!queryAccountsLoading) && (!queryAccountsError)) ?
         <ContentCard cardTitle={t('general.search_results')}
                     pageInfo={queryAccountsData.accounts.pageInfo}
+                    hasCardBody={false}
                     onLoadMore={() => {
                       fetchMoreAccounts({
                         variables: {
@@ -285,8 +291,8 @@ function SelfCheckinCheckin({ t, match, history }) {
                     })
                   }} >
           { (!queryAccountsData.accounts.edges.length) ? 
-            t('schedule.classes.class.attendance.search_result_empty') : 
-            <Table>
+            <Card.Body>{t('schedule.classes.class.attendance.search_result_empty')}</Card.Body> : 
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.name')}</Table.ColHeader>
