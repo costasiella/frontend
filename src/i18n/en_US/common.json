@@ -282,7 +282,7 @@
         "groups": "Groups",
         "public": "Public",
         "shop": "Shop",
-        "custom_file_input_inner_label": "Choose file...",
+        "custom_file_input_inner_label": "Click Browse to choose a file...",
         "custom_file_input_label": "Select a file",
         "yes": "Yes",
         "no": "No",
