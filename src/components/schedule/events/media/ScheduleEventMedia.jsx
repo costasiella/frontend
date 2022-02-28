@@ -7,7 +7,6 @@ import { v4 } from 'uuid'
 
 import {
   Avatar,
-  Icon,
   Button,
   Table,
   Card,

@@ -3,7 +3,6 @@ import { useQuery, useMutation } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import moment from 'moment'
 

@@ -1,6 +1,3 @@
-import CSLS from "../../../../../tools/cs_local_storage"
-
-
 export function getAccountsQueryVariables(ticketId, searchName) {
   let queryVars = {
     instructor: undefined,

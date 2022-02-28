@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 import {
   Badge,
   Button,
-  Card,
   Table,
 } from "tabler-react";
 
