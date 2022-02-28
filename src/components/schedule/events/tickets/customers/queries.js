@@ -19,6 +19,17 @@ query AccountScheduleEventTickets($before:String, $after:String, $scheduleEventT
         cancelled
         paymentConfirmation
         infoMailSent
+        invoiceItems {
+          edges {
+            node {
+              financeInvoice {
+                id
+                invoiceNumber
+                summary
+              }
+            }
+          }
+        }
       }
     }
   }

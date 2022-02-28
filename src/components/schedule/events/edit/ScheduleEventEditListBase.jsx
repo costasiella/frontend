@@ -74,6 +74,7 @@ return (
       cardTitle={<span>{cardTitle} {cardSubTitle}</span>}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}
+      hasCardBody={false}
     >
       {children}
     </ContentCard>
