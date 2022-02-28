@@ -25,7 +25,7 @@ function ScheduleItemWeeklyOTCDelete({t, match, history}) {
   }
 
   return (
-    <button className="icon btn-block btn btn-danger mb-3" 
+    <button className="icon btn-block btn btn-danger ml-2" 
       title={t('general.delete')} 
       href=""
       onClick={() => {
