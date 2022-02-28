@@ -88,6 +88,7 @@ function ScheduleEventActivityAttendanceBase({t, match, history, activeTab, onLo
       <ContentCard 
         cardTitle={<span>{cardTitle} {cardSubTitle} {cardActivitySubtitle}</span>}
         cardTabs={<ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>}
+        hasCardBody={false}
         pageInfo={pageInfo}
         onLoadMore={onLoadMore}
       >

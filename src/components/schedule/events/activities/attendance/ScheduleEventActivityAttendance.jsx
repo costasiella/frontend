@@ -96,7 +96,7 @@ function ScheduleEventActivityAttendance({ t, history, match }) {
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}
     >
-      <Table>
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.name')}</Table.ColHeader>

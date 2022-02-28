@@ -33,7 +33,8 @@ function ScheduleItems({t, match, history}) {
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_ACTIVITIES_QUERY, {
     variables: {
       scheduleEvent: eventId
-    }
+    },
+    fetchPolicy: "network-only"
   })
   
   if (loading) return (
