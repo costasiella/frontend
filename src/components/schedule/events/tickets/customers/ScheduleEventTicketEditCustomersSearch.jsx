@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react'
-import { useQuery } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import moment from 'moment'
 
 import {
   Alert,
+  Badge,
   Icon,
   Button,
   Card,
@@ -21,7 +23,7 @@ import AppSettingsContext from '../../../../context/AppSettingsContext'
 import ScheduleEventEditBaseBase from '../../edit/ScheduleEventEditBaseBase'
 import ContentCard from "../../../../general/ContentCard"
 import InputSearch from "../../../../general/InputSearch"
-import { GET_ACCOUNTS_QUERY } from "./queries"
+import { GET_ACCOUNTS_QUERY, ADD_ACCOUNT_SCHEDULE_EVENT_TICKET, GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY } from "./queries"
 
 
 function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
@@ -35,12 +37,12 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
   const activeLink = 'tickets'
   const cardTitle = t('schedule.events.tickets.customers.search.title')
 
-  
   const { loading, error, data, refetch, fetchMore } = useQuery(
     GET_ACCOUNTS_QUERY, {
       variables: getAccountsQueryVariables(ticketId, searchName)
     }
   )
+  const [ addAccountScheduleEventTicket ] = useMutation(ADD_ACCOUNT_SCHEDULE_EVENT_TICKET)
 
   const headerOptions = <Card.Options>
     <InputSearch 
@@ -85,9 +87,15 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
   const accounts = data.accounts
   const ticket = data.scheduleEventTicket
   const event = ticket.scheduleEvent
+  const accountScheduleEventTickets = data.accountScheduleEventTickets
   const dateStart = moment(event.dateStart).format(dateFormat)
   // TODO: Add date to page subtitle
   const pageSubTitle = `${ticket.scheduleEvent.name} ${dateStart} - ${ticket.name}`
+  let accountIdsWithTickets = []
+  accountScheduleEventTickets.edges.map(({ node }) => (
+    accountIdsWithTickets.push(node.account.id)
+  ))
+  console.log(accountIdsWithTickets)
 
   // No search name entered
   if (!searchName) return (
@@ -183,12 +191,39 @@ function ScheduleEventTicketEditCustomersSearch({ t, match, history }) {
                   {node.email}
                 </Table.Col>
                 <Table.Col className="text-right" key={v4()}>
-                  Sell &gt;
-                  {/* <Link to={`/schedule/classes/all/enrollments/${scheduleItemId}/options/${node.id}`}>
-                    <Button color="secondary">
-                      {t("general.enroll")} <Icon name="chevron-right" />
+                  {(accountIdsWithTickets.includes(node.id)) ? 
+                    <Badge color="success" className="pull-right">{t("schedule.events.tickets.customers.search_results_already_bought")}</Badge> :
+                    <Button a
+                      color="primary"
+                      outline
+                      onClick={() =>
+                        addAccountScheduleEventTicket({ variables: {
+                          input: {
+                            account: node.id,
+                            scheduleEventTicket: ticketId
+                          }                            
+                        }, refetchQueries: [
+                            {query: GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, variables: {
+                              scheduleEventTicket: ticketId
+                            }},
+                        ]})
+                        .then(({ data }) => {
+                            console.log('got data', data);
+                            history.push(returnUrl)
+                            toast.success((`${t('schedule.events.tickets.customers.toast_add_success')} ${node.fullName}`), {
+                                position: toast.POSITION.BOTTOM_RIGHT
+                              })
+                          }).catch((error) => {
+                            toast.error((t('general.toast_server_error')) +  error, {
+                                position: toast.POSITION.BOTTOM_RIGHT
+                              })
+                            console.log('there was an error sending the query', error)
+                          })
+                      }
+                    >
+                      {t("general.sell")} <Icon name="chevron-right" />
                     </Button>
-                  </Link> */}
+                  }
                 </Table.Col>
               </Table.Row>
             ))}

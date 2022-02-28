@@ -499,7 +499,8 @@
         "reset_filter": "Reset filter",
         "run_task": "Run task",
         "using": "using",
-        "ended": "Ended"
+        "ended": "Ended",
+        "sell": "Sell"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1252,8 +1253,8 @@
                     "toast_edit_success": "Saved"
                 },
                 "customers": {
-                    "search_results_already_bought": "Already bought this ticket",
-                    "toast_add_success": "Added customer",
+                    "search_results_already_bought": "Has this ticket",
+                    "toast_add_success": "Sold ticket to",
                     "uncancelled": "Uncancelled",
                     "cancelled": "Cancelled",
                     "search": {

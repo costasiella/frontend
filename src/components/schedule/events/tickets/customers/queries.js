@@ -67,6 +67,26 @@ export const GET_ACCOUNTS_QUERY = gql`
         dateStart
       }
     }
+    accountScheduleEventTickets(first: 1000, scheduleEventTicket: $ticketId) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          account {
+            id
+            fullName
+          }
+          cancelled
+          paymentConfirmation
+          infoMailSent
+        }
+      }
+    }
   }
 `
 
@@ -135,6 +155,18 @@ export const GET_ACCOUNTS_QUERY = gql`
 //   }
 // }
 // `
+
+
+export const ADD_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
+mutation CreateAccountScheduleEventTicket($input:CreateAccountScheduleEventTicketInput!) {
+  createAccountScheduleEventTicket(input: $input) {
+    accountScheduleEventTicket {
+      id
+    }
+  }
+}
+`
+
 
 export const UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
   mutation UpdateAccountScheduleEventTicket($input:UpdateAccountScheduleEventTicketInput!) {

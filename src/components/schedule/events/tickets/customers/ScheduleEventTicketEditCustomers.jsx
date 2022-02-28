@@ -25,19 +25,8 @@ import ScheduleEventTicketBack from "../ScheduleEventTicketBack"
 import ScheduleEventTicketEditBase from "../ScheduleEventTicketEditBase"
 // import ScheduleEventTicketEditActivityForm from "./ScheduleEventTicketEditActivityForm"
 
-import CSLS from "../../../../../tools/cs_local_storage"
 import ButtonAdd from '../../../../ui/ButtonAdd'
 
-
-const ADD_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
-mutation CreateAccountScheduleEventTicket($input:CreateAccountScheduleEventTicketInput!) {
-  createAccountScheduleEventTicket(input: $input) {
-    accountScheduleEventTicket {
-      id
-    }
-  }
-}
-`
 
 
 function ScheduleEventTicketEditCustomers({ t, history, match }) {
@@ -54,7 +43,6 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
     }
   })
 
-  const [addAccountScheduleEventTicket] = useMutation(ADD_ACCOUNT_SCHEDULE_EVENT_TICKET)
   const [updateAccountScheduleEventTicket] = useMutation(UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET)
   // const [updateScheduleEventTicketScheduleItem] = useMutation(UPDATE_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEM)
 
@@ -170,7 +158,7 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
                   {node.email}
                 </Table.Col>
                 <Table.Col key={v4()}>
-                  {(accountIdsWithTickets.includes(node.id)) ? 
+                  {/* {(accountIdsWithTickets.includes(node.id)) ? 
                     <span className="pull-right">{t("schedule.events.tickets.customers.search_results_already_bought")}</span> :
                     <Button 
                       onClick={() =>
@@ -200,12 +188,7 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
                       }
                     >
                       {t("general.add")}
-                    </Button>
-                    // <Link to={"/schedule/classes/class/book/" + schedule_item_id + "/" + class_date + "/" + node.id}>
-                    //   <Button color="secondary pull-right">
-                    //     {t('general.checkin')} <Icon name="chevron-right" />
-                    //   </Button>
-                    // </Link>       
+                    </Button>   */}
                   }   
                 </Table.Col>
               </Table.Row>
