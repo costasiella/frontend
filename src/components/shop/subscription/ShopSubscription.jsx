@@ -18,7 +18,7 @@ import ShopSubscriptionPricingCard from "./ShopSubscriptionPricingCard"
 import { GET_SUBSCRIPTION_QUERY } from "./queries"
 
 function ShopSubscription({ t, match, history }) {
-  const title = t("shop.home.title")
+  const pageTitle = t("general.subscription")
   const id = match.params.id
 
   // fetchPolicy network-only prevents caching. Need fresh results when coming back after setting bank account.
@@ -28,21 +28,19 @@ function ShopSubscription({ t, match, history }) {
   })
 
   if (loading) return (
-    <ShopSubscriptionBase title={title} >
+    <ShopSubscriptionBase pageTitle={pageTitle} >
       {t("general.loading_with_dots")}
     </ShopSubscriptionBase>
   )
   if (error) return (
-    <ShopSubscriptionBase title={title}>
+    <ShopSubscriptionBase pageTitle={pageTitle}>
       {t("shop.subscription.error_loading")}
     </ShopSubscriptionBase>
   )
 
-  console.log(data)
   const subscription = data.organizationSubscription
   const account = data.user
-  console.log(subscription)
-  console.log(account)
+  const pageSubTitle = subscription.name
 
   let CheckoutCard
 
@@ -64,13 +62,13 @@ function ShopSubscription({ t, match, history }) {
 
 
   return (
-    <ShopSubscriptionBase title={title}>
+    <ShopSubscriptionBase pageTitle={pageTitle} pageSubTitle={pageSubTitle}>
       <Grid.Row>
         <Grid.Col xs={12} sm={12} md={4}>
           <ShopSubscriptionPricingCard subscription={subscription} active={true} displayCheckoutInfo={true} />
         </Grid.Col>
         <Grid.Col xs={12} sm={12} md={4}>
-          <Card title={t("shop.subscription.additional_information")}>
+          <Card pageTitle={t("shop.subscription.additional_information")}>
             <Card.Body>
               <div dangerouslySetInnerHTML={{__html:subscription.description}}></div>
             </Card.Body>
