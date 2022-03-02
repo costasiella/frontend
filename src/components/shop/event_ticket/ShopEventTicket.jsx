@@ -23,7 +23,8 @@ function ShopEventTicket({ t, match, history }) {
   const eventId = match.params.event_id
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_TICKET_QUERY, {
-    variables: { id: scheduleEventTicketId }
+    variables: { id: scheduleEventTicketId },
+    fetchPolicy: "network-only"
   })
 
   const [createOrder] = useMutation(CREATE_ORDER)
