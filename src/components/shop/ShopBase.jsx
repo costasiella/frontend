@@ -1,19 +1,17 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
 import {
   Page,
   Grid,
-  Icon,
   Container,
 } from "tabler-react";
 import SiteWrapperShop from "../SiteWrapperShop"
 import ShopCheckoutProgress from "./ShopCheckoutProgress"
+import ButtonBack from '../ui/ButtonBack';
 
-
-function ShopBase({ t, match, history, children, title, return_url, pageHeaderOptions="", checkoutProgress=false }) {
+function ShopBase({ t, match, history, children, title, returnUrl, pageHeaderOptions="", checkoutProgress=false }) {
 
   return (
     <SiteWrapperShop>
@@ -22,13 +20,7 @@ function ShopBase({ t, match, history, children, title, return_url, pageHeaderOp
           <Page.Header title={title}>
             <div className="page-options d-flex">
               {/* Back */}
-              {(return_url) ?
-                <Link to={return_url} 
-                      className='btn btn-secondary mr-2'>
-                    <Icon prefix="fe" name="arrow-left" /> {t('general.back')} 
-                </Link>
-                : ""
-              }
+              { (returnUrl) ? <ButtonBack returnUrl={returnUrl} /> : "" }
               { pageHeaderOptions }
             </div>
           </Page.Header>

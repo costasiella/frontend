@@ -15,7 +15,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../../plugin_config/tinymce"
 import CSTimePicker from "../../../../ui/CSTimePicker"
 
-const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, return_url }) => (
+const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, returnUrl }) => (
     <FoForm>
       <Card.Body>
         <Grid.Row>
@@ -215,7 +215,7 @@ const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
         >
         {t('general.submit')}
         </Button>
-        <Button color="link" onClick={() => history.push(return_url)}>
+        <Button color="link" onClick={() => history.push(returnUrl)}>
             {t('general.cancel')}
         </Button>
       </Card.Footer>

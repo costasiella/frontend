@@ -16,7 +16,7 @@ import {
 } from "tabler-react"
 
 
-const OrganizationAppointmentForm = ({ t, history, match, inputData, isSubmitting, errors, values, return_url }) => (
+const OrganizationAppointmentForm = ({ t, history, match, inputData, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group>
@@ -77,7 +77,7 @@ const OrganizationAppointmentForm = ({ t, history, match, inputData, isSubmittin
           >
             {t('general.submit')}
           </Button>
-          <Link to={return_url}>
+          <Link to={returnUrl}>
             <Button color="link" type="button">
                 {t('general.cancel')}
             </Button>

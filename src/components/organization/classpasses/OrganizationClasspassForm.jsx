@@ -26,7 +26,7 @@ class OrganizationClasspassForm extends Component {
   render() {
     const t = this.props.t
     const history = this.props.history
-    const return_url = "/organization/classpasses"
+    const returnUrl = "/organization/classpasses"
     const initialData = this.props.initialData
     const isSubmitting = this.props.isSubmitting
     const setFieldValue = this.props.setFieldValue
@@ -233,7 +233,7 @@ class OrganizationClasspassForm extends Component {
                 <Button
                 type="button" 
                 color="link" 
-                onClick={() => history.push(return_url)}
+                onClick={() => history.push(returnUrl)}
                 >
                     {t('general.cancel')}
                 </Button>

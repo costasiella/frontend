@@ -16,26 +16,23 @@ import { GET_ORGANIZATION_SUBSCRIPTIONS_QUERY } from "./queries"
 
 
 function ShopSubscriptions({ t, match, history }) {
-  const title = t("shop.home.title")
   const { loading, error, data } = useQuery(GET_ORGANIZATION_SUBSCRIPTIONS_QUERY)
 
   if (loading) return (
-    <ShopSubscriptionsBase title={title} >
+    <ShopSubscriptionsBase>
       {t("general.loading_with_dots")}
     </ShopSubscriptionsBase>
   )
   if (error) return (
-    <ShopSubscriptionsBase title={title}>
+    <ShopSubscriptionsBase>
       {t("shop.subscriptions.error_loading")}
     </ShopSubscriptionsBase>
   )
 
-  console.log(data)
   const subscriptions = data.organizationSubscriptions
-  console.log(subscriptions)
 
   return (
-    <ShopSubscriptionsBase title={title}>
+    <ShopSubscriptionsBase>
         <Grid.Row>
           {subscriptions.edges.map(({ node }) => (
             <Grid.Col xs={12} sm={12} md={3}>

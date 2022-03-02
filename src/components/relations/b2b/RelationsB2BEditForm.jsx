@@ -14,7 +14,7 @@ import {
 import ISO_COUNTRY_CODES from "../../../tools/iso_country_codes"
 
 
-function RelationsB2BEditForm({ t, history, isSubmitting, errors, values, return_url, setFieldTouched, setFieldValue }) {
+function RelationsB2BEditForm({ t, history, isSubmitting, errors, values, returnUrl, setFieldTouched, setFieldValue }) {
   return (
     <FoForm>
       <Card.Body>
@@ -145,7 +145,7 @@ function RelationsB2BEditForm({ t, history, isSubmitting, errors, values, return
             {t('general.submit')}
           </Button>
           
-          {/* <Button color="link" onClick={() => history.push(return_url)}>
+          {/* <Button color="link" onClick={() => history.push(returnUrl)}>
               {t('general.cancel')}
           </Button> */}
       </Card.Footer>

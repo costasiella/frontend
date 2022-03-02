@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsWorkflowClassBookingForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsWorkflowClassBookingForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.workflow.class_booking.book_days_advance')}>
@@ -39,7 +39,7 @@ const SettingsWorkflowClassBookingForm = ({ t, history, isSubmitting, errors, va
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

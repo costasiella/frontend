@@ -56,7 +56,7 @@ class ScheduleAppointmentEditAll extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.appointment_id
-    const return_url = "/schedule/appointments"
+    const returnUrl = "/schedule/appointments"
 
     return (
       <SiteWrapper>
@@ -91,7 +91,7 @@ class ScheduleAppointmentEditAll extends Component {
                 <AppointmentEditBase 
                   menu_activeLink="edit"
                 >
-                  <Mutation mutation={UPDATE_APPOINTMENT} onCompleted={() => history.push(return_url)}> 
+                  <Mutation mutation={UPDATE_APPOINTMENT} onCompleted={() => history.push(returnUrl)}> 
                   {(updateScheduleAppointment, { data }) => (
                     <Formik
                       initialValues={{ 
@@ -158,7 +158,7 @@ class ScheduleAppointmentEditAll extends Component {
                           errors={errors}
                           values={values}
                           touched={touched}
-                          return_url={return_url}
+                          returnUrl={returnUrl}
                         >
                           {console.log('########## v & e')}
                           {console.log(values)}

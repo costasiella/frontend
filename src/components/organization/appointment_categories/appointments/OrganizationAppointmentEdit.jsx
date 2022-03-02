@@ -47,7 +47,7 @@ class OrganizationAppointmentEdit extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.id
-    const return_url = "/organization/appointment_categories/" + match.params.category_id + "/appointments"
+    const returnUrl = "/organization/appointment_categories/" + match.params.category_id + "/appointments"
 
     return (
       <SiteWrapper>
@@ -88,7 +88,7 @@ class OrganizationAppointmentEdit extends Component {
 
                     return (
                       
-                      <Mutation mutation={UPDATE_APPOINTMENT} onCompleted={() => history.push(return_url)}> 
+                      <Mutation mutation={UPDATE_APPOINTMENT} onCompleted={() => history.push(returnUrl)}> 
                       {(updateLocation, { data }) => (
                           <Formik
                               initialValues={{ 
@@ -134,7 +134,7 @@ class OrganizationAppointmentEdit extends Component {
                                   isSubmitting={isSubmitting}
                                   errors={errors}
                                   values={values}
-                                  return_url={return_url}
+                                  returnUrl={returnUrl}
                                 />
                               )}
                           </Formik>
@@ -148,7 +148,7 @@ class OrganizationAppointmentEdit extends Component {
                 <HasPermissionWrapper permission="change"
                                       resource="organizationappointment">
                   <Button color="primary btn-block mb-6"
-                          onClick={() => history.push(return_url)}>
+                          onClick={() => history.push(returnUrl)}>
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>

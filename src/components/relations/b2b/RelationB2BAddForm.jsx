@@ -14,7 +14,7 @@ import {
 } from "tabler-react"
 
 
-const RelationsB2BAddFrom = ({ t, history, isSubmitting, errors, return_url }) => (
+const RelationsB2BAddFrom = ({ t, history, isSubmitting, errors, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Grid.Row>
@@ -38,7 +38,7 @@ const RelationsB2BAddFrom = ({ t, history, isSubmitting, errors, return_url }) =
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(return_url)}>
+          <Button color="link" onClick={() => history.push(returnUrl)}>
               {t('general.cancel')}
           </Button>
       </Card.Footer>

@@ -39,7 +39,7 @@ const ADD_APPOINTMENT = gql`
   }
 `
 
-const return_url = "/organization/appointment_categories/appointments/"
+const returnUrl = "/organization/appointment_categories/appointments/"
 
 const OrganizationAppointmentAdd = ({ t, history, match }) => (
   <SiteWrapper>
@@ -105,7 +105,7 @@ const OrganizationAppointmentAdd = ({ t, history, match }) => (
                                   isSubmitting={isSubmitting}
                                   errors={errors}
                                   values={values}
-                                  return_url={"/organization/appointment_categories/" + match.params.category_id + "/appointments"}
+                                  returnUrl={"/organization/appointment_categories/" + match.params.category_id + "/appointments"}
                                   />
                               )}
                           </Formik>
@@ -119,7 +119,7 @@ const OrganizationAppointmentAdd = ({ t, history, match }) => (
             <HasPermissionWrapper permission="add"
                                   resource="organizationappointment">
               <Button color="primary btn-block mb-6"
-                      onClick={() => history.push(return_url + match.params.category_id)}>
+                      onClick={() => history.push(returnUrl + match.params.category_id)}>
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>

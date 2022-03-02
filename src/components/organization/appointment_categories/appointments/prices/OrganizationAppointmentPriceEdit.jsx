@@ -60,7 +60,7 @@ class OrganizationAppointmentPriceEdit extends Component {
     const id = match.params.id
     const appointment_id = match.params.appointment_id
     const category_id = match.params.category_id
-    const return_url = "/organization/appointment_categories/" + category_id + "/appointments/prices/" + appointment_id
+    const returnUrl = "/organization/appointment_categories/" + category_id + "/appointments/prices/" + appointment_id
 
     return (
       <SiteWrapper>
@@ -101,7 +101,7 @@ class OrganizationAppointmentPriceEdit extends Component {
 
                     return (
                       
-                      <Mutation mutation={UPDATE_APPOINTMENT_PRICE} onCompleted={() => history.push(return_url)}> 
+                      <Mutation mutation={UPDATE_APPOINTMENT_PRICE} onCompleted={() => history.push(returnUrl)}> 
                       {(updateLocation, { data }) => (
                           <Formik
                               initialValues={{ 
@@ -145,7 +145,7 @@ class OrganizationAppointmentPriceEdit extends Component {
                                   isSubmitting={isSubmitting}
                                   errors={errors}
                                   values={values}
-                                  return_url={return_url}
+                                  returnUrl={returnUrl}
                                 />
                               )}
                           </Formik>
@@ -159,7 +159,7 @@ class OrganizationAppointmentPriceEdit extends Component {
                 <HasPermissionWrapper permission="change"
                                       resource="organizationappointmentprice">
                   <Button color="primary btn-block mb-6"
-                          onClick={() => history.push(return_url)}>
+                          onClick={() => history.push(returnUrl)}>
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>

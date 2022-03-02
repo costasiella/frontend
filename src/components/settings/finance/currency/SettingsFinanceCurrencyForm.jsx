@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsFinanceCurrencyForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsFinanceCurrencyForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.finance.currency')}>
@@ -39,7 +39,7 @@ const SettingsFinanceCurrencyForm = ({ t, history, isSubmitting, errors, values,
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

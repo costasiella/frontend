@@ -12,7 +12,7 @@ import {
 } from "tabler-react";
 
 
-const AccountInvoiceAddForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, return_url }) => (
+const AccountInvoiceAddForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
   <FoForm>
     <Card.Body>
       <Form.Group label={t('general.finance_invoice_group')}>
@@ -44,7 +44,7 @@ const AccountInvoiceAddForm = ({ t, history, inputData, isSubmitting, setFieldVa
         >
           {t('general.submit')}
         </Button>
-        <Link to={return_url}>
+        <Link to={returnUrl}>
           <Button
             type="button" 
             color="link" 

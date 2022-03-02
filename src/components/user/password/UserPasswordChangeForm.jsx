@@ -9,7 +9,7 @@ import {
 } from "tabler-react"
 
 
-const UserPasswordChangeForm = ({ t, history, isSubmitting, errors, values, return_url, setFieldTouched, setFieldValue }) => (
+const UserPasswordChangeForm = ({ t, history, isSubmitting, errors, values, returnUrl, setFieldTouched, setFieldValue }) => (
   <FoForm className="card" autoComplete="off">
     <Card.Body className="p-6">
       <Card.Title>

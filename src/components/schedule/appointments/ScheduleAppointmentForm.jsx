@@ -16,7 +16,7 @@ import { tinymceBasicConf } from "../../../plugin_config/tinymce"
 import CSDatePicker from "../../ui/CSDatePicker"
 import CSTimePicker from "../../ui/CSTimePicker"
 
-const ScheduleAppointmentForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, return_url }) => (
+const ScheduleAppointmentForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, returnUrl }) => (
     <FoForm>
       <Card.Body>
         <Form.Group>
@@ -167,7 +167,7 @@ const ScheduleAppointmentForm = ({ t, history, inputData, isSubmitting, setField
         >
           {t('general.submit')}
         </Button>
-        <Button color="link" onClick={() => history.push(return_url)}>
+        <Button color="link" onClick={() => history.push(returnUrl)}>
             {t('general.cancel')}
         </Button>
       </Card.Footer>

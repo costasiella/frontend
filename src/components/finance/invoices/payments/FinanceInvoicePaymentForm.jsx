@@ -17,7 +17,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 import CSDatePicker from "../../../ui/CSDatePicker"
 
-const FinanceInvoicePaymentForm = ({ t, history, match, isSubmitting, errors, values, inputData, return_url, setFieldTouched, setFieldValue }) => (
+const FinanceInvoicePaymentForm = ({ t, history, match, isSubmitting, errors, values, inputData, returnUrl, setFieldTouched, setFieldValue }) => (
   <FoForm>
     <Card statusColor="blue">
       <Card.Header>
@@ -90,7 +90,7 @@ const FinanceInvoicePaymentForm = ({ t, history, match, isSubmitting, errors, va
           >
             {t('general.submit')}
           </Button>
-          <Button color="link" onClick={() => history.push(return_url)} role="button">
+          <Button color="link" onClick={() => history.push(returnUrl)} role="button">
               {t('general.cancel')}
           </Button>
       </Card.Footer>

@@ -11,7 +11,7 @@ function ShopClasspassBase({ t, match, history, children }) {
   return (
     <ShopBase 
       title={t("shop.title")}
-      return_url="/shop/classpasses"
+      returnUrl="/shop/classpasses"
       checkoutProgress="order"
     >
       {children}

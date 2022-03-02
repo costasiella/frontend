@@ -51,9 +51,9 @@ function FinanceInvoiceEdit({t, match, history}) {
 
   console.log(data)
   // Fetch back location from localStorage, if no value set, default back to /finance/invoices
-  let return_url = localStorage.getItem(CSLS.FINANCE_INVOICES_EDIT_RETURN)
-  if (!return_url) {
-    return_url = "/finance/invoices"
+  let returnUrl = localStorage.getItem(CSLS.FINANCE_INVOICES_EDIT_RETURN)
+  if (!returnUrl) {
+    returnUrl = "/finance/invoices"
   }
   const export_url = "/d/export/invoice/pdf/" + id
   const payment_add_url = `/finance/invoices/${id}/payment/add`
@@ -63,7 +63,7 @@ function FinanceInvoiceEdit({t, match, history}) {
       <Page.Header title={t('finance.invoice.title') + ' #' + data.financeInvoice.invoiceNumber}>
         <div className="page-options d-flex">
           {/* Back */}
-          <Link to={return_url} 
+          <Link to={returnUrl} 
                 className='btn btn-secondary mr-2'>
               <Icon prefix="fe" name="arrow-left" /> {t('general.back')} 
           </Link>

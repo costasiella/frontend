@@ -14,7 +14,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsGeneralDateTimeForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsGeneralDateTimeForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.general.date_format')}>
@@ -47,7 +47,7 @@ const SettingsGeneralDateTimeForm = ({ t, history, isSubmitting, errors, values,
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">
