@@ -83,25 +83,28 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
           </Table.Body>
         </Table>
       </div>
-      <Card.Body>
-        {(order.message) ?
-          <span className="text-muted">
-            <h5><Icon name="message-square" /> {t("shop.checkout.order_summary.message")}</h5> 
-            {/* Order message */}
-            {order.message}
-            <br /><br />
-          </span> 
-          : ""
-        }
-        {(scheduleItemId && classDate) ?
-          <ShopCheckoutClassInfo 
-            scheduleItemId={scheduleItemId}
-            date={classDate}
-            complete={complete}
-          />
-          : ""
-        }
-      </Card.Body>
+      {(order.message) || (scheduleItemId && classDate) ? 
+        <Card.Body>
+          {(order.message) ?
+            <span className="text-muted">
+              <h5><Icon name="message-square" /> {t("shop.checkout.order_summary.message")}</h5> 
+              {/* Order message */}
+              {order.message}
+              <br /><br />
+            </span> 
+            : ""
+          }
+          {(scheduleItemId && classDate) ?
+            <ShopCheckoutClassInfo 
+              scheduleItemId={scheduleItemId}
+              date={classDate}
+              complete={complete}
+            />
+            : ""
+          }
+        </Card.Body>
+        : ""
+      }
     </Card>
   )
 }
