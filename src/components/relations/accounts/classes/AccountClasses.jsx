@@ -54,8 +54,6 @@ function AccountClasses({ t, match, history }) {
     )
   }
 
-  console.log("AccountClasses data:")
-  console.log(data)
   const account = data.account
   const scheduleItemAttendances = data.scheduleItemAttendances
   
