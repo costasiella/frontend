@@ -29,13 +29,14 @@ function ShopClasspass({ t, match, history }) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
 
-  const title = t("shop.home.title")
+  const pageTitle = t("general.classpass")
   const id = match.params.id
   const scheduleItemId = match.params.class_id
   const classDate = match.params.date
 
   const { loading, error, data } = useQuery(GET_CLASSPASS_QUERY, {
-    variables: { id: id }
+    variables: { id: id },
+    fetchPolicy: "network-only"
   })
 
   const { loading: loadingClass, error: errorClass, data: dataClass } = useQuery(GET_CLASS_QUERY, {
@@ -47,23 +48,24 @@ function ShopClasspass({ t, match, history }) {
 
 
   if (loading) return (
-    <ShopClasspassBase title={title} >
+    <ShopClasspassBase pageTitle={pageTitle} >
       {t("general.loading_with_dots")}
     </ShopClasspassBase>
   )
   if (error) return (
-    <ShopClasspassBase title={title}>
+    <ShopClasspassBase pageTitle={pageTitle}>
       {t("shop.classpass.error_loading")}
     </ShopClasspassBase>
   )
 
   const classpass = data.organizationClasspass
   const user = data.user
+  const pageSubTitle = classpass.name
 
   if (user.hasReachedTrialLimit && classpass.trialPass) {
     return (
-      <ShopClasspassBase title={title}>
-        <Card title={t("shop.classpass.trial_limit_reached")}>
+      <ShopClasspassBase pageTitle={pageTitle}>
+        <Card pageTitle={t("shop.classpass.trial_limit_reached")}>
           <Card.Body>
             {t("shop.classpass.trial_limit_reached_explanation")}
           </Card.Body>
@@ -73,14 +75,14 @@ function ShopClasspass({ t, match, history }) {
   }
 
   return (
-    <ShopClasspassBase title={title}>
+    <ShopClasspassBase pageTitle={pageTitle} pageSubTitle={pageSubTitle}>
       <Grid.Row>
         <Grid.Col xs={12} sm={12} md={4}>
           <ShopClasspassesPricingCard classpass={classpass} active={true} />
         </Grid.Col>
         <Grid.Col xs={12} sm={12} md={4}>
           {(dataClass && !loadingClass && !errorClass) ?
-            <Card title={t("shop.classpass.class_book_information")}>
+            <Card pageTitle={t("shop.classpass.class_book_information")}>
               <Card.Body>
                 {t("shop.classpass.class_book_explanation")} <br /><br />
                 <b>
@@ -95,14 +97,14 @@ function ShopClasspass({ t, match, history }) {
             </Card>
             : "" 
           }
-          <Card title={t("shop.classpass.additional_information")}>
+          <Card pageTitle={t("shop.classpass.additional_information")}>
             <Card.Body>
               <div dangerouslySetInnerHTML={{__html:classpass.description}}></div>
             </Card.Body>
           </Card>
         </Grid.Col>
         <Grid.Col xs={12} sm={12} md={4}>
-          <Card title={t("shop.checkout.title")}>
+          <Card pageTitle={t("shop.checkout.pageTitle")}>
             <Card.Body>
               <Formik
                 initialValues={{ message: "" }}
