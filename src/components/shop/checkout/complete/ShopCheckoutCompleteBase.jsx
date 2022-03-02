@@ -10,7 +10,7 @@ function ShopCheckoutCompleteBase({ t, match, history, children }) {
   
   return (
     <ShopBase 
-      title={t("shop.title")}
+      title={""}
       checkoutProgress="complete"
     >
       {children}

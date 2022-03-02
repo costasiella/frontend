@@ -10,7 +10,7 @@ function ShopCheckoutPaymentBase({ t, match, history, children }) {
   
   return (
     <ShopBase 
-      title={t("shop.title")}
+      // title={t("shop.order.payment")}
       checkoutProgress="payment"
     >
       {children}
