@@ -986,7 +986,7 @@
             "bank_accounts": {
                 "title": "Bank account",
                 "holder": "Account holder",
-                "number": "Account number",
+                "number": "Account number / IBAN",
                 "bic": "BIC",
                 "toast_edit_success": "Saved",
                 "mandates": {
@@ -2084,7 +2084,8 @@
                 "toast_edit_success": "Saved bank account",
                 "title": "My bank account",
                 "explanation": "Manage your bank information"
-            }
+            },
+            "btn_text_bank_account_edit": "Update bank information"
         },
         "accounts": {
             "profile": {

@@ -28,7 +28,8 @@ function ShopAccountBankAccount({t, match, history}) {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       account: dataUser && dataUser.user ? dataUser.user.accountId : null
-    }
+    },
+    fetchPolicy: "network-only"
   })
   const [ updateBankAccount ] = useMutation(UPDATE_BANK_ACCOUNT)
 
@@ -43,9 +44,6 @@ function ShopAccountBankAccount({t, match, history}) {
     </ShopAccountProfileBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
-  console.log(dataUser)
   const user = dataUser.user
   const bankAccount = data.accountBankAccounts.edges[0].node
 

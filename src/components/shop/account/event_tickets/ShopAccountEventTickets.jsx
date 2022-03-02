@@ -44,8 +44,6 @@ function ShopAccountEventTickets({t, match, history}) {
     </ShopAccountProfileBase>
   )
 
-  console.log("User data: ###")
-  console.log(dataUser)
   const user = dataUser.user
   const eventTickets = data.accountScheduleEventTickets
 
@@ -72,7 +70,7 @@ function ShopAccountEventTickets({t, match, history}) {
       <Grid.Row>
         <Grid.Col md={12}>
           <ContentCard cardTitle={t('shop.account.event_tickets.title')}
-            // headerContent={headerOptions}
+            hasCardBody={false}
             pageInfo={eventTickets.pageInfo}
             onLoadMore={() => {
               fetchMore({
@@ -97,7 +95,7 @@ function ShopAccountEventTickets({t, match, history}) {
                 }
               })
             }} >
-            <Table>
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.ticket')}</Table.ColHeader>

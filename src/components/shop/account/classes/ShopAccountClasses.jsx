@@ -49,9 +49,6 @@ function ShopAccountClasses({t, match, history}) {
     </ShopAccountClassesBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
-  console.log(dataUser)
   const user = dataUser.user
   const scheduleItemAttendances = data.scheduleItemAttendances
 
@@ -73,14 +70,13 @@ function ShopAccountClasses({t, match, history}) {
   }
 
 
-
   // Populated list
   return (
     <ShopAccountClassesBase accountName={user.fullName}>
       <Grid.Row>
         <Grid.Col md={12}>
           <ContentCard cardTitle={t('shop.account.classes.title')}
-            // headerContent={headerOptions}
+            hasCardBody={false}
             pageInfo={scheduleItemAttendances.pageInfo}
             onLoadMore={() => {
               fetchMore({
@@ -105,7 +101,7 @@ function ShopAccountClasses({t, match, history}) {
                 }
               })
             }} >
-            <Table>
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.time')}</Table.ColHeader>
