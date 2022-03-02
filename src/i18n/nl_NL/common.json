@@ -1051,7 +1051,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "add": "__STRING_NOT_TRANSLATED__",
                 "title_classes": "__STRING_NOT_TRANSLATED__",
-                "no_classes_taken_yet": "__STRING_NOT_TRANSLATED__"
+                "no_classes_taken_yet": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "documents": {
                 "title_add": "__STRING_NOT_TRANSLATED__",

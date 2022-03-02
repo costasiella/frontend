@@ -937,7 +937,8 @@
                 "deleted": "Deleted class pass",
                 "add": "Add class pass",
                 "title_classes": "Classes taken using",
-                "no_classes_taken_yet": "No classes taken yet using this pass"
+                "no_classes_taken_yet": "No classes taken yet using this pass",
+                "empty_list": "This customer doesn't have any class passes yet."
             },
             "memberships": {
                 "title_add": "Add membership",
