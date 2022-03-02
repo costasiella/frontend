@@ -73,6 +73,14 @@ function ShopCheckoutPayment({ t, match, history }) {
 
   let msgNextStep
   let buttonNext
+  
+  // The order has been added to the users' account as it's free.
+  // No need for a payment.
+  if (order.total === "0.00") {
+    history.push(`/shop/checkout/complete/${id}`)
+  }
+
+  // Continue processing and see if online payments are available
   if (onlinePaymentsAvailable) {
     msgNextStep = t("shop.checkout.payment.order_received_to_payment_text")
     buttonNext = <button
