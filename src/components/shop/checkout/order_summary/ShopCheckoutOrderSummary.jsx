@@ -57,7 +57,7 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
           <Table.Header>
             <Table.Row>
               <Table.ColHeader>{t('general.item')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.price')}</Table.ColHeader>
+              <Table.ColHeader className="text-right">{t('general.price')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -69,14 +69,14 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
                     {node.description}
                   </span>
                 </Table.Col>
-                <Table.Col>{node.totalDisplay}</Table.Col>
+                <Table.Col className="text-right">{node.totalDisplay}</Table.Col>
               </Table.Row>      
             ))}
             <Table.Row className="bold">
               <Table.Col>
                 {t("general.total")}
               </Table.Col>
-              <Table.Col>
+              <Table.Col className="text-right">
                   {order.totalDisplay}
               </Table.Col>
             </Table.Row>
