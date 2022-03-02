@@ -6,9 +6,8 @@ import ShopBase from "../../ShopBase"
 
 function ShopClassesScheduleBase({ t, match, history, children, pageHeaderOptions="" }) {  
   return (
-    <ShopBase title={t("shop.title")} pageHeaderOptions={pageHeaderOptions}>
-      <h4>{t("shop.classes.title")}</h4>
-        {children}
+    <ShopBase title={t("shop.classes.title")} pageHeaderOptions={pageHeaderOptions}>
+      {children}
     </ShopBase>
   )
 }

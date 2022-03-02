@@ -6,9 +6,8 @@ import ShopBase from "../ShopBase"
 
 function ShopEventsBase({ t, match, history, children }) {  
   return (
-    <ShopBase title={t("shop.title")}>
-      <h4>{t("shop.events.title")}</h4>
-        {children}
+    <ShopBase title={t("shop.events.title")}>
+      {children}
     </ShopBase>
   )
 }
