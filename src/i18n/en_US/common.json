@@ -1940,7 +1940,8 @@
             "message": "Any message with this order?",
             "by_placing_this_order": "By placing this order I",
             "agree_terms": "Accept the ",
-            "agree_privacy": "Accept the"
+            "agree_privacy": "Accept the",
+            "payment": "Payment"
         },
         "place_order": "Place order",
         "checkout_progress": {
@@ -1969,7 +1970,9 @@
                 "fail_content_text": "Please contact us in case there was a technical error and you'd like our staff can help you.",
                 "title": "Checkout complete",
                 "success_payment_text": "We have received your payment for this order.",
-                "fail_payment_text": "It looks like something went wrong while processing your payment. "
+                "fail_payment_text": "It looks like something went wrong while processing your payment. ",
+                "success_subheader_free_order": "You're all set!",
+                "success_content_text_free_order": "All items in this order have been added to your account."
             },
             "order_summary": {
                 "error_loading": "Error loading order information :(",
@@ -1980,7 +1983,8 @@
                 "have_been_checked_in": "We've reserved your spot in this class!",
                 "will_be_checked_in": "We'll reserve your spot in this class once we've received your payment",
                 "info_mail": "Class information"
-            }
+            },
+            "pageTitle": "__STRING_NOT_TRANSLATED__"
         },
         "complete": {
             "to_account": "To your account"
@@ -2036,7 +2040,7 @@
                 "title": "My Subscriptions",
                 "explanation": "View your current and past subscriptions",
                 "error_loading_data": "Error loading subscriptions... :(",
-                "empty_list": "No subcsriptions found."
+                "empty_list": "No subscriptions found."
             },
             "event_tickets": {
                 "title": "My Event tickets",
