@@ -415,7 +415,8 @@
         "run_task": "__STRING_NOT_TRANSLATED__",
         "using": "__STRING_NOT_TRANSLATED__",
         "ended": "__STRING_NOT_TRANSLATED__",
-        "sell": "__STRING_NOT_TRANSLATED__"
+        "sell": "__STRING_NOT_TRANSLATED__",
+        "clear_search": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1643,7 +1644,9 @@
                     "error_loading": "__STRING_NOT_TRANSLATED__",
                     "placeholder_search": "__STRING_NOT_TRANSLATED__",
                     "this_class_is_cancelled": "__STRING_NOT_TRANSLATED__",
-                    "unable_to_add_attendance": "__STRING_NOT_TRANSLATED__"
+                    "unable_to_add_attendance": "__STRING_NOT_TRANSLATED__",
+                    "search_customer_not_found": "__STRING_NOT_TRANSLATED__",
+                    "search_no_account_results": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"

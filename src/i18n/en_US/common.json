@@ -500,7 +500,8 @@
         "run_task": "Run task",
         "using": "using",
         "ended": "Ended",
-        "sell": "Sell"
+        "sell": "Sell",
+        "clear_search": "Clear search"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1140,7 +1141,9 @@
                     "error_loading": "Error loading... :(",
                     "placeholder_search": "Search to register attendance",
                     "this_class_is_cancelled": "This class has been cancelled",
-                    "unable_to_add_attendance": "Unable to add attendance"
+                    "unable_to_add_attendance": "Unable to add attendance",
+                    "search_customer_not_found": "Customer not found",
+                    "search_no_account_results": "Your search didn't return any results"
                 },
                 "book": {
                     "toast_success": "Check-in success",
@@ -1988,7 +1991,7 @@
                 "will_be_checked_in": "We'll reserve your spot in this class once we've received your payment",
                 "info_mail": "Class information"
             },
-            "pageTitle": "__STRING_NOT_TRANSLATED__"
+            "pageTitle": "Checkout"
         },
         "complete": {
             "to_account": "To your account"

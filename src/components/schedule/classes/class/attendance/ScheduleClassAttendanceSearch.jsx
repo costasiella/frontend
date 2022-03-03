@@ -59,14 +59,17 @@ function ScheduleClassAttendanceSearch({ t, match, history, checkedInIds, classS
   if (called && error) return (
     <React.Fragment>
       <Search />
-      <Alert>Error loading search results</Alert>
+      <Alert type="danger">{t("general.error_sad_smiley")}</Alert>
     </React.Fragment>
   )
 
   if (called && !data.accounts.edges.length) return (
     <React.Fragment>
       <Search />
-      <Alert type="secondary">Your search didn't return any results</Alert>
+      <Alert type="primary">
+        <strong>{t("schedule.classes.class.attendance.search_customer_not_found")}</strong> {" - "}
+        {t("schedule.classes.class.attendance.search_no_account_results")}
+      </Alert>
     </React.Fragment>
   )
 

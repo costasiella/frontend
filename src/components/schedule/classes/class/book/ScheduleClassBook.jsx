@@ -18,12 +18,15 @@ import ScheduleClassBookClasspasses from "./ScheduleClassBookClasspasses"
 import ScheduleClassBookSubscriptions from "./ScheduleClassBookSubscriptions"
 import ScheduleClassBookPriceDropin from "./ScheduleClassBookPriceDropin"
 import ScheduleClassBookPriceTrial from "./ScheduleClassBookPriceTrial"
-// import ClassEditBase from "../ClassEditBase"
+import CSLS from "../../../../../tools/cs_local_storage"
 
 import { GET_BOOKING_OPTIONS_QUERY } from "./queries"
 
 
 function ScheduleClassBook({ t, match, history }) {
+  // Clear attendance search
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_CLASS_ATTENDANCE_SEARCH, "")
+  
   const account_id = match.params.account_id
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date

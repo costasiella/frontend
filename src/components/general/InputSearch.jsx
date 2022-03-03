@@ -80,21 +80,24 @@ class InputSearch extends Component {
               />
             </div>
           </div>
-          <div className="col col-auto">
-            <Button
-              color="secondary"
-              icon="x"
-              disabled={!(this.state.inputValue)}
-              onClick={() => {
-                this.setState({inputValue: "", submitValue: ""}, () => {
-                  // setState callback, this makes sure the onChange function is calles with new values
-                  console.log(this.state)
-                  this.props.onChange(this.state.submitValue) 
-                })
-              }}
-            >
-            </Button>
-          </div>
+          {(this.state.inputValue) ?
+            <div className="col col-auto">
+              <Button
+                color="secondary"
+                // icon="x"
+                disabled={!(this.state.inputValue)}
+                onClick={() => {
+                  this.setState({inputValue: "", submitValue: ""}, () => {
+                    // setState callback, this makes sure the onChange function is calles with new values
+                    console.log(this.state)
+                    this.props.onChange(this.state.submitValue) 
+                  })
+                }}
+              >
+                {this.props.t("general.clear_search")}
+              </Button>
+            </div>
+          : "" }
         </div>
     )
   }
