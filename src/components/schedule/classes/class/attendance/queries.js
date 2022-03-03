@@ -48,6 +48,32 @@ export const GET_SCHEDULE_CLASS_ATTENDANCE_QUERY = gql`
       timeEnd
       displayPublic
     }
+    scheduleClass(scheduleItemId:$scheduleItem, date:$date) {
+      scheduleItemId
+      frequencyType
+      organizationLocationRoom {
+        id
+        name
+        organizationLocation {
+          id
+          name
+        }
+      }
+      organizationClasstype {
+        id
+        name
+      }
+      organizationLevel {
+        id
+        name
+      }
+      date
+      timeStart
+      timeEnd
+      displayPublic
+      status
+      description
+    }
   }
 `
 

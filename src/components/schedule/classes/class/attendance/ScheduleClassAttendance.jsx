@@ -5,6 +5,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
+  Alert,
   Button,
   Card,
   Dimmer,
@@ -75,6 +76,8 @@ function ScheduleClassAttendance({ t, match, history }) {
     return <ScheduleClassAttendanceBase>{t('general.error_sad_smiley')}</ScheduleClassAttendanceBase>
   }
   
+  const scheduleClass = data.scheduleClass
+  console.log(scheduleClass)
   let checkedInIds = []
   data.scheduleItemAttendances.edges.map(({ node }) => (
     checkedInIds.push(node.account.id)
@@ -82,9 +85,16 @@ function ScheduleClassAttendance({ t, match, history }) {
 
   return (
     <ScheduleClassAttendanceBase>
-      <ScheduleClassAttendanceSearch 
-        checkedInIds={checkedInIds}
-      />
+      {(scheduleClass.status === 'CANCELLED') ? 
+        <Alert type="warning">
+          <strong>{t("schedule.classes.class.attendance.this_class_is_cancelled")}</strong> - {" "}
+          {t("schedule.classes.class.attendance.unable_to_add_attendance")}
+        </Alert>  
+        : 
+        <ScheduleClassAttendanceSearch 
+          checkedInIds={checkedInIds}
+        />
+      }
       <ContentCard 
         cardTitle={t('general.attendance')}
         pageInfo={data.scheduleItemAttendances.pageInfo}

@@ -1138,7 +1138,9 @@
                     "search_results_already_checked_in": "Already checked-in",
                     "empty_list": "No attendance registered yet",
                     "error_loading": "Error loading... :(",
-                    "placeholder_search": "Search to register attendance"
+                    "placeholder_search": "Search to register attendance",
+                    "this_class_is_cancelled": "This class has been cancelled",
+                    "unable_to_add_attendance": "Unable to add attendance"
                 },
                 "book": {
                     "toast_success": "Check-in success",
