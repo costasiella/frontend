@@ -1639,7 +1639,9 @@
                         "CANCELLED": "__STRING_NOT_TRANSLATED__",
                         "invalid_type": "__STRING_NOT_TRANSLATED__"
                     },
-                    "empty_list": "__STRING_NOT_TRANSLATED__"
+                    "empty_list": "__STRING_NOT_TRANSLATED__",
+                    "error_loading": "__STRING_NOT_TRANSLATED__",
+                    "placeholder_search": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"

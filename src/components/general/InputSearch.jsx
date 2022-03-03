@@ -71,7 +71,7 @@ class InputSearch extends Component {
               </span>
               <input 
                 ref={this.input}
-                className="form-control" 
+                className={`form-control ${this.props.className}`}
                 type="text" 
                 placeholder={placeholder} 
                 value={this.state.inputValue}
