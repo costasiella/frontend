@@ -90,7 +90,8 @@
             "item_deleted": "Deleted item",
             "payment_delete_confirm_msg": "Are you sure you wish to delte this payment?",
             "payment_deleted": "Deleted payment",
-            "explanation": "Manage invoices"
+            "explanation": "Manage invoices",
+            "export": "Export"
         },
         "invoice_groups": {
             "title": "Invoice groups",
@@ -501,7 +502,8 @@
         "using": "using",
         "ended": "Ended",
         "sell": "Sell",
-        "clear_search": "Clear search"
+        "clear_search": "Clear search",
+        "all": "All"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

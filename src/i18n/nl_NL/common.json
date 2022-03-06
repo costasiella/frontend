@@ -416,7 +416,8 @@
         "using": "__STRING_NOT_TRANSLATED__",
         "ended": "__STRING_NOT_TRANSLATED__",
         "sell": "__STRING_NOT_TRANSLATED__",
-        "clear_search": "__STRING_NOT_TRANSLATED__"
+        "clear_search": "__STRING_NOT_TRANSLATED__",
+        "all": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -533,7 +534,8 @@
                 "sent": "__STRING_NOT_TRANSLATED__",
                 "paid": "__STRING_NOT_TRANSLATED__",
                 "cancelled": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "export": "__STRING_NOT_TRANSLATED__"
         },
         "orders": {
             "title": "__STRING_NOT_TRANSLATED__",
