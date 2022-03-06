@@ -12,9 +12,9 @@ import {
   } from "tabler-react"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-import CSDatePicker from "../../ui/CSDatePicker"
-import ButtonFormSubmit from "../../ui/ButtonFormSubmit"
-import ButtonFormCancel from "../../ui/ButtonFormCancel"
+import CSDatePicker from "../../../ui/CSDatePicker"
+import ButtonFormSubmit from "../../../ui/ButtonFormSubmit"
+import ButtonFormCancel from "../../../ui/ButtonFormCancel"
 
 const ScheduleClassForm = ({ t, history, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
     <FoForm>
