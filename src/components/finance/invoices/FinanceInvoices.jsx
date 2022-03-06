@@ -75,6 +75,7 @@ function FinanceInvoices({ t, location, history }) {
   return (
     <FinanceInvoicesBase refetch={refetch}>
       <ContentCard cardTitle={t('finance.invoices.title')}
+                  hasCardBody={false}
                   pageInfo={invoices.pageInfo}
                   onLoadMore={() => {
                     fetchMore({
@@ -100,7 +101,7 @@ function FinanceInvoices({ t, location, history }) {
                     })
                   }} 
         >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.status')}</Table.ColHeader>
