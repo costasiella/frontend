@@ -50,6 +50,7 @@ import FinanceGLAccounts from './components/finance/glaccounts/FinanceGLAccounts
 import FinanceGLAccountAdd from './components/finance/glaccounts/FinanceGLAccountAdd'
 import FinanceGLAccountEdit from './components/finance/glaccounts/FinanceGLAccountEdit'
 import FinanceInvoices from './components/finance/invoices/FinanceInvoices'
+import FinanceInvoicesExport from './components/finance/invoices/export/FinanceInvoicesExport'
 import FinanceInvoiceEdit from './components/finance/invoices/edit/FinanceInvoiceEdit'
 import FinanceInvoiceGroups from './components/finance/invoices/groups/FinanceInvoiceGroups'
 import FinanceInvoiceGroupAdd from './components/finance/invoices/groups/FinanceInvoiceGroupAdd'
@@ -449,6 +450,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/costcenters/add" component={FinanceCostCenterAdd} />
             <PrivateRoute exact path="/finance/costcenters/edit/:id" component={FinanceCostCenterEdit} />
             <PrivateRoute exact path="/finance/invoices" component={FinanceInvoices} />
+            <PrivateRoute exact path="/finance/invoices/export" component={FinanceInvoicesExport} />
             <PrivateRoute exact path="/finance/invoices/edit/:id" component={FinanceInvoiceEdit} />
             <PrivateRoute exact path="/finance/invoices/groups" component={FinanceInvoiceGroups} />
             <PrivateRoute exact path="/finance/invoices/groups/add" component={FinanceInvoiceGroupAdd} />
