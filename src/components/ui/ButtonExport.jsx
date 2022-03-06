@@ -15,7 +15,7 @@ function ButtonExport({ t, url, className="", buttonText="" }) {
     <Link to={url}>
       <Button
         className={className}
-        color="primary"
+        color="secondary"
         icon="download-cloud">
           {buttonText}
       </Button>
