@@ -74,7 +74,8 @@
                 "SENT": "Sent",
                 "PAID": "Paid",
                 "CANCELLED": "Cancelled",
-                "NOT_FOUND": "Not found"
+                "NOT_FOUND": "Not found",
+                "ALL": "All statuses"
             },
             "delete_confirm_msg": "Are you sure you wish to delete this invoice?",
             "deleted": "Deleted invoice",
@@ -91,7 +92,14 @@
             "payment_delete_confirm_msg": "Are you sure you wish to delte this payment?",
             "payment_deleted": "Deleted payment",
             "explanation": "Manage invoices",
-            "export": "Export"
+            "export": {
+                "btn_prepare_export": "Prepare export",
+                "ready": {
+                    "title": "Export ready",
+                    "explanation": "An export has been prepared with the following values:"
+                },
+                "title": "Export invoices"
+            }
         },
         "invoice_groups": {
             "title": "Invoice groups",
@@ -503,7 +511,8 @@
         "ended": "Ended",
         "sell": "Sell",
         "clear_search": "Clear search",
-        "all": "All"
+        "all": "All",
+        "period": "Period"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

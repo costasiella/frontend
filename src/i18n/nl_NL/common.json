@@ -417,7 +417,8 @@
         "ended": "__STRING_NOT_TRANSLATED__",
         "sell": "__STRING_NOT_TRANSLATED__",
         "clear_search": "__STRING_NOT_TRANSLATED__",
-        "all": "__STRING_NOT_TRANSLATED__"
+        "all": "__STRING_NOT_TRANSLATED__",
+        "period": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -508,7 +509,8 @@
                 "SENT": "__STRING_NOT_TRANSLATED__",
                 "PAID": "__STRING_NOT_TRANSLATED__",
                 "CANCELLED": "__STRING_NOT_TRANSLATED__",
-                "NOT_FOUND": "__STRING_NOT_TRANSLATED__"
+                "NOT_FOUND": "__STRING_NOT_TRANSLATED__",
+                "ALL": "__STRING_NOT_TRANSLATED__"
             },
             "payment_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "payment_deleted": "__STRING_NOT_TRANSLATED__",
@@ -535,7 +537,14 @@
                 "paid": "__STRING_NOT_TRANSLATED__",
                 "cancelled": "__STRING_NOT_TRANSLATED__"
             },
-            "export": "__STRING_NOT_TRANSLATED__"
+            "export": {
+                "btn_prepare_export": "__STRING_NOT_TRANSLATED__",
+                "ready": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "explanation": "__STRING_NOT_TRANSLATED__"
+                },
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "orders": {
             "title": "__STRING_NOT_TRANSLATED__",
