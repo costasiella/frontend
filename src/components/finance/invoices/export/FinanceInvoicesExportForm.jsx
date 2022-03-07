@@ -42,7 +42,6 @@ const ScheduleClassForm = ({ t, history, isSubmitting, setFieldValue, setFieldTo
                   setFieldTouched("dateEnd", true)
                 }}
                 onBlur={() => setFieldTouched("dateEnd", true)}
-                placeholderText={t('schedule.classes.placeholder_enddate')}
               />
               <ErrorMessage name="dateEnd" component="span" className="invalid-feedback" />
             </Form.Group>
