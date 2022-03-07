@@ -20,7 +20,7 @@ import SiteWrapper from '../../../SiteWrapper'
 import { dateToLocalISO } from '../../../../tools/date_tools'
 import ButtonBack from '../../../ui/ButtonBack';
 
-// import { CLASS_SCHEMA } from './yupSchema'
+import { INVOICES_EXPORT_SCHEMA } from './yupSchema'
 import FinanceInvoicesExportForm from './FinanceInvoicesExportForm';
 import moment from 'moment'
 
@@ -55,7 +55,7 @@ function FinanceInvoicesExport({t, history}) {
               dateEnd: dateEnd,
               status: status
             }}
-            // validationSchema={CLASS_SCHEMA}
+            validationSchema={INVOICES_EXPORT_SCHEMA}
             onSubmit={(values, { setSubmitting }) => {
                 console.log('submit values:')
                 console.log(values)
