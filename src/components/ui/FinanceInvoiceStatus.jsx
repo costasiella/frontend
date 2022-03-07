@@ -20,6 +20,8 @@ class FinanceInvoicesStatus extends Component {
     const status = this.props.status
 
     switch (status) {
+      case "ALL":
+        return <Badge color="secondary">{t('finance.invoices.status.ALL')}</Badge>
       case "DRAFT":
         return <Badge color="secondary">{t('finance.invoices.status.DRAFT')}</Badge>
       case "SENT":

@@ -2,19 +2,18 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from "uuid"
-import { Link } from 'react-router-dom'
 
 import {
-    Button,
-    Card,
-    Form,
-    Grid
+  Button,
+  Card,
+  Form,
+  Grid
   } from "tabler-react"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
 import CSDatePicker from "../../../ui/CSDatePicker"
-import ButtonFormSubmit from "../../../ui/ButtonFormSubmit"
-import ButtonFormCancel from "../../../ui/ButtonFormCancel"
+import ButtonFormCancel from '../../../ui/ButtonFormCancel'
+
 
 const ScheduleClassForm = ({ t, history, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
     <FoForm>
@@ -65,8 +64,15 @@ const ScheduleClassForm = ({ t, history, isSubmitting, setFieldValue, setFieldTo
           </Grid.Col>
         </Grid.Row>
       </Card.Body>
-      <Card.Footer>
-        <ButtonFormSubmit />
+      <Card.Footer> 
+        <Button 
+            color="primary"
+            className="pull-right" 
+            type="submit" 
+            disabled={isSubmitting}
+        >
+          {t('finance.invoices.export.btn_prepare_export')}
+        </Button>
         <ButtonFormCancel returnUrl={returnUrl} />
       </Card.Footer>
     </FoForm>
