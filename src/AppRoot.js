@@ -263,6 +263,7 @@ import SettingsFinanceCurrency from './components/settings/finance/currency/Sett
 import SettingsGeneralDateTime from './components/settings/general/date_time/SettingsGeneralDateTime'
 import SettingsGeneralSystem from './components/settings/general/system/SettingsGeneralSystem'
 import SettingsHome from './components/settings/home/SettingsHome'
+import SettingsIntegrationMailChimp from './components/settings/integration/mailchimp/SettingsIntegrationMailChimp'
 import SettingsIntegrationMollie from './components/settings/integration/mollie/SettingsIntegrationMollie'
 import SettingsMailTemplates from './components/settings/mail/SettingsMailTemplates'
 import SettingsMailTemplateEdit from './components/settings/mail/SettingsMailTemplateEdit'
@@ -728,6 +729,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/finance/currency" component={SettingsFinanceCurrency} />
             <PrivateRoute exact path="/settings/general/datetime" component={SettingsGeneralDateTime} />
             <PrivateRoute exact path="/settings/general/system" component={SettingsGeneralSystem} />
+            <PrivateRoute exact path="/settings/integration/mailchimp" component={SettingsIntegrationMailChimp} />
             <PrivateRoute exact path="/settings/integration/mollie" component={SettingsIntegrationMollie} />
             <PrivateRoute exact path="/settings/mail/templates" component={SettingsMailTemplates} />
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />

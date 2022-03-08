@@ -14,7 +14,6 @@ import {
 import { GET_SYSTEM_SETTINGS_QUERY, UPDATE_SYSTEM_SETTING } from '../../queries'
 import SettingsBase from "../../SettingsBase"
 import SettingsIntegrationMailChimpForm from "./SettingsIntegrationMailChimpForm"
-import SettingsIntegrationMollieCreateAccount from "./SettingsIntegrationMollieCreateAccount"
 
 
 function SettingsIntegrationMailChimp({ t, match, history }) {
@@ -76,12 +75,12 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
 
   let mcUser = ""
   if (dataUser.systemSettings.edges.length) {
-    mcUser = data.systemSettings.edges[0].node.value
+    mcUser = dataUser.systemSettings.edges[0].node.value
   }
 
   let mcApiKey = ""
   if (dataKey.systemSettings.edges.length) {
-    mcApiKey = data.systemSettings.edges[0].node.value
+    mcApiKey = dataKey.systemSettings.edges[0].node.value
   }
 
   return (
@@ -89,12 +88,11 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
       headerSubTitle={headerSubTitle}
       cardTitle={cardTitle}
       sidebarActive={sidebarActive}
-      alertBanner={<SettingsIntegrationMollieCreateAccount mollieApiKey={mollieApiKey} />}
     >
     <Formik
       initialValues={{ 
-        mailchimpUser: mcUser,
-        mailchimpAPIKey: mcApiKey
+        mailchimp_user: mcUser,
+        mailchimp_api_key: mcApiKey
       }}
       // validationSchema={MOLLIE_SCHEMA}
       onSubmit={(values, { setSubmitting }, errors) => {
@@ -103,11 +101,12 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
           console.log(errors)
 
           const settings = [
-            { setting: "integration_mailchimp_user", value: values.mailchimpUser },
-            { setting: "integration_mailchimp_api_key", value: values.mailchimpAPIKey },
+            { setting: "integration_mailchimp_user", value: values.mailchimp_user },
+            { setting: "integration_mailchimp_api_key", value: values.mailchimp_api_key },
           ]
 
           for (let i in settings) {
+            console.log(i)
 
             updateSettings({ variables: {
               input: {
@@ -115,7 +114,7 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
                 value: settings[i].value,
               }
             }, refetchQueries: [
-                {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: i.setting }},
+                {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: settings[i].setting }},
             ]})
             .then(({ data }) => {
                 console.log('got data', data)

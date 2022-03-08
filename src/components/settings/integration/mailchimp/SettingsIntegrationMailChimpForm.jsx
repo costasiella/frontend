@@ -11,7 +11,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsIntegrationMollieForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
+const SettingsIntegrationMailChimpForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.integration.mailchimp.user')}>
