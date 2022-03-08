@@ -160,6 +160,12 @@
                 "create_account_message": "__STRING_NOT_TRANSLATED__",
                 "to_mollie": "__STRING_NOT_TRANSLATED__",
                 "api_key": "__STRING_NOT_TRANSLATED__"
+            },
+            "mailchimp": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "user": "__STRING_NOT_TRANSLATED__",
+                "api_key": "__STRING_NOT_TRANSLATED__"
             }
         },
         "home": {

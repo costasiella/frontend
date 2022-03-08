@@ -149,6 +149,16 @@ function SettingsHome({ t, match, params }) {
             <Grid.Col md={3}>
               <Card>
                 <Card.Body>
+                  <h5>{t("settings.integration.mailchimp.title")}</h5>
+                  {t("settings.integration.mailchimp.explanation")}
+                  <br /><br />
+                  <HomeItemButton link="/settings/integration/mailchimp/" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
                   <h5>{t("settings.integration.mollie.title")}</h5>
                   {t("settings.integration.mollie.explanation")}
                   <br /><br />

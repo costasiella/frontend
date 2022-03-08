@@ -1655,6 +1655,12 @@
                 "create_account_title": "Mollie is not yet configured",
                 "create_account_message": "Create a new Mollie account to get your API key to start using it to process online payments in Costasiella.",
                 "to_mollie": "To Mollie"
+            },
+            "mailchimp": {
+                "title": "MailChimp",
+                "explanation": "MailChimp integration settings",
+                "user": "MailChimp Username",
+                "api_key": "MailChimp API Key"
             }
         },
         "finance": {
