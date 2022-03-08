@@ -1744,9 +1744,9 @@
                     "help_comments": "No variables available"
                 }
             },
-            "mailinglists": {
-                "title": "Mailinglists",
-                "explanation": "Manage MailChimp lists linked to Costasiella"
+            "mailchimp_lists": {
+                "title": "MailChimp lists",
+                "explanation": "Manage MailChimp lists connected to Costasiella"
             }
         },
         "home": {

@@ -119,10 +119,10 @@ function SettingsHome({ t, match, params }) {
             <Grid.Col md={3}>
               <Card>
                 <Card.Body>
-                  <h5>{t("settings.mail.mailinglists.title")}</h5>
-                  {t("settings.mail.mailinglists.explanation")}
+                  <h5>{t("settings.mail.mailchimp_lists.title")}</h5>
+                  {t("settings.mail.mailchimp_lists.explanation")}
                   <br /><br />
-                  <HomeItemButton link="/settings/mail/mailinglists" />
+                  <HomeItemButton link="/settings/mail/mailchimp_lists" />
                 </Card.Body>
               </Card>
             </Grid.Col>
