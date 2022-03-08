@@ -10,7 +10,7 @@ import {
   Table
 } from "tabler-react";
 
-import ContentCard from "../../general/ContentCard"
+import ContentCard from "../../../general/ContentCard"
 import SettingsMailTemplatesBase from "./SettingsMailTemplatesBase"
 
 import { GET_SYSTEM_MAIL_TEMPLATES_QUERY } from "./queries"

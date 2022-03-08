@@ -8,8 +8,8 @@ import {
   Container,
 } from "tabler-react";
 
-import SiteWrapper from "../../SiteWrapper"
-import SettingsBack from "../SettingsBack"
+import SiteWrapper from "../../../SiteWrapper"
+import SettingsBack from "../../SettingsBack"
 
 function SettingsMailTemplatesBase({ t, children, headerSubTitle, }) {
   return (
