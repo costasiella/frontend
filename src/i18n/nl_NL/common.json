@@ -142,6 +142,10 @@
                     "help_content": "__STRING_NOT_TRANSLATED__",
                     "help_comments": "__STRING_NOT_TRANSLATED__"
                 }
+            },
+            "mailinglists": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
