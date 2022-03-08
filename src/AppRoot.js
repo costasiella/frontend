@@ -265,6 +265,7 @@ import SettingsGeneralSystem from './components/settings/general/system/Settings
 import SettingsHome from './components/settings/home/SettingsHome'
 import SettingsIntegrationMailChimp from './components/settings/integration/mailchimp/SettingsIntegrationMailChimp'
 import SettingsIntegrationMollie from './components/settings/integration/mollie/SettingsIntegrationMollie'
+import SettingsMailMailChimpLists from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpLists'
 import SettingsMailTemplates from './components/settings/mail/templates/SettingsMailTemplates'
 import SettingsMailTemplateEdit from './components/settings/mail/templates/SettingsMailTemplateEdit'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
@@ -731,6 +732,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/general/system" component={SettingsGeneralSystem} />
             <PrivateRoute exact path="/settings/integration/mailchimp" component={SettingsIntegrationMailChimp} />
             <PrivateRoute exact path="/settings/integration/mollie" component={SettingsIntegrationMollie} />
+            <PrivateRoute exact path="/settings/mail/mailchimp_lists" component={SettingsMailMailChimpLists} />
             <PrivateRoute exact path="/settings/mail/templates" component={SettingsMailTemplates} />
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />
