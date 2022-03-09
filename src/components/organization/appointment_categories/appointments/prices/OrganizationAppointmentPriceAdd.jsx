@@ -114,7 +114,7 @@ const OrganizationAppointmentPriceAdd = ({ t, history, match }) => (
                                   isSubmitting={isSubmitting}
                                   errors={errors}
                                   values={values}
-                                  return_url={"/organization/appointment_categories/" + match.params.category_id + "/appointments/prices/" + match.params.appointment_id}
+                                  returnUrl={"/organization/appointment_categories/" + match.params.category_id + "/appointments/prices/" + match.params.appointment_id}
                                 />
                               )}
                           </Formik>

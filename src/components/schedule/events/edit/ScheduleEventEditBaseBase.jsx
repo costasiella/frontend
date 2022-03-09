@@ -19,7 +19,8 @@ function ScheduleEventEditBaseBase({
   children, 
   returnUrl="/schedule/events", 
   pageHeaderOptions, 
-  activeLink
+  activeLink,
+  pageSubTitle
  }) {
   const eventId = match.params.event_id
 
@@ -27,7 +28,7 @@ function ScheduleEventEditBaseBase({
       <SiteWrapper>
         <div className="my-3 my-md-5">
           <Container>
-            <Page.Header title={t("schedule.events.title")} >
+            <Page.Header title={t("schedule.events.title")} subTitle={pageSubTitle}>
               <div className="page-options d-flex">
                 {/* Page options can go here... */}
                 <ButtonBack returnUrl={returnUrl} />

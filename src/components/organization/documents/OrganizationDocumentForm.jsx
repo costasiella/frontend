@@ -21,7 +21,7 @@ const customFileInputLabelStyle = {
 }
   
 
-function OrganizationDocumentForm ({ t, history, isSubmitting, values, errors, setFieldTouched, setFieldValue, return_url }) {
+function OrganizationDocumentForm ({ t, history, isSubmitting, values, errors, setFieldTouched, setFieldValue, returnUrl }) {
   const [fileName, setFileName] = useState(values.fileName)
   const inputFileName = useRef(null)
   const fileInputLabel = fileName || t("general.custom_file_input_inner_label")
@@ -88,7 +88,7 @@ function OrganizationDocumentForm ({ t, history, isSubmitting, values, errors, s
         >
           {t('general.submit')}
         </Button>
-        <Button color="link" onClick={() => history.push(return_url)}>
+        <Button color="link" onClick={() => history.push(returnUrl)}>
           {t('general.cancel')}
         </Button>
       </Card.Footer>

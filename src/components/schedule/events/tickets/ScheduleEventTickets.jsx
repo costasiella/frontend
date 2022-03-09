@@ -86,7 +86,7 @@ function ScheduleEventTickets({t, match, history}) {
 
   return (
     <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} pageHeaderOptions={pageHeaderOptions}>
-      <Table>
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.name')}</Table.ColHeader>
@@ -94,7 +94,6 @@ function ScheduleEventTickets({t, match, history}) {
             <Table.ColHeader>{t('general.public')}</Table.ColHeader>
             <Table.ColHeader>{t('general.glaccount')}</Table.ColHeader>
             <Table.ColHeader>{t('general.costcenter')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -131,8 +130,6 @@ function ScheduleEventTickets({t, match, history}) {
                     {t('general.edit')}
                   </Button>
                 </Link>
-              </Table.Col>
-              <Table.Col className="text-right">
                 {/* Check for fullEvent / deletable before showing delete button */}
                 {(node.deletable) ? <ScheduleEventTicketDelete id={node.id} /> : ""}
               </Table.Col>

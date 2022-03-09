@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsWorkflowShopForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsWorkflowShopForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.workflow.shop.subscription_payment_method')}>
@@ -35,7 +35,7 @@ const SettingsWorkflowShopForm = ({ t, history, isSubmitting, errors, values, re
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

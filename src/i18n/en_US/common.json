@@ -74,7 +74,8 @@
                 "SENT": "Sent",
                 "PAID": "Paid",
                 "CANCELLED": "Cancelled",
-                "NOT_FOUND": "Not found"
+                "NOT_FOUND": "Not found",
+                "ALL": "All statuses"
             },
             "delete_confirm_msg": "Are you sure you wish to delete this invoice?",
             "deleted": "Deleted invoice",
@@ -90,7 +91,15 @@
             "item_deleted": "Deleted item",
             "payment_delete_confirm_msg": "Are you sure you wish to delte this payment?",
             "payment_deleted": "Deleted payment",
-            "explanation": "Manage invoices"
+            "explanation": "Manage invoices",
+            "export": {
+                "btn_prepare_export": "Prepare export",
+                "ready": {
+                    "title": "Export ready",
+                    "explanation": "An export has been prepared with the following values:"
+                },
+                "title": "Export invoices"
+            }
         },
         "invoice_groups": {
             "title": "Invoice groups",
@@ -282,7 +291,7 @@
         "groups": "Groups",
         "public": "Public",
         "shop": "Shop",
-        "custom_file_input_inner_label": "Choose file...",
+        "custom_file_input_inner_label": "Click Browse to choose a file...",
         "custom_file_input_label": "Select a file",
         "yes": "Yes",
         "no": "No",
@@ -450,7 +459,6 @@
         "preview": "Preview",
         "infoMailContent": "Info mail content",
         "start": "Start",
-        "edit_menu": "Edit menu",
         "spaces": "Spaces",
         "included": "Included",
         "filled": "Filled",
@@ -500,7 +508,11 @@
         "reset_filter": "Reset filter",
         "run_task": "Run task",
         "using": "using",
-        "ended": "Ended"
+        "ended": "Ended",
+        "sell": "Sell",
+        "clear_search": "Clear search",
+        "all": "All",
+        "period": "Period"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -937,7 +949,8 @@
                 "deleted": "Deleted class pass",
                 "add": "Add class pass",
                 "title_classes": "Classes taken using",
-                "no_classes_taken_yet": "No classes taken yet using this pass"
+                "no_classes_taken_yet": "No classes taken yet using this pass",
+                "empty_list": "This customer doesn't have any class passes yet."
             },
             "memberships": {
                 "title_add": "Add membership",
@@ -985,7 +998,7 @@
             "bank_accounts": {
                 "title": "Bank account",
                 "holder": "Account holder",
-                "number": "Account number",
+                "number": "Account number / IBAN",
                 "bic": "BIC",
                 "toast_edit_success": "Saved",
                 "mandates": {
@@ -1134,7 +1147,14 @@
                     "delete_confirm_msg": "Are you sure you wish to remove this customer from the attendance list?",
                     "delete_success": "Customer removed from list",
                     "search_result_empty": "No customers found matching your search",
-                    "search_results_already_checked_in": "Already checked-in"
+                    "search_results_already_checked_in": "Already checked-in",
+                    "empty_list": "No attendance registered yet",
+                    "error_loading": "Error loading... :(",
+                    "placeholder_search": "Search to register attendance",
+                    "this_class_is_cancelled": "This class has been cancelled",
+                    "unable_to_add_attendance": "Unable to add attendance",
+                    "search_customer_not_found": "Customer not found",
+                    "search_no_account_results": "Your search didn't return any results"
                 },
                 "book": {
                     "toast_success": "Check-in success",
@@ -1194,7 +1214,8 @@
                 "search": {
                     "title": "Search for customers to enroll",
                     "error_loading": "Error loading accounts... :(",
-                    "empty_list": "Your search didn't return any results"
+                    "empty_list": "Your search didn't return any results",
+                    "search_to_find_customers_to_enroll": "Use the search box to find customers to enroll."
                 }
             }
         },
@@ -1252,10 +1273,16 @@
                     "toast_edit_success": "Saved"
                 },
                 "customers": {
-                    "search_results_already_bought": "Already bought this ticket",
-                    "toast_add_success": "Added customer",
+                    "search_results_already_bought": "Has this ticket",
+                    "toast_add_success": "Sold ticket to",
                     "uncancelled": "Uncancelled",
-                    "cancelled": "Cancelled"
+                    "cancelled": "Cancelled",
+                    "search": {
+                        "title": "Sell ticket",
+                        "error_loading": "Error loading customers :(",
+                        "empty_list": "Your search didn't return any results",
+                        "search_to_find_customers_to_sell_to": "Use the search box to find customers to sell this ticket to"
+                    }
                 },
                 "info_mail_sent": "Info mail sent"
             },
@@ -1931,7 +1958,8 @@
             "message": "Any message with this order?",
             "by_placing_this_order": "By placing this order I",
             "agree_terms": "Accept the ",
-            "agree_privacy": "Accept the"
+            "agree_privacy": "Accept the",
+            "payment": "Payment"
         },
         "place_order": "Place order",
         "checkout_progress": {
@@ -1960,7 +1988,9 @@
                 "fail_content_text": "Please contact us in case there was a technical error and you'd like our staff can help you.",
                 "title": "Checkout complete",
                 "success_payment_text": "We have received your payment for this order.",
-                "fail_payment_text": "It looks like something went wrong while processing your payment. "
+                "fail_payment_text": "It looks like something went wrong while processing your payment. ",
+                "success_subheader_free_order": "You're all set!",
+                "success_content_text_free_order": "All items in this order have been added to your account."
             },
             "order_summary": {
                 "error_loading": "Error loading order information :(",
@@ -1971,7 +2001,8 @@
                 "have_been_checked_in": "We've reserved your spot in this class!",
                 "will_be_checked_in": "We'll reserve your spot in this class once we've received your payment",
                 "info_mail": "Class information"
-            }
+            },
+            "pageTitle": "Checkout"
         },
         "complete": {
             "to_account": "To your account"
@@ -2027,7 +2058,7 @@
                 "title": "My Subscriptions",
                 "explanation": "View your current and past subscriptions",
                 "error_loading_data": "Error loading subscriptions... :(",
-                "empty_list": "No subcsriptions found."
+                "empty_list": "No subscriptions found."
             },
             "event_tickets": {
                 "title": "My Event tickets",
@@ -2075,7 +2106,8 @@
                 "toast_edit_success": "Saved bank account",
                 "title": "My bank account",
                 "explanation": "Manage your bank information"
-            }
+            },
+            "btn_text_bank_account_edit": "Update bank information"
         },
         "accounts": {
             "profile": {

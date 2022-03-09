@@ -11,6 +11,7 @@ import {
 } from "tabler-react";
 
 import SiteWrapper from '../../SiteWrapper'
+import ButtonExport from '../../ui/ButtonExport';
 import FinanceInvoicesFilter from "./FinanceInvoicesFilter"
 
 
@@ -22,6 +23,7 @@ function FinanceInvoicesBase ({ t, history, children, refetch }) {
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
               <FinanceInvoicesFilter refetch={refetch}/>
+              <ButtonExport url="/finance/invoices/export" className='mr-2' />
               <Link to="/finance/invoices/groups">
                 <Button
                   color="secondary"

@@ -10,7 +10,7 @@ import {
   } from "tabler-react"
   import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-const OrganizationAppointmentCategoryForm = ({ t, history, isSubmitting, values, errors, return_url }) => (
+const OrganizationAppointmentCategoryForm = ({ t, history, isSubmitting, values, errors, returnUrl }) => (
   <FoForm>
     <Card.Body>
         <Form.Group>
@@ -43,7 +43,7 @@ const OrganizationAppointmentCategoryForm = ({ t, history, isSubmitting, values,
         >
           {t('general.submit')}
         </Button>
-        <Link to={return_url}>
+        <Link to={returnUrl}>
           <Button color="link" type="button">
               {t('general.cancel')}
           </Button>

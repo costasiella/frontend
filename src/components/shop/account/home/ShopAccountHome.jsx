@@ -118,7 +118,7 @@ function ShopAccountHome({t, match, history}) {
               <h5>{t("shop.account.bank_account.title")}</h5>
               {t("shop.account.bank_account.explanation")}
               <br /><br />
-              <ShopAccountHomeButton link="/shop/account/bank_account" buttonText={t("shop.account.btn_text_profile_edit")} />
+              <ShopAccountHomeButton link="/shop/account/bank_account" buttonText={t("shop.account.btn_text_bank_account_edit")} />
             </Card.Body>
           </Card>
         </Grid.Col>

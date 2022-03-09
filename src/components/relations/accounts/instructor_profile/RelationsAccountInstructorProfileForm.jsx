@@ -14,7 +14,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 
 
-const RelationsAccountInstructorProfileForm = ({ t, history, isSubmitting, errors, values, return_url, setFieldTouched, setFieldValue }) => (
+const RelationsAccountInstructorProfileForm = ({ t, history, isSubmitting, errors, values, returnUrl, setFieldTouched, setFieldValue }) => (
   <FoForm>
       <Card.Body>
         <Grid.Row>
@@ -129,7 +129,7 @@ const RelationsAccountInstructorProfileForm = ({ t, history, isSubmitting, error
             {t('general.submit')}
           </Button>
           
-          {/* <Button color="link" onClick={() => history.push(return_url)}>
+          {/* <Button color="link" onClick={() => history.push(returnUrl)}>
               {t('general.cancel')}
           </Button> */}
       </Card.Footer>

@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsWorkflowTrialForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsWorkflowTrialForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.workflow.trial.trial_pass_limit')}>
@@ -32,7 +32,7 @@ const SettingsWorkflowTrialForm = ({ t, history, isSubmitting, errors, values, r
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

@@ -14,6 +14,8 @@ import {
 } from "tabler-react";
 
 import SiteWrapper from "../../SiteWrapper"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
+import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import { UPDATE_PAYMENT_BATCH, GET_PAYMENT_BATCHES_QUERY } from "./queries"
 import { get_list_query_variables } from "./tools"
 
@@ -25,6 +27,7 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
   const exportUrl = `/d/export/finance_payment_batch/csv/${batchId}`
   const [disabled, setDisabled] = useState(false)
 
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   const [updateFinancePaymentBatch] = useMutation(UPDATE_PAYMENT_BATCH)
 
   let sentToBankColor = "secondary"
@@ -88,11 +91,18 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
                       className='btn btn-secondary mr-2'>
                   <Icon prefix="fe" name="arrow-left" /> {t('general.back')}
                 </Link>
-                {/* Export as PDF */}
-                <a href={exportUrl} 
-                    className='btn btn-secondary mr-2'>
-                    <Icon prefix="fe" name="download" /> {t('general.export')} 
-                </a>
+                {/* Export as sold as excel sheet */}
+                <Button
+                  className='mr-2'
+                  color="secondary"
+                  RootComponent="a"
+                  icon="download-cloud"
+                  onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+                    doTokenRefresh, history, exportUrl
+                  )}
+                >
+                  {t("general.export")}
+                </Button>
                 <Link to={`/finance/paymentbatches/${batchType}/edit/${batchId}`} 
                       className='btn btn-secondary'>
                   <Icon name="edit-2" /> {t('general.edit')}

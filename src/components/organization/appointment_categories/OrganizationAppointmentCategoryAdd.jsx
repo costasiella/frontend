@@ -34,7 +34,7 @@ const ADD_ORGANIZATION_APPOINTMENT_CATEGORY = gql`
   }
 `
 
-const return_url = "/organization/appointment_categories"
+const returnUrl = "/organization/appointment_categories"
 
 const OrganizationAppointmentCategoryAdd = ({ t, history }) => (
   <SiteWrapper>
@@ -47,7 +47,7 @@ const OrganizationAppointmentCategoryAdd = ({ t, history }) => (
             <Card.Header>
               <Card.Title>{t('organization.appointment_categories.title_add')}</Card.Title>
             </Card.Header>
-            <Mutation mutation={ADD_ORGANIZATION_APPOINTMENT_CATEGORY} onCompleted={() => history.push(return_url)}> 
+            <Mutation mutation={ADD_ORGANIZATION_APPOINTMENT_CATEGORY} onCompleted={() => history.push(returnUrl)}> 
                 {(addAppointmentCategory, { data }) => (
                     <Formik
                         initialValues={{ name: '', displayPublic: true }}
@@ -80,7 +80,7 @@ const OrganizationAppointmentCategoryAdd = ({ t, history }) => (
                             isSubmitting={isSubmitting}
                             errors={errors}
                             values={values}
-                            return_url={return_url}
+                            returnUrl={returnUrl}
                           />
                         )}
                     </Formik>
@@ -92,7 +92,7 @@ const OrganizationAppointmentCategoryAdd = ({ t, history }) => (
             <HasPermissionWrapper permission="add"
                                   resource="organizationappointmentcategory">
               <Button color="primary btn-block mb-6"
-                      onClick={() => history.push(return_url)}>
+                      onClick={() => history.push(returnUrl)}>
                 <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
               </Button>
             </HasPermissionWrapper>

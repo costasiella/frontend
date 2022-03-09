@@ -49,9 +49,7 @@ function AccountScheduleEventTickets({t, history, match}) {
     </AccountScheduleEventTicketsBase>
   )
 
-  console.log(data)
   const accountScheduleEventTickets = data.accountScheduleEventTickets
-  console.log(accountScheduleEventTickets)
 
   // Empty list
   if (!accountScheduleEventTickets.edges.length) {

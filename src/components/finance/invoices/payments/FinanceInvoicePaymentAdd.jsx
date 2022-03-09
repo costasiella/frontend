@@ -30,14 +30,14 @@ const ADD_FINANCE_INVOICE_PAYMENT = gql`
 
 function FinanceInvoicePaymentAdd({ t, history, match }) {
   const invoiceId = match.params.invoice_id
-  const return_url = "/finance/invoices/edit/" + invoiceId
+  const returnUrl = "/finance/invoices/edit/" + invoiceId
   const { loading: queryLoading, error: queryError, data, } = useQuery(GET_INVOICE_QUERY, {
     variables: {
       id: invoiceId
     }
   })
   const [addInvoicePayment] = useMutation(ADD_FINANCE_INVOICE_PAYMENT, {
-    onCompleted: () => history.push(return_url),
+    onCompleted: () => history.push(returnUrl),
   })
 
   if (queryLoading) return (
@@ -109,7 +109,7 @@ function FinanceInvoicePaymentAdd({ t, history, match }) {
             setFieldValue={setFieldValue}
             errors={errors}
             values={values}
-            return_url={return_url}
+            returnUrl={returnUrl}
           />
         )}
       </Formik>

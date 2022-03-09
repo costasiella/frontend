@@ -365,7 +365,6 @@
         "holiday": "__STRING_NOT_TRANSLATED__",
         "filled": "__STRING_NOT_TRANSLATED__",
         "spaces": "__STRING_NOT_TRANSLATED__",
-        "edit_menu": "__STRING_NOT_TRANSLATED__",
         "unarchive": "__STRING_NOT_TRANSLATED__",
         "tagline": "__STRING_NOT_TRANSLATED__",
         "preview": "__STRING_NOT_TRANSLATED__",
@@ -415,7 +414,11 @@
         "reset_filter": "__STRING_NOT_TRANSLATED__",
         "run_task": "__STRING_NOT_TRANSLATED__",
         "using": "__STRING_NOT_TRANSLATED__",
-        "ended": "__STRING_NOT_TRANSLATED__"
+        "ended": "__STRING_NOT_TRANSLATED__",
+        "sell": "__STRING_NOT_TRANSLATED__",
+        "clear_search": "__STRING_NOT_TRANSLATED__",
+        "all": "__STRING_NOT_TRANSLATED__",
+        "period": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -506,7 +509,8 @@
                 "SENT": "__STRING_NOT_TRANSLATED__",
                 "PAID": "__STRING_NOT_TRANSLATED__",
                 "CANCELLED": "__STRING_NOT_TRANSLATED__",
-                "NOT_FOUND": "__STRING_NOT_TRANSLATED__"
+                "NOT_FOUND": "__STRING_NOT_TRANSLATED__",
+                "ALL": "__STRING_NOT_TRANSLATED__"
             },
             "payment_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "payment_deleted": "__STRING_NOT_TRANSLATED__",
@@ -532,6 +536,14 @@
                 "sent": "__STRING_NOT_TRANSLATED__",
                 "paid": "__STRING_NOT_TRANSLATED__",
                 "cancelled": "__STRING_NOT_TRANSLATED__"
+            },
+            "export": {
+                "btn_prepare_export": "__STRING_NOT_TRANSLATED__",
+                "ready": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "explanation": "__STRING_NOT_TRANSLATED__"
+                },
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         },
         "orders": {
@@ -865,7 +877,8 @@
                 "payment_received": "__STRING_NOT_TRANSLATED__",
                 "payment_not_confirmed": "__STRING_NOT_TRANSLATED__",
                 "to_profile": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "btn_text_bank_account_edit": "__STRING_NOT_TRANSLATED__"
         },
         "checkout": {
             "payment": {
@@ -893,13 +906,16 @@
                 "fail_subheader": "__STRING_NOT_TRANSLATED__",
                 "fail_content_text": "__STRING_NOT_TRANSLATED__",
                 "fail_payment_text": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "success_subheader_free_order": "__STRING_NOT_TRANSLATED__",
+                "success_content_text_free_order": "__STRING_NOT_TRANSLATED__"
             },
             "order_summary": {
                 "error_loading": "__STRING_NOT_TRANSLATED__",
                 "message": "__STRING_NOT_TRANSLATED__"
             },
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "pageTitle": "__STRING_NOT_TRANSLATED__"
         },
         "accounts": {
             "profile": {
@@ -982,7 +998,8 @@
             "message": "__STRING_NOT_TRANSLATED__",
             "by_placing_this_order": "__STRING_NOT_TRANSLATED__",
             "agree_terms": "__STRING_NOT_TRANSLATED__",
-            "agree_privacy": "__STRING_NOT_TRANSLATED__"
+            "agree_privacy": "__STRING_NOT_TRANSLATED__",
+            "payment": "__STRING_NOT_TRANSLATED__"
         },
         "place_order": "__STRING_NOT_TRANSLATED__",
         "checkout_progress": {
@@ -1051,7 +1068,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "add": "__STRING_NOT_TRANSLATED__",
                 "title_classes": "__STRING_NOT_TRANSLATED__",
-                "no_classes_taken_yet": "__STRING_NOT_TRANSLATED__"
+                "no_classes_taken_yet": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "documents": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
@@ -1632,7 +1650,14 @@
                         "BOOKED": "__STRING_NOT_TRANSLATED__",
                         "CANCELLED": "__STRING_NOT_TRANSLATED__",
                         "invalid_type": "__STRING_NOT_TRANSLATED__"
-                    }
+                    },
+                    "empty_list": "__STRING_NOT_TRANSLATED__",
+                    "error_loading": "__STRING_NOT_TRANSLATED__",
+                    "placeholder_search": "__STRING_NOT_TRANSLATED__",
+                    "this_class_is_cancelled": "__STRING_NOT_TRANSLATED__",
+                    "unable_to_add_attendance": "__STRING_NOT_TRANSLATED__",
+                    "search_customer_not_found": "__STRING_NOT_TRANSLATED__",
+                    "search_no_account_results": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"
@@ -1751,7 +1776,8 @@
                 "search": {
                     "title": "__STRING_NOT_TRANSLATED__",
                     "error_loading": "__STRING_NOT_TRANSLATED__",
-                    "empty_list": "__STRING_NOT_TRANSLATED__"
+                    "empty_list": "__STRING_NOT_TRANSLATED__",
+                    "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 }
             }
         },
@@ -1762,7 +1788,13 @@
                     "uncancelled": "__STRING_NOT_TRANSLATED__",
                     "cancelled": "__STRING_NOT_TRANSLATED__",
                     "search_results_already_bought": "__STRING_NOT_TRANSLATED__",
-                    "toast_add_success": "__STRING_NOT_TRANSLATED__"
+                    "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                    "search": {
+                        "title": "__STRING_NOT_TRANSLATED__",
+                        "error_loading": "__STRING_NOT_TRANSLATED__",
+                        "empty_list": "__STRING_NOT_TRANSLATED__",
+                        "search_to_find_customers_to_sell_to": "__STRING_NOT_TRANSLATED__"
+                    }
                 },
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "edit_menu": {

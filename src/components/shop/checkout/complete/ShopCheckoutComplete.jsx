@@ -59,14 +59,20 @@ function ShopCheckoutComplete({ t, match, history }) {
 
   // Success!
   if (order.status === "DELIVERED") {
-    // Thank you message
-    subHeader = t("shop.checkout.complete.success_subheader") 
-    // Something to explain the user what's next
-    contentText = t("shop.checkout.complete.success_content_text")
+    // subHeader: thank you message
+    // contentText: Something to explain the user what's next
+    if (order.total === "0.00") {
+      subHeader = t("shop.checkout.complete.success_subheader_free_order") 
+      contentText = t("shop.checkout.complete.success_content_text_free_order")
+    } else {
+      subHeader = t("shop.checkout.complete.success_subheader") 
+      contentText = t("shop.checkout.complete.success_content_text")
+    }
+    
     complete = true
 
     // Confirm receiving payment to user
-    if (order.total) {
+    if (order.total !== "0.00") {
       paymentText = t("shop.checkout.complete.success_payment_text")
     }
   } else {
@@ -77,7 +83,7 @@ function ShopCheckoutComplete({ t, match, history }) {
     contentText = t("shop.checkout.complete.fail_content_text")
 
     // Notify user that payment hasn't been received
-    if (order.total) {
+    if (order.total !== "0.00") {
       paymentText = t("shop.checkout.complete.fail_payment_text")
     }
   }

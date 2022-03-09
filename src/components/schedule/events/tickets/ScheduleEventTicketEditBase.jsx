@@ -77,7 +77,7 @@ function ScheduleEventTicketEditBase({t, match, history, activeTab, children, pa
   </span> : ""
 
   return (
-    <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink} returnUrl={returnUrl}>
+    <ScheduleEventEditBaseBase pageHeaderOptions={pageHeaderOptions} activeLink={activeLink} returnUrl={returnUrl} >
       {searchResults}
       <Card>
         <Card.Header>

@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsWorkflowSubscriptionPausesForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsWorkflowSubscriptionPausesForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.workflow.subscription_pauses.min_duration_in_days')}>
@@ -39,7 +39,7 @@ const SettingsWorkflowSubscriptionPausesForm = ({ t, history, isSubmitting, erro
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

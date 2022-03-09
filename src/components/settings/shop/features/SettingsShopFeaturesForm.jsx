@@ -10,7 +10,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsShopFeaturesForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsShopFeaturesForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
         {/* <Form.Group>
@@ -82,7 +82,7 @@ const SettingsShopFeaturesForm = ({ t, history, isSubmitting, errors, values, re
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

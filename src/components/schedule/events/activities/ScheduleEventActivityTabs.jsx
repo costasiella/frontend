@@ -3,7 +3,9 @@ import { withTranslation } from 'react-i18next'
 
 import CardTabs from "../../../ui/CardTabs"
 
-function ScheduleEventActivityTabs({ t, active, eventId, scheduleItemId}) {
+function ScheduleEventActivityTabs({ t, activeTab, eventId, scheduleItemId}) {
+  console.log(activeTab)
+
   return (
     <CardTabs 
       position="top"
@@ -19,7 +21,7 @@ function ScheduleEventActivityTabs({ t, active, eventId, scheduleItemId}) {
             link: `/schedule/events/edit/${eventId}/activities/edit/${scheduleItemId}/attendance`
           },
       ]}
-      active={active}
+      active={activeTab}
     />
   )
 }

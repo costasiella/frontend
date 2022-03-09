@@ -50,6 +50,7 @@ import FinanceGLAccounts from './components/finance/glaccounts/FinanceGLAccounts
 import FinanceGLAccountAdd from './components/finance/glaccounts/FinanceGLAccountAdd'
 import FinanceGLAccountEdit from './components/finance/glaccounts/FinanceGLAccountEdit'
 import FinanceInvoices from './components/finance/invoices/FinanceInvoices'
+import FinanceInvoicesExport from './components/finance/invoices/export/FinanceInvoicesExport'
 import FinanceInvoiceEdit from './components/finance/invoices/edit/FinanceInvoiceEdit'
 import FinanceInvoiceGroups from './components/finance/invoices/groups/FinanceInvoiceGroups'
 import FinanceInvoiceGroupAdd from './components/finance/invoices/groups/FinanceInvoiceGroupAdd'
@@ -242,6 +243,7 @@ import ScheduleEventTicketAdd from './components/schedule/events/tickets/Schedul
 import ScheduleEventTicketEdit from './components/schedule/events/tickets/ScheduleEventTicketEdit'
 import ScheduleEventTicketEditActivities from './components/schedule/events/tickets/activities/ScheduleEventTicketEditActivities'
 import ScheduleEventTicketEditCustomers from './components/schedule/events/tickets/customers/ScheduleEventTicketEditCustomers'
+import ScheduleEventTicketEditCustomersSearch from './components/schedule/events/tickets/customers/ScheduleEventTicketEditCustomersSearch'
 import ScheduleShifts from './components/schedule/shifts/ScheduleShifts'
 import ScheduleShiftAdd from './components/schedule/shifts/ScheduleShiftAdd'
 import ScheduleShiftEditAll from './components/schedule/shifts/all/edit/ScheduleShiftEditAll'
@@ -448,6 +450,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/costcenters/add" component={FinanceCostCenterAdd} />
             <PrivateRoute exact path="/finance/costcenters/edit/:id" component={FinanceCostCenterEdit} />
             <PrivateRoute exact path="/finance/invoices" component={FinanceInvoices} />
+            <PrivateRoute exact path="/finance/invoices/export" component={FinanceInvoicesExport} />
             <PrivateRoute exact path="/finance/invoices/edit/:id" component={FinanceInvoiceEdit} />
             <PrivateRoute exact path="/finance/invoices/groups" component={FinanceInvoiceGroups} />
             <PrivateRoute exact path="/finance/invoices/groups/add" component={FinanceInvoiceGroupAdd} />
@@ -661,6 +664,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id" component={ScheduleEventTicketEdit} />
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/activities" component={ScheduleEventTicketEditActivities} />
             <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/customers" component={ScheduleEventTicketEditCustomers} />
+            <PrivateRoute exact path="/schedule/events/edit/:event_id/tickets/edit/:id/customers/search" 
+                          component={ScheduleEventTicketEditCustomersSearch} />
             <PrivateRoute exact path="/schedule/shifts" component={ScheduleShifts} />
             <PrivateRoute exact path="/schedule/shifts/add" component={ScheduleShiftAdd} />
             <PrivateRoute exact path="/schedule/shifts/all/edit/:shift_id/" component={ScheduleShiftEditAll} />

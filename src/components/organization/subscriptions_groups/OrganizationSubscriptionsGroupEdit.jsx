@@ -111,7 +111,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
 //     const match = this.props.match
 //     const history = this.props.history
 //     const id = match.params.id
-//     const return_url = "/organization/subscriptions/groups"
+//     const returnUrl = "/organization/subscriptions/groups"
 
 //     return (
 //       <SiteWrapper>
@@ -141,7 +141,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
 
 //                     return (
                       
-//                       <Mutation mutation={UPDATE_SUBSCRIPTION_GROUP} onCompleted={() => history.push(return_url)}> 
+//                       <Mutation mutation={UPDATE_SUBSCRIPTION_GROUP} onCompleted={() => history.push(returnUrl)}> 
 //                       {(updateSubscriptionGroup, { data }) => (
 //                           <Formik
 //                               initialValues={{ 
@@ -180,7 +180,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
 //                                 <OrganizationSubscriptionGroupForm
 //                                   isSubmitting={isSubmitting}
 //                                   errors={errors}
-//                                   return_url={return_url}
+//                                   returnUrl={returnUrl}
 //                                 />
 //                               )}
 //                           </Formik>
@@ -194,7 +194,7 @@ function OrganizationSubscriptionGroupEdit({t, match, history}) {
 //                 <HasPermissionWrapper permission="change"
 //                                       resource="organizationsubscriptiongroup">
 //                   <Button color="primary btn-block mb-6"
-//                           onClick={() => history.push(return_url)}>
+//                           onClick={() => history.push(returnUrl)}>
 //                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
 //                   </Button>
 //                 </HasPermissionWrapper>

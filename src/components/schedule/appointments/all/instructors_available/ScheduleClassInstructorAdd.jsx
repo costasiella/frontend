@@ -30,7 +30,7 @@ const ADD_SCHEDULE_CLASS_INSTRUCTOR = gql`
   }
 `
 
-const return_url = "/schedule/classes/all/instructors/"
+const returnUrl = "/schedule/classes/all/instructors/"
 
 const ScheduleClassInstructorAdd = ({ t, history, match }) => (
   <SiteWrapper>
@@ -55,7 +55,7 @@ const ScheduleClassInstructorAdd = ({ t, history, match }) => (
               menu_activeLink="instructors"
               sidebar_button={<ScheduleClassInstructorBack classId={match.params.class_id} />}
             >
-              <Mutation mutation={ADD_SCHEDULE_CLASS_INSTRUCTOR} onCompleted={() => history.push(return_url + match.params.class_id)}> 
+              <Mutation mutation={ADD_SCHEDULE_CLASS_INSTRUCTOR} onCompleted={() => history.push(returnUrl + match.params.class_id)}> 
                 {(addScheduleClassInstructor, { data }) => (
                     <Formik
                         initialValues={{ 
@@ -112,7 +112,7 @@ const ScheduleClassInstructorAdd = ({ t, history, match }) => (
                             setFieldValue={setFieldValue}
                             errors={errors}
                             values={values}
-                            return_url={return_url + match.params.class_id}
+                            returnUrl={returnUrl + match.params.class_id}
                           />
                         )}
                     </Formik>

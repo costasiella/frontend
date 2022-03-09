@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsGeneralSystemForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsGeneralSystemForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.general.system.system_hostname')}>
@@ -32,7 +32,7 @@ const SettingsGeneralSystemForm = ({ t, history, isSubmitting, errors, values, r
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

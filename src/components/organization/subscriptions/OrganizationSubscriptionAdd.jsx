@@ -142,7 +142,7 @@ function OrganizationSubscriptionAdd({ t, history }) {
 //   render() {
 //     const t = this.props.t
 //     const history = this.props.history
-//     const return_url = "/organization/subscriptions"
+//     const returnUrl = "/organization/subscriptions"
 
 //     return (
 //       <SiteWrapper>
@@ -157,7 +157,7 @@ function OrganizationSubscriptionAdd({ t, history }) {
 //                 <HasPermissionWrapper permission="add"
 //                                       resource="organizationsubscription">
 //                   <Button color="primary btn-block mb-6"
-//                           onClick={() => history.push(return_url)}>
+//                           onClick={() => history.push(returnUrl)}>
 //                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
 //                   </Button>
 //                 </HasPermissionWrapper>

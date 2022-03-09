@@ -12,7 +12,7 @@ import SiteWrapper from "../../../SiteWrapper"
 import ScheduleShiftBack from "./ScheduleShiftBack"
 
 
-function ScheduleShiftEditBase({ t, match, history, children, sidebarButton="", subTitle="" }) {
+function ScheduleShiftEditBase({ t, match, history, children, pageHeaderButtonList="", subTitle="" }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -20,14 +20,12 @@ function ScheduleShiftEditBase({ t, match, history, children, sidebarButton="", 
           <Page.Header title={t('schedule.title')} subTitle={subTitle}>
             <div className="page-options d-flex">       
               <ScheduleShiftBack />
+              {pageHeaderButtonList}
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col md={12}>
               {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
-              {sidebarButton}
             </Grid.Col>
           </Grid.Row>
         </Container>

@@ -24,7 +24,7 @@ function FinanceInvoicePaymentEdit({ t, history, match }) {
   console.log(invoiceId)
   console.log(id)
 
-  const return_url = "/finance/invoices/edit/" + invoiceId
+  const returnUrl = "/finance/invoices/edit/" + invoiceId
   const { loading: invoiceQueryLoading, error: invoiceQueryError, data: invoiceData, } = useQuery(GET_INVOICE_QUERY, {
     variables: {
       id: invoiceId
@@ -36,7 +36,7 @@ function FinanceInvoicePaymentEdit({ t, history, match }) {
     }
   })
   const [updateInvoicePayment] = useMutation(UPDATE_FINANCE_INVOICE_PAYMENT, {
-    onCompleted: () => history.push(return_url),
+    onCompleted: () => history.push(returnUrl),
   })
 
   if (invoiceQueryLoading || paymentQueryLoading) return (
@@ -133,7 +133,7 @@ function FinanceInvoicePaymentEdit({ t, history, match }) {
             setFieldValue={setFieldValue}
             errors={errors}
             values={values}
-            return_url={return_url}
+            returnUrl={returnUrl}
           />
         )}
       </Formik>

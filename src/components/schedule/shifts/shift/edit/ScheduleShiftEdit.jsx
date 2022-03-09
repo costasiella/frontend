@@ -26,8 +26,7 @@ function ScheduleShiftEdit({ t, match, history }) {
   let showDelete = false
   const scheduleItemId = match.params.shift_id
   const shiftDate = match.params.date
-  console.log(scheduleItemId)
-  console.log(shiftDate)
+  const returnUrl = "/schedule/shifts"
 
   const query_vars = {
     scheduleItem: scheduleItemId,
@@ -109,7 +108,7 @@ function ScheduleShiftEdit({ t, match, history }) {
 
 
   return (
-    <ScheduleShiftEditBase subTitle={subtitle} sidebarButton={(showDelete) ? <ScheduleShiftWeeklyOTCDelete/> : ""}>
+    <ScheduleShiftEditBase subTitle={subtitle} pageHeaderButtonList={(showDelete) ? <ScheduleShiftWeeklyOTCDelete/> : ""}>
       <Card>
         <Card.Header>
           <Card.Title>{t('general.edit')}</Card.Title>
@@ -175,6 +174,7 @@ function ScheduleShiftEdit({ t, match, history }) {
               setFieldValue={setFieldValue}
               errors={errors}
               values={values}
+              returnUrl={returnUrl}
             >
               {console.log(errors)}
             </ScheduleShiftEditForm>

@@ -13,7 +13,7 @@ import {
 import FormHelp from "../../../../ui/FormHelp"
 
 
-const ScheduleClassClasspassForm = ({ t, history, match, isSubmitting, submitForm, errors, values, setFieldTouched, setFieldValue }) => (
+const ScheduleClassClasspassForm = ({ t, history, match, isSubmitting, setSubmitting, submitForm, errors, values, setFieldTouched, setFieldValue }) => (
   <FoForm>
     <Dimmer active={isSubmitting} loader={isSubmitting} >
       <Grid.Row>
@@ -31,6 +31,7 @@ const ScheduleClassClasspassForm = ({ t, history, match, isSubmitting, submitFor
                     setFieldValue('attend', true)
                     setFieldTouched('attend', true)
                   }
+                  setSubmitting(true)
                   setTimeout(() => {submitForm()}, 200)
                 }}
                 checked={values.shopBook} />
@@ -51,6 +52,7 @@ const ScheduleClassClasspassForm = ({ t, history, match, isSubmitting, submitFor
                 onChange={() => {
                   setFieldValue('attend', !values.attend)
                   setFieldTouched('attend', true)
+                  setSubmitting(true)
                   setTimeout(() => {submitForm()}, 200)
                 }}
                 checked={values.attend} />

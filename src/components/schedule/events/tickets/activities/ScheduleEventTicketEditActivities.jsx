@@ -8,7 +8,6 @@ import { toast } from 'react-toastify'
 import { v4 } from 'uuid'
 
 import {
-  Card,
   Table,
 } from "tabler-react";
 
@@ -78,79 +77,77 @@ function ScheduleEventTicketEditActivities({ t, history, match }) {
       activeLink={activeLink} 
       returnUrl={returnUrl}
     >
-      <Card.Body>
-        <Table>
-          <Table.Header>
-            <Table.Row>
-              <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.included')}</Table.ColHeader>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {scheduleEventTicketActivities.edges.map(({ node }) => (
-              <Table.Row key={v4()}>
-                <Table.Col>
-                  {node.scheduleItem.name}
-                </Table.Col>  
-                <Table.Col>
-                  <Formik
-                    initialValues={{ 
-                      included: node.included,
-                    }}
-                    validationSchema={SCHEDULE_EVENT_TICKET_SCHEDLE_ITEM_SCHEMA}
-                    onSubmit={(values, { setSubmitting }) => {
-                      console.log("submit values")
-                      console.log(values)
+      <Table cards>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+            <Table.ColHeader className="text-right">{t('general.included')}</Table.ColHeader>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {scheduleEventTicketActivities.edges.map(({ node }) => (
+            <Table.Row key={v4()}>
+              <Table.Col>
+                {node.scheduleItem.name}
+              </Table.Col>  
+              <Table.Col className="text-right">
+                <Formik
+                  initialValues={{ 
+                    included: node.included,
+                  }}
+                  validationSchema={SCHEDULE_EVENT_TICKET_SCHEDLE_ITEM_SCHEMA}
+                  onSubmit={(values, { setSubmitting }) => {
+                    console.log("submit values")
+                    console.log(values)
 
-                      updateScheduleEventTicketScheduleItem({ variables: {
-                        input: {
-                            id: node.id,
-                            included: values.included
-                          }
-                        }, 
-                        refetchQueries: [
-                            {query: GET_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEMS_QUERY, variables: {
-                              scheduleEventTicket: id
-                            }},
-                          ]
+                    updateScheduleEventTicketScheduleItem({ variables: {
+                      input: {
+                          id: node.id,
+                          included: values.included
+                        }
+                      }, 
+                      refetchQueries: [
+                          {query: GET_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEMS_QUERY, variables: {
+                            scheduleEventTicket: id
+                          }},
+                        ]
+                      })
+                      .then(({ data }) => {
+                          console.log('got data', data);
+                          toast.success((t('schedule.events.tickets.activities.toast_edit_success')), {
+                              position: toast.POSITION.BOTTOM_RIGHT
+                            })
+                          setSubmitting(false)
+                        }).catch((error) => {
+                          toast.error((t('general.toast_server_error')) +  error, {
+                              position: toast.POSITION.BOTTOM_RIGHT
+                            })
+                          console.log('there was an error sending the query', error)
+                          setSubmitting(false)
                         })
-                        .then(({ data }) => {
-                            console.log('got data', data);
-                            toast.success((t('schedule.events.tickets.activities.toast_edit_success')), {
-                                position: toast.POSITION.BOTTOM_RIGHT
-                              })
-                            setSubmitting(false)
-                          }).catch((error) => {
-                            toast.error((t('general.toast_server_error')) +  error, {
-                                position: toast.POSITION.BOTTOM_RIGHT
-                              })
-                            console.log('there was an error sending the query', error)
-                            setSubmitting(false)
-                          })
-                    }}
+                  }}
+                  >
+                  {({  isSubmitting, errors, values, setFieldTouched, setFieldValue, submitForm, setSubmitting }) => (
+                    <ScheduleEventTicketEditActivityForm
+                      isSubmitting={isSubmitting}
+                      setFieldTouched={setFieldTouched}
+                      setFieldValue={setFieldValue}
+                      errors={errors}
+                      values={values}
+                      disabled={node.scheduleEventTicket.fullEvent}
+                      setSubmitting={setSubmitting}
+                      submitForm={submitForm}
                     >
-                    {({  isSubmitting, errors, values, setFieldTouched, setFieldValue, submitForm, setSubmitting }) => (
-                      <ScheduleEventTicketEditActivityForm
-                        isSubmitting={isSubmitting}
-                        setFieldTouched={setFieldTouched}
-                        setFieldValue={setFieldValue}
-                        errors={errors}
-                        values={values}
-                        disabled={node.scheduleEventTicket.fullEvent}
-                        setSubmitting={setSubmitting}
-                        submitForm={submitForm}
-                      >
-                        {/* {console.log(errors)}
-                        {console.log(values)} */}
-                      </ScheduleEventTicketEditActivityForm>
-                    )}
-                  </Formik>
-                </Table.Col>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      </Card.Body>
+                      {/* {console.log(errors)}
+                      {console.log(values)} */}
+                    </ScheduleEventTicketEditActivityForm>
+                  )}
+                </Formik>
+              </Table.Col>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
     </ScheduleEventTicketEditBase>
   )
 }

@@ -1,14 +1,12 @@
-import CSLS from "../../../../../tools/cs_local_storage"
-
-export function get_accounts_query_variables() {
+export function getAccountsQueryVariables(ticketId, searchName) {
   let queryVars = {
     instructor: undefined,
     employee: undefined,
-    searchName: undefined
+    searchName: undefined,
+    ticketId: ticketId
   }
 
-  let search = localStorage.getItem(CSLS.SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH)
-  queryVars.searchName = search
+  queryVars.searchName = searchName
 
   console.log(queryVars)
 

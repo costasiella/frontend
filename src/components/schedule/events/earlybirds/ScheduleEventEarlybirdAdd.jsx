@@ -9,7 +9,6 @@ import { dateToLocalISO } from '../../../../tools/date_tools'
 import { ADD_SCHEDULE_EVENT_EARLYBIRD, GET_SCHEDULE_EVENT_EARLYBIRDS_QUERY } from "./queries"
 import { SCHEDULE_EVENT_EARLYBIRDS_SCHEMA } from './yupSchema'
 
-import ScheduleEventEarlybirdBack from "./ScheduleEventEarlybirdsBack"
 import ScheduleEventEditBase from "../edit/ScheduleEventEditBase"
 import ScheduleEventEarlybirdForm from "./ScheduleEventEarlybirdForm"
 
@@ -22,11 +21,8 @@ function ScheduleEventEarlybirdAdd({ t, history, match }) {
 
   const [addScheduleEventEarlybird] = useMutation(ADD_SCHEDULE_EVENT_EARLYBIRD)
 
-  const sidebarContent = <ScheduleEventEarlybirdBack />
-
   return (
     <ScheduleEventEditBase 
-      sidebarContent={sidebarContent} 
       cardTitle={cardTitle} 
       activeLink={activeLink} 
       returnUrl={returnUrl}

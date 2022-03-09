@@ -26,28 +26,19 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
       t("shop.checkout.order_summary.error_loading")
   )
 
-  console.log(data)
   const order = data.financeOrder
-  console.log(order)
   const orderItems = order.items.edges
-  console.log(orderItems)
 
   let classDate 
   let scheduleItemId
   let item
-  console.log("Start looping")
   for (item of orderItems) {
     let node = item.node
-    console.log(node)
     if (node.scheduleItem) {
       classDate = node.attendanceDate
       scheduleItemId = node.scheduleItem.id
     }
   }
-
-  console.log('schedule item found!')
-  console.log(classDate)
-  console.log(scheduleItemId)
 
 
   return (
@@ -57,7 +48,7 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
           <Table.Header>
             <Table.Row>
               <Table.ColHeader>{t('general.item')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.price')}</Table.ColHeader>
+              <Table.ColHeader className="text-right">{t('general.price')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -69,39 +60,42 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
                     {node.description}
                   </span>
                 </Table.Col>
-                <Table.Col>{node.totalDisplay}</Table.Col>
+                <Table.Col className="text-right">{node.totalDisplay}</Table.Col>
               </Table.Row>      
             ))}
             <Table.Row className="bold">
               <Table.Col>
                 {t("general.total")}
               </Table.Col>
-              <Table.Col>
+              <Table.Col className="text-right">
                   {order.totalDisplay}
               </Table.Col>
             </Table.Row>
           </Table.Body>
         </Table>
       </div>
-      <Card.Body>
-        {(order.message) ?
-          <span className="text-muted">
-            <h5><Icon name="message-square" /> {t("shop.checkout.order_summary.message")}</h5> 
-            {/* Order message */}
-            {order.message}
-            <br /><br />
-          </span> 
-          : ""
-        }
-        {(scheduleItemId && classDate) ?
-          <ShopCheckoutClassInfo 
-            scheduleItemId={scheduleItemId}
-            date={classDate}
-            complete={complete}
-          />
-          : ""
-        }
-      </Card.Body>
+      {(order.message) || (scheduleItemId && classDate) ? 
+        <Card.Body>
+          {(order.message) ?
+            <span className="text-muted">
+              <h5><Icon name="message-square" /> {t("shop.checkout.order_summary.message")}</h5> 
+              {/* Order message */}
+              {order.message}
+              <br /><br />
+            </span> 
+            : ""
+          }
+          {(scheduleItemId && classDate) ?
+            <ShopCheckoutClassInfo 
+              scheduleItemId={scheduleItemId}
+              date={classDate}
+              complete={complete}
+            />
+            : ""
+          }
+        </Card.Body>
+        : ""
+      }
     </Card>
   )
 }

@@ -7,25 +7,25 @@ import { v4 } from 'uuid'
 
 import {
   Avatar,
-  Icon,
   Button,
   Table,
+  Card,
 } from "tabler-react";
 
 import { GET_SCHEDULE_EVENT_MEDIAS_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 import ScheduleEventMediaDelete from "./ScheduleEventMediaDelete"
+import ButtonAdd from '../../../ui/ButtonAdd';
 
 
 function ScheduleEventMedia({t, match, history}) {
   const eventId = match.params.event_id
   const activeLink = "media"
 
-  const sidebarContent = <Link to={`/schedule/events/edit/${eventId}/media/add`}>
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="plus-circle" /> {t('schedule.events.media.add')}
-    </Button>
-  </Link>
+  const pageHeaderOptions = <ButtonAdd 
+    addUrl={`/schedule/events/edit/${eventId}/media/add`} 
+    className="ml-2"
+  />
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_MEDIAS_QUERY, {
     variables: {
@@ -34,12 +34,12 @@ function ScheduleEventMedia({t, match, history}) {
   })
   
   if (loading) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       {t("general.loading_with_dots")}
     </ScheduleEventEditListBase>
   )
   if (error) return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <p>{t('general.error_sad_smiley')}</p>
       <p>{error.message}</p>
     </ScheduleEventEditListBase>
@@ -53,8 +53,10 @@ function ScheduleEventMedia({t, match, history}) {
 
   // Empty list
   if (!scheduleEventMedias.edges.length) { return (
-    <ScheduleEventEditListBase activeLink={activeLink} sidebarContent={sidebarContent}>
-      <p>{t('schedule.events.media.empty_list')}</p>
+    <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
+      <Card.Body>
+        <p>{t('schedule.events.media.empty_list')}</p>
+      </Card.Body>
     </ScheduleEventEditListBase>
   )}
 
@@ -83,14 +85,13 @@ function ScheduleEventMedia({t, match, history}) {
   }
 
   return (
-    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} sidebarContent={sidebarContent}>
+    <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} pageHeaderOptions={pageHeaderOptions}>
       <Table>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader></Table.ColHeader> 
             <Table.ColHeader>{t('general.description')}</Table.ColHeader>
             <Table.ColHeader>{t('general.sort_order')}</Table.ColHeader>
-            <Table.ColHeader></Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -113,8 +114,6 @@ function ScheduleEventMedia({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                </Table.Col>
-                <Table.Col className="text-right">
                   <ScheduleEventMediaDelete id={node.id} />
                 </Table.Col>
               </Table.Row>

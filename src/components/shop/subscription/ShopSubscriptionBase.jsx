@@ -6,12 +6,13 @@ import { withRouter } from "react-router"
 
 import ShopBase from "../ShopBase"
 
-function ShopSubscriptionBase({ t, match, history, children }) {
+function ShopSubscriptionBase({ t, match, history, pageTitle, pageSubTitle, children }) {
   
   return (
     <ShopBase 
-      title={t("shop.title")}
-      return_url="/shop/subscriptions"
+      title={pageTitle}
+      subTitle={pageSubTitle}
+      returnUrl="/shop/subscriptions"
       checkoutProgress="order"
     >
       {children}

@@ -74,7 +74,7 @@ class OrganizationMembershipEdit extends Component {
     const match = this.props.match
     const history = this.props.history
     const id = match.params.id
-    const return_url = "/organization/memberships"
+    const returnUrl = "/organization/memberships"
 
     return (
       <SiteWrapper>
@@ -113,7 +113,7 @@ class OrganizationMembershipEdit extends Component {
                     } 
 
                     return (
-                      <Mutation mutation={UPDATE_MEMBERSHIP} onCompleted={() => history.push(return_url)}> 
+                      <Mutation mutation={UPDATE_MEMBERSHIP} onCompleted={() => history.push(returnUrl)}> 
                       {(createMembership, { data }) => (
                           <Formik
                               initialValues={{ 
@@ -299,7 +299,7 @@ class OrganizationMembershipEdit extends Component {
                                           <Button
                                             type="button" 
                                             color="link" 
-                                            onClick={() => history.push(return_url)}
+                                            onClick={() => history.push(returnUrl)}
                                           >
                                               {t('general.cancel')}
                                           </Button>
@@ -317,7 +317,7 @@ class OrganizationMembershipEdit extends Component {
                 <HasPermissionWrapper permission="change"
                                       resource="organizationmembership">
                   <Button color="primary btn-block mb-6"
-                          onClick={() => history.push(return_url)}>
+                          onClick={() => history.push(returnUrl)}>
                     <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                   </Button>
                 </HasPermissionWrapper>

@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsFinanceBankAccountsForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsFinanceBankAccountsForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
         <Form.Group>
@@ -38,7 +38,7 @@ const SettingsFinanceBankAccountsForm = ({ t, history, isSubmitting, errors, val
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

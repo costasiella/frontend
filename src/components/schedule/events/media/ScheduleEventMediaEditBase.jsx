@@ -12,18 +12,19 @@ import {
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import { GET_SCHEDULE_EVENT_MEDIA_QUERY } from './queries'
 import { GET_SCHEDULE_EVENT_QUERY } from '../queries'
-import ScheduleEventMediaBack from "./ScheduleEventMediaBack"
 import ScheduleEventEditBaseBase from "../edit/ScheduleEventEditBaseBase"
 
 
 function ScheduleEventMediaEditBase({t, match, history, activeTab, children}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const cardTitle = t("schedule.events.media.edit")
-  const activeLink = "media"
 
   const eventId = match.params.event_id
   const scheduleEventMediaId = match.params.id
+  const cardTitle = t("schedule.events.media.edit")
+  const activeLink = "media"
+  const returnUrl = `/schedule/events/edit/${eventId}/media/`
+
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_QUERY, {
     variables: { id: eventId }
@@ -35,11 +36,9 @@ function ScheduleEventMediaEditBase({t, match, history, activeTab, children}) {
     }
   })
 
-  const sidebarContent = <ScheduleEventMediaBack />
-
   if (loading || loadingMedia) {
     return (
-      <ScheduleEventEditBaseBase sidebarContent={sidebarContent}>
+      <ScheduleEventEditBaseBase returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             <Dimmer loading={true} active={true} />
@@ -51,7 +50,7 @@ function ScheduleEventMediaEditBase({t, match, history, activeTab, children}) {
 
   if (error || errorMedia) {
     return (
-      <ScheduleEventEditBaseBase sidebarContent={sidebarContent}>
+      <ScheduleEventEditBaseBase returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             {t("schedule.events.error_loading")}
@@ -75,7 +74,7 @@ function ScheduleEventMediaEditBase({t, match, history, activeTab, children}) {
   </span> : ""
 
   return (
-    <ScheduleEventEditBaseBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditBaseBase activeLink={activeLink} returnUrl={returnUrl}>
       <Card>
         <Card.Header>
           <Card.Title>{cardTitle} {cardSubTitle} {cardActivitySubtitle}</Card.Title>

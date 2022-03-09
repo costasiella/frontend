@@ -41,7 +41,7 @@ function SubscriptionCheckinButton({t, match, history, subscription, returnTo, l
     return "uh oh... error found"
   }
 
-  const return_url = getUrlFromReturnTo({
+  const returnUrl = getUrlFromReturnTo({
     returnTo: returnTo,
     schedule_item_id: schedule_item_id,
     class_date: class_date,
@@ -80,7 +80,7 @@ function SubscriptionCheckinButton({t, match, history, subscription, returnTo, l
         .then(({ data }) => {
             console.log('got data', data);
             // redirect back to attendance list
-            history.push(return_url)
+            history.push(returnUrl)
             // show message to user
             toast.success((t('schedule.classes.class.book.toast_success')), {
               position: toast.POSITION.BOTTOM_RIGHT

@@ -44,7 +44,7 @@ class ScheduleClassInstructorEdit extends Component {
     const history = this.props.history
     const id = match.params.id
     const class_id = match.params.class_id
-    const return_url = "/schedule/classes/all/instructors/" + class_id
+    const returnUrl = "/schedule/classes/all/instructors/" + class_id
 
     return (
       <SiteWrapper>
@@ -75,7 +75,7 @@ class ScheduleClassInstructorEdit extends Component {
                   menu_activeLink="instructors"
                   sidebar_button={<ScheduleClassInstructorBack classId={class_id} />}
                 >
-                  <Mutation mutation={UPDATE_SCHEDULE_CLASS_INSTRUCTOR} onCompleted={() => history.push(return_url)}> 
+                  <Mutation mutation={UPDATE_SCHEDULE_CLASS_INSTRUCTOR} onCompleted={() => history.push(returnUrl)}> 
                     {(addScheduleClassInstructor, { data }) => (
                         <Formik
                             initialValues={{  
@@ -132,7 +132,7 @@ class ScheduleClassInstructorEdit extends Component {
                                 setFieldValue={setFieldValue}
                                 errors={errors}
                                 values={values}
-                                return_url={return_url}
+                                returnUrl={returnUrl}
                               >
                                 {console.log(errors)}
                               </ScheduleClassInstructorForm>

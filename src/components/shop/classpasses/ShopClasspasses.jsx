@@ -16,16 +16,15 @@ import { GET_ORGANIZATION_CLASSPASSES_QUERY } from "./queries"
 
 
 function ShopClasspasses({ t, match, history }) {
-  const title = t("shop.home.title")
   const { loading, error, data } = useQuery(GET_ORGANIZATION_CLASSPASSES_QUERY)
 
   if (loading) return (
-    <ShopClasspassesBase title={title} >
+    <ShopClasspassesBase>
       {t("general.loading_with_dots")}
     </ShopClasspassesBase>
   )
   if (error) return (
-    <ShopClasspassesBase title={title}>
+    <ShopClasspassesBase>
       {t("shop.classpasses.error_loading")}
     </ShopClasspassesBase>
   )
@@ -33,17 +32,17 @@ function ShopClasspasses({ t, match, history }) {
   const classpasses = data.organizationClasspasses
   
   return (
-    <ShopClasspassesBase title={title}>
-        <Grid.Row>
-          {classpasses.edges.map(({ node }) => (
-            <Grid.Col xs={12} sm={12} md={3}>
-              <ShopClasspassPricingCard
-                classpass={node}
-                btnLink={"/shop/classpass/" + node.id}
-              />
-            </Grid.Col>
-          ))}
-        </Grid.Row>
+    <ShopClasspassesBase>
+      <Grid.Row>
+        {classpasses.edges.map(({ node }) => (
+          <Grid.Col xs={12} sm={12} md={3}>
+            <ShopClasspassPricingCard
+              classpass={node}
+              btnLink={"/shop/classpass/" + node.id}
+            />
+          </Grid.Col>
+        ))}
+      </Grid.Row>
     </ShopClasspassesBase>
   )
 }

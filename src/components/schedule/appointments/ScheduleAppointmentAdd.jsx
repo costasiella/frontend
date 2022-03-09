@@ -66,7 +66,7 @@ class ScheduleAppointmentAdd extends Component {
   render() {
     const t = this.props.t
     const history = this.props.history
-    const return_url = "/schedule/appointments"
+    const returnUrl = "/schedule/appointments"
 
     return (
       <SiteWrapper>
@@ -103,7 +103,7 @@ class ScheduleAppointmentAdd extends Component {
                         <Card.Header>
                           <Card.Title>{t('schedule.appointments.title_add')}</Card.Title>
                         </Card.Header>
-                        <Mutation mutation={CREATE_APPOINTMENT} onCompleted={() => history.push(return_url)}> 
+                        <Mutation mutation={CREATE_APPOINTMENT} onCompleted={() => history.push(returnUrl)}> 
                   {(createSubscription, { data }) => (
                     <Formik
                       initialValues={{ 
@@ -168,7 +168,7 @@ class ScheduleAppointmentAdd extends Component {
                               errors={errors}
                               values={values}
                               touched={touched}
-                              return_url={return_url}
+                              returnUrl={returnUrl}
                             >
                               {console.log('########## v & e')}
                               {console.log(values)}
@@ -186,7 +186,7 @@ class ScheduleAppointmentAdd extends Component {
                         <HasPermissionWrapper permission="add"
                                               resource="scheduleappointment">
                           <Button color="primary btn-block mb-6"
-                                  onClick={() => history.push(return_url)}>
+                                  onClick={() => history.push(returnUrl)}>
                             <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                           </Button>
                         </HasPermissionWrapper>

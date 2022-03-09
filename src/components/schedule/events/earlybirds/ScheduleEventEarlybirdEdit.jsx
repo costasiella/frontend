@@ -14,7 +14,6 @@ import {
  } from "./queries"
 import { SCHEDULE_EVENT_EARLYBIRDS_SCHEMA } from './yupSchema'
 
-import ScheduleEventEarlybirdBack from "./ScheduleEventEarlybirdsBack"
 import ScheduleEventEditBase from "../edit/ScheduleEventEditBase"
 import ScheduleEventEarlybirdForm from "./ScheduleEventEarlybirdForm"
 
@@ -23,7 +22,7 @@ function ScheduleEventEarlybirdEdit({ t, history, match }) {
   const eventId = match.params.event_id
   const scheduleEventEarlybirdId = match.params.id
   const returnUrl = `/schedule/events/edit/${eventId}/earlybirds/`
-  const activeTab = 'general'
+  const activeLink = 'earlybirds'
   const cardTitle = t("schedule.events.earlybirds.edit")
 
   const [updateScheduleEventEarlybird] = useMutation(UPDATE_SCHEDULE_EVENT_EARLYBIRD)
@@ -32,13 +31,10 @@ function ScheduleEventEarlybirdEdit({ t, history, match }) {
       id: scheduleEventEarlybirdId
   }})
 
-  const sidebarContent = <ScheduleEventEarlybirdBack />
-
   if (loading) return (
     <ScheduleEventEditBase 
-      sidebarContent={sidebarContent} 
       cardTitle={cardTitle} 
-      activeTab={activeTab} 
+      activeLink={activeLink} 
       returnUrl={returnUrl}
     >
       {t("general.loading_with_dots")}
@@ -46,9 +42,8 @@ function ScheduleEventEarlybirdEdit({ t, history, match }) {
   )
   if (error) return (
     <ScheduleEventEditBase 
-      sidebarContent={sidebarContent} 
       cardTitle={cardTitle} 
-      activeTab={activeTab} 
+      activeLink={activeLink} 
       returnUrl={returnUrl}
     >
       <p>{t('general.error_sad_smiley')}</p>
@@ -56,21 +51,30 @@ function ScheduleEventEarlybirdEdit({ t, history, match }) {
     </ScheduleEventEditBase>
   )
 
-  const inputData = data
   const scheduleEventEarlybird = data.scheduleEventEarlybird
-  console.log(inputData)
+
+  // DatePicker doesn't like a string as an initial value
+  // This makes it a happy DatePicker :)
+  let initialDateStart = null
+  if (scheduleEventEarlybird.dateStart) {
+    initialDateStart = new Date(scheduleEventEarlybird.dateStart)
+  }
+
+  let initialDateEnd = null
+  if (scheduleEventEarlybird.dateEnd) {
+    initialDateEnd = new Date(scheduleEventEarlybird.dateEnd)
+  }
 
   return (
     <ScheduleEventEditBase 
-      sidebarContent={sidebarContent} 
       cardTitle={cardTitle} 
-      activeTab={activeTab} 
+      activeLink={activeLink} 
       returnUrl={returnUrl}
     >
       <Formik
         initialValues={{ 
-          dateStart: scheduleEventEarlybird.dateStart,
-          dateEnd: scheduleEventEarlybird.dateEnd,
+          dateStart: initialDateStart,
+          dateEnd: initialDateEnd,
           discountPercentage: scheduleEventEarlybird.discountPercentage
         }}
         validationSchema={SCHEDULE_EVENT_EARLYBIRDS_SCHEMA}

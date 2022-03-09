@@ -70,7 +70,7 @@ class AccountMembershipEdit extends Component {
     const match = this.props.match
     const id = match.params.id
     const account_id = match.params.account_id
-    const return_url = "/relations/accounts/" + account_id + "/memberships"
+    const returnUrl = "/relations/accounts/" + account_id + "/memberships"
 
     return (
       <SiteWrapper>
@@ -105,7 +105,7 @@ class AccountMembershipEdit extends Component {
                     <Card.Header>
                       <Card.Title>{t('relations.account.memberships.title_edit')}</Card.Title>
                     </Card.Header>
-                      <Mutation mutation={UPDATE_ACCOUNT_MEMBERSHIP} onCompleted={() => history.push(return_url)}> 
+                      <Mutation mutation={UPDATE_ACCOUNT_MEMBERSHIP} onCompleted={() => history.push(returnUrl)}> 
                       {(updateMembership, { data }) => (
                           <Formik
                               initialValues={{ 
@@ -165,7 +165,7 @@ class AccountMembershipEdit extends Component {
                                   setFieldTouched={setFieldTouched}
                                   errors={errors}
                                   values={values}
-                                  return_url={return_url}
+                                  returnUrl={returnUrl}
                                 >
                                   {console.log(errors)}
                                 </AccountMembershipForm>
@@ -178,7 +178,7 @@ class AccountMembershipEdit extends Component {
                   <Grid.Col md={3}>
                     <HasPermissionWrapper permission="change"
                                           resource="accountmembership">
-                      <Link to={return_url}>
+                      <Link to={returnUrl}>
                         <Button color="primary btn-block mb-6">
                           <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
                         </Button>

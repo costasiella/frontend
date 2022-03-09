@@ -18,7 +18,7 @@ import FinanceInvoiceEditBalance from "../edit/FinanceInvoiceEditBalance"
 
 function FinanceInvoicePaymentBase({ t, history, match, children, form_type="create" }) {
   const invoiceId = match.params.invoice_id
-  const return_url = "/finance/invoices/edit/" + invoiceId
+  const returnUrl = "/finance/invoices/edit/" + invoiceId
   const { loading: queryLoading, error: queryError, data, } = useQuery(GET_INVOICE_QUERY, {
     variables: {
       id: invoiceId
@@ -65,7 +65,7 @@ function FinanceInvoicePaymentBase({ t, history, match, children, form_type="cre
           <Page.Header title={ title }>
             <div className="page-options d-flex">
               {/* Back */}
-              <Link to={return_url} 
+              <Link to={returnUrl} 
                     className='btn btn-secondary mr-2'>
                   <Icon prefix="fe" name="arrow-left" /> {t('general.back')} 
               </Link>

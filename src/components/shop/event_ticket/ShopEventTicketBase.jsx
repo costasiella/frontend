@@ -10,7 +10,7 @@ function ShopEventTicketBase({ t, match, history, children }) {
   return (
     <ShopBase 
       title={t("shop.title")}
-      return_url={`/shop/events/${eventId}`}
+      returnUrl={`/shop/events/${eventId}`}
       checkoutProgress="order"
     >
       {children}

@@ -12,8 +12,9 @@ import {
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
 import CSTimePicker from "../../../../ui/CSTimePicker"
+import ButtonFormCancel from '../../../../ui/ButtonFormCancel'
 
-const ScheduleShiftEditForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, return_url }) => (
+const ScheduleShiftEditForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, returnUrl }) => (
     <FoForm>
       <Card.Body>
         <Grid.Row>
@@ -138,9 +139,7 @@ const ScheduleShiftEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
         >
         {t('general.submit')}
         </Button>
-        <Button color="link" onClick={() => history.push(return_url)}>
-            {t('general.cancel')}
-        </Button>
+        <ButtonFormCancel returnUrl={returnUrl} />
       </Card.Footer>
     </FoForm>
 )

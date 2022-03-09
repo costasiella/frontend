@@ -137,14 +137,12 @@ function ScheduleShiftsBase ({ t, history, children, data, refetch }) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
-              {children}
-            </Grid.Col>
-            <Grid.Col md={3}>
+            <Grid.Col md={12}>
               {(data) ? 
                 <ScheduleShiftsFilter data={data} refetch={refetch} />
               : ""}
-          </Grid.Col>
+              {children}
+            </Grid.Col>
         </Grid.Row>
       </Container>
       </div>

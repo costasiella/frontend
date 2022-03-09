@@ -13,7 +13,7 @@ import {
 } from "tabler-react"
 
 
-const SettingsIntegrationMollieForm = ({ t, history, isSubmitting, errors, values, return_url }) => (
+const SettingsIntegrationMollieForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
           <Form.Group label={t('settings.integration.mollie.api_key')}>
@@ -32,7 +32,7 @@ const SettingsIntegrationMollieForm = ({ t, history, isSubmitting, errors, value
           >
             {t('general.submit')}
           </Button>
-          {/* <Link to={return_url}>
+          {/* <Link to={returnUrl}>
             <Button 
               type="button" 
               color="link">

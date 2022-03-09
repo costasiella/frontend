@@ -61,6 +61,23 @@ function AccountClasspasses({t, match}) {
   const account = data.account
   const accountClasspasses = data.accountClasspasses
 
+    // Empty list
+    if (!accountClasspasses.edges.length) {
+      return (
+        <RelationsAccountProfileBase 
+          user={account}
+          activeLink={activeLink}
+          pageHeaderButtonList={pageHeaderButtonList}
+        >
+          <Card title={cardTitle}>
+            <Card.Body>
+              <p>{t('relations.account.classpasses.empty_list')}</p>
+            </Card.Body>
+          </Card>
+        </RelationsAccountProfileBase>
+      )
+    }
+
   return (
     <RelationsAccountProfileBase 
       user={account}

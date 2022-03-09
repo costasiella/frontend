@@ -38,10 +38,8 @@ function ShopEvent({ t, match, history }) {
     </ShopEventBase>
   )
 
-  console.log(data)
   const event = data.scheduleEvent
   const tickets = event.tickets
-  console.log(event)
 
   return (
     <ShopEventBase title={title}>

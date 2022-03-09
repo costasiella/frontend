@@ -16,7 +16,7 @@ import {
 } from "tabler-react";
 
 
-const AccountMembershipForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, return_url }) => (
+const AccountMembershipForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
   <FoForm>
     <Card.Body> 
       <Grid.Row>
@@ -107,7 +107,7 @@ const AccountMembershipForm = ({ t, history, inputData, isSubmitting, setFieldVa
         <Button
           type="button" 
           color="link" 
-          onClick={() => history.push(return_url)}
+          onClick={() => history.push(returnUrl)}
         >
             {t('general.cancel')}
         </Button>

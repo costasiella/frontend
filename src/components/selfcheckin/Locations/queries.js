@@ -13,7 +13,7 @@ export const GET_ORGANIZATION_LOCATIONS_QUERY = gql`
         node {
           id
           name
-          organizationlocationroomSet(first: 100, archived: false) {
+          rooms(first: 100, archived: false) {
             edges {
               node {
                 id

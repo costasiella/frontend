@@ -46,8 +46,6 @@ function ShopAccountSubscriptions({t, match, history}) {
     </ShopAccountSubscriptionsBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
   const user = data.user
   const subscriptions = data.accountSubscriptions
 
@@ -74,7 +72,7 @@ function ShopAccountSubscriptions({t, match, history}) {
       <Grid.Row>
         <Grid.Col md={12}>
           <ContentCard cardTitle={t('shop.account.subscriptions.title')}
-            // headerContent={headerOptions}
+            hasCardBody={false}
             pageInfo={subscriptions.pageInfo}
             onLoadMore={() => {
               fetchMore({
@@ -99,7 +97,7 @@ function ShopAccountSubscriptions({t, match, history}) {
                 }
               })
             }} >
-            <Table>
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('general.name')}</Table.ColHeader>

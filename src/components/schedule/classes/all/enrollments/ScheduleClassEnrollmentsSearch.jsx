@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 
 import {
+  Alert,
   Icon,
   Button,
   Card,
@@ -14,6 +15,7 @@ import {
 } from "tabler-react";
 import { getAccountsQueryVariables } from "./tools"
 
+import CSLS from "../../../../../tools/cs_local_storage"
 import ClassEditBase from "../ClassEditBase"
 import ButtonBack from '../../../../ui/ButtonBack'
 import ContentCard from "../../../../general/ContentCard"
@@ -22,7 +24,7 @@ import { GET_ACCOUNTS_QUERY } from "../../../../../queries/accounts/account_sear
 
 
 function ScheduleClassEnrollmentsSearch({ t, match, history }) {
-  let [searchName, setSearchName] = useState("")
+  let [searchName, setSearchName] = useState(localStorage.getItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_SEARCH))
   
   const scheduleItemId = match.params.class_id
   const cardTitle = t('schedule.classes.enrollments.search.title')
@@ -36,16 +38,13 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
 
   const headerOptions = <Card.Options>
     <InputSearch 
-      initialValueKey={searchName}
+      initialValueKey={CSLS.SCHEDULE_CLASSES_ENROLLMENT_SEARCH}
       placeholder="Search..."
       onChange={(value) => {
         console.log(value)
-        if (value) {
-          // {console.log('showSearch')}
-          // {console.log(showSearch)}
-          setSearchName(value)
-          refetch({ variables: getAccountsQueryVariables(searchName)})
-        } 
+        localStorage.setItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_SEARCH, value)
+        setSearchName(value)
+        refetch({ variables: getAccountsQueryVariables(value)})
       }}
     />
   </Card.Options>
@@ -74,7 +73,7 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
       pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card.Body>
-        <p>{t('schedule.classes.enrollments.search.error_loading')}</p>
+        <Alert type="danger">{t('schedule.classes.enrollments.search.error_loading')}</Alert>
       </Card.Body>
     </ClassEditBase>
   )  
@@ -82,7 +81,27 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
   console.log(data)
   const accounts = data.accounts
 
-  // Empty list
+  // No search name entered
+  if (!searchName) return (
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      defaultCard={false}
+      pageHeaderButtonList={pageHeaderButtonList}
+    >
+      <ContentCard cardTitle={cardTitle}
+                   hasCardBody={false}
+                   headerContent={headerOptions}
+      >
+        <Card.Body>
+          <Alert type="primary" icon="info">
+            {t('schedule.classes.enrollments.search.search_to_find_customers_to_enroll')}
+          </Alert> 
+        </Card.Body>
+      </ContentCard>
+    </ClassEditBase>
+  )
+
+  // Empty list / No search results
   if (!accounts.edges.length) return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
@@ -94,7 +113,7 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
                    headerContent={headerOptions}
       >
         <Card.Body>
-          <p>{t('schedule.classes.enrollments.search.empty_list')}</p>
+          <Alert type="secondary">{t('schedule.classes.enrollments.search.empty_list')}</Alert>
         </Card.Body>
       </ContentCard>
     </ClassEditBase>

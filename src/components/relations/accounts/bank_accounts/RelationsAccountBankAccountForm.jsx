@@ -59,7 +59,7 @@ const RelationsAccountBankAccountForm = ({ t, history, isSubmitting, errors, val
             {t('general.submit')}
           </Button>
           
-          {/* <Button color="link" onClick={() => history.push(return_url)}>
+          {/* <Button color="link" onClick={() => history.push(returnUrl)}>
               {t('general.cancel')}
           </Button> */}
       </Card.Footer>
