@@ -18,14 +18,14 @@ function SettingsMailMailChimpListsBase({ t, history, children, showBack=false }
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("organization.title")} >
+          <Page.Header title={t("settings.title")} subTitle={t("settings.mail.title")} >
             <div className='page-options d-flex'>
               {(showBack) ?
                 <ButtonBack returnUrl="/settings/mailchimp_lists" />  
               :
                 <HasPermissionWrapper permission="add"
                                       resource="systemmailchimplist">
-                  <ButtonAdd addUrl="/settings/mailchimp_lists/add" />
+                  <ButtonAdd addUrl="/settings/mail/mailchimp_lists/add" />
                 </HasPermissionWrapper>
               }
             </div>

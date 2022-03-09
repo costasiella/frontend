@@ -512,7 +512,8 @@
         "sell": "Sell",
         "clear_search": "Clear search",
         "all": "All",
-        "period": "Period"
+        "period": "Period",
+        "frequency": "Frequency"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1745,8 +1746,13 @@
                 }
             },
             "mailchimp_lists": {
-                "title": "MailChimp lists",
-                "explanation": "Manage MailChimp lists connected to Costasiella"
+                "title": "MailChimp Lists",
+                "explanation": "Manage MailChimp lists connected to Costasiella",
+                "title_add": "Add MailChimp List",
+                "toast_add_success": "Added MailChimp List",
+                "mailchimp_list_id": "MailChimp List ID",
+                "empty_list": "No MailChimp lists have been defined yet",
+                "error_loading": "Error loading MailChimp lists... :("
             }
         },
         "home": {

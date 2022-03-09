@@ -145,7 +145,12 @@
             },
             "mailchimp_lists": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "explanation": "__STRING_NOT_TRANSLATED__"
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "mailchimp_list_id": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "error_loading": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -428,7 +433,8 @@
         "sell": "__STRING_NOT_TRANSLATED__",
         "clear_search": "__STRING_NOT_TRANSLATED__",
         "all": "__STRING_NOT_TRANSLATED__",
-        "period": "__STRING_NOT_TRANSLATED__"
+        "period": "__STRING_NOT_TRANSLATED__",
+        "frequency": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {

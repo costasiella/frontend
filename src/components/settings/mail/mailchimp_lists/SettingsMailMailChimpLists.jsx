@@ -38,7 +38,7 @@ function SettingsMailMailChimpLists({ t, history }) {
   if (error) return (
     <SettingsMailMailChimpListsBase>
       <ContentCard cardTitle={cardTitle}>
-        <p>{t('setting.mail.mailchimp_lists.error_loading')}</p>
+        <p>{t('settings.mail.mailchimp_lists.error_loading')}</p>
       </ContentCard>
     </SettingsMailMailChimpListsBase>
   )
