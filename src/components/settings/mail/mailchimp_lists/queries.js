@@ -54,13 +54,10 @@ export const UPDATE_MAILCHIMP_LIST = gql`
   }
 `
 
-// export const ARCHIVE_DISCOVERY = gql`
-// mutation ArchiveOrganizationDiscovery($input: ArchiveOrganizationDiscoveryInput!) {
-//   archiveOrganizationDiscovery(input: $input) {
-//     organizationDiscovery {
-//       id
-//       archived
-//     }
-//   }
-// }
-// `
+export const DELETE_MAILCHIMP_LIST = gql`
+mutation DeleteSystemMailChimpList($input: DeleteSystemMailChimpListInput!) {
+  deleteSystemMailchimpList(input: $input) {
+    ok
+  }
+}
+`
