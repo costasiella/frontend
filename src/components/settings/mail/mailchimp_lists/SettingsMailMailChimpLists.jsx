@@ -13,6 +13,7 @@ import {
   Table
 } from "tabler-react";
 import { toast } from 'react-toastify'
+import ButtonEdit from "../../../ui/ButtonEdit"
 
 import ContentCard from "../../../general/ContentCard"
 
@@ -88,6 +89,7 @@ function SettingsMailMailChimpLists({ t, history }) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader>{t('settings.mail.mailchimp_lists.mailchimp_list_id')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -97,7 +99,11 @@ function SettingsMailMailChimpLists({ t, history }) {
                   <Table.Col key={v4()}>
                     {node.name}
                   </Table.Col>
+                  <Table.Col key={v4()}>
+                    {node.mailchimpListId}
+                  </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
+                    <ButtonEdit editUrl={`/settings/mail/mailchimp_lists/edit/${node.id}`} />
                     Delete
                     {/* {(node.archived) ? 
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
