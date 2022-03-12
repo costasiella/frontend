@@ -22,12 +22,14 @@ export const GET_MAILCHIMP_LISTS_QUERY = gql`
   }
 `
 
-export const GET_DISCOVERY_QUERY = gql`
-  query SchoolDiscovery($id: ID!) {
-    organizationDiscovery(id:$id) {
+export const GET_MAILCHIMP_LIST_QUERY = gql`
+  query SystemMailchimpList($id: ID!) {
+    systemMailchimpList(id:$id) {
       id
       name
-      archived
+      description
+      frequency
+      mailchimpListId
     }
   }
 `
