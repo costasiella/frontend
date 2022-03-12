@@ -21,7 +21,7 @@ function SettingsMailMailChimpListsBase({ t, history, children, showBack=false }
           <Page.Header title={t("settings.title")} subTitle={t("settings.mail.title")} >
             <div className='page-options d-flex'>
               {(showBack) ?
-                <ButtonBack returnUrl="/settings/mailchimp_lists" />  
+                <ButtonBack returnUrl="/settings/mail/mailchimp_lists" />  
               :
                 <HasPermissionWrapper permission="add"
                                       resource="systemmailchimplist">
