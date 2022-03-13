@@ -19,7 +19,7 @@ import SettingsMailMailChimpListDelete from './SettingsMailMailChimpListDelete'
 
 function SettingsMailMailChimpLists({ t, history }) {
   const cardTitle = t('settings.mail.mailchimp_lists.title')
-  const { loading, error, data, refetch, fetchMore } = useQuery(GET_MAILCHIMP_LISTS_QUERY)
+  const { loading, error, data, fetchMore } = useQuery(GET_MAILCHIMP_LISTS_QUERY)
   // const [ archiveDiscovery ] = useMutation(ARCHIVE_DISCOVERY)
 
   if (loading) return (
