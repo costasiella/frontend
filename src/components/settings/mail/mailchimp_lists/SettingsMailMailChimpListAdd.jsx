@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 
 import { GET_MAILCHIMP_LISTS_QUERY, ADD_MAILCHIMP_LIST } from './queries'
-// import { LEVEL_SCHEMA } from './yupSchema'
+import { MAILCHIMP_LIST_SCHEMA } from './yupSchema'
 import SettingsMailMailChimpListForm from './SettingsMailMailChimpListForm'
 
 
@@ -30,7 +30,7 @@ function SettingsMailMailChimpListAdd({t, history}) {
       </Card.Header>
       <Formik
           initialValues={{ name: '', description: '', frequency: '', mailchimpListId: '' }}
-          // validationSchema={LEVEL_SCHEMA}
+          validationSchema={MAILCHIMP_LIST_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
               addMailChimpList({ variables: {
                 input: {
