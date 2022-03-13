@@ -14,20 +14,20 @@ import {
 const SettingsIntegrationMailChimpForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
-          <Form.Group label={t('settings.integration.mailchimp.user')}>
-            <Field type="text" 
-              name="mailchimp_user" 
-              className={(errors.mailchimp_user) ? "form-control is-invalid" : "form-control"} 
-              autoComplete="off" />
-            <ErrorMessage name="mailchimp_user" component="span" className="invalid-feedback" />
-          </Form.Group>
-          <Form.Group label={t('settings.integration.mailchimp.api_key')}>
-            <Field type="text" 
-              name="mailchimp_api_key" 
-              className={(errors.mailchimp_api_key) ? "form-control is-invalid" : "form-control"} 
-              autoComplete="off" />
-            <ErrorMessage name="mailchimp_api_key" component="span" className="invalid-feedback" />
-          </Form.Group>
+        <Form.Group label={t('settings.integration.mailchimp.api_key')}>
+          <Field type="text" 
+            name="mailchimp_api_key" 
+            className={(errors.mailchimp_api_key) ? "form-control is-invalid" : "form-control"} 
+            autoComplete="off" />
+          <ErrorMessage name="mailchimp_api_key" component="span" className="invalid-feedback" />
+        </Form.Group>
+        <Form.Group label={t('settings.integration.mailchimp.server_prefix')}>
+          <Field type="text" 
+            name="mailchimp_server_prefix" 
+            className={(errors.mailchimp_server_prefix) ? "form-control is-invalid" : "form-control"} 
+            autoComplete="off" />
+          <ErrorMessage name="mailchimp_server_prefix" component="span" className="invalid-feedback" />
+        </Form.Group>
       </Card.Body>
       <Card.Footer>
           <Button 

@@ -27,7 +27,7 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
     data: dataUser
   } = useQuery(GET_SYSTEM_SETTINGS_QUERY, {
     variables: {
-      setting: "integration_mailchimp_user"
+      setting: "integration_mailchimp_server_prefix"
     }
   })
   const { 
@@ -91,7 +91,7 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
     >
     <Formik
       initialValues={{ 
-        mailchimp_user: mcUser,
+        mailchimp_server_prefix: mcUser,
         mailchimp_api_key: mcApiKey
       }}
       // validationSchema={MOLLIE_SCHEMA}
@@ -101,7 +101,7 @@ function SettingsIntegrationMailChimp({ t, match, history }) {
           console.log(errors)
 
           const settings = [
-            { setting: "integration_mailchimp_user", value: values.mailchimp_user },
+            { setting: "integration_mailchimp_server_prefix", value: values.mailchimp_server_prefix },
             { setting: "integration_mailchimp_api_key", value: values.mailchimp_api_key },
           ]
 
