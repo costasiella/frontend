@@ -55,9 +55,9 @@ function SettingsMailMailChimpListEdit({t, match, history}) {
         <Formik
             initialValues={{ 
               name: initialData.name, 
-              name: initialData.description, 
-              name: initialData.frequency, 
-              name: initialData.mailchimpListId, 
+              description: initialData.description, 
+              frequency: initialData.frequency, 
+              mailchimpListId: initialData.mailchimpListId, 
             }}
             // validationSchema={LEVEL_SCHEMA}
             onSubmit={(values, { setSubmitting }) => {
@@ -78,7 +78,7 @@ function SettingsMailMailChimpListEdit({t, match, history}) {
                 .then(({ data }) => {
                     console.log('got data', data)
                     history.push(returnUrl)
-                    toast.success((t('ettings.mail.mailchimp_lists.toast_edit_success')), {
+                    toast.success((t('settings.mail.mailchimp_lists.toast_edit_success')), {
                         position: toast.POSITION.BOTTOM_RIGHT
                       })
                   }).catch((error) => {
