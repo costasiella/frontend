@@ -177,8 +177,8 @@
             "mailchimp": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
-                "user": "__STRING_NOT_TRANSLATED__",
-                "api_key": "__STRING_NOT_TRANSLATED__"
+                "api_key": "__STRING_NOT_TRANSLATED__",
+                "server_prefix": "__STRING_NOT_TRANSLATED__"
             }
         },
         "home": {
@@ -901,7 +901,9 @@
             "btn_text_bank_account_edit": "__STRING_NOT_TRANSLATED__",
             "mailing_lists": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "explanation": "__STRING_NOT_TRANSLATED__"
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "btn_text_manage": "__STRING_NOT_TRANSLATED__"
         },

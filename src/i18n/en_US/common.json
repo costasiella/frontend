@@ -1660,8 +1660,8 @@
             "mailchimp": {
                 "title": "MailChimp",
                 "explanation": "MailChimp integration settings",
-                "user": "MailChimp Username",
-                "api_key": "MailChimp API Key"
+                "api_key": "MailChimp API Key",
+                "server_prefix": "MailChimp server prefix (eg. us19)"
             }
         },
         "finance": {
@@ -1750,7 +1750,7 @@
                 "explanation": "Manage MailChimp lists connected to Costasiella",
                 "title_add": "Add MailChimp List",
                 "toast_add_success": "Added MailChimp List",
-                "mailchimp_list_id": "MailChimp List ID",
+                "mailchimp_list_id": "MailChimp Audience / List ID",
                 "empty_list": "No MailChimp lists have been defined yet",
                 "error_loading": "Error loading MailChimp lists... :(",
                 "delete_confirm_msg": "Are you sure you wish to delete the link to this MailChimp list?",
@@ -2130,7 +2130,9 @@
             "btn_text_bank_account_edit": "Update bank information",
             "mailing_lists": {
                 "title": "Mailing Lists",
-                "explanation": "Manage your mailing list subscriptions."
+                "explanation": "Manage your mailing list subscriptions.",
+                "error_loading_data": "Error loading linked MailChimp lists... :(",
+                "empty_list": "No MailChimp lists have been linked yet"
             },
             "btn_text_manage": "Manage"
         },
