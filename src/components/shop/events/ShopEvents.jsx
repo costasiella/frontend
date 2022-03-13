@@ -80,8 +80,6 @@ function ShopEvents({ t, match, history }) {
             </Grid.Col>
           ))}
         </Grid.Row>
-
-        
     </ShopEventsBase>
   )
 }
