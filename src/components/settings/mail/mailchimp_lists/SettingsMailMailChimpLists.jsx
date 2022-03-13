@@ -1,24 +1,20 @@
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
-
 import {
-  Icon,
   Dimmer,
-  Button,
-  Card,
   Table
 } from "tabler-react";
-import { toast } from 'react-toastify'
-import ButtonEdit from "../../../ui/ButtonEdit"
 
+import ButtonEdit from "../../../ui/ButtonEdit"
 import ContentCard from "../../../general/ContentCard"
 
 import { GET_MAILCHIMP_LISTS_QUERY } from "./queries"
 import SettingsMailMailChimpListsBase from './SettingsMailMailChimpListsBase'
+import SettingsMailMailChimpListDelete from './SettingsMailMailChimpListDelete'
 
 
 function SettingsMailMailChimpLists({ t, history }) {
@@ -104,43 +100,7 @@ function SettingsMailMailChimpLists({ t, history }) {
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     <ButtonEdit editUrl={`/settings/mail/mailchimp_lists/edit/${node.id}`} />
-                    Delete
-                    {/* {(node.archived) ? 
-                      <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                      <Button className='btn-sm' 
-                              onClick={() => history.push("/settings/mail/mailchimp_lists/edit/" + node.id)}
-                              color="secondary">
-                        {t('general.edit')}
-                      </Button>
-                    }
-                    <button className="icon btn btn-link btn-sm" 
-                        title={t('general.archive')} 
-                        href=""
-                        onClick={() => {
-                          console.log("clicked archived")
-                          let id = node.id
-                          archiveDiscovery({ variables: {
-                            input: {
-                            id,
-                            archived: !archived
-                            }
-                    }, refetchQueries: [
-                        {query: GET_mailchimpLists_QUERY, variables: {"archived": archived }}
-                    ]}).then(({ data }) => {
-                      console.log('got data', data);
-                      toast.success(
-                        (archived) ? t('general.unarchived'): t('general.archived'), {
-                          position: toast.POSITION.BOTTOM_RIGHT
-                        })
-                    }).catch((error) => {
-                      toast.error((t('general.toast_server_error')) +  error, {
-                          position: toast.POSITION.BOTTOM_RIGHT
-                        })
-                      console.log('there was an error sending the query', error);
-                    })
-                    }}>
-                      <Icon name="inbox" />
-                    </button> */}
+                    <SettingsMailMailChimpListDelete node={node} />
                   </Table.Col>
                 </Table.Row>
               ))}
