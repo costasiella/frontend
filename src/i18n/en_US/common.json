@@ -2127,7 +2127,12 @@
                 "title": "My bank account",
                 "explanation": "Manage your bank information"
             },
-            "btn_text_bank_account_edit": "Update bank information"
+            "btn_text_bank_account_edit": "Update bank information",
+            "mailing_lists": {
+                "title": "Mailing Lists",
+                "explanation": "Manage your mailinglist subscriptions."
+            },
+            "btn_text_manage": "Manage"
         },
         "accounts": {
             "profile": {

@@ -898,7 +898,12 @@
                 "payment_not_confirmed": "__STRING_NOT_TRANSLATED__",
                 "to_profile": "__STRING_NOT_TRANSLATED__"
             },
-            "btn_text_bank_account_edit": "__STRING_NOT_TRANSLATED__"
+            "btn_text_bank_account_edit": "__STRING_NOT_TRANSLATED__",
+            "mailing_lists": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__"
+            },
+            "btn_text_manage": "__STRING_NOT_TRANSLATED__"
         },
         "checkout": {
             "payment": {

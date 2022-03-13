@@ -145,6 +145,19 @@ function ShopAccountHome({t, match, history}) {
         <Grid.Col xs={12} sm={12} md={4} lg={4}>
           <Card>
             <Card.Body>
+              <h5>{t("shop.account.mailing_lists.title")}</h5>
+              {t("shop.account.mailing_lists.explanation")}
+              <br /><br />
+              <ShopAccountHomeButton 
+                link="/shop/account/mailing_lists" 
+                buttonText={t("shop.account.btn_text_manage")} 
+              />
+            </Card.Body>
+          </Card>
+        </Grid.Col>
+        <Grid.Col xs={12} sm={12} md={4} lg={4}>
+          <Card>
+            <Card.Body>
               <h5>{t("shop.account.change_password.title")}</h5>
               {t("shop.account.change_password.explanation")}
               <br /><br />
