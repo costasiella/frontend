@@ -2130,7 +2130,7 @@
             "btn_text_bank_account_edit": "Update bank information",
             "mailing_lists": {
                 "title": "Mailing Lists",
-                "explanation": "Manage your mailinglist subscriptions."
+                "explanation": "Manage your mailing list subscriptions."
             },
             "btn_text_manage": "Manage"
         },
