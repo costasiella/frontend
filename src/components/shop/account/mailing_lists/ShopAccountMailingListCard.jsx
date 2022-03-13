@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import {
   Icon,
   GalleryCard,
-  Button
+  Button,
+  Badge
 } from "tabler-react";
 
 // Example:
@@ -24,17 +25,26 @@ function ShopAccountMailingListCard({ t, mailingList, btnLink, active=false }) {
           href={`/shop/events/${node.id}`}
         /> : "" } */}
       <GalleryCard.Details>
-        <h4>{mailingList.name}</h4>
+        <h4>{mailingList.name} {(mailingList.subscribed) ? <Badge color="success">Subscribed</Badge> : ""}</h4>
         <h6>{mailingList.frequency}</h6>
         <div dangerouslySetInnerHTML={{ __html: mailingList.description}} />
 
-        <Button
-          color="success" 
-          block
-          outline
-        >
-          Subscribed
-        </Button>
+        {(mailingList.subscribed) ? 
+              <Button
+                color="secondary" 
+                block
+                outline
+              >
+                Unsubscribe
+              </Button> :
+              <Button
+                color="success" 
+                block
+                outline
+              >
+                Subscribe
+              </Button>
+        }
       </GalleryCard.Details>
       {/* <GalleryCard.Footer>                  
         <GalleryCard.Details
@@ -61,32 +71,6 @@ function ShopAccountMailingListCard({ t, mailingList, btnLink, active=false }) {
         </GalleryCard.Footer>
       </Link> */}
     </GalleryCard>
-
-
-    // <PricingCard active={active}>
-    //   <PricingCard.Category>
-    //     {mailingList.name}
-    //   </PricingCard.Category>
-    //   {/* <PricingCard.Price>
-    //     {classpass.priceDisplay}
-    //   </PricingCard.Price> */}
-    //   <PricingCard.AttributeList>
-    //     <PricingCard.AttributeItem>
-    //       {mailingList.frequency}
-    //     </PricingCard.AttributeItem>
-    //     <PricingCard.AttributeItem>
-    //       <div dangerouslySetInnerHTML={{ __html: mailingList.description}} />
-    //     </PricingCard.AttributeItem>
-    //   </PricingCard.AttributeList>
-    //   {/* {(btnLink) ?
-    //     <Link to={btnLink}>
-    //       <PricingCard.Button >
-    //         {t("shop.classpasses.choose")} <Icon name="chevron-right" />
-    //       </PricingCard.Button>
-    //     </Link>
-    //     : ""
-    //   } */}
-    // </PricingCard>
   )
 }
 
