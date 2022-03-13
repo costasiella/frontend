@@ -150,7 +150,11 @@
                 "toast_add_success": "__STRING_NOT_TRANSLATED__",
                 "mailchimp_list_id": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
-                "error_loading": "__STRING_NOT_TRANSLATED__"
+                "error_loading": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {

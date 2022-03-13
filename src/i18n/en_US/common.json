@@ -1752,7 +1752,11 @@
                 "toast_add_success": "Added MailChimp List",
                 "mailchimp_list_id": "MailChimp List ID",
                 "empty_list": "No MailChimp lists have been defined yet",
-                "error_loading": "Error loading MailChimp lists... :("
+                "error_loading": "Error loading MailChimp lists... :(",
+                "delete_confirm_msg": "Are you sure you wish to delete the link to this MailChimp list?",
+                "delete_success": "Deleted",
+                "title_edit": "Edit MailChimp List",
+                "toast_edit_success": "Saved"
             }
         },
         "home": {
