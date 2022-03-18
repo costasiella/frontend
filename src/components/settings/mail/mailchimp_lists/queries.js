@@ -54,6 +54,14 @@ export const UPDATE_MAILCHIMP_LIST = gql`
   }
 `
 
+export const UPDATE_MAILCHIMP_LIST_SUBSCRIPTION_STATUS = gql`
+  mutation updateSystemMailchimpListSubscriptionStatus($input: UpdateSystemMailChimpListSubscriptionStatusInput!) {
+    updateSystemMailchimpListSubscriptionStatus(input: $input) {
+      subscriptionStatus
+    }
+  }
+`
+
 export const DELETE_MAILCHIMP_LIST = gql`
 mutation DeleteSystemMailChimpList($input: DeleteSystemMailChimpListInput!) {
   deleteSystemMailchimpList(input: $input) {
