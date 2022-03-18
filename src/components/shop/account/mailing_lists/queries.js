@@ -39,3 +39,11 @@ export const QUERY_SYSTEM_MAILCHIMP_LISTS = gql`
     }
   }
 `
+
+export const UPDATE_MAILCHIMP_LIST_SUBSCRIPTION_STATUS = gql`
+  mutation updateSystemMailchimpListSubscriptionStatus($input: UpdateSystemMailChimpListSubscriptionStatusInput!) {
+    updateSystemMailchimpListSubscriptionStatus(input: $input) {
+      subscriptionStatus
+    }
+  }
+`
