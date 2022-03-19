@@ -2,15 +2,12 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import {
-  Icon,
   GalleryCard,
   Button,
   Badge,
-  Dimmer
 } from "tabler-react";
 
 import { QUERY_SYSTEM_MAILCHIMP_LISTS, UPDATE_MAILCHIMP_LIST_SUBSCRIPTION_STATUS } from './queries'
@@ -50,11 +47,6 @@ function ShopAccountMailingListCard({ t, mailingList, btnLink, active=false }) {
 
   return (
     <GalleryCard>
-      {/* {(node.media.edges.length) ?
-        <GalleryCard.Image 
-          src={(node.media.edges.length) ? node.media.edges[0].node.urlImageThumbnailLarge: ""} 
-          href={`/shop/events/${node.id}`}
-        /> : "" } */}
       <GalleryCard.Details>
         <div>
         <span className='float-right'>
@@ -93,30 +85,6 @@ function ShopAccountMailingListCard({ t, mailingList, btnLink, active=false }) {
               </Button>
         }
       </GalleryCard.Details>
-      {/* <GalleryCard.Footer>                  
-        <GalleryCard.Details
-          fullName={<span className="">{(node.instructor) ? node.instructor.fullName: ""}</span>}
-          dateString={node.organizationLocation.name}
-        />
-        <GalleryCard.IconGroup>
-        <GalleryCard.IconItem 
-          name="calendar"
-          label={node.dateStart}
-          right={false}
-          RootComponent="span"
-        />
-        </GalleryCard.IconGroup>
-      </GalleryCard.Footer>
-      <Link to={`/shop/events/${node.id}`}>
-        <GalleryCard.Footer pt={10}>
-          <Button
-            block
-            color="link"
-          >
-            {t("shop.events.tell_me_more")} <Icon name="chevron-right" />
-          </Button>
-        </GalleryCard.Footer>
-      </Link> */}
     </GalleryCard>
   )
 }
