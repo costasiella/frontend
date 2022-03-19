@@ -903,7 +903,12 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "error_loading_data": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "toast_update_subscription_status_success": "__STRING_NOT_TRANSLATED__",
+                "unsubscribing": "__STRING_NOT_TRANSLATED__",
+                "unsubscribe": "__STRING_NOT_TRANSLATED__",
+                "subscribing": "__STRING_NOT_TRANSLATED__",
+                "subscribe": "__STRING_NOT_TRANSLATED__"
             },
             "btn_text_manage": "__STRING_NOT_TRANSLATED__"
         },

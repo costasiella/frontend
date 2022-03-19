@@ -17,6 +17,7 @@ export const QUERY_SYSTEM_MAILCHIMP_LISTS = gql`
           description
           frequency
           subscribed
+          mailchimpListId
         }
       }
     }

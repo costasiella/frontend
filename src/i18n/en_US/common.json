@@ -2132,7 +2132,12 @@
                 "title": "Mailing Lists",
                 "explanation": "Manage your mailing list subscriptions.",
                 "error_loading_data": "Error loading linked MailChimp lists... :(",
-                "empty_list": "No MailChimp lists have been linked yet"
+                "empty_list": "No MailChimp lists have been linked yet",
+                "toast_update_subscription_status_success": "Updated subscriptions status!",
+                "unsubscribing": "Unsubscribing...",
+                "unsubscribe": "Unsubscribe",
+                "subscribing": "Subscribing...",
+                "subscribe": "Subscribe"
             },
             "btn_text_manage": "Manage"
         },
