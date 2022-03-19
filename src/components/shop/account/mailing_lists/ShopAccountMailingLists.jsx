@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { v4 } from "uuid"
 import {
   Card,
   Grid
@@ -16,7 +15,7 @@ import ShopAccountMailingListCard from "./ShopAccountMailingListCard"
 
 function ShopAccountMailingLists({t, match, history}) {
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
-  const { loading, error, data, fetchMore } = useQuery(QUERY_SYSTEM_MAILCHIMP_LISTS, {
+  const { loading, error, data } = useQuery(QUERY_SYSTEM_MAILCHIMP_LISTS, {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       account: dataUser && dataUser.user ? dataUser.user.accountId : null
