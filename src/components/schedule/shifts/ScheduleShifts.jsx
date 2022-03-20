@@ -95,7 +95,7 @@ function ScheduleShifts ({ t, history }) {
                     <Table.ColHeader>{t('general.time')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.location')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.shift')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
+                    <Table.ColHeader>{t('general.employee')}</Table.ColHeader>
                     <Table.ColHeader></Table.ColHeader>
                   </Table.Row>
                 </Table.Header>
