@@ -438,7 +438,8 @@
         "clear_search": "__STRING_NOT_TRANSLATED__",
         "all": "__STRING_NOT_TRANSLATED__",
         "period": "__STRING_NOT_TRANSLATED__",
-        "frequency": "__STRING_NOT_TRANSLATED__"
+        "frequency": "__STRING_NOT_TRANSLATED__",
+        "contact": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {

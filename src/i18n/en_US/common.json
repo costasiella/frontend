@@ -513,7 +513,8 @@
         "clear_search": "Clear search",
         "all": "All",
         "period": "Period",
-        "frequency": "Frequency"
+        "frequency": "Frequency",
+        "contact": "Contact"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
