@@ -1193,7 +1193,7 @@
                 "toast_add_success": "Added price",
                 "title_edit": "Edit price",
                 "toast_edit_success": "Saved price",
-                "title": "Prices",
+                "title": "Dropin and Trial",
                 "error_loading": "Error loading prices for this class :(",
                 "empty_list": "No prices have been defined for this class yet.",
                 "delete_confirm_msg": "Are you sure you wish to delete this price?",

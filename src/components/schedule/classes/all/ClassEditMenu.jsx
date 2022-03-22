@@ -55,10 +55,10 @@ const ClassEditMenu = ({ t, activeLink, classId }) => (
               key={v4()}
               className="d-flex align-items-center"
               to={"#/schedule/classes/all/prices/" + classId}
-              icon="dollar-sign"
+              icon="copy"
               active={activeLink === 'prices'}
               >
-              {t('general.prices')}
+              {t('schedule.classes.prices.title')}
           </List.GroupItem>
         </HasPermissionWrapper>
         <HasPermissionWrapper 
