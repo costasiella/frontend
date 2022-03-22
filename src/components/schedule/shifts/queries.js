@@ -24,6 +24,14 @@ export const GET_SHIFTS_QUERY = gql`
         description
         holiday
         holidayName
+        account {
+          id
+          fullName
+        }
+        account2 {
+          id
+          fullName
+        }
         organizationLocationRoom {
           id
           name

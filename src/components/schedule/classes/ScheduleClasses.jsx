@@ -95,7 +95,8 @@ function ScheduleClasses ({ t, history }) {
   const timeFormat = appSettings.timeFormatMoment
 
   const {loading, error, data, refetch} = useQuery(GET_CLASSES_QUERY, {
-    variables: get_list_query_variables()
+    variables: get_list_query_variables(),
+    fetchPolicy: "network-only"
   })
   const [deleteScheduleClass] = useMutation(DELETE_SCHEDULE_CLASS)
 
