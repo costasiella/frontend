@@ -46,7 +46,6 @@ function ShopEvent({ t, match, history }) {
     <ShopEventBase title={event.name}>
       <Grid.Row>
         <Grid.Col xs={12} sm={12} md={12} lg={12}>
-          {/* <h3>{event.name}</h3> */}
           <h5>{event.tagline}</h5>
         </Grid.Col>
       </Grid.Row>
