@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -11,15 +9,15 @@ import {
   Grid,
   Container,
 } from "tabler-react";
-import SiteWrapper from "../../SiteWrapper"
-import SettingsBack from "../SettingsBack"
+import SiteWrapper from "../../../SiteWrapper"
+import SettingsBack from "../../SettingsBack"
 
 function SettingsMailTemplatesBase({ t, children, headerSubTitle, help={} }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("settings.mail.templates.title")} subTitle={headerSubTitle}>
+          <Page.Header title={t("general.settings")} subTitle={`${t('settings.mail.title')} ${headerSubTitle}`}>
             <div className="page-options d-flex">
               <SettingsBack returnUrl="/settings/mail/templates" />
             </div>

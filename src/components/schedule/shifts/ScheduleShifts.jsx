@@ -43,7 +43,8 @@ function ScheduleShifts ({ t, history }) {
   const timeFormat = appSettings.timeFormatMoment
 
   const {loading, error, data, refetch} = useQuery(GET_SHIFTS_QUERY, {
-    variables: get_list_query_variables()
+    variables: get_list_query_variables(),
+    fetchPolicy: "network-only"
   })
   const [deleteScheduleShift] = useMutation(DELETE_SCHEDULE_SHIFT)
 
@@ -64,6 +65,7 @@ function ScheduleShifts ({ t, history }) {
   }
 
   const shifts = data.scheduleShifts
+  console.log(shifts)
        
   // Empty list
   if (!shifts.length) { return (
@@ -95,7 +97,7 @@ function ScheduleShifts ({ t, history }) {
                     <Table.ColHeader>{t('general.time')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.location')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.shift')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
+                    <Table.ColHeader>{t('general.employee')}</Table.ColHeader>
                     <Table.ColHeader></Table.ColHeader>
                   </Table.Row>
                 </Table.Header>

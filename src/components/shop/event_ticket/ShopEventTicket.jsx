@@ -18,7 +18,7 @@ import { CREATE_ORDER } from "../queries"
 
 
 function ShopEventTicket({ t, match, history }) {
-  const title = t("shop.home.title")
+  let title = t("shop.home.title")
   const scheduleEventTicketId = match.params.id
   const eventId = match.params.event_id
 
@@ -44,11 +44,12 @@ function ShopEventTicket({ t, match, history }) {
   console.log(data)
   const eventTicket = data.scheduleEventTicket
   console.log(eventTicket)
+  const subTitle = eventTicket.scheduleEvent.name
 
   // Chceck sold out
   if (eventTicket.isSoldOut) {
     return (
-      <ShopEventTicketBase title={title}>
+      <ShopEventTicketBase title={title} subTitle={subTitle}>
         <Card title={t("shop.events.ticket.sold_out_title")}>
           <Card.Body>{t("shop.events.ticket.sold_out")}</Card.Body>
         </Card>
@@ -57,12 +58,7 @@ function ShopEventTicket({ t, match, history }) {
   }
 
   return (
-    <ShopEventTicketBase title={title}>
-      <Grid.Row>
-        <Grid.Col md={12}>
-          <h3>{eventTicket.scheduleEvent.name}</h3>
-        </Grid.Col>
-      </Grid.Row>
+    <ShopEventTicketBase title={title} subTitle={subTitle}>
       <Grid.Row>
         <Grid.Col md={4}>
           <ShopEventTicketPricingCard eventId={eventId} eventTicket={eventTicket} showButton={false} active={true} />

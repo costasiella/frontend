@@ -119,6 +119,16 @@ function SettingsHome({ t, match, params }) {
             <Grid.Col md={3}>
               <Card>
                 <Card.Body>
+                  <h5>{t("settings.mail.mailchimp_lists.title")}</h5>
+                  {t("settings.mail.mailchimp_lists.explanation")}
+                  <br /><br />
+                  <HomeItemButton link="/settings/mail/mailchimp_lists" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
                   <h5>{t("settings.mail.templates.title")}</h5>
                   {t("settings.mail.templates.explanation")}
                   <br /><br />
@@ -145,6 +155,16 @@ function SettingsHome({ t, match, params }) {
           <Grid.Row>
             <Grid.Col md={12}>
               <h4>{t("settings.integration.title")}</h4>
+            </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.integration.mailchimp.title")}</h5>
+                  {t("settings.integration.mailchimp.explanation")}
+                  <br /><br />
+                  <HomeItemButton link="/settings/integration/mailchimp/" />
+                </Card.Body>
+              </Card>
             </Grid.Col>
             <Grid.Col md={3}>
               <Card>

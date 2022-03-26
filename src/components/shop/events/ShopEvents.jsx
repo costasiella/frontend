@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
+import moment from 'moment'
 
 import {
   Button,
@@ -11,8 +12,10 @@ import {
   Icon,
   GalleryCard
 } from "tabler-react";
-import ShopEventsBase from "./ShopEventsBase"
 
+import AppSettingsContext from '../../context/AppSettingsContext'
+
+import ShopEventsBase from "./ShopEventsBase"
 import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 
 // Example:
@@ -20,6 +23,8 @@ import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
 
 
 function ShopEvents({ t, match, history }) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
   const title = t("shop.home.title")
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENTS_QUERY)
 
@@ -47,7 +52,7 @@ function ShopEvents({ t, match, history }) {
                 {(node.media.edges.length) ?
                   <GalleryCard.Image 
                     src={(node.media.edges.length) ? node.media.edges[0].node.urlImageThumbnailLarge: ""} 
-                    href={`/shop/events/${node.id}`}
+                    href={`#/shop/events/${node.id}`}
                   /> : "" }
                 <GalleryCard.Footer>
                   <h4>{node.name}</h4>
@@ -60,7 +65,7 @@ function ShopEvents({ t, match, history }) {
                   <GalleryCard.IconGroup>
                   <GalleryCard.IconItem 
                     name="calendar"
-                    label={node.dateStart}
+                    label={moment(node.dateStart).format(dateFormat)}
                     right={false}
                     RootComponent="span"
                   />
@@ -80,8 +85,6 @@ function ShopEvents({ t, match, history }) {
             </Grid.Col>
           ))}
         </Grid.Row>
-
-        
     </ShopEventsBase>
   )
 }

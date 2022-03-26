@@ -37,6 +37,8 @@ query Accounts(
         lastName
         fullName
         email
+        phone
+        mobile
         isActive
         urlImageThumbnailSmall
         subscriptions(last: 2) {

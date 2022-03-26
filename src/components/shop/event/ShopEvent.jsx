@@ -20,7 +20,7 @@ function ShopEvent({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
 
-  const title = t("shop.home.title")
+  let tempTitle = t("shop.home.title")
   const eventId = match.params.event_id
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_QUERY, {
@@ -28,12 +28,12 @@ function ShopEvent({ t, match, history }) {
   })
 
   if (loading) return (
-    <ShopEventBase title={title} >
+    <ShopEventBase title={tempTitle} >
       {t("general.loading_with_dots")}
     </ShopEventBase>
   )
   if (error) return (
-    <ShopEventBase title={title}>
+    <ShopEventBase title={tempTitle}>
       {t("shop.event.error_loading")}
     </ShopEventBase>
   )
@@ -41,11 +41,11 @@ function ShopEvent({ t, match, history }) {
   const event = data.scheduleEvent
   const tickets = event.tickets
 
+
   return (
-    <ShopEventBase title={title}>
+    <ShopEventBase title={event.name}>
       <Grid.Row>
         <Grid.Col xs={12} sm={12} md={12} lg={12}>
-          <h3>{event.name}</h3>
           <h5>{event.tagline}</h5>
         </Grid.Col>
       </Grid.Row>

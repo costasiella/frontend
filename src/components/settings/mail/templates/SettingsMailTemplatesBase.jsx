@@ -8,15 +8,15 @@ import {
   Container,
 } from "tabler-react";
 
-import SiteWrapper from "../../SiteWrapper"
-import SettingsBack from "../SettingsBack"
+import SiteWrapper from "../../../SiteWrapper"
+import SettingsBack from "../../SettingsBack"
 
-function SettingsMailTemplatesBase({ t, children, headerSubTitle, }) {
+function SettingsMailTemplatesBase({ t, children, headerSubTitle=""}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("settings.mail.templates.title")} subTitle={headerSubTitle}>
+          <Page.Header title={t("general.settings")} subTitle={`${t("settings.mail.title")} ${headerSubTitle}`}>
             <div className="page-options d-flex">
               <SettingsBack />
             </div>

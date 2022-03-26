@@ -78,12 +78,11 @@ function ScheduleClassPrices({t, match, history}) {
   return (
     <ClassEditBase 
       menuActiveLink={menuActiveLink} 
-      cardTitle={cardTitle} 
       pageHeaderButtonList={pageHeaderButtonList}
       defaultCard={false}
     >
     <ContentCard 
-      cardTitle={t('schedule.classes.title_edit')}
+      cardTitle={cardTitle}
       // headerContent={headerOptions}
       hasCardBody={false}
       pageInfo={data.scheduleItemPrices.pageInfo}

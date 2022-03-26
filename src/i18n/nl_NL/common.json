@@ -142,6 +142,19 @@
                     "help_content": "__STRING_NOT_TRANSLATED__",
                     "help_comments": "__STRING_NOT_TRANSLATED__"
                 }
+            },
+            "mailchimp_lists": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "mailchimp_list_id": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "error_loading": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -160,6 +173,12 @@
                 "create_account_message": "__STRING_NOT_TRANSLATED__",
                 "to_mollie": "__STRING_NOT_TRANSLATED__",
                 "api_key": "__STRING_NOT_TRANSLATED__"
+            },
+            "mailchimp": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "api_key": "__STRING_NOT_TRANSLATED__",
+                "server_prefix": "__STRING_NOT_TRANSLATED__"
             }
         },
         "home": {
@@ -418,7 +437,9 @@
         "sell": "__STRING_NOT_TRANSLATED__",
         "clear_search": "__STRING_NOT_TRANSLATED__",
         "all": "__STRING_NOT_TRANSLATED__",
-        "period": "__STRING_NOT_TRANSLATED__"
+        "period": "__STRING_NOT_TRANSLATED__",
+        "frequency": "__STRING_NOT_TRANSLATED__",
+        "contact": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -878,7 +899,19 @@
                 "payment_not_confirmed": "__STRING_NOT_TRANSLATED__",
                 "to_profile": "__STRING_NOT_TRANSLATED__"
             },
-            "btn_text_bank_account_edit": "__STRING_NOT_TRANSLATED__"
+            "btn_text_bank_account_edit": "__STRING_NOT_TRANSLATED__",
+            "mailing_lists": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "toast_update_subscription_status_success": "__STRING_NOT_TRANSLATED__",
+                "unsubscribing": "__STRING_NOT_TRANSLATED__",
+                "unsubscribe": "__STRING_NOT_TRANSLATED__",
+                "subscribing": "__STRING_NOT_TRANSLATED__",
+                "subscribe": "__STRING_NOT_TRANSLATED__"
+            },
+            "btn_text_manage": "__STRING_NOT_TRANSLATED__"
         },
         "checkout": {
             "payment": {
@@ -979,7 +1012,8 @@
                 "sold_out_title": "__STRING_NOT_TRANSLATED__",
                 "sold_out": "__STRING_NOT_TRANSLATED__",
                 "additional_info": "__STRING_NOT_TRANSLATED__",
-                "no_additional_info": "__STRING_NOT_TRANSLATED__"
+                "no_additional_info": "__STRING_NOT_TRANSLATED__",
+                "title": "__STRING_NOT_TRANSLATED__"
             },
             "tell_me_more": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__"

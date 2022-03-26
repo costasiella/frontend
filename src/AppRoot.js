@@ -263,9 +263,13 @@ import SettingsFinanceCurrency from './components/settings/finance/currency/Sett
 import SettingsGeneralDateTime from './components/settings/general/date_time/SettingsGeneralDateTime'
 import SettingsGeneralSystem from './components/settings/general/system/SettingsGeneralSystem'
 import SettingsHome from './components/settings/home/SettingsHome'
+import SettingsIntegrationMailChimp from './components/settings/integration/mailchimp/SettingsIntegrationMailChimp'
 import SettingsIntegrationMollie from './components/settings/integration/mollie/SettingsIntegrationMollie'
-import SettingsMailTemplates from './components/settings/mail/SettingsMailTemplates'
-import SettingsMailTemplateEdit from './components/settings/mail/SettingsMailTemplateEdit'
+import SettingsMailMailChimpLists from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpLists'
+import SettingsMailMailChimpListAdd from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpListAdd'
+import SettingsMailMailChimpListEdit from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpListEdit'
+import SettingsMailTemplates from './components/settings/mail/templates/SettingsMailTemplates'
+import SettingsMailTemplateEdit from './components/settings/mail/templates/SettingsMailTemplateEdit'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
 import SettingsWorkflowClassBooking from './components/settings/workflow/class_booking/SettingsWorkflowClassBooking'
 import SettingsWorkflowShop from './components/settings/workflow/shop/SettingsWorkflowShop'
@@ -280,6 +284,7 @@ import ShopAccountEventTickets from './components/shop/account/event_tickets/Sho
 import ShopAccountInvoicePayment from './components/shop/account/invoice_payment/ShopAccountInvoicePayment'
 import ShopAccountInvoicePaymentStatus from './components/shop/account/invoice_payment_status/ShopAccountInvoicePaymentStatus'
 import ShopAccountInvoices from './components/shop/account/invoices/ShopAccountInvoices'
+import ShopAccountMailingLists from './components/shop/account/mailing_lists/ShopAccountMailingLists'
 import ShopAccountOrders from './components/shop/account/orders/ShopAccountOrders'
 import ShopAccountProfile from './components/shop/account/profile/ShopAccountProfile'
 import ShopAccountSubscriptions from './components/shop/account/subscriptions/ShopAccountSubscriptions'
@@ -702,6 +707,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/invoice_payment/:id" component={ShopAccountInvoicePayment} />
             <PrivateRoute exact path = "/shop/account/invoice_payment_status/:id" component={ShopAccountInvoicePaymentStatus} />
             <PrivateRoute exact path = "/shop/account/invoices" component={ShopAccountInvoices} />
+            <PrivateRoute exact path = "/shop/account/mailing_lists" component={ShopAccountMailingLists} />
             <PrivateRoute exact path = "/shop/account/orders" component={ShopAccountOrders} />
             <PrivateRoute exact path = "/shop/account/profile" component={ShopAccountProfile} />
             <PrivateRoute exact path = "/shop/account/subscriptions" component={ShopAccountSubscriptions} />
@@ -728,7 +734,11 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/finance/currency" component={SettingsFinanceCurrency} />
             <PrivateRoute exact path="/settings/general/datetime" component={SettingsGeneralDateTime} />
             <PrivateRoute exact path="/settings/general/system" component={SettingsGeneralSystem} />
+            <PrivateRoute exact path="/settings/integration/mailchimp" component={SettingsIntegrationMailChimp} />
             <PrivateRoute exact path="/settings/integration/mollie" component={SettingsIntegrationMollie} />
+            <PrivateRoute exact path="/settings/mail/mailchimp_lists" component={SettingsMailMailChimpLists} />
+            <PrivateRoute exact path="/settings/mail/mailchimp_lists/add" component={SettingsMailMailChimpListAdd} />
+            <PrivateRoute exact path="/settings/mail/mailchimp_lists/edit/:id" component={SettingsMailMailChimpListEdit} />
             <PrivateRoute exact path="/settings/mail/templates" component={SettingsMailTemplates} />
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />

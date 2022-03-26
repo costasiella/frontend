@@ -6,11 +6,11 @@ import { withRouter } from "react-router"
 
 import ShopBase from "../ShopBase"
 
-function ShopEventBase({ t, match, history, children }) {
+function ShopEventBase({ t, match, history, children, title="" }) {
   
   return (
     <ShopBase 
-      title={t("shop.title")}
+      title={title}
       returnUrl="/shop/events"
       // checkoutProgress="order"
     >

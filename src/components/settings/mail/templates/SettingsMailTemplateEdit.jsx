@@ -20,7 +20,7 @@ import SettingsMailTemplateEditForm from "./SettingsMailTemplateEditForm"
 function SettingsMailTemplateEdit({ t, match, history }) {
   const id = match.params.id
   const returnUrl = "/settings/mail/templates"
-  const headerSubTitle = t('settings.mail.title')
+  const headerSubTitle = t("settings.mail.templates.title")
   const cardTitle = t("settings.mail.templates.edit.title")
 
   const { loading, error, data } = useQuery(GET_SYSTEM_MAIL_TEMPLATE_QUERY, {

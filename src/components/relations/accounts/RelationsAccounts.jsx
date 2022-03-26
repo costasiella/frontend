@@ -14,7 +14,10 @@ import {
   Button,
   Card,
   Container,
-  Table
+  List,
+  SocialNetworksList,
+  Table,
+  Tooltip
 } from "tabler-react";
 
 import { confirmAlert } from 'react-confirm-alert'
@@ -173,6 +176,7 @@ function RelationsAccounts({t, history}) {
               <Table.ColHeader></Table.ColHeader>
               <Table.ColHeader>{t('general.account')}</Table.ColHeader>
               <Table.ColHeader>{t('general.products')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.contact')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -243,6 +247,42 @@ function RelationsAccounts({t, history}) {
                       )) 
                       : ""
                     }
+                  </Table.Col>
+                  <Table.Col>
+                    <SocialNetworksList className="mb-0 mt-2">
+                      {
+                        (node.phone) ? 
+                          <List.Item inline>
+                            <Tooltip content={node.phone} placement="top">
+                              <span>
+                                <Icon prefix="fe" name="phone" />
+                              </span>
+                            </Tooltip>
+                          </List.Item>
+                        // No phone number found
+                        : ""
+                      }
+                      {
+                        (node.mobile) ?
+                          <List.Item inline>
+                            <Tooltip content={node.mobile} placement="top">
+                              <span>
+                                <Icon prefix="fe" name="smartphone" />
+                              </span>
+                            </Tooltip>
+                          </List.Item> 
+                          // No mobile number found
+                          : ""
+                      }
+
+                      <List.Item inline>
+                        <Tooltip content={node.email} placement="top">
+                          <a href={"mailto:" + node.email}>
+                            <Icon prefix="fe" name="mail" />
+                          </a>
+                        </Tooltip>
+                      </List.Item>
+                    </SocialNetworksList>
                   </Table.Col>
                   {/* <Table.Col key={v4()}>
                     {(node.customer) ? <span>

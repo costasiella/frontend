@@ -512,7 +512,9 @@
         "sell": "Sell",
         "clear_search": "Clear search",
         "all": "All",
-        "period": "Period"
+        "period": "Period",
+        "frequency": "Frequency",
+        "contact": "Contact"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1191,7 +1193,7 @@
                 "toast_add_success": "Added price",
                 "title_edit": "Edit price",
                 "toast_edit_success": "Saved price",
-                "title": "Prices",
+                "title": "Dropin and Trial",
                 "error_loading": "Error loading prices for this class :(",
                 "empty_list": "No prices have been defined for this class yet.",
                 "delete_confirm_msg": "Are you sure you wish to delete this price?",
@@ -1655,6 +1657,12 @@
                 "create_account_title": "Mollie is not yet configured",
                 "create_account_message": "Create a new Mollie account to get your API key to start using it to process online payments in Costasiella.",
                 "to_mollie": "To Mollie"
+            },
+            "mailchimp": {
+                "title": "MailChimp",
+                "explanation": "MailChimp integration settings",
+                "api_key": "MailChimp API Key",
+                "server_prefix": "MailChimp server prefix (eg. us19)"
             }
         },
         "finance": {
@@ -1737,6 +1745,19 @@
                     "help_content": "{{account.first_name}} (First name of account)",
                     "help_comments": "No variables available"
                 }
+            },
+            "mailchimp_lists": {
+                "title": "MailChimp Lists",
+                "explanation": "Manage MailChimp lists connected to Costasiella",
+                "title_add": "Add MailChimp List",
+                "toast_add_success": "Added MailChimp List",
+                "mailchimp_list_id": "MailChimp Audience / List ID",
+                "empty_list": "No MailChimp lists have been defined yet",
+                "error_loading": "Error loading MailChimp lists... :(",
+                "delete_confirm_msg": "Are you sure you wish to delete the link to this MailChimp list?",
+                "delete_success": "Deleted",
+                "title_edit": "Edit MailChimp List",
+                "toast_edit_success": "Saved"
             }
         },
         "home": {
@@ -2107,7 +2128,19 @@
                 "title": "My bank account",
                 "explanation": "Manage your bank information"
             },
-            "btn_text_bank_account_edit": "Update bank information"
+            "btn_text_bank_account_edit": "Update bank information",
+            "mailing_lists": {
+                "title": "Mailing Lists",
+                "explanation": "Manage your mailing list subscriptions.",
+                "error_loading_data": "Error loading linked MailChimp lists... :(",
+                "empty_list": "No MailChimp lists have been linked yet",
+                "toast_update_subscription_status_success": "Updated subscriptions status!",
+                "unsubscribing": "Unsubscribing...",
+                "unsubscribe": "Unsubscribe",
+                "subscribing": "Subscribing...",
+                "subscribe": "Subscribe"
+            },
+            "btn_text_manage": "Manage"
         },
         "accounts": {
             "profile": {
@@ -2176,7 +2209,8 @@
                 "sold_out": "Our apologies, this ticket is sold out. Please use the back button to see if other tickets are still available.",
                 "sold_out_title": "Ticket sold out",
                 "no_additional_info": "No additional info has been set for this ticket.",
-                "error_loading": "Error loading ticket information... :("
+                "error_loading": "Error loading ticket information... :(",
+                "title": "Event ticket"
             }
         },
         "event": {
