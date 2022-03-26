@@ -15,11 +15,6 @@ import InsightBackHome from '../InsightBackHome'
 
 import CSLS from "../../../tools/cs_local_storage"
 
-// Set some initial values for dates, if not found
-if (!localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)) {
-  console.log('year from not found... defaulting to today...')
-  localStorage.setItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR, moment().format('YYYY')) 
-} 
 
 function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>f}) {
   return (
@@ -43,7 +38,7 @@ function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>
                   icon="sunset"
                   color="secondary"
                   onClick={ () => {
-                    let currentYear = moment().format('YYYY')
+                    let currentYear = parseInt(moment().format('YYYY'))
                     localStorage.setItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR, currentYear) 
                     
                     refetchData(currentYear)

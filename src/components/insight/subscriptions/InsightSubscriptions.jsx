@@ -3,6 +3,7 @@ import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import C3Chart from "react-c3js"
+import moment from 'moment'
 import {
   colors,
   Grid,
@@ -16,10 +17,20 @@ import { GET_SUBSCRIPTIONS_SOLD_QUERY, GET_SUBSCRIPTIONS_ACTIVE_QUERY } from './
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightSubscriptionsBase from './InsightSubscriptionsBase'
 
+
+// Set some initial values for dates, if not found
+if (!localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)) {
+  console.log('year from not found... defaulting to today...')
+  localStorage.setItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR, moment().format('YYYY')) 
+} 
+
+
 function InsightSubscriptions ({ t, history }) {
-  const year = localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)
+  const year = parseInt(localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR))
   const export_url_active = "/d/export/insight/subscriptions/active/" + year
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year
+
+  console.log(year)
 
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
@@ -29,7 +40,7 @@ function InsightSubscriptions ({ t, history }) {
     data: dataSold,
     refetch: refetchSold
    } = useQuery(GET_SUBSCRIPTIONS_SOLD_QUERY, {
-    variables: { year: 2020 }
+    variables: { year: year }
   })
 
   const { 
@@ -38,7 +49,7 @@ function InsightSubscriptions ({ t, history }) {
     data: dataActive,
     refetch: refetchActive
    } = useQuery(GET_SUBSCRIPTIONS_ACTIVE_QUERY, {
-    variables: { year: 2020 }
+    variables: { year: year }
   })
 
 
