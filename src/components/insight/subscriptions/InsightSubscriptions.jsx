@@ -91,7 +91,7 @@ function InsightSubscriptions ({ t, history }) {
 
   return (
     <InsightSubscriptionsBase year={year} refetchData={refetchData}>
-      {/* <Grid.Row> */}
+      <Grid.Row>
         <Grid.Col md={9}>
           <Card title={t('general.chart')}>
             <Card.Body>
@@ -192,7 +192,7 @@ function InsightSubscriptions ({ t, history }) {
             {t("insight.subscriptions.active.export_excel")}
           </Button>
         </Grid.Col>
-      {/* </Grid.Row> */}
+      </Grid.Row>
     </InsightSubscriptionsBase>
   //   <SiteWrapper>
   //     <div className="my-3 my-md-5">

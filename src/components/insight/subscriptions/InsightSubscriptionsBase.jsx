@@ -55,9 +55,7 @@ function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>
               </Button.List> 
             </div>
           </Page.Header>
-          <Grid.Row>
-            {children}
-          </Grid.Row>
+          {children}
         </Container>  
       </div>
     </SiteWrapper>

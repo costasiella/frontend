@@ -60,9 +60,7 @@ function InsightRevenueBase ({ t, history, children, year, refetchData=f=>f }) {
               </Button.List> 
             </div>
           </Page.Header>
-          <Grid.Row>
             {children}
-          </Grid.Row>
         </Container>  
       </div>
     </SiteWrapper>
