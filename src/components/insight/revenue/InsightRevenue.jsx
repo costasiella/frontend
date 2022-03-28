@@ -2,12 +2,6 @@ import React from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import C3Chart from "react-c3js"
-import {
-  colors,
-  Grid,
-  Card,
-} from "tabler-react";
 
 import CSLS from "../../../tools/cs_local_storage"
 import { GET_REVENUE_TOTAL_QUERY, GET_REVENUE_SUBTOTAL_QUERY, GET_REVENUE_TAX_QUERY } from './queries'
