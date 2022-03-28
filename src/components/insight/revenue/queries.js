@@ -32,3 +32,35 @@ export const GET_REVENUE_TAX_QUERY = gql`
     }
   }
 `
+
+export const GET_REVENUE_TOTAL_SUBSCRIPTIONS_QUERY = gql`
+  query InsightRevenueTotalSubscriptions($year: Int!) {
+    insightRevenueTotalSubscriptions(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_SUBTOTAL_SUBSCRIPTIONS_QUERY = gql`
+  query InsightRevenueSubTotalSubscriptions($year: Int!) {
+    insightRevenueSubtotalSubscriptions(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY = gql`
+  query InsightRevenueTaxSubscriptions($year: Int!) {
+    insightRevenueTaxSubscriptions(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
