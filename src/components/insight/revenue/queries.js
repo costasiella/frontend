@@ -64,3 +64,35 @@ export const GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY = gql`
     }
   }
 `
+
+export const GET_REVENUE_TOTAL_CLASSPASSES_QUERY = gql`
+  query InsightRevenueTotalClasspasses($year: Int!) {
+    insightRevenueTotalClasspasses(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY = gql`
+  query InsightRevenueSubTotalClasspasses($year: Int!) {
+    insightRevenueSubtotalClasspasses(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_TAX_CLASSPASSES_QUERY = gql`
+  query InsightRevenueTaxClasspasses($year: Int!) {
+    insightRevenueTaxClasspasses(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`

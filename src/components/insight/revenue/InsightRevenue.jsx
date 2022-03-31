@@ -8,6 +8,9 @@ import {
   GET_REVENUE_TOTAL_QUERY, 
   GET_REVENUE_SUBTOTAL_QUERY, 
   GET_REVENUE_TAX_QUERY,
+  GET_REVENUE_TOTAL_CLASSPASSES_QUERY,
+  GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY,
+  GET_REVENUE_TAX_CLASSPASSES_QUERY,
   GET_REVENUE_TOTAL_SUBSCRIPTIONS_QUERY, 
   GET_REVENUE_SUBTOTAL_SUBSCRIPTIONS_QUERY, 
   GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY
@@ -46,6 +49,34 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
+  // Classpasses
+  const { 
+    loading: loadingTotalPasses, 
+    error: errorTotalPasses, 
+    data: dataTotalPasses,
+    refetch: refetchTotalPasses
+   } = useQuery(GET_REVENUE_TOTAL_CLASSPASSES_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingSubtotalPasses, 
+    error: errorSubtotalPasses, 
+    data: dataSubtotalPasses,
+    refetch: refetchSubtotalPasses
+   } = useQuery(GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingTaxPasses, 
+    error: errorTaxPasses, 
+    data: dataTaxPasses,
+    refetch: refetchTaxPasses
+   } = useQuery(GET_REVENUE_TAX_CLASSPASSES_QUERY, {
+    variables: { year: year }
+  })
+
   // Subscriptions
   const { 
     loading: loadingTotalSubs, 
@@ -78,6 +109,9 @@ function InsightRevenue ({ t, history }) {
     refetchTotal({year: year})
     refetchSubtotal({year: year})
     refetchTax({year: year})
+    refetchTotalPasses({year: year})
+    refetchSubtotalPasses({year: year})
+    refetchTaxPasses({year: year})
     refetchTotalSubs({year: year})
     refetchSubtotalSubs({year: year})
     refetchTaxSubs({year: year})
@@ -104,6 +138,15 @@ function InsightRevenue ({ t, history }) {
           dataTotal={dataTotalSubs && dataTotalSubs.insightRevenueTotalSubscriptions.data}
           dataSubtotal={dataSubtotalSubs && dataSubtotalSubs.insightRevenueSubtotalSubscriptions.data}
           dataTax={dataTaxSubs && dataTaxSubs.insightRevenueTaxSubscriptions.data}
+      />
+      {/* Classpasses */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalPasses || loadingSubtotalPasses || loadingTaxPasses)}
+          error={(errorTotalPasses || errorSubtotalPasses || errorTaxPasses)}
+          cardTitle={t("general.classpasses")}
+          dataTotal={dataTotalPasses && dataTotalPasses.insightRevenueTotalClasspasses.data}
+          dataSubtotal={dataSubtotalPasses && dataSubtotalPasses.insightRevenueSubtotalClasspasses.data}
+          dataTax={dataTaxPasses && dataTaxPasses.insightRevenueTaxClasspasses.data}
       />
     </InsightRevenueBase>
   )
