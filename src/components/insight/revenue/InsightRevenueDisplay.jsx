@@ -15,7 +15,6 @@ function InsightRevenueDisplay({
   error, 
   loading, 
   cardTitle,
-  cardFooterContent,
   dataTotal, 
   dataSubtotal, 
   dataTax
@@ -144,7 +143,7 @@ function InsightRevenueDisplay({
             />
           </Card.Body>
           <Card.Footer>
-            {cardFooterContent}
+            {t("insight.revenue.total.explanation")}
           </Card.Footer>
         </Card>
       </Grid.Col>

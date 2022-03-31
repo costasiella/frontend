@@ -92,7 +92,6 @@ function InsightRevenue ({ t, history }) {
         loading={(loadingTotal || loadingSubtotal || loadingTax)}
         error={(errorTotal || errorSubtotal || errorTax)}
           cardTitle={t("general.total")}
-          cardFooterContent={t("insight.revenue.total.explanation")}
           dataTotal={dataTotal && dataTotal.insightRevenueTotal.data}
           dataSubtotal={dataSubtotal && dataSubtotal.insightRevenueSubtotal.data}
           dataTax={dataTax && dataTax.insightRevenueTax.data}
@@ -101,8 +100,7 @@ function InsightRevenue ({ t, history }) {
       <InsightRevenueDisplay
           loading={(loadingTotalSubs || loadingSubtotalSubs || loadingTaxSubs)}
           error={(errorTotalSubs || errorSubtotalSubs || errorTaxSubs)}
-          cardTitle={t("insight.revenue.subscriptions.title")}
-          cardFooterContent={t("insight.revenue.subscriptions.explanation")}
+          cardTitle={t("general.subscriptions")}
           dataTotal={dataTotalSubs && dataTotalSubs.insightRevenueTotalSubscriptions.data}
           dataSubtotal={dataSubtotalSubs && dataSubtotalSubs.insightRevenueSubtotalSubscriptions.data}
           dataTax={dataTaxSubs && dataTaxSubs.insightRevenueTaxSubscriptions.data}
