@@ -9,10 +9,21 @@ import {
   Card,
 } from "tabler-react";
 
-function InsightRevenueTotal({ t, history, error, loading, dataTotal, dataSubtotal, dataTax }) {
-  const cardTitle = t('general.total')
-  console.log(dataTotal)
-  console.log(dataSubtotal)
+function InsightRevenueDisplay({ 
+  t, 
+  history, 
+  error, 
+  loading, 
+  cardTitle,
+  cardFooterContent,
+  dataTotal, 
+  dataSubtotal, 
+  dataTax
+ }) {
+
+  const labelDataTotal = t("insight.revenue.total.title")
+  const labelDataSubtotal = t("insight.revenue.subtotal.title")
+  const labelDataTax = t("insight.revenue.tax.title")
 
   if (loading) {
     return (
@@ -42,20 +53,14 @@ function InsightRevenueTotal({ t, history, error, loading, dataTotal, dataSubtot
     </Grid.Row>
   }
 
-  const data_label_total = t("insight.revenue.total.title")
-  const chart_data_total = dataTotal.insightRevenueTotal.data
-  console.log("chart_data total")
-  console.log(data_label_total, ...chart_data_total)
+  // console.log("chart_data total")
+  // console.log(labelDataTotal, ...dataTotal)
 
-  const data_label_subtotal = t("insight.revenue.subtotal.title")
-  const chart_data_subtotal = dataSubtotal.insightRevenueSubtotal.data
-  console.log("chart_data subtotal")
-  console.log(data_label_subtotal, ...chart_data_subtotal)
+  // console.log("chart_data subtotal")
+  // console.log(labelDataSubtotal, ...dataSubtotal)
 
-  const data_label_tax = t("insight.revenue.tax.title")
-  const chart_data_tax = dataTax.insightRevenueTax.data
-  console.log("chart_data tax")
-  console.log(data_label_tax, ...chart_data_tax)
+  // console.log("chart_data tax")
+  // console.log(labelDataTax, ...dataTax)
 
 
   return (
@@ -83,9 +88,9 @@ function InsightRevenueTotal({ t, history, error, loading, dataTotal, dataSubtot
                     t("datetime.months.short_november"),
                     t("datetime.months.short_decemer"),
                   ],
-                  [ 'total', ...chart_data_total],
-                  [ 'subtotal', ...chart_data_subtotal],
-                  [ 'tax', ...chart_data_tax],
+                  [ 'total', ...dataTotal],
+                  [ 'subtotal', ...dataSubtotal],
+                  [ 'tax', ...dataTax],
                 ],
                 type: "bar", // default type of chart
                 // types: {
@@ -99,9 +104,9 @@ function InsightRevenueTotal({ t, history, error, loading, dataTotal, dataSubtot
                 },
                 names: {
                   // name of each serie
-                  total: data_label_total,
-                  subtotal: data_label_subtotal,
-                  tax: data_label_tax,
+                  total: labelDataTotal,
+                  subtotal: labelDataSubtotal,
+                  tax: labelDataTax,
                 },
                 
               }}
@@ -139,7 +144,7 @@ function InsightRevenueTotal({ t, history, error, loading, dataTotal, dataSubtot
             />
           </Card.Body>
           <Card.Footer>
-            {t("insight.revenue.total.explanation")}
+            {cardFooterContent}
           </Card.Footer>
         </Card>
       </Grid.Col>
@@ -173,4 +178,4 @@ function InsightRevenueTotal({ t, history, error, loading, dataTotal, dataSubtot
   )
 }
 
-export default withTranslation()(withRouter(InsightRevenueTotal))
+export default withTranslation()(withRouter(InsightRevenueDisplay))

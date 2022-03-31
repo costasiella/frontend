@@ -13,7 +13,7 @@ import {
   GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY
 } from './queries'
 import InsightRevenueBase from './InsightRevenueBase'
-import InsightRevenueTotal from './InsightRevenueTotal'
+import InsightRevenueDisplay from './InsightRevenueDisplay'
 
 function InsightRevenue ({ t, history }) {
   const year = localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)
@@ -83,14 +83,29 @@ function InsightRevenue ({ t, history }) {
     refetchTaxSubs({year: year})
   }
 
+  // use <datavar> && <datavar unpacked> as <datavar> might not yet be loaded.
+
   return (
     <InsightRevenueBase year={year} refetchData={refetchData}>
-      <InsightRevenueTotal 
+      {/* Total */}
+      <InsightRevenueDisplay
         loading={(loadingTotal || loadingSubtotal || loadingTax)}
         error={(errorTotal || errorSubtotal || errorTax)}
-        dataTotal={dataTotal}
-        dataSubtotal={dataSubtotal}
-        dataTax={dataTax}
+          cardTitle={t("general.total")}
+          cardFooterContent={t("insight.revenue.total.explanation")}
+          dataTotal={dataTotal && dataTotal.insightRevenueTotal.data}
+          dataSubtotal={dataSubtotal && dataSubtotal.insightRevenueSubtotal.data}
+          dataTax={dataTax && dataTax.insightRevenueTax.data}
+      />
+      {/* Subscriptions */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalSubs || loadingSubtotalSubs || loadingTaxSubs)}
+          error={(errorTotalSubs || errorSubtotalSubs || errorTaxSubs)}
+          cardTitle={t("insight.revenue.subscriptions.title")}
+          cardFooterContent={t("insight.revenue.subscriptions.explanation")}
+          dataTotal={dataTotalSubs && dataTotalSubs.insightRevenueTotalSubscriptions.data}
+          dataSubtotal={dataSubtotalSubs && dataSubtotalSubs.insightRevenueSubtotalSubscriptions.data}
+          dataTax={dataTaxSubs && dataTaxSubs.insightRevenueTaxSubscriptions.data}
       />
     </InsightRevenueBase>
   )
