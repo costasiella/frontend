@@ -96,3 +96,35 @@ export const GET_REVENUE_TAX_CLASSPASSES_QUERY = gql`
     }
   }
 `
+
+export const GET_REVENUE_TOTAL_EVENT_TICKETS_QUERY = gql`
+  query InsightRevenueTotalEventTickets($year: Int!) {
+    insightRevenueTotalEventTickets(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_SUBTOTAL_EVENT_TICKETS_QUERY = gql`
+  query InsightRevenueSubTotalEventTickets($year: Int!) {
+    insightRevenueSubtotalEventTickets(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_TAX_EVENT_TICKETS_QUERY = gql`
+  query InsightRevenueTaxEventTickets($year: Int!) {
+    insightRevenueTaxEventTickets(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`

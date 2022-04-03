@@ -513,7 +513,8 @@
         "all": "All",
         "period": "Period",
         "frequency": "Frequency",
-        "contact": "Contact"
+        "contact": "Contact",
+        "event_tickets": "Event tickets"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

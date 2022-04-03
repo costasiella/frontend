@@ -11,6 +11,9 @@ import {
   GET_REVENUE_TOTAL_CLASSPASSES_QUERY,
   GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY,
   GET_REVENUE_TAX_CLASSPASSES_QUERY,
+  GET_REVENUE_TOTAL_EVENT_TICKETS_QUERY,
+  GET_REVENUE_SUBTOTAL_EVENT_TICKETS_QUERY,
+  GET_REVENUE_TAX_EVENT_TICKETS_QUERY,
   GET_REVENUE_TOTAL_SUBSCRIPTIONS_QUERY, 
   GET_REVENUE_SUBTOTAL_SUBSCRIPTIONS_QUERY, 
   GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY
@@ -105,6 +108,34 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
+  // Subscriptions
+  const { 
+    loading: loadingTotalTickets, 
+    error: errorTotalTickets, 
+    data: dataTotalTickets,
+    refetch: refetchTotalTickets
+   } = useQuery(GET_REVENUE_TOTAL_EVENT_TICKETS_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingSubtotalTickets, 
+    error: errorSubtotalTickets, 
+    data: dataSubtotalTickets,
+    refetch: refetchSubtotalTickets
+   } = useQuery(GET_REVENUE_SUBTOTAL_EVENT_TICKETS_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingTaxTickets, 
+    error: errorTaxTickets, 
+    data: dataTaxTickets,
+    refetch: refetchTaxTickets
+   } = useQuery(GET_REVENUE_TAX_EVENT_TICKETS_QUERY, {
+    variables: { year: year }
+  })
+
   function refetchData(year) {
     refetchTotal({year: year})
     refetchSubtotal({year: year})
@@ -112,6 +143,9 @@ function InsightRevenue ({ t, history }) {
     refetchTotalPasses({year: year})
     refetchSubtotalPasses({year: year})
     refetchTaxPasses({year: year})
+    refetchTotalTickets({year: year})
+    refetchSubtotalTickets({year: year})
+    refetchTaxTickets({year: year})
     refetchTotalSubs({year: year})
     refetchSubtotalSubs({year: year})
     refetchTaxSubs({year: year})
@@ -147,6 +181,15 @@ function InsightRevenue ({ t, history }) {
           dataTotal={dataTotalPasses && dataTotalPasses.insightRevenueTotalClasspasses.data}
           dataSubtotal={dataSubtotalPasses && dataSubtotalPasses.insightRevenueSubtotalClasspasses.data}
           dataTax={dataTaxPasses && dataTaxPasses.insightRevenueTaxClasspasses.data}
+      />
+      {/* Event tickets */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalTickets || loadingSubtotalTickets || loadingTaxTickets)}
+          error={(errorTotalTickets || errorSubtotalTickets || errorTaxTickets)}
+          cardTitle={t("general.event_tickets")}
+          dataTotal={dataTotalTickets && dataTotalTickets.insightRevenueTotalEventTickets.data}
+          dataSubtotal={dataSubtotalTickets && dataSubtotalTickets.insightRevenueSubtotalEventTickets.data}
+          dataTax={dataTaxTickets && dataTaxTickets.insightRevenueTaxEventTickets.data}
       />
     </InsightRevenueBase>
   )
