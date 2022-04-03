@@ -439,7 +439,9 @@
         "period": "__STRING_NOT_TRANSLATED__",
         "frequency": "__STRING_NOT_TRANSLATED__",
         "contact": "__STRING_NOT_TRANSLATED__",
-        "event_tickets": "__STRING_NOT_TRANSLATED__"
+        "event_tickets": "__STRING_NOT_TRANSLATED__",
+        "other": "__STRING_NOT_TRANSLATED__",
+        "data": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {

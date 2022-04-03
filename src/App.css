@@ -83,3 +83,8 @@ table .btn {
   z-index: 2000;
 }
 /* React confirm alert fixes end */
+
+table td.cs-insight-data-table-cell {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}

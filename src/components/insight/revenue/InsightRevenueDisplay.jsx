@@ -7,6 +7,7 @@ import {
   Dimmer,
   Grid,
   Card,
+  Table,
 } from "tabler-react";
 
 function InsightRevenueDisplay({ 
@@ -64,13 +65,28 @@ function InsightRevenueDisplay({
   console.log(cardTitle)
   console.log(dataTotal)
 
+  const months = [
+    t("datetime.months.short_january"),
+    t("datetime.months.short_february"),
+    t("datetime.months.short_march"),
+    t("datetime.months.short_april"),
+    t("datetime.months.short_may"),
+    t("datetime.months.short_june"),
+    t("datetime.months.short_july"),
+    t("datetime.months.short_august"),
+    t("datetime.months.short_september"),
+    t("datetime.months.short_october"),
+    t("datetime.months.short_november"),
+    t("datetime.months.short_decemer"),
+  ]
+
   return (
     <Grid.Row>
       <Grid.Col md={9}>
         <Card title={cardTitle}>
-          <Card.Body>
+          {/* <Card.Body> */}
             <C3Chart
-              style={{ height: "16rem" }}
+              style={{ height: "336px" }}
               data={{
                 x: 'x',
                 columns: [
@@ -143,13 +159,31 @@ function InsightRevenueDisplay({
                 show: false,
               }}
             />
-          </Card.Body>
+          {/* </Card.Body> */}
           <Card.Footer>
             {t("insight.revenue.total.explanation")}
           </Card.Footer>
         </Card>
       </Grid.Col>
       <Grid.Col md={3}>
+        <Card title={t("general.data")}>
+          <small>
+          <Table cards>
+            <Table.Body>
+              {dataTotal.map((amount, index) => (
+                <Table.Row>
+                  <Table.Col className="cs-insight-data-table-cell">
+                    {months[index]}
+                  </Table.Col>
+                  <Table.Col className="cs-insight-data-table-cell text-right">
+                    {amount}
+                  </Table.Col>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+          </small>
+        </Card>
         {/* Export as sold as excel sheet */}
         {/* <Button
           block
