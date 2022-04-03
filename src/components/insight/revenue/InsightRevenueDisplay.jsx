@@ -61,6 +61,8 @@ function InsightRevenueDisplay({
   // console.log("chart_data tax")
   // console.log(labelDataTax, ...dataTax)
 
+  console.log(cardTitle)
+  console.log(dataTotal)
 
   return (
     <Grid.Row>

@@ -128,3 +128,35 @@ export const GET_REVENUE_TAX_EVENT_TICKETS_QUERY = gql`
     }
   }
 `
+
+export const GET_REVENUE_TOTAL_OTHER_QUERY = gql`
+  query InsightRevenueTotalOther($year: Int!) {
+    insightRevenueTotalOther(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_SUBTOTAL_OTHER_QUERY = gql`
+  query InsightRevenueSubTotalOther($year: Int!) {
+    insightRevenueSubtotalOther(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`
+
+
+export const GET_REVENUE_TAX_OTHER_QUERY = gql`
+  query InsightRevenueTaxOther($year: Int!) {
+    insightRevenueTaxOther(year: $year) {
+      description
+      data
+      year
+    }
+  }
+`

@@ -14,6 +14,9 @@ import {
   GET_REVENUE_TOTAL_EVENT_TICKETS_QUERY,
   GET_REVENUE_SUBTOTAL_EVENT_TICKETS_QUERY,
   GET_REVENUE_TAX_EVENT_TICKETS_QUERY,
+  GET_REVENUE_TOTAL_OTHER_QUERY,
+  GET_REVENUE_SUBTOTAL_OTHER_QUERY,
+  GET_REVENUE_TAX_OTHER_QUERY,
   GET_REVENUE_TOTAL_SUBSCRIPTIONS_QUERY, 
   GET_REVENUE_SUBTOTAL_SUBSCRIPTIONS_QUERY, 
   GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY
@@ -108,7 +111,7 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
-  // Subscriptions
+  // Event tickets
   const { 
     loading: loadingTotalTickets, 
     error: errorTotalTickets, 
@@ -136,19 +139,55 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
+  // other
+  const { 
+    loading: loadingTotalOther, 
+    error: errorTotalOther, 
+    data: dataTotalOther,
+    refetch: refetchTotalOther
+   } = useQuery(GET_REVENUE_TOTAL_OTHER_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingSubtotalOther, 
+    error: errorSubtotalOther, 
+    data: dataSubtotalOther,
+    refetch: refetchSubtotalOther
+   } = useQuery(GET_REVENUE_SUBTOTAL_OTHER_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingTaxOther, 
+    error: errorTaxOther, 
+    data: dataTaxOther,
+    refetch: refetchTaxOther
+   } = useQuery(GET_REVENUE_TAX_OTHER_QUERY, {
+    variables: { year: year }
+  })
+
   function refetchData(year) {
+    // Total
     refetchTotal({year: year})
     refetchSubtotal({year: year})
     refetchTax({year: year})
+    // Classpasses
     refetchTotalPasses({year: year})
     refetchSubtotalPasses({year: year})
     refetchTaxPasses({year: year})
-    refetchTotalTickets({year: year})
-    refetchSubtotalTickets({year: year})
-    refetchTaxTickets({year: year})
+    // Subscritpions
     refetchTotalSubs({year: year})
     refetchSubtotalSubs({year: year})
     refetchTaxSubs({year: year})
+    // Event tickets
+    refetchTotalTickets({year: year})
+    refetchSubtotalTickets({year: year})
+    refetchTaxTickets({year: year})
+    // Other
+    refetchTotalOther({year: year})
+    refetchSubtotalOther({year: year})
+    refetchTaxOther({year: year})
   }
 
   // use <datavar> && <datavar unpacked> as <datavar> might not yet be loaded.
@@ -190,6 +229,15 @@ function InsightRevenue ({ t, history }) {
           dataTotal={dataTotalTickets && dataTotalTickets.insightRevenueTotalEventTickets.data}
           dataSubtotal={dataSubtotalTickets && dataSubtotalTickets.insightRevenueSubtotalEventTickets.data}
           dataTax={dataTaxTickets && dataTaxTickets.insightRevenueTaxEventTickets.data}
+      />
+      {/* Other */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalOther || loadingSubtotalOther || loadingTaxOther)}
+          error={(errorTotalOther || errorSubtotalOther || errorTaxOther)}
+          cardTitle={t("general.other")}
+          dataTotal={dataTotalOther && dataTotalOther.insightRevenueTotalOther.data}
+          dataSubtotal={dataSubtotalOther && dataSubtotalOther.insightRevenueSubtotalOther.data}
+          dataTax={dataTaxOther && dataTaxOther.insightRevenueTaxOther.data}
       />
     </InsightRevenueBase>
   )
