@@ -2,20 +2,32 @@ import React from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import C3Chart from "react-c3js"
-import {
-  colors,
-  Grid,
-  Card,
-} from "tabler-react";
 
 import CSLS from "../../../tools/cs_local_storage"
-import { GET_REVENUE_TOTAL_QUERY, GET_REVENUE_SUBTOTAL_QUERY, GET_REVENUE_TAX_QUERY } from './queries'
+import { 
+  GET_REVENUE_TOTAL_QUERY, 
+  GET_REVENUE_SUBTOTAL_QUERY, 
+  GET_REVENUE_TAX_QUERY,
+  GET_REVENUE_TOTAL_CLASSPASSES_QUERY,
+  GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY,
+  GET_REVENUE_TAX_CLASSPASSES_QUERY,
+  GET_REVENUE_TOTAL_EVENT_TICKETS_QUERY,
+  GET_REVENUE_SUBTOTAL_EVENT_TICKETS_QUERY,
+  GET_REVENUE_TAX_EVENT_TICKETS_QUERY,
+  GET_REVENUE_TOTAL_OTHER_QUERY,
+  GET_REVENUE_SUBTOTAL_OTHER_QUERY,
+  GET_REVENUE_TAX_OTHER_QUERY,
+  GET_REVENUE_TOTAL_SUBSCRIPTIONS_QUERY, 
+  GET_REVENUE_SUBTOTAL_SUBSCRIPTIONS_QUERY, 
+  GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY
+} from './queries'
 import InsightRevenueBase from './InsightRevenueBase'
+import InsightRevenueDisplay from './InsightRevenueDisplay'
 
 function InsightRevenue ({ t, history }) {
   const year = localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)
 
+  // Total
   const { 
     loading: loadingTotal, 
     error: errorTotal, 
@@ -43,174 +55,191 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
+  // Classpasses
+  const { 
+    loading: loadingTotalPasses, 
+    error: errorTotalPasses, 
+    data: dataTotalPasses,
+    refetch: refetchTotalPasses
+   } = useQuery(GET_REVENUE_TOTAL_CLASSPASSES_QUERY, {
+    variables: { year: year }
+  })
 
-  if (loadingTotal || loadingSubtotal || loadingTax) {
-    return (
-      <InsightRevenueBase year={year}>
-        {t("general.loading_with_dots")}
-      </InsightRevenueBase>
-    )
-  }
+  const { 
+    loading: loadingSubtotalPasses, 
+    error: errorSubtotalPasses, 
+    data: dataSubtotalPasses,
+    refetch: refetchSubtotalPasses
+   } = useQuery(GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY, {
+    variables: { year: year }
+  })
 
-  if (errorTotal || errorSubtotal || errorTax) {
-    return (
-      <InsightRevenueBase year={year}>
-        {t("general.error_sad_smiley")}
-      </InsightRevenueBase>
-    )
-  }
+  const { 
+    loading: loadingTaxPasses, 
+    error: errorTaxPasses, 
+    data: dataTaxPasses,
+    refetch: refetchTaxPasses
+   } = useQuery(GET_REVENUE_TAX_CLASSPASSES_QUERY, {
+    variables: { year: year }
+  })
+
+  // Subscriptions
+  const { 
+    loading: loadingTotalSubs, 
+    error: errorTotalSubs, 
+    data: dataTotalSubs,
+    refetch: refetchTotalSubs
+   } = useQuery(GET_REVENUE_TOTAL_SUBSCRIPTIONS_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingSubtotalSubs, 
+    error: errorSubtotalSubs, 
+    data: dataSubtotalSubs,
+    refetch: refetchSubtotalSubs
+   } = useQuery(GET_REVENUE_SUBTOTAL_SUBSCRIPTIONS_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingTaxSubs, 
+    error: errorTaxSubs, 
+    data: dataTaxSubs,
+    refetch: refetchTaxSubs
+   } = useQuery(GET_REVENUE_TAX_SUBSCRIPTIONS_QUERY, {
+    variables: { year: year }
+  })
+
+  // Event tickets
+  const { 
+    loading: loadingTotalTickets, 
+    error: errorTotalTickets, 
+    data: dataTotalTickets,
+    refetch: refetchTotalTickets
+   } = useQuery(GET_REVENUE_TOTAL_EVENT_TICKETS_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingSubtotalTickets, 
+    error: errorSubtotalTickets, 
+    data: dataSubtotalTickets,
+    refetch: refetchSubtotalTickets
+   } = useQuery(GET_REVENUE_SUBTOTAL_EVENT_TICKETS_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingTaxTickets, 
+    error: errorTaxTickets, 
+    data: dataTaxTickets,
+    refetch: refetchTaxTickets
+   } = useQuery(GET_REVENUE_TAX_EVENT_TICKETS_QUERY, {
+    variables: { year: year }
+  })
+
+  // other
+  const { 
+    loading: loadingTotalOther, 
+    error: errorTotalOther, 
+    data: dataTotalOther,
+    refetch: refetchTotalOther
+   } = useQuery(GET_REVENUE_TOTAL_OTHER_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingSubtotalOther, 
+    error: errorSubtotalOther, 
+    data: dataSubtotalOther,
+    refetch: refetchSubtotalOther
+   } = useQuery(GET_REVENUE_SUBTOTAL_OTHER_QUERY, {
+    variables: { year: year }
+  })
+
+  const { 
+    loading: loadingTaxOther, 
+    error: errorTaxOther, 
+    data: dataTaxOther,
+    refetch: refetchTaxOther
+   } = useQuery(GET_REVENUE_TAX_OTHER_QUERY, {
+    variables: { year: year }
+  })
 
   function refetchData(year) {
+    // Total
     refetchTotal({year: year})
     refetchSubtotal({year: year})
     refetchTax({year: year})
+    // Classpasses
+    refetchTotalPasses({year: year})
+    refetchSubtotalPasses({year: year})
+    refetchTaxPasses({year: year})
+    // Subscritpions
+    refetchTotalSubs({year: year})
+    refetchSubtotalSubs({year: year})
+    refetchTaxSubs({year: year})
+    // Event tickets
+    refetchTotalTickets({year: year})
+    refetchSubtotalTickets({year: year})
+    refetchTaxTickets({year: year})
+    // Other
+    refetchTotalOther({year: year})
+    refetchSubtotalOther({year: year})
+    refetchTaxOther({year: year})
   }
 
-  console.log(dataTotal)
-  console.log(dataSubtotal)
-
-  const data_label_total = t("insight.revenue.total.title")
-  const chart_data_total = dataTotal.insightRevenueTotal.data
-  console.log("chart_data total")
-  console.log(data_label_total, ...chart_data_total)
-
-  const data_label_subtotal = t("insight.revenue.subtotal.title")
-  const chart_data_subtotal = dataSubtotal.insightRevenueSubtotal.data
-  console.log("chart_data subtotal")
-  console.log(data_label_subtotal, ...chart_data_subtotal)
-
-  const data_label_tax = t("insight.revenue.tax.title")
-  const chart_data_tax = dataTax.insightRevenueTax.data
-  console.log("chart_data tax")
-  console.log(data_label_tax, ...chart_data_tax)
-
+  // use <datavar> && <datavar unpacked> as <datavar> might not yet be loaded.
 
   return (
     <InsightRevenueBase year={year} refetchData={refetchData}>
-      {/* <Grid.Row> */}
-        <Grid.Col md={9}>
-          <Card title={t('general.total')}>
-            <Card.Body>
-              <C3Chart
-                style={{ height: "16rem" }}
-                data={{
-                  x: 'x',
-                  columns: [
-                    // each columns data as array, starting with "name" and then containing data
-                    [ 'x',
-                      t("datetime.months.short_january"),
-                      t("datetime.months.short_february"),
-                      t("datetime.months.short_march"),
-                      t("datetime.months.short_april"),
-                      t("datetime.months.short_may"),
-                      t("datetime.months.short_june"),
-                      t("datetime.months.short_july"),
-                      t("datetime.months.short_august"),
-                      t("datetime.months.short_september"),
-                      t("datetime.months.short_october"),
-                      t("datetime.months.short_november"),
-                      t("datetime.months.short_decemer"),
-                    ],
-                    [ 'total', ...chart_data_total],
-                    [ 'subtotal', ...chart_data_subtotal],
-                    [ 'tax', ...chart_data_tax],
-                  ],
-                  type: "bar", // default type of chart
-                  // types: {
-                  //   total: "bar"
-                  // },
-                  groups: [['subtotal', 'tax']],
-                  colors: {
-                    total: colors["blue"],
-                    subtotal: colors["green"],
-                    tax: colors["orange"],
-                  },
-                  names: {
-                    // name of each serie
-                    total: data_label_total,
-                    subtotal: data_label_subtotal,
-                    tax: data_label_tax,
-                  },
-                  
-                }}
-                axis={{
-                  y: {
-                    padding: {
-                      bottom: 0,
-                    },
-                    show: true,
-                  },
-                  x: {
-                    padding: {
-                      left: 0,
-                      right: 0,
-                    },
-                    type: 'category',
-                    show: true,
-                  },
-                }}
-                tooltip={{
-                  format: {
-                    title: function(x) {
-                      return "";
-                    },
-                  },
-                }}
-                padding={{
-                  bottom: 0,
-                  // left: -1,
-                  right: -1,
-                }}
-                point={{
-                  show: false,
-                }}
-              />
-            </Card.Body>
-            <Card.Footer>
-              {t("insight.revenue.total.explanation")}
-            </Card.Footer>
-          </Card>
-        </Grid.Col>
-        <Grid.Col md={3}>
-          {/* Export as sold as excel sheet */}
-          {/* <Button
-            block
-            color="secondary"
-            RootComponent="a"
-            icon="download-cloud"
-            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url_sold
-            )}
-          >
-            {t("insight.classpasses.sold.export_excel")}
-          </Button> */}
-          {/* Export as active as excel sheet */}
-          {/* <Button
-            block
-            color="secondary"
-            RootComponent="a"
-            icon="download-cloud"
-            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url_active
-            )}
-          >
-            {t("insight.classpasses.active.export_excel")}
-          </Button> */}
-        </Grid.Col>
-      {/* </Grid.Row> */}
+      {/* Total */}
+      <InsightRevenueDisplay
+        loading={(loadingTotal || loadingSubtotal || loadingTax)}
+        error={(errorTotal || errorSubtotal || errorTax)}
+          cardTitle={t("general.total")}
+          dataTotal={dataTotal && dataTotal.insightRevenueTotal.data}
+          dataSubtotal={dataSubtotal && dataSubtotal.insightRevenueSubtotal.data}
+          dataTax={dataTax && dataTax.insightRevenueTax.data}
+      />
+      {/* Subscriptions */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalSubs || loadingSubtotalSubs || loadingTaxSubs)}
+          error={(errorTotalSubs || errorSubtotalSubs || errorTaxSubs)}
+          cardTitle={t("general.subscriptions")}
+          dataTotal={dataTotalSubs && dataTotalSubs.insightRevenueTotalSubscriptions.data}
+          dataSubtotal={dataSubtotalSubs && dataSubtotalSubs.insightRevenueSubtotalSubscriptions.data}
+          dataTax={dataTaxSubs && dataTaxSubs.insightRevenueTaxSubscriptions.data}
+      />
+      {/* Classpasses */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalPasses || loadingSubtotalPasses || loadingTaxPasses)}
+          error={(errorTotalPasses || errorSubtotalPasses || errorTaxPasses)}
+          cardTitle={t("general.classpasses")}
+          dataTotal={dataTotalPasses && dataTotalPasses.insightRevenueTotalClasspasses.data}
+          dataSubtotal={dataSubtotalPasses && dataSubtotalPasses.insightRevenueSubtotalClasspasses.data}
+          dataTax={dataTaxPasses && dataTaxPasses.insightRevenueTaxClasspasses.data}
+      />
+      {/* Event tickets */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalTickets || loadingSubtotalTickets || loadingTaxTickets)}
+          error={(errorTotalTickets || errorSubtotalTickets || errorTaxTickets)}
+          cardTitle={t("general.event_tickets")}
+          dataTotal={dataTotalTickets && dataTotalTickets.insightRevenueTotalEventTickets.data}
+          dataSubtotal={dataSubtotalTickets && dataSubtotalTickets.insightRevenueSubtotalEventTickets.data}
+          dataTax={dataTaxTickets && dataTaxTickets.insightRevenueTaxEventTickets.data}
+      />
+      {/* Other */}
+      <InsightRevenueDisplay
+          loading={(loadingTotalOther || loadingSubtotalOther || loadingTaxOther)}
+          error={(errorTotalOther || errorSubtotalOther || errorTaxOther)}
+          cardTitle={t("general.other")}
+          dataTotal={dataTotalOther && dataTotalOther.insightRevenueTotalOther.data}
+          dataSubtotal={dataSubtotalOther && dataSubtotalOther.insightRevenueSubtotalOther.data}
+          dataTax={dataTaxOther && dataTaxOther.insightRevenueTaxOther.data}
+      />
     </InsightRevenueBase>
-  //   <SiteWrapper>
-  //     <div className="my-3 my-md-5">
-  //       <Container>
-  //         <Page.Header title={t("insight.title")} subTitle={t("general.classpasses") + " " + year}>
-  //           <div className="page-options d-flex">
-  //             <InsightBackHome />
-  //           </div>
-  //         </Page.Header>
-
-  //       </Container>  
-  //     </div>
-  //   </SiteWrapper>
   )
 }
 

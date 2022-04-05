@@ -367,7 +367,6 @@
         "once": "__STRING_NOT_TRANSLATED__",
         "actions": "__STRING_NOT_TRANSLATED__",
         "clear": "__STRING_NOT_TRANSLATED__",
-        "prices": "__STRING_NOT_TRANSLATED__",
         "attend": "__STRING_NOT_TRANSLATED__",
         "dropin": "__STRING_NOT_TRANSLATED__",
         "trial": "__STRING_NOT_TRANSLATED__",
@@ -439,7 +438,10 @@
         "all": "__STRING_NOT_TRANSLATED__",
         "period": "__STRING_NOT_TRANSLATED__",
         "frequency": "__STRING_NOT_TRANSLATED__",
-        "contact": "__STRING_NOT_TRANSLATED__"
+        "contact": "__STRING_NOT_TRANSLATED__",
+        "event_tickets": "__STRING_NOT_TRANSLATED__",
+        "other": "__STRING_NOT_TRANSLATED__",
+        "data": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
