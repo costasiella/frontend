@@ -517,7 +517,8 @@
         "contact": "Contact",
         "event_tickets": "Event tickets",
         "other": "Other",
-        "data": "Data"
+        "data": "Data",
+        "week": "Week"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

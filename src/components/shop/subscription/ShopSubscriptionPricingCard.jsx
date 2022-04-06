@@ -12,9 +12,16 @@ import {
 // https://github.com/tabler/tabler-react/blob/master/example/src/interface/PricingCardsPage.react.js
 
 
-function ShopClasspassPricingCard({ t, subscription, btnLink, active=false, displayCheckoutInfo=false }) {
-  // classpass should be an object with at least the following values from an organizationClasspass object:
-  // id, name, priceDisplay, unlimited, classes, validity, link
+function ShopSubscriptionPricingCard({ t, subscription, btnLink, active=false, displayCheckoutInfo=false }) {
+  // subscription should be an object with at least the following values from an organizationSubscription object:
+  // id, name, priceTodayDisplay, subscriptionUnit, unlimited, minDuration, priceFirstMonthDisplay, 
+  // accountRegistrationfee
+
+  let unit = t("general.month")
+  if (!subscription.unlimited && subscription.subscriptionUnit === 'WEEK') {
+    unit = t("general.week")
+  }
+
   return (
     <PricingCard active={active}>
       <PricingCard.Category>
@@ -25,8 +32,8 @@ function ShopClasspassPricingCard({ t, subscription, btnLink, active=false, disp
       </PricingCard.Price>
       <PricingCard.AttributeList>
         <PricingCard.AttributeItem>
-          {/* {((subscription.classes != 1) || (subscription.unlimited))? t('general.classes'): t('general.class')} / {t('general.month')} { ": " } */}
-          {t('general.classes')} / {t('general.month')} { ": " }
+          
+          {t('general.classes')} / {unit} { ": " }
           <b>{(subscription.unlimited) ? t('general.unlimited') : subscription.classes }</b> 
         </PricingCard.AttributeItem>
         <PricingCard.AttributeItem>
@@ -56,4 +63,4 @@ function ShopClasspassPricingCard({ t, subscription, btnLink, active=false, disp
   )
 }
 
-export default withTranslation()(withRouter(ShopClasspassPricingCard))
+export default withTranslation()(withRouter(ShopSubscriptionPricingCard))
