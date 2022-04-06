@@ -16,9 +16,7 @@ function InsightRevenueDisplay({
   error, 
   loading, 
   cardTitle,
-  dataTotal, 
-  dataSubtotal, 
-  dataTax
+  data
  }) {
 
   const labelDataTotal = t("insight.revenue.total.title")
@@ -53,17 +51,9 @@ function InsightRevenueDisplay({
     </Grid.Row>
   }
 
-  // console.log("chart_data total")
-  // console.log(labelDataTotal, ...dataTotal)
-
-  // console.log("chart_data subtotal")
-  // console.log(labelDataSubtotal, ...dataSubtotal)
-
-  // console.log("chart_data tax")
-  // console.log(labelDataTax, ...dataTax)
-
-  console.log(cardTitle)
-  console.log(dataTotal)
+  const dataTotal = data.total
+  const dataSubtotal = data.subtotal
+  const dataTax = data.tax
 
   const months = [
     t("datetime.months.short_january"),
