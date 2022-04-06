@@ -88,7 +88,7 @@ function ScheduleItems({t, match, history}) {
 
   return (
     <ScheduleEventEditListBase activeLink={activeLink} pageInfo={pageInfo} onLoadMore={onLoadMore} pageHeaderOptions={pageHeaderOptions}>
-      <Table>
+      <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.time')}</Table.ColHeader>
