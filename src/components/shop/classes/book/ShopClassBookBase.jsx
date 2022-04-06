@@ -7,8 +7,7 @@ import ShopBase from "../../ShopBase"
 function ShopClassBookBase({ t, match, history, children, pageHeaderOptions="" }) {
   
   return (
-    <ShopBase title={t("shop.title")} pageHeaderOptions={pageHeaderOptions}>
-      <h4>{t("shop.classes.book.title")}</h4>
+    <ShopBase title={t("shop.classes.book.title")} pageHeaderOptions={pageHeaderOptions}>
         {children}
     </ShopBase>
   )

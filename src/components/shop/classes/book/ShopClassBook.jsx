@@ -79,7 +79,7 @@ function ShopClassBook({ t, match, history }) {
   //   timeStart: , 
   //   date: class_date
   // })
-  const class_info = date_display + ' ' + timeStart + ' - ' + timeEnd + ', ' + classType + ' ' + t("general.at") + ' ' + location
+  const class_info = date_display + ' ' + timeStart + ' - ' + timeEnd + ' ' + classType + ' ' + t("general.at") + ' ' + location
 
   console.log(prices)
   console.log("ALREADY BOOKED")
@@ -148,7 +148,7 @@ function ShopClassBook({ t, match, history }) {
     <ShopClassBookBase pageHeaderOptions={<ShopClassBookBack />}>
       <Grid.Row>
         <Grid.Col md={12}>
-          { class_info }
+          <h5>{ class_info }</h5>
           <div className="mt-6">
             {(alreadyBooked) ?
               <Alert type="primary" hasExtraSpace>
