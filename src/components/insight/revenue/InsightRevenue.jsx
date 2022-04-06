@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 
 import CSLS from "../../../tools/cs_local_storage"
 import { 
-  GET_REVENUE_TOTAL_QUERY, 
+  GET_REVENUE_QUERY, 
   GET_REVENUE_TOTAL_CLASSPASSES_QUERY,
   GET_REVENUE_SUBTOTAL_CLASSPASSES_QUERY,
   GET_REVENUE_TAX_CLASSPASSES_QUERY,
@@ -25,13 +25,12 @@ import InsightRevenueDisplay from './InsightRevenueDisplay'
 function InsightRevenue ({ t, history }) {
   const year = localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)
 
-  // Total
   const { 
-    loading: loadingTotal, 
-    error: errorTotal, 
-    data: dataTotal,
-    refetch: refetchTotal
-   } = useQuery(GET_REVENUE_TOTAL_QUERY, {
+    loading: loading, 
+    error: error, 
+    data: data,
+    refetch: refetch
+   } = useQuery(GET_REVENUE_QUERY, {
     variables: { year: year }
   })
 
@@ -149,7 +148,7 @@ function InsightRevenue ({ t, history }) {
 
   function refetchData(year) {
     // Total
-    refetchTotal({year: year})
+    refetch({year: year})
     // refetchSubtotal({year: year})
     // refetchTax({year: year})
     // // Classpasses
@@ -176,10 +175,10 @@ function InsightRevenue ({ t, history }) {
     <InsightRevenueBase year={year} refetchData={refetchData}>
       {/* Total */}
       <InsightRevenueDisplay
-        loading={loadingTotal}
-        error={errorTotal}
+        loading={loading}
+        error={error}
         cardTitle={t("general.total")}
-        data={dataTotal && dataTotal.insightRevenueTotal}
+        data={data && data.insightRevenueTotal}
       />
       {/* Subscriptions */}
       {/* <InsightRevenueDisplay
@@ -191,14 +190,12 @@ function InsightRevenue ({ t, history }) {
           dataTax={dataTaxSubs && dataTaxSubs.insightRevenueTaxSubscriptions.data}
       /> */}
       {/* Classpasses */}
-      {/* <InsightRevenueDisplay
-          loading={(loadingTotalPasses || loadingSubtotalPasses || loadingTaxPasses)}
-          error={(errorTotalPasses || errorSubtotalPasses || errorTaxPasses)}
-          cardTitle={t("general.classpasses")}
-          dataTotal={dataTotalPasses && dataTotalPasses.insightRevenueTotalClasspasses.data}
-          dataSubtotal={dataSubtotalPasses && dataSubtotalPasses.insightRevenueSubtotalClasspasses.data}
-          dataTax={dataTaxPasses && dataTaxPasses.insightRevenueTaxClasspasses.data}
-      /> */}
+      <InsightRevenueDisplay
+        loading={loading}
+        error={error}
+        cardTitle={t("general.classpasses")}
+        data={data && data.insightRevenueClasspasses}
+      />
       {/* Event tickets */}
       {/* <InsightRevenueDisplay
           loading={(loadingTotalTickets || loadingSubtotalTickets || loadingTaxTickets)}
