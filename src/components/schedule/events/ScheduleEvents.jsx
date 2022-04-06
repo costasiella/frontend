@@ -145,7 +145,7 @@ function ScheduleEvents({t, history}) {
             { scheduleEvents.edges.map(({ node }) => (
               <Table.Row key={v4()}>
                 <Table.Col>
-                  { moment(node.date).format(dateFormat) } <br /> 
+                  { moment(node.dateStart).format(dateFormat) } <br /> 
                 </Table.Col>
                 <Table.Col>
                   <span title={ node.name }>{ node.name.trunc(36) }</span> <br />
