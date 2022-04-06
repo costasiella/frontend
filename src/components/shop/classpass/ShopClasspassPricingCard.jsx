@@ -30,7 +30,7 @@ function ShopClasspassPricingCard({ t, classpass, btnLink, active=false }) {
         </PricingCard.AttributeItem>
         <PricingCard.AttributeItem>
           {t('general.valid_for')} { " " }
-          <b>{classpass.validity}</b> {' '} {classpass.validityUnitDisplay}
+          <b>{classpass.validity} {' '} {classpass.validityUnitDisplay}</b>
         </PricingCard.AttributeItem>
       </PricingCard.AttributeList>
       {(btnLink) ?
