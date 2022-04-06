@@ -195,14 +195,12 @@ function InsightRevenue ({ t, history }) {
         data={data && data.insightRevenueClasspasses}
       />
       {/* Event tickets */}
-      {/* <InsightRevenueDisplay
-          loading={(loadingTotalTickets || loadingSubtotalTickets || loadingTaxTickets)}
-          error={(errorTotalTickets || errorSubtotalTickets || errorTaxTickets)}
-          cardTitle={t("general.event_tickets")}
-          dataTotal={dataTotalTickets && dataTotalTickets.insightRevenueTotalEventTickets.data}
-          dataSubtotal={dataSubtotalTickets && dataSubtotalTickets.insightRevenueSubtotalEventTickets.data}
-          dataTax={dataTaxTickets && dataTaxTickets.insightRevenueTaxEventTickets.data}
-      /> */}
+      <InsightRevenueDisplay
+        loading={loading}
+        error={error}
+        cardTitle={t("general.event_tickets")}
+        data={data && data.insightRevenueEventTickets}
+      />
       {/* Other */}
       {/* <InsightRevenueDisplay
           loading={(loadingTotalOther || loadingSubtotalOther || loadingTaxOther)}
