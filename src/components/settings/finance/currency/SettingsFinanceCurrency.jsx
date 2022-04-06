@@ -106,7 +106,7 @@ function SettingsFinanceCurrency({ t, match, history }) {
                 value: settings[i].value,
               }
             }, refetchQueries: [
-                {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: i.setting }},
+                {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: settings[i].setting }},
             ]})
             .then(({ data }) => {
                 console.log('got data', data)
