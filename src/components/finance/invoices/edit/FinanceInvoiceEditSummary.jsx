@@ -6,8 +6,10 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 import {
+  Alert,
   Card
 } from "tabler-react"
 
@@ -72,7 +74,12 @@ function FinanceInvoiceEditSummary({t, history, match, initialData}) {
         </Formik>
         {console.log(initialData)}
         {(initialData.financeInvoice.creditInvoiceNumber) ?
-          t("finance.invoice.credit_invoice_for") + ": " + initialData.financeInvoice.creditInvoiceNumber
+          <Alert type="success">
+            {t("finance.invoice.credit_invoice_for")} { " " }
+            <Link to={`/finance/invoices/edit/${initialData.financeInvoice.creditInvoiceId}`}>
+              <Alert.Link>{initialData.financeInvoice.creditInvoiceNumber}</Alert.Link>
+            </Link>
+          </Alert>
         : ""}
       </Card.Body>
     </Card>
