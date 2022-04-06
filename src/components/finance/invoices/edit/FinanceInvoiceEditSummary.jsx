@@ -73,8 +73,8 @@ function FinanceInvoiceEditSummary({t, history, match, initialData}) {
           )}
         </Formik>
         {console.log(initialData)}
-        {(initialData.financeInvoice.creditInvoiceNumber) ?
-          <Alert type="success">
+        {(initialData.financeInvoice.creditInvoiceId) ?
+          <Alert type="primary">
             {t("finance.invoice.credit_invoice_for")} { " " }
             <Link to={`/finance/invoices/edit/${initialData.financeInvoice.creditInvoiceId}`}>
               <Alert.Link>{initialData.financeInvoice.creditInvoiceNumber}</Alert.Link>
