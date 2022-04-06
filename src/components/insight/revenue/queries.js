@@ -17,6 +17,13 @@ export const GET_REVENUE_QUERY = gql`
       subtotal
       tax
     }
+    insightRevenueSubscriptions(year: $year) {
+      description
+      year
+      total
+      subtotal
+      tax
+    }
   }
 `
 

@@ -181,14 +181,12 @@ function InsightRevenue ({ t, history }) {
         data={data && data.insightRevenueTotal}
       />
       {/* Subscriptions */}
-      {/* <InsightRevenueDisplay
-          loading={(loadingTotalSubs || loadingSubtotalSubs || loadingTaxSubs)}
-          error={(errorTotalSubs || errorSubtotalSubs || errorTaxSubs)}
-          cardTitle={t("general.subscriptions")}
-          dataTotal={dataTotalSubs && dataTotalSubs.insightRevenueTotalSubscriptions.data}
-          dataSubtotal={dataSubtotalSubs && dataSubtotalSubs.insightRevenueSubtotalSubscriptions.data}
-          dataTax={dataTaxSubs && dataTaxSubs.insightRevenueTaxSubscriptions.data}
-      /> */}
+      <InsightRevenueDisplay
+        loading={loading}
+        error={error}
+        cardTitle={t("general.subscriptions")}
+        data={data && data.insightRevenueSubscriptions}
+      />
       {/* Classpasses */}
       <InsightRevenueDisplay
         loading={loading}
