@@ -5,11 +5,11 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { UPDATE_INVOICE_ITEM } from "../queries"
+import { UPDATE_INVOICE_ITEM, GET_INVOICE_QUERY } from "../queries"
 import FinanceInvoiceItemEditForm from './FinanceInvoiceItemEditForm'
 
 
-function FinanceInvoiceItemEdit({t, initialValues, node, inputData}) {
+function FinanceInvoiceItemEdit({t, match, initialValues, node, inputData}) {
   const [updateInvoiceItem] = useMutation(UPDATE_INVOICE_ITEM)
 
     return (
@@ -36,6 +36,7 @@ function FinanceInvoiceItemEdit({t, initialValues, node, inputData}) {
               financeTaxRate: values.financeTaxRate
             }
           }, refetchQueries: [
+            {query: GET_INVOICE_QUERY, variables: {id: match.params.id}}
               // {query: GET_INVOICES_QUERY, variables: get_list_query_variables()}
           ]})
           .then(({ data }) => {

@@ -97,6 +97,9 @@ const FinanceInvoiceItemEditForm = ({ t, isSubmitting, errors, node, touched, ha
         </Grid.Col>
         <Grid.Col md={1} className="cs-grid-table-cell">
           <span className="float-right">{node.totalDisplay}</span> <br /><br />
+        </Grid.Col>
+        <Grid.Col md={1} className="cs-grid-table-cell">
+          <span className="float-right"><FinanceInvoiceItemDelete node={node}/></span><br /><br /> <br />
           {(Object.keys(touched).length === 0) ? "" :
             <Button 
               color="primary"
@@ -108,10 +111,24 @@ const FinanceInvoiceItemEditForm = ({ t, isSubmitting, errors, node, touched, ha
             </Button>
           }
         </Grid.Col>
-        <Grid.Col md={1} className="cs-grid-table-cell">
-          <span className="float-right"><FinanceInvoiceItemDelete node={node}/></span>
-        </Grid.Col>
       </Grid.Row>
+      {/* {(Object.keys(touched).length === 0) ? "" :
+        <Grid.Row>
+          <Grid.Col md={12} className="cs-grid-table-cell">
+            <Alert type="primary">
+              <p>A change was detected to the item above. Click the save button to save it. </p>
+              <Button 
+                color="primary"
+                // className="pull-right" 
+                type="submit" 
+                disabled={isSubmitting}
+              >
+                {t('general.submit')}
+              </Button>
+            </Alert>
+          </Grid.Col>
+        </Grid.Row>
+      } */}
     </FoForm>
   </Dimmer>
 )

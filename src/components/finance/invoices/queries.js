@@ -151,6 +151,8 @@ export const GET_INVOICE_QUERY = gql`
         node {
           id
           name
+          percentage
+          rateType
         }
       }
     }
