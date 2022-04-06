@@ -37,6 +37,10 @@ function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputD
           </Link>
         </Card.Options>
       </Card.Header>
+      {(!inputData.financeInvoice.payments.edges.length) ?
+        <Card.Body>
+          <p>{t('finance.invoice.payments.empty_list')}</p>
+        </Card.Body> :
         <Table cards>
           <Table.Header>
             <Table.Row>
@@ -77,7 +81,8 @@ function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputD
             ))}
           </Table.Body>
         </Table>
-      </Card>
+      }
+    </Card>
   )
 }
 

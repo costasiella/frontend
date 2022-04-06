@@ -146,7 +146,8 @@
                 "toast_add_success": "Added payment",
                 "toast_edit_success": "Saved payment",
                 "add": "Add payment",
-                "edit": "Edit payment"
+                "edit": "Edit payment",
+                "empty_list": "No payments have been added to this invoice yet"
             },
             "cancel_and_create_credit_invoice": "Cancel and create credit invoice",
             "now_editing_credit_invoice": "You're now editing the credit invoice",
