@@ -11,12 +11,7 @@ import InsightRevenueDisplay from './InsightRevenueDisplay'
 function InsightRevenue ({ t, history }) {
   const year = localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)
 
-  const { 
-    loading: loading, 
-    error: error, 
-    data: data,
-    refetch: refetch
-   } = useQuery(GET_REVENUE_QUERY, {
+  const { loading, error, data, refetch } = useQuery(GET_REVENUE_QUERY, {
     variables: { year: year }
   })
 
