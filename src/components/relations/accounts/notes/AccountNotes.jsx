@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -30,10 +30,11 @@ import { get_list_query_variables } from "./tools"
 
 
 function AccountNotes({ t, history, match }) {
+  let [noteType, setNoteType] = useState(localStorage.getItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE) || "BACKOFFICE")
   // Set some initial value for noteType, if not found
   if (!localStorage.getItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE)) {
-    localStorage.setItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE, "BACKOFFICE") 
-  }
+    localStorage.setItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE, "BACKOFFICE")
+  } 
 
   const appSettings = useContext(AppSettingsContext)
   const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
@@ -68,19 +69,21 @@ function AccountNotes({ t, history, match }) {
         <Grid.Col>
           <div className="float-right mb-4">
             <Button.List>
-              <Button color={(localStorage.getItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE) === "BACKOFFICE") ? 'primary': 'secondary'}  
+              <Button color={(noteType === "BACKOFFICE") ? 'primary': 'secondary'}  
                       size=""
                       onClick={() => {
+                        setNoteType("BACKOFFICE")
                         localStorage.setItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE, "BACKOFFICE")
                         refetch(get_list_query_variables(accountId))
                       }
               }>
                 {t('relations.account.notes.backoffice')}
               </Button>
-              <Button color={(localStorage.getItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE) === "INSTRUCTORS") ? 'primary': 'secondary'} 
+              <Button color={(noteType === "INSTRUCTORS") ? 'primary': 'secondary'} 
                       size="" 
                       className="ml-2" 
                       onClick={() => {
+                        setNoteType("INSTRUCTORS")
                         localStorage.setItem(CSLS.RELATIONS_ACCOUNT_NOTES_NOTE_TYPE, "INSTRUCTORS")
                         refetch(get_list_query_variables(accountId))
                       }
@@ -143,7 +146,7 @@ function AccountNotes({ t, history, match }) {
                         }
                       }, 
                       refetchQueries: [
-                        {query: GET_ACCOUNT_NOTES_QUERY, variables: get_list_query_variables(accountId) },
+                        {query: GET_ACCOUNT_NOTES_QUERY, variables: get_list_query_variables(accountId, noteType) },
                       ]
                     }
                   })
