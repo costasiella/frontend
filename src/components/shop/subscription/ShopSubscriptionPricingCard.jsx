@@ -32,12 +32,11 @@ function ShopSubscriptionPricingCard({ t, subscription, btnLink, active=false, d
       </PricingCard.Price>
       <PricingCard.AttributeList>
         <PricingCard.AttributeItem>
-          
-          {t('general.classes')} / {unit} { ": " }
-          <b>{(subscription.unlimited) ? t('general.unlimited') : subscription.classes }</b> 
+          <b>{(subscription.unlimited) ? t('general.unlimited') : subscription.classes }</b> { " " }
+          {t('general.classes')} / {unit}
         </PricingCard.AttributeItem>
         <PricingCard.AttributeItem>
-          {t('general.min_duration')} { ": " }
+          {t('general.min_duration')} { " " }
           <b>{subscription.minDuration} {(subscription.minDuration === 1) ? t("general.month") : t("general.months")}</b> 
         </PricingCard.AttributeItem>
         {(displayCheckoutInfo) ? 
