@@ -1,5 +1,6 @@
 import React from 'react'
 import { useQuery } from "@apollo/client"
+import { withTranslation } from 'react-i18next'
 
 import GET_USER from '../queries/system/get_user'
 import { get_all_permissions } from "../tools/user_tools"
@@ -17,10 +18,16 @@ function check_permission(permissions, permission, resource) {
   return !you_shall_not_pass
 }
 
-function HasPermissionWrapper({permission, resource, children}) {
+function HasPermissionWrapper({t, permission, resource, children, hideLoading=false}) {
   const {loading, error, data} = useQuery(GET_USER)
-  
-  if (loading) return <p>Loading...</p>
+
+  if (loading) {
+    if (!hideLoading) {
+      return <p>{t("general.loading_with_dots")}</p>
+    } else {
+      return ""
+    }
+  } 
   if (error) return <p>Error loading user... :(</p>
 
   const permissions = get_all_permissions(data.user)
@@ -32,4 +39,4 @@ function HasPermissionWrapper({permission, resource, children}) {
   }
 }
   
-export default HasPermissionWrapper
+export default withTranslation()(HasPermissionWrapper)

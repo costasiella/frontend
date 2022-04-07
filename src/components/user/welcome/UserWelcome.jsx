@@ -87,7 +87,7 @@ function Welcome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <HasPermissionWrapper resource="selfcheckin" permission="view">
+        <HasPermissionWrapper resource="selfcheckin" permission="view" hideLoading={true}>
           <Grid.Col md={3} offsetMd={3}>
             <Card>
               <Card.Body>
