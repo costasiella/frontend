@@ -11,6 +11,7 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 import {
   Button,
   Card, 
+  Dimmer,
   Grid,
   Table,
 } from "tabler-react";
@@ -42,77 +43,82 @@ if (!localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)) {
 }
 
 
-
 function ShopClassesSchedule({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const timeFormat = appSettings.timeFormatMoment
 
   const title = t("shop.home.title")
   const { loading, error, data, refetch } = useQuery(GET_CLASSES_QUERY, {
-    variables: get_list_query_variables()
+    variables: get_list_query_variables(),
+    // https://github.com/apollographql/react-apollo/issues/321
+    // Set loading to true when refetching
+    notifyOnNetworkStatusChange: true
   })
 
+  console.log(loading)
+
+  const pageHeaderOptions = <Button.List className="schedule-list-page-options-btn-list">
+    <Button 
+      icon="chevron-left"
+      color="secondary"
+      disabled={ (moment(localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)).subtract(7, 'days').isBefore(moment(), "day")) }
+      onClick={ () => {
+        let prevWeekFrom = moment(localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)).subtract(7, 'days')
+        let prevWeekUntil = moment(prevWeekFrom).add(6, 'days')
+        
+        localStorage.setItem(CSLS.SHOP_CLASSES_DATE_FROM, prevWeekFrom.format('YYYY-MM-DD')) 
+        localStorage.setItem(CSLS.SHOP_CLASSES_DATE_UNTIL, prevWeekUntil.format('YYYY-MM-DD')) 
+
+        refetch(get_list_query_variables())
+    }} />
+    <Button 
+      color="secondary"
+      onClick={ () => {
+        let currentWeekFrom = moment()
+        let currentWeekUntil = moment(currentWeekFrom).add(6, 'days')
+
+        localStorage.setItem(CSLS.SHOP_CLASSES_DATE_FROM, currentWeekFrom.format('YYYY-MM-DD')) 
+        localStorage.setItem(CSLS.SHOP_CLASSES_DATE_UNTIL, currentWeekUntil.format('YYYY-MM-DD')) 
+        
+        refetch(get_list_query_variables())
+    }} > 
+      {t("general.today")}
+    </Button>
+    <Button 
+      icon="chevron-right"
+      color="secondary"
+      onClick={ () => {
+        let nextWeekFrom = moment(localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)).add(7, 'days')
+        let nextWeekUntil = moment(nextWeekFrom).add(6, 'days')
+        
+        localStorage.setItem(CSLS.SHOP_CLASSES_DATE_FROM, nextWeekFrom.format('YYYY-MM-DD')) 
+        localStorage.setItem(CSLS.SHOP_CLASSES_DATE_UNTIL, nextWeekUntil.format('YYYY-MM-DD')) 
+
+        refetch(get_list_query_variables())
+    }} />
+  </Button.List>
+
   if (loading) return (
-    <ShopClassesScheduleBase title={title} >
-      {t("general.loading_with_dots")}
+    <ShopClassesScheduleBase title={title} pageHeaderOptions={pageHeaderOptions} >
+      <br /><br /><br /><br />    
+      <Dimmer active={true} loader={true} />
     </ShopClassesScheduleBase>
   )
   if (error) return (
-    <ShopClassesScheduleBase title={title}>
+    <ShopClassesScheduleBase title={title} pageHeaderOptions={pageHeaderOptions}>
       {t("shop.classes.error_loading")}
     </ShopClassesScheduleBase>
   )
 
   console.log(data)
   console.log(data.scheduleClasses)
+  
 
   return (
     <ShopClassesScheduleBase 
       title={title}
-      pageHeaderOptions={
-        <Button.List className="schedule-list-page-options-btn-list">
-          <Button 
-            icon="chevron-left"
-            color="secondary"
-            disabled={ (moment(localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)).subtract(7, 'days').isBefore(moment(), "day")) }
-            onClick={ () => {
-              let prevWeekFrom = moment(localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)).subtract(7, 'days')
-              let prevWeekUntil = moment(prevWeekFrom).add(6, 'days')
-              
-              localStorage.setItem(CSLS.SHOP_CLASSES_DATE_FROM, prevWeekFrom.format('YYYY-MM-DD')) 
-              localStorage.setItem(CSLS.SHOP_CLASSES_DATE_UNTIL, prevWeekUntil.format('YYYY-MM-DD')) 
-
-              refetch(get_list_query_variables())
-          }} />
-          <Button 
-            color="secondary"
-            onClick={ () => {
-              let currentWeekFrom = moment()
-              let currentWeekUntil = moment(currentWeekFrom).add(6, 'days')
-
-              localStorage.setItem(CSLS.SHOP_CLASSES_DATE_FROM, currentWeekFrom.format('YYYY-MM-DD')) 
-              localStorage.setItem(CSLS.SHOP_CLASSES_DATE_UNTIL, currentWeekUntil.format('YYYY-MM-DD')) 
-              
-              refetch(get_list_query_variables())
-          }} > 
-            {t("general.today")}
-          </Button>
-          <Button 
-            icon="chevron-right"
-            color="secondary"
-            onClick={ () => {
-              let nextWeekFrom = moment(localStorage.getItem(CSLS.SHOP_CLASSES_DATE_FROM)).add(7, 'days')
-              let nextWeekUntil = moment(nextWeekFrom).add(6, 'days')
-              
-              localStorage.setItem(CSLS.SHOP_CLASSES_DATE_FROM, nextWeekFrom.format('YYYY-MM-DD')) 
-              localStorage.setItem(CSLS.SHOP_CLASSES_DATE_UNTIL, nextWeekUntil.format('YYYY-MM-DD')) 
-
-              refetch(get_list_query_variables())
-          }} />
-        </Button.List> 
-      }
+      pageHeaderOptions={pageHeaderOptions}
     >
-      
       <ShopClassesScheduleFilter data={data} refetch={refetch} />
       {data.scheduleClasses.map(({ date, bookingOpenOn, classes }) =>
         <Grid.Row key={v4()}>
