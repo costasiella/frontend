@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import moment from 'moment'
 
 import {
+  Card,
   Table
 } from "tabler-react";
 
@@ -52,6 +53,7 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.credits.title_card')}
         pageInfo={taskResults.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -78,10 +80,12 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
         >
           { (!taskResults.edges.length) ? 
             // Empty list
-            <p>{t('automation.account.subscriptions.credits.empty_list')}</p>
+            <Card.Body>
+              <p>{t('automation.account.subscriptions.credits.empty_list')}</p>
+            </Card.Body>
             :
             // Content
-            <Table>
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('automation.general.status.title')}</Table.ColHeader>

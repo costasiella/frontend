@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import moment from 'moment'
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import {
+  Card,
   Table
 } from "tabler-react";
 
@@ -51,6 +52,7 @@ function AutomationAccountSubscriptionCreditExpiration({t, history, match}) {
       <ContentCard 
         cardTitle={t('automation.account.subscriptions.credits_expiration.title_card')}
         pageInfo={taskResults.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
           fetchMore({
             variables: {
@@ -77,10 +79,12 @@ function AutomationAccountSubscriptionCreditExpiration({t, history, match}) {
         >
           { (!taskResults.edges.length) ? 
             // Empty list
-            <p>{t('automation.account.subscriptions.credits.empty_list')}</p>
+            <Card.Body>
+              <p>{t('automation.account.subscriptions.credits.empty_list')}</p>
+            </Card.Body>
             :
             // Content
-            <Table>
+            <Table cards>
               <Table.Header>
                 <Table.Row key={v4()}>
                   <Table.ColHeader>{t('automation.general.status.title')}</Table.ColHeader>
