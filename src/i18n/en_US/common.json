@@ -519,7 +519,7 @@
         "other": "Other",
         "data": "Data",
         "week": "Week",
-        "monthly": "monthly"
+        "monthly": "Monthly"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1225,7 +1225,7 @@
                     "search_to_find_customers_to_enroll": "Use the search box to find customers to enroll."
                 }
             },
-            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__"
+            "select_last_weekday_of_month": "Last weekday of month"
         },
         "appointments": {
             "title": "Appointments",
