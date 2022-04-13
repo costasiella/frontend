@@ -442,7 +442,8 @@
         "event_tickets": "__STRING_NOT_TRANSLATED__",
         "other": "__STRING_NOT_TRANSLATED__",
         "data": "__STRING_NOT_TRANSLATED__",
-        "week": "__STRING_NOT_TRANSLATED__"
+        "week": "__STRING_NOT_TRANSLATED__",
+        "monthly": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1817,7 +1818,8 @@
                     "empty_list": "__STRING_NOT_TRANSLATED__",
                     "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 }
-            }
+            },
+            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "tickets": {

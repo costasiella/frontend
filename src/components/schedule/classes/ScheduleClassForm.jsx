@@ -39,6 +39,7 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
                 autoComplete="off">
             <option value="SPECIFIC" key={v4()}>{t('schedule.classes.select_specific')}</option>
             <option value="WEEKLY" key={v4()}>{t('schedule.classes.select_weekly')}</option>
+            <option value="LAST_WEEKDAY_OF_MONTH" key={v4()}>{t('schedule.classes.select_last_weekday_of_month')}</option>
           </Field>
           <ErrorMessage name="frequencyType" component="span" className="invalid-feedback" />
         </Form.Group>

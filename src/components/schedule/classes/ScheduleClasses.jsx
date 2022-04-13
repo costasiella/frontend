@@ -180,7 +180,9 @@ function ScheduleClasses ({ t, history }) {
                         {/* Start & end time */}
                         {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
                         {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
-                        {(frequencyType === 'SPECIFIC') ? <Badge color="primary">{t('general.once')}</Badge> : null } <br />
+                        {(frequencyType === 'SPECIFIC') ? <Badge color="primary">{t('general.once')}</Badge> : null } 
+                        {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? <Badge color="success">{t('general.monthly')}</Badge> : null } 
+                        <br />
                         <small className="text-muted">{get_class_messages(t, status, description, holiday, holidayName)}</small>
                       </Table.Col>
                       <Table.Col>
