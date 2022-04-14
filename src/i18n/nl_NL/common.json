@@ -784,7 +784,8 @@
         "max_decimal_number": "__STRING_NOT_TRANSLATED__",
         "time_required": "__STRING_NOT_TRANSLATED__",
         "min_len_9": "__STRING_NOT_TRANSLATED__",
-        "passwords_must_match": "__STRING_NOT_TRANSLATED__"
+        "passwords_must_match": "__STRING_NOT_TRANSLATED__",
+        "please_select_a_date": "__STRING_NOT_TRANSLATED__"
     },
     "shop": {
         "home": {
