@@ -2181,7 +2181,7 @@
             "filter_all_levels": "All levels",
             "error_loading": "Error loading classes... :(",
             "class_booking_status": {
-                "open_on": "Booking opens on",
+                "open_on": "Book from",
                 "cancelled": "Cancelled",
                 "finished": "Finished",
                 "ongoing": "Ongoing",
