@@ -174,7 +174,7 @@ function InsightSubscriptions ({ t, history }) {
             RootComponent="a"
             icon="download-cloud"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url_sold
+              t, doTokenRefresh, history, export_url_sold
             )}
           >
             {t("insight.subscriptions.sold.export_excel")}
@@ -186,7 +186,7 @@ function InsightSubscriptions ({ t, history }) {
             RootComponent="a"
             icon="download-cloud"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url_active
+              t, doTokenRefresh, history, export_url_active
             )}
           >
             {t("insight.subscriptions.active.export_excel")}

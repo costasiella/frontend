@@ -22,7 +22,7 @@ function ShopAccountProfileBtnDownloadData({ t, history }) {
       icon="download"
       className="ml-2"
       onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-        doTokenRefresh, history, export_url
+        t, doTokenRefresh, history, export_url
       )}
     >
       {t('shop.account.profile.download_my_data')} 

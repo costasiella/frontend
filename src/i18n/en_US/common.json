@@ -519,7 +519,8 @@
         "other": "Other",
         "data": "Data",
         "week": "Week",
-        "monthly": "Monthly"
+        "monthly": "Monthly",
+        "error_try_refreshing": "Error: please refresh the page and try again."
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

@@ -98,7 +98,7 @@ function FinancePaymentBatchViewBase({t, history, match, children, status}) {
                   RootComponent="a"
                   icon="download-cloud"
                   onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-                    doTokenRefresh, history, exportUrl
+                    t, doTokenRefresh, history, exportUrl
                   )}
                 >
                   {t("general.export")}

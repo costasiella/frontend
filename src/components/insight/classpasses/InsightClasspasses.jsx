@@ -161,7 +161,7 @@ function InsightClasspasses ({ t, history }) {
             RootComponent="a"
             icon="download-cloud"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url_sold
+              t, doTokenRefresh, history, export_url_sold
             )}
           >
             {t("insight.classpasses.sold.export_excel")}
@@ -173,7 +173,7 @@ function InsightClasspasses ({ t, history }) {
             RootComponent="a"
             icon="download-cloud"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url_active
+              t, doTokenRefresh, history, export_url_active
             )}
           >
             {t("insight.classpasses.active.export_excel")}

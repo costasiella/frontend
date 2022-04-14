@@ -78,7 +78,7 @@ function FinanceInvoiceEdit({t, match, history}) {
             icon="printer"
             className="mr-2"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              doTokenRefresh, history, export_url
+              t, doTokenRefresh, history, export_url
             )}
           >
             {t('general.pdf')} 

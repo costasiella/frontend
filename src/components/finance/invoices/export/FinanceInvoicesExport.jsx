@@ -106,7 +106,7 @@ function FinanceInvoicesExport({t, history}) {
               <Button 
                 color="primary"
                 onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-                  doTokenRefresh, history, exportUrl
+                  t, doTokenRefresh, history, exportUrl
                 )}
               >
                 <Icon name="download-cloud" /> {t("general.download")}
