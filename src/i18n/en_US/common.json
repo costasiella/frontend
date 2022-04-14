@@ -532,10 +532,10 @@
         "type_error_number": "Please input a number",
         "min_len_2": "Please input at least 2 characters",
         "email": "Please input a valid email address",
-        "time_required": "Please select a time",
+        "time_required": "This field is required",
         "field_above_0": "Please add a positive number",
         "passwords_must_match": "New password fields should match",
-        "please_select_a_date": "Please select a date"
+        "date_required": "This field is required"
     },
     "home": {
         "title": "Home",
