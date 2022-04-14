@@ -14,7 +14,7 @@ import {
   Tooltip,
 } from "tabler-react"
 
-function ProfileCardSmall({ t, value, user, avatarSize='md' }) {
+function ProfileCardSmall({ t, value, user, avatarSize='lg' }) {
   if (!user) {
     return ""
   }
