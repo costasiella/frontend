@@ -52,6 +52,8 @@ function InsightRevenueDisplay({
   }
 
   const dataTotal = data.total
+  const dataTotalDisplay = data.totalDisplay
+  console.log(dataTotalDisplay)
   const dataSubtotal = data.subtotal
   const dataTax = data.tax
 
@@ -160,7 +162,7 @@ function InsightRevenueDisplay({
           <small>
           <Table cards>
             <Table.Body>
-              {dataTotal.map((amount, index) => (
+              {dataTotalDisplay.map((amount, index) => (
                 <Table.Row>
                   <Table.Col className="cs-insight-data-table-cell">
                     {months[index]}
