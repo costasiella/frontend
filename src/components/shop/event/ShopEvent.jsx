@@ -3,7 +3,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 import moment from 'moment'
-
+import DOMPurify from 'dompurify'
 import {
   Card,
   GalleryCard,
@@ -71,7 +71,7 @@ function ShopEvent({ t, match, history }) {
           <Card title={t("general.description")}>
             <Card.Body>
               <h5>{t('general.description')}</h5>
-              <div dangerouslySetInnerHTML={{ __html: event.description}} />
+              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(event.description) }} />
             </Card.Body>
           </Card>
         </Grid.Col>

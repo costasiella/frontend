@@ -6,7 +6,7 @@ import { withRouter } from "react-router"
 import { useMutation } from '@apollo/client'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
+import DOMPurify from 'dompurify'
 import {
   Card,
 } from "tabler-react"
@@ -25,7 +25,7 @@ function CheckoutDirectDebit({ t, match, history, accountId, organizationSubscri
     <Card title={t("shop.checkout.title")}>
       <Card.Body>
         {/* <p>{t("shop.subscription.bank_account_required_explanation")}</p> */}
-        <div dangerouslySetInnerHTML={{ __html: organizationSubscription.termsAndConditions}} />
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(organizationSubscription.termsAndConditions) }} />
         <Formik
           initialValues={{ message: "" }}
           validationSchema={ACCOUNT_SUBSCRIPTION_SCHEMA}

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-
+import DOMPurify from 'dompurify'
 import {
   Icon,
 } from "tabler-react";
@@ -52,7 +52,7 @@ function ShopCheckoutClassInfo({ t, scheduleItemId, date, complete=true}) {
         {(data.scheduleClass.infoMailContent) ? 
           <div>
             <h5><Icon name="info" /> {t("shop.checkout.class_info.info_mail")}</h5>
-            <div dangerouslySetInnerHTML={{ __html: data.scheduleClass.infoMailContent }} /> 
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.scheduleClass.infoMailContent) }} /> 
           </div>
           : ""
         }

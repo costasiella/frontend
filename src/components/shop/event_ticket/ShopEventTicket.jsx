@@ -4,6 +4,7 @@ import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import DOMPurify from 'dompurify'
 import {
   Card,
   Grid,
@@ -67,7 +68,7 @@ function ShopEventTicket({ t, match, history }) {
           <Card title={t("shop.events.ticket.additional_info")}>
             <Card.Body>
               {(eventTicket.description) ?
-                <div dangerouslySetInnerHTML={{ __html: eventTicket.description}} />
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(eventTicket.description) }} />
               : t("shop.events.ticket.no_additional_info")}
             </Card.Body>
           </Card> 
@@ -92,8 +93,6 @@ function ShopEventTicket({ t, match, history }) {
                         // {query: GET_CLASSTYPES_QUERY, variables: {"archived": false }}
                     ]})
                     .then(({ data }) => {
-                        console.log('got data', data)
-                        console.log('good...  now redirect to the payment page')
                         const orderId = data.createFinanceOrder.financeOrder.id
                         history.push('/shop/checkout/payment/' + orderId)
                       }).catch((error) => {

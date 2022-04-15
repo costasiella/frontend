@@ -1,6 +1,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import DOMPurify from 'dompurify'
 import {
   Card
 } from "tabler-react";
@@ -16,7 +17,7 @@ const FinanceInvoiceEditOrganization = ({ t, history, organization }) => (
         {organization.name}
       </div>
       {(organization.address) ?
-        <div dangerouslySetInnerHTML={{ __html: organization.address}} />
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(organization.address)}} />
         : ""
       }      
       <div>

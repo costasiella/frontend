@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
-
+import DOMPurify from 'dompurify'
 import {
   Button,
   Card,
@@ -65,7 +65,7 @@ function FinanceInvoiceEditPayments ({ t, history, match, refetchInvoice, inputD
                   { (node.onlinePaymentId) ? <div><small className="text-muted">{node.onlinePaymentId}</small></div> : "" }
                 </Table.Col>
                 <Table.Col>
-                  <div dangerouslySetInnerHTML={{ __html:node.note }}></div>
+                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node.note) }}></div>
                 </Table.Col>
                 <Table.Col>
                   <span className="pull-right">

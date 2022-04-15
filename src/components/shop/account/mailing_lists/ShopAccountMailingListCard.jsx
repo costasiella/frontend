@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { toast } from 'react-toastify'
-
+import DOMPurify from 'dompurify'
 import {
   GalleryCard,
   Button,
@@ -56,7 +56,7 @@ function ShopAccountMailingListCard({ t, mailingList, btnLink, active=false }) {
         </div>
         
         <h6>{mailingList.frequency}</h6>
-        <div dangerouslySetInnerHTML={{ __html: mailingList.description}} />
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(mailingList.description) }} />
 
         {(mailingList.subscribed) ? 
               <Button

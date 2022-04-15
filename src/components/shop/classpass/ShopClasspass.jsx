@@ -4,7 +4,7 @@ import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
-
+import DOMPurify from 'dompurify'
 import moment from 'moment'
 
 import {
@@ -99,7 +99,7 @@ function ShopClasspass({ t, match, history }) {
           }
           <Card pageTitle={t("shop.classpass.additional_information")}>
             <Card.Body>
-              <div dangerouslySetInnerHTML={{__html:classpass.description}}></div>
+              <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(classpass.description) }}></div>
             </Card.Body>
           </Card>
         </Grid.Col>

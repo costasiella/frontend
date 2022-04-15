@@ -2,8 +2,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-
-
+import DOMPurify from 'dompurify'
 import {
   Card, 
 } from "tabler-react";
@@ -38,7 +37,7 @@ function ShopContact({ t, match, history }) {
     <ShopContactBase>
       <Card title={organization.name}>
         <Card.Body>
-          <div dangerouslySetInnerHTML={{ __html: organization.address}} />
+          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(organization.address) }} />
           <p>{organization.email} <br /> {organization.phone}</p>
           <p>{organization.registration} <br /> {organization.taxRegistration}</p>
         </Card.Body>

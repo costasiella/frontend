@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-
+import DOMPurify from 'dompurify'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import CSLS from "../../../../tools/cs_local_storage"
 
@@ -124,7 +124,7 @@ function AccountNotes({ t, history, match }) {
           <Card>
             <Card.Body>
               {(node.injury) ? <Badge color="danger" className="float-right">{t("general.injury")}</Badge> : ""}
-              <div dangerouslySetInnerHTML={{__html: node.note}} />
+              <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.note) }} />
             </Card.Body>
             <Card.Footer>
               <Button 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
+import DOMPurify from 'dompurify'
 import {
   Grid,
   Card,
@@ -43,7 +43,7 @@ function HomeHome({ t, match }) {
           <Grid.Col md={6}>
             <Card title={node.title}>
               <Card.Body>
-                <div dangerouslySetInnerHTML={{ __html:node.content }}></div>
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node.content) }}></div>
               </Card.Body>
             </Card> 
           </Grid.Col>

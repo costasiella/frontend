@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-
+import DOMPurify from 'dompurify'
 
 import {
   Button,
@@ -52,9 +52,6 @@ function AccountSubscriptionEditPauses({t, match, history}) {
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
   )
-
-  console.log('query data')
-  console.log(data)
 
   const accountSubscriptionPauses = data.accountSubscriptionPauses
   const pageInfo = data.accountSubscriptionPauses.pageInfo
@@ -129,7 +126,7 @@ function AccountSubscriptionEditPauses({t, match, history}) {
                   {moment(node.dateEnd).format(dateFormat)}
                 </Table.Col>
                 <Table.Col>
-                <div dangerouslySetInnerHTML={{__html: node.description}} />
+                <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
                 </Table.Col>
                 <Table.Col className="text-right">
                   <Link to={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/pauses/edit/${node.id}`}>
