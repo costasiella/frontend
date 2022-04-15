@@ -35,7 +35,6 @@ export const has_permission = (permissions, permission, resource) => {
 
   if (resource in permissions) {
     if (permissions[resource].has(permission)) {
-      console.log('found permission')
       you_shall_not_pass = false
     }
   }

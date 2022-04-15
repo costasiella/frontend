@@ -364,8 +364,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       console.log(new Date() / 1000)
       console.log(refreshTokenExp)
 
-      const refreshToken = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN)
-      doTokenRefresh({ variables: { refreshToken: refreshToken }}).then(({ data }) => {
+      doTokenRefresh().then(({ data }) => {
         console.log('got refresh data', data)
         CSAuth.updateTokenInfo(data.refreshToken)
         return ContinueAsYouAre
@@ -417,9 +416,7 @@ function AppRoot({ t }) {
   // Register "US" locale for moment
   // moment.locale('en-US')
   let appSettings = dataAppSettings.appSettings
-  console.log(appSettings)
   let organization = dataOrganization.organization
-  console.log(organization)
 
   return (
     <AppSettingsProvider value={appSettings}>
