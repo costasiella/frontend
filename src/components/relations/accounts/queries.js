@@ -41,33 +41,25 @@ query Accounts(
         mobile
         isActive
         urlImageThumbnailSmall
-        subscriptions(last: 2) {
-          edges {
-            node {
-              organizationSubscription {
-                id
-                name
-              }
-              dateStart
-              dateEnd
-            }
+        subscriptionsLatest {
+          organizationSubscription {
+            id
+            name
           }
+          dateStart
+          dateEnd
         }
-        classpasses(last: 2) {
-          edges {
-            node {
-              id
-              organizationClasspass {
-                id
-                name
-              }
-              dateStart
-              dateEnd
-              classesRemaining
-              classesRemainingDisplay
-              isExpired
-            }
+        classpassesLatest {
+          id
+          organizationClasspass {
+            id
+            name
           }
+          dateStart
+          dateEnd
+          classesRemaining
+          classesRemainingDisplay
+          isExpired
         }
       }
     }
