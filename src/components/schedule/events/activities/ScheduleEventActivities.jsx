@@ -18,7 +18,6 @@ import { GET_SCHEDULE_EVENT_ACTIVITIES_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 import ScheduleEventActivityDelete from "./ScheduleEventActivityDelete"
 import moment from 'moment';
-import CardTabs from '../../../ui/CardTabs';
 
 
 function ScheduleItems({t, match, history}) {
