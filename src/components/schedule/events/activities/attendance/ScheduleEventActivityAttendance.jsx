@@ -5,6 +5,7 @@ import { withRouter } from "react-router"
 import { v4 } from 'uuid'
 
 import {
+  Card,
   Table
 } from "tabler-react"
 
@@ -60,7 +61,9 @@ function ScheduleEventActivityAttendance({ t, history, match }) {
   // Empty list
   if (!scheduleItemAttendances.edges.length) { return (
     <ScheduleEventActivityAttendanceBase activeLink={activeLink} activeTab={activeTab} sidebarContent={sidebarContent}>
-      <p>{t('schedule.events.activities.attendance.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.events.activities.attendance.empty_list')}</p>
+      </Card.Body>
     </ScheduleEventActivityAttendanceBase>
   )}
 

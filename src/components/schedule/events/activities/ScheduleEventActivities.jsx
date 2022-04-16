@@ -7,6 +7,7 @@ import { v4 } from 'uuid'
 import DOMPurify from 'dompurify'
 import {
   Button,
+  Card,
   Table,
 } from "tabler-react";
 
@@ -17,6 +18,7 @@ import { GET_SCHEDULE_EVENT_ACTIVITIES_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 import ScheduleEventActivityDelete from "./ScheduleEventActivityDelete"
 import moment from 'moment';
+import CardTabs from '../../../ui/CardTabs';
 
 
 function ScheduleItems({t, match, history}) {
@@ -55,7 +57,9 @@ function ScheduleItems({t, match, history}) {
   // Empty list
   if (!scheduleItems.edges.length) { return (
     <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
-      <p>{t('schedule.events.tickets.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.events.tickets.empty_list')}</p>
+      </Card.Body>
     </ScheduleEventEditListBase>
   )}
 
