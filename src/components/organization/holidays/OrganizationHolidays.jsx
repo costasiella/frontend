@@ -5,6 +5,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 import moment from "moment"
+import DOMPurify from 'dompurify'
 import AppSettingsContext from '../../context/AppSettingsContext'
 
 
@@ -107,7 +108,7 @@ function OrganizationHolidays({t, history}) {
                   <Table.Col key={v4()}>
                     {node.name} 
                     <div className="text-muted">
-                      <small dangerouslySetInnerHTML={{__html: node.description}} />
+                      <small dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
                     </div>
                   </Table.Col>
                   <Table.Col>

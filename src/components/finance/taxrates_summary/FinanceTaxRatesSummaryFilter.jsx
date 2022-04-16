@@ -13,6 +13,7 @@ import CSDatePicker from "../../ui/CSDatePicker"
 
 
 function FinanceTaxRatesSummaryFilter({ t, history, values, errors, data, isSubmitting, setFieldTouched=f=>f, setFieldValue=f=>f,  refetch }) {
+  console.log(errors)
   return (
     <FoForm>
       <Grid.Row>
@@ -25,6 +26,7 @@ function FinanceTaxRatesSummaryFilter({ t, history, values, errors, data, isSubm
                 setFieldValue("dateStart", date)
                 setFieldTouched("dateStart", true)
               }}
+              // onBlur={() => setFieldTouched("dateStart", true)}
             />
             <ErrorMessage name="dateStart" component="span" className="invalid-feedback" />
           </Form.Group>

@@ -40,7 +40,7 @@ function InsightRevenueBase ({ t, history, children, year, refetchData=f=>f }) {
                   icon="sunset"
                   color="secondary"
                   onClick={ () => {
-                    let currentYear = moment().format('YYYY')
+                    let currentYear = parseInt(moment().format('YYYY'))
                     localStorage.setItem(CSLS.INSIGHT_REVENUE_YEAR, currentYear) 
                     
                     refetchData(currentYear)

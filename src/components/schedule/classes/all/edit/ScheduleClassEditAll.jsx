@@ -119,8 +119,8 @@ function ScheduleClassEditAll({t, match}) {
                   dateEnd: dateEnd,
                   timeStart: dateToLocalISOTime(values.timeStart),
                   timeEnd: dateToLocalISOTime(values.timeEnd),
-                  spaces: values.spaces,
-                  walkInSpaces: values.walkInSpaces,
+                  spaces: parseInt(values.spaces),
+                  walkInSpaces: parseInt(values.walkInSpaces),
                   infoMailContent: values.infoMailContent
                 }
               }, refetchQueries: [

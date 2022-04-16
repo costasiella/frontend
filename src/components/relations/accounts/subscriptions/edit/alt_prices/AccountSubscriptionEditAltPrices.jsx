@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-
+import DOMPurify from 'dompurify'
 import {
   Button,
   Card,
@@ -45,9 +45,6 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
   )
-
-  console.log('query data')
-  console.log(data)
 
   const accountSubscriptionAltPrices = data.accountSubscriptionAltPrices
   const pageInfo = data.accountSubscriptionAltPrices.pageInfo
@@ -115,7 +112,7 @@ function AccountSubscriptionEditAltPrices({t, match, history}) {
                   {node.amountDisplay}
                 </Table.Col>
                 <Table.Col>
-                <div dangerouslySetInnerHTML={{__html: node.description}} />
+                <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
                 </Table.Col>
                 <Table.Col className="text-right">
                   <Link to={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/alt_prices/edit/${node.id}`}>

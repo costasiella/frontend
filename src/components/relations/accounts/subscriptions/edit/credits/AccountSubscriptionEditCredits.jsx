@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import moment from 'moment'
-
+import DOMPurify from 'dompurify'
 import {
   Button,
   Card,
@@ -53,9 +53,6 @@ function AccountSubscriptionEditCredits({t, match, history}) {
       <p>{error.message}</p>
     </AccountSubscriptionEditListBase>
   )
-
-  console.log('query data')
-  console.log(data)
 
   const accountSubscriptionCredits = data.accountSubscriptionCredits
   const pageInfo = data.accountSubscriptionCredits.pageInfo
@@ -117,7 +114,7 @@ function AccountSubscriptionEditCredits({t, match, history}) {
                   {moment(node.createdAt).format(dateTimeFormatMoment)}
                 </Table.Col>
                 <Table.Col>
-                  <div dangerouslySetInnerHTML={{__html: node.description}} />
+                  <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
                 </Table.Col>
                 <Table.Col>
                   {node.mutationAmount}

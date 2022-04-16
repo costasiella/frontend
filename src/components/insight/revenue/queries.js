@@ -7,6 +7,7 @@ export const GET_REVENUE_QUERY = gql`
       description
       year
       total
+      totalDisplay
       subtotal
       tax
     }
@@ -14,6 +15,7 @@ export const GET_REVENUE_QUERY = gql`
       description
       year
       total
+      totalDisplay
       subtotal
       tax
     }
@@ -21,6 +23,7 @@ export const GET_REVENUE_QUERY = gql`
       description
       year
       total
+      totalDisplay
       subtotal
       tax
     }
@@ -28,6 +31,7 @@ export const GET_REVENUE_QUERY = gql`
       description
       year
       total
+      totalDisplay
       subtotal
       tax
     }
@@ -35,6 +39,7 @@ export const GET_REVENUE_QUERY = gql`
       description
       year
       total
+      totalDisplay
       subtotal
       tax
     }

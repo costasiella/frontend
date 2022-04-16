@@ -94,6 +94,7 @@ function FinancePaymentBatchCategories({t, history}) {
       <ContentCard cardTitle={t('finance.payment_batch_categories.title')}
         headerContent={headerOptions}
         pageInfo={payment_batch_categories.pageInfo}
+        hasCardBody={false}
         onLoadMore={() => {
         fetchMore({
           variables: {
@@ -117,7 +118,7 @@ function FinancePaymentBatchCategories({t, history}) {
             }
         })
       }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

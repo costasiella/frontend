@@ -9,6 +9,7 @@ import {
   Page
 } from "tabler-react";
 
+import { TAX_SUMMARY_SCHEMA } from './yupSchema'
 import { dateToLocalISO } from '../../../tools/date_tools'
 import SiteWrapper from '../../SiteWrapper'
 import FinanceTaxRatesSummaryFilter from "./FinanceTaxRatesSummaryFilter"
@@ -37,15 +38,13 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
                   dateStart: new Date(dateStart),
                   dateEnd: new Date(dateEnd)
                 }}
+                validationSchema={TAX_SUMMARY_SCHEMA}
                 onSubmit={(values, { setSubmitting }) => {
-                  console.log("hello world")
-
                   refetch({
                     dateStart: dateToLocalISO(values.dateStart),
                     dateEnd: dateToLocalISO(values.dateEnd),
                   })
-                  setSubmitting(false)
-                  
+                  setSubmitting(false)                  
                 }}
               >
                 {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (

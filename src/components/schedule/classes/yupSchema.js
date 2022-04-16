@@ -9,6 +9,7 @@ export const CLASS_SCHEMA = Yup.object().shape({
     organizationClasstype: Yup.string()
       .required(t('yup.field_required')),
     dateStart: Yup.date()
+      .typeError(t('yup.date_required'))
       .required(t('yup.field_required')),
     timeStart: Yup.date()
       .typeError(t('yup.time_required'))

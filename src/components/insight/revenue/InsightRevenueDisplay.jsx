@@ -52,6 +52,8 @@ function InsightRevenueDisplay({
   }
 
   const dataTotal = data.total
+  const dataTotalDisplay = data.totalDisplay
+  console.log(dataTotalDisplay)
   const dataSubtotal = data.subtotal
   const dataTax = data.tax
 
@@ -160,7 +162,7 @@ function InsightRevenueDisplay({
           <small>
           <Table cards>
             <Table.Body>
-              {dataTotal.map((amount, index) => (
+              {dataTotalDisplay.map((amount, index) => (
                 <Table.Row>
                   <Table.Col className="cs-insight-data-table-cell">
                     {months[index]}
@@ -181,7 +183,7 @@ function InsightRevenueDisplay({
           RootComponent="a"
           icon="download-cloud"
           onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-            doTokenRefresh, history, export_url_sold
+            t, doTokenRefresh, history, export_url_sold
           )}
         >
           {t("insight.classpasses.sold.export_excel")}
@@ -193,7 +195,7 @@ function InsightRevenueDisplay({
           RootComponent="a"
           icon="download-cloud"
           onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-            doTokenRefresh, history, export_url_active
+            t, doTokenRefresh, history, export_url_active
           )}
         >
           {t("insight.classpasses.active.export_excel")}

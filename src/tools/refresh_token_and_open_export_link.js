@@ -1,20 +1,32 @@
-import CSLS from './cs_local_storage'
 import { CSAuth } from './authentication';
+import { toast } from 'react-toastify'
 
-export function refreshTokenAndOpenExportLinkInNewTab(doTokenRefresh, history, exportUrl) {  
-  const refreshToken = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN)
+// Create a link element and simulate a click. This prevents having to redirect creating a pop up that might be blocked.
+function download(dataurl) {
+  let link = document.createElement("a");
+  link.href = dataurl
+  // Put the link in the DOM and click it
+  document.body.appendChild(link);
+  link.click();
+  // Cleanup the DOM
+  document.body.removeChild(link);
+}
 
-  doTokenRefresh({ variables: { refreshToken: refreshToken }})
+export function refreshTokenAndOpenExportLinkInNewTab(t, doTokenRefresh, history, exportUrl) {  
+  doTokenRefresh()
     .then(({data}) => {
+      console.log(data)
       CSAuth.updateTokenInfo(data.refreshToken)
-      const token = data.refreshToken.token
-      //Add authentication headers in URL
-      var url = `${exportUrl}/${token}`;
 
-      window.open(url, "_blank")
-      // history.push(export_url)
+      // window.open(url, "_blank")
+      download(exportUrl);
     }).catch((error) => {
       console.log(error)
-      history.push("/#/user/login")
+      // history.push("/user/login")
+      // Because safari doesn't deal with double clicks well, let the user refresh.
+      // If there is no valid session, the user will be redirected to the sign-in.
+      toast.error(t("general.error_try_refreshing"), {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
     })
 }

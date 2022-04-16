@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import moment from 'moment'
+import DOMPurify from 'dompurify'
 import {
   Button,
   Card, 
@@ -112,7 +113,7 @@ function RelationsAccountBankAccount({ t, match, history }) {
           <Card title={node.reference}>
             <Card.Body>
               {t("relations.account.bank_accounts.mandates.signature_date")} {moment(node.signatureDate).format(dateFormat)}
-              <div dangerouslySetInnerHTML={{ __html: node.content}} />
+              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node.content) }} />
             </Card.Body>
             <Card.Footer>
               <Button 

@@ -2,7 +2,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
-
+import DOMPurify from 'dompurify'
 import {
   Card,
   Grid,
@@ -70,7 +70,7 @@ function ShopSubscription({ t, match, history }) {
         <Grid.Col xs={12} sm={12} md={4}>
           <Card pageTitle={t("shop.subscription.additional_information")}>
             <Card.Body>
-              <div dangerouslySetInnerHTML={{__html:subscription.description}}></div>
+              <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(subscription.description) }}></div>
             </Card.Body>
           </Card>
         </Grid.Col>

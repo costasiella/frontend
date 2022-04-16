@@ -93,8 +93,8 @@ function ScheduleClassAdd({t, history}) {
                   dateEnd: dateEnd,
                   timeStart: dateToLocalISOTime(values.timeStart),
                   timeEnd: dateToLocalISOTime(values.timeEnd),
-                  spaces: values.spaces,
-                  walkInSpaces: values.walkInSpaces
+                  spaces: parseInt(values.spaces),
+                  walkInSpaces: parseInt(values.walkInSpaces)
                 }
               }, refetchQueries: [
                   {query: GET_CLASSES_QUERY, variables: get_list_query_variables()}

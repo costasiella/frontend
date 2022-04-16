@@ -207,10 +207,9 @@ function RelationsAccounts({t, history}) {
                       </span> : null}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {(node.subscriptions) ? 
-                      // This is a workaround that reserves the array. Not yet figured out how to get the sorting right on subqueries in the backend
-                      node.subscriptions.edges.slice(0).reverse().map(({ node: subscription }) => (
-                        <div>
+                    {(node.subscriptionsLatest) ? 
+                      node.subscriptionsLatest.map((subscription) => (
+                        <div key={v4()}>
                           <small>
                           <Icon name="edit" /> {' '}
                           { subscription.organizationSubscription.name } <br />
@@ -228,10 +227,9 @@ function RelationsAccounts({t, history}) {
                       )) 
                       : ""
                     }
-                    {(node.classpasses) ? 
-                      // This is a workaround that reserves the array. Not yet figured out how to get the sorting right on subqueries in the backend
-                      node.classpasses.edges.slice(0).reverse().map(({ node: classpass }) => (
-                        <div>
+                    {(node.classpassesLatest) ? 
+                      node.classpassesLatest.map((classpass) => (
+                        <div key={v4()}>
                           <small>
                           <Icon name="credit-card" /> {' '}
                           { classpass.organizationClasspass.name } <br />

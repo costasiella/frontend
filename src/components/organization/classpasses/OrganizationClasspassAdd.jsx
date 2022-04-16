@@ -63,7 +63,6 @@ function OrganizationClasspassAdd({t, match, history}) {
             validityUnit: "MONTHS",
             classes: 1,
             unlimited: false,
-            organizationMembership: "",
             quickStatsAmount: 0,
             financeGlaccount: "",
             financeCostcenter: ""
@@ -82,11 +81,10 @@ function OrganizationClasspassAdd({t, match, history}) {
                   description: values.description,
                   price: values.price,
                   financeTaxRate: values.financeTaxRate,
-                  validity: values.validity,
+                  validity: parseInt(values.validity),
                   validityUnit: values.validityUnit,
-                  classes: values.classes,
+                  classes: parseInt(values.classes),
                   unlimited: values.unlimited,
-                  organizationMembership: values.organizationMembership,
                   quickStatsAmount: values.quickStatsAmount,
                   financeGlaccount: values.financeGlaccount,
                   financeCostcenter: values.financeCostcenter

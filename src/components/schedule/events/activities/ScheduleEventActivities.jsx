@@ -4,9 +4,10 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-
+import DOMPurify from 'dompurify'
 import {
   Button,
+  Card,
   Table,
 } from "tabler-react";
 
@@ -17,6 +18,7 @@ import { GET_SCHEDULE_EVENT_ACTIVITIES_QUERY } from './queries'
 import ScheduleEventEditListBase from "../edit/ScheduleEventEditListBase"
 import ScheduleEventActivityDelete from "./ScheduleEventActivityDelete"
 import moment from 'moment';
+import CardTabs from '../../../ui/CardTabs';
 
 
 function ScheduleItems({t, match, history}) {
@@ -49,16 +51,15 @@ function ScheduleItems({t, match, history}) {
     </ScheduleEventEditListBase>
   )
 
-  console.log('query data')
-  console.log(data)
-
   const scheduleItems = data.scheduleItems
   const pageInfo = data.scheduleItems.pageInfo
 
   // Empty list
   if (!scheduleItems.edges.length) { return (
     <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
-      <p>{t('schedule.events.tickets.empty_list')}</p>
+      <Card.Body>
+        <p>{t('schedule.events.tickets.empty_list')}</p>
+      </Card.Body>
     </ScheduleEventEditListBase>
   )}
 
@@ -113,7 +114,7 @@ function ScheduleItems({t, match, history}) {
                 </Table.Col>
                 <Table.Col>
                   {node.name} <br />
-                  <div dangerouslySetInnerHTML={{__html: node.description}} className="text-muted"/>
+                  <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} className="text-muted"/>
                 </Table.Col>
                 <Table.Col>
                   {node.organizationLocationRoom.organizationLocation.name} <br />

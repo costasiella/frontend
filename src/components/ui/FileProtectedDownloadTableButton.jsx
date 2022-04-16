@@ -23,7 +23,7 @@ function FileProtectedDownloadTableButton({ t, history, protectedMediaUrl, class
       icon="download-cloud"
       RootComponent="a" 
       onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-      doTokenRefresh, history, protectedMediaUrl
+        t, doTokenRefresh, history, protectedMediaUrl
     )}
     >
       {t('general.download')}

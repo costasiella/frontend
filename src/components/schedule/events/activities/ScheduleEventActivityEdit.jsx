@@ -115,7 +115,7 @@ function ScheduleEventActivityEdit({ t, history, match }) {
               id: scheduleItemId,
               displayPublic: values.displayPublic,
               name: values.name,
-              spaces: values.spaces,
+              spaces: parseInt(values.spaces),
               organizationLocationRoom: values.organizationLocationRoom,
               account: values.account,
               account2: values.account2,

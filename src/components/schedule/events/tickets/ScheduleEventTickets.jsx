@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-
+import DOMPurify from 'dompurify'
 import {
   Button,
   Table,
@@ -46,9 +46,6 @@ function ScheduleEventTickets({t, match, history}) {
       <p>{error.message}</p>
     </ScheduleEventEditListBase>
   )
-
-  console.log('query data')
-  console.log(data)
 
   const scheduleEventTickets = data.scheduleEventTickets
   const pageInfo = data.scheduleEventTickets.pageInfo
@@ -108,7 +105,7 @@ function ScheduleEventTickets({t, match, history}) {
               </Table.Col> */}
               <Table.Col>
                 {node.name} <br />
-                <div dangerouslySetInnerHTML={{__html: node.description}} className="text-muted"/>
+                <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} className="text-muted"/>
               </Table.Col>
               <Table.Col>
                 {node.priceDisplay} <br />

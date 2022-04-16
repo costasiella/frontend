@@ -156,7 +156,7 @@ function ShopAccountInvoices({t, match, history}) {
                         color="secondary"
                         icon="printer"
                         onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-                          doTokenRefresh, history, `/d/export/invoice/pdf/${node.id}`
+                          t, doTokenRefresh, history, `/d/export/invoice/pdf/${node.id}`
                         )}
                       >
                         {t('general.pdf')}

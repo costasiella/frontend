@@ -442,7 +442,9 @@
         "event_tickets": "__STRING_NOT_TRANSLATED__",
         "other": "__STRING_NOT_TRANSLATED__",
         "data": "__STRING_NOT_TRANSLATED__",
-        "week": "__STRING_NOT_TRANSLATED__"
+        "week": "__STRING_NOT_TRANSLATED__",
+        "monthly": "__STRING_NOT_TRANSLATED__",
+        "error_try_refreshing": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -783,7 +785,8 @@
         "max_decimal_number": "__STRING_NOT_TRANSLATED__",
         "time_required": "__STRING_NOT_TRANSLATED__",
         "min_len_9": "__STRING_NOT_TRANSLATED__",
-        "passwords_must_match": "__STRING_NOT_TRANSLATED__"
+        "passwords_must_match": "__STRING_NOT_TRANSLATED__",
+        "date_required": "__STRING_NOT_TRANSLATED__"
     },
     "shop": {
         "home": {
@@ -1817,7 +1820,8 @@
                     "empty_list": "__STRING_NOT_TRANSLATED__",
                     "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 }
-            }
+            },
+            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "tickets": {

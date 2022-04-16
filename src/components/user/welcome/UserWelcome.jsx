@@ -25,7 +25,9 @@ import CSStandalonePageWide from "../../ui/CSStandalonePageWide"
 function Welcome({t, match, history}) {
   const organization = useContext(OrganizationContext)
   console.log(organization)
-  const { loading, error, data } = useQuery(GET_USER_PROFILE)
+  const { loading, error, data } = useQuery(GET_USER_PROFILE, {
+    fetchPolicy: "network-only"
+  })
 
   if (loading) return (
     <CSStandalonePageWide urlLogo={organization.urlLogoLogin}>
