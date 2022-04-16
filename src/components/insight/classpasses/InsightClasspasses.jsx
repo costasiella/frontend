@@ -17,7 +17,7 @@ import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightClasspassesBase from './InsightClasspassesBase'
 
 function InsightClasspasses ({ t, history }) {
-  const year = localStorage.getItem(CSLS.INSIGHT_CLASSPASSES_YEAR)
+  const year = parseInt(localStorage.getItem(CSLS.INSIGHT_CLASSPASSES_YEAR))
   const export_url_active = "/d/export/insight/classpasses/active/" + year
   const export_url_sold = "/d/export/insight/classpasses/sold/" + year
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
@@ -181,18 +181,6 @@ function InsightClasspasses ({ t, history }) {
         </Grid.Col>
       {/* </Grid.Row> */}
     </InsightClasspassesBase>
-  //   <SiteWrapper>
-  //     <div className="my-3 my-md-5">
-  //       <Container>
-  //         <Page.Header title={t("insight.title")} subTitle={t("general.classpasses") + " " + year}>
-  //           <div className="page-options d-flex">
-  //             <InsightBackHome />
-  //           </div>
-  //         </Page.Header>
-
-  //       </Container>  
-  //     </div>
-  //   </SiteWrapper>
   )
 }
 

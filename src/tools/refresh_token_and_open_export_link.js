@@ -1,4 +1,3 @@
-import CSLS from './cs_local_storage'
 import { CSAuth } from './authentication';
 import { toast } from 'react-toastify'
 
@@ -14,17 +13,13 @@ function download(dataurl) {
 }
 
 export function refreshTokenAndOpenExportLinkInNewTab(t, doTokenRefresh, history, exportUrl) {  
-  const refreshToken = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN)
-
-  doTokenRefresh({ variables: { refreshToken: refreshToken }})
+  doTokenRefresh()
     .then(({data}) => {
+      console.log(data)
       CSAuth.updateTokenInfo(data.refreshToken)
-      const token = data.refreshToken.token
-      //Add authentication headers in URL
-      var url = `${exportUrl}/${token}`;
 
       // window.open(url, "_blank")
-      download(url);
+      download(exportUrl);
     }).catch((error) => {
       console.log(error)
       // history.push("/user/login")

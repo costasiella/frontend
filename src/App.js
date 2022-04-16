@@ -171,7 +171,6 @@ const httpLink = createHttpLink({
 });
 
 const csrfMiddleware = new ApolloLink(async (operation, forward) => {
-  // const csrftoken = await getCsrfToken();
   const csrftoken = await getCsrfToken();
   Cookies.set('csrftoken', csrftoken);
 
