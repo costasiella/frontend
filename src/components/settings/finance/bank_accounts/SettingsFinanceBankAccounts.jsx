@@ -81,7 +81,7 @@ function SettingsFinanceIBAN({ t, match, history }) {
             updateSettings({ variables: {
               input: {
                 setting: settings[i].setting,
-                value: settings[i].value,
+                value: settings[i].value.toString(),
               }
             }, refetchQueries: [
                 {query: GET_SYSTEM_SETTINGS_QUERY, variables: { setting: settings[i].setting }},

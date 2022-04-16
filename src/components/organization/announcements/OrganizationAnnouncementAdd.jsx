@@ -46,7 +46,7 @@ function OrganizationAnnouncementAdd({t, history}) {
                 content: values.content,
                 dateStart: dateToLocalISO(values.dateStart),
                 dateEnd: dateToLocalISO(values.dateEnd),
-                priority: values.priority
+                priority: parseInt(values.priority)
               }
 
               addAnnouncement({ variables: {

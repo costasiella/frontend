@@ -75,7 +75,7 @@ function OrganizationAnnouncementEdit({t, history, match}) {
                   content: values.content,
                   dateStart: dateToLocalISO(values.dateStart),
                   dateEnd: dateToLocalISO(values.dateEnd),
-                  priority: values.priority
+                  priority: parseInt(values.priority)
                 }
 
                 updateAnnouncement({ variables: {
