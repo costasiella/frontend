@@ -172,8 +172,8 @@ function ScheduleClassEdit({ t, match, history }) {
                             organizationLevel: values.organizationLevel,
                             timeStart: timeStart,
                             timeEnd: timeEnd,
-                            spaces: values.spaces,
-                            walkInSpaces: values.walkInSpaces,
+                            spaces: parseInt(values.spaces),
+                            walkInSpaces: parseInt(values.walkInSpaces),
                             infoMailContent: values.infoMailContent
                           }
                         }, refetchQueries: [
