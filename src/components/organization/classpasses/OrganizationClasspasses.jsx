@@ -25,21 +25,19 @@ function OrganizationClasspasses({t, history}) {
   const cardTitle = t('organization.classpasses.title')
   let [archived, setArchived] = useState(false)
 
-  const { loading, error, data, refetch, fetchMore } = useQuery(GET_CLASSPASSES_QUERY, {
-    variables: { archived: archived }
-  })
+  const { loading, error, data, refetch, fetchMore } = useQuery(GET_CLASSPASSES_QUERY)
   const [ archiveClasspass ] = useMutation(ARCHIVE_CLASSPASS)
 
   const headerOptions = <Card.Options>
     <Button color={(!archived) ? 'primary': 'secondary'}  
             size="sm"
-            onClick={() => {setArchived(false); refetch({archived: archived});}}>
+            onClick={() => {setArchived(false); refetch({archived: false});}}>
       {t('general.current')}
     </Button>
     <Button color={(archived) ? 'primary': 'secondary'} 
             size="sm" 
             className="ml-2" 
-            onClick={() => {setArchived(true); refetch({archived: archived});}}>
+            onClick={() => {setArchived(true); refetch({archived: true});}}>
       {t('general.archive')}
     </Button>
   </Card.Options>

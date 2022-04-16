@@ -174,8 +174,6 @@ function SiteWrapper({t, match, history, children}) {
   if (loading) return <CSStandalonePageLoader/>;
   if (error) return <p>{t('system.user.error_loading')}</p>; 
 
-  console.log(data)
-
   let avatarURL = "#"
   if (data.user.urlImageThumbnailSmall) {
     avatarURL = data.user.urlImageThumbnailSmall
