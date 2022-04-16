@@ -209,7 +209,7 @@ function RelationsAccounts({t, history}) {
                   <Table.Col key={v4()}>
                     {(node.subscriptionsLatest) ? 
                       node.subscriptionsLatest.map((subscription) => (
-                        <div>
+                        <div key={v4()}>
                           <small>
                           <Icon name="edit" /> {' '}
                           { subscription.organizationSubscription.name } <br />
@@ -229,7 +229,7 @@ function RelationsAccounts({t, history}) {
                     }
                     {(node.classpassesLatest) ? 
                       node.classpassesLatest.map((classpass) => (
-                        <div>
+                        <div key={v4()}>
                           <small>
                           <Icon name="credit-card" /> {' '}
                           { classpass.organizationClasspass.name } <br />
