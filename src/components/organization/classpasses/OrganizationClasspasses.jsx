@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useState } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
@@ -27,7 +25,9 @@ function OrganizationClasspasses({t, history}) {
   const cardTitle = t('organization.classpasses.title')
   let [archived, setArchived] = useState(false)
 
-  const { loading, error, data, refetch, fetchMore } = useQuery(GET_CLASSPASSES_QUERY)
+  const { loading, error, data, refetch, fetchMore } = useQuery(GET_CLASSPASSES_QUERY, {
+    variables: { archived: archived }
+  })
   const [ archiveClasspass ] = useMutation(ARCHIVE_CLASSPASS)
 
   const headerOptions = <Card.Options>
