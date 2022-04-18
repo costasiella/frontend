@@ -142,16 +142,35 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
     }
   }
 })
-    
-// Fetch CSRF Token
+
+   
+// // Fetch CSRF Token
+// let csrftoken
+// async function getCsrfToken() {
+//   if (csrftoken) return csrftoken
+
+//   csrftoken = await fetch('/d/csrf/')
+//     .then(response => response.json())
+//     .then(data => data.csrfToken)
+
+//   return await csrftoken
+// }
+
+// Fetch CSRF Token from Cookie
 let csrftoken
 async function getCsrfToken() {
   if (csrftoken) return csrftoken
 
-  csrftoken = await fetch('/d/csrf/')
+  await fetch('/d/csrf/')
     .then(response => response.json())
-    .then(data => data.csrfToken)
 
+  // For troubleshooting
+  // const result =  await fetch('/d/csrf/')
+  //   .then(response => response.json())
+  // console.log(reuslt)
+
+  csrftoken = Cookies.get('csrftoken');
+  
   return await csrftoken
 }
 
