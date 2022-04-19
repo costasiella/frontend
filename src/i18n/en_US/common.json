@@ -1197,14 +1197,14 @@
             "no_instructor": "No instructor",
             "prices": {
                 "title_add": "Add price",
-                "toast_add_success": "Added price",
+                "toast_add_success": "Added dropin & trial pass",
                 "title_edit": "Edit price",
-                "toast_edit_success": "Saved price",
+                "toast_edit_success": "Saved",
                 "title": "Dropin and Trial",
                 "error_loading": "Error loading prices for this class :(",
                 "empty_list": "No prices have been defined for this class yet.",
                 "delete_confirm_msg": "Are you sure you wish to delete this price?",
-                "delete_success": "Deleted price"
+                "delete_success": "Deleted dropin & trial pass"
             },
             "classpass_dropin": "Drop-in classpass",
             "classpass_trial": "Trial classpass",
