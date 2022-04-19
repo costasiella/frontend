@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -7,7 +5,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SUBSCRIPTIONS_QUERY, GET_SUBSCRIPTION_QUERY, UPDATE_SUBSCRIPTION } from './queries'
+import { GET_SUBSCRIPTION_QUERY, UPDATE_SUBSCRIPTION } from './queries'
 import { SUBSCRIPTION_SCHEMA } from './yupSchema'
 import OrganizationSubscriptionForm from './OrganizationSubscriptionForm'
 
@@ -26,7 +24,8 @@ function OrganizationSubscriptionEdit({t, match, history}) {
   const cardTitle = t('organization.subscriptions.title_edit')
 
   const { loading, error, data } = useQuery(GET_SUBSCRIPTION_QUERY, { 
-    variables: { id: id }
+    variables: { id: id },
+    fetchPolicy: "network-only"
   })
   const [ updateSubscription ] = useMutation(UPDATE_SUBSCRIPTION)
 
@@ -48,8 +47,6 @@ function OrganizationSubscriptionEdit({t, match, history}) {
     </OrganizationSubscriptionsBase>
   )
 
-  console.log('query data')
-  console.log(data)
   const initialData = data
 
   let initialMembership = ""
@@ -113,9 +110,7 @@ function OrganizationSubscriptionEdit({t, match, history}) {
                   financeGlaccount: values.financeGlaccount,
                   financeCostcenter: values.financeCostcenter
                 }
-              }, refetchQueries: [
-                  {query: GET_SUBSCRIPTIONS_QUERY, variables: {"archived": false }}
-              ]})
+              }})
               .then(({ data }) => {
                   console.log('got data', data)
                   toast.success((t('organization.subscriptions.toast_edit_success')), {

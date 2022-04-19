@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_CLASSPASSES_QUERY, GET_INPUT_VALUES_QUERY, CREATE_CLASSPASS } from './queries'
+import { GET_INPUT_VALUES_QUERY, CREATE_CLASSPASS } from './queries'
 import { CLASSPASS_SCHEMA } from './yupSchema'
 
 import {
@@ -89,9 +89,7 @@ function OrganizationClasspassAdd({t, match, history}) {
                   financeGlaccount: values.financeGlaccount,
                   financeCostcenter: values.financeCostcenter
                 }
-              }, refetchQueries: [
-                  {query: GET_CLASSPASSES_QUERY, variables: {"archived": false }}
-              ]})
+              }})
               .then(({ data }) => {
                   console.log('got data', data)
                   history.push(returnUrl)

@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_CLASSPASSES_QUERY, GET_CLASSPASS_QUERY, UPDATE_CLASSPASS } from './queries'
+import { GET_CLASSPASS_QUERY, UPDATE_CLASSPASS } from './queries'
 import { CLASSPASS_SCHEMA } from './yupSchema'
 
 import {
@@ -106,9 +106,7 @@ function OrganizationClasspassEdit({ t, match, history}) {
                   financeGlaccount: values.financeGlaccount,
                   financeCostcenter: values.financeCostcenter
                 }
-              }, refetchQueries: [
-                  {query: GET_CLASSPASSES_QUERY, variables: {"archived": false }}
-              ]})
+              }})
               .then(({ data }) => {
                   console.log('got data', data)
                   toast.success((t('organization.classpasses.toast_edit_success')), {

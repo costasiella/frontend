@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -7,7 +5,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_SUBSCRIPTIONS_QUERY, GET_INPUT_VALUES_QUERY, CREATE_SUBSCRIPTION } from './queries'
+import { GET_INPUT_VALUES_QUERY, CREATE_SUBSCRIPTION } from './queries'
 import { SUBSCRIPTION_SCHEMA } from './yupSchema'
 import OrganizationSubscriptionForm from './OrganizationSubscriptionForm'
 
@@ -95,9 +93,7 @@ function OrganizationSubscriptionAdd({ t, history }) {
                     financeGlaccount: values.financeGlaccount,
                     financeCostcenter: values.financeCostcenter
                   }
-                }, refetchQueries: [
-                    {query: GET_SUBSCRIPTIONS_QUERY, variables: {archived: false }}
-                ]})
+                }})
                 .then(({ data }) => {
                     console.log('got data', data)
                     history.push(returnUrl)

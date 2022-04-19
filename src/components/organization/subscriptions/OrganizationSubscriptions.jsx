@@ -26,7 +26,8 @@ function OrganizationSubscriptions({t, history}) {
   const cardTitle = t('organization.subscriptions.title')
   let [archived, setArchived] = useState(false)
   const {loading, error, data, refetch, fetchMore} = useQuery(GET_SUBSCRIPTIONS_QUERY, {
-    variables: {archived: archived}
+    variables: {archived: archived},
+    fetchPolicy: "network-only"
   })
   const [archiveSubscription] = useMutation(ARCHIVE_SUBSCRIPTION)
   const headerOptions = <Card.Options>
