@@ -4,6 +4,7 @@ import { withTranslation } from 'react-i18next'
 import {
     Button,
     Card,
+    Dimmer,
   } from "tabler-react"
 
 
@@ -42,6 +43,7 @@ class ContentCard extends Component {
       const cardTitle = this.props.cardTitle
       const headerContent = this.props.headerContent
       const onLoadMore = this.props.onLoadMore 
+      const loadingMore = this.props.loadingMore
       const pageInfo = this.props.pageInfo
       const children = this.props.children
       const cardTabs = this.props.cardTabs
@@ -60,15 +62,16 @@ class ContentCard extends Component {
             children
           }
           <Card.Footer>
-            {(!pageInfo) ? '':
-              (pageInfo.hasNextPage) ? 
-                <Button 
-                  link
-                  onClick={onLoadMore} 
-                  >
-                  {t('general.load_more')}
-                </Button>
-               : t('general.loaded_all')
+            {(loadingMore) ? <Dimmer active={true} loader={true}>loading</Dimmer> :
+              (!pageInfo) ? '':
+                (pageInfo.hasNextPage) ? 
+                  <Button 
+                    link
+                    onClick={onLoadMore} 
+                    >
+                    {t('general.load_more')}
+                  </Button>
+                : t('general.loaded_all')
             }
           </Card.Footer>
         </Card>
