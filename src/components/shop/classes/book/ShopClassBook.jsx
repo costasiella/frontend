@@ -6,6 +6,7 @@ import moment from 'moment'
 
 import {
   Alert,
+  Dimmer,
   Grid,
 } from "tabler-react";
 
@@ -43,7 +44,7 @@ function ShopClassBook({ t, match, history }) {
   // Loading
   if (loading) return (
     <ShopClassBookBase pageHeaderOptions={<ShopClassBookBack />}>
-      <p>{t('general.loading_with_dots')}</p>
+      <Dimmer active={true} loader={true} />
     </ShopClassBookBase>
   )
   // Error

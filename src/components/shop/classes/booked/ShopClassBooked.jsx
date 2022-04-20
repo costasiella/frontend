@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import {
   Button,
   Card,
+  Dimmer,
   Grid,
   Icon
 } from "tabler-react";
@@ -36,7 +37,7 @@ function ShopClassBook({ t, match, history }) {
   // Loading
   if (loading) return (
     <ShopClassBookedBase>
-      <p>{t('general.loading_with_dots')}</p>
+      <Dimmer active={true} loader={true} />
     </ShopClassBookedBase>
   )
   // Error
