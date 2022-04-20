@@ -81,7 +81,8 @@ class ContentCard extends Component {
 
 ContentCard.defaultProps = {
   onLoadMore: f=>f,
-  hasCardBody: true
+  hasCardBody: true,
+  isLoadingMore: false
 }
   
 export default withTranslation()(ContentCard)
