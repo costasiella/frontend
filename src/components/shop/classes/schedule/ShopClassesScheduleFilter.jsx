@@ -35,7 +35,7 @@ const selectClass = "form-control custom-select mb-2"
 
 const ShopClassesScheduleFilter = ({ t, history, data, refetch }) => (
   <Grid.Row>
-    <Grid.Col md={4}>
+    <Grid.Col xs={12} sm={12} md={4}>
       {/* Locations */}
       <select 
         className={selectClass}
@@ -54,7 +54,7 @@ const ShopClassesScheduleFilter = ({ t, history, data, refetch }) => (
         )}
       </select>
     </Grid.Col>
-    <Grid.Col md={4}>
+    <Grid.Col xs={12} sm={12} md={4}>
       {/* Classtypes */}
       <select 
         className={selectClass}
@@ -73,7 +73,7 @@ const ShopClassesScheduleFilter = ({ t, history, data, refetch }) => (
         )}
       </select>
     </Grid.Col>
-    <Grid.Col md={4}>
+    <Grid.Col xs={12} sm={12} md={4}>
       {/* Levels */}
       <select 
         className={selectClass}
