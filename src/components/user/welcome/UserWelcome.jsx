@@ -56,7 +56,7 @@ function Welcome({t, match, history}) {
         <h5>{t("user.welcome.where_next_question")}</h5>
       </div>
       <Grid.Row>
-        <Grid.Col md={3} offsetMd={3}>
+        <Grid.Col xs={12} sm={12} md={3} offsetMd={3}>
           <Card>
             <Card.Body>
               <h5>{t("shop.title")}</h5>
@@ -73,7 +73,7 @@ function Welcome({t, match, history}) {
             </Card.Body>
           </Card>
         </Grid.Col>
-        <Grid.Col md={3}>
+        <Grid.Col xs={12} sm={12} md={3}>
           <Card>
             <Card.Body>
               <h5>{t("general.backend")}</h5>
@@ -91,7 +91,7 @@ function Welcome({t, match, history}) {
           </Card>
         </Grid.Col>
         <HasPermissionWrapper resource="selfcheckin" permission="view" hideLoading={true}>
-          <Grid.Col md={3} offsetMd={3}>
+          <Grid.Col xs={12} sm={12} md={3} offsetMd={3}>
             <Card>
               <Card.Body>
                 <h5>{t("selfcheckin.home.title")}</h5>
