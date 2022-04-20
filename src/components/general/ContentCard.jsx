@@ -43,7 +43,7 @@ class ContentCard extends Component {
       const cardTitle = this.props.cardTitle
       const headerContent = this.props.headerContent
       const onLoadMore = this.props.onLoadMore 
-      const loadingMore = this.props.loadingMore
+      const isLoadingMore = this.props.isLoadingMore
       const pageInfo = this.props.pageInfo
       const children = this.props.children
       const cardTabs = this.props.cardTabs
@@ -62,7 +62,7 @@ class ContentCard extends Component {
             children
           }
           <Card.Footer>
-            {(loadingMore) ? <Dimmer active={true} loader={true}>loading</Dimmer> :
+            {(isLoadingMore) ? <Dimmer active={true} loader={true}>loading</Dimmer> :
               (!pageInfo) ? '':
                 (pageInfo.hasNextPage) ? 
                   <Button 

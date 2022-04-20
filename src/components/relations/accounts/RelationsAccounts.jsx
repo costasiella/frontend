@@ -74,7 +74,7 @@ const confirm_delete = ({t, msgConfirm, msgDescription, msgSuccess, deleteFuncti
 
 
 function RelationsAccounts({t, history}) {
-  const [loadingMore, setLoadingMore] = useState(false)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const {loading, error, data, fetchMore, refetch} = useQuery(GET_ACCOUNTS_QUERY, {
@@ -148,9 +148,9 @@ function RelationsAccounts({t, history}) {
         headerContent={headerOptions}
         hasCardBody={false}
         pageInfo={data.accounts.pageInfo}
-        loadingMore={loadingMore}
+        isLoadingMore={isLoadingMore}
         onLoadMore={() => {
-          setLoadingMore(true)
+          setIsLoadingMore(true)
           fetchMore({
             variables: {
               after: data.accounts.pageInfo.endCursor
@@ -158,7 +158,7 @@ function RelationsAccounts({t, history}) {
             updateQuery: (previousResult, { fetchMoreResult }) => {
               const newEdges = fetchMoreResult.accounts.edges
               const pageInfo = fetchMoreResult.accounts.pageInfo 
-              setLoadingMore(false)
+              setIsLoadingMore(false)
 
               return newEdges.length
                 ? {
