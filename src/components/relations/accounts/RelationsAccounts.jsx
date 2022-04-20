@@ -149,17 +149,15 @@ function RelationsAccounts({t, history}) {
         hasCardBody={false}
         pageInfo={data.accounts.pageInfo}
         isLoadingMore={isLoadingMore}
-        onLoadMore={() => {
+        onLoadMore={async () => {
           setIsLoadingMore(true)
-          fetchMore({
+          await fetchMore({
             variables: {
               after: data.accounts.pageInfo.endCursor
             },
             updateQuery: (previousResult, { fetchMoreResult }) => {
               const newEdges = fetchMoreResult.accounts.edges
               const pageInfo = fetchMoreResult.accounts.pageInfo 
-              setIsLoadingMore(false)
-
               return newEdges.length
                 ? {
                     // Put the new accounts at the end of the list and update `pageInfo`
@@ -172,6 +170,7 @@ function RelationsAccounts({t, history}) {
               : previousResult
             }
           })
+          setIsLoadingMore(false)
         }} 
       >
         <Table cards>
