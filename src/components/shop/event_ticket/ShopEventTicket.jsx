@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import DOMPurify from 'dompurify'
 import {
   Card,
+  Dimmer,
   Grid,
 } from "tabler-react"
 
@@ -33,7 +34,7 @@ function ShopEventTicket({ t, match, history }) {
 
   if (loading) return (
     <ShopEventTicketBase title={title} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopEventTicketBase>
   )
   if (error) return (

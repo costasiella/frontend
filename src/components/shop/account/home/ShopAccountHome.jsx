@@ -5,6 +5,7 @@ import { withRouter } from "react-router"
 
 import {
   Card,
+  Dimmer,
   Grid
 } from "tabler-react";
 
@@ -24,7 +25,7 @@ function ShopAccountHome({t, match, history}) {
 
   if (loading) return (
     <ShopAccountHomeBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountHomeBase>
   )
   if (error) return (
@@ -33,8 +34,6 @@ function ShopAccountHome({t, match, history}) {
     </ShopAccountHomeBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
   const user = data.user
 
   return (

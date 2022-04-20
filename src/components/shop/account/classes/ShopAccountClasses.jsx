@@ -12,6 +12,7 @@ import BadgeBookingStatus from '../../../ui/BadgeBookingStatus'
 import {
   Button,
   Card,
+  Dimmer,
   Grid,
   Table
 } from "tabler-react"
@@ -40,7 +41,7 @@ function ShopAccountClasses({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountClassesBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountClassesBase>
   )
   if (error || errorUser) return (

@@ -4,6 +4,7 @@ import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 
 import {
+  Dimmer,
   Grid,
 } from "tabler-react";
 import ShopClasspassesBase from "./ShopClasspassesBase"
@@ -20,7 +21,7 @@ function ShopClasspasses({ t, match, history }) {
 
   if (loading) return (
     <ShopClasspassesBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopClasspassesBase>
   )
   if (error) return (

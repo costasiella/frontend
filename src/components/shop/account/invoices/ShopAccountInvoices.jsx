@@ -13,6 +13,7 @@ import { refreshTokenAndOpenExportLinkInNewTab } from "../../../../tools/refresh
 import {
   Button,
   Card,
+  Dimmer,
   Grid,
   Icon,
   Table,
@@ -41,7 +42,7 @@ function ShopAccountInvoices({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountInvoicesBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountInvoicesBase>
   )
   if (error || errorUser) return (

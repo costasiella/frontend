@@ -12,6 +12,7 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 import {
   Button,
   Card,
+  Dimmer,
   Grid,
   Icon,
 } from "tabler-react";
@@ -38,7 +39,7 @@ function ShopCheckoutPayment({ t, match, history }) {
 
   if (loading) return (
     <ShopCheckoutPaymentBase title={title} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopCheckoutPaymentBase>
   )
   if (error) return (

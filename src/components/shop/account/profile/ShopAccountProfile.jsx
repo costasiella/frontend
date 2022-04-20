@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import {
+  Dimmer,
   Grid,
 } from "tabler-react";
 
@@ -23,7 +24,7 @@ function ShopAccountProfile({t, match, history}) {
 
   if (loading) return (
     <ShopAccountProfileBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountProfileBase>
   )
   if (error) return (
@@ -32,8 +33,6 @@ function ShopAccountProfile({t, match, history}) {
     </ShopAccountProfileBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
   const user = data.user
 
   let dateOfBirth = null

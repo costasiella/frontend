@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext} from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -11,6 +9,7 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
   Card,
+  Dimmer,
   Grid,
   Table
 } from "tabler-react";
@@ -37,7 +36,7 @@ function ShopAccountSubscriptions({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountSubscriptionsBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountSubscriptionsBase>
   )
   if (error || errorUser) return (

@@ -10,6 +10,7 @@ import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 
 import {
   Card,
+  Dimmer,
   Grid,
   Table
 } from "tabler-react";
@@ -33,7 +34,7 @@ function ShopAccountClasspasses({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountClasspassesBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountClasspassesBase>
   )
   if (error || errorUser) return (

@@ -4,6 +4,7 @@ import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 import DOMPurify from 'dompurify'
 import {
+  Dimmer,
   Icon,
 } from "tabler-react";
 
@@ -25,7 +26,7 @@ function ShopCheckoutClassInfo({ t, scheduleItemId, date, complete=true}) {
   })
 
   if (loading) return (
-      t("general.loading_with_dots")
+    <Dimmer active={true} loader={true} />
   )
   if (error) return (
       t("shop.checkout.class_info.error_loading")

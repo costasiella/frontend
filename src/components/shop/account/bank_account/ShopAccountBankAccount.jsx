@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import {
+  Dimmer,
   Grid,
 } from "tabler-react";
 
@@ -35,7 +36,7 @@ function ShopAccountBankAccount({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountProfileBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountProfileBase>
   )
   if (error || errorUser) return (

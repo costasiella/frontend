@@ -4,6 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import {
   Card,
+  Dimmer,
   Grid
 } from "tabler-react";
 
@@ -24,7 +25,7 @@ function ShopAccountMailingLists({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountMailingListsBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountMailingListsBase>
   )
   if (error || errorUser) return (

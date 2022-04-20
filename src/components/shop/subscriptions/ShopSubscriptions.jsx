@@ -4,6 +4,7 @@ import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 
 import {
+  Dimmer,
   Grid,
 } from "tabler-react";
 import ShopSubscriptionsBase from "./ShopSubscriptionsBase"
@@ -20,7 +21,7 @@ function ShopSubscriptions({ t, match, history }) {
 
   if (loading) return (
     <ShopSubscriptionsBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopSubscriptionsBase>
   )
   if (error) return (

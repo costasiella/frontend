@@ -9,6 +9,7 @@ import moment from 'moment'
 
 import {
   Card,
+  Dimmer,
   Grid,
 } from "tabler-react"
 
@@ -49,7 +50,7 @@ function ShopClasspass({ t, match, history }) {
 
   if (loading) return (
     <ShopClasspassBase pageTitle={pageTitle} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopClasspassBase>
   )
   if (error) return (

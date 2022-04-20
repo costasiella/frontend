@@ -12,8 +12,9 @@ import GET_USER_PROFILE from "../../../queries/system/get_user_profile"
 import OrganizationContext from '../../context/OrganizationContext'
 
 import {
-  Card,
   Button,
+  Card,
+  Dimmer,
   Grid,
   Icon
 } from "tabler-react"
@@ -31,7 +32,7 @@ function Welcome({t, match, history}) {
 
   if (loading) return (
     <CSStandalonePageWide urlLogo={organization.urlLogoLogin}>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </CSStandalonePageWide>
   )
   if (error) return (

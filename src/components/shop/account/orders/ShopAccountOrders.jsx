@@ -11,6 +11,7 @@ import FinanceOrderStatus from "../../../finance/orders/FinanceOrderStatus"
 import {
   Button,
   Card,
+  Dimmer,
   Grid,
   Icon,
   Table
@@ -43,7 +44,7 @@ function ShopAccountOrders({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountOrdersBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountOrdersBase>
   )
   if (error || errorUser) return (

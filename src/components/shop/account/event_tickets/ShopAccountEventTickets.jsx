@@ -13,6 +13,7 @@ import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 import {
   Badge,
   Card,
+  Dimmer,
   Grid,
   Table
 } from "tabler-react";
@@ -35,7 +36,7 @@ function ShopAccountEventTickets({t, match, history}) {
 
   if (loading || loadingUser || !data) return (
     <ShopAccountProfileBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountProfileBase>
   )
   if (error || errorUser) return (

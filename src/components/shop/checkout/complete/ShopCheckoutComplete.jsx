@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import {
   Button,
   Card,
+  Dimmer,
   Grid,
   Icon
 } from "tabler-react";
@@ -28,7 +29,7 @@ function ShopCheckoutComplete({ t, match, history }) {
 
   if (loading) return (
     <ShopCheckoutCompleteBase title={title} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopCheckoutCompleteBase>
   )
   if (error) return (

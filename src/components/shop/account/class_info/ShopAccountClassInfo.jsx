@@ -5,6 +5,7 @@ import { withRouter } from "react-router"
 
 import {
   Card,
+  Dimmer
 } from "tabler-react"
 
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
@@ -20,7 +21,7 @@ function ShopAccountClassInfo({t, match, history}) {
 
   if (loading) return (
     <ShopAccountClassInfoBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountClassInfoBase>
   )
   if (error) return (

@@ -8,6 +8,7 @@ import {
   Alert,
   Button,
   Card,
+  Dimmer,
   Grid,
   Icon,
 } from "tabler-react"
@@ -34,7 +35,7 @@ function ShopAccountInvoicePaymentStatus({t, match, history}) {
     <ShopAccountInvoicePaymentStatusBase>
       <Card title={cardTitleLoadingError}>
         <Card.Body>
-          {t("general.loading_with_dots")}
+          <Dimmer active={true} loader={true} />
         </Card.Body>
       </Card>
     </ShopAccountInvoicePaymentStatusBase>

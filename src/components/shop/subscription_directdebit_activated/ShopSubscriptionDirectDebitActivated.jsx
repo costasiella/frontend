@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import {
   Card,
+  Dimmer,
   Grid,
   Icon,
   List
@@ -30,7 +31,7 @@ function ShopSubscriptionDirectDebitActivated({ t, match, history }) {
 
   if (loading) return (
     <ShopSubscriptionDirectDebitActivatedBase title={title} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopSubscriptionDirectDebitActivatedBase>
   )
   if (error) return (

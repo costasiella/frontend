@@ -9,7 +9,8 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
   Button,
-  Card
+  Card,
+  Dimmer
 } from "tabler-react"
 
 import { DisplayClassInfo } from "../../tools"
@@ -41,7 +42,7 @@ function ShopAccountClassCancel({t, match, history}) {
 
   if (loadingUser || loadingAttendance) return (
     <ShopAccountClassCancelBase>
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopAccountClassCancelBase>
   )
   if (errorUser || errorAttendance) return (

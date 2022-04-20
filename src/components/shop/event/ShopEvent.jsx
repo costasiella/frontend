@@ -6,6 +6,7 @@ import moment from 'moment'
 import DOMPurify from 'dompurify'
 import {
   Card,
+  Dimmer,
   GalleryCard,
   Grid,
 } from "tabler-react"
@@ -29,7 +30,7 @@ function ShopEvent({ t, match, history }) {
 
   if (loading) return (
     <ShopEventBase title={tempTitle} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopEventBase>
   )
   if (error) return (

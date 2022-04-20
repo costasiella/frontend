@@ -6,6 +6,7 @@ import { v4 } from 'uuid'
 
 import {
   Card,
+  Dimmer,
   Icon,
   Table,
 } from "tabler-react";
@@ -20,7 +21,7 @@ function ShopCheckoutOrderSummary({ t, id, complete=false }) {
   })
 
   if (loading) return (
-      t("general.loading_with_dots")
+    <Dimmer active={true} loader={true} />
   )
   if (error) return (
       t("shop.checkout.order_summary.error_loading")

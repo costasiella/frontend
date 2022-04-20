@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 import {
   Card,
+  Dimmer,
   Grid,
   Icon,
 } from "tabler-react"
@@ -56,7 +57,7 @@ function ShopAccountInvoicePayment({t, match, history}) {
     <ShopAccountInvoicePaymentBase>
       <Card title={cardTitleLoadingError}>
         <Card.Body>
-          {t("general.loading_with_dots")}
+          <Dimmer active={true} loader={true} />
         </Card.Body>
       </Card>
     </ShopAccountInvoicePaymentBase>

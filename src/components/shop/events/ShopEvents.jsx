@@ -8,6 +8,7 @@ import moment from 'moment'
 
 import {
   Button,
+  Dimmer,
   Grid,
   Icon,
   GalleryCard
@@ -30,7 +31,7 @@ function ShopEvents({ t, match, history }) {
 
   if (loading) return (
     <ShopEventsBase title={title} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopEventsBase>
   )
   if (error) return (

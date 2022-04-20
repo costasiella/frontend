@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client'
 import DOMPurify from 'dompurify'
 import {
   Card,
+  Dimmer,
   Grid,
 } from "tabler-react"
 
@@ -29,7 +30,7 @@ function ShopSubscription({ t, match, history }) {
 
   if (loading) return (
     <ShopSubscriptionBase pageTitle={pageTitle} >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ShopSubscriptionBase>
   )
   if (error) return (
