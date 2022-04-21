@@ -520,8 +520,7 @@
         "data": "Data",
         "week": "Week",
         "monthly": "Monthly",
-        "error_try_refreshing": "Error: please refresh the page and try again.",
-        "cookie_policy": "Cookie policy"
+        "error_try_refreshing": "Error: please refresh the page and try again."
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -2310,7 +2309,7 @@
         "selected_file_exceeds_max_filesize": "The chosen file exceeds the size limit. Please select a file that's < 5MB"
     },
     "cookie_policy": {
-        "policy_text": "The cookie policy for our platform is very simply. Cookies are used only to ensure you're able to sign in, to keep you safe and ensure everything works as expected. There are no other cookies used. Which means there are no third-party cookies or any tracking or advertising cookies. Functional cookies only.",
+        "policy_text": "The cookie policy for our platform is very simply. Only functional cookies are used. Cookies are used for example to ensure you're able to sign in, to keep you safe and ensure everything works as expected. No other or additional cookies are used. Which means there are no third-party cookies or any tracking or advertising cookies.",
         "title": "Cookie Policy"
     }
 }

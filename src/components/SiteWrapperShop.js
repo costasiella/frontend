@@ -276,7 +276,7 @@ function SiteWrapperShop({t, match, history, children}) {
             <React.Fragment>
               <Grid.Col auto={true}>
                 <Link to="/cookie_policy">
-                  {t("general.cookie_policy")}
+                  {t("cookie_policy.title")}
                 </Link>
                 {/* <List className="list-inline list-inline-dots mb-0">
                   <List.Item className="list-inline-item">
