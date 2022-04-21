@@ -444,7 +444,8 @@
         "data": "__STRING_NOT_TRANSLATED__",
         "week": "__STRING_NOT_TRANSLATED__",
         "monthly": "__STRING_NOT_TRANSLATED__",
-        "error_try_refreshing": "__STRING_NOT_TRANSLATED__"
+        "error_try_refreshing": "__STRING_NOT_TRANSLATED__",
+        "mailing_list": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
