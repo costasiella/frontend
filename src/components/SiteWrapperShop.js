@@ -174,13 +174,9 @@ const now = new Date()
 function SiteWrapperShop({t, match, history, children}) {
   const { loading, error, data } = useQuery(GET_SHOP_FEATURES_QUERY)
   const organization = useContext(OrganizationContext)
-  console.log(organization)
-  // const { error, loading, data, fetchMore } = useQuery(GET_USER)
 
   if (loading) return <CSStandalonePageLoader/>;
   if (error) return <p>{t('system.user.error_loading')}</p>; 
-
-  console.log(data)
 
   const headerImageUrl = getHeaderImageUrl(organization)
 
