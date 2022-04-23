@@ -43,8 +43,6 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
     )
   }
 
-  console.log("Automation credits data:")
-  console.log(data)
   const taskResults = data.djangoCeleryResultTaskResults
   
 

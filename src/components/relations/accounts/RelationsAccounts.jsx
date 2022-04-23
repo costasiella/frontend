@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -74,6 +74,7 @@ const confirm_delete = ({t, msgConfirm, msgDescription, msgSuccess, deleteFuncti
 
 
 function RelationsAccounts({t, history}) {
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const {loading, error, data, fetchMore, refetch} = useQuery(GET_ACCOUNTS_QUERY, {
@@ -147,15 +148,16 @@ function RelationsAccounts({t, history}) {
         headerContent={headerOptions}
         hasCardBody={false}
         pageInfo={data.accounts.pageInfo}
-        onLoadMore={() => {
-          fetchMore({
+        isLoadingMore={isLoadingMore}
+        onLoadMore={async () => {
+          setIsLoadingMore(true)
+          await fetchMore({
             variables: {
               after: data.accounts.pageInfo.endCursor
             },
             updateQuery: (previousResult, { fetchMoreResult }) => {
               const newEdges = fetchMoreResult.accounts.edges
               const pageInfo = fetchMoreResult.accounts.pageInfo 
-
               return newEdges.length
                 ? {
                     // Put the new accounts at the end of the list and update `pageInfo`
@@ -168,6 +170,7 @@ function RelationsAccounts({t, history}) {
               : previousResult
             }
           })
+          setIsLoadingMore(false)
         }} 
       >
         <Table cards>

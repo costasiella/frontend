@@ -444,7 +444,8 @@
         "data": "__STRING_NOT_TRANSLATED__",
         "week": "__STRING_NOT_TRANSLATED__",
         "monthly": "__STRING_NOT_TRANSLATED__",
-        "error_try_refreshing": "__STRING_NOT_TRANSLATED__"
+        "error_try_refreshing": "__STRING_NOT_TRANSLATED__",
+        "mailing_list": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1276,7 +1277,8 @@
         },
         "suppliers": {
             "title": "__STRING_NOT_TRANSLATED__"
-        }
+        },
+        "btn_export_active_accounts": "__STRING_NOT_TRANSLATED__"
     },
     "home": {
         "home": {
@@ -1385,7 +1387,6 @@
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__",
             "trial_pass": "__STRING_NOT_TRANSLATED__",
-            "add": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__"
         },
         "classpass": {
@@ -2308,5 +2309,9 @@
         "Yemen": "__STRING_NOT_TRANSLATED__",
         "Zambia": "__STRING_NOT_TRANSLATED__",
         "Zimbabwe": "__STRING_NOT_TRANSLATED__"
+    },
+    "cookie_policy": {
+        "policy_text": "__STRING_NOT_TRANSLATED__",
+        "title": "__STRING_NOT_TRANSLATED__"
     }
 }

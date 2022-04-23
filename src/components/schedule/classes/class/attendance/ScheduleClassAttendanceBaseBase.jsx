@@ -1,13 +1,17 @@
 import React from 'react'
+import { useMutation } from '@apollo/client';
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
+  Button,
   Page,
   Grid,
   Container,
 } from "tabler-react";
 
+import { TOKEN_REFRESH } from '../../../../../queries/system/auth';
+import { refreshTokenAndOpenExportLinkInNewTab } from '../../../../../tools/refresh_token_and_open_export_link';
 import SiteWrapper from "../../../../SiteWrapper"
 import ScheduleClassBack from "../ScheduleClassBack"
 import ClassMenu from "../ClassMenu"
@@ -15,6 +19,9 @@ import ClassMenu from "../ClassMenu"
 function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubTitle }) {
   const scheduleItemId = match.params.class_id
   const classDate = match.params.date
+  const exportUrl = `/d/export/schedule_item_attendance/mailinglist/${scheduleItemId}/${classDate}`
+
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   return (
     <SiteWrapper>
@@ -23,6 +30,17 @@ function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubT
           <Page.Header title={t('schedule.title')} subTitle={pageSubTitle}>
             <div className="page-options d-flex">       
               <ScheduleClassBack />
+              {/* Export Mailinglist */}
+              <Button
+                color="secondary"
+                icon="download-cloud"
+                className="mr-2"
+                onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+                  t, doTokenRefresh, history, exportUrl
+                )}
+              >
+                {t('general.mailing_list')} 
+              </Button>
             </div>
           </Page.Header>
           <Grid.Row>

@@ -174,13 +174,9 @@ const now = new Date()
 function SiteWrapperShop({t, match, history, children}) {
   const { loading, error, data } = useQuery(GET_SHOP_FEATURES_QUERY)
   const organization = useContext(OrganizationContext)
-  console.log(organization)
-  // const { error, loading, data, fetchMore } = useQuery(GET_USER)
 
   if (loading) return <CSStandalonePageLoader/>;
   if (error) return <p>{t('system.user.error_loading')}</p>; 
-
-  console.log(data)
 
   const headerImageUrl = getHeaderImageUrl(organization)
 
@@ -275,6 +271,9 @@ function SiteWrapperShop({t, match, history, children}) {
           nav: (
             <React.Fragment>
               <Grid.Col auto={true}>
+                <Link to="/cookie_policy">
+                  {t("cookie_policy.title")}
+                </Link>
                 {/* <List className="list-inline list-inline-dots mb-0">
                   <List.Item className="list-inline-item">
                     <a href="./docs/index.html">Documentation</a>

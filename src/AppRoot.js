@@ -26,6 +26,7 @@ import CSStandalonePageLoader from './components/ui/CSStandalonePageLoader'
 import { AppSettingsProvider } from "./components/context/AppSettingsContext"
 import { OrganizationProvider } from "./components/context/OrganizationContext"
 
+import CookiePolicy from './components/shop/cookie_policy/CookiePolicy'
 import HomeHome from './components/home/home/HomeHome'
 
 import AutomationHome from './components/automation/home/AutomationHome'
@@ -423,6 +424,8 @@ function AppRoot({ t }) {
       <OrganizationProvider value={organization}>
         <HashRouter>
           <Switch>
+            {/* COOKIE POLICY */}
+            <Route exact path="/cookie_policy" component={CookiePolicy} />
             {/* BACKEND HOME */}
             <PrivateRoute exact path="/backend" component={HomeHome} />
 
