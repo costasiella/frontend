@@ -1075,7 +1075,8 @@
         },
         "suppliers": {
             "title": "Suppliers"
-        }
+        },
+        "btn_export_active_accounts": "__STRING_NOT_TRANSLATED__"
     },
     "genders": {
         "female": "Female",
