@@ -1076,7 +1076,7 @@
         "suppliers": {
             "title": "Suppliers"
         },
-        "btn_export_active_accounts": "__STRING_NOT_TRANSLATED__"
+        "btn_export_active_accounts": "Export active"
     },
     "genders": {
         "female": "Female",
