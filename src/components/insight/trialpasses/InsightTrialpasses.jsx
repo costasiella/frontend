@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import { v4 } from "uuid"
 import moment from 'moment'
 import {
+  Card,
   Icon,
   List,
   Table
@@ -36,7 +37,7 @@ function InsightTrialpasses ({ t, history }) {
 
   if (loading) {
     return (
-      <InsightTrialpassesBase year={year}>
+      <InsightTrialpassesBase year={year} month={month} refetch={refetch}>
         {t("general.loading_with_dots")}
       </InsightTrialpassesBase>
     )
@@ -44,7 +45,7 @@ function InsightTrialpasses ({ t, history }) {
 
   if (error) {
     return (
-      <InsightTrialpassesBase year={year}>
+      <InsightTrialpassesBase year={year} month={month} refetch={refetch}>
         {t("general.error_sad_smiley")}
       </InsightTrialpassesBase>
     )
@@ -52,6 +53,19 @@ function InsightTrialpasses ({ t, history }) {
 
   console.log(data)
   let accountClasspasses = data.accountClasspasses
+
+  // Empty list
+  if (!accountClasspasses.edges.length) {
+    return (
+      <InsightTrialpassesBase year={year} month={month} refetch={refetch}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t("insight.trialpasses.empty_list")}</p>
+          </Card.Body>
+        </Card>
+      </InsightTrialpassesBase>
+    )
+  }
 
 
   return (

@@ -1634,7 +1634,12 @@
         "trialpasses": {
             "title": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
-            "set_month": "__STRING_NOT_TRANSLATED__"
+            "set_month": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__"
+        },
+        "inactive_accounts": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

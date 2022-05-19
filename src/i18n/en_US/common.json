@@ -1910,7 +1910,12 @@
         "trialpasses": {
             "title": "Trial passes",
             "explanation": "Report on trial passes & follow up purchases",
-            "set_month": "Set month"
+            "set_month": "Set month",
+            "empty_list": "No trial passes found in this month."
+        },
+        "inactive_accounts": {
+            "title": "Inactive accounts",
+            "explanation": "Find and optionally clean up inactive accounts."
         }
     },
     "selfcheckin": {
