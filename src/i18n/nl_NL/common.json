@@ -1645,9 +1645,8 @@
             "created_at": "__STRING_NOT_TRANSLATED__",
             "no_activity_after_date": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-            "": {
-                "deleted": "__STRING_NOT_TRANSLATED__"
-            }
+            "btn_view_inactive_accounts": "__STRING_NOT_TRANSLATED__",
+            "deleted": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

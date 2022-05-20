@@ -108,7 +108,7 @@ function InsightInactiveAccounts({t, history, match }) {
                   <Link to={`/insight/inactive_accounts/view/${node.id}`}>
                     <Button className='btn-sm' 
                             color="secondary">
-                      {t('general.view')}
+                      {t('insight.inactive_accounts.btn_view_inactive_accounts')}
                     </Button>
                   </Link>
                   <button className="icon btn btn-link btn-sm" 
@@ -120,7 +120,7 @@ function InsightInactiveAccounts({t, history, match }) {
                         msgConfirm: t("insight.inactive_accounts.delete_confirm_msg"),
                         msgDescription: <p>{moment(node.created_at).format(dateTimeFormatMoment)} { " - " } 
                           {moment(node.noActivityAfterDate).format(dateFormat)}</p>,
-                        msgSuccess: t('insight.inactive_accounts..deleted'),
+                        msgSuccess: t('insight.inactive_accounts.deleted'),
                         deleteFunction: deleteInsightAccountsInactive,
                         functionVariables: { variables: {
                           input: {

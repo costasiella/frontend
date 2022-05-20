@@ -1920,10 +1920,9 @@
             "empty_list": "No inactive account reports have been generated yet",
             "created_at": "Generated at",
             "no_activity_after_date": "No activity after date",
-            "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-            "": {
-                "deleted": "__STRING_NOT_TRANSLATED__"
-            }
+            "delete_confirm_msg": "Are you sure you with to delete this report of inactive accounts?",
+            "btn_view_inactive_accounts": "View inactive accounts",
+            "deleted": "Deleted inactive accounts report. (Accounts have not been deleted)."
         }
     },
     "selfcheckin": {
