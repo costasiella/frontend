@@ -20,3 +20,11 @@ export const GET_INSIGHT_ACCOUNTS_INACTIVE = gql`
     }
   }
 `
+
+export const DELETE_INSIGHT_ACCOUNTS_INACTIVE = gql`
+  mutation deleteInsightAccountInactive($input: DeleteInsightAccountInactiveInput!) {
+    deleteInsightAccountInactive(input: $input){
+      ok
+    }
+  }
+`

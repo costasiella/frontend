@@ -16,7 +16,7 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import ContentCard from "../../general/ContentCard"
 import InsightInactiveAccountsBase from './InsightInactiveAccountsBase'
 import confirm_delete from "../../../tools/confirm_delete"
-import { GET_INSIGHT_ACCOUNTS_INACTIVE } from "./queries"
+import { GET_INSIGHT_ACCOUNTS_INACTIVE, DELETE_INSIGHT_ACCOUNTS_INACTIVE } from "./queries"
 
 
 function InsightInactiveAccounts({t, history, match }) {
@@ -26,7 +26,7 @@ function InsightInactiveAccounts({t, history, match }) {
   const cardTitle = t("insight.inactive_accounts.title")
 
   const { loading, error, data, fetchMore } = useQuery(GET_INSIGHT_ACCOUNTS_INACTIVE)
-  // const [deleteInsightAccountsInactive] = useMutation(DELETE_INSIGHT_ACCOUNTS_INACTIVE)
+  const [deleteInsightAccountsInactive] = useMutation(DELETE_INSIGHT_ACCOUNTS_INACTIVE)
 
   // Loading
   if (loading) return (
@@ -105,7 +105,7 @@ function InsightInactiveAccounts({t, history, match }) {
                   {moment(node.noActivityAfterDate).format(dateFormat)}
                 </Table.Col>
                 <Table.Col className="text-right">
-                  {/* <Link to={`/finance/paymentbatches/${batchType}/view/${node.id}`}>
+                  <Link to={`/insight/inactive_accounts/view/${node.id}`}>
                     <Button className='btn-sm' 
                             color="secondary">
                       {t('general.view')}
@@ -117,21 +117,22 @@ function InsightInactiveAccounts({t, history, match }) {
                     onClick={() => {
                       confirm_delete({
                         t: t,
-                        msgConfirm: t("finance.payment_batches.delete_confirm_msg"),
-                        msgDescription: <p>{node.name}</p>,
-                        msgSuccess: t('finance.payment_batches.deleted'),
-                        deleteFunction: deletePaymentBatch,
+                        msgConfirm: t("insight.inactive_accounts.delete_confirm_msg"),
+                        msgDescription: <p>{moment(node.created_at).format(dateTimeFormatMoment)} { " - " } 
+                          {moment(node.noActivityAfterDate).format(dateFormat)}</p>,
+                        msgSuccess: t('insight.inactive_accounts..deleted'),
+                        deleteFunction: deleteInsightAccountsInactive,
                         functionVariables: { variables: {
                           input: {
                             id: node.id
                           }
                         }, refetchQueries: [
-                          {query: GET_PAYMENT_BATCHES_QUERY, variables: get_list_query_variables(batchType) } 
+                          {query: GET_INSIGHT_ACCOUNTS_INACTIVE } 
                         ]}
                       })
                   }}>
                     <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
-                  </button> */}
+                  </button>
                 </Table.Col>
               </Table.Row>
             ))}
