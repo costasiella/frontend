@@ -13,29 +13,21 @@ import ButtonAdd from "../../ui/ButtonAdd"
 import ButtonBack from "../../ui/ButtonBack"
 
 
-function FinancePaymentBatchesBase({t, history, match, children, showAdd=false, showBack=false, returnUrl=""}) {
-  const batchType = match.params.batch_type
-
+function InsightInactiveAccountsBase({t, history, match, children, showAdd=false, showBack=false, returnUrl=""}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("finance.title")} >
+          <Page.Header title={t("insight.title")} >
             <div className='page-options d-flex'>
               {(showAdd) ?
                 <HasPermissionWrapper permission="add"
-                                      resource="financepaymentbatch">
-                  <ButtonAdd addUrl={`/finance/paymentbatches/${batchType}/add_what`} />
+                                      resource="insightaccountinactive">
+                  <ButtonAdd addUrl={`/insight/inactive_accounts/add`} />
                 </HasPermissionWrapper>
                 : "" 
               }
-              {(showBack) ?
-                <HasPermissionWrapper permission="view"
-                                      resource="financepaymentbatch">
-                  <ButtonBack returnUrl={returnUrl} />
-                </HasPermissionWrapper>
-                : "" 
-              }
+              {(showBack) ? <ButtonBack returnUrl={returnUrl} /> : "" }
             </div>
           </Page.Header>
           <Grid.Row>
@@ -49,4 +41,4 @@ function FinancePaymentBatchesBase({t, history, match, children, showAdd=false, 
   )
 }
 
-export default withTranslation()(withRouter(FinancePaymentBatchesBase))
+export default withTranslation()(withRouter(InsightInactiveAccountsBase))
