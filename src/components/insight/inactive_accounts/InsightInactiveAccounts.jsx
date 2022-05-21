@@ -16,7 +16,7 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import ContentCard from "../../general/ContentCard"
 import InsightInactiveAccountsBase from './InsightInactiveAccountsBase'
 import confirm_delete from "../../../tools/confirm_delete"
-import { GET_INSIGHT_ACCOUNTS_INACTIVE, DELETE_INSIGHT_ACCOUNTS_INACTIVE } from "./queries"
+import { GET_INSIGHT_ACCOUNTS_INACTIVES, DELETE_INSIGHT_ACCOUNTS_INACTIVE } from "./queries"
 
 
 function InsightInactiveAccounts({t, history, match }) {
@@ -25,7 +25,7 @@ function InsightInactiveAccounts({t, history, match }) {
   const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
   const cardTitle = t("insight.inactive_accounts.title")
 
-  const { loading, error, data, fetchMore } = useQuery(GET_INSIGHT_ACCOUNTS_INACTIVE)
+  const { loading, error, data, fetchMore } = useQuery(GET_INSIGHT_ACCOUNTS_INACTIVES)
   const [deleteInsightAccountsInactive] = useMutation(DELETE_INSIGHT_ACCOUNTS_INACTIVE)
 
   // Loading
@@ -127,7 +127,7 @@ function InsightInactiveAccounts({t, history, match }) {
                             id: node.id
                           }
                         }, refetchQueries: [
-                          {query: GET_INSIGHT_ACCOUNTS_INACTIVE } 
+                          {query: GET_INSIGHT_ACCOUNTS_INACTIVES } 
                         ]}
                       })
                   }}>

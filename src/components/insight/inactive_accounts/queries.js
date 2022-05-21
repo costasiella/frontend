@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 
-export const GET_INSIGHT_ACCOUNTS_INACTIVE = gql`
+export const GET_INSIGHT_ACCOUNTS_INACTIVES = gql`
   query InsightAccountInactives {
     insightAccountInactives(first: 100) {
       pageInfo {
