@@ -11,7 +11,7 @@ import {
 
 import SiteWrapper from "../../SiteWrapper"
 
-function InsightInactiveAccountsDetailsBase({t, history, match, children, subTitle}) {
+function InsightInactiveAccountsViewBase({t, history, match, children, subTitle}) {
   const returnUrl = `/insight/inactive_accounts`
 
   return (
@@ -33,4 +33,4 @@ function InsightInactiveAccountsDetailsBase({t, history, match, children, subTit
   )
 }
 
-export default withTranslation()(withRouter(InsightInactiveAccountsDetailsBase))
+export default withTranslation()(withRouter(InsightInactiveAccountsViewBase))
