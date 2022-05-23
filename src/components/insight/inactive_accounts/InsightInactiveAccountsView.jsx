@@ -10,7 +10,6 @@ import {
   Grid,
   Card,
   Table,
-  List,
 } from "tabler-react"
 
 import { GET_INSIGHT_ACCOUNTS_INACTIVE } from './queries'
