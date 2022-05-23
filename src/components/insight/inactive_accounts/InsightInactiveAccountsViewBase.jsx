@@ -21,7 +21,7 @@ function InsightInactiveAccountsViewBase({t, history, match, children, subTitle}
           <Page.Header title={t("insight.inactive_accounts.title")} subTitle={subTitle}>
             <div className="page-options d-flex">
                 <Link to={returnUrl} 
-                      className='btn btn-secondary mr-2'>
+                      className='btn btn-secondary'>
                   <Icon prefix="fe" name="arrow-left" /> {t('general.back')}
                 </Link>
             </div>

@@ -521,7 +521,10 @@
         "week": "Week",
         "monthly": "Monthly",
         "error_try_refreshing": "Error: please refresh the page and try again.",
-        "mailing_list": "Mailing List"
+        "mailing_list": "Mailing List",
+        "generated on": "Generated on",
+        "last_login": "Last login",
+        "created_at": "Created at"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1922,7 +1925,8 @@
             "no_activity_after_date": "No activity after date",
             "delete_confirm_msg": "Are you sure you with to delete this report of inactive accounts?",
             "btn_view_inactive_accounts": "View inactive accounts",
-            "deleted": "Deleted inactive accounts report. (Accounts have not been deleted)."
+            "deleted": "Deleted inactive accounts report. (Accounts have not been deleted).",
+            "card_title": "Accounts without activity after"
         }
     },
     "selfcheckin": {
