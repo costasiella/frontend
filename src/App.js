@@ -8,6 +8,8 @@ import {
   ApolloProvider,
   Observable,
 } from "@apollo/client";
+
+import { relayStylePagination } from "@apollo/client/utilities";
 import { onError } from "@apollo/client/link/error";
 // import { setContext } from '@apollo/client/link/context';
 import Cookies from 'js-cookie';
@@ -218,7 +220,15 @@ const csrfMiddleware = new ApolloLink(async (operation, forward) => {
 // set up ApolloClient
 const client = new ApolloClient({
   link: from([csrfMiddleware, errorLink, httpLink]),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          accounts: relayStylePagination(),
+        },
+      },
+    },
+  }),
 })
 
 
