@@ -13,9 +13,10 @@ import ButtonFormCancel from '../../ui/ButtonFormCancel'
 import CSDatePicker from "../../ui/CSDatePicker"
 
 
-const InsightInactiveAccountsForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
+const InsightInactiveAccountsForm = ({ t, history, isSubmitting, errors, values, setFieldTouched, setFieldValue, returnUrl }) => (
   <FoForm>
       <Card.Body>
+        {console.log(values)}
         <Form.Group label={t("insight.inactive_accounts.no_activity_after_date")}>
           <CSDatePicker 
             className={(errors.noActivityAfterDate) ? "form-control is-invalid" : "form-control"} 
