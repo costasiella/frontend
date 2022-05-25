@@ -1657,7 +1657,8 @@
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "accounts": {
                 "empty_list": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "count_deleted_inactive_accounts": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

@@ -15,6 +15,7 @@ export const GET_INSIGHT_ACCOUNTS_INACTIVES = gql`
           id
           noActivityAfterDate 
           countInactiveAccounts
+          countDeletedInactiveAccounts
           createdAt
         }
       }

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import moment from 'moment'
 
 import {
+  Dimmer,
   Grid,
   Card,
   Table,
@@ -31,7 +32,11 @@ function InsightInactiveAccountsView({ t, history, match }) {
   // Loading
   if (loading) return (
     <InsightInactiveAccountsViewBase>
-      <p>{t("general.loading_with_dots")}</p>
+      <Card title={t("insight.inactive_accounts.card_title")}>
+        <Card.Body>
+          <Dimmer active={true} loader={true}/>
+        </Card.Body>
+      </Card>
     </InsightInactiveAccountsViewBase>
   )
   // Error
