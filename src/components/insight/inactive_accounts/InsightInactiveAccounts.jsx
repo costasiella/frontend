@@ -92,17 +92,21 @@ function InsightInactiveAccounts({t, history, match }) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('insight.inactive_accounts.created_at')}</Table.ColHeader>
               <Table.ColHeader>{t('insight.inactive_accounts.no_activity_after_date')}</Table.ColHeader>      
+              <Table.ColHeader>{t('insight.inactive_accounts.count_inactive_accounts')}</Table.ColHeader>      
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {insightAccountInactives.edges.map(({ node }) => (
               <Table.Row key={v4()}>
-                <Table.Col key={v4()}>
+                <Table.Col>
                   {moment(node.createdAt).format(dateTimeFormatMoment)}
                 </Table.Col>
-                <Table.Col key={v4()}>
+                <Table.Col>
                   {moment(node.noActivityAfterDate).format(dateFormat)}
+                </Table.Col>
+                <Table.Col>
+                  {node.countInactiveAccounts}
                 </Table.Col>
                 <Table.Col className="text-right">
                   <Link to={`/insight/inactive_accounts/view/${node.id}`}>

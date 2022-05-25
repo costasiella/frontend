@@ -1926,7 +1926,9 @@
             "delete_confirm_msg": "Are you sure you with to delete this report of inactive accounts?",
             "btn_view_inactive_accounts": "View inactive accounts",
             "deleted": "Deleted inactive accounts report. (Accounts have not been deleted).",
-            "card_title": "Accounts without activity after"
+            "card_title": "Accounts without activity after",
+            "count_inactive_accounts": "Inactive accounts found",
+            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__"
         }
     },
     "selfcheckin": {

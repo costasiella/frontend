@@ -1651,7 +1651,8 @@
             "btn_view_inactive_accounts": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__",
             "card_title": "__STRING_NOT_TRANSLATED__",
-            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__"
+            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__",
+            "count_inactive_accounts": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

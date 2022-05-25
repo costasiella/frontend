@@ -14,6 +14,7 @@ export const GET_INSIGHT_ACCOUNTS_INACTIVES = gql`
         node {
           id
           noActivityAfterDate 
+          countInactiveAccounts
           createdAt
         }
       }
