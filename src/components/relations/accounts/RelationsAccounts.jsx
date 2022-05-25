@@ -77,11 +77,11 @@ function RelationsAccounts({t, history}) {
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const {loading, error, data, fetchMore, refetch, networkStatus } = useQuery(GET_ACCOUNTS_QUERY, {
+  const {loading, error, data, fetchMore, refetch } = useQuery(GET_ACCOUNTS_QUERY, {
     variables: get_list_query_variables(),
     onError: console.log,
+    // These options would be nice to enable, but behave strangely with current code
     // notifyOnNetworkStatusChange: true
-
     // fetchPolicy: "network-only"
   })
   const [updateAccountActive] = useMutation(UPDATE_ACCOUNT_ACTIVE)

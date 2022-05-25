@@ -24,7 +24,8 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
   const { error, loading, data, fetchMore } = useQuery(GET_TASK_RESULT_QUERY, {
     variables: {
       taskName: "costasiella.tasks.account.subscription.credits.tasks.account_subscription_credits_add_for_month"
-    }
+    },
+    pollInterval: 4000
   })
 
   // Loading
