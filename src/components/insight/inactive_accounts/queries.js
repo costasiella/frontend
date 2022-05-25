@@ -44,6 +44,28 @@ export const GET_INSIGHT_ACCOUNTS_INACTIVE = gql`
   }
 `
 
+export const ADD_INSIGHT_ACCOUNTS_INACTIVE = gql`
+  mutation CreateInsightAccountInactive($input: CreateInsightAccountInactiveInput!) {
+    createInsightAccountInactive(input: $input) {
+      insightAccountInactive {
+        id
+        noActivityAfterDate
+        createdAt
+        accounts {
+          edges {
+            node {
+              account {
+                firstName
+                lastName
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 export const DELETE_INSIGHT_ACCOUNTS_INACTIVE = gql`
   mutation deleteInsightAccountInactive($input: DeleteInsightAccountInactiveInput!) {
     deleteInsightAccountInactive(input: $input){
