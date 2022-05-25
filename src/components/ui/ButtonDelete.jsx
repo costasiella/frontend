@@ -9,9 +9,21 @@ import {
 } from "tabler-react"
 
 
-function ButtonDelete({t, match, history, msgConfirm, msgDescription, msgSuccess, deleteFunction, deleteFunctionVariables}) {
+function ButtonDelete({
+  t, 
+  match, 
+  history, 
+  msgConfirm, 
+  msgDescription, 
+  msgSuccess, 
+  deleteFunction, 
+  deleteFunctionVariables, 
+  buttonClass="btn-link",
+  buttonText="",
+  buttonTextColor="text-red"
+}) {
   return (
-    <button className="icon btn btn-link btn-sm"
+    <button className={`icon btn ${buttonClass} btn-sm`}
       title={t('general.delete')} 
       onClick={() => {
         confirm_delete({
@@ -23,8 +35,8 @@ function ButtonDelete({t, match, history, msgConfirm, msgDescription, msgSuccess
           functionVariables: deleteFunctionVariables
         })
     }}>
-      <span className="text-red">
-        <Icon prefix="fe" name="trash-2" />
+      <span className={buttonTextColor}>
+        <Icon prefix="fe" name="trash-2" /> {buttonText}
       </span>
     </button> 
   )

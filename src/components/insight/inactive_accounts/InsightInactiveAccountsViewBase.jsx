@@ -11,7 +11,7 @@ import {
 
 import SiteWrapper from "../../SiteWrapper"
 
-function InsightInactiveAccountsViewBase({t, history, match, children, subTitle}) {
+function InsightInactiveAccountsViewBase({t, history, match, children, subTitle, pageHeaderButtonList}) {
   const returnUrl = `/insight/inactive_accounts`
 
   return (
@@ -24,6 +24,7 @@ function InsightInactiveAccountsViewBase({t, history, match, children, subTitle}
                       className='btn btn-secondary'>
                   <Icon prefix="fe" name="arrow-left" /> {t('general.back')}
                 </Link>
+                {pageHeaderButtonList}
             </div>
           </Page.Header>
           {children}

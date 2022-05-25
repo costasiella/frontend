@@ -1,6 +1,6 @@
 
 import React, { useContext } from 'react'
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
@@ -13,8 +13,9 @@ import {
   Table,
 } from "tabler-react"
 
-import { GET_INSIGHT_ACCOUNTS_INACTIVE } from './queries'
+import { GET_INSIGHT_ACCOUNTS_INACTIVE, DELETE_INSIGHT_ACCOUNTS_INACTIVE_ACCOUNTS } from './queries'
 import AppSettingsContext from '../../context/AppSettingsContext'
+import ButtonDelete from '../../ui/ButtonDelete'
 import InsightInactiveAccountsViewBase from './InsightInactiveAccountsViewBase'
 
 
@@ -25,9 +26,10 @@ function InsightInactiveAccountsView({ t, history, match }) {
   const id = match.params.id
 
   const { loading, error, data } = useQuery(GET_INSIGHT_ACCOUNTS_INACTIVE, {
-    variables: { id: id }
+    variables: { id: id },
+    pollInterval: 5000
   })
-  // const [updateFinancePaymentBatch] = useMutation(UPDATE_PAYMENT_BATCH)
+  const [deleteAccounts] = useMutation(DELETE_INSIGHT_ACCOUNTS_INACTIVE_ACCOUNTS)
 
   // Loading
   if (loading) return (
@@ -51,6 +53,19 @@ function InsightInactiveAccountsView({ t, history, match }) {
   const cardTitle = t("insight.inactive_accounts.card_title") + " " + moment(insightAccountInactive.noActivityAfterDate).format(dateFormat)
   const subTitle = t("general.generated on") + " " + moment(insightAccountInactive.createdAt).format(dateTimeFormatMoment)
 
+  const pageHeaderButtonList = <ButtonDelete
+    msgConfirm={t("insight.inactive_accounts.accounts.delete_confirm_msg")}
+    msgDescription={<p><b>{insightAccountInactive.countInactiveAccounts} {t("insight.inactive_accounts.accounts.count_will_be_deleted")}</b></p>} 
+    msgSuccess={t("insight.inactive_accounts.accounts.deleted")}
+    deleteFunction={deleteAccounts} 
+    deleteFunctionVariables={{
+      variables: {input: {id: id}}
+    }}
+    buttonClass="btn-danger ml-2"
+    buttonText="Delete accounts" 
+    buttonTextColor="text-white"
+  />
+
   if (!insightAccountInactive.accounts.edges.length) return (
     <InsightInactiveAccountsViewBase subTitle={subTitle}>
       <Card title={cardTitle}>
@@ -62,7 +77,7 @@ function InsightInactiveAccountsView({ t, history, match }) {
   )
 
   return (
-    <InsightInactiveAccountsViewBase subTitle={subTitle}>
+    <InsightInactiveAccountsViewBase subTitle={subTitle} pageHeaderButtonList={pageHeaderButtonList}>
       <Grid.Row>
         <Grid.Col>
           <Card title={cardTitle}>

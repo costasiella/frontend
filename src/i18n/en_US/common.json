@@ -1932,7 +1932,10 @@
             "title_add": "Create inactive accounts report",
             "toast_add_success": "Added new inactive account report. Please refresh the page in a bit to view the inactive accounts.",
             "accounts": {
-                "empty_list": "No inactive accounts have been found"
+                "empty_list": "No inactive accounts have been found",
+                "delete_confirm_msg": "Are you sure you wish to remove the reported inactive accounts?",
+                "count_will_be_deleted": "Accounts will be deleted",
+                "deleted": "Inactive accounts will momentarily be deleted"
             },
             "count_deleted_inactive_accounts": "Inactive accounts deleted"
         }

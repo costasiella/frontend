@@ -1656,7 +1656,10 @@
             "title_add": "__STRING_NOT_TRANSLATED__",
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "accounts": {
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "count_will_be_deleted": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__"
             },
             "count_deleted_inactive_accounts": "__STRING_NOT_TRANSLATED__"
         }
