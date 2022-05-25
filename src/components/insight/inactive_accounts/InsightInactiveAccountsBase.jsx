@@ -13,7 +13,15 @@ import ButtonAdd from "../../ui/ButtonAdd"
 import ButtonBack from "../../ui/ButtonBack"
 
 
-function InsightInactiveAccountsBase({t, history, match, children, showAdd=false, showBack=false, returnUrl=""}) {
+function InsightInactiveAccountsBase({
+  t, 
+  history, 
+  match, 
+  children, 
+  showAdd=false, 
+  showBack=false, 
+  returnUrl="/insight/inactive_accounts"}) 
+{
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
