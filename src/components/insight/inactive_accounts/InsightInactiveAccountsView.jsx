@@ -43,13 +43,24 @@ function InsightInactiveAccountsView({ t, history, match }) {
 
   const insightAccountInactive = data.insightAccountInactive
   console.log(insightAccountInactive)
+  const cardTitle = t("insight.inactive_accounts.card_title") + " " + moment(insightAccountInactive.noActivityAfterDate).format(dateFormat)
   const subTitle = t("general.generated on") + " " + moment(insightAccountInactive.createdAt).format(dateTimeFormatMoment)
+
+  if (!insightAccountInactive.accounts.edges.length) return (
+    <InsightInactiveAccountsViewBase subTitle={subTitle}>
+      <Card title={cardTitle}>
+        <Card.Body>
+          {t("insight.inactive_accounts.accounts.empty_list")}
+        </Card.Body>
+      </Card>
+    </InsightInactiveAccountsViewBase>
+  )
 
   return (
     <InsightInactiveAccountsViewBase subTitle={subTitle}>
       <Grid.Row>
         <Grid.Col>
-          <Card title={t("insight.inactive_accounts.card_title") + " " + moment(insightAccountInactive.noActivityAfterDate).format(dateFormat)}>
+          <Card title={cardTitle}>
             {/* <Card.Alert color="primary">
               {t("insight.inactive_accounts.explanation_when_inactive")}
             </Card.Alert> */}

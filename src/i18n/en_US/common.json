@@ -1928,7 +1928,12 @@
             "deleted": "Deleted inactive accounts report. (Accounts have not been deleted).",
             "card_title": "Accounts without activity after",
             "count_inactive_accounts": "Inactive accounts found",
-            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__"
+            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "Added new inactive account report. Please refresh the page in a bit to view the inactive accounts.",
+            "accounts": {
+                "empty_list": "No inactive accounts have been found"
+            }
         }
     },
     "selfcheckin": {
