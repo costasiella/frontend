@@ -30,28 +30,34 @@ class InsightHome extends Component {
           <Container>
             <Page.Header title={t("insight.title")} />
             <Grid.Row>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("insight.classpasses.title")}</h5>
-                    {t("insight.classpasses.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/insight/classpasses" />
-                  </Card.Body>
-                </Card>
-              </Grid.Col>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("insight.subscriptions.title")}</h5>
-                    {t("insight.subscriptions.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/insight/subscriptions" />
-                  </Card.Body>
-                </Card>
-              </Grid.Col>
               <HasPermissionWrapper permission="view"
-                                    resource="insighttrialcards">
+                                    resource="insightclasspasses">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.classpasses.title")}</h5>
+                      {t("insight.classpasses.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/classpasses" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
+              <HasPermissionWrapper permission="view"
+                                    resource="insightsubscriptions">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.subscriptions.title")}</h5>
+                      {t("insight.subscriptions.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/subscriptions" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
+              <HasPermissionWrapper permission="view"
+                                    resource="insighttrialpasses">
                 <Grid.Col md={3} lg={3}>
                   <Card>
                     <Card.Body>
@@ -63,16 +69,32 @@ class InsightHome extends Component {
                   </Card>
                 </Grid.Col>
               </HasPermissionWrapper>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("insight.revenue.title")}</h5>
-                    {t("insight.revenue.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/insight/revenue" />
-                  </Card.Body>
-                </Card>
-              </Grid.Col>
+              <HasPermissionWrapper permission="view"
+                                    resource="insightrevenue">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.revenue.title")}</h5>
+                      {t("insight.revenue.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/revenue" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
+              <HasPermissionWrapper permission="view"
+                                    resource="insightaccountsinactive">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.inactive_accounts.title")}</h5>
+                      {t("insight.inactive_accounts.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/inactive_accounts" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
             </Grid.Row>
           </Container>
         </div>

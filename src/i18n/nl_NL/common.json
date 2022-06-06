@@ -445,7 +445,10 @@
         "week": "__STRING_NOT_TRANSLATED__",
         "monthly": "__STRING_NOT_TRANSLATED__",
         "error_try_refreshing": "__STRING_NOT_TRANSLATED__",
-        "mailing_list": "__STRING_NOT_TRANSLATED__"
+        "mailing_list": "__STRING_NOT_TRANSLATED__",
+        "generated on": "__STRING_NOT_TRANSLATED__",
+        "last_login": "__STRING_NOT_TRANSLATED__",
+        "created_at": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1634,7 +1637,31 @@
         "trialpasses": {
             "title": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
-            "set_month": "__STRING_NOT_TRANSLATED__"
+            "set_month": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__"
+        },
+        "inactive_accounts": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "created_at": "__STRING_NOT_TRANSLATED__",
+            "no_activity_after_date": "__STRING_NOT_TRANSLATED__",
+            "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "btn_view_inactive_accounts": "__STRING_NOT_TRANSLATED__",
+            "deleted": "__STRING_NOT_TRANSLATED__",
+            "card_title": "__STRING_NOT_TRANSLATED__",
+            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__",
+            "count_inactive_accounts": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "accounts": {
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "count_will_be_deleted": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__"
+            },
+            "count_deleted_inactive_accounts": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

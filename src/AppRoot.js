@@ -78,6 +78,9 @@ import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdi
 import FinanceTaxRatesSummary from './components/finance/taxrates_summary/FinanceTaxRatesSummary'
 
 import InsightHome from './components/insight/home/InsightHome'
+import InsightInactiveAccounts from './components/insight/inactive_accounts/InsightInactiveAccounts'
+import InsightInactiveAccountsAdd from './components/insight/inactive_accounts/InsightInactiveAccountsAdd'
+import InsightInactiveAccountsView from './components/insight/inactive_accounts/InsightInactiveAccountsView'
 import InsightClasspasses from './components/insight/classpasses/InsightClasspasses'
 import InsightRevenue from './components/insight/revenue/InsightRevenue'
 import InsightSubscriptions from './components/insight/subscriptions/InsightSubscriptions'
@@ -682,6 +685,9 @@ function AppRoot({ t }) {
 
             {/* Insight */}
             <PrivateRoute exact path="/insight" component={InsightHome} />
+            <PrivateRoute exact path="/insight/inactive_accounts" component={InsightInactiveAccounts} />
+            <PrivateRoute exact path="/insight/inactive_accounts/add" component={InsightInactiveAccountsAdd} />
+            <PrivateRoute exact path="/insight/inactive_accounts/view/:id" component={InsightInactiveAccountsView} />
             <PrivateRoute exact path="/insight/classpasses" component={InsightClasspasses} />
             <PrivateRoute exact path="/insight/revenue" component={InsightRevenue} />
             <PrivateRoute exact path="/insight/subscriptions" component={InsightSubscriptions} />

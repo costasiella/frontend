@@ -77,9 +77,12 @@ function RelationsAccounts({t, history}) {
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
-  const {loading, error, data, fetchMore, refetch} = useQuery(GET_ACCOUNTS_QUERY, {
+  const {loading, error, data, fetchMore, refetch } = useQuery(GET_ACCOUNTS_QUERY, {
     variables: get_list_query_variables(),
-    fetchPolicy: "network-only"
+    onError: console.log,
+    // These options would be nice to enable, but behave strangely with current code
+    // notifyOnNetworkStatusChange: true
+    // fetchPolicy: "network-only"
   })
   const [updateAccountActive] = useMutation(UPDATE_ACCOUNT_ACTIVE)
   const [deleteAccount] = useMutation(DELETE_ACCOUNT)
@@ -127,6 +130,7 @@ function RelationsAccounts({t, history}) {
   </Card.Options>
 
   let accounts = data.accounts
+  let pageInfo = accounts.pageInfo
 
   // Empty list
   if (!accounts.edges.length) { return (
@@ -151,27 +155,15 @@ function RelationsAccounts({t, history}) {
         isLoadingMore={isLoadingMore}
         onLoadMore={async () => {
           setIsLoadingMore(true)
-          await fetchMore({
-            variables: {
-              after: data.accounts.pageInfo.endCursor
-            },
-            updateQuery: (previousResult, { fetchMoreResult }) => {
-              const newEdges = fetchMoreResult.accounts.edges
-              const pageInfo = fetchMoreResult.accounts.pageInfo 
-              return newEdges.length
-                ? {
-                    // Put the new accounts at the end of the list and update `pageInfo`
-                  accounts: {
-                    __typename: previousResult.accounts.__typename,
-                    edges: [ ...previousResult.accounts.edges, ...newEdges ],
-                    pageInfo
-                  }
-                }
-              : previousResult
-            }
-          })
+          if (pageInfo.hasNextPage) {
+            await fetchMore({
+              variables: {
+                after: pageInfo.endCursor,
+              },
+            });
+          }
           setIsLoadingMore(false)
-        }} 
+        }}
       >
         <Table cards>
           <Table.Header>
