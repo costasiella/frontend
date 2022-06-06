@@ -80,7 +80,7 @@ function RelationsAccounts({t, history}) {
   const {loading, error, data, fetchMore, refetch } = useQuery(GET_ACCOUNTS_QUERY, {
     variables: get_list_query_variables(),
     onError: console.log,
-    // These options would be nice to enable, but behave strangely with current code
+    // These options would be nice to enable, but behave strangely with current caching
     // notifyOnNetworkStatusChange: true
     // fetchPolicy: "network-only"
   })

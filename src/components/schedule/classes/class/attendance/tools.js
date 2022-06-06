@@ -1,14 +1,13 @@
-import CSLS from "../../../../../tools/cs_local_storage"
-
-export function get_accounts_query_variables() {
+export function get_accounts_query_variables(searchName) {
   let queryVars = {
     instructor: undefined,
     employee: undefined,
-    searchName: undefined
+    searchName: undefined,
   }
 
-  let search = localStorage.getItem(CSLS.SCHEDULE_CLASSES_CLASS_ATTENDANCE_SEARCH)
-  queryVars.searchName = search
+  if (searchName) {
+    queryVars.searchName = searchName
+  }
 
   return queryVars
 }

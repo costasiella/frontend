@@ -24,7 +24,10 @@ function ScheduleClassAttendanceSearch({ t, match, history, checkedInIds, classS
   const [showSearchResults, setShowSearchResults] = useState(false)
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
-  const [ getAccounts, { called, loading, error, data, fetchMore } ] = useLazyQuery( GET_ACCOUNTS_QUERY )
+  const [ getAccounts, { called, loading, error, data, fetchMore } ] = useLazyQuery( GET_ACCOUNTS_QUERY, {
+    // This is important, as the current relayStylePagination doesn't include args.
+    fetchPolicy: "network-only" 
+  } )
 
   function Search() {
     return <InputSearch 
@@ -35,7 +38,7 @@ function ScheduleClassAttendanceSearch({ t, match, history, checkedInIds, classS
         localStorage.setItem(CSLS.SCHEDULE_CLASSES_CLASS_ATTENDANCE_SEARCH, value)
         if (value) {
           setShowSearchResults(true)
-          getAccounts({ variables: get_accounts_query_variables()})
+          getAccounts({ variables: get_accounts_query_variables(value)})
         } else {
           setShowSearchResults(false)
         }
