@@ -1917,8 +1917,8 @@
             "empty_list": "No trial passes found in this month."
         },
         "inactive_accounts": {
-            "title": "Inactive account reports",
-            "explanation": "Find and optionally clean up inactive accounts.",
+            "title": "Inactive account reports - Beta",
+            "explanation": "Find and optionally clean up inactive accounts. (This is a new and experimental feature. Don't use it yet in a production environment).",
             "error_loading": "Error loading inactive account reports :(",
             "empty_list": "No inactive account reports have been generated yet",
             "created_at": "Generated at",
