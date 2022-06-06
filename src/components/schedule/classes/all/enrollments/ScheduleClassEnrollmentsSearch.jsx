@@ -41,10 +41,9 @@ function ScheduleClassEnrollmentsSearch({ t, match, history }) {
       initialValueKey={CSLS.SCHEDULE_CLASSES_ENROLLMENT_SEARCH}
       placeholder="Search..."
       onChange={(value) => {
-        console.log(value)
         localStorage.setItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_SEARCH, value)
         setSearchName(value)
-        refetch({ variables: getAccountsQueryVariables(value)})
+        refetch(getAccountsQueryVariables(value))
       }}
     />
   </Card.Options>
