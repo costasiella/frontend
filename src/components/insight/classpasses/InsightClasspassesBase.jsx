@@ -21,7 +21,7 @@ if (!localStorage.getItem(CSLS.INSIGHT_CLASSPASSES_YEAR)) {
   localStorage.setItem(CSLS.INSIGHT_CLASSPASSES_YEAR, moment().format('YYYY')) 
 } 
 
-function InsightClasspassesBase ({ t, history, children, year, refetchData=f=>f }) {
+function InsightClasspassesBase ({ t, history, children, year, refetch }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -37,16 +37,18 @@ function InsightClasspassesBase ({ t, history, children, year, refetchData=f=>f 
                     let previousYear = parseInt(localStorage.getItem(CSLS.INSIGHT_CLASSPASSES_YEAR)) - 1                    
                     localStorage.setItem(CSLS.INSIGHT_CLASSPASSES_YEAR, previousYear) 
 
-                    refetchData(previousYear)
+                    refetch({year: previousYear})
                 }} />
                 <Button 
                   icon="sunset"
                   color="secondary"
                   onClick={ () => {
-                    let currentYear = moment().format('YYYY')
+                    let currentYear = parseInt(moment().format('YYYY'))
                     localStorage.setItem(CSLS.INSIGHT_CLASSPASSES_YEAR, currentYear) 
+
+                    console.log(currentYear)
                     
-                    refetchData(parseInt(currentYear))
+                    refetch({year: currentYear})
                 }} />
                 <Button 
                   icon="chevron-right"
@@ -55,7 +57,7 @@ function InsightClasspassesBase ({ t, history, children, year, refetchData=f=>f 
                     let nextYear = parseInt(localStorage.getItem(CSLS.INSIGHT_CLASSPASSES_YEAR)) + 1                    
                     localStorage.setItem(CSLS.INSIGHT_CLASSPASSES_YEAR, nextYear) 
 
-                    refetchData(nextYear)
+                    refetch({year: nextYear})
                 }} />
               </Button.List> 
             </div>

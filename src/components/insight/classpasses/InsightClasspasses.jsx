@@ -3,16 +3,20 @@ import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import C3Chart from "react-c3js"
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Legend, Tooltip, ResponsiveContainer } from 'recharts'
+
 import {
   colors,
+  Dimmer,
   Grid,
   Button,
   Card,
 } from "tabler-react";
 
 import CSLS from "../../../tools/cs_local_storage"
+import { getMonthNamesShort } from '../../../tools/date_tools'
 import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
-import { GET_CLASSPASSES_SOLD_QUERY, GET_CLASSPASSES_ACTIVE_QUERY } from './queries'
+import { GET_INSIGHT_CLASSPASSES_QUERY } from './queries'
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightClasspassesBase from './InsightClasspassesBase'
 
@@ -22,134 +26,69 @@ function InsightClasspasses ({ t, history }) {
   const export_url_sold = "/d/export/insight/classpasses/sold/" + year
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
-  const { 
-    loading: loadingSold, 
-    error: errorSold, 
-    data: dataSold,
-    refetch: refetchSold
-   } = useQuery(GET_CLASSPASSES_SOLD_QUERY, {
-    variables: { year: year }
+  console.log(year)
+
+  const { loading, error, data, refetch } = useQuery(GET_INSIGHT_CLASSPASSES_QUERY, {
+    variables: { year: year },
   })
 
-  const { 
-    loading: loadingActive, 
-    error: errorActive, 
-    data: dataActive,
-    refetch: refetchActive
-   } = useQuery(GET_CLASSPASSES_ACTIVE_QUERY, {
-    variables: { year: year }
-  })
-
-
-  if (loadingSold || loadingActive) {
+  if (loading) {
     return (
-      <InsightClasspassesBase year={year}>
-        {t("general.loading_with_dots")}
+      <InsightClasspassesBase year={year} refetch={refetch}>
+        <Card title={t('general.chart')}>
+          <Dimmer active={true} loader={true} />
+        </Card>
       </InsightClasspassesBase>
     )
   }
 
-  if (errorSold || errorActive) {
+  if (error) {
     return (
-      <InsightClasspassesBase year={year}>
-        {t("general.error_sad_smiley")}
+      <InsightClasspassesBase year={year} refetch={refetch}>
+        <Card title={t('general.chart')}>
+          {t("general.error_sad_smiley")}
+        </Card>
       </InsightClasspassesBase>
     )
   }
 
-  function refetchData(year) {
-    refetchActive({year: year})
-    refetchSold({year: year})
-  }
+  console.log(data)
 
-  console.log(dataSold)
-  console.log(dataActive)
+  const monthNames = getMonthNamesShort(t)
 
-  const data_sold_label = t("insight.classpasses.sold.title")
-  const chart_data_sold = dataSold.insightAccountClasspassesSold.data
-  console.log("chart_data sold")
-  console.log(data_sold_label, ...chart_data_sold)
+  // Add month name to data
+  const chartData = data.insightAccountClasspasses.months.map((item, index) => (
+    { ...item, monthName: monthNames[index] }
+  ))
 
-  const data_active_label = t("insight.classpasses.active.title")
-  const chart_data_active = dataActive.insightAccountClasspassesActive.data
-  console.log("chart_data active")
-  console.log(data_sold_label, ...chart_data_active)
-
+  console.log(chartData)
 
   return (
-    <InsightClasspassesBase year={year} refetchData={refetchData}>
+    <InsightClasspassesBase year={year} refetch={refetch}>
       {/* <Grid.Row> */}
         <Grid.Col md={9}>
           <Card title={t('general.chart')}>
             <Card.Body>
-              <C3Chart
-                style={{ height: "16rem" }}
-                data={{
-                  x: 'x',
-                  columns: [
-                    // each columns data as array, starting with "name" and then containing data
-                    [ 'x',
-                      t("datetime.months.short_january"),
-                      t("datetime.months.short_february"),
-                      t("datetime.months.short_march"),
-                      t("datetime.months.short_april"),
-                      t("datetime.months.short_may"),
-                      t("datetime.months.short_june"),
-                      t("datetime.months.short_july"),
-                      t("datetime.months.short_august"),
-                      t("datetime.months.short_september"),
-                      t("datetime.months.short_october"),
-                      t("datetime.months.short_november"),
-                      t("datetime.months.short_decemer"),
-                    ],
-                    [ 'sold', ...chart_data_sold],
-                    [ 'active', ...chart_data_active],
-                  ],
-                  type: "area", // default type of chart
-                  groups: [['sold'], ['active']],
-                  colors: {
-                    sold: colors["blue"],
-                    active: colors["green"],
-                  },
-                  names: {
-                    // name of each serie
-                    sold: data_sold_label,
-                    active: data_active_label,
-                  },
-                  
-                }}
-                axis={{
-                  y: {
-                    padding: {
-                      bottom: 0,
-                    },
-                    show: true,
-                  },
-                  x: {
-                    padding: {
-                      left: 0,
-                      right: 0,
-                    },
-                    type: 'category',
-                    show: true,
-                  },
-                }}
-                tooltip={{
-                  format: {
-                    title: function(x) {
-                      return "";
-                    },
-                  },
-                }}
-                padding={{
-                  bottom: 0,
-                  // left: -1,
-                  right: -1,
-                }}
-                point={{
-                  show: false,
-                }}
-              />
+              <ResponsiveContainer width="100%" aspect={2.5}>
+                <AreaChart
+                  width={500}
+                  height={300}
+                  data={chartData}
+                  margin={{
+                    top: 30,
+                    right: 30,
+                    left: -20,
+                    bottom: 0,
+                  }}
+                >
+                  <XAxis dataKey="monthName"/>
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Area type="monotone" dataKey="sold" stroke={colors["blue"]} fillOpacity={0.4} fill={colors["blue"]} />
+                  <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.2} fill={colors["green"]} />
+                </AreaChart>
+              </ResponsiveContainer>
             </Card.Body>
           </Card>
         </Grid.Col>
