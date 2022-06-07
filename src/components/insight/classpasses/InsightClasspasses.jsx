@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import C3Chart from "react-c3js"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Legend, Tooltip, ResponsiveContainer } from 'recharts'
 
 import {
@@ -25,8 +24,6 @@ function InsightClasspasses ({ t, history }) {
   const export_url_active = "/d/export/insight/classpasses/active/" + year
   const export_url_sold = "/d/export/insight/classpasses/sold/" + year
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
-
-  console.log(year)
 
   const { loading, error, data, refetch } = useQuery(GET_INSIGHT_CLASSPASSES_QUERY, {
     variables: { year: year },
@@ -52,8 +49,6 @@ function InsightClasspasses ({ t, history }) {
     )
   }
 
-  console.log(data)
-
   const monthNames = getMonthNamesShort(t)
 
   // Add month name to data
@@ -61,11 +56,8 @@ function InsightClasspasses ({ t, history }) {
     { ...item, monthName: monthNames[index] }
   ))
 
-  console.log(chartData)
-
   return (
     <InsightClasspassesBase year={year} refetch={refetch}>
-      {/* <Grid.Row> */}
         <Grid.Col md={9}>
           <Card title={t('general.chart')}>
             <Card.Body>
@@ -118,7 +110,6 @@ function InsightClasspasses ({ t, history }) {
             {t("insight.classpasses.active.export_excel")}
           </Button>
         </Grid.Col>
-      {/* </Grid.Row> */}
     </InsightClasspassesBase>
   )
 }
