@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Legend, Tooltip, ResponsiveContainer } from 'recharts'
+import { AreaChart, Area, XAxis, YAxis, Legend, Tooltip, ResponsiveContainer } from 'recharts'
 
 import {
   colors,
@@ -78,7 +78,7 @@ function InsightClasspasses ({ t, history }) {
                   <Tooltip />
                   <Legend />
                   <Area type="monotone" dataKey="sold" stroke={colors["blue"]} fillOpacity={0.4} fill={colors["blue"]} />
-                  <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.2} fill={colors["green"]} />
+                  <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.1} fill={colors["green"]} />
                 </AreaChart>
               </ResponsiveContainer>
             </Card.Body>
