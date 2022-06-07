@@ -78,28 +78,26 @@ function InsightSubscriptions ({ t, history }) {
       <Grid.Row>
         <Grid.Col md={9}>
           <Card title={cardTitle}>
-            <Card.Body>
-              <ResponsiveContainer width="100%" aspect={2.5}>
-                <AreaChart
-                  width={500}
-                  height={300}
-                  data={chartData}
-                  margin={{
-                    top: 30,
-                    right: 30,
-                    left: -20,
-                    bottom: 0,
-                  }}
-                >
-                  <XAxis dataKey="monthName"/>
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Area type="monotone" dataKey="sold" stroke={colors["blue"]} fillOpacity={0.4} fill={colors["blue"]} />
-                  <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.1} fill={colors["green"]} />
-                </AreaChart>
-              </ResponsiveContainer>
-            </Card.Body>
+            <ResponsiveContainer width="100%" aspect={2.5}>
+              <AreaChart
+                width={500}
+                height={300}
+                data={chartData}
+                margin={{
+                  top: 20,
+                  right: 20,
+                  left: 0,
+                  bottom: 20,
+                }}
+              >
+                <XAxis dataKey="monthName"/>
+                <YAxis width={40} />
+                <Tooltip />
+                <Legend />
+                <Area type="monotone" dataKey="sold" stroke={colors["blue"]} fillOpacity={0.4} fill={colors["blue"]} />
+                <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.1} fill={colors["green"]} />
+              </AreaChart>
+            </ResponsiveContainer>
           </Card>
         </Grid.Col>
         <Grid.Col md={3}>
