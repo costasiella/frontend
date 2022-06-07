@@ -4,12 +4,14 @@ import { gql } from "@apollo/client"
 export const GET_REVENUE_QUERY = gql`
   query InsightRevenueTotal($year: Int!) {
     insightRevenueTotal(year: $year) {
-      description
       year
-      total
-      totalDisplay
-      subtotal
-      tax
+      months {
+        month
+        total
+        totalDisplay
+        subtotal
+        tax
+      }
     }
     insightRevenueClasspasses(year: $year) {
       description
