@@ -14,36 +14,44 @@ export const GET_REVENUE_QUERY = gql`
       }
     }
     insightRevenueClasspasses(year: $year) {
-      description
       year
-      total
-      totalDisplay
-      subtotal
-      tax
+      months {
+        month
+        total
+        totalDisplay
+        subtotal
+        tax
+      }
     }
     insightRevenueSubscriptions(year: $year) {
-      description
       year
-      total
-      totalDisplay
-      subtotal
-      tax
+      months {
+        month
+        total
+        totalDisplay
+        subtotal
+        tax
+      }
     }
     insightRevenueEventTickets(year: $year) {
-      description
       year
-      total
-      totalDisplay
-      subtotal
-      tax
+      months {
+        month
+        total
+        totalDisplay
+        subtotal
+        tax
+      }
     }
     insightRevenueOther(year: $year) {
-      description
       year
-      total
-      totalDisplay
-      subtotal
-      tax
+      months {
+        month
+        total
+        totalDisplay
+        subtotal
+        tax
+      }
     }
   }
 `
