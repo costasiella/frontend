@@ -2199,7 +2199,7 @@
                     "cancelled_holiday": "This class is within a holiday"
                 },
                 "unable_to_show_booking_options": "Unable to show booking options",
-                "already_booked": "You're already booked this class"
+                "already_booked": "You've already booked this class"
             },
             "booked": {
                 "class": "Selected class",
