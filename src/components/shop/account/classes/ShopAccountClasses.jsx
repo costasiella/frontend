@@ -34,7 +34,8 @@ function ShopAccountClasses({t, match, history}) {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       account: dataUser && dataUser.user ? dataUser.user.accountId : null
-    }
+    },
+    fetchPolicy: "network-only"
   })
   // TODO: add cancel class button & query
   // const [ updateOrder ] = useMutation(UPDATE_ORDER)

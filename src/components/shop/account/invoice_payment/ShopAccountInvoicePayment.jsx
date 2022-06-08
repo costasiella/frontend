@@ -30,7 +30,8 @@ function ShopAccountInvoicePayment({t, match, history}) {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       id: id
-    }
+    },
+    fetchPolicy: "network-only"
   })
 
   const [createPaymentLink] = useMutation(CREATE_PAYMENT_LINK)

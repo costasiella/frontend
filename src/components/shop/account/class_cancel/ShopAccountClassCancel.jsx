@@ -35,7 +35,8 @@ function ShopAccountClassCancel({t, match, history}) {
       id: attendanceId,
       scheduleItemId: scheduleItemId,
       date: date
-    }
+    },
+    fetchPolicy: "network-only"
   })
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
   const [updateScheduleItemAttendance] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)

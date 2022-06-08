@@ -36,7 +36,8 @@ function ShopAccountInvoices({t, match, history}) {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       account: dataUser && dataUser.user ? dataUser.user.accountId : null
-    }
+    },
+    fetchPolicy: "network-only"
   })
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
