@@ -18,7 +18,7 @@ if (!localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)) {
   localStorage.setItem(CSLS.INSIGHT_REVENUE_YEAR, moment().format('YYYY')) 
 } 
 
-function InsightRevenueBase ({ t, history, children, year, refetchData=f=>f }) {
+function InsightRevenueBase ({ t, history, children, year, refetch=f=>f }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -34,7 +34,7 @@ function InsightRevenueBase ({ t, history, children, year, refetchData=f=>f }) {
                     let previousYear = parseInt(localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)) - 1                    
                     localStorage.setItem(CSLS.INSIGHT_REVENUE_YEAR, previousYear) 
 
-                    refetchData(previousYear)
+                    refetch({year: previousYear})
                 }} />
                 <Button 
                   icon="sunset"
@@ -43,7 +43,7 @@ function InsightRevenueBase ({ t, history, children, year, refetchData=f=>f }) {
                     let currentYear = parseInt(moment().format('YYYY'))
                     localStorage.setItem(CSLS.INSIGHT_REVENUE_YEAR, currentYear) 
                     
-                    refetchData(currentYear)
+                    refetch({year: currentYear})
                 }} />
                 <Button 
                   icon="chevron-right"
@@ -52,7 +52,7 @@ function InsightRevenueBase ({ t, history, children, year, refetchData=f=>f }) {
                     let nextYear = parseInt(localStorage.getItem(CSLS.INSIGHT_REVENUE_YEAR)) + 1                    
                     localStorage.setItem(CSLS.INSIGHT_REVENUE_YEAR, nextYear) 
 
-                    refetchData(nextYear)
+                    refetch({year: nextYear})
                 }} />
               </Button.List> 
             </div>
