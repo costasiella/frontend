@@ -435,7 +435,6 @@
         "at": "at",
         "with": "With",
         "book": "Book",
-        "continue": "Continue",
         "info_mail": "Info mail",
         "license": "License",
         "license_info": "License Info",
@@ -2204,7 +2203,8 @@
             "booked": {
                 "class": "Selected class",
                 "title": "Class booked!",
-                "class_explanation": "We've reserved your spot in the class below."
+                "class_explanation": "We've reserved your spot in the class below.",
+                "to_profile": "Continue to my account"
             },
             "filter_all_locations": "All locations",
             "filter_all_classtypes": "All classtypes",

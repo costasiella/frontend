@@ -76,7 +76,7 @@ function ShopClassBook({ t, match, history }) {
                   block
                   color="success"
                 >
-                  {t("general.continue")} <Icon name="chevron-right" />
+                  {t("shop.classes.booked.to_profile")} <Icon name="chevron-right" />
                 </Button>
               </Link>
             </Card.Footer>

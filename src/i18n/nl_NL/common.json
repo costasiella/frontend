@@ -400,7 +400,6 @@
         "item": "__STRING_NOT_TRANSLATED__",
         "at": "__STRING_NOT_TRANSLATED__",
         "book": "__STRING_NOT_TRANSLATED__",
-        "continue": "__STRING_NOT_TRANSLATED__",
         "today": "__STRING_NOT_TRANSLATED__",
         "with": "__STRING_NOT_TRANSLATED__",
         "valid_for": "__STRING_NOT_TRANSLATED__",
@@ -998,7 +997,8 @@
             "booked": {
                 "class": "__STRING_NOT_TRANSLATED__",
                 "class_explanation": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "to_profile": "__STRING_NOT_TRANSLATED__"
             },
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__",
