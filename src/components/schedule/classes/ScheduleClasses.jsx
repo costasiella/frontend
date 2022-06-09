@@ -150,6 +150,7 @@ function ScheduleClasses ({ t, history }) {
                     <Table.ColHeader>{t('general.class')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
                     <Table.ColHeader>{t('general.public')}</Table.ColHeader>
+                    <Table.ColHeader><Icon name="users" /></Table.ColHeader>
                     <Table.ColHeader></Table.ColHeader>
                   </Table.Row>
                 </Table.Header>
@@ -171,6 +172,8 @@ function ScheduleClasses ({ t, history }) {
                       organizationLevel,
                       timeStart, 
                       timeEnd,
+                      spaces,
+                      countAttendance,
                       displayPublic }) => (
                     <Table.Row key={v4()}>
                       <Table.Col>
@@ -210,6 +213,10 @@ function ScheduleClasses ({ t, history }) {
                       <Table.Col>
                         {/* Public */}
                         <BadgeBoolean value={displayPublic} />
+                      </Table.Col>
+                      <Table.Col>
+                        {/* Attendance */}
+                        {countAttendance}/{spaces}
                       </Table.Col>
                       <Table.Col>
                         <Dropdown
