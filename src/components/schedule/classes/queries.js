@@ -58,6 +58,7 @@ export const GET_CLASSES_QUERY = gql`
         }
         timeStart
         timeEnd
+        spaces
         availableSpacesOnline
         availableSpacesTotal
         displayPublic

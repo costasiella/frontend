@@ -88,3 +88,9 @@ table td.cs-insight-data-table-cell {
   padding-top: 6px;
   padding-bottom: 6px;
 }
+
+ /* Shop class schedule business indicator */
+ .cs-shop-classes-schedule-business-indicator {
+  float: right;
+  width: 75px;
+ }

@@ -13,6 +13,8 @@ import {
   Card, 
   Dimmer,
   Grid,
+  Icon,
+  Progress,
   Table,
 } from "tabler-react";
 import ShopClassesScheduleBase from "./ShopClassesScheduleBase"
@@ -155,6 +157,8 @@ function ShopClassesSchedule({ t, match, history }) {
                         organizationLevel,
                         timeStart, 
                         timeEnd,
+                        spaces,
+                        availableSpacesOnline,
                         displayPublic,
                         bookingStatus }) => (
                           <Table.Row>
@@ -173,6 +177,18 @@ function ShopClassesSchedule({ t, match, history }) {
                                 bookingOpenOn={bookingOpenOn}
                                 bookingStatus={bookingStatus}
                               />
+                              {(bookingStatus !== "FINISHED" && status !== "CANCELLED") ? 
+                                <React.Fragment>
+                                <div style={{clear: "both"}} />
+                                <div className="cs-shop-classes-schedule-business-indicator mt-2">
+                                <div className="float-right"><small><Icon name="users" className="text-muted" /></small></div>
+                                  <Progress size="xs" className="cs-shop-classes-schedule-business-indicator">
+                                    <Progress.Bar color="primary" width={((spaces-availableSpacesOnline)/spaces) * 100} /> 
+                                  </Progress>
+                                </div>
+                                </React.Fragment>
+                                : ""
+                              }
                             </Table.Col>
                           </Table.Row>
                         )
@@ -184,7 +200,6 @@ function ShopClassesSchedule({ t, match, history }) {
           </Grid.Col>
         </Grid.Row>
       )}
-
     </ShopClassesScheduleBase>
   )
 }
