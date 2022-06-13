@@ -12,5 +12,31 @@ export const GET_CLASS_ATTENDANCE_COUNT_YEAR = gql`
         attendanceCountPreviousYear
       }
     }
+    scheduleItem(id:$scheduleItem) {
+      id
+      frequencyType
+      frequencyInterval
+      organizationLocationRoom {
+        id
+        name
+        organizationLocation {
+          id
+          name
+        }
+      }
+      organizationClasstype {
+        id
+        name
+      }
+      organizationLevel {
+        id
+        name
+      }
+      dateStart
+      dateEnd
+      timeStart
+      timeEnd
+      displayPublic
+    }
   }
 `
