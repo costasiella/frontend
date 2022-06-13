@@ -524,7 +524,10 @@
         "mailing_list": "Mailing List",
         "generated on": "Generated on",
         "last_login": "Last login",
-        "created_at": "Created at"
+        "created_at": "Created at",
+        "confirm": "Just to double check",
+        "confirm_action_no": "Cancel",
+        "confirm_action_yes": "Continue"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1167,7 +1170,10 @@
                     "this_class_is_cancelled": "This class has been cancelled",
                     "unable_to_add_attendance": "Unable to add attendance",
                     "search_customer_not_found": "Customer not found",
-                    "search_no_account_results": "Your search didn't return any results"
+                    "search_no_account_results": "Your search didn't return any results",
+                    "confirm_resending_info_mail_to": "Do you wish to resend the info mail for this class to the account below?",
+                    "resend_success": "Sent info mail",
+                    "resend_info_mail": "Resend info mail"
                 },
                 "book": {
                     "toast_success": "Check-in success",
@@ -1870,11 +1876,9 @@
     "insight": {
         "classpasses": {
             "sold": {
-                "title": "Sold class passes",
                 "export_excel": "Export sold as Excel"
             },
             "active": {
-                "title": "Active class passes",
                 "export_excel": "Export active as Excel"
             },
             "title": "Class passes",
@@ -1884,11 +1888,9 @@
         "subscriptions": {
             "title": "Subscriptions",
             "sold": {
-                "title": "Sold subscriptions",
                 "export_excel": "Export sold as Excel"
             },
             "active": {
-                "title": "Active subscriptions",
                 "export_excel": "Export active as Excel"
             },
             "explanation": "Report on sold and active subscriptions"
@@ -1900,14 +1902,7 @@
             "title": "Revenue",
             "explanation": "Revenue charts. Totals and by product type.",
             "total": {
-                "title": "Total",
                 "explanation": "Monthly total based on invoice amounts. Invoices with the status 'cancelled' or 'draft' are not counted."
-            },
-            "subtotal": {
-                "title": "Subtotal"
-            },
-            "tax": {
-                "title": "Taxes"
             }
         },
         "trialpasses": {

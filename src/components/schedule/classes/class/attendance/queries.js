@@ -128,6 +128,14 @@ export const UPDATE_SCHEDULE_ITEM_ATTENDANCE = gql`
   }
 `
 
+export const RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE = gql`
+  mutation ResendClassInfoMail($input: ResendInfoMailScheduleItemAttendanceInput!) {
+    resendInfoMailScheduleItemAttendance(input: $input) {
+      ok
+    }
+  }
+`
+
 
 // export const GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY = gql`
 //   query ScheduleItemAccount($before: String, $after: String, $id: ID!) {
