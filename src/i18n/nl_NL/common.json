@@ -447,7 +447,10 @@
         "mailing_list": "__STRING_NOT_TRANSLATED__",
         "generated on": "__STRING_NOT_TRANSLATED__",
         "last_login": "__STRING_NOT_TRANSLATED__",
-        "created_at": "__STRING_NOT_TRANSLATED__"
+        "created_at": "__STRING_NOT_TRANSLATED__",
+        "confirm": "__STRING_NOT_TRANSLATED__",
+        "confirm_action_no": "__STRING_NOT_TRANSLATED__",
+        "confirm_action_yes": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1594,11 +1597,9 @@
     "insight": {
         "classpasses": {
             "sold": {
-                "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },
             "active": {
-                "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },
             "title": "__STRING_NOT_TRANSLATED__",
@@ -1612,11 +1613,9 @@
             "title": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "sold": {
-                "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },
             "active": {
-                "title": "__STRING_NOT_TRANSLATED__",
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             }
         },
@@ -1624,14 +1623,7 @@
             "title": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "total": {
-                "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__"
-            },
-            "subtotal": {
-                "title": "__STRING_NOT_TRANSLATED__"
-            },
-            "tax": {
-                "title": "__STRING_NOT_TRANSLATED__"
             }
         },
         "trialpasses": {
@@ -1726,7 +1718,10 @@
                     "this_class_is_cancelled": "__STRING_NOT_TRANSLATED__",
                     "unable_to_add_attendance": "__STRING_NOT_TRANSLATED__",
                     "search_customer_not_found": "__STRING_NOT_TRANSLATED__",
-                    "search_no_account_results": "__STRING_NOT_TRANSLATED__"
+                    "search_no_account_results": "__STRING_NOT_TRANSLATED__",
+                    "confirm_resending_info_mail_to": "__STRING_NOT_TRANSLATED__",
+                    "resend_success": "__STRING_NOT_TRANSLATED__",
+                    "resend_info_mail": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"

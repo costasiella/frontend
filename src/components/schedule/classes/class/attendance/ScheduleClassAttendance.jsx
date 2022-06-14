@@ -10,6 +10,7 @@ import {
   Card,
   Dimmer,
   Dropdown,
+  Icon,
   Table
 } from "tabler-react";
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
@@ -18,10 +19,15 @@ import { get_attendance_list_query_variables } from "./tools"
 
 import ContentCard from "../../../../general/ContentCard"
 import BadgeBookingStatus from "../../../../ui/BadgeBookingStatus"
+import ButtonConfirm from '../../../../ui/ButtonConfirm'
 import ScheduleClassAttendanceSearch from "./ScheduleClassAttendanceSearch"
 import ScheduleClassAttendanceBase from "./ScheduleClassAttendanceBase"
 import ScheduleClassAttendanceDelete from "./ScheduleClassAttendanceDelete"
-import { GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, UPDATE_SCHEDULE_ITEM_ATTENDANCE } from "./queries"
+import { 
+  GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
+  UPDATE_SCHEDULE_ITEM_ATTENDANCE,
+  RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE 
+} from "./queries"
 
 
 function setAttendanceStatus({t, match, updateAttendance, node, status}) {
@@ -63,6 +69,7 @@ function ScheduleClassAttendance({ t, match, history }) {
     }
   )
   const [ updateAttendance ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
+  const [ resendInfoMail ] = useMutation(RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE)
 
   // Loading
   if (loading) return <ScheduleClassAttendanceBase>
@@ -227,6 +234,17 @@ function ScheduleClassAttendance({ t, match, history }) {
                               {t('general.checkin')}
                           </Button>
                         </HasPermissionWrapper>  : "" }
+                        <ButtonConfirm 
+                            msgConfirm={t("schedule.classes.class.attendance.confirm_resending_info_mail_to")}
+                            msgDescription={<p><b>{node.account.fullName}</b></p>}
+                            msgSuccess={t("schedule.classes.class.attendance.resend_success")}
+                            actionFunction={resendInfoMail}
+                            actionFunctionVariables={{variables: {input: {id: node.id}}}}
+                            buttonClass="btn-link"
+                            buttonIcon={<Icon name="send" />}
+                            buttonText={t("schedule.classes.class.attendance.resend_info_mail")}
+                            buttonTextColor=""
+                        />
                     </Table.Col>
                   </Table.Row>
                 ))}

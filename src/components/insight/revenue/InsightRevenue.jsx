@@ -15,12 +15,8 @@ function InsightRevenue ({ t, history }) {
     variables: { year: year }
   })
 
-  function refetchData(year) {
-    refetch({year: year})
-  }
-
   return (
-    <InsightRevenueBase year={year} refetchData={refetchData}>
+    <InsightRevenueBase year={year} refetch={refetch}>
       {/* Total */}
       <InsightRevenueDisplay
         loading={loading}

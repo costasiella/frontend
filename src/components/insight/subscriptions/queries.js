@@ -1,23 +1,15 @@
 import { gql } from "@apollo/client"
 
 
-export const GET_SUBSCRIPTIONS_SOLD_QUERY = gql`
-  query InsightAccountSubscriptionsSold($year: Int!) {
-    insightAccountSubscriptionsSold(year: $year) {
-      description
-      data
+export const GET_INSIGHT_SUBSCRIPTIONS_QUERY = gql`
+  query InsightAccountSubscriptions($year: Int!) {
+    insightAccountSubscriptions(year: $year) {
       year
-    }
-  }
-`
-
-
-export const GET_SUBSCRIPTIONS_ACTIVE_QUERY = gql`
-  query InsightAccountSubscriptionsActive($year: Int!) {
-    insightAccountSubscriptionsActive(year: $year) {
-      description
-      data
-      year
+      months {
+        month
+        sold
+        active
+      }
     }
   }
 `

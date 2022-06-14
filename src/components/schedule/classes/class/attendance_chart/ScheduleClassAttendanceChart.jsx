@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import C3Chart from "react-c3js"
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 import {
     colors,
@@ -21,9 +21,7 @@ function ScheduleClassAttendanceChart({t, history, match}) {
   const classDate = match.params.date
   const scheduleItemId = match.params.class_id
   const menuActiveLink = "attendancechart"
-
   const year = parseInt(classDate.substring(0, 4))
-  console.log(year)
 
   const { loading, error, data } = useQuery(GET_CLASS_ATTENDANCE_COUNT_YEAR, {
     variables: {
@@ -48,12 +46,12 @@ function ScheduleClassAttendanceChart({t, history, match}) {
     )
   }
 
-  const dataLabelCurrentYear = year
-  const chartDataCurrentYear = data.insightClassAttendanceCountYear.dataCurrent
-  const dataLabelPreviousYear = year - 1
-  const chartDataPreviousYear = data.insightClassAttendanceCountYear.dataPrevious
+  // Add month name to data
+  const chartData = data.insightClassAttendanceCountYear.weeks.map((item, index) => (
+    { ...item, weekName: `${t("general.week")} ${item.week}` }
+  ))
+
   const scheduleItem = data.scheduleItem
-  
   const subTitle = class_subtitle({
     t: t,
     location: scheduleItem.organizationLocationRoom.organizationLocation.name, 
@@ -63,81 +61,29 @@ function ScheduleClassAttendanceChart({t, history, match}) {
     date: classDate
   })
 
-  function range(size, startAt = 0) {
-    return [...Array(size).keys()].map(i => i + startAt);
-  }
-
   return (
     <ScheduleClassEditBase menuActiveLink={menuActiveLink} subTitle={subTitle}>
       <Card title={t('schedule.classes.class.attendance_chart.title')}>
-        <Card.Body>
-          <C3Chart
-            style={{ height: "16rem" }}
-            data={{
-              x: 'x',
-              columns: [
-                // each columns data as array, starting with "name" and then containing data
-                [ 'x',
-                  ...range(54, 1) // This adds 1 .. 53
-                ],
-                [ 'current', ...chartDataCurrentYear],
-                [ 'previous', ...chartDataPreviousYear],
-              ],
-              type: "bar", // default type of chart
-              groups: [['current'], ['previous']],
-              colors: {
-                current: colors["azure"],
-                previous: colors["azure-lighter"],
-              },
-              names: {
-                // name of each serie
-                current: dataLabelCurrentYear,
-                previous: dataLabelPreviousYear
-              },
-              
+        <ResponsiveContainer width="100%" aspect={2.6}>
+          <BarChart
+            width={500}
+            height={300}
+            data={chartData}
+            margin={{
+              top: 10,
+              right: 20,
+              left: 0,
+              bottom: 10,
             }}
-            axis={{
-              y: {
-                padding: {
-                  bottom: 0,
-                },
-                show: true,
-                // Don't show decimals on ticks, only whole numbers
-                tick: {
-                  format: function (d) {
-                      return (parseInt(d) === d) ? d : null;
-                  }
-                }
-              },
-              x: {
-                padding: {
-                  left: 0,
-                  right: 0,
-                },
-                type: 'category',
-                show: true,
-              },
-            }}
-            tooltip={{
-              format: {
-                title: function(x) {
-                  return "";
-                },
-              },
-            }}
-            padding={{
-              bottom: 0,
-              // left: -1,
-              right: -1,
-            }}
-            point={{
-              show: false,
-            }}
-          />
-        </Card.Body>
-        <Card.Footer>
-          {/* {t("insight.revenue.total.explanation")} */}
-        </Card.Footer>
+          >
+            <XAxis dataKey="weekName" interval={4} />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="attendanceCountCurrentYear" name={year} fill={colors['azure']} />
+            <Bar dataKey="attendanceCountPreviousYear" name={year-1} fill={colors['azure-lighter']} />
+          </BarChart>
+        </ResponsiveContainer>
       </Card>
     </ScheduleClassEditBase>
   )

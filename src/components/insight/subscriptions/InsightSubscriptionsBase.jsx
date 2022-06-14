@@ -13,7 +13,7 @@ import InsightBackHome from '../InsightBackHome'
 import CSLS from "../../../tools/cs_local_storage"
 
 
-function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>f}) {
+function InsightSubscriptionsBase ({ t, history, children, year, refetch=f=>f}) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -29,7 +29,7 @@ function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>
                     let previousYear = parseInt(localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)) - 1                    
                     localStorage.setItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR, previousYear) 
 
-                    refetchData(previousYear)
+                    refetch({year: previousYear})
                 }} />
                 <Button 
                   icon="sunset"
@@ -38,7 +38,7 @@ function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>
                     let currentYear = parseInt(moment().format('YYYY'))
                     localStorage.setItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR, currentYear) 
                     
-                    refetchData(currentYear)
+                    refetch({year: currentYear})
                 }} />
                 <Button 
                   icon="chevron-right"
@@ -47,7 +47,7 @@ function InsightSubscriptionsBase ({ t, history, children, year, refetchData=f=>
                     let nextYear = parseInt(localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)) + 1                    
                     localStorage.setItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR, nextYear) 
 
-                    refetchData(nextYear)
+                    refetch({year: nextYear})
                 }} />
               </Button.List> 
             </div>

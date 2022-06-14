@@ -2,18 +2,20 @@ import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import C3Chart from "react-c3js"
+import { AreaChart, Area, XAxis, YAxis, Legend, Tooltip, ResponsiveContainer } from 'recharts'
 import moment from 'moment'
 import {
   colors,
+  Dimmer,
   Grid,
   Button,
   Card,
 } from "tabler-react";
 
 import CSLS from "../../../tools/cs_local_storage"
+import { getMonthNamesShort } from '../../../tools/date_tools'
 import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
-import { GET_SUBSCRIPTIONS_SOLD_QUERY, GET_SUBSCRIPTIONS_ACTIVE_QUERY } from './queries'
+import { GET_INSIGHT_SUBSCRIPTIONS_QUERY } from './queries'
 import { TOKEN_REFRESH } from "../../../queries/system/auth"
 import InsightSubscriptionsBase from './InsightSubscriptionsBase'
 
@@ -26,144 +28,76 @@ if (!localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR)) {
 
 
 function InsightSubscriptions ({ t, history }) {
+  const cardTitle = t('general.chart')
   const year = parseInt(localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR))
   const export_url_active = "/d/export/insight/subscriptions/active/" + year
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   console.log(year)
 
-  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
-  const { 
-    loading: loadingSold, 
-    error: errorSold, 
-    data: dataSold,
-    refetch: refetchSold
-   } = useQuery(GET_SUBSCRIPTIONS_SOLD_QUERY, {
+  const { loading, error, data, refetch } = useQuery(GET_INSIGHT_SUBSCRIPTIONS_QUERY, {
     variables: { year: year }
   })
 
-  const { 
-    loading: loadingActive, 
-    error: errorActive, 
-    data: dataActive,
-    refetch: refetchActive
-   } = useQuery(GET_SUBSCRIPTIONS_ACTIVE_QUERY, {
-    variables: { year: year }
-  })
-
-
-  if (loadingSold || loadingActive) {
+  if (loading) {
     return (
-      <InsightSubscriptionsBase year={year}>
-        {t("general.loading_with_dots")}
+      <InsightSubscriptionsBase year={year} refetch={refetch}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <Dimmer active={true} loader={true} />
+          </Card.Body>
+        </Card>
       </InsightSubscriptionsBase>
     )
   }
 
-  if (errorSold || errorActive) {
+  if (error) {
     return (
-      <InsightSubscriptionsBase year={year}>
-        {t("general.error_sad_smiley")}
+      <InsightSubscriptionsBase year={year} refetch={refetch}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            {t("general.error_sad_smiley")}
+          </Card.Body>
+        </Card>
       </InsightSubscriptionsBase>
     )
   }
 
+  const monthNames = getMonthNamesShort(t)
 
-  function refetchData(year) {
-    refetchActive({year: year})
-    refetchSold({year: year})
-  }
-
-  console.log(dataSold)
-  console.log(dataActive)
-
-  const data_sold_label = t("insight.subscriptions.sold.title")
-  const chart_data_sold = dataSold.insightAccountSubscriptionsSold.data
-  console.log("chart_data sold")
-  console.log(data_sold_label, ...chart_data_sold)
-
-  const data_active_label = t("insight.subscriptions.active.title")
-  const chart_data_active = dataActive.insightAccountSubscriptionsActive.data
-  console.log("chart_data active")
-  console.log(data_sold_label, ...chart_data_active)
+  // Add month name to data
+  const chartData = data.insightAccountSubscriptions.months.map((item, index) => (
+    { ...item, monthName: monthNames[index] }
+  ))
 
 
   return (
-    <InsightSubscriptionsBase year={year} refetchData={refetchData}>
+    <InsightSubscriptionsBase year={year} refetch={refetch}>
       <Grid.Row>
         <Grid.Col md={9}>
-          <Card title={t('general.chart')}>
-            <Card.Body>
-              <C3Chart
-                style={{ height: "16rem" }}
-                data={{
-                  x: 'x',
-                  columns: [
-                    // each columns data as array, starting with "name" and then containing data
-                    [ 'x',
-                      t("datetime.months.short_january"),
-                      t("datetime.months.short_february"),
-                      t("datetime.months.short_march"),
-                      t("datetime.months.short_april"),
-                      t("datetime.months.short_may"),
-                      t("datetime.months.short_june"),
-                      t("datetime.months.short_july"),
-                      t("datetime.months.short_august"),
-                      t("datetime.months.short_september"),
-                      t("datetime.months.short_october"),
-                      t("datetime.months.short_november"),
-                      t("datetime.months.short_decemer"),
-                    ],
-                    [ 'sold', ...chart_data_sold],
-                    [ 'active', ...chart_data_active],
-                  ],
-                  type: "area", // default type of chart
-                  groups: [['sold'], ['active']],
-                  colors: {
-                    sold: colors["blue"],
-                    active: colors["green"],
-                  },
-                  names: {
-                    // name of each serie
-                    sold: data_sold_label,
-                    active: data_active_label,
-                  },
-                  
+          <Card title={cardTitle}>
+            <ResponsiveContainer width="100%" aspect={2.5}>
+              <AreaChart
+                width={500}
+                height={300}
+                data={chartData}
+                margin={{
+                  top: 20,
+                  right: 20,
+                  left: 0,
+                  bottom: 20,
                 }}
-                axis={{
-                  y: {
-                    padding: {
-                      bottom: 0,
-                    },
-                    show: true,
-                  },
-                  x: {
-                    padding: {
-                      left: 0,
-                      right: 0,
-                    },
-                    type: 'category',
-                    show: true,
-                  },
-                }}
-                tooltip={{
-                  format: {
-                    title: function(x) {
-                      return "";
-                    },
-                  },
-                }}
-                padding={{
-                  bottom: 0,
-                  // left: -1,
-                  right: -1,
-                }}
-                point={{
-                  show: false,
-                }}
-              />
-            </Card.Body>
+              >
+                <XAxis dataKey="monthName"/>
+                <YAxis width={40} />
+                <Tooltip />
+                <Legend />
+                <Area type="monotone" dataKey="sold" stroke={colors["blue"]} fillOpacity={0.4} fill={colors["blue"]} />
+                <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.1} fill={colors["green"]} />
+              </AreaChart>
+            </ResponsiveContainer>
           </Card>
         </Grid.Col>
         <Grid.Col md={3}>
@@ -194,18 +128,6 @@ function InsightSubscriptions ({ t, history }) {
         </Grid.Col>
       </Grid.Row>
     </InsightSubscriptionsBase>
-  //   <SiteWrapper>
-  //     <div className="my-3 my-md-5">
-  //       <Container>
-  //         <Page.Header title={t("insight.title")} subTitle={t("general.classpasses") + " " + year}>
-  //           <div className="page-options d-flex">
-  //             <InsightBackHome />
-  //           </div>
-  //         </Page.Header>
-
-  //       </Container>  
-  //     </div>
-  //   </SiteWrapper>
   )
 }
 

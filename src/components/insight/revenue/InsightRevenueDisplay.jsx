@@ -1,7 +1,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import C3Chart from "react-c3js"
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import {
   colors,
   Dimmer,
@@ -9,6 +9,9 @@ import {
   Card,
   Table,
 } from "tabler-react";
+
+import { getMonthNamesShort } from '../../../tools/date_tools'
+
 
 function InsightRevenueDisplay({ 
   t, 
@@ -18,10 +21,6 @@ function InsightRevenueDisplay({
   cardTitle,
   data
  }) {
-
-  const labelDataTotal = t("insight.revenue.total.title")
-  const labelDataSubtotal = t("insight.revenue.subtotal.title")
-  const labelDataTax = t("insight.revenue.tax.title")
 
   if (loading) {
     return (
@@ -51,107 +50,39 @@ function InsightRevenueDisplay({
     </Grid.Row>
   }
 
-  const dataTotal = data.total
-  const dataTotalDisplay = data.totalDisplay
-  console.log(dataTotalDisplay)
-  const dataSubtotal = data.subtotal
-  const dataTax = data.tax
 
-  const months = [
-    t("datetime.months.short_january"),
-    t("datetime.months.short_february"),
-    t("datetime.months.short_march"),
-    t("datetime.months.short_april"),
-    t("datetime.months.short_may"),
-    t("datetime.months.short_june"),
-    t("datetime.months.short_july"),
-    t("datetime.months.short_august"),
-    t("datetime.months.short_september"),
-    t("datetime.months.short_october"),
-    t("datetime.months.short_november"),
-    t("datetime.months.short_decemer"),
-  ]
+
+  const monthNames = getMonthNamesShort(t)
+  // Add month name to data
+  const chartData = data.months.map((item, index) => (
+    { ...item, monthName: monthNames[index] }
+  ))
 
   return (
     <Grid.Row>
       <Grid.Col md={9}>
         <Card title={cardTitle}>
-          {/* <Card.Body> */}
-            <C3Chart
-              style={{ height: "336px" }}
-              data={{
-                x: 'x',
-                columns: [
-                  // each columns data as array, starting with "name" and then containing data
-                  [ 'x',
-                    t("datetime.months.short_january"),
-                    t("datetime.months.short_february"),
-                    t("datetime.months.short_march"),
-                    t("datetime.months.short_april"),
-                    t("datetime.months.short_may"),
-                    t("datetime.months.short_june"),
-                    t("datetime.months.short_july"),
-                    t("datetime.months.short_august"),
-                    t("datetime.months.short_september"),
-                    t("datetime.months.short_october"),
-                    t("datetime.months.short_november"),
-                    t("datetime.months.short_decemer"),
-                  ],
-                  [ 'total', ...dataTotal],
-                  [ 'subtotal', ...dataSubtotal],
-                  [ 'tax', ...dataTax],
-                ],
-                type: "bar", // default type of chart
-                // types: {
-                //   total: "bar"
-                // },
-                groups: [['subtotal', 'tax']],
-                colors: {
-                  total: colors["blue"],
-                  subtotal: colors["green"],
-                  tax: colors["orange"],
-                },
-                names: {
-                  // name of each serie
-                  total: labelDataTotal,
-                  subtotal: labelDataSubtotal,
-                  tax: labelDataTax,
-                },
-                
+          <ResponsiveContainer width="100%" aspect={2.6}>
+            <BarChart
+              width={500}
+              height={300}
+              data={chartData}
+              margin={{
+                top: 10,
+                right: 20,
+                left: 0,
+                bottom: 10,
               }}
-              axis={{
-                y: {
-                  padding: {
-                    bottom: 0,
-                  },
-                  show: true,
-                },
-                x: {
-                  padding: {
-                    left: 0,
-                    right: 0,
-                  },
-                  type: 'category',
-                  show: true,
-                },
-              }}
-              tooltip={{
-                format: {
-                  title: function(x) {
-                    return "";
-                  },
-                },
-              }}
-              padding={{
-                bottom: 0,
-                // left: -1,
-                right: -1,
-              }}
-              point={{
-                show: false,
-              }}
-            />
-          {/* </Card.Body> */}
+            >
+              <XAxis dataKey="monthName" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="total" fill={colors['blue']} />
+              <Bar dataKey="subtotal" stackId="a" fill={colors['green']} />
+              <Bar dataKey="tax" stackId="a" fill={colors['orange']} />
+            </BarChart>
+          </ResponsiveContainer>
           <Card.Footer>
             {t("insight.revenue.total.explanation")}
           </Card.Footer>
@@ -162,13 +93,13 @@ function InsightRevenueDisplay({
           <small>
           <Table cards>
             <Table.Body>
-              {dataTotalDisplay.map((amount, index) => (
+              {data.months.map((item, index) => (
                 <Table.Row>
                   <Table.Col className="cs-insight-data-table-cell">
-                    {months[index]}
+                    {monthNames[index]}
                   </Table.Col>
                   <Table.Col className="cs-insight-data-table-cell text-right">
-                    {amount}
+                    {item['totalDisplay']}
                   </Table.Col>
                 </Table.Row>
               ))}

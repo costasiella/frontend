@@ -42,3 +42,20 @@ export function getLastDayMonth(year, month) {
     const firstDayMonth = moment(`${year}-${month}-01`).endOf('month')
     return new Date(firstDayMonth)
 }
+
+export function getMonthNamesShort(t) {
+    return [
+        t("datetime.months.short_january"),
+        t("datetime.months.short_february"),
+        t("datetime.months.short_march"),
+        t("datetime.months.short_april"),
+        t("datetime.months.short_may"),
+        t("datetime.months.short_june"),
+        t("datetime.months.short_july"),
+        t("datetime.months.short_august"),
+        t("datetime.months.short_september"),
+        t("datetime.months.short_october"),
+        t("datetime.months.short_november"),
+        t("datetime.months.short_decemer"),
+      ]
+}
