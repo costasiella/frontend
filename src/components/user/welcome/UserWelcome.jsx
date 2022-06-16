@@ -42,8 +42,9 @@ function Welcome({t, match, history}) {
   const user = data.user
   console.log(user)
 
+  // Push the user to the shop in case they're not an employee or instructor
   if (!user.employee && !user.instructor) {
-    history.push("/")
+    history.push("/shop/account")
   } 
 
 
