@@ -2173,7 +2173,7 @@
             },
             "btn_text_manage": "Manage",
             "invoice": {
-                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+                "error_loading_data": "Error loading invoice... :("
             }
         },
         "accounts": {
