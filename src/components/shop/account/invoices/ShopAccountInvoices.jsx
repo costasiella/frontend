@@ -112,7 +112,9 @@ function ShopAccountInvoices({t, match, history}) {
                 <Grid.Col xs={12} sm={12} md={4} lg={4}>
                   <Card>
                     <Card.Header>
-                      <Card.Title>{node.invoiceNumber}</Card.Title>
+                      <Link to={`/shop/account/invoices/${node.id}`}>
+                        <Card.Title>{node.invoiceNumber}</Card.Title>
+                      </Link>
                       <Card.Options>
                         <FinanceInvoicesStatus status={node.status}/>
                       </Card.Options>
@@ -157,12 +159,22 @@ function ShopAccountInvoices({t, match, history}) {
                       <Button 
                         color="secondary"
                         icon="printer"
+                        className="mr-2"
                         onClick={() => refreshTokenAndOpenExportLinkInNewTab(
                           t, doTokenRefresh, history, `/d/export/invoice/pdf/${node.id}`
                         )}
                       >
                         {t('general.pdf')}
-                      </Button>              
+                      </Button>    
+                      <Link to={`/shop/account/invoices/${node.id}`}>
+                        <Button 
+                          color="secondary"
+                          icon="file"
+                          className="mr-2"
+                        >
+                          {t('general.view')}
+                        </Button>
+                      </Link>                  
                     </Card.Footer>
                   </Card>
                 </Grid.Col>
