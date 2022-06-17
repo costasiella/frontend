@@ -138,10 +138,6 @@ function ShopAccountInvoices({t, match, history}) {
                             <Table.ColHeader>{t("general.total")}</Table.ColHeader>
                             <Table.Col>{node.totalDisplay}</Table.Col>
                           </Table.Row>
-                          <Table.Row>
-                            <Table.ColHeader>{t("general.balance")}</Table.ColHeader>
-                            <Table.Col>{node.balanceDisplay}</Table.Col>
-                          </Table.Row>
                         </Table.Body>
                       </Table>
                     <Card.Footer>
