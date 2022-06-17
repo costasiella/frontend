@@ -112,7 +112,7 @@ function ShopAccountInvoices({t, match, history}) {
                 <Grid.Col xs={12} sm={12} md={4} lg={4}>
                   <Card>
                     <Card.Header>
-                      <Link to={`/shop/account/invoices/${node.id}`}>
+                      <Link to={`/shop/account/invoice/${node.id}`}>
                         <Card.Title>{node.invoiceNumber}</Card.Title>
                       </Link>
                       <Card.Options>
@@ -166,7 +166,7 @@ function ShopAccountInvoices({t, match, history}) {
                       >
                         {t('general.pdf')}
                       </Button>    
-                      <Link to={`/shop/account/invoices/${node.id}`}>
+                      <Link to={`/shop/account/invoice/${node.id}`}>
                         <Button 
                           color="secondary"
                           icon="file"
