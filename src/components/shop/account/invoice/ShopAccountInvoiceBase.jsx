@@ -10,7 +10,7 @@ import SiteWrapperShop from "../../../SiteWrapperShop"
 import ShopAccountBack from "../ShopAccountBack"
 
 
-function ShopAccountInvoicesBase({ t, match, history, children, accountName="" }) {
+function ShopAccountInvoiceBase({ t, match, history, children, accountName="" }) {
   return (
       <SiteWrapperShop>
         <div className="my-3 my-md-5">
@@ -27,4 +27,4 @@ function ShopAccountInvoicesBase({ t, match, history, children, accountName="" }
   )
 }
 
-export default withTranslation()(withRouter(ShopAccountInvoicesBase))
+export default withTranslation()(withRouter(ShopAccountInvoiceBase))
