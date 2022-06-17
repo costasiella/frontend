@@ -48,7 +48,7 @@ function ShopAccountInvoices({t, match, history}) {
   )
   if (error || errorUser) return (
     <ShopAccountInvoicesBase>
-      {t("shop.account.classpasses.error_loading_data")}
+      {t("shop.account.invoices.error_loading_data")}
     </ShopAccountInvoicesBase>
   )
 

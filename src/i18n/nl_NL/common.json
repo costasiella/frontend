@@ -890,7 +890,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
-                "to_payment": "__STRING_NOT_TRANSLATED__"
+                "to_payment": "__STRING_NOT_TRANSLATED__",
+                "error_loading_data": "__STRING_NOT_TRANSLATED__"
             },
             "change_password": {
                 "title": "__STRING_NOT_TRANSLATED__",
@@ -924,7 +925,10 @@
                 "subscribing": "__STRING_NOT_TRANSLATED__",
                 "subscribe": "__STRING_NOT_TRANSLATED__"
             },
-            "btn_text_manage": "__STRING_NOT_TRANSLATED__"
+            "btn_text_manage": "__STRING_NOT_TRANSLATED__",
+            "invoice": {
+                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "checkout": {
             "payment": {

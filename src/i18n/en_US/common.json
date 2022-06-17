@@ -2099,7 +2099,8 @@
                 "title": "My invoices",
                 "explanation": "View and download your invoices.",
                 "empty_list": "You don't have any invoices yet.",
-                "to_payment": "Pay now"
+                "to_payment": "Pay now",
+                "error_loading_data": "Error loading your invoices... :("
             },
             "class_info": {
                 "error_loading_data": "Error loading class info... :(",
@@ -2170,7 +2171,10 @@
                 "subscribing": "Subscribing...",
                 "subscribe": "Subscribe"
             },
-            "btn_text_manage": "Manage"
+            "btn_text_manage": "Manage",
+            "invoice": {
+                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "accounts": {
             "profile": {
