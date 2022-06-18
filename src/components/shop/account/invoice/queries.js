@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 
 export const QUERY_ACCOUNT_INVOICE = gql`
-  query FinanceInvoice(id: ID!) {
+  query FinanceInvoice($id: ID!) {
     financeInvoice(id: $id) {
       id
       invoiceNumber
