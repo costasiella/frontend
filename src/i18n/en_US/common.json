@@ -2100,7 +2100,8 @@
                 "explanation": "View and download your invoices.",
                 "empty_list": "You don't have any invoices yet.",
                 "to_payment": "Pay now",
-                "error_loading_data": "Error loading your invoices... :("
+                "error_loading_data": "Error loading your invoices... :(",
+                "to_be_paid": "To be paid"
             },
             "class_info": {
                 "error_loading_data": "Error loading class info... :(",

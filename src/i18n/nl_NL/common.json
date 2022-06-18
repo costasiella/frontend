@@ -891,7 +891,8 @@
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "to_payment": "__STRING_NOT_TRANSLATED__",
-                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "to_be_paid": "__STRING_NOT_TRANSLATED__"
             },
             "change_password": {
                 "title": "__STRING_NOT_TRANSLATED__",

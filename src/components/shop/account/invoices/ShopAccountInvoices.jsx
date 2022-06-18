@@ -138,6 +138,10 @@ function ShopAccountInvoices({t, match, history}) {
                             <Table.ColHeader>{t("general.total")}</Table.ColHeader>
                             <Table.Col>{node.totalDisplay}</Table.Col>
                           </Table.Row>
+                          <Table.Row>
+                            <Table.ColHeader><b>{t("shop.account.invoices.to_be_paid")}</b></Table.ColHeader>
+                            <Table.Col><b>{node.balanceDisplay}</b></Table.Col>
+                          </Table.Row>
                         </Table.Body>
                       </Table>
                     <Card.Footer>
@@ -165,10 +169,10 @@ function ShopAccountInvoices({t, match, history}) {
                       <Link to={`/shop/account/invoice/${node.id}`}>
                         <Button 
                           color="secondary"
-                          icon="file"
+                          icon="file-text"
                           className="mr-2"
                         >
-                          {t('general.view')}
+                          {t('general.details')}
                         </Button>
                       </Link>                  
                     </Card.Footer>
