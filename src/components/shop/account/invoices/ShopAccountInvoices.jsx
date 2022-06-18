@@ -157,7 +157,8 @@ function ShopAccountInvoices({t, match, history}) {
                         : ""
                       }  
                       <Button 
-                        color="secondary"
+                        outline
+                        color="primary"
                         icon="printer"
                         className="mr-2"
                         onClick={() => refreshTokenAndOpenExportLinkInNewTab(
@@ -168,7 +169,8 @@ function ShopAccountInvoices({t, match, history}) {
                       </Button>    
                       <Link to={`/shop/account/invoice/${node.id}`}>
                         <Button 
-                          color="secondary"
+                          outline
+                          color="primary"
                           icon="file-text"
                           className="mr-2"
                         >
