@@ -48,7 +48,7 @@ function ShopAccountInvoices({t, match, history}) {
   )
   if (error || errorUser) return (
     <ShopAccountInvoicesBase>
-      {t("shop.account.classpasses.error_loading_data")}
+      {t("shop.account.invoices.error_loading_data")}
     </ShopAccountInvoicesBase>
   )
 
@@ -112,7 +112,9 @@ function ShopAccountInvoices({t, match, history}) {
                 <Grid.Col xs={12} sm={12} md={4} lg={4}>
                   <Card>
                     <Card.Header>
-                      <Card.Title>{node.invoiceNumber}</Card.Title>
+                      <Link to={`/shop/account/invoice/${node.id}`}>
+                        <Card.Title>{node.invoiceNumber}</Card.Title>
+                      </Link>
                       <Card.Options>
                         <FinanceInvoicesStatus status={node.status}/>
                       </Card.Options>
@@ -137,8 +139,8 @@ function ShopAccountInvoices({t, match, history}) {
                             <Table.Col>{node.totalDisplay}</Table.Col>
                           </Table.Row>
                           <Table.Row>
-                            <Table.ColHeader>{t("general.balance")}</Table.ColHeader>
-                            <Table.Col>{node.balanceDisplay}</Table.Col>
+                            <Table.ColHeader><b>{t("shop.account.invoices.to_be_paid")}</b></Table.ColHeader>
+                            <Table.Col><b>{node.balanceDisplay}</b></Table.Col>
                           </Table.Row>
                         </Table.Body>
                       </Table>
@@ -155,14 +157,26 @@ function ShopAccountInvoices({t, match, history}) {
                         : ""
                       }  
                       <Button 
-                        color="secondary"
+                        outline
+                        color="primary"
                         icon="printer"
+                        className="mr-2"
                         onClick={() => refreshTokenAndOpenExportLinkInNewTab(
                           t, doTokenRefresh, history, `/d/export/invoice/pdf/${node.id}`
                         )}
                       >
                         {t('general.pdf')}
-                      </Button>              
+                      </Button>    
+                      <Link to={`/shop/account/invoice/${node.id}`}>
+                        <Button 
+                          outline
+                          color="primary"
+                          icon="file-text"
+                          className="mr-2"
+                        >
+                          {t('general.details')}
+                        </Button>
+                      </Link>                  
                     </Card.Footer>
                   </Card>
                 </Grid.Col>

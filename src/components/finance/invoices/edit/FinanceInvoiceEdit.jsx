@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import { toast } from 'react-toastify'
 import {
+  Alert,
   Dropdown,
   Page,
   Grid,
@@ -49,7 +50,6 @@ function FinanceInvoiceEdit({t, match, history}) {
     return <FinanceInvoiceEditBase>{t('general.error_sad_smiley')}</FinanceInvoiceEditBase>
   }
 
-  console.log(data)
   // Fetch back location from localStorage, if no value set, default back to /finance/invoices
   let returnUrl = localStorage.getItem(CSLS.FINANCE_INVOICES_EDIT_RETURN)
   if (!returnUrl) {
@@ -57,6 +57,7 @@ function FinanceInvoiceEdit({t, match, history}) {
   }
   const export_url = "/d/export/invoice/pdf/" + id
   const payment_add_url = `/finance/invoices/${id}/payment/add`
+  const shopAccountInvoiceUrl = `${window.location.protocol}//${window.location.host}/#/shop/account/invoice/${id}`
 
   return (
     <FinanceInvoiceEditBase>
@@ -129,6 +130,11 @@ function FinanceInvoiceEdit({t, match, history}) {
           <FinanceInvoiceEditSummary 
             initialData={data}
           />
+        <Alert type="primary">
+          <div className="mb-1"><b>{t("finance.invoice.account_profile_link")}</b></div>
+          {shopAccountInvoiceUrl}<br />
+          <div className="mt-1"><small><Icon name="info" /> {t("finance.invoice.account_profile_link_explanation")}</small></div>
+        </Alert>
           <Grid.Row>
             <Grid.Col md={6} ml={0}>
               <FinanceInvoiceEditOrganization organization={data.organization} />

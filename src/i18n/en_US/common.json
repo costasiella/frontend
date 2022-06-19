@@ -154,7 +154,9 @@
             "credit_invoice_for": "Credit invoice for",
             "item": {
                 "toast_edit_success": "Saved item"
-            }
+            },
+            "account_profile_link": "Link to invoice in account profile",
+            "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in."
         },
         "orders": {
             "title": "Orders",
@@ -526,7 +528,8 @@
         "created_at": "Created at",
         "confirm": "Just to double check",
         "confirm_action_no": "Cancel",
-        "confirm_action_yes": "Continue"
+        "confirm_action_yes": "Continue",
+        "each": "Each"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -2099,7 +2102,9 @@
                 "title": "My invoices",
                 "explanation": "View and download your invoices.",
                 "empty_list": "You don't have any invoices yet.",
-                "to_payment": "Pay now"
+                "to_payment": "Pay now",
+                "error_loading_data": "Error loading your invoices... :(",
+                "to_be_paid": "To be paid"
             },
             "class_info": {
                 "error_loading_data": "Error loading class info... :(",
@@ -2170,7 +2175,12 @@
                 "subscribing": "Subscribing...",
                 "subscribe": "Subscribe"
             },
-            "btn_text_manage": "Manage"
+            "btn_text_manage": "Manage",
+            "invoice": {
+                "error_loading_data": "Error loading invoice... :(",
+                "title": "Invoice",
+                "pieces": "Pieces"
+            }
         },
         "accounts": {
             "profile": {

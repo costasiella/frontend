@@ -288,6 +288,7 @@ import ShopAccountEventTickets from './components/shop/account/event_tickets/Sho
 import ShopAccountInvoicePayment from './components/shop/account/invoice_payment/ShopAccountInvoicePayment'
 import ShopAccountInvoicePaymentStatus from './components/shop/account/invoice_payment_status/ShopAccountInvoicePaymentStatus'
 import ShopAccountInvoices from './components/shop/account/invoices/ShopAccountInvoices'
+import ShopAccountInvoice from './components/shop/account/invoice/ShopAccountInvoice'
 import ShopAccountMailingLists from './components/shop/account/mailing_lists/ShopAccountMailingLists'
 import ShopAccountOrders from './components/shop/account/orders/ShopAccountOrders'
 import ShopAccountProfile from './components/shop/account/profile/ShopAccountProfile'
@@ -713,6 +714,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/invoice_payment/:id" component={ShopAccountInvoicePayment} />
             <PrivateRoute exact path = "/shop/account/invoice_payment_status/:id" component={ShopAccountInvoicePaymentStatus} />
             <PrivateRoute exact path = "/shop/account/invoices" component={ShopAccountInvoices} />
+            <PrivateRoute exact path = "/shop/account/invoice/:id" component={ShopAccountInvoice} />
             <PrivateRoute exact path = "/shop/account/mailing_lists" component={ShopAccountMailingLists} />
             <PrivateRoute exact path = "/shop/account/orders" component={ShopAccountOrders} />
             <PrivateRoute exact path = "/shop/account/profile" component={ShopAccountProfile} />

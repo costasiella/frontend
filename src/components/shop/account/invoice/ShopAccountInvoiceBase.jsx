@@ -10,14 +10,15 @@ import SiteWrapperShop from "../../../SiteWrapperShop"
 import ShopAccountBack from "../ShopAccountBack"
 
 
-function ShopAccountInvoicesBase({ t, match, history, children, accountName="" }) {
+function ShopAccountInvoiceBase({ t, match, history, children, pageHeaderButtonList, accountName="" }) {
   return (
       <SiteWrapperShop>
         <div className="my-3 my-md-5">
           <Container>
             <Page.Header title={t("shop.account.title")} subTitle={ accountName }>
               <div className="page-options d-flex">
-                <ShopAccountBack />
+                <ShopAccountBack returnUrl="/shop/account/invoices" />
+                {pageHeaderButtonList}
               </div>
             </Page.Header>
             { children }
@@ -27,4 +28,4 @@ function ShopAccountInvoicesBase({ t, match, history, children, accountName="" }
   )
 }
 
-export default withTranslation()(withRouter(ShopAccountInvoicesBase))
+export default withTranslation()(withRouter(ShopAccountInvoiceBase))

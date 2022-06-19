@@ -450,7 +450,8 @@
         "created_at": "__STRING_NOT_TRANSLATED__",
         "confirm": "__STRING_NOT_TRANSLATED__",
         "confirm_action_no": "__STRING_NOT_TRANSLATED__",
-        "confirm_action_yes": "__STRING_NOT_TRANSLATED__"
+        "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
+        "each": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -709,7 +710,9 @@
             "item_add": "__STRING_NOT_TRANSLATED__",
             "item": {
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "account_profile_link": "__STRING_NOT_TRANSLATED__",
+            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__"
         },
         "invoice_groups_defaults": {
             "MEMBERSHIPS": "__STRING_NOT_TRANSLATED__",
@@ -890,7 +893,9 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
-                "to_payment": "__STRING_NOT_TRANSLATED__"
+                "to_payment": "__STRING_NOT_TRANSLATED__",
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "to_be_paid": "__STRING_NOT_TRANSLATED__"
             },
             "change_password": {
                 "title": "__STRING_NOT_TRANSLATED__",
@@ -924,7 +929,12 @@
                 "subscribing": "__STRING_NOT_TRANSLATED__",
                 "subscribe": "__STRING_NOT_TRANSLATED__"
             },
-            "btn_text_manage": "__STRING_NOT_TRANSLATED__"
+            "btn_text_manage": "__STRING_NOT_TRANSLATED__",
+            "invoice": {
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "title": "__STRING_NOT_TRANSLATED__",
+                "pieces": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "checkout": {
             "payment": {
