@@ -154,7 +154,9 @@
             "credit_invoice_for": "Credit invoice for",
             "item": {
                 "toast_edit_success": "Saved item"
-            }
+            },
+            "account_profile_link": "Link to invoice in account profile",
+            "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in."
         },
         "orders": {
             "title": "Orders",
@@ -527,8 +529,7 @@
         "confirm": "Just to double check",
         "confirm_action_no": "Cancel",
         "confirm_action_yes": "Continue",
-        "each": "Each",
-        "received_on": "Received on"
+        "each": "Each"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react'
 import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
@@ -10,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 import {
   Alert,
-  Card
+  Card,
 } from "tabler-react"
 
 import { get_list_query_variables } from "../tools"
@@ -18,7 +16,7 @@ import { UPDATE_INVOICE, GET_INVOICES_QUERY } from "../queries"
 import FinanceInvoiceEditSummaryForm from "./FinanceInvoiceEditSummaryForm"
 
 
-function FinanceInvoiceEditSummary({t, history, match, initialData}) {
+function FinanceInvoiceEditSummary({t, history, match, location, initialData}) {  
   const [ updateInvoice ] = useMutation(UPDATE_INVOICE)
 
   return (
@@ -72,9 +70,8 @@ function FinanceInvoiceEditSummary({t, history, match, initialData}) {
             </FinanceInvoiceEditSummaryForm>
           )}
         </Formik>
-        {console.log(initialData)}
         {(initialData.financeInvoice.creditInvoiceId) ?
-          <Alert type="primary">
+          <Alert type="warning">
             {t("finance.invoice.credit_invoice_for")} { " " }
             <Link to={`/finance/invoices/edit/${initialData.financeInvoice.creditInvoiceId}`}>
               <Alert.Link>{initialData.financeInvoice.creditInvoiceNumber}</Alert.Link>

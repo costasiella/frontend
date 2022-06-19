@@ -451,8 +451,7 @@
         "confirm": "__STRING_NOT_TRANSLATED__",
         "confirm_action_no": "__STRING_NOT_TRANSLATED__",
         "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
-        "each": "__STRING_NOT_TRANSLATED__",
-        "received_on": "__STRING_NOT_TRANSLATED__"
+        "each": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -711,7 +710,9 @@
             "item_add": "__STRING_NOT_TRANSLATED__",
             "item": {
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
-            }
+            },
+            "account_profile_link": "__STRING_NOT_TRANSLATED__",
+            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__"
         },
         "invoice_groups_defaults": {
             "MEMBERSHIPS": "__STRING_NOT_TRANSLATED__",
