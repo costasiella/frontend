@@ -450,7 +450,8 @@
         "created_at": "__STRING_NOT_TRANSLATED__",
         "confirm": "__STRING_NOT_TRANSLATED__",
         "confirm_action_no": "__STRING_NOT_TRANSLATED__",
-        "confirm_action_yes": "__STRING_NOT_TRANSLATED__"
+        "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
+        "each": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -928,7 +929,9 @@
             },
             "btn_text_manage": "__STRING_NOT_TRANSLATED__",
             "invoice": {
-                "error_loading_data": "__STRING_NOT_TRANSLATED__"
+                "error_loading_data": "__STRING_NOT_TRANSLATED__",
+                "title": "__STRING_NOT_TRANSLATED__",
+                "pieces": "__STRING_NOT_TRANSLATED__"
             }
         },
         "checkout": {

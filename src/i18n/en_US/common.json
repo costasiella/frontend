@@ -526,7 +526,8 @@
         "created_at": "Created at",
         "confirm": "Just to double check",
         "confirm_action_no": "Cancel",
-        "confirm_action_yes": "Continue"
+        "confirm_action_yes": "Continue",
+        "each": "Each"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -2174,7 +2175,9 @@
             },
             "btn_text_manage": "Manage",
             "invoice": {
-                "error_loading_data": "Error loading invoice... :("
+                "error_loading_data": "Error loading invoice... :(",
+                "title": "Invoice",
+                "pieces": "Pieces"
             }
         },
         "accounts": {

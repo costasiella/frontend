@@ -39,6 +39,7 @@ function ShopAccountInvoice({t, match, history}) {
     },
     fetchPolicy: "network-only"
   })
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   if (loading) return (
     <ShopAccountInvoiceBase>
@@ -56,11 +57,71 @@ function ShopAccountInvoice({t, match, history}) {
   const user = data.user
   const invoice = data.financeInvoice
 
+  const pageHeaderButtonList = (invoice.status === "SENT" && onlinePaymentsAvailable) ?
+    <Link to={"/shop/account/invoice_payment/" + invoice.id}>
+      <Button
+        className="float-right ml-2"
+        color="success"
+      >
+        {t('shop.account.invoices.to_payment')} <Icon name="chevron-right" />
+      </Button>
+    </Link>
+    : ""
+    
+
   return (
-    <ShopAccountInvoiceBase accountName={user.fullName}>
+    <ShopAccountInvoiceBase accountName={user.fullName} pageHeaderButtonList={pageHeaderButtonList}>
       <Grid.Row>
         <Grid.Col md={12}>
-            <h4>{t("shop.account.invoice.title")} {invoice.invoiceNumber}</h4>
+          <div className='float-right'>
+            <FinanceInvoicesStatus status={invoice.status}/>
+          </div>
+          <h4>{t("shop.account.invoice.title")} {invoice.invoiceNumber}</h4>
+          <Card>
+            <Card.Body>
+              {invoice.summary}
+            </Card.Body>
+            <Table cards>
+              <Table.Body>
+                <Table.Row>
+                  <Table.ColHeader>{t("general.date")}</Table.ColHeader>
+                  <Table.Col>{moment(invoice.dateSent).format(dateFormat)}</Table.Col>
+                  <Table.ColHeader>{t("finance.invoices.due")}</Table.ColHeader>
+                  <Table.Col>{moment(invoice.dateDue).format(dateFormat)}</Table.Col>
+                </Table.Row>
+                <Table.Row>
+                  <Table.ColHeader>{t("general.total")}</Table.ColHeader>
+                  <Table.Col>{invoice.totalDisplay}</Table.Col>
+                  <Table.ColHeader><b>{t("shop.account.invoices.to_be_paid")}</b></Table.ColHeader>
+                  <Table.Col><b>{invoice.balanceDisplay}</b></Table.Col>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          </Card>
+          <h4>{t('general.items')}</h4>
+          {invoice.items.edges.map(({ node }) => (
+            <Card>
+              <Card.Body>
+                <Grid.Row>
+                  <Grid.Col xs={12} sm={12} md={6}>
+                    <h6>{node.productName}</h6>
+                    {node.description}
+                  </Grid.Col>
+                  <Grid.Col xs={12} sm={12} md={4}>
+                    {(parseFloat(node.quantity) > 1.00) ? <div>
+                      <b>{node.quantity} {t("shop.account.invoice.pieces")} </b><br />
+                      {node.priceDisplay} {t("general.each")}
+                    </div> : ""}
+                  </Grid.Col>
+                  <Grid.Col xs={12} sm={12} md={2}>
+                    <div className="float-right">
+                      <b>{node.totalDisplay}</b><br />
+                    </div>
+                  </Grid.Col>
+                </Grid.Row>
+              </Card.Body>
+            </Card>
+          ))}
         </Grid.Col>
       </Grid.Row>
     </ShopAccountInvoiceBase>

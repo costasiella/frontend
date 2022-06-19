@@ -25,6 +25,7 @@ export const QUERY_ACCOUNT_INVOICE = gql`
             description
             quantity
             price
+            priceDisplay
             financeTaxRate {
               id
               name
