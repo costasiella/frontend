@@ -8,7 +8,6 @@ import moment from 'moment'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
 import { TOKEN_REFRESH } from "../../../../queries/system/auth"
-import { refreshTokenAndOpenExportLinkInNewTab } from "../../../../tools/refresh_token_and_open_export_link"
 
 import {
   Button,
@@ -19,8 +18,6 @@ import {
   Table,
 } from "tabler-react"
 import { QUERY_ACCOUNT_INVOICE } from "./queries"
-import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
-import LoadMoreOnBottomScroll from "../../../general/LoadMoreOnBottomScroll"
 
 import ShopAccountInvoiceBase from "./ShopAccountInvoiceBase"
 
@@ -33,7 +30,7 @@ function ShopAccountInvoice({t, match, history}) {
   const invoiceId = match.params.id
 
   // Chain queries. First query user data and then query invoices for that user once we have the account Id.
-  const { loading, error, data, fetchMore } = useQuery(QUERY_ACCOUNT_INVOICE, {
+  const { loading, error, data } = useQuery(QUERY_ACCOUNT_INVOICE, {
     variables: {
       id: invoiceId
     },
@@ -133,12 +130,6 @@ function ShopAccountInvoice({t, match, history}) {
                       <h6>{moment(node.date).format(dateFormat)}</h6>
                       {node.financePaymentMethod.name}
                     </Grid.Col>
-                    {/* <Grid.Col xs={12} sm={12} md={4}>
-                      {(parseFloat(node.quantity) > 1.00) ? <div>
-                        <b>{node.quantity} {t("shop.account.invoice.pieces")} </b><br />
-                        {node.priceDisplay} {t("general.each")}
-                      </div> : ""}
-                    </Grid.Col> */}
                     <Grid.Col xs={12} sm={12} md={4}>
                       <div className="float-right">
                         <b>{node.amountDisplay}</b><br />
