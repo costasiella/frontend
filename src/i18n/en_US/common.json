@@ -527,7 +527,8 @@
         "confirm": "Just to double check",
         "confirm_action_no": "Cancel",
         "confirm_action_yes": "Continue",
-        "each": "Each"
+        "each": "Each",
+        "received_on": "Received on"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

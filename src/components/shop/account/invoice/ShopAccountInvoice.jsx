@@ -122,6 +122,34 @@ function ShopAccountInvoice({t, match, history}) {
               </Card.Body>
             </Card>
           ))}
+          {(invoice.payments.edges.length) ?
+            <React.Fragment>
+              <h4>{t("general.payments")}</h4>
+              {invoice.payments.edges.map(({ node }) => (
+              <Card>
+                <Card.Body>
+                  <Grid.Row>
+                    <Grid.Col xs={12} sm={12} md={8}>
+                      <h6>{moment(node.date).format(dateFormat)}</h6>
+                      {node.financePaymentMethod.name}
+                    </Grid.Col>
+                    {/* <Grid.Col xs={12} sm={12} md={4}>
+                      {(parseFloat(node.quantity) > 1.00) ? <div>
+                        <b>{node.quantity} {t("shop.account.invoice.pieces")} </b><br />
+                        {node.priceDisplay} {t("general.each")}
+                      </div> : ""}
+                    </Grid.Col> */}
+                    <Grid.Col xs={12} sm={12} md={4}>
+                      <div className="float-right">
+                        <b>{node.amountDisplay}</b><br />
+                      </div>
+                    </Grid.Col>
+                  </Grid.Row>
+                </Card.Body>
+              </Card>
+            ))}
+            </React.Fragment>
+          : ""}
         </Grid.Col>
       </Grid.Row>
     </ShopAccountInvoiceBase>

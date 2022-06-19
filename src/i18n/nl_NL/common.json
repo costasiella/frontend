@@ -451,7 +451,8 @@
         "confirm": "__STRING_NOT_TRANSLATED__",
         "confirm_action_no": "__STRING_NOT_TRANSLATED__",
         "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
-        "each": "__STRING_NOT_TRANSLATED__"
+        "each": "__STRING_NOT_TRANSLATED__",
+        "received_on": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
