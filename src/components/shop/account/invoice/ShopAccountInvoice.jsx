@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
-import { TOKEN_REFRESH } from "../../../../queries/system/auth"
+// import { TOKEN_REFRESH } from "../../../../queries/system/auth"
 
 import {
   Button,
@@ -36,7 +36,7 @@ function ShopAccountInvoice({t, match, history}) {
     },
     fetchPolicy: "network-only"
   })
-  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
+  // const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   if (loading) return (
     <ShopAccountInvoiceBase>
