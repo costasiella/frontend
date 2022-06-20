@@ -50,6 +50,7 @@ const FinanceInvoicesFilter = ({ t, history, data, refetch }) => (
       <option value="DRAFT" key={v4()}>{t('finance.invoices.statuses.draft')}</option>
       <option value="SENT" key={v4()}>{t('finance.invoices.statuses.sent')}</option>
       <option value="PAID" key={v4()}>{t('finance.invoices.statuses.paid')}</option>
+      <option value="OVERDUE" key={v4()}>{t('finance.invoices.statuses.overdue')}</option>
       <option value="CANCELLED" key={v4()}>{t('finance.invoices.statuses.cancelled')}</option>
     </select>
   </div>

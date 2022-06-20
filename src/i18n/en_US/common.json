@@ -67,7 +67,8 @@
                 "sent": "Sent",
                 "paid": "Paid",
                 "cancelled": "Cancelled",
-                "all": "All statuses"
+                "all": "All statuses",
+                "overdue": "Overdue"
             },
             "status": {
                 "DRAFT": "Draft",
@@ -75,7 +76,8 @@
                 "PAID": "Paid",
                 "CANCELLED": "Cancelled",
                 "NOT_FOUND": "Not found",
-                "ALL": "All statuses"
+                "ALL": "All statuses",
+                "OVERDUE": "Overdue"
             },
             "delete_confirm_msg": "Are you sure you wish to delete this invoice?",
             "deleted": "Deleted invoice",

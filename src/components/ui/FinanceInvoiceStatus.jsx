@@ -28,6 +28,8 @@ class FinanceInvoicesStatus extends Component {
         return <Badge color="primary">{t('finance.invoices.status.SENT')}</Badge>
       case "PAID":
         return <Badge color="success">{t('finance.invoices.status.PAID')}</Badge>
+      case "OVERDUE":
+        return <Badge color="danger">{t('finance.invoices.status.OVERDUE')}</Badge>
       case "CANCELLED":
         return <Badge color="warning">{t('finance.invoices.status.CANCELLED')}</Badge>
       default:
