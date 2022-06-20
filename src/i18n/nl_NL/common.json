@@ -543,7 +543,8 @@
                 "PAID": "__STRING_NOT_TRANSLATED__",
                 "CANCELLED": "__STRING_NOT_TRANSLATED__",
                 "NOT_FOUND": "__STRING_NOT_TRANSLATED__",
-                "ALL": "__STRING_NOT_TRANSLATED__"
+                "ALL": "__STRING_NOT_TRANSLATED__",
+                "OVERDUE": "__STRING_NOT_TRANSLATED__"
             },
             "payment_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "payment_deleted": "__STRING_NOT_TRANSLATED__",
@@ -568,7 +569,8 @@
                 "draft": "__STRING_NOT_TRANSLATED__",
                 "sent": "__STRING_NOT_TRANSLATED__",
                 "paid": "__STRING_NOT_TRANSLATED__",
-                "cancelled": "__STRING_NOT_TRANSLATED__"
+                "cancelled": "__STRING_NOT_TRANSLATED__",
+                "overdue": "__STRING_NOT_TRANSLATED__"
             },
             "export": {
                 "btn_prepare_export": "__STRING_NOT_TRANSLATED__",
