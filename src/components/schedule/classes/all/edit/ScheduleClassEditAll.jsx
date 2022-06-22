@@ -12,6 +12,7 @@ import { UPDATE_CLASS } from './queries'
 import { get_list_query_variables } from '../../tools'
 import { CLASS_SCHEMA } from '../../yupSchema'
 import ScheduleClassForm from '../../ScheduleClassForm'
+import ButtonBack from '../../../../ui/ButtonBack';
 
 import { dateToLocalISO, dateToLocalISOTime, TimeStringToJSDateOBJ } from '../../../../../tools/date_tools'
 import ClassEditBase from '../ClassEditBase'
@@ -28,8 +29,10 @@ function ScheduleClassEditAll({t, match}) {
   })
   const [ updateScheduleClass ] = useMutation(UPDATE_CLASS)
 
+  const pageHeaderButtonList = <ButtonBack returnUrl="/schedule/classes" />
+
   if (loading) return (
-    <ClassEditBase menu_activeLink={menuActiveLink}>
+    <ClassEditBase menu_activeLink={menuActiveLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card.Body>
         <p>{t('general.loading_with_dots')}</p>
       </Card.Body>
@@ -37,7 +40,7 @@ function ScheduleClassEditAll({t, match}) {
   )
 
   if (error) return (
-    <ClassEditBase menu_activeLink={menuActiveLink}>
+    <ClassEditBase menu_activeLink={menuActiveLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card.Body>
         <p>{t('general.error_sad_smiley')}</p>
       </Card.Body>
@@ -72,6 +75,7 @@ function ScheduleClassEditAll({t, match}) {
     <ClassEditBase 
       menuActiveLink={menuActiveLink}
       defaultCard={false}
+      pageHeaderButtonList={pageHeaderButtonList}
     >
       <Card title={cardTitle}>
         <Formik
