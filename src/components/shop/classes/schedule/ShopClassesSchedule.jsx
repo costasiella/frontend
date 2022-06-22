@@ -17,18 +17,14 @@ import {
   Progress,
   Table,
 } from "tabler-react";
+
+import { capitalize } from '../../../../tools/string_tools'
 import ShopClassesScheduleBase from "./ShopClassesScheduleBase"
 import ShopClassesScheduleFilter from "./ShopClassesScheduleFilter"
 import ShopClassesScheduleButtonBook from "./ShopClassesScheduleButtonBook"
 
 import { GET_CLASSES_QUERY } from "../../../schedule/classes/queries"
 import { get_list_query_variables } from './tools'
-
-
-function capitalize(word) {
-  const lower = word.toLowerCase();
-  return word.charAt(0).toUpperCase() + lower.slice(1);
-}
 
 
 // Set some initial values for dates, if not found
@@ -163,11 +159,15 @@ function ShopClassesSchedule({ t, match, history }) {
                         bookingStatus }) => (
                           <Table.Row>
                             <Table.Col>
-                            <h4>
+                            <h5>
+                              { organizationClasstype.name } { ' ' }
                               {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
                               {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
-                            </h4> 
-                            { organizationClasstype.name } { (account) ? ' ' + t("general.with") + ' ' + account.fullName : "" } <br />
+
+                            </h5> 
+                             <span className="mr-2">{ (account) ? account.fullName : "" }</span>
+                             <span className="text-muted">{organizationLevel && organizationLevel.name}</span>
+                             <br />
                             <span className="text-muted">{ organizationLocationRoom.organizationLocation.name }</span>
                             </Table.Col>
                             <Table.Col>
@@ -179,14 +179,14 @@ function ShopClassesSchedule({ t, match, history }) {
                               />
                               {(bookingStatus !== "FINISHED" && status !== "CANCELLED") ? 
                                 <React.Fragment>
-                                <div style={{clear: "both"}} />
-                                <div className="cs-shop-classes-schedule-business-indicator mt-2">
-                                <div className="float-right"><small><Icon name="users" className="text-muted" /></small></div>
-                                  <Progress size="xs" className="cs-shop-classes-schedule-business-indicator">
-                                    {/* This strange calculation shows online spaces in the progress bar, not all spaces. */}
-                                    <Progress.Bar color="primary" width={((spaces-availableSpacesOnline)/spaces) * 100} /> 
-                                  </Progress>
-                                </div>
+                                  <div style={{clear: "both"}} />
+                                    <div className="cs-shop-classes-schedule-business-indicator mt-2">
+                                      <div className="float-right"><small><Icon name="users" className="text-muted" /></small></div>
+                                      <Progress size="xs" className="cs-shop-classes-schedule-business-indicator">
+                                        {/* This strange calculation shows online spaces in the progress bar, not all spaces. */}
+                                        <Progress.Bar color="primary" width={((spaces-availableSpacesOnline)/spaces) * 100} /> 
+                                      </Progress>
+                                  </div>
                                 </React.Fragment>
                                 : ""
                               }

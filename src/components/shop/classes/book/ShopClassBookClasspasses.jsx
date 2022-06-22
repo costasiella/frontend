@@ -19,7 +19,7 @@ function ShopClassBookClasspasses({ t, match, history, classpasses }) {
 
   return (
     classpasses.map((classpass) =>(
-      <Grid.Col xs={12} sm={12} md={3}>
+      <Grid.Col xs={12} sm={6} md={4} xl={3}>
         <Card 
           statusColor="blue"
           title={t("general.classpass")} >

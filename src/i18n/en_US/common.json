@@ -437,7 +437,6 @@
         "comments": "Comments",
         "account": "Account",
         "at": "at",
-        "with": "With",
         "book": "Book",
         "info_mail": "Info mail",
         "license": "License",
@@ -528,10 +527,12 @@
         "generated on": "Generated on",
         "last_login": "Last login",
         "created_at": "Created at",
-        "confirm": "Just to double check",
+        "confirm": "Just to double check...",
         "confirm_action_no": "Cancel",
         "confirm_action_yes": "Continue",
-        "each": "Each"
+        "each": "Each",
+        "not_public": "Not public",
+        "sub_instructor": "Substitute instructor"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1208,7 +1209,7 @@
                     "edit_this_class": "Edit this class"
                 }
             },
-            "no_instructor": "No instructor",
+            "no_instructor": "Looking for sub instructor",
             "prices": {
                 "title_add": "Add price",
                 "toast_add_success": "Added dropin & trial pass",

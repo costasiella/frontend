@@ -132,7 +132,7 @@ function ScheduleClassEdit({ t, match, history }) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={9}>
+            <Grid.Col xs={12} sm={12} md={9}>
               <Card>
                 <Card.Header>
                   <Card.Title>{t('general.edit')}</Card.Title>
@@ -213,7 +213,7 @@ function ScheduleClassEdit({ t, match, history }) {
                 </Card.Body>
               </Card>
             </Grid.Col>
-            <Grid.Col md={3}>
+            <Grid.Col xs={12} sm={12} md={3}>
               {(showDelete) ? 
                 <ScheduleClassWeeklyOTCDelete /> : ""
               }

@@ -35,10 +35,229 @@ table .btn {
 }
 
 /* Add missing xs column media definition */
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs,
+.col-xs-auto {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+
 @media (max-width: 575px) {
+  .col-xs {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  .col-xs-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+  .col-xs-1 {
+    -ms-flex: 0 0 8.33333333%;
+    flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
+  }
+  .col-xs-2 {
+    -ms-flex: 0 0 16.66666667%;
+    flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
+  }
+  .col-xs-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-xs-4 {
+    -ms-flex: 0 0 33.33333333%;
+    flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
+  }
+  .col-xs-5 {
+    -ms-flex: 0 0 41.66666667%;
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
+  }
+  .col-xs-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-xs-7 {
+    -ms-flex: 0 0 58.33333333%;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
+  }
+  .col-xs-8 {
+    -ms-flex: 0 0 66.66666667%;
+    flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
+  }
+  .col-xs-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-xs-10 {
+    -ms-flex: 0 0 83.33333333%;
+    flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
+  }
+  .col-xs-11 {
+    -ms-flex: 0 0 91.66666667%;
+    flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
+  }
   .col-xs-12 {
+    -ms-flex: 0 0 100%;
     flex: 0 0 100%;
-    max-width: 100%
+    max-width: 100%;
+  }
+  .order-xs-first {
+    -ms-flex-order: -1;
+    order: -1;
+  }
+  .order-xs-last {
+    -ms-flex-order: 13;
+    order: 13;
+  }
+  .order-xs-0 {
+    -ms-flex-order: 0;
+    order: 0;
+  }
+  .order-xs-1 {
+    -ms-flex-order: 1;
+    order: 1;
+  }
+  .order-xs-2 {
+    -ms-flex-order: 2;
+    order: 2;
+  }
+  .order-xs-3 {
+    -ms-flex-order: 3;
+    order: 3;
+  }
+  .order-xs-4 {
+    -ms-flex-order: 4;
+    order: 4;
+  }
+  .order-xs-5 {
+    -ms-flex-order: 5;
+    order: 5;
+  }
+  .order-xs-6 {
+    -ms-flex-order: 6;
+    order: 6;
+  }
+  .order-xs-7 {
+    -ms-flex-order: 7;
+    order: 7;
+  }
+  .order-xs-8 {
+    -ms-flex-order: 8;
+    order: 8;
+  }
+  .order-xs-9 {
+    -ms-flex-order: 9;
+    order: 9;
+  }
+  .order-xs-10 {
+    -ms-flex-order: 10;
+    order: 10;
+  }
+  .order-xs-11 {
+    -ms-flex-order: 11;
+    order: 11;
+  }
+  .order-xs-12 {
+    -ms-flex-order: 12;
+    order: 12;
+  }
+  .offset-xs-0 {
+    margin-left: 0;
+  }
+  .offset-xs-1 {
+    margin-left: 8.33333333%;
+  }
+  .offset-xs-2 {
+    margin-left: 16.66666667%;
+  }
+  .offset-xs-3 {
+    margin-left: 25%;
+  }
+  .offset-xs-4 {
+    margin-left: 33.33333333%;
+  }
+  .offset-xs-5 {
+    margin-left: 41.66666667%;
+  }
+  .offset-xs-6 {
+    margin-left: 50%;
+  }
+  .offset-xs-7 {
+    margin-left: 58.33333333%;
+  }
+  .offset-xs-8 {
+    margin-left: 66.66666667%;
+  }
+  .offset-xs-9 {
+    margin-left: 75%;
+  }
+  .offset-xs-10 {
+    margin-left: 83.33333333%;
+  }
+  .offset-xs-11 {
+    margin-left: 91.66666667%;
+  }
+
+
+  /* Display XS controls */
+  .d-xs-none {
+    display: none !important;
+  }
+  .d-xs-inline {
+    display: inline !important;
+  }
+  .d-xs-inline-block {
+    display: inline-block !important;
+  }
+  .d-xs-block {
+    display: block !important;
+  }
+  .d-xs-table {
+    display: table !important;
+  }
+  .d-xs-table-row {
+    display: table-row !important;
+  }
+  .d-xs-table-cell {
+    display: table-cell !important;
+  }
+  .d-xs-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  .d-xs-inline-flex {
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
   }
 }
 

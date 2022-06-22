@@ -1,5 +1,8 @@
 import React from "react"
 import CSLS from "../../../tools/cs_local_storage"
+import {
+  Icon
+} from "tabler-react";
 
 import StatusIcon from "../../ui/StatusIcon"
 
@@ -66,9 +69,9 @@ export function represent_instructor(name, role) {
   }
 
   if (textColor) {
-    return <span className={textColor}>{name}</span>
+    return <span className={textColor}><Icon name="user" /> {name}</span>
   } else {
-    return name
+    return <React.Fragment><Icon name="user"/> {name}</React.Fragment>
   }
 }
 
@@ -99,7 +102,7 @@ export function get_class_messages(t, status, description, holiday, holidayName)
     return <span>{t("general.holiday")} ({holidayName})</span>
   }
 
-  if (status === 'CANCELED') {
+  if (status === 'CANCELLED') {
     return description
   }
 }

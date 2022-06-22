@@ -28,14 +28,14 @@ function ClassEditBaseBase({t, match, children, subTitle="", cardTitle="", defau
           </div>
         </Page.Header>
         <Grid.Row>
-          <Grid.Col md={9}>
+          <Grid.Col xs={12} sm={12} md={9}>
             {(!defaultCard) ? children :
               <Card title={cardTitle}>
                 {children}
               </Card>
             }
           </Grid.Col>
-          <Grid.Col md={3}>
+          <Grid.Col xs={12} sm={12} md={3}>
             <ClassEditMenu activeLink={menuActiveLink} classId={classId}/>
           </Grid.Col>
         </Grid.Row>
