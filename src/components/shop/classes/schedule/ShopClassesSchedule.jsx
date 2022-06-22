@@ -183,14 +183,14 @@ function ShopClassesSchedule({ t, match, history }) {
                               />
                               {(bookingStatus !== "FINISHED" && status !== "CANCELLED") ? 
                                 <React.Fragment>
-                                <div style={{clear: "both"}} />
-                                <div className="cs-shop-classes-schedule-business-indicator mt-2">
-                                <div className="float-right"><small><Icon name="users" className="text-muted" /></small></div>
-                                  <Progress size="xs" className="cs-shop-classes-schedule-business-indicator">
-                                    {/* This strange calculation shows online spaces in the progress bar, not all spaces. */}
-                                    <Progress.Bar color="primary" width={((spaces-availableSpacesOnline)/spaces) * 100} /> 
-                                  </Progress>
-                                </div>
+                                  <div style={{clear: "both"}} />
+                                    <div className="cs-shop-classes-schedule-business-indicator mt-2">
+                                      <div className="float-right"><small><Icon name="users" className="text-muted" /></small></div>
+                                      <Progress size="xs" className="cs-shop-classes-schedule-business-indicator">
+                                        {/* This strange calculation shows online spaces in the progress bar, not all spaces. */}
+                                        <Progress.Bar color="primary" width={((spaces-availableSpacesOnline)/spaces) * 100} /> 
+                                      </Progress>
+                                  </div>
                                 </React.Fragment>
                                 : ""
                               }

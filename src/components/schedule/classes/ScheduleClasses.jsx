@@ -14,6 +14,7 @@ import {
   Icon,
   Card,
   Table,
+  Grid,
 } from "tabler-react";
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { confirmAlert } from 'react-confirm-alert'
@@ -130,7 +131,185 @@ function ScheduleClasses ({ t, history }) {
   return (
     <ScheduleClassesBase data={data} refetch={refetch}>
       { data.scheduleClasses.map(({ date, classes }) => (
-        <div key={v4()}>
+        <React.Fragment>
+          <h3>
+            {moment(date).format("dddd")} {' '}
+            <small className="text-muted">
+                  {moment(date).format("LL")} 
+            </small>
+          </h3>
+          {!(classes.length) ? <h4>{t('schedule.classes.empty_list')}</h4> :
+            classes.map((
+              { scheduleItemId, 
+                frequencyType,
+                date, 
+                status,
+                holiday,
+                holidayName,
+                description,
+                account, 
+                role,
+                account2,
+                role2,
+                organizationLocationRoom, 
+                organizationClasstype, 
+                organizationLevel,
+                timeStart, 
+                timeEnd,
+                spaces,
+                countAttendance,
+                displayPublic }) => (
+                  <Card>
+                    <Card.Body>
+                      <Grid.Row>
+                        <Grid.Col xs={9} sm={9} md={10}>
+                          <Grid.Row>
+                            <Grid.Col xs={12}>
+                              <h5>
+                                {/* Class type */}
+                                {organizationClasstype.name} { ' ' }
+                                {/* Start & end time */}
+                                {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
+                                {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
+                                {organizationLevel && <small className="text-muted ml-2">
+                                  {organizationLevel.name}
+                                </small>}
+                                
+                                {(frequencyType === 'SPECIFIC') ? 
+                                  <Badge color="primary" className="ml-2">{t('general.once')}</Badge> : 
+                                  null } 
+                                {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
+                                  <Badge color="success" className="ml-2">{t('general.monthly')}</Badge> : 
+                                  null } 
+                              </h5>
+                            </Grid.Col>
+                          </Grid.Row>
+                          <Grid.Row>
+                            <Grid.Col xs={12}>
+                              {/* Instructor(s) */}
+                              { (account) ? 
+                                  represent_instructor(account.fullName, role) : 
+                                  <span className="text-red">{t("schedule.classes.no_instructor")}</span>
+                              } <br />
+                              <small className="text-muted">
+                                {(account2) ? represent_instructor(account2.fullName, role2) : ""}
+                              </small>
+                            </Grid.Col>
+                            <Grid.Col xs={12}>
+                              {/* Location */}
+                              <Icon name="home" /> {organizationLocationRoom.organizationLocation.name} 
+                              <small className="text-muted"> | {organizationLocationRoom.name}</small>
+                            </Grid.Col>
+                          </Grid.Row>
+                        </Grid.Col>
+                        <Grid.Col xs={3} sm={3} md={2}>
+                          <div className='float-right'>
+                            <Dropdown
+                              key={v4()}
+                              className="pull-right"
+                              type="button"
+                              toggle
+                              color="secondary"
+                              triggerContent={<React.Fragment>
+                                  <span className="d-xs-none">{t("general.manage")}</span>
+                                  <span className="d-sm-none d-md-none d-lg-none d-xl-none"><Icon name="more-horizontal" /></span>
+                                </React.Fragment>}
+                              items={[
+                                <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
+                                  <Link to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
+                                    <Dropdown.Item
+                                      key={v4()}
+                                      icon="check-circle"
+                                    >
+                                        {t("general.attendance")}
+                                    </Dropdown.Item>
+                                  </Link>
+                                </HasPermissionWrapper>,
+                                <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
+                                  <Link to={'/schedule/classes/class/attendance_chart/' + scheduleItemId + '/' + date}>
+                                    <Dropdown.Item
+                                      key={v4()}
+                                      icon="bar-chart-2">
+                                        {t("schedule.classes.class.attendance_chart.title")}
+                                    </Dropdown.Item>
+                                  </Link>
+                                </HasPermissionWrapper>,
+                                <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemweeklyotc">
+                                  <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
+                                    <Dropdown.Item
+                                      key={v4()}
+                                      icon="edit-3"
+                                    >
+                                      {t("general.edit")}
+                                    </Dropdown.Item>
+                                  </Link>
+                                </HasPermissionWrapper>,
+                                <HasPermissionWrapper key={v4()} permission="change" resource="scheduleclass">
+                                  <Dropdown.ItemDivider key={v4()} />
+                                  <Link to={'/schedule/classes/all/edit/' + scheduleItemId}>
+                                    <Dropdown.Item
+                                      key={v4()}
+                                      badge={t('schedule.classes.all_classes_in_series')}
+                                      badgeType="secondary"
+                                      icon="edit-3"
+                                    >
+                                        {t("general.edit")}
+                                    </Dropdown.Item>
+                                  </Link>
+                                </HasPermissionWrapper>,
+                                <HasPermissionWrapper key={v4()} permission="delete" resource="scheduleclass">
+                                  <Dropdown.ItemDivider key={v4()} />
+                                  <span className="text-red">
+                                  <Dropdown.Item
+                                    key={v4()}
+                                    badge={t('schedule.classes.all_classes_in_series')}
+                                    badgeType="danger"
+                                    icon="trash-2"
+                                    onClick={() => {
+                                      confirm_delete({
+                                        t: t,
+                                        msgConfirm: t("schedule.classes.delete_confirm_msg"),
+                                        msgDescription: <p key={v4()}>
+                                          {moment(date + ' ' + timeStart).format('LT')} {' - '}
+                                          {moment(date + ' ' + timeEnd).format('LT')} {' '} @ {' '}
+                                          {organizationLocationRoom.organizationLocation.name} {' '}
+                                          {organizationLocationRoom.name}
+                                          {organizationClasstype.Name}
+                                          </p>,
+                                        msgSuccess: t('schedule.classes.deleted'),
+                                        deleteFunction: deleteScheduleClass,
+                                        functionVariables: { variables: {
+                                          input: {
+                                            id: scheduleItemId
+                                          }
+                                        }, refetchQueries: [
+                                          { query: GET_CLASSES_QUERY, variables: get_list_query_variables() }
+                                        ]}
+                                      })
+                                    }}>
+                                  {t("general.delete")}
+                                  </Dropdown.Item>
+                                  </span>
+                                </HasPermissionWrapper>
+                              ]}
+                              />
+                            </div>
+                        </Grid.Col>
+                      </Grid.Row>
+                      <Grid.Row>
+                        <Grid.Col> 
+                         <small className="text-muted">{get_class_messages(t, status, description, holiday, holidayName)}</small>
+                        </Grid.Col>
+                        <Grid.Col>
+                          {/* Attendance */}
+                          <small className='float-right'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                        </Grid.Col>
+                      </Grid.Row>
+                    </Card.Body>
+                  </Card>
+                )
+            )}
+
           <Card>
             <Card.Header>
               <Card.Title>
@@ -312,7 +491,7 @@ function ScheduleClasses ({ t, history }) {
               </Table>
             }
           </Card>
-        </div>
+        </React.Fragment >
       ))}
     </ScheduleClassesBase>
   )
