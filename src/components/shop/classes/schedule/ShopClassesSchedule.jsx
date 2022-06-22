@@ -17,18 +17,14 @@ import {
   Progress,
   Table,
 } from "tabler-react";
+
+import { capitalize } from '../../../../tools/string_tools'
 import ShopClassesScheduleBase from "./ShopClassesScheduleBase"
 import ShopClassesScheduleFilter from "./ShopClassesScheduleFilter"
 import ShopClassesScheduleButtonBook from "./ShopClassesScheduleButtonBook"
 
 import { GET_CLASSES_QUERY } from "../../../schedule/classes/queries"
 import { get_list_query_variables } from './tools'
-
-
-function capitalize(word) {
-  const lower = word.toLowerCase();
-  return word.charAt(0).toUpperCase() + lower.slice(1);
-}
 
 
 // Set some initial values for dates, if not found

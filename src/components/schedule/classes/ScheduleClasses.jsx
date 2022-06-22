@@ -13,7 +13,6 @@ import {
   Dropdown,
   Icon,
   Card,
-  Table,
   Grid,
 } from "tabler-react";
 import HasPermissionWrapper from "../../HasPermissionWrapper"
@@ -22,8 +21,8 @@ import { toast } from 'react-toastify'
 
 import CSLS from "../../../tools/cs_local_storage"
 
-
-import BadgeBoolean from "../../ui/BadgeBoolean"
+import { capitalize } from '../../../tools/string_tools'
+import BadgePublic from '../../ui/BadgePublic'
 import ScheduleClassesBase from './ScheduleClassesBase'
 
 import { GET_CLASSES_QUERY } from "./queries"
@@ -131,14 +130,19 @@ function ScheduleClasses ({ t, history }) {
   return (
     <ScheduleClassesBase data={data} refetch={refetch}>
       { data.scheduleClasses.map(({ date, classes }) => (
-        <React.Fragment>
+        <React.Fragment key={v4()}>
           <h3>
-            {moment(date).format("dddd")} {' '}
+            {capitalize(moment(date).format("dddd"))} {' '}
             <small className="text-muted">
                   {moment(date).format("LL")} 
             </small>
           </h3>
-          {!(classes.length) ? <h4>{t('schedule.classes.empty_list')}</h4> :
+          {!(classes.length) ? <Card>
+              <Card.Body>
+                <h5>{t('schedule.classes.empty_list')} <i className="fa fa-beach"/></h5>
+              </Card.Body>
+            </Card> 
+          :
             classes.map((
               { scheduleItemId, 
                 frequencyType,
@@ -159,28 +163,24 @@ function ScheduleClasses ({ t, history }) {
                 spaces,
                 countAttendance,
                 displayPublic }) => (
-                  <Card>
+                  <Card key={v4()}>
                     <Card.Body>
                       <Grid.Row>
                         <Grid.Col xs={9} sm={9} md={10}>
                           <Grid.Row>
                             <Grid.Col xs={12}>
                               <h5>
+                                {represent_class_status(status)}
+                                <span className='mr-2'>
                                 {/* Class type */}
                                 {organizationClasstype.name} { ' ' }
                                 {/* Start & end time */}
                                 {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
                                 {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
-                                {organizationLevel && <small className="text-muted ml-2">
+                                </span>
+                                {organizationLevel && <small className="text-muted">
                                   {organizationLevel.name}
                                 </small>}
-                                
-                                {(frequencyType === 'SPECIFIC') ? 
-                                  <Badge color="primary" className="ml-2">{t('general.once')}</Badge> : 
-                                  null } 
-                                {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
-                                  <Badge color="success" className="ml-2">{t('general.monthly')}</Badge> : 
-                                  null } 
                               </h5>
                             </Grid.Col>
                           </Grid.Row>
@@ -297,200 +297,33 @@ function ScheduleClasses ({ t, history }) {
                         </Grid.Col>
                       </Grid.Row>
                       <Grid.Row>
-                        <Grid.Col> 
-                         <small className="text-muted">{get_class_messages(t, status, description, holiday, holidayName)}</small>
+                        <Grid.Col xs={9} sm={9} md={10}>
+                          <div className="mt-1">
+                            <BadgePublic className="mr-2" isPublic={displayPublic} />
+                            {(frequencyType === 'SPECIFIC') ? 
+                              <Badge color="primary" className="mr-2">{t('general.once')}</Badge> : 
+                              null } 
+                            {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
+                              <Badge color="success" className="mr-2">{t('general.monthly')}</Badge> : 
+                              null } 
+                            {(status === "SUB") ? 
+                              <Badge color="primary" className="mr-2">{t('general.sub_instructor')}</Badge> : 
+                              null } 
+                            {(status === "CANCELLED") ? 
+                              <Badge color="warning" className="mr-2">{t('general.cancelled')}</Badge> : 
+                              null } 
+                              <small className="text-muted"><br />{get_class_messages(t, status, description, holiday, holidayName)}</small>
+                          </div>
                         </Grid.Col>
-                        <Grid.Col>
+                        <Grid.Col xs={3} sm={3} md={2}>
                           {/* Attendance */}
-                          <small className='float-right'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                          <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
                         </Grid.Col>
                       </Grid.Row>
                     </Card.Body>
                   </Card>
                 )
             )}
-
-          <Card>
-            <Card.Header>
-              <Card.Title>
-                <b>{moment(date).format("dddd")}</b> {' '}
-                <span className="text-muted">
-                  {moment(date).format("LL")} 
-                </span>
-              </Card.Title>
-            </Card.Header>
-            {!(classes.length) ? <Card.Body>{t('schedule.classes.empty_list')}</Card.Body> :
-              <Table cards>
-                <Table.Header>
-                  <Table.Row key={v4()}>
-                    <Table.ColHeader /> 
-                    <Table.ColHeader>{t('general.time')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.location')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.class')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.instructor')}</Table.ColHeader>
-                    <Table.ColHeader>{t('general.public')}</Table.ColHeader>
-                    <Table.ColHeader><Icon name="users" /></Table.ColHeader>
-                    <Table.ColHeader></Table.ColHeader>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {classes.map((
-                    { scheduleItemId, 
-                      frequencyType,
-                      date, 
-                      status,
-                      holiday,
-                      holidayName,
-                      description,
-                      account, 
-                      role,
-                      account2,
-                      role2,
-                      organizationLocationRoom, 
-                      organizationClasstype, 
-                      organizationLevel,
-                      timeStart, 
-                      timeEnd,
-                      spaces,
-                      countAttendance,
-                      displayPublic }) => (
-                    <Table.Row key={v4()}>
-                      <Table.Col>
-                        {represent_class_status(status)}
-                      </Table.Col>
-                      <Table.Col>
-                        {/* Start & end time */}
-                        {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
-                        {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
-                        {(frequencyType === 'SPECIFIC') ? <Badge color="primary">{t('general.once')}</Badge> : null } 
-                        {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? <Badge color="success">{t('general.monthly')}</Badge> : null } 
-                        <br />
-                        <small className="text-muted">{get_class_messages(t, status, description, holiday, holidayName)}</small>
-                      </Table.Col>
-                      <Table.Col>
-                        {/* Location */}
-                        {organizationLocationRoom.organizationLocation.name} <br />
-                        <small className="text-muted">{organizationLocationRoom.name}</small>
-                      </Table.Col>
-                      <Table.Col>
-                        {/* Type and level */}
-                        {organizationClasstype.name} <br />
-                        <small className="text-muted">
-                          {(organizationLevel) ? organizationLevel.name: ""}
-                        </small>
-                      </Table.Col>
-                      <Table.Col>
-                        {/* Instructor(s) */}
-                        { (account) ? 
-                            represent_instructor(account.fullName, role) : 
-                            <span className="text-red">{t("schedule.classes.no_instructor")}</span>
-                        } <br />
-                        <small className="text-muted">
-                          {(account2) ? represent_instructor(account2.fullName, role2) : ""}
-                        </small>
-                      </Table.Col>
-                      <Table.Col>
-                        {/* Public */}
-                        <BadgeBoolean value={displayPublic} />
-                      </Table.Col>
-                      <Table.Col>
-                        {/* Attendance */}
-                        {countAttendance}/{spaces}
-                      </Table.Col>
-                      <Table.Col>
-                        <Dropdown
-                          key={v4()}
-                          className="pull-right"
-                          type="button"
-                          toggle
-                          color="secondary btn-sm"
-                          triggerContent={t("general.actions")}
-                          items={[
-                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
-                              <Link to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
-                                <Dropdown.Item
-                                  key={v4()}
-                                  icon="check-circle"
-                                >
-                                    {t("general.attendance")}
-                                </Dropdown.Item>
-                              </Link>
-                            </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
-                              <Link to={'/schedule/classes/class/attendance_chart/' + scheduleItemId + '/' + date}>
-                                <Dropdown.Item
-                                  key={v4()}
-                                  icon="bar-chart-2">
-                                    {t("schedule.classes.class.attendance_chart.title")}
-                                </Dropdown.Item>
-                              </Link>
-                            </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemweeklyotc">
-                              <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
-                                <Dropdown.Item
-                                  key={v4()}
-                                  icon="edit-3"
-                                >
-                                  {t("general.edit")}
-                                </Dropdown.Item>
-                              </Link>
-                            </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="change" resource="scheduleclass">
-                              <Dropdown.ItemDivider key={v4()} />
-                              <Link to={'/schedule/classes/all/edit/' + scheduleItemId}>
-                                <Dropdown.Item
-                                  key={v4()}
-                                  badge={t('schedule.classes.all_classes_in_series')}
-                                  badgeType="secondary"
-                                  icon="edit-3"
-                                >
-                                    {t("general.edit")}
-                                </Dropdown.Item>
-                              </Link>
-                            </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="delete" resource="scheduleclass">
-                              <Dropdown.ItemDivider key={v4()} />
-                              <span className="text-red">
-                              <Dropdown.Item
-                                key={v4()}
-                                badge={t('schedule.classes.all_classes_in_series')}
-                                badgeType="danger"
-                                icon="trash-2"
-                                onClick={() => {
-                                  confirm_delete({
-                                    t: t,
-                                    msgConfirm: t("schedule.classes.delete_confirm_msg"),
-                                    msgDescription: <p key={v4()}>
-                                      {moment(date + ' ' + timeStart).format('LT')} {' - '}
-                                      {moment(date + ' ' + timeEnd).format('LT')} {' '} @ {' '}
-                                      {organizationLocationRoom.organizationLocation.name} {' '}
-                                      {organizationLocationRoom.name}
-                                      {organizationClasstype.Name}
-                                      </p>,
-                                    msgSuccess: t('schedule.classes.deleted'),
-                                    deleteFunction: deleteScheduleClass,
-                                    functionVariables: { variables: {
-                                      input: {
-                                        id: scheduleItemId
-                                      }
-                                    }, refetchQueries: [
-                                      { query: GET_CLASSES_QUERY, variables: get_list_query_variables() }
-                                    ]}
-                                  })
-                                }}>
-                              {t("general.delete")}
-                              </Dropdown.Item>
-                              </span>
-                            </HasPermissionWrapper>
-                          ]}
-                        />
-                      </Table.Col>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              </Table>
-            }
-          </Card>
         </React.Fragment >
       ))}
     </ScheduleClassesBase>

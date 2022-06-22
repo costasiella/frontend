@@ -401,7 +401,6 @@
         "at": "__STRING_NOT_TRANSLATED__",
         "book": "__STRING_NOT_TRANSLATED__",
         "today": "__STRING_NOT_TRANSLATED__",
-        "with": "__STRING_NOT_TRANSLATED__",
         "valid_for": "__STRING_NOT_TRANSLATED__",
         "end": "__STRING_NOT_TRANSLATED__",
         "sold_out": "__STRING_NOT_TRANSLATED__",
@@ -451,7 +450,9 @@
         "confirm": "__STRING_NOT_TRANSLATED__",
         "confirm_action_no": "__STRING_NOT_TRANSLATED__",
         "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
-        "each": "__STRING_NOT_TRANSLATED__"
+        "each": "__STRING_NOT_TRANSLATED__",
+        "not_public": "__STRING_NOT_TRANSLATED__",
+        "sub_instructor": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
