@@ -36,7 +36,7 @@ class ScheduleHome extends Component {
                     resource="scheduleclass"
                     permission="view"
                   >
-                    <Grid.Col md={3} lg={3}>
+                    <Grid.Col xs={12} sm={6} md={3} lg={3}>
                       <Card>
                         <Card.Body>
                           <h5>{t("schedule.classes.title")}</h5>
@@ -51,7 +51,7 @@ class ScheduleHome extends Component {
                     resource="scheduleevent"
                     permission="view"
                   >
-                    <Grid.Col md={3} lg={3}>
+                    <Grid.Col xs={12} sm={6}  md={3} lg={3}>
                       <Card>
                         <Card.Body>
                           <h5>{t("schedule.events.title")}</h5>
@@ -66,7 +66,7 @@ class ScheduleHome extends Component {
                     resource="scheduleshift"
                     permission="view"
                   >
-                    <Grid.Col md={3} lg={3}>
+                    <Grid.Col xs={12} sm={6}  md={3} lg={3}>
                       <Card>
                         <Card.Body>
                           <h5>{t("schedule.shifts.title")}</h5>
