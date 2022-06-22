@@ -36,7 +36,7 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
   let [level, setLevel] = useState(getDefaultValue(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL))
 
   return (
-    <React.Fragment>
+    <div className="mb-4">
       <Grid.Row>
         <Grid.Col md={12}>
           <Button
@@ -120,7 +120,7 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
           </select>
         </Grid.Col>
       </Grid.Row>
-    </React.Fragment>
+    </div>
   )
 }
 
