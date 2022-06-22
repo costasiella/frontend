@@ -59,7 +59,7 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
         </Grid.Col>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Col>
+        <Grid.Col xs={12}>
           {/* Locations */}
           <select 
             className={selectClass}
@@ -79,7 +79,7 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
             )}
           </select>
         </Grid.Col>
-        <Grid.Col>
+        <Grid.Col xs={12}>
           {/* Classtypes */}
           <select 
             className={selectClass}
@@ -99,7 +99,7 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
             )}
           </select>
         </Grid.Col>
-        <Grid.Col>
+        <Grid.Col xs={12}>
           {/* Levels */}
           <select 
             className={selectClass}
