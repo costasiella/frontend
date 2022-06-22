@@ -163,13 +163,13 @@ function ShopClassesSchedule({ t, match, history }) {
                         bookingStatus }) => (
                           <Table.Row>
                             <Table.Col>
-                            <h4>
+                            <h5>
                               { organizationClasstype.name } { ' ' }
                               {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
                               {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
 
-                            </h4> 
-                             <span className="mr-2">{ (account) ? ' ' + t("general.with") + ' ' + account.fullName : "" }</span>
+                            </h5> 
+                             <span className="mr-2">{ (account) ? account.fullName : "" }</span>
                              <span className="text-muted">{organizationLevel && organizationLevel.name}</span>
                              <br />
                             <span className="text-muted">{ organizationLocationRoom.organizationLocation.name }</span>
