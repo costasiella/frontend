@@ -23,7 +23,6 @@ import CSStandalonePageWide from "../../ui/CSStandalonePageWide"
 
 function Welcome({t, match, history}) {
   const organization = useContext(OrganizationContext)
-  console.log(organization)
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     fetchPolicy: "network-only"
   })
@@ -40,7 +39,6 @@ function Welcome({t, match, history}) {
   )
 
   const user = data.user
-  console.log(user)
 
   // Push the user to the shop in case they're not an employee or instructor
   if (!user.employee && !user.instructor) {
