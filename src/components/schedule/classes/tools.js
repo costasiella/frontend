@@ -1,10 +1,12 @@
 import React from "react"
 import CSLS from "../../../tools/cs_local_storage"
 import {
+  Badge,
   Icon
 } from "tabler-react";
 
 import StatusIcon from "../../ui/StatusIcon"
+import { t } from "i18next";
 
 
 export function get_list_query_variables() {
@@ -52,27 +54,23 @@ export function get_list_query_variables() {
 
 
 export function represent_instructor(name, role) {
-  let textColor = false
+  let badge
 
   switch (role) {
     case "SUB":
-      textColor = "text-blue"
+      badge = <Badge color="primary">{t("schedule.classes.instructor_roles.sub")}</Badge>
       break
     case "ASSISTANT":
-      textColor = "text-green"
+      badge = <Badge color="success">{t("schedule.classes.instructor_roles.assistant")}</Badge>
       break
     case "KARMA":
-      textColor = "text-orange"
+      badge = <Badge color="warning">{t("schedule.classes.instructor_roles.karma")}</Badge>
       break
     default:
       break
   }
 
-  if (textColor) {
-    return <span className={textColor}><Icon name="user" /> {name}</span>
-  } else {
-    return <React.Fragment><Icon name="user"/> {name}</React.Fragment>
-  }
+  return <React.Fragment><Icon name="user"/> {name} {badge}</React.Fragment>
 }
 
 

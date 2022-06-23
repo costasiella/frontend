@@ -306,9 +306,6 @@ function ScheduleClasses ({ t, history }) {
                             {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
                               <Badge color="success" className="mr-2">{t('general.monthly')}</Badge> : 
                               null } 
-                            {(status === "SUB") ? 
-                              <Badge color="primary" className="mr-2">{t('general.sub_instructor')}</Badge> : 
-                              null } 
                             {(status === "CANCELLED") ? 
                               <Badge color="warning" className="mr-2">{t('general.cancelled')}</Badge> : 
                               null } 
