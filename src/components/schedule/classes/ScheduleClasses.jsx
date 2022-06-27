@@ -10,6 +10,7 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 
 import {
   Badge,
+  Button,
   Dropdown,
   Icon,
   Card,
@@ -203,97 +204,103 @@ function ScheduleClasses ({ t, history }) {
                           </Grid.Row>
                         </Grid.Col>
                         <Grid.Col xs={3} sm={3} md={2}>
-                          <div className='float-right'>
-                            <Dropdown
-                              key={v4()}
-                              className="pull-right"
-                              type="button"
-                              toggle
-                              color="secondary"
-                              triggerContent={<React.Fragment>
-                                  <span className="d-xs-none">{t("general.manage")}</span>
-                                  <span className="d-sm-none d-md-none d-lg-none d-xl-none"><Icon name="more-horizontal" /></span>
-                                </React.Fragment>}
-                              items={[
-                                <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
-                                  <Link to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
-                                    <Dropdown.Item
-                                      key={v4()}
-                                      icon="check-circle"
-                                    >
-                                        {t("general.attendance")}
-                                    </Dropdown.Item>
-                                  </Link>
-                                </HasPermissionWrapper>,
-                                <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
-                                  <Link to={'/schedule/classes/class/attendance_chart/' + scheduleItemId + '/' + date}>
-                                    <Dropdown.Item
-                                      key={v4()}
-                                      icon="bar-chart-2">
-                                        {t("schedule.classes.class.attendance_chart.title")}
-                                    </Dropdown.Item>
-                                  </Link>
-                                </HasPermissionWrapper>,
-                                <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemweeklyotc">
-                                  <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
-                                    <Dropdown.Item
-                                      key={v4()}
-                                      icon="edit-3"
-                                    >
-                                      {t("general.edit")}
-                                    </Dropdown.Item>
-                                  </Link>
-                                </HasPermissionWrapper>,
-                                <HasPermissionWrapper key={v4()} permission="change" resource="scheduleclass">
-                                  <Dropdown.ItemDivider key={v4()} />
-                                  <Link to={'/schedule/classes/all/edit/' + scheduleItemId}>
-                                    <Dropdown.Item
-                                      key={v4()}
-                                      badge={t('schedule.classes.all_classes_in_series')}
-                                      badgeType="secondary"
-                                      icon="edit-3"
-                                    >
-                                        {t("general.edit")}
-                                    </Dropdown.Item>
-                                  </Link>
-                                </HasPermissionWrapper>,
-                                <HasPermissionWrapper key={v4()} permission="delete" resource="scheduleclass">
-                                  <Dropdown.ItemDivider key={v4()} />
-                                  <span className="text-red">
+                          <Dropdown
+                            key={v4()}
+                            className="float-right"
+                            type="link"
+                            position="left"
+                            toggle={false}
+                            // color="secondary"
+                            // triggerClassName="btn btn-pill btn-outline-primary btn-sm "
+                            triggerContent={                                
+                              <Button 
+                                outline
+                                color="primary"
+                                size="sm"
+                              > 
+                                <span className="d-xs-none">{t("general.manage")}</span>
+                                <span className="d-sm-none d-md-none d-lg-none d-xl-none"><Icon name="more-vertical" /></span>
+                              </Button>
+                            }
+                            items={[
+                              <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
+                                <Link to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
+                                  <Dropdown.Item
+                                    key={v4()}
+                                    icon="check-circle"
+                                  >
+                                      {t("general.attendance")}
+                                  </Dropdown.Item>
+                                </Link>
+                              </HasPermissionWrapper>,
+                              <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
+                                <Link to={'/schedule/classes/class/attendance_chart/' + scheduleItemId + '/' + date}>
+                                  <Dropdown.Item
+                                    key={v4()}
+                                    icon="bar-chart-2">
+                                      {t("schedule.classes.class.attendance_chart.title")}
+                                  </Dropdown.Item>
+                                </Link>
+                              </HasPermissionWrapper>,
+                              <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemweeklyotc">
+                                <Link to={'/schedule/classes/class/edit/' + scheduleItemId + '/' + date}>
+                                  <Dropdown.Item
+                                    key={v4()}
+                                    icon="edit-3"
+                                  >
+                                    {t("general.edit")}
+                                  </Dropdown.Item>
+                                </Link>
+                              </HasPermissionWrapper>,
+                              <HasPermissionWrapper key={v4()} permission="change" resource="scheduleclass">
+                                <Dropdown.ItemDivider key={v4()} />
+                                <Link to={'/schedule/classes/all/edit/' + scheduleItemId}>
                                   <Dropdown.Item
                                     key={v4()}
                                     badge={t('schedule.classes.all_classes_in_series')}
-                                    badgeType="danger"
-                                    icon="trash-2"
-                                    onClick={() => {
-                                      confirm_delete({
-                                        t: t,
-                                        msgConfirm: t("schedule.classes.delete_confirm_msg"),
-                                        msgDescription: <p key={v4()}>
-                                          {moment(date + ' ' + timeStart).format('LT')} {' - '}
-                                          {moment(date + ' ' + timeEnd).format('LT')} {' '} @ {' '}
-                                          {organizationLocationRoom.organizationLocation.name} {' '}
-                                          {organizationLocationRoom.name}
-                                          {organizationClasstype.Name}
-                                          </p>,
-                                        msgSuccess: t('schedule.classes.deleted'),
-                                        deleteFunction: deleteScheduleClass,
-                                        functionVariables: { variables: {
-                                          input: {
-                                            id: scheduleItemId
-                                          }
-                                        }, refetchQueries: [
-                                          { query: GET_CLASSES_QUERY, variables: get_list_query_variables() }
-                                        ]}
-                                      })
-                                    }}>
-                                  {t("general.delete")}
+                                    badgeType="secondary"
+                                    icon="edit-3"
+                                  >
+                                      {t("general.edit")}
                                   </Dropdown.Item>
-                                  </span>
-                                </HasPermissionWrapper>
-                              ]}
-                              />
-                            </div>
+                                </Link>
+                              </HasPermissionWrapper>,
+                              <HasPermissionWrapper key={v4()} permission="delete" resource="scheduleclass">
+                                <Dropdown.ItemDivider key={v4()} />
+                                <span className="text-red">
+                                <Dropdown.Item
+                                  key={v4()}
+                                  badge={t('schedule.classes.all_classes_in_series')}
+                                  badgeType="danger"
+                                  icon="trash-2"
+                                  onClick={() => {
+                                    confirm_delete({
+                                      t: t,
+                                      msgConfirm: t("schedule.classes.delete_confirm_msg"),
+                                      msgDescription: <p key={v4()}>
+                                        {moment(date + ' ' + timeStart).format('LT')} {' - '}
+                                        {moment(date + ' ' + timeEnd).format('LT')} {' '} @ {' '}
+                                        {organizationLocationRoom.organizationLocation.name} {' '}
+                                        {organizationLocationRoom.name}
+                                        {organizationClasstype.Name}
+                                        </p>,
+                                      msgSuccess: t('schedule.classes.deleted'),
+                                      deleteFunction: deleteScheduleClass,
+                                      functionVariables: { variables: {
+                                        input: {
+                                          id: scheduleItemId
+                                        }
+                                      }, refetchQueries: [
+                                        { query: GET_CLASSES_QUERY, variables: get_list_query_variables() }
+                                      ]}
+                                    })
+                                  }}>
+                                {t("general.delete")}
+                                </Dropdown.Item>
+                                </span>
+                              </HasPermissionWrapper>
+                            ]}
+                            />
                         </Grid.Col>
                       </Grid.Row>
                       <Grid.Row>
