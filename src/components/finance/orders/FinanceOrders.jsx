@@ -107,7 +107,9 @@ function FinanceOrders({t, match, location, history}) {
               {orders.edges.map(({ node }) => (        
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
-                    # {node.orderNumber} <br />
+                    <Link to={"/finance/orders/edit/" + node.id}>
+                      # {node.orderNumber} <br />
+                    </Link>
                     <FinanceOrderStatus status={node.status} />
                   </Table.Col>
                   {/* <Table.Col key={v4()}>
