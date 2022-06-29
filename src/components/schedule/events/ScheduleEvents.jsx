@@ -171,22 +171,24 @@ function ScheduleEvents({t, history}) {
                   </span> 
                 </Table.Col> */}
                 <Table.Col className="text-right" key={v4()}>
-                  <ButtonConfirm
-                    title={t("schedule.events.confirm_duplicate")}
-                    msgConfirm={<p>{node.name} { moment(node.dateStart).format(dateFormat) }</p>}
-                    msgSuccess={(t("schedule.events.toast_duplicate_success"))}
-                    actionFunction={duplicateScheduleEvent} 
-                    actionFunctionVariables={{
-                      variables: {input: {id: node.id}},
-                      refetchQueries: [
-                        { query: GET_SCHEDULE_EVENTS_QUERY, variables: get_list_query_variables() }
-                      ]
-                    }}
-                    buttonClass="btn-secondary"
-                    buttonIcon={<Icon name="copy" />}
-                    buttonText={t("general.duplicate")}
-                    buttonTextColor=""
-                  />
+                  <HasPermissionWrapper key={v4()} permission="add" resource="scheduleevent">
+                    <ButtonConfirm
+                      title={t("schedule.events.confirm_duplicate")}
+                      msgConfirm={<p>{node.name} { moment(node.dateStart).format(dateFormat) }</p>}
+                      msgSuccess={(t("schedule.events.toast_duplicate_success"))}
+                      actionFunction={duplicateScheduleEvent} 
+                      actionFunctionVariables={{
+                        variables: {input: {id: node.id}},
+                        refetchQueries: [
+                          { query: GET_SCHEDULE_EVENTS_QUERY, variables: get_list_query_variables() }
+                        ]
+                      }}
+                      buttonClass="btn-secondary"
+                      buttonIcon={<Icon name="copy" />}
+                      buttonText={t("general.duplicate")}
+                      buttonTextColor=""
+                    />
+                  </HasPermissionWrapper>
                   {(node.archived) ? 
                     <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
                       <ButtonEdit editUrl={`/schedule/events/edit/${node.id}`} />
