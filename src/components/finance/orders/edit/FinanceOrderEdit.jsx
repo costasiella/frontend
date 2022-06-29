@@ -6,8 +6,10 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import { v4 } from "uuid"
+import { Link } from "react-router-dom"
 import moment from 'moment'
 
+import CSLS from "../../../../tools/cs_local_storage"
 import { GET_ORDERS_QUERY } from '../queries'
 import { GET_FINANCE_ORDER_QUERY, UPDATE_ORDER } from './queries'
 import FinanceOrderEditForm from "./FinanceOrderEditForm"
@@ -23,7 +25,7 @@ import {
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 
-function FinanceOrderEdit({t, match, history}) {
+function FinanceOrderEdit({t, match, location, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
@@ -55,7 +57,8 @@ function FinanceOrderEdit({t, match, history}) {
   }
 
   const order = data.financeOrder
-  
+  // Set back location for edit invoice
+  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
 
   return(
     <FinanceOrderEditBase>
@@ -76,6 +79,16 @@ function FinanceOrderEdit({t, match, history}) {
                 <Table.Row>
                   <Table.ColHeader>{t("finance.orders.placed_at")}</Table.ColHeader>
                   <Table.Col>{moment(order.createdAt).format(dateTimeFormat)}</Table.Col>
+                </Table.Row>
+                <Table.Row>
+                  <Table.ColHeader>{t("general.invoice")}</Table.ColHeader>
+                  <Table.Col>
+                    {(order.financeInvoice && 
+                      <Link to={`/finance/invoices/edit/${order.financeInvoice.id}`}>
+                        {order.financeInvoice.invoiceNumber}
+                      </Link>
+                    )}
+                  </Table.Col>
                 </Table.Row>
               </Table.Body>
             </Table>

@@ -13,6 +13,10 @@ export const GET_ORDERS_QUERY = gql`
         node {
           id
           orderNumber
+          financeInvoice {
+            id
+            invoiceNumber
+          }
           account {
             id
             fullName
@@ -33,6 +37,10 @@ export const GET_ORDER_QUERY = gql`
     financeOrder(id: $id) {
       id
       orderNumber
+      financeInvoice {
+        id
+        invoiceNumber
+      }
       account {
         id
         fullName
