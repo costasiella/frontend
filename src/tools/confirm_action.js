@@ -6,12 +6,12 @@ import {
 } from "tabler-react";
 
 
-const confirm_action = ({t, msgConfirm, msgDescription, msgSuccess, actionFunction, functionVariables}) => {
+const confirm_action = ({t, title, msgConfirm, msgDescription, msgSuccess, actionFunction, functionVariables}) => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
           <div className='custom-ui'>
-            <h1>{t('general.confirm')}</h1>
+            <h1>{title}</h1>
             {msgConfirm}
             {msgDescription}
             <button className="btn btn-link pull-right" onClick={onClose}>{t('general.confirm_action_no')}</button>

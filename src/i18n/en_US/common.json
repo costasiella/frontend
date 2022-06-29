@@ -527,12 +527,11 @@
         "generated on": "Generated on",
         "last_login": "Last login",
         "created_at": "Created at",
-        "confirm": "Just to double check...",
         "confirm_action_no": "Cancel",
         "confirm_action_yes": "Continue",
         "each": "Each",
         "not_public": "Not public",
-        "sub_instructor": "Substitute instructor"
+        "duplicate": "Duplicate"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1178,7 +1177,8 @@
                     "search_no_account_results": "Your search didn't return any results",
                     "confirm_resending_info_mail_to": "Do you wish to resend the info mail for this class to the account below?",
                     "resend_success": "Sent info mail",
-                    "resend_info_mail": "Resend info mail"
+                    "resend_info_mail": "Resend info mail",
+                    "confirm_resending_info_mail_title": "Resend info mail"
                 },
                 "book": {
                     "toast_success": "Check-in success",
@@ -1349,7 +1349,9 @@
                 "edit": "Edit earlybird discount",
                 "toast_edit_success": "Saved"
             },
-            "explanation": "Manage workshops, events, etc."
+            "explanation": "Manage workshops, events, etc.",
+            "confirm_duplicate": "Duplicate event?",
+            "toast_duplicate_success": "Event duplicated"
         },
         "event": {
             "location_please_select": "Please select...",

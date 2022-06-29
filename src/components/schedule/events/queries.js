@@ -205,3 +205,13 @@ export const ARCHIVE_SCHEDULE_EVENT = gql`
     }
   }
 `
+
+export const DUPLICATE_SCHEDULE_EVENT = gql`
+  mutation DuplicateScheduleEvent($input: DuplicateScheduleEventInput!) {
+    duplicateScheduleEvent(input: $input) {
+      scheduleEvent {
+        id
+      }
+    }
+  }
+`

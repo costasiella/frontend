@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useQuery } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -10,6 +10,7 @@ import {
   Dimmer,
   Button,
   Card,
+  Icon,
   Table
 } from "tabler-react";
 
@@ -24,8 +25,9 @@ import ScheduleEventsBase from "./ScheduleEventsBase"
 import ScheduleEventArchive from "./ScheduleEventArchive"
 
 import ButtonAdd from '../../ui/ButtonAdd'
+import ButtonConfirm from '../../ui/ButtonConfirm'
 import ButtonEdit from '../../ui/ButtonEdit'
-import { GET_SCHEDULE_EVENTS_QUERY } from "./queries"
+import { GET_SCHEDULE_EVENTS_QUERY, DUPLICATE_SCHEDULE_EVENT } from "./queries"
 import { get_list_query_variables } from "./tools"
 
 
@@ -41,6 +43,7 @@ function ScheduleEvents({t, history}) {
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_SCHEDULE_EVENTS_QUERY, {
     variables: get_list_query_variables()
   })
+  const [duplicateScheduleEvent] = useMutation(DUPLICATE_SCHEDULE_EVENT)
 
   const pageHeaderButtonList = <HasPermissionWrapper permission="add" resource="scheduleevent">
     <ButtonAdd addUrl="/schedule/events/add" />
@@ -168,9 +171,27 @@ function ScheduleEvents({t, history}) {
                   </span> 
                 </Table.Col> */}
                 <Table.Col className="text-right" key={v4()}>
+                  <HasPermissionWrapper key={v4()} permission="add" resource="scheduleevent">
+                    <ButtonConfirm
+                      title={t("schedule.events.confirm_duplicate")}
+                      msgConfirm={<p>{node.name} { moment(node.dateStart).format(dateFormat) }</p>}
+                      msgSuccess={(t("schedule.events.toast_duplicate_success"))}
+                      actionFunction={duplicateScheduleEvent} 
+                      actionFunctionVariables={{
+                        variables: {input: {id: node.id}},
+                        refetchQueries: [
+                          { query: GET_SCHEDULE_EVENTS_QUERY, variables: get_list_query_variables() }
+                        ]
+                      }}
+                      buttonClass="btn-secondary"
+                      buttonIcon={<Icon name="copy" />}
+                      buttonText={t("general.duplicate")}
+                      buttonTextColor=""
+                    />
+                  </HasPermissionWrapper>
                   {(node.archived) ? 
                     <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                    <ButtonEdit editUrl={`/schedule/events/edit/${node.id}`} />
+                      <ButtonEdit editUrl={`/schedule/events/edit/${node.id}`} />
                   }
                   <ScheduleEventArchive node={node} />
                 </Table.Col>

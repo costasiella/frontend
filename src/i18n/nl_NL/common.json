@@ -447,12 +447,11 @@
         "generated on": "__STRING_NOT_TRANSLATED__",
         "last_login": "__STRING_NOT_TRANSLATED__",
         "created_at": "__STRING_NOT_TRANSLATED__",
-        "confirm": "__STRING_NOT_TRANSLATED__",
         "confirm_action_no": "__STRING_NOT_TRANSLATED__",
         "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
         "each": "__STRING_NOT_TRANSLATED__",
         "not_public": "__STRING_NOT_TRANSLATED__",
-        "sub_instructor": "__STRING_NOT_TRANSLATED__"
+        "duplicate": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1734,7 +1733,8 @@
                     "search_no_account_results": "__STRING_NOT_TRANSLATED__",
                     "confirm_resending_info_mail_to": "__STRING_NOT_TRANSLATED__",
                     "resend_success": "__STRING_NOT_TRANSLATED__",
-                    "resend_info_mail": "__STRING_NOT_TRANSLATED__"
+                    "resend_info_mail": "__STRING_NOT_TRANSLATED__",
+                    "confirm_resending_info_mail_title": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"
@@ -1941,7 +1941,9 @@
             "shop": "__STRING_NOT_TRANSLATED__",
             "auto_send_info_mail": "__STRING_NOT_TRANSLATED__",
             "error_loading_data": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "confirm_duplicate": "__STRING_NOT_TRANSLATED__",
+            "toast_duplicate_success": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "appointments": {

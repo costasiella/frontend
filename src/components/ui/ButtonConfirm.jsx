@@ -13,6 +13,7 @@ function ButtonConfirmAction({
   t, 
   match, 
   history, 
+  title,
   msgConfirm, 
   msgDescription, 
   msgSuccess, 
@@ -24,11 +25,12 @@ function ButtonConfirmAction({
   buttonTextColor=""
 }) {
   return (
-    <button className={`icon btn ${buttonClass} btn-sm`}
+    <button className={`btn ${buttonClass} btn-sm`}
       // title={t('')} 
       onClick={() => {
         confirm_action({
           t: t,
+          title: title,
           msgConfirm: <p>{msgConfirm}</p>,
           msgDescription: msgDescription,
           msgSuccess: msgSuccess,
