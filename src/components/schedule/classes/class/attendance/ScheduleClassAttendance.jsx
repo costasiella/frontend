@@ -235,7 +235,8 @@ function ScheduleClassAttendance({ t, match, history }) {
                           </Button>
                         </HasPermissionWrapper>  : "" }
                         <ButtonConfirm 
-                            msgConfirm={t("schedule.classes.class.attendance.confirm_resending_info_mail_to")}
+                            title={t("schedule.classes.class.attendance.confirm_resending_info_mail_title")}
+                            msgConfirm={<p>{t("schedule.classes.class.attendance.confirm_resending_info_mail_to")}</p>}
                             msgDescription={<p><b>{node.account.fullName}</b></p>}
                             msgSuccess={t("schedule.classes.class.attendance.resend_success")}
                             actionFunction={resendInfoMail}
