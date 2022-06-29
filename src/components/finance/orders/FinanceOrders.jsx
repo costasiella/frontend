@@ -12,6 +12,7 @@ import {
 
 import AppSettingsContext from '../../context/AppSettingsContext'
 
+import CSLS from '../../../tools/cs_local_storage'
 import { get_list_query_variables } from "./tools"
 import ContentCard from "../../general/ContentCard"
 import FinanceOrdersBase from './FinanceOrdersBase'
@@ -23,7 +24,7 @@ import moment from 'moment'
 
 
 
-function FinanceOrders({t, match, history}) {
+function FinanceOrders({t, match, location, history}) {
   const appSettings = useContext(AppSettingsContext)
   const dateTimeFormat = appSettings.dateTimeFormatMoment
 
@@ -45,9 +46,9 @@ function FinanceOrders({t, match, history}) {
     </FinanceOrdersBase>
   )
 
-  console.log(data)
   const orders = data.financeOrders
-  console.log(orders)
+  // Set back location for edit invoice
+  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
 
   // Empty list
   if (!orders.edges.length) { return (
@@ -98,6 +99,7 @@ function FinanceOrders({t, match, history}) {
               <Table.ColHeader>{t('finance.orders.date')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.orders.relation')}</Table.ColHeader>
               <Table.ColHeader>{t('general.total')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.invoice')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -119,6 +121,12 @@ function FinanceOrders({t, match, history}) {
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.totalDisplay}
+                  </Table.Col>
+                  <Table.Col>
+                    {(node.financeInvoice) && 
+                      <Link to={`/finance/invoices/edit/${node.financeInvoice.id}`}>
+                        {node.financeInvoice.invoiceNumber}
+                      </Link>}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     <FinanceOrderDelete node={node}/>
