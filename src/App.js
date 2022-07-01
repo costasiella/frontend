@@ -12,7 +12,6 @@ import {
 import { relayStylePagination } from "@apollo/client/utilities";
 import { onError } from "@apollo/client/link/error";
 // import { setContext } from '@apollo/client/link/context';
-import { ChakraProvider } from '@chakra-ui/react'
 import Cookies from 'js-cookie';
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
@@ -238,11 +237,9 @@ function App() {
   // moment.locale('en-US')
 
   return (
-    <ChakraProvider>
-      <ApolloProvider client={client}>
-        <AppRoot />
-      </ApolloProvider>
-    </ChakraProvider>
+    <ApolloProvider client={client}>
+      <AppRoot />
+    </ApolloProvider>
   )
 }
 

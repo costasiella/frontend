@@ -72,6 +72,7 @@
     "react-dev-utils": "^11.0.3",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.11.3",
+    "react-icons": "^4.4.0",
     "react-refresh": "^0.8.3",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
