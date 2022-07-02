@@ -59,6 +59,7 @@ const LinkItems = [
 function SiteWrapperSelfCheckin({t, match, history, children}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { error, loading, data } = useQuery(GET_USER)
+  const bg = useColorModeValue('gray.100', 'gray.900')
 
   if (loading) return <CSStandalonePageLoader />
   if (error) return <p>{t('system.user.error_loading')}</p>; 
@@ -67,7 +68,7 @@ function SiteWrapperSelfCheckin({t, match, history, children}) {
 
   return (
     <ChakraProvider>
-      <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+      <Box minH="100vh" bg={bg}>
         <SidebarContent
           onClose={() => onClose}
           display={{ base: 'none', md: 'block' }}
