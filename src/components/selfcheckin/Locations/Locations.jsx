@@ -38,7 +38,7 @@ function Locations({ t, match, history }) {
                 <Link to={"/selfcheckin/location/" + node.id}>
                   <div>
                     <span className="pull-right"><Icon name="chevron-right" /></span>
-                    {node.name}
+                    <Icon name="home" /> {node.name}
                   </div>
                 </Link>
               </List.GroupItem>
