@@ -14,8 +14,11 @@ import {
   Card,
   Dimmer,
   Grid,
+  Icon,
   Table
 } from "tabler-react"
+
+import LoadMoreOnBottomScroll from "../../../general/LoadMoreOnBottomScroll"
 import { GET_ACCOUNT_CLASSES_QUERY } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 
@@ -75,96 +78,85 @@ function ShopAccountClasses({t, match, history}) {
   // Populated list
   return (
     <ShopAccountClassesBase accountName={user.fullName}>
-      <Grid.Row>
-        <Grid.Col md={12}>
-          <ContentCard cardTitle={t('shop.account.classes.title')}
-            hasCardBody={false}
-            pageInfo={scheduleItemAttendances.pageInfo}
-            onLoadMore={() => {
-              fetchMore({
-                variables: {
-                  after: scheduleItemAttendances.pageInfo.endCursor
-                },
-                updateQuery: (previousResult, { fetchMoreResult }) => {
-                  const newEdges = fetchMoreResult.schduleItemAttendances.edges
-                  const pageInfo = fetchMoreResult.schduleItemAttendances.pageInfo
+      <LoadMoreOnBottomScroll
+        // headerContent={headerOptions}
+        pageInfo={scheduleItemAttendances.pageInfo}
+        onLoadMore={() => {
+          fetchMore({
+            variables: {
+              after: scheduleItemAttendances.pageInfo.endCursor
+            },
+            updateQuery: (previousResult, { fetchMoreResult }) => {
+              const newEdges = fetchMoreResult.scheduleItemAttendances.edges
+              const pageInfo = fetchMoreResult.scheduleItemAttendances.pageInfo
 
-                  return newEdges.length
-                    ? {
-                        // Put the new subscriptions at the end of the list and update `pageInfo`
-                        // so we have the new `endCursor` and `hasNextPage` values
-                        schduleItemAttendances: {
-                          __typename: previousResult.schduleItemAttendances.__typename,
-                          edges: [ ...previousResult.schduleItemAttendances.edges, ...newEdges ],
-                          pageInfo
-                        }
-                      }
-                    : previousResult
-                }
-              })
-            }} >
-            <Table cards>
-              <Table.Header>
-                <Table.Row key={v4()}>
-                  <Table.ColHeader>{t('general.time')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.class')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.location')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.booking_status')}</Table.ColHeader>
-                  <Table.ColHeader></Table.ColHeader>  
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                { scheduleItemAttendances.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    <Table.Col>
-                      { moment(node.date).format(dateFormat) } <br />
+              return newEdges.length
+                ? {
+                    // Put the new subscriptions at the end of the list and update `pageInfo`
+                    // so we have the new `endCursor` and `hasNextPage` values
+                    scheduleItemAttendances: {
+                      __typename: previousResult.scheduleItemAttendances.__typename,
+                      edges: [ ...previousResult.scheduleItemAttendances.edges, ...newEdges ],
+                      pageInfo
+                    }
+                  }
+                : previousResult
+            }
+          })
+        }} >
+          {/* <Grid.Row> */}
+          { scheduleItemAttendances.edges.map(({ node }) => (
+            <Card>
+              <Card.Body>
+                <Grid.Row>
+                  <Grid.Col xs={12} md={10}>
+                    <div className='mb-xs-3'>
+                      <h6>
+                        { node.scheduleItem.organizationClasstype.name }
+                        <span className='float-xs-right'> <BadgeBookingStatus status={node.bookingStatus} /></span>
+                      </h6>
+                      <Icon name="clock" /> { moment(node.date).format(dateFormat) } { " " }
                       <span className="text-muted">
                         {moment(node.date + ' ' + node.scheduleItem.timeStart).format(timeFormat)}
-                      </span>
-                    </Table.Col>
-                    <Table.Col>
-                      { node.scheduleItem.organizationClasstype.name }
-                    </Table.Col>
-                    <Table.Col>
-                      { node.scheduleItem.organizationLocationRoom.organizationLocation.name } <br />
+                      </span><br />
+                      <Icon name="home" /> { node.scheduleItem.organizationLocationRoom.organizationLocation.name } { " " }
                       <span className="text-muted">
                         { node.scheduleItem.organizationLocationRoom.name }
                       </span> 
-                    </Table.Col>
-                    <Table.Col>
-                      <BadgeBookingStatus status={node.bookingStatus} />
-                    </Table.Col>
-                    <Table.Col>
-                      {/* TODO: improve this by adding a "Can be cancelled field to GQL schema" */}
-                      {((node.bookingStatus !== "CANCELLED") && node.cancellationPossible) ?  
-                        <div>
-                          <Link to={`/shop/account/class_cancel/${node.scheduleItem.id}/${node.date}/${node.id}`}>
-                            <Button 
-                              className="pull-right mr-r"
-                              color="warning"
-                              >
-                              {t("general.cancel")}
-                            </Button>
-                          </Link>
-                          <Link to={`/shop/account/class_info/${node.scheduleItem.id}/${node.date}`}>
-                            <Button
-                              className="pull-right"
-                              color="secondary"
-                              icon="info"
-                            >
-                              {t("general.info")}
-                            </Button>
-                          </Link>
-                        </div> : ""
-                      }
-                    </Table.Col>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-          </ContentCard>
-        </Grid.Col>
-      </Grid.Row>
+                    </div>
+                  </Grid.Col>
+                  <Grid.Col xs={12} md={2}>
+                    <Link to={`/shop/account/class_info/${node.scheduleItem.id}/${node.date}`}>
+                      <Button 
+                        block
+                        outline
+                        color="info"
+                        size="sm"
+                        className=""
+                        >
+                        {t("general.info")}
+                      </Button>
+                    </Link>
+                    {((node.bookingStatus !== "CANCELLED") && node.cancellationPossible) ?  
+                      <Link to={`/shop/account/class_cancel/${node.scheduleItem.id}/${node.date}/${node.id}`}>
+                        <Button 
+                          block
+                          outline
+                          color="warning"
+                          size="sm"
+                          className="mt-3"
+                          >
+                          {t("general.cancel")}
+                        </Button>
+                      </Link>
+                      : ""
+                    }
+                  </Grid.Col>
+                </Grid.Row>
+              </Card.Body>
+            </Card>
+          ))}
+      </LoadMoreOnBottomScroll>
     </ShopAccountClassesBase>
   )
 }
