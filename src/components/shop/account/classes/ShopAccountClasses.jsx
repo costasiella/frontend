@@ -15,7 +15,6 @@ import {
   Dimmer,
   Grid,
   Icon,
-  Table
 } from "tabler-react"
 
 import LoadMoreOnBottomScroll from "../../../general/LoadMoreOnBottomScroll"
@@ -23,7 +22,6 @@ import { GET_ACCOUNT_CLASSES_QUERY } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 
 import ShopAccountClassesBase from "./ShopAccountClassesBase"
-import ContentCard from "../../../general/ContentCard"
 
 
 function ShopAccountClasses({t, match, history}) {
@@ -106,7 +104,7 @@ function ShopAccountClasses({t, match, history}) {
         }} >
           {/* <Grid.Row> */}
           { scheduleItemAttendances.edges.map(({ node }) => (
-            <Card>
+            <Card key={v4()}>
               <Card.Body>
                 <Grid.Row>
                   <Grid.Col xs={12} md={10}>
