@@ -101,8 +101,10 @@ function ShopAccountClassCancel({t, match, history}) {
           />
           <br />
           <Button
-            className="mt-xs-3 mr-4"
+            block
+            className="mt-xs-3"
             color="warning"
+            size="sm"
             onClick={() =>
               updateScheduleItemAttendance({ variables: {
                 input: {
@@ -126,9 +128,9 @@ function ShopAccountClassCancel({t, match, history}) {
           >
             {t("shop.account.class_cancel.confirm_yes")}
           </Button>
-          <Link to={"/shop/account/classes"}>
+          {/* <Link to={"/shop/account/classes"}>
             {t("shop.account.class_cancel.confirm_no")}
-          </Link>
+          </Link> */}
         </Card.Body>
       </Card>
     </ShopAccountClassCancelBase>
