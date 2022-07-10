@@ -2009,7 +2009,7 @@
             "error_loading": "Error loading class pass :(",
             "additional_information": "Additional information",
             "class_book_information": "Selected class",
-            "class_book_explanation": "You'll be signed in to the class below once the order process has been completed.",
+            "class_book_explanation": "You'll be signed in to the class once the order process has been completed.",
             "trial_limit_reached": "Trial limit reached",
             "trial_limit_reached_explanation": "As you've already purchased the maximum number of trial passes, we request you to go back and choose another pass."
         },
@@ -2128,7 +2128,7 @@
                 "empty_list": "No tickets found"
             },
             "class_cancel": {
-                "confirmation_question": "Are you sure you wish to cancel your booking for the class below?",
+                "confirmation_question": "Are you sure you wish to cancel your booking for this class?",
                 "title": "Cancel booking confirmation",
                 "confirm_yes": "Cancel class booking",
                 "confirm_no": "No, don't cancel my booking",
@@ -2213,7 +2213,7 @@
             "booked": {
                 "class": "Selected class",
                 "title": "Class booked!",
-                "class_explanation": "We've reserved your spot in the class below.",
+                "class_explanation": "We've reserved your spot in the following class:",
                 "to_profile": "Continue to my account"
             },
             "filter_all_locations": "All locations",

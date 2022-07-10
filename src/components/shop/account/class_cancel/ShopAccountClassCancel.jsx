@@ -9,7 +9,8 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 import {
   Button,
   Card,
-  Dimmer
+  Dimmer,
+  Grid
 } from "tabler-react"
 
 import { DisplayClassInfo } from "../../tools"
@@ -99,34 +100,38 @@ function ShopAccountClassCancel({t, match, history}) {
             timeFormat={timeFormat}
           />
           <br />
-          <Button
-            block
-            className="mt-xs-3"
-            color="warning"
-            size="sm"
-            onClick={() =>
-              updateScheduleItemAttendance({ variables: {
-                input: {
-                  id: attendanceId,
-                  bookingStatus: "CANCELLED"
-                }
-              }})
-              .then(({ data }) => {
-                  console.log('got data', data)
-                  history.push("/shop/account/classes")
-                  toast.success((t('shop.account.class_cancel.success')), {
-                      position: toast.POSITION.BOTTOM_RIGHT
+          <Grid.Row>
+            <Grid.Col xs={12} sm={12} md={3} lg={3}>
+              <Button
+                block
+                className="mt-3"
+                color="warning"
+                size="sm"
+                onClick={() =>
+                  updateScheduleItemAttendance({ variables: {
+                    input: {
+                      id: attendanceId,
+                      bookingStatus: "CANCELLED"
+                    }
+                  }})
+                  .then(({ data }) => {
+                      console.log('got data', data)
+                      history.push("/shop/account/classes")
+                      toast.success((t('shop.account.class_cancel.success')), {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        })
+                    }).catch((error) => {
+                      toast.error((t('general.toast_server_error')) +  error, {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        })
+                      console.log('there was an error sending the query', error)
                     })
-                }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) +  error, {
-                      position: toast.POSITION.BOTTOM_RIGHT
-                    })
-                  console.log('there was an error sending the query', error)
-                })
-              }
-          >
-            {t("shop.account.class_cancel.confirm_yes")}
-          </Button>
+                  }
+              >
+                {t("shop.account.class_cancel.confirm_yes")}
+              </Button>
+            </Grid.Col>
+          </Grid.Row>
           {/* <Link to={"/shop/account/classes"}>
             {t("shop.account.class_cancel.confirm_no")}
           </Link> */}
