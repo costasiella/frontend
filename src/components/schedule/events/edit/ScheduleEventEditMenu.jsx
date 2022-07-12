@@ -64,7 +64,8 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           >
           {t('schedule.events.media.title')}
       </List.GroupItem>
-      <HasPermissionWrapper 
+    </HasPermissionWrapper>
+    <HasPermissionWrapper 
         resource="scheduleeventearlybird"
         permission="view" 
     >
@@ -78,6 +79,19 @@ const ScheduleEventMenu = ({ t, eventId, activeLink }) => (
           {t('schedule.events.earlybirds.title')}
       </List.GroupItem>
     </HasPermissionWrapper>
+    <HasPermissionWrapper 
+        resource="scheduleeventsubscriptiongroupdiscount"
+        permission="view" 
+    >
+      <List.GroupItem
+          key={v4()}
+          className="d-flex align-items-center"
+          to={`#/schedule/events/edit/${eventId}/subscription_group_discounts`}
+          icon="edit"
+          active={(activeLink === 'subscription_group_discounts')}
+          >
+          {t('schedule.events.subscription_group_discounts.title')}
+      </List.GroupItem>
     </HasPermissionWrapper>
   </List.Group>
 );

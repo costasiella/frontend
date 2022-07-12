@@ -1351,7 +1351,10 @@
             },
             "explanation": "Manage workshops, events, etc.",
             "confirm_duplicate": "Duplicate event?",
-            "toast_duplicate_success": "Event duplicated"
+            "toast_duplicate_success": "Event duplicated",
+            "subscription_group_discounts": {
+                "title": "Subscription discounts"
+            }
         },
         "event": {
             "location_please_select": "Please select...",
@@ -2129,12 +2132,9 @@
             },
             "class_cancel": {
                 "confirmation_question": "Are you sure you wish to cancel your booking for this class?",
-                "title": "Cancel booking confirmation",
                 "confirm_yes": "Cancel class booking",
                 "confirm_no": "No, don't cancel my booking",
                 "success": "Your class booking has been cancelled.",
-                "title_already_cancelled": "Already cancelled",
-                "title_cancelation_not_possible": "Cancellation not possible",
                 "already_cancelled": "Your booking for this class has already been cancelled.",
                 "cancelation_not_possible": "Your booking for this class can no longer be cancelled"
             },
