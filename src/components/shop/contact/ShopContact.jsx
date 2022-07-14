@@ -4,7 +4,7 @@ import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
 import DOMPurify from 'dompurify'
 import {
-  Card, 
+  Card, Grid, 
 } from "tabler-react";
 import ShopContactBase from "./ShopContactBase"
 
@@ -28,9 +28,6 @@ function ShopContact({ t, match, history }) {
     </ShopContactBase>
   )
 
-  console.log(data)
-  console.log(data.organization)
-
   const organization = data.organization
 
   return (
@@ -41,6 +38,21 @@ function ShopContact({ t, match, history }) {
           <p>{organization.email} <br /> {organization.phone}</p>
           <p>{organization.registration} <br /> {organization.taxRegistration}</p>
         </Card.Body>
+        <Card.Footer>
+          <Grid.Row>
+            <Grid.Col xs={12}>
+              <a href="/d/export/terms-and-conditions" target="_blank">
+                {t("general.terms_and_conditions")}
+              </a>
+            </Grid.Col>
+            <Grid.Col xs={12}>
+              <a className="float-sm-right float-md-right float-lg-right float-xl-right" 
+                href="/d/export/privacy-policy" target="_blank">
+                {t("general.privacy_policy")}
+              </a>
+            </Grid.Col>
+          </Grid.Row>
+        </Card.Footer>
       </Card>
     </ShopContactBase>
   )
