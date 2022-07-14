@@ -27,6 +27,26 @@ export const GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNTS_QUERY = gql`
 `
 
 
+export const GET_INPUT_VALUES_QUERY = gql`
+  query OrganizationSubscriptionGroups {
+    organizationSubscriptionGroups(first: 1000) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+
 export const GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_QUERY = gql`
   query ScheduleEventSubscriptionGroupDiscount($id:ID!) {
     scheduleEventSubscriptionGroupDiscount(id: $id) {
