@@ -29,9 +29,9 @@ function ScheduleEventSubscriptionGroupDiscountDelete({t, match, history, id}) {
       onClick={() => {
         confirm_delete({
           t: t,
-          msgConfirm: t("schedule.events.subscription_group_discount.delete_confirm_msg"),
+          msgConfirm: t("schedule.events.subscription_group_discounts.delete_confirm_msg"),
           msgDescription: <p></p>,
-          msgSuccess: t('schedule.events.subscription_group_discount.delete_success'),
+          msgSuccess: t('schedule.events.subscription_group_discounts.delete_success'),
           deleteFunction: deleteScheduleEventSubscriptionGroupDiscount,
           functionVariables: { 
             variables: {
