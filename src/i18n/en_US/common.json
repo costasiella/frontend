@@ -1353,7 +1353,10 @@
             "confirm_duplicate": "Duplicate event?",
             "toast_duplicate_success": "Event duplicated",
             "subscription_group_discounts": {
-                "title": "Subscription discounts"
+                "title": "Subscription discounts",
+                "empty_list": "No subscription group discounts have been defined yet for this event",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "event": {

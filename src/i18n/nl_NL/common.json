@@ -1942,7 +1942,10 @@
             "confirm_duplicate": "__STRING_NOT_TRANSLATED__",
             "toast_duplicate_success": "__STRING_NOT_TRANSLATED__",
             "subscription_group_discounts": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "title": "__STRING_NOT_TRANSLATED__",
