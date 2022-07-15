@@ -121,7 +121,7 @@ function ScheduleEventSubscriptionGroupDiscounts({t, match, history}) {
                   {node.discountPercentage} %
                 </Table.Col>
                 <Table.Col className="text-right">
-                  <Link to={`/schedule/events/edit/${eventId}/subscription_group_discount/edit/${node.id}`}>
+                  <Link to={`/schedule/events/edit/${eventId}/subscription_group_discounts/edit/${node.id}`}>
                     <Button className='btn-sm' 
                             color="secondary">
                       {t('general.edit')}
