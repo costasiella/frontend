@@ -127,7 +127,7 @@ function ScheduleEventSubscriptionGroupDiscounts({t, match, history}) {
                       {t('general.edit')}
                     </Button>
                   </Link>
-                  <ScheduleEventSubscriptionGroupDiscountDelete id={node.id} />
+                  <ScheduleEventSubscriptionGroupDiscountDelete node={node} />
                 </Table.Col>
               </Table.Row>
             ))}

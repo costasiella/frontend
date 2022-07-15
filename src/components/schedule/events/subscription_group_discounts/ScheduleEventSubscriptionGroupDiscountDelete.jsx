@@ -14,7 +14,7 @@ import {
 } from "tabler-react"
 
 
-function ScheduleEventSubscriptionGroupDiscountDelete({t, match, history, id}) {
+function ScheduleEventSubscriptionGroupDiscountDelete({t, match, history, node}) {
   const eventId = match.params.event_id
   const [deleteScheduleEventSubscriptionGroupDiscount] = useMutation(
     DELETE_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT
@@ -30,13 +30,13 @@ function ScheduleEventSubscriptionGroupDiscountDelete({t, match, history, id}) {
         confirm_delete({
           t: t,
           msgConfirm: t("schedule.events.subscription_group_discounts.delete_confirm_msg"),
-          msgDescription: <p></p>,
+          msgDescription: <p>{node.organizationSubscriptionGroup.name} - {node.discountPercentage} %</p>,
           msgSuccess: t('schedule.events.subscription_group_discounts.delete_success'),
           deleteFunction: deleteScheduleEventSubscriptionGroupDiscount,
           functionVariables: { 
             variables: {
               input: {
-                id: id
+                id: node.id
               },
             }, 
             refetchQueries: [
