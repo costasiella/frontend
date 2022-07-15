@@ -58,6 +58,20 @@ export const GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_QUERY = gql`
         name
       }
     }
+    organizationSubscriptionGroups(first: 1000) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
   }
 `
 
