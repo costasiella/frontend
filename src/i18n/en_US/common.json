@@ -1359,8 +1359,8 @@
                 "delete_success": "Deleted subscription group discount",
                 "add": "Add subscription group discount",
                 "toast_add_success": "Added subscription group discount",
-                "edit": "__STRING_NOT_TRANSLATED__",
-                "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+                "edit": "Edit subscription group discount",
+                "toast_edit_success": "Saved"
             }
         },
         "event": {
