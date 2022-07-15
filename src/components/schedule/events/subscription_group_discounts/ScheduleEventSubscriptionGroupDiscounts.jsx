@@ -4,7 +4,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-import moment from 'moment';
 
 import {
   Button,
@@ -23,7 +22,7 @@ import ButtonAdd from '../../../ui/ButtonAdd';
 
 function ScheduleEventSubscriptionGroupDiscounts({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
-  const dateFormat = appSettings.dateFormat
+  // const dateFormat = appSettings.dateFormat
   console.log(appSettings)
   
   const eventId = match.params.event_id

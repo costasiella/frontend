@@ -14,7 +14,7 @@ import {
   GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNTS_QUERY,
   GET_INPUT_VALUES_QUERY
 } from "./queries"
-import { SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_SCHEMA } from './yupSchema'
+// import { SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_SCHEMA } from './yupSchema'
 
 import ScheduleEventEditBase from "../edit/ScheduleEventEditBase"
 import ScheduleEventEarlybirdForm from "./ScheduleEventSubscriptionGroupDiscountForm"
