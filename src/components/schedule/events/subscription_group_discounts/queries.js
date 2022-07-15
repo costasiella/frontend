@@ -18,6 +18,7 @@ export const GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNTS_QUERY = gql`
           }
           organizationSubscriptionGroup {
             id
+            name
           }
           discountPercentage
         }
@@ -52,6 +53,10 @@ export const GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_QUERY = gql`
     scheduleEventSubscriptionGroupDiscount(id: $id) {
       id
       discountPercentage
+      organizationSubscriptionGroup {
+        id
+        name
+      }
     }
   }
 `
