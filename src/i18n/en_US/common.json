@@ -320,8 +320,8 @@
         "subscription": "Subscription",
         "confirm_delete": "Confirm delete",
         "delete": "Delete",
-        "confirm_delete_yes": "Yes, Delete it",
-        "confirm_delete_no": "No, Keep it",
+        "confirm_delete_yes": "Delete",
+        "confirm_delete_no": "Cancel",
         "please_select": "Please select...",
         "first_name": "First name",
         "last_name": "Last name",
@@ -1355,8 +1355,10 @@
             "subscription_group_discounts": {
                 "title": "Subscription discounts",
                 "empty_list": "No subscription group discounts have been defined yet for this event",
-                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-                "delete_success": "__STRING_NOT_TRANSLATED__"
+                "delete_confirm_msg": "Are you sure you wish to delete this subscription group discount?",
+                "delete_success": "Deleted subscription group discount",
+                "add": "Add subscription group discount",
+                "toast_add_success": "Added subscription group discount"
             }
         },
         "event": {
