@@ -9,6 +9,7 @@ import moment from 'moment';
 import {
   Button,
   Card,
+  Dimmer,
   Table,
 } from "tabler-react";
 
@@ -41,13 +42,17 @@ function ScheduleEventSubscriptionGroupDiscounts({t, match, history}) {
   
   if (loading) return (
     <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
-      {t("general.loading_with_dots")}
+      <Card.Body>
+        <Dimmer active={true} loader={true} />
+      </Card.Body>
     </ScheduleEventEditListBase>
   )
   if (error) return (
     <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
-      <p>{t('general.error_sad_smiley')}</p>
-      <p>{error.message}</p>
+      <Card.Body>
+        <p>{t('general.error_sad_smiley')}</p>
+        <p>{error.message}</p>
+      </Card.Body>
     </ScheduleEventEditListBase>
   )
 
@@ -110,6 +115,7 @@ function ScheduleEventSubscriptionGroupDiscounts({t, match, history}) {
               <Table.Row key={v4()}>
                 <Table.Col>
                   {/* {moment(node.dateStart).format(dateFormat)} */}
+                  {node.organizationSubscriptionGroup.name}
                 </Table.Col>
                 <Table.Col>
                   {node.discountPercentage} %
