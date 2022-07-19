@@ -10,11 +10,16 @@ export function get_list_query_variables() {
     isActive: (isActive === "true") ? true : false,
     customer: undefined,
     instructor: undefined,
-    employee: undefined
+    employee: undefined,
+    orderBy: "-createdAt"
   }
 
   let search = localStorage.getItem(CSLS.RELATIONS_ACCOUNTS_SEARCH)
   queryVars.searchName = search
+
+  if (search) {
+    queryVars.orderBy = "fullName"
+  }
 
   let type_filter = localStorage.getItem(CSLS.RELATIONS_ACCOUNTS_FILTER_TYPE)
   switch (type_filter) {
