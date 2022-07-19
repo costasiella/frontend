@@ -8,8 +8,8 @@ query Accounts(
   $searchName: String,
   $customer: Boolean,
   $instructor: Boolean,
-  $employee: Boolean
-  
+  $employee: Boolean,
+  $orderBy: String!
 ) {
   accounts(
     first: 15, 
@@ -19,7 +19,8 @@ query Accounts(
     fullName_Icontains: $searchName,
     customer: $customer,
     instructor: $instructor,
-    employee: $employee
+    employee: $employee,
+    orderBy: $orderBy,
   ) {
     pageInfo {
       hasNextPage
