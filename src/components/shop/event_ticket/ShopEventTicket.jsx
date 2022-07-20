@@ -43,9 +43,7 @@ function ShopEventTicket({ t, match, history }) {
     </ShopEventTicketBase>
   )
 
-  console.log(data)
   const eventTicket = data.scheduleEventTicket
-  console.log(eventTicket)
   const subTitle = eventTicket.scheduleEvent.name
 
   // Chceck sold out
