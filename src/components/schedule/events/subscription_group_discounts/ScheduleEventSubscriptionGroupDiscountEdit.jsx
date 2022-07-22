@@ -11,7 +11,7 @@ import {
   GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_QUERY,
   UPDATE_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT
  } from "./queries"
-// import { SCHEDULE_EVENT_EARLYBIRDS_SCHEMA } from './yupSchema'
+import { SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_SCHEMA } from './yupSchema'
 
 import ScheduleEventEditBase from "../edit/ScheduleEventEditBase"
 import ScheduleEventSubscriptionGroupDiscountForm from "./ScheduleEventSubscriptionGroupDiscountForm"
@@ -64,7 +64,7 @@ function ScheduleEventSubscriptionGroupEdit({ t, history, match }) {
           organizationSubscriptionGroup: scheduleEventSubscriptionGroupDiscount.organizationSubscriptionGroup.id,
           discountPercentage: scheduleEventSubscriptionGroupDiscount.discountPercentage
         }}
-        // validationSchema={SCHEDULE_EVENT_EARLYBIRDS_SCHEMA}
+        validationSchema={SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
           console.log("Submit values")
           console.log(values)
