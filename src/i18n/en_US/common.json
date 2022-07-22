@@ -2271,9 +2271,10 @@
             "tickets": "Tickets",
             "ticket": {
                 "choose": "Choose",
-                "earlybird_price": "Earlybird",
+                "earlybird_price": "Earlybird discount",
                 "regular_price": "Regular price",
-                "free": "Free"
+                "free": "Free",
+                "subscription_discount": "Subscription discount"
             }
         },
         "subscription_directdebit_activated": {

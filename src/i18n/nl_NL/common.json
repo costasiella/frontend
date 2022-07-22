@@ -1048,7 +1048,8 @@
                 "earlybird_price": "__STRING_NOT_TRANSLATED__",
                 "free": "__STRING_NOT_TRANSLATED__",
                 "regular_price": "__STRING_NOT_TRANSLATED__",
-                "choose": "__STRING_NOT_TRANSLATED__"
+                "choose": "__STRING_NOT_TRANSLATED__",
+                "subscription_discount": "__STRING_NOT_TRANSLATED__"
             }
         },
         "order": {

@@ -32,7 +32,6 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
     <PricingCard active={active}>
       <PricingCard.Category>
         {eventTicket.name}
-        {(eventTicket.isEarlybirdPrice) ? <div><Badge color="primary">{t("shop.event.ticket.earlybird_price")}</Badge></div> : ""}
       </PricingCard.Category>
       <PricingCard.Price>
         { (eventTicket.price === 0) ? 
@@ -41,7 +40,15 @@ function ShopEventTicketPricingCard({ t, match, eventTicket, showButton=true, ac
         }
       </PricingCard.Price>
       <PricingCard.AttributeList>
-        {(eventTicket.isEarlybirdPrice) ? 
+        <PricingCard.AttributeItem>
+          {(eventTicket.isEarlybirdPrice) ? <span>
+            <Badge className="mr-2" color="primary">{t("shop.event.ticket.earlybird_price")}</Badge>
+          </span> : ""}
+          {(eventTicket.isSubscriptionDiscountPrice) ? <span>
+            <Badge color="success">{t("shop.event.ticket.subscription_discount")}</Badge>
+          </span> : ""}
+        </PricingCard.AttributeItem>
+        {(eventTicket.isEarlybirdPrice || eventTicket.isSubscriptionDiscountPrice) ? 
           <PricingCard.AttributeItem>
             {t("shop.event.ticket.regular_price")} {eventTicket.priceDisplay}
           </PricingCard.AttributeItem>
