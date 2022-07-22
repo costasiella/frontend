@@ -2264,7 +2264,8 @@
                 "no_additional_info": "No additional info has been set for this ticket.",
                 "error_loading": "Error loading ticket information... :(",
                 "title": "Event ticket"
-            }
+            },
+            "sign_in_to_see_discounts": "to see whether additional discounts apply to your account."
         },
         "event": {
             "error_loading": "Error loading event... :(",

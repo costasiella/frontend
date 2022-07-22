@@ -2,15 +2,19 @@ import React, { useContext } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
+import { Link } from "react-router-dom"
 import moment from 'moment'
 import DOMPurify from 'dompurify'
 import {
+  Alert,
+  Button,
   Card,
   Dimmer,
   GalleryCard,
   Grid,
 } from "tabler-react"
 
+import CSLS from '../../../tools/cs_local_storage'
 import AppSettingsContext from '../../context/AppSettingsContext'
 import ShopEventBase from "./ShopEventBase"
 import ShopEventTicketPricingCard from "./ShopEventTicketPricingCard"
@@ -24,8 +28,17 @@ function ShopEvent({ t, match, history }) {
   let tempTitle = t("shop.home.title")
   const eventId = match.params.event_id
 
+  // Check if refresh token is present and if so, hasn't expired
+  // To see whether a user is signed in now
+  const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
+  let userIsAuthenticated = true
+  if (new Date() / 1000 >= refreshTokenExp || refreshTokenExp == null ) {
+    userIsAuthenticated = false
+  }
+
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_QUERY, {
-    variables: { id: eventId }
+    variables: { id: eventId },
+    fetchPolicy: "network-only"
   })
 
   if (loading) return (
@@ -80,6 +93,14 @@ function ShopEvent({ t, match, history }) {
       <Grid.Row>
         <Grid.Col xs={12} sm={12} md={12} lg={12}>
           <h3>{t("shop.event.tickets")}</h3>
+        </Grid.Col>
+        <Grid.Col xs={12} sm={12} md={12} lg={12}>
+          {(!userIsAuthenticated) ? <Alert type="primary">
+              <Link to="/user/login">
+                <b>{t("general.sign_in")}</b>
+              </Link> {t("shop.events.sign_in_to_see_discounts")}
+            </Alert>
+            : ""}
         </Grid.Col>
         {tickets.edges.map(({ node }) => (
           <Grid.Col xs={12} sm={12} md={6} lg={4}>
