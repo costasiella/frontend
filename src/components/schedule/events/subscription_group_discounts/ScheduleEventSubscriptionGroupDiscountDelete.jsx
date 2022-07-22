@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 
 import { 
   DELETE_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT, 
-  GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_QUERY 
+  GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNTS_QUERY 
 } from "./queries"
 import confirm_delete from "../../../../tools/confirm_delete"
 
@@ -40,7 +40,7 @@ function ScheduleEventSubscriptionGroupDiscountDelete({t, match, history, node})
               },
             }, 
             refetchQueries: [
-              { query: GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNT_QUERY, variables: query_vars },
+              { query: GET_SCHEDULE_EVENT_SUBSCRIPTION_GROUP_DISCOUNTS_QUERY, variables: query_vars },
             ]
           }
         })
