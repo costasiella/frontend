@@ -64,7 +64,7 @@ function ShopClassBook({ t, match, history }) {
               <DisplayClassInfo 
                 t={t} 
                 classDate={class_date}
-                classData={data} 
+                classData={data.scheduleClass} 
                 dateFormat={dateFormat} 
                 timeFormat={timeFormat}
               />
