@@ -45,7 +45,7 @@ function ShopCheckoutClassInfo({ t, scheduleItemId, date, complete=true}) {
         <DisplayClassInfo 
           t={t} 
           classDate={date}
-          classData={data} 
+          classData={data.scheduleClass} 
           dateFormat={dateFormat} 
           timeFormat={timeFormat}
         />
