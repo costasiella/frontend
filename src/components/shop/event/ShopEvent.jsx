@@ -7,7 +7,6 @@ import moment from 'moment'
 import DOMPurify from 'dompurify'
 import {
   Alert,
-  Button,
   Card,
   Dimmer,
   GalleryCard,
