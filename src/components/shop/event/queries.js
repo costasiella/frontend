@@ -66,6 +66,7 @@ query ScheduleEvent($id: ID!) {
           description
           isSoldOut
           isEarlybirdPrice
+          isSubscriptionDiscountPrice
           ticketScheduleItems(included: true, orderBy: "date_start") {
            pageInfo{
             hasNextPage

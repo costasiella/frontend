@@ -829,11 +829,8 @@
                 "title": "__STRING_NOT_TRANSLATED__"
             },
             "class_cancel": {
-                "title_already_cancelled": "__STRING_NOT_TRANSLATED__",
                 "already_cancelled": "__STRING_NOT_TRANSLATED__",
-                "title_cancelation_not_possible": "__STRING_NOT_TRANSLATED__",
                 "cancelation_not_possible": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__",
                 "confirmation_question": "__STRING_NOT_TRANSLATED__",
                 "success": "__STRING_NOT_TRANSLATED__",
                 "confirm_yes": "__STRING_NOT_TRANSLATED__",
@@ -1042,7 +1039,8 @@
                 "title": "__STRING_NOT_TRANSLATED__"
             },
             "tell_me_more": "__STRING_NOT_TRANSLATED__",
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "sign_in_to_see_discounts": "__STRING_NOT_TRANSLATED__"
         },
         "event": {
             "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -1051,7 +1049,8 @@
                 "earlybird_price": "__STRING_NOT_TRANSLATED__",
                 "free": "__STRING_NOT_TRANSLATED__",
                 "regular_price": "__STRING_NOT_TRANSLATED__",
-                "choose": "__STRING_NOT_TRANSLATED__"
+                "choose": "__STRING_NOT_TRANSLATED__",
+                "subscription_discount": "__STRING_NOT_TRANSLATED__"
             }
         },
         "order": {
@@ -1943,7 +1942,17 @@
             "error_loading_data": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "confirm_duplicate": "__STRING_NOT_TRANSLATED__",
-            "toast_duplicate_success": "__STRING_NOT_TRANSLATED__"
+            "toast_duplicate_success": "__STRING_NOT_TRANSLATED__",
+            "subscription_group_discounts": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__",
+                "add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "edit": "__STRING_NOT_TRANSLATED__",
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "appointments": {
