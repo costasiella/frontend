@@ -96,6 +96,9 @@ export const GET_ACCOUNT_QUERY = gql`
       organizationLanguage {
         id
       }
+      invoiceToBusiness {
+        id
+      }
     }
     organizationDiscoveries(first: 100){
       edges {
