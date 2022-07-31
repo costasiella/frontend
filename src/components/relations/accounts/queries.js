@@ -116,6 +116,14 @@ export const GET_ACCOUNT_QUERY = gql`
         }
       }
     }
+    businesses(first: 100) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
   }
 `
 
