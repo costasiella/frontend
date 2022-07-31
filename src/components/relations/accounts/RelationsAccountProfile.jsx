@@ -91,6 +91,10 @@ function RelationsAccountProfile({t, match}) {
     initialValues.organizationLanguage = account.organizationLanguage.id
   }
 
+  if (account.invoiceToBusiness) {
+    initialValues.invoiceToBusiness = account.invoiceToBusiness.id
+  }
+
   return (
     <RelationsAccountProfileBase 
       user={account}
@@ -126,7 +130,8 @@ function RelationsAccountProfile({t, match}) {
                   country: values.country,
                   keyNumber: values.keyNumber,
                   organizationDiscovery: values.organizationDiscovery,
-                  organizationLanguage: values.organizationLanguage
+                  organizationLanguage: values.organizationLanguage,
+                  invoiceToBusiness: values.invoiceToBusiness
                 }
 
                 if (values.dateOfBirth) {
