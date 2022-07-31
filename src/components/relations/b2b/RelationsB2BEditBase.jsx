@@ -11,9 +11,11 @@ import {
 
 import SiteWrapper from "../../SiteWrapper"
 import ButtonBack from '../../ui/ButtonBack'
+import RelationsB2BEditMenu from './RelationsB2BEditMenu'
 
 
-function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
+function RelationsB2BEditBase({ t, match, history, children, cardTitle="", activeLink="" }) {
+  const businessId = match.params.business_id
   const returnUrl = "/relations/b2b"
 
   return (
@@ -26,14 +28,17 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="" }) {
             </div>
           </Page.Header>
           <Grid.Row>
-            <Grid.Col md={12}>
-            <Card>
-              <Card.Header>
-                <Card.Title>{cardTitle}</Card.Title>
-              </Card.Header>
-              {children}
-            </Card>
-            </Grid.Col>                                    
+            <Grid.Col md={9}>
+              <Card>
+                <Card.Header>
+                  <Card.Title>{cardTitle}</Card.Title>
+                </Card.Header>
+                {children}
+              </Card>
+            </Grid.Col> 
+            <Grid.Col md={3}>
+              <RelationsB2BEditMenu businessId={businessId} activeLink={activeLink} />
+            </Grid.Col>                               
           </Grid.Row>
         </Container>
       </div>

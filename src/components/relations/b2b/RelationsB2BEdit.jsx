@@ -20,6 +20,7 @@ import RelationsB2BEditForm from "./RelationsB2BEditForm"
 
 function RelationsB2BEdit({ t, match, history}) {
   const businessId = match.params.business_id
+  const activeLink = 'edit'
   const [updateBusiness] = useMutation(UPDATE_BUSINESS)
   const { loading, error, data } = useQuery(GET_BUSINESS_QUERY, {
     variables: {
@@ -28,22 +29,21 @@ function RelationsB2BEdit({ t, match, history}) {
   })
 
   // Loading
-  if (loading) return <RelationsB2BEditBase>
+  if (loading) return <RelationsB2BEditBase activeLink={activeLink}>
       <Card.Body>{t('general.loading_with_dots')}</Card.Body>
     </RelationsB2BEditBase>
   // Error
   if (error) {
     console.log(error)
-    return <RelationsB2BEditBase>
+    return <RelationsB2BEditBase activeLink={activeLink}>
       <Card.Body>{t('general.error_sad_smiley')}</Card.Body>
     </RelationsB2BEditBase>
   }
 
   const initialData = data.business
-  console.log(initialData)
 
   return (
-    <RelationsB2BEditBase cardTitle={t('relations.b2b.title_edit')}>
+    <RelationsB2BEditBase cardTitle={t('relations.b2b.title_edit')} activeLink={activeLink}>
       <Formik
         initialValues={{ 
           name: initialData.name,
