@@ -14,7 +14,7 @@ import ButtonBack from '../../ui/ButtonBack'
 import RelationsB2BEditMenu from './RelationsB2BEditMenu'
 
 
-function RelationsB2BEditBase({ t, match, history, children, cardTitle="", activeLink="" }) {
+function RelationsB2BEditBase({ t, match, history, children, activeLink="" }) {
   const businessId = match.params.business_id
   const returnUrl = "/relations/b2b"
 
@@ -29,12 +29,7 @@ function RelationsB2BEditBase({ t, match, history, children, cardTitle="", activ
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={9}>
-              <Card>
-                <Card.Header>
-                  <Card.Title>{cardTitle}</Card.Title>
-                </Card.Header>
-                {children}
-              </Card>
+              {children}
             </Grid.Col> 
             <Grid.Col md={3}>
               <RelationsB2BEditMenu businessId={businessId} activeLink={activeLink} />
