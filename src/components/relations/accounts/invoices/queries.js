@@ -121,6 +121,20 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
+    businesses(first: 100) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
     account(id:$accountId) {
       id
       firstName
