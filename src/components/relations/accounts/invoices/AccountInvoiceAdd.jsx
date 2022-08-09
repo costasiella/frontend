@@ -62,6 +62,7 @@ function AccountInvoiceAdd({ t, match, history }) {
         <Formik
           initialValues={{
             financeInvoiceGroup: "",
+            business: "",
             summary: ""
           }}
           // validationSchema={INVOICE_GROUP_SCHEMA}
@@ -73,6 +74,7 @@ function AccountInvoiceAdd({ t, match, history }) {
               input: {
                 account: account_id, 
                 financeInvoiceGroup: values.financeInvoiceGroup,
+                business: values.business,
                 summary: values.summary
               }
             }, refetchQueries: [
