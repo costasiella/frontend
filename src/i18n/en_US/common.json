@@ -894,7 +894,7 @@
             "emergency": "Emergency",
             "profile_image": "Profile picture",
             "explanation": "Customer, instructor & employee accounts",
-            "invoice_to_business": "Invoice to business",
+            "invoice_to_business": "Invoice to this account or a business",
             "invoice_to_account": "Invoice to this account"
         },
         "account": {
