@@ -41,6 +41,10 @@ export const GET_INVOICE_QUERY = gql`
         id
         fullName
       }
+      business {
+        id
+        name
+      }
       financePaymentMethod {
         id
         name
