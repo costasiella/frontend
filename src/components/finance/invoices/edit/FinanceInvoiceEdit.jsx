@@ -36,7 +36,7 @@ function FinanceInvoiceEdit({t, match, history}) {
   const { loading, error, data, refetch } = useQuery(GET_INVOICE_QUERY, {
     variables: {
       id: id
-    }
+    },
   })
 
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
@@ -140,15 +140,13 @@ function FinanceInvoiceEdit({t, match, history}) {
               <FinanceInvoiceEditOrganization organization={data.organization} />
             </Grid.Col>
             <Grid.Col md={6} ml={0}>
-              <FinanceInvoiceEditTo initialData={data} />
+              <FinanceInvoiceEditTo financeInvoice={data.financeInvoice} />
             </Grid.Col>
           </Grid.Row>
         </Grid.Col>
         <Grid.Col md={3}>
           <FinanceInvoiceEditBalance financeInvoice={data.financeInvoice} />
-          <FinanceInvoiceEditOptions
-            initialData={data}
-          />
+          <FinanceInvoiceEditOptions initialData={data} />
         </Grid.Col>
       </Grid.Row>
       <Grid.Row>
