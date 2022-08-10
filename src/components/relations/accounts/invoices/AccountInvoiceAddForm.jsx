@@ -9,7 +9,6 @@ import {
   Button,
   Card,
   Form,
-  Icon
 } from "tabler-react";
 
 
