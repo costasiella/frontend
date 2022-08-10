@@ -36,13 +36,6 @@ function FinanceInvoiceEditOptions({t, match, initialData}) {
     dateDue = new Date(initialData.financeInvoice.dateDue)
   }
 
-  
-  console.log("########")
-  console.log(initialData)
-  console.log(dateSent)
-  console.log(dateDue)
-
-
   return (
     <Card title={t('general.options')} statusColor="blue">
       <Card.Body>
