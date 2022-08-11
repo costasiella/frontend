@@ -127,11 +127,14 @@ function FinanceInvoices({ t, location, history }) {
                     <Text.Small color="gray">{node.summary.trunc(28)}</Text.Small>
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {(node.account) ? 
+                    {(node.account) && 
                       <Link to={"/relations/accounts/" + node.account.id + "/profile"}>
-                        {(node.relationCompany) ? node.relationCompany: node.relationContactName}
-                      </Link> :
-                      (node.relationCompany) ? node.relationCompany: node.relationContactName
+                        <Icon name="user" /> {node.account.fullName} <br />
+                      </Link> }
+                    {(node.business) && 
+                      <Link to={"/relations/b2b/" + node.business.id + "/edit"}>
+                        <small><Icon name="home" /> {node.business.name}</small>
+                      </Link>
                     }
                     <br />
                   </Table.Col>
