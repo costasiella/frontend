@@ -53,6 +53,7 @@ export const GET_INVOICE_QUERY = gql`
         id
         name
       }
+      customTo
       relationCompany
       relationCompanyRegistration
       relationCompanyTaxRegistration
