@@ -48,6 +48,7 @@ function FinanceInvoiceEditTo({ t, history, match }) {
       <Card title={t('general.to')} statusColor="blue">
         <Formik
           initialValues={{ 
+            customTo: data.financeInvoice.customTo,
             relationCompany: data.financeInvoice.relationCompany, 
             relationCompanyRegistration: data.financeInvoice.relationCompanyRegistration, 
             relationCompanyTaxRegistration: data.financeInvoice.relationCompanyTaxRegistration, 
@@ -66,6 +67,7 @@ function FinanceInvoiceEditTo({ t, history, match }) {
             updateInvoice({ variables: {
               input: {
                 id: match.params.id,
+                customTo: values.customTo,
                 relationCompany: values.relationCompany,
                 relationCompanyRegistration: values.relationCompanyRegistration,
                 relationCompanyTaxRegistration: values.relationCompanyTaxRegistration,
@@ -96,7 +98,7 @@ function FinanceInvoiceEditTo({ t, history, match }) {
               })
             }}
         >
-          {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched }) => (
+          {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (
             <FinanceInvoiceEditToForm
               isSubmitting={isSubmitting}
               errors={errors}
@@ -104,6 +106,7 @@ function FinanceInvoiceEditTo({ t, history, match }) {
               touched={touched}
               handleChange={handleChange}
               setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
               inputData={data}
               returnUrl={returnUrl}
             >
