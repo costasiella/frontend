@@ -134,6 +134,20 @@ export const GET_INVOICE_QUERY = gql`
         }
       }
     }
+    businesses(first: 100, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
     financePaymentMethods(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
