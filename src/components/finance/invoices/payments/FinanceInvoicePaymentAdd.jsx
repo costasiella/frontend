@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 
 import { get_list_query_variables } from "../tools"
 
+import { ADD_FINANCE_INVOICE_PAYMENT } from "./queries"
 import { GET_INVOICE_QUERY, GET_INVOICES_QUERY } from "../queries"
 import { dateToLocalISO } from '../../../../tools/date_tools'
 
@@ -15,17 +16,6 @@ import SiteWrapper from "../../../SiteWrapper"
 
 import FinanceInvoicePaymentBase from "./FinanceInvoicePaymentBase"
 import FinanceInvoicePaymentForm from "./FinanceInvoicePaymentForm"
-
-
-const ADD_FINANCE_INVOICE_PAYMENT = gql`
-  mutation CreateFinanceInvoicePayment($input:CreateFinanceInvoicePaymentInput!) {
-    createFinanceInvoicePayment(input:$input) {
-      financeInvoicePayment {
-        id
-      } 
-    }
-  }
-`
 
 
 function FinanceInvoicePaymentAdd({ t, history, match }) {
