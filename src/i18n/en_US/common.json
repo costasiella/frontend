@@ -101,6 +101,9 @@
                     "explanation": "An export has been prepared with the following values:"
                 },
                 "title": "Export invoices"
+            },
+            "edit_to": {
+                "custom_to": "Manually set to address, don't copy from account or business."
             }
         },
         "invoice_groups": {
@@ -158,7 +161,10 @@
                 "toast_edit_success": "Saved item"
             },
             "account_profile_link": "Link to invoice in account profile",
-            "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in."
+            "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in.",
+            "edit_to": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "orders": {
             "title": "Orders",
@@ -895,7 +901,7 @@
             "profile_image": "Profile picture",
             "explanation": "Customer, instructor & employee accounts",
             "invoice_to_business": "Invoice to this account or a business",
-            "invoice_to_account": "Invoice to this account"
+            "invoice_to_account": "Invoice to account"
         },
         "account": {
             "subscriptions": {
