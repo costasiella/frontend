@@ -7,13 +7,14 @@ import {
   Card,
 } from "tabler-react"
 
+import CSLS from '../../../../tools/cs_local_storage'
 import ContentCard from '../../../general/ContentCard';
 import FinanceInvoicesList from '../../../finance/invoices/FinanceInvoicesList'
 
 import { GET_INVOICES_QUERY } from './queries'
 import RelationsB2BEditBase from '../RelationsB2BEditBase'
 
-function RelationsB2BInvoices({ t, match, history}) {
+function RelationsB2BInvoices({ t, match, location, history}) {
   const businessId = match.params.business_id
   const activeLink = 'invoices'
   const cardTitle = t('finance.invoices.title')
@@ -22,6 +23,8 @@ function RelationsB2BInvoices({ t, match, history}) {
       business: businessId
     }
   })
+
+  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
 
   // Loading
   if (loading) return <RelationsB2BEditBase activeLink={activeLink}>
