@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import {
   Card,
+  Icon,
 } from "tabler-react";
 
 import { GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_INVOICE } from './queries'
@@ -59,6 +60,12 @@ function AccountInvoiceAdd({ t, match, history }) {
   return (
     <RelationsAccountProfileBase activeLink={activeLink} user={account} returnUrl={returnUrl}>
       <Card title={cardTitle}>
+        { account.invoiceToBusiness && 
+          <Card.Alert color="primary">
+           <b><Icon name="home" /> {account.invoiceToBusiness.name}</b> {' '}
+           {t("relations.account.invoices.is_the_default_billing_address_for_this_account")}
+          </Card.Alert>
+        }
         <Formik
           initialValues={{
             financeInvoiceGroup: "",

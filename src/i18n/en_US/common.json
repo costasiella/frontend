@@ -163,7 +163,7 @@
             "account_profile_link": "Link to invoice in account profile",
             "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in.",
             "edit_to": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "To"
             }
         },
         "orders": {
@@ -1000,7 +1000,8 @@
             },
             "invoices": {
                 "title_add": "Add invoice",
-                "title": "Invoices"
+                "title": "Invoices",
+                "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation."
             },
             "accepted_documents": {
                 "title": "Accepted documents",

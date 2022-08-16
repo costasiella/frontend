@@ -144,6 +144,10 @@ export const GET_INPUT_VALUES_QUERY = gql`
       mobile
       isActive
       urlImageThumbnailSmall
+      invoiceToBusiness {
+        id
+        name
+      }
     }
   }
 `
