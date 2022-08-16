@@ -25,6 +25,7 @@ function RelationsB2BInvoices({ t, match, location, history}) {
   })
 
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
 
   // Loading
   if (loading) return <RelationsB2BEditBase activeLink={activeLink}>

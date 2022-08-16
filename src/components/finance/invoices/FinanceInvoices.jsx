@@ -18,11 +18,14 @@ import { GET_INVOICES_QUERY } from "./queries"
 function FinanceInvoices({ t, location, history }) {
   // Set back location for edit invoice
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
+  // Set back location for account profile
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
   // Fetch data
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_INVOICES_QUERY, {
     variables: get_list_query_variables(),
     fetchPolicy: "network-only"
   })
+
 
   if (loading) return (
     <FinanceInvoicesBase refetch={refetch}>

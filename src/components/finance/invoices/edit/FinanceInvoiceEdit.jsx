@@ -31,7 +31,7 @@ import FinanceInvoiceEditSummary from "./FinanceInvoiceEditSummary"
 import FinanceInvoiceEditTo from "./FinanceInvoiceEditTo"
 import FinanceInvoiceEditPayments from "./FinanceInvoiceEditPayments"
 
-function FinanceInvoiceEdit({t, match, history}) {
+function FinanceInvoiceEdit({t, match, history, location}) {
   const id = match.params.id
   const { loading, error, data, refetch } = useQuery(GET_INVOICE_QUERY, {
     variables: {
@@ -41,6 +41,9 @@ function FinanceInvoiceEdit({t, match, history}) {
 
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   const [cancelAndCreateCreditInvoice] = useMutation(CANCEL_AND_CREATE_CREDIT_INVOICE)
+
+  // Set back location for account profile
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
   
   // Loading
   if (loading) return <FinanceInvoiceEditBase>{t('general.loading_with_dots')}</FinanceInvoiceEditBase>

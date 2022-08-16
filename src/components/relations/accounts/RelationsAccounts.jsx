@@ -73,7 +73,7 @@ const confirm_delete = ({t, msgConfirm, msgDescription, msgSuccess, deleteFuncti
 }
 
 
-function RelationsAccounts({t, history}) {
+function RelationsAccounts({t, location}) {
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
@@ -86,6 +86,8 @@ function RelationsAccounts({t, history}) {
   })
   const [updateAccountActive] = useMutation(UPDATE_ACCOUNT_ACTIVE)
   const [deleteAccount] = useMutation(DELETE_ACCOUNT)
+
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
 
   if (loading || (data && !data.accounts)) return (
     <RelationsAccountsBase refetch={refetch}>
