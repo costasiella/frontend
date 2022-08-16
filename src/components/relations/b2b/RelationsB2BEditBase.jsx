@@ -14,7 +14,7 @@ import ButtonBack from '../../ui/ButtonBack'
 import RelationsB2BEditMenu from './RelationsB2BEditMenu'
 
 
-function RelationsB2BEditBase({ t, match, history, children, activeLink="" }) {
+function RelationsB2BEditBase({ t, match, history, children, pageTitle="", activeLink="" }) {
   const businessId = match.params.business_id
   const returnUrl = "/relations/b2b"
 
@@ -22,7 +22,7 @@ function RelationsB2BEditBase({ t, match, history, children, activeLink="" }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("relations.title")}>
+          <Page.Header title={pageTitle}>
             <div className="page-options d-flex">
               <ButtonBack returnUrl={returnUrl} />
             </div>

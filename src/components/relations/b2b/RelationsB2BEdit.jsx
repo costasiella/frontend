@@ -49,7 +49,7 @@ function RelationsB2BEdit({ t, match, history}) {
   const initialData = data.business
 
   return (
-    <RelationsB2BEditBase activeLink={activeLink}>
+    <RelationsB2BEditBase activeLink={activeLink} pageTitle={initialData.name}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 
