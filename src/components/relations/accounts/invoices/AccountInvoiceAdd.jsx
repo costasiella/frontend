@@ -55,21 +55,23 @@ function AccountInvoiceAdd({ t, match, history }) {
   
   console.log(data)
   const account = data.account
+  const financeInvoiceGroups = data.financeInvoiceGroups
+  const firstInvoiceGroup = financeInvoiceGroups && financeInvoiceGroups.edges && financeInvoiceGroups.edges[0].node.id
 
 
   return (
     <RelationsAccountProfileBase activeLink={activeLink} user={account} returnUrl={returnUrl}>
       <Card title={cardTitle}>
-        { account.invoiceToBusiness && 
+        {/* { account.invoiceToBusiness && 
           <Card.Alert color="primary">
            <b><Icon name="home" /> {account.invoiceToBusiness.name}</b> {' '}
            {t("relations.account.invoices.is_the_default_billing_address_for_this_account")}
           </Card.Alert>
-        }
+        } */}
         <Formik
           initialValues={{
-            financeInvoiceGroup: "",
-            business: "",
+            financeInvoiceGroup: firstInvoiceGroup,
+            business: null,
             summary: ""
           }}
           // validationSchema={INVOICE_GROUP_SCHEMA}
@@ -81,7 +83,7 @@ function AccountInvoiceAdd({ t, match, history }) {
               input: {
                 account: account_id, 
                 financeInvoiceGroup: values.financeInvoiceGroup,
-                business: values.business,
+                business: (values.business) ? values.business : null,
                 summary: values.summary
               }
             }, refetchQueries: [
