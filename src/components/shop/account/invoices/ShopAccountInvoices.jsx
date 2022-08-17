@@ -150,7 +150,7 @@ function ShopAccountInvoices({t, match, history}) {
                         </Table.Body>
                       </Table>
                     <Card.Footer>
-                      {(node.status === "SENT" && onlinePaymentsAvailable) ?
+                      {((node.status === "SENT" || node.status == "OVERDUE") && onlinePaymentsAvailable) ?
                         <Link to={"/shop/account/invoice_payment/" + node.id}>
                           <Button
                             className="float-right"

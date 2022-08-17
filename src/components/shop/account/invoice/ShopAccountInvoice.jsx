@@ -54,7 +54,7 @@ function ShopAccountInvoice({t, match, history}) {
   const user = data.user
   const invoice = data.financeInvoice
 
-  const pageHeaderButtonList = (invoice.status === "SENT" && onlinePaymentsAvailable) ?
+  const pageHeaderButtonList = ((invoice.status === "SENT" || invoice.status === "OVERDUE") && onlinePaymentsAvailable) ?
     <Link to={"/shop/account/invoice_payment/" + invoice.id}>
       <Button
         className="float-right ml-2"
