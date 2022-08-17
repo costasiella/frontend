@@ -119,6 +119,11 @@ function ShopAccountInvoices({t, match, history}) {
                         <FinanceInvoicesStatus status={node.status}/>
                       </Card.Options>
                     </Card.Header>
+                    { node.business && 
+                      <Card.Alert color="primary">
+                        {t("shop.account.invoice.billed_to_b2b")}: <b>{node.business.name}</b>
+                      </Card.Alert> 
+                    }
                     <Card.Body>
                       <span className="text-bold">
                         {node.summary}

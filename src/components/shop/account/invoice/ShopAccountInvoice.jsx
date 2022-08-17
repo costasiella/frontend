@@ -7,9 +7,9 @@ import moment from 'moment'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
-// import { TOKEN_REFRESH } from "../../../../queries/system/auth"
 
 import {
+  Alert,
   Button,
   Card,
   Dimmer,
@@ -74,6 +74,11 @@ function ShopAccountInvoice({t, match, history}) {
             <FinanceInvoicesStatus status={invoice.status}/>
           </div>
           <h4>{t("shop.account.invoice.title")} {invoice.invoiceNumber}</h4>
+          { invoice.business && 
+              <Alert type="primary">
+                {t("shop.account.invoice.billed_to_b2b")}: <b>{invoice.business.name}</b>
+              </Alert> 
+          }
           <Card>
             <Card.Body>
               {invoice.summary}

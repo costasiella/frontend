@@ -938,7 +938,8 @@
             "invoice": {
                 "error_loading_data": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
-                "pieces": "__STRING_NOT_TRANSLATED__"
+                "pieces": "__STRING_NOT_TRANSLATED__",
+                "billed_to_b2b": "__STRING_NOT_TRANSLATED__"
             }
         },
         "checkout": {

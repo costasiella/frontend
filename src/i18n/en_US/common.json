@@ -2200,7 +2200,8 @@
             "invoice": {
                 "error_loading_data": "Error loading invoice... :(",
                 "title": "Invoice",
-                "pieces": "Pieces"
+                "pieces": "Pieces",
+                "billed_to_b2b": "This invoice is billed to"
             }
         },
         "accounts": {
