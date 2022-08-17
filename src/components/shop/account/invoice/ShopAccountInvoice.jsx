@@ -49,8 +49,6 @@ function ShopAccountInvoice({t, match, history}) {
     </ShopAccountInvoiceBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
   const user = data.user
   const invoice = data.financeInvoice
 
