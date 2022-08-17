@@ -16,6 +16,10 @@ export const GET_ACCOUNT_INVOICES_QUERY = gql`
             id
             fullName
           }
+          business {
+            id
+            name
+          }
           invoiceNumber
           status
           summary
