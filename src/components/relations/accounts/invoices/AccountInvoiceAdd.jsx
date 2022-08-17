@@ -55,6 +55,7 @@ function AccountInvoiceAdd({ t, match, history }) {
   
   console.log(data)
   const account = data.account
+  const initialBusiness = account.invoiceToBusiness ? account.invoiceToBusiness.id : null
   const financeInvoiceGroups = data.financeInvoiceGroups
   const firstInvoiceGroup = financeInvoiceGroups && financeInvoiceGroups.edges && financeInvoiceGroups.edges[0].node.id
 
@@ -71,7 +72,7 @@ function AccountInvoiceAdd({ t, match, history }) {
         <Formik
           initialValues={{
             financeInvoiceGroup: firstInvoiceGroup,
-            business: null,
+            business: initialBusiness,
             summary: ""
           }}
           // validationSchema={INVOICE_GROUP_SCHEMA}
