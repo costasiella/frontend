@@ -6,8 +6,6 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 
-import AppSettingsContext from '../../context/AppSettingsContext'
-
 import {
   Badge,
   Button,
@@ -16,6 +14,8 @@ import {
   Card,
   Grid,
 } from "tabler-react";
+
+import AppSettingsContext from '../../context/AppSettingsContext'
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'

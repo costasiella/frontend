@@ -861,6 +861,12 @@
             "error_loading": "Error loading shifts... :(",
             "empty_list": "No shifts have been created yet.",
             "empty_archive": "No shifts have been archived yet"
+        },
+        "home": {
+            "upcoming_classes": {
+                "title": "Upcoming classes"
+            },
+            "title": "Home"
         }
     },
     "validity": {

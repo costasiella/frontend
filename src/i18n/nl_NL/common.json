@@ -1613,6 +1613,12 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__"
+        },
+        "home": {
+            "upcoming_classes": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "title": "__STRING_NOT_TRANSLATED__"
         }
     },
     "insight": {
