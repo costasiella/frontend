@@ -16,6 +16,10 @@ export const GET_ACCOUNT_INVOICES_QUERY = gql`
             id
             fullName
           }
+          business {
+            id
+            name
+          }
           invoiceNumber
           status
           summary
@@ -121,6 +125,20 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
+    businesses(first: 100) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
     account(id:$accountId) {
       id
       firstName
@@ -130,6 +148,10 @@ export const GET_INPUT_VALUES_QUERY = gql`
       mobile
       isActive
       urlImageThumbnailSmall
+      invoiceToBusiness {
+        id
+        name
+      }
     }
   }
 `

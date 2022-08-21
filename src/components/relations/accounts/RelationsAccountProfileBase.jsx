@@ -7,6 +7,8 @@ import {
   Grid,
   Container
 } from "tabler-react"
+
+import CSLS from '../../../tools/cs_local_storage'
 import SiteWrapper from "../../SiteWrapper"
 import ProfileCardSmall from "../../ui/ProfileCardSmall"
 
@@ -19,6 +21,11 @@ function RelationsAccountProfileBase({t, match, children, back, returnUrl='/rela
   let headerTitle = ""
   if (user) {
     headerTitle = `${user.firstName} ${user.lastName}`
+  }
+
+  returnUrl = localStorage.getItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN)
+  if (!returnUrl) {
+    returnUrl = '/relations/accounts'
   }
 
   return (

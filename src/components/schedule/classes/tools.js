@@ -12,6 +12,7 @@ import { t } from "i18next";
 export function get_list_query_variables() {
   let orderBy
   let organizationClasstype
+  let instructor
   let organizationLevel
   let organizationLocation
 
@@ -31,6 +32,13 @@ export function get_list_query_variables() {
     queryVars.organizationClasstype = organizationClasstype
   } else {
     queryVars.organizationClasstype = ""
+  }
+
+  instructor = localStorage.getItem(CSLS.SCHEDULE_CLASSES_FILTER_INSTRUCTOR)
+  if (instructor) {
+    queryVars.instructor = instructor
+  } else {
+    queryVars.instructor = ""
   }
 
   organizationLevel = localStorage.getItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL)

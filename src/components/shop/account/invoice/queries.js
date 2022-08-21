@@ -5,6 +5,10 @@ export const QUERY_ACCOUNT_INVOICE = gql`
   query FinanceInvoice($id: ID!) {
     financeInvoice(id: $id) {
       id
+      business {
+        id
+        name
+      }
       invoiceNumber
       status
       summary
@@ -91,4 +95,3 @@ export const QUERY_ACCOUNT_INVOICE = gql`
     }
   }
 `
-

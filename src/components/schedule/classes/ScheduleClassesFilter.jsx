@@ -21,7 +21,6 @@ function getDefaultValue(value) {
   }
 }
 
-
 function updateLocalStorageAndRefetch(key, value, refetch) {
   localStorage.setItem(key, value)
   refetch(get_list_query_variables())
@@ -33,6 +32,7 @@ const selectClass = "form-control custom-select mb-2"
 function ScheduleClassesFilter({ t, history, data, refetch }) {
   let [location, setLocation] = useState(getDefaultValue(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION))
   let [classtype, setClasstype] = useState(getDefaultValue(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE))
+  let [instructor, setInstructor] = useState(getDefaultValue(CSLS.SCHEDULE_CLASSES_FILTER_INSTRUCTOR))
   let [level, setLevel] = useState(getDefaultValue(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL))
 
   return (
@@ -45,9 +45,11 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
             size="sm"
             onClick={() => {
               localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_CLASSTYPE, "")
+              localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_INSTRUCTOR, "")
               localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LEVEL, "")
               localStorage.setItem(CSLS.SCHEDULE_CLASSES_FILTER_LOCATION, "")
               setLocation("")
+              setInstructor("")
               setClasstype("")
               setLevel("")
               refetch(get_list_query_variables())
@@ -96,6 +98,26 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
             <option value="" key={v4()}>{t("schedule.classes.filter_all_classtypes")}</option>
             {data.organizationClasstypes.edges.map(({ node }) =>
               <option value={node.id} key={v4()}>{node.name}</option>
+            )}
+          </select>
+        </Grid.Col>
+        <Grid.Col xs={12}>
+          {/* Instructors */}
+          <select 
+            className={selectClass}
+            value={instructor}
+            onChange={ (event) => {
+              setInstructor(event.target.value)
+              updateLocalStorageAndRefetch(
+                CSLS.SCHEDULE_CLASSES_FILTER_INSTRUCTOR,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("schedule.classes.filter_all_instructors")}</option>
+            {data.accounts.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.fullName}</option>
             )}
           </select>
         </Grid.Col>

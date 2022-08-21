@@ -579,6 +579,9 @@
                     "explanation": "__STRING_NOT_TRANSLATED__"
                 },
                 "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "edit_to": {
+                "custom_to": "__STRING_NOT_TRANSLATED__"
             }
         },
         "orders": {
@@ -714,7 +717,10 @@
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             },
             "account_profile_link": "__STRING_NOT_TRANSLATED__",
-            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__"
+            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__",
+            "edit_to": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "invoice_groups_defaults": {
             "MEMBERSHIPS": "__STRING_NOT_TRANSLATED__",
@@ -932,7 +938,8 @@
             "invoice": {
                 "error_loading_data": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
-                "pieces": "__STRING_NOT_TRANSLATED__"
+                "pieces": "__STRING_NOT_TRANSLATED__",
+                "billed_to_b2b": "__STRING_NOT_TRANSLATED__"
             }
         },
         "checkout": {
@@ -1024,7 +1031,8 @@
             },
             "filter_all_locations": "__STRING_NOT_TRANSLATED__",
             "filter_all_classtypes": "__STRING_NOT_TRANSLATED__",
-            "filter_all_levels": "__STRING_NOT_TRANSLATED__"
+            "filter_all_levels": "__STRING_NOT_TRANSLATED__",
+            "filter_all_instructors": "__STRING_NOT_TRANSLATED__"
         },
         "contact": {
             "title": "__STRING_NOT_TRANSLATED__"
@@ -1153,7 +1161,8 @@
             },
             "invoices": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "is_the_default_billing_address_for_this_account": "__STRING_NOT_TRANSLATED__"
             },
             "memberships": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
@@ -1274,7 +1283,9 @@
             "restored": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "invoice_to_business": "__STRING_NOT_TRANSLATED__",
+            "invoice_to_account": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {
@@ -1603,6 +1614,12 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "empty_archive": "__STRING_NOT_TRANSLATED__"
+        },
+        "home": {
+            "upcoming_classes": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "title": "__STRING_NOT_TRANSLATED__"
         }
     },
     "insight": {
@@ -1856,7 +1873,8 @@
                     "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 }
             },
-            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__"
+            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__",
+            "filter_all_instructors": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "tickets": {

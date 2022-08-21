@@ -96,6 +96,9 @@ export const GET_ACCOUNT_QUERY = gql`
       organizationLanguage {
         id
       }
+      invoiceToBusiness {
+        id
+      }
     }
     organizationDiscoveries(first: 100){
       edges {
@@ -106,6 +109,14 @@ export const GET_ACCOUNT_QUERY = gql`
       }
     }
     organizationLanguages(first: 100) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    businesses(first: 100) {
       edges {
         node {
           id

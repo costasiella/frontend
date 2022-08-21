@@ -7,9 +7,9 @@ import moment from 'moment'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import FinanceInvoicesStatus from "../../../ui/FinanceInvoiceStatus"
-// import { TOKEN_REFRESH } from "../../../../queries/system/auth"
 
 import {
+  Alert,
   Button,
   Card,
   Dimmer,
@@ -49,12 +49,10 @@ function ShopAccountInvoice({t, match, history}) {
     </ShopAccountInvoiceBase>
   )
 
-  console.log("User data: ###")
-  console.log(data)
   const user = data.user
   const invoice = data.financeInvoice
 
-  const pageHeaderButtonList = (invoice.status === "SENT" && onlinePaymentsAvailable) ?
+  const pageHeaderButtonList = ((invoice.status === "SENT" || invoice.status === "OVERDUE") && onlinePaymentsAvailable) ?
     <Link to={"/shop/account/invoice_payment/" + invoice.id}>
       <Button
         className="float-right ml-2"
@@ -74,6 +72,11 @@ function ShopAccountInvoice({t, match, history}) {
             <FinanceInvoicesStatus status={invoice.status}/>
           </div>
           <h4>{t("shop.account.invoice.title")} {invoice.invoiceNumber}</h4>
+          { invoice.business && 
+              <Alert type="primary">
+                {t("shop.account.invoice.billed_to_b2b")}: <b>{invoice.business.name}</b>
+              </Alert> 
+          }
           <Card>
             <Card.Body>
               {invoice.summary}

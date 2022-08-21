@@ -1,9 +1,8 @@
 import { gql } from "@apollo/client"
 
-
-export const QUERY_ACCOUNT_INVOICES = gql`
-  query FinanceInvoices($after: String, $before: String, $account: ID!) {
-    financeInvoices(first: 15, before: $before, after: $after, account: $account) {
+export const GET_INVOICES_QUERY = gql`
+  query FinanceInvoices($after: String, $before: String, $status: String, $business: ID!) {
+    financeInvoices(first: 15, before: $before, after: $after, status: $status, business: $business) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -13,6 +12,10 @@ export const QUERY_ACCOUNT_INVOICES = gql`
       edges {
         node {
           id
+          account {
+            id
+            fullName
+          }
           business {
             id
             name
@@ -31,23 +34,9 @@ export const QUERY_ACCOUNT_INVOICES = gql`
         }
       }
     }
-    user {
+    business(id: $business) {
       id
-      accountId
-      firstName
-      lastName
-      fullName
-      email
-      gender
-      dateOfBirth
-      address
-      postcode
-      city
-      country
-      phone
-      mobile
-      emergency
+      name
     }
   }
 `
-

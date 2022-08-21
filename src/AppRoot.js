@@ -53,6 +53,7 @@ import FinanceGLAccountEdit from './components/finance/glaccounts/FinanceGLAccou
 import FinanceInvoices from './components/finance/invoices/FinanceInvoices'
 import FinanceInvoicesExport from './components/finance/invoices/export/FinanceInvoicesExport'
 import FinanceInvoiceEdit from './components/finance/invoices/edit/FinanceInvoiceEdit'
+import FinanceInvoiceEditTo from './components/finance/invoices/edit_to/FinanceInvoiceEditTo'
 import FinanceInvoiceGroups from './components/finance/invoices/groups/FinanceInvoiceGroups'
 import FinanceInvoiceGroupAdd from './components/finance/invoices/groups/FinanceInvoiceGroupAdd'
 import FinanceInvoiceGroupEdit from './components/finance/invoices/groups/FinanceInvoiceGroupEdit'
@@ -204,6 +205,7 @@ import RelationsAccountInstructorProfile from './components/relations/accounts/i
 import RelationsB2B from './components/relations/b2b/RelationsB2B'
 import RelationsB2BAdd from './components/relations/b2b/RelationsB2BAdd.jsx'
 import RelationsB2BEdit from './components/relations/b2b/RelationsB2BEdit.jsx'
+import RelationsB2BInvoices from './components/relations/b2b/invoices/RelationsB2BInvoices'
 
 import ScheduleHome from './components/schedule/home/ScheduleHome'
 import ScheduleAppointments from './components/schedule/appointments/ScheduleAppointments'
@@ -464,6 +466,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/invoices" component={FinanceInvoices} />
             <PrivateRoute exact path="/finance/invoices/export" component={FinanceInvoicesExport} />
             <PrivateRoute exact path="/finance/invoices/edit/:id" component={FinanceInvoiceEdit} />
+            <PrivateRoute exact path="/finance/invoices/edit/:id/to" component={FinanceInvoiceEditTo} />
             <PrivateRoute exact path="/finance/invoices/groups" component={FinanceInvoiceGroups} />
             <PrivateRoute exact path="/finance/invoices/groups/add" component={FinanceInvoiceGroupAdd} />
             <PrivateRoute exact path="/finance/invoices/groups/edit/:id" component={FinanceInvoiceGroupEdit} />
@@ -628,6 +631,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/b2b" component={RelationsB2B} />
             <PrivateRoute exact path="/relations/b2b/add" component={RelationsB2BAdd} />
             <PrivateRoute exact path="/relations/b2b/:business_id/edit" component={RelationsB2BEdit} />
+            <PrivateRoute exact path="/relations/b2b/:business_id/invoices" component={RelationsB2BInvoices} />
 
             {/* SCHEDULE */}
             <PrivateRoute exact path="/schedule" component={ScheduleHome} />

@@ -19,6 +19,7 @@ const cs_local_storage_keys = {
     RELATIONS_ACCOUNTS_SEARCH: 'costasiella:relationsAccountsSearch',
     RELATIONS_ACCOUNTS_IS_ACTIVE: 'costasiella:relationsAccountsIsActive',
     RELATIONS_ACCOUNT_NOTES_NOTE_TYPE: 'costasiella:relationsAccountNotesNoteType',
+    RELATIONS_ACCOUNT_PROFILE_RETURN: 'costasiella:relationsAccountProfileReturn',
     RELATIONS_BUSINESSES_SHOW_ARCHIVE: 'costasiella:relationsBusinessesShowArchive',
     RELATIONS_BUSINESSES_SEARCH: 'costasiella:relationsBusinessesSeach',
     SCHEDULE_APPOINTMENTS_DATE_FROM: 'costasiella:scheduleAppointmentsDateFrom',
@@ -30,6 +31,7 @@ const cs_local_storage_keys = {
     SCHEDULE_CLASSES_DATE_UNTIL: 'costasiella:scheduleClassesDateUntil',
     SCHEDULE_CLASSES_ORDER_BY: 'costasiella:scheduleClassesOrderBy',
     SCHEDULE_CLASSES_FILTER_CLASSTYPE: 'costasiella:scheduleClassesFilterClasstype',
+    SCHEDULE_CLASSES_FILTER_INSTRUCTOR: 'costasiella:scheduleClassesFilterInstructor',
     SCHEDULE_CLASSES_FILTER_LEVEL: 'costasiella:scheduleClassesFilterLevel',
     SCHEDULE_CLASSES_FILTER_LOCATION: 'costasiella:scheduleClassesFilterLocation',
     SCHEDULE_CLASSES_ENROLLMENT_SEARCH: 'costasiella:scheduleClassesEnrollmentSearch',
@@ -47,6 +49,7 @@ const cs_local_storage_keys = {
     SHOP_CLASSES_DATE_UNTIL: 'costasiella:shopClassesDateUntil',
     SHOP_CLASSES_ORDER_BY: 'costasiella:shopClassesOrderBy',
     SHOP_CLASSES_FILTER_CLASSTYPE: 'costasiella:shopClassesFilterClasstype',
+    SHOP_CLASSES_FILTER_INSTRUCTOR: 'costasiella:shopClassesFilterInstructor',
     SHOP_CLASSES_FILTER_LEVEL: 'costasiella:shopClassesFilterLevel',
     SHOP_CLASSES_FILTER_LOCATION: 'costasiella:shopClassesFilterLocation',
 }

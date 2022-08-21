@@ -5,6 +5,7 @@ export const GET_CLASSES_QUERY = gql`
       $dateFrom: Date!, 
       $dateUntil:Date!, 
       $orderBy: String, 
+      $instructor: ID,
       $organizationClasstype: ID,
       $organizationLevel: ID,
       $organizationLocation: ID,
@@ -14,6 +15,7 @@ export const GET_CLASSES_QUERY = gql`
         dateFrom:$dateFrom, 
         dateUntil: $dateUntil, 
         orderBy: $orderBy, 
+        instructor: $instructor,
         organizationClasstype: $organizationClasstype,
         organizationLevel: $organizationLevel,
         organizationLocation: $organizationLocation,
@@ -64,6 +66,14 @@ export const GET_CLASSES_QUERY = gql`
         availableSpacesTotal
         displayPublic
         bookingStatus
+      }
+    }
+    accounts(first: 100, instructor: true) {
+      edges {
+        node {
+          id
+          fullName
+        }
       }
     }
     organizationLocations(first: 100, archived: false) {

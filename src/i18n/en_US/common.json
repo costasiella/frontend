@@ -101,6 +101,9 @@
                     "explanation": "An export has been prepared with the following values:"
                 },
                 "title": "Export invoices"
+            },
+            "edit_to": {
+                "custom_to": "Manually set to address, don't copy from account or business."
             }
         },
         "invoice_groups": {
@@ -158,7 +161,10 @@
                 "toast_edit_success": "Saved item"
             },
             "account_profile_link": "Link to invoice in account profile",
-            "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in."
+            "account_profile_link_explanation": "Link to the invoice in the profile of this account. Only the account associated with this invoice will be able to view it after signing in.",
+            "edit_to": {
+                "title": "To"
+            }
         },
         "orders": {
             "title": "Orders",
@@ -855,6 +861,12 @@
             "error_loading": "Error loading shifts... :(",
             "empty_list": "No shifts have been created yet.",
             "empty_archive": "No shifts have been archived yet"
+        },
+        "home": {
+            "upcoming_classes": {
+                "title": "Upcoming classes"
+            },
+            "title": "Home"
         }
     },
     "validity": {
@@ -893,7 +905,9 @@
             "restored": "Restored account",
             "emergency": "Emergency",
             "profile_image": "Profile picture",
-            "explanation": "Customer, instructor & employee accounts"
+            "explanation": "Customer, instructor & employee accounts",
+            "invoice_to_business": "Invoice to this account or a business",
+            "invoice_to_account": "Invoice to account"
         },
         "account": {
             "subscriptions": {
@@ -992,7 +1006,8 @@
             },
             "invoices": {
                 "title_add": "Add invoice",
-                "title": "Invoices"
+                "title": "Invoices",
+                "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation."
             },
             "accepted_documents": {
                 "title": "Accepted documents",
@@ -1242,7 +1257,8 @@
                     "search_to_find_customers_to_enroll": "Use the search box to find customers to enroll."
                 }
             },
-            "select_last_weekday_of_month": "Last weekday of month"
+            "select_last_weekday_of_month": "Last weekday of month",
+            "filter_all_instructors": "All instructors"
         },
         "appointments": {
             "title": "Appointments",
@@ -2191,7 +2207,8 @@
             "invoice": {
                 "error_loading_data": "Error loading invoice... :(",
                 "title": "Invoice",
-                "pieces": "Pieces"
+                "pieces": "Pieces",
+                "billed_to_b2b": "This invoice is billed to"
             }
         },
         "accounts": {
@@ -2234,7 +2251,8 @@
                 "ongoing": "Ongoing",
                 "full": "Full",
                 "cancelled_holiday": "Holiday"
-            }
+            },
+            "filter_all_instructors": "All instructors"
         },
         "contact": {
             "title": "Contact"

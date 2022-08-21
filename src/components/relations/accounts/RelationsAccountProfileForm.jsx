@@ -225,6 +225,20 @@ const RelationsAccountProfileForm = ({ t, history, isSubmitting, errors, values,
         </Grid.Row> 
         <Grid.Row>
           <Grid.Col>
+            <Form.Group label={t('relations.accounts.invoice_to_business')}>
+              <Field component="select" 
+                    name="invoiceToBusiness" 
+                    className={(errors.invoiceToBusiness) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off">
+                <option value="" key={v4()}>{t("relations.accounts.invoice_to_account")}</option>
+                {inputData.businesses.edges.map(({ node }) =>
+                  <option value={node.id} key={v4()}>{node.name}</option>
+                )}
+              </Field>
+              <ErrorMessage name="invoiceToBusiness" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
+          <Grid.Col>
             <Form.Group label={t('general.key_number')}>
               <Field type="text" 
                       name="keyNumber" 

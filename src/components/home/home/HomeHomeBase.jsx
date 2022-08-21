@@ -15,7 +15,7 @@ function HomeHomeBase({ t, match, history, children }) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("organization.announcements.title")} />
+          <Page.Header title={t("organization.home.title")} />
           {children}
         </Container>
       </div>

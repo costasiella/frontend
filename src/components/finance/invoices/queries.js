@@ -16,6 +16,10 @@ export const GET_INVOICES_QUERY = gql`
             id
             fullName
           }
+          business {
+            id
+            name
+          }
           invoiceNumber
           status
           summary
@@ -41,10 +45,15 @@ export const GET_INVOICE_QUERY = gql`
         id
         fullName
       }
+      business {
+        id
+        name
+      }
       financePaymentMethod {
         id
         name
       }
+      customTo
       relationCompany
       relationCompanyRegistration
       relationCompanyTaxRegistration
@@ -123,6 +132,20 @@ export const GET_INVOICE_QUERY = gql`
             note
             onlinePaymentId
           }
+        }
+      }
+    }
+    businesses(first: 100, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          name
         }
       }
     }

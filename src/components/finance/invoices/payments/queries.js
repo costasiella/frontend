@@ -17,6 +17,16 @@ export const GET_INVOICE_PAYMENT_QUERY = gql`
   }
 `
 
+export const ADD_FINANCE_INVOICE_PAYMENT = gql`
+mutation CreateFinanceInvoicePayment($input:CreateFinanceInvoicePaymentInput!) {
+  createFinanceInvoicePayment(input:$input) {
+    financeInvoicePayment {
+      id
+    } 
+  }
+}
+`
+
 export const UPDATE_FINANCE_INVOICE_PAYMENT = gql`
   mutation UpdateFinanceInvoicePayment($input:UpdateFinanceInvoicePaymentInput!) {
     updateFinanceInvoicePayment(input:$input) {
@@ -26,3 +36,4 @@ export const UPDATE_FINANCE_INVOICE_PAYMENT = gql`
     }
   }
 `
+
