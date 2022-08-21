@@ -2251,7 +2251,8 @@
                 "ongoing": "Ongoing",
                 "full": "Full",
                 "cancelled_holiday": "Holiday"
-            }
+            },
+            "filter_all_instructors": "All instructors"
         },
         "contact": {
             "title": "Contact"

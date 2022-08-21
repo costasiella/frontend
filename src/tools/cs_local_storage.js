@@ -49,6 +49,7 @@ const cs_local_storage_keys = {
     SHOP_CLASSES_DATE_UNTIL: 'costasiella:shopClassesDateUntil',
     SHOP_CLASSES_ORDER_BY: 'costasiella:shopClassesOrderBy',
     SHOP_CLASSES_FILTER_CLASSTYPE: 'costasiella:shopClassesFilterClasstype',
+    SHOP_CLASSES_FILTER_INSTRUCTOR: 'costasiella:shopClassesFilterInstructor',
     SHOP_CLASSES_FILTER_LEVEL: 'costasiella:shopClassesFilterLevel',
     SHOP_CLASSES_FILTER_LOCATION: 'costasiella:shopClassesFilterLocation',
 }

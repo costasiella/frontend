@@ -1,10 +1,7 @@
-// @flow
-
 import React from 'react'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
 
 import CSLS from "../../../../tools/cs_local_storage"
 import { get_list_query_variables } from './tools'
@@ -35,7 +32,7 @@ const selectClass = "form-control custom-select mb-2"
 
 const ShopClassesScheduleFilter = ({ t, history, data, refetch }) => (
   <Grid.Row>
-    <Grid.Col xs={12} sm={12} md={4}>
+    <Grid.Col xs={12} sm={12} md={3}>
       {/* Locations */}
       <select 
         className={selectClass}
@@ -54,7 +51,7 @@ const ShopClassesScheduleFilter = ({ t, history, data, refetch }) => (
         )}
       </select>
     </Grid.Col>
-    <Grid.Col xs={12} sm={12} md={4}>
+    <Grid.Col xs={12} sm={12} md={3}>
       {/* Classtypes */}
       <select 
         className={selectClass}
@@ -73,7 +70,26 @@ const ShopClassesScheduleFilter = ({ t, history, data, refetch }) => (
         )}
       </select>
     </Grid.Col>
-    <Grid.Col xs={12} sm={12} md={4}>
+    <Grid.Col xs={12} sm={12} md={3}>
+          {/* Instructors */}
+          <select 
+            className={selectClass}
+            defaultValue={getDefaultValue(CSLS.SHOP_CLASSES_FILTER_INSTRUCTOR)}
+            onChange={ (event) => {
+              updateLocalStorageAndRefetch(
+                CSLS.SHOP_CLASSES_FILTER_INSTRUCTOR,
+                event.target.value,
+                refetch
+              )
+            }}
+          >
+            <option value="" key={v4()}>{t("shop.classes.filter_all_instructors")}</option>
+            {data.accounts.edges.map(({ node }) =>
+              <option value={node.id} key={v4()}>{node.fullName}</option>
+            )}
+          </select>
+        </Grid.Col>
+    <Grid.Col xs={12} sm={12} md={3}>
       {/* Levels */}
       <select 
         className={selectClass}
