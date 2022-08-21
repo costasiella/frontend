@@ -62,6 +62,14 @@ function HomeHome({ t, match }) {
   )
 
   console.log(data)
+  let upcomingClasses = false
+
+  { data.scheduleClasses.map(({ classes }) => {
+    if (classes.length) {
+      upcomingClasses = true
+    }
+  })}
+    
 
   // Data
   return (
@@ -79,100 +87,104 @@ function HomeHome({ t, match }) {
         )) : ""
         }
       </Grid.Row>
-      <h4>{t("organization.home.upcoming_classes.title")}</h4>
-        { data.scheduleClasses.map(({ date, classes }) => (
-          !classes.length ? "" : <React.Fragment key={v4()}>
-            <h5>
-              {capitalize(moment(date).format("dddd"))} {' '}
-              <small className="text-muted">
-                    {moment(date).format("LL")} 
-              </small>
-            </h5>
-            {classes.map((
-              { scheduleItemId, 
-                frequencyType,
-                date, 
-                status,
-                holiday,
-                holidayName,
-                description,
-                organizationLocationRoom, 
-                organizationClasstype, 
-                organizationLevel,
-                timeStart, 
-                timeEnd,
-                spaces,
-                countAttendance }) => (
-                  <Card key={v4()}>
-                    <Card.Body>
-                      <Grid.Row>
-                        <Grid.Col xs={9} sm={9} md={10}>
-                          <Grid.Row>
-                            <Grid.Col xs={12}>
-                              <h5>
-                                {represent_class_status(status)}
-                                <span className='mr-2'>
-                                {/* Class type */}
-                                {organizationClasstype.name} { ' ' }
-                                {/* Start & end time */}
-                                {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
-                                {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
-                                </span>
-                                {organizationLevel && <small className="text-muted">
-                                  {organizationLevel.name}
-                                </small>}
-                              </h5>
-                            </Grid.Col>
-                          </Grid.Row>
-                          <Grid.Row>
-                            <Grid.Col xs={12}>
-                              {/* Location */}
-                              <Icon name="home" /> {organizationLocationRoom.organizationLocation.name} 
-                              <small className="text-muted"> | {organizationLocationRoom.name}</small>
-                            </Grid.Col>
-                          </Grid.Row>
-                        </Grid.Col>
-                        <Grid.Col xs={3} sm={3} md={2}>
-                          <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
-                            <Link className="float-right" to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
-                              <Button
-                                size="sm"
-                                color="secondary"
-                                icon="check-circle"
-                              >
-                                  {t("general.attendance")}
-                              </Button>
-                            </Link>
-                          </HasPermissionWrapper>
-                        </Grid.Col>
-                      </Grid.Row>
-                      <Grid.Row>
-                        <Grid.Col xs={9} sm={9} md={10}>
-                          <div className="mt-1">
-                            {/* <BadgePublic className="mr-2" isPublic={displayPublic} /> */}
-                            {(frequencyType === 'SPECIFIC') ? 
-                              <Badge color="primary" className="mr-2">{t('general.once')}</Badge> : 
-                              null } 
-                            {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
-                              <Badge color="success" className="mr-2">{t('general.monthly')}</Badge> : 
-                              null } 
-                            {(status === "CANCELLED") ? 
-                              <Badge color="warning" className="mr-2">{t('general.cancelled')}</Badge> : 
-                              null } 
-                              <small className="text-muted"><br />{get_class_messages(t, status, description, holiday, holidayName)}</small>
-                          </div>
-                        </Grid.Col>
-                        <Grid.Col xs={3} sm={3} md={2}>
-                          {/* Attendance */}
-                          <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
-                        </Grid.Col>
-                      </Grid.Row>
-                    </Card.Body>
-                  </Card>
-                )
-              )}
-          </React.Fragment >
-        ))}
+      
+      { upcomingClasses && <React.Fragment>
+        <h4>{t("organization.home.upcoming_classes.title")}</h4>
+          { data.scheduleClasses.map(({ date, classes }) => (
+            !classes.length ? "" : <React.Fragment key={v4()}>
+              <h5>
+                {capitalize(moment(date).format("dddd"))} {' '}
+                <small className="text-muted">
+                      {moment(date).format("LL")} 
+                </small>
+              </h5>
+              {classes.map((
+                { scheduleItemId, 
+                  frequencyType,
+                  date, 
+                  status,
+                  holiday,
+                  holidayName,
+                  description,
+                  organizationLocationRoom, 
+                  organizationClasstype, 
+                  organizationLevel,
+                  timeStart, 
+                  timeEnd,
+                  spaces,
+                  countAttendance }) => (
+                    <Card key={v4()}>
+                      <Card.Body>
+                        <Grid.Row>
+                          <Grid.Col xs={9} sm={9} md={10}>
+                            <Grid.Row>
+                              <Grid.Col xs={12}>
+                                <h5>
+                                  {represent_class_status(status)}
+                                  <span className='mr-2'>
+                                  {/* Class type */}
+                                  {organizationClasstype.name} { ' ' }
+                                  {/* Start & end time */}
+                                  {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
+                                  {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
+                                  </span>
+                                  {organizationLevel && <small className="text-muted">
+                                    {organizationLevel.name}
+                                  </small>}
+                                </h5>
+                              </Grid.Col>
+                            </Grid.Row>
+                            <Grid.Row>
+                              <Grid.Col xs={12}>
+                                {/* Location */}
+                                <Icon name="home" /> {organizationLocationRoom.organizationLocation.name} 
+                                <small className="text-muted"> | {organizationLocationRoom.name}</small>
+                              </Grid.Col>
+                            </Grid.Row>
+                          </Grid.Col>
+                          <Grid.Col xs={3} sm={3} md={2}>
+                            <HasPermissionWrapper key={v4()} permission="view" resource="scheduleitemattendance">
+                              <Link className="float-right" to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
+                                <Button
+                                  size="sm"
+                                  color="secondary"
+                                  icon="check-circle"
+                                >
+                                    {t("general.attendance")}
+                                </Button>
+                              </Link>
+                            </HasPermissionWrapper>
+                          </Grid.Col>
+                        </Grid.Row>
+                        <Grid.Row>
+                          <Grid.Col xs={9} sm={9} md={10}>
+                            <div className="mt-1">
+                              {/* <BadgePublic className="mr-2" isPublic={displayPublic} /> */}
+                              {(frequencyType === 'SPECIFIC') ? 
+                                <Badge color="primary" className="mr-2">{t('general.once')}</Badge> : 
+                                null } 
+                              {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
+                                <Badge color="success" className="mr-2">{t('general.monthly')}</Badge> : 
+                                null } 
+                              {(status === "CANCELLED") ? 
+                                <Badge color="warning" className="mr-2">{t('general.cancelled')}</Badge> : 
+                                null } 
+                                <small className="text-muted"><br />{get_class_messages(t, status, description, holiday, holidayName)}</small>
+                            </div>
+                          </Grid.Col>
+                          <Grid.Col xs={3} sm={3} md={2}>
+                            {/* Attendance */}
+                            <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                          </Grid.Col>
+                        </Grid.Row>
+                      </Card.Body>
+                    </Card>
+                  )
+                )}
+            </React.Fragment >
+          ))}
+        </React.Fragment> 
+      }  {/* End upcoming classes check */}
     </HomeHomeBase>
   )
 }
