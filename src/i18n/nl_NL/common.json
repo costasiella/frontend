@@ -1872,7 +1872,8 @@
                     "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 }
             },
-            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__"
+            "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__",
+            "filter_all_instructors": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
             "tickets": {
