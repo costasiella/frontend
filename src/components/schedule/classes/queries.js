@@ -66,6 +66,14 @@ export const GET_CLASSES_QUERY = gql`
         bookingStatus
       }
     }
+    accounts(first: 100, instructor: true) {
+      edges {
+        node {
+          id
+          fullName
+        }
+      }
+    }
     organizationLocations(first: 100, archived: false) {
       pageInfo {
         startCursor
