@@ -6,7 +6,6 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import {
   Card,
-  Icon,
 } from "tabler-react";
 
 import { GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_INVOICE } from './queries'

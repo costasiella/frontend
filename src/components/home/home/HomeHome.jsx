@@ -29,7 +29,7 @@ function HomeHome({ t, match }) {
 
   // Chain queries. First query user data and then query class attendance for that user once we have the account Id.
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(GET_USER_PROFILE)
-  const { loading, error, data, fetchMore } = useQuery(GET_BACKEND_ANNOUNCEMENTS_QUERY, {
+  const { loading, error, data } = useQuery(GET_BACKEND_ANNOUNCEMENTS_QUERY, {
     skip: loadingUser || errorUser || !dataUser,
     variables: {
       instructor: dataUser && dataUser.user ? dataUser.user.accountId : null,

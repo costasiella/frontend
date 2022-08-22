@@ -1,8 +1,7 @@
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { toast } from 'react-toastify'
 import {
   Card,
 } from "tabler-react"

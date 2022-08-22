@@ -1,9 +1,7 @@
 import React from 'react'
-import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 
-import { GET_ACCOUNT_QUERY } from './queries'
 
 import {
   List
@@ -12,20 +10,6 @@ import HasPermissionWrapper from "../../HasPermissionWrapper"
 
 
 function RelationsB2BEditMenu({t, businessId, activeLink}) {
-    // const {loading, error, data} = useQuery(GET_ACCOUNT_QUERY, {
-    //     variables: {id: accountId}
-    // })
-
-    // if (loading) return <p>{t('general.loading_with_dots')}</p>
-    // // Error
-    // if (error) {
-    //   console.log(error)
-    //   return <p>{t('general.error_sad_smiley')}</p>
-    // }
-    // const account = data.account
-    // console.log('account in profile menu')
-    // console.log(account)
-
     return (
       <List.Group transparent={true}>     
         <List.GroupItem
