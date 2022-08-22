@@ -63,12 +63,11 @@ function HomeHome({ t, match }) {
 
   console.log(data)
   let upcomingClasses = false
-
-  { data.scheduleClasses.map(({ classes }) => {
-    if (classes.length) {
+  for ( let i=0; i<data.scheduleClasses.length; i++ ) {
+    if (data.scheduleClasses[i]['classes'].length) {
       upcomingClasses = true
     }
-  })}
+  }
     
 
   // Data

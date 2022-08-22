@@ -7,8 +7,6 @@ import { toast } from 'react-toastify'
 
 import {
   Card, 
-  Grid,
-  Page
 } from "tabler-react"
 
 
@@ -21,7 +19,7 @@ import FinanceInvoiceEditToForm from "./FinanceInvoiceEditToForm"
 function FinanceInvoiceEditTo({ t, history, match }) {
   const id = match.params.id
   const returnUrl = `/finance/invoices/edit/${id}`
-  const { loading, error, data, refetch } = useQuery(GET_INVOICE_QUERY, {
+  const { loading, error, data } = useQuery(GET_INVOICE_QUERY, {
     variables: {
       id: id
     },

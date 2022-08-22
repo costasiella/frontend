@@ -1,26 +1,16 @@
 import React from 'react'
-import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
 
 import {
   Button,
   Card,
-  Icon
 } from "tabler-react"
-
-
-import { get_list_query_variables } from "../tools"
-import { UPDATE_INVOICE, GET_INVOICE_QUERY, GET_INVOICES_QUERY } from "../queries"
 
 
 function FinanceInvoiceEditTo({ t, history, match, financeInvoice }) {
   const id = match.params.id
-  // const [ updateInvoice ] = useMutation(UPDATE_INVOICE)
 
   return (
     <Card statusColor="blue">
@@ -58,23 +48,6 @@ function FinanceInvoiceEditTo({ t, history, match, financeInvoice }) {
           <div>
             {financeInvoice.relationCountry}
           </div>
-
-          {/* {(organization.address) ?
-            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(organization.address)}} />
-            : ""
-          }      
-          <div>
-            {organization.phone}
-          </div>
-          <div>
-            {organization.email}
-          </div>
-          <div>
-            {organization.registration}
-          </div>
-          <div>
-            {organization.taxRegistration} 
-          </div> */}
       </Card.Body>
       <Card.Footer>
         {(financeInvoice.business) && <span className='float-right'>

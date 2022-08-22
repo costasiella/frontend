@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import { useMutation } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 import {
   Icon,
-  Dimmer,
   Button,
   Table, 
   Text
@@ -16,10 +15,7 @@ import {
 import AppSettingsContext from '../../context/AppSettingsContext'
 import { get_list_query_variables } from "./tools"
 import FinanceInvoicesStatus from "../../ui/FinanceInvoiceStatus"
-
 import { GET_INVOICES_QUERY, DELETE_FINANCE_INVOICE } from "./queries"
-
-import CSLS from "../../../tools/cs_local_storage"
 import confirm_delete from "../../../tools/confirm_delete"
 import moment from 'moment'
 
