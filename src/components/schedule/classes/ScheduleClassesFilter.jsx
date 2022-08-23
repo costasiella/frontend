@@ -116,7 +116,7 @@ function ScheduleClassesFilter({ t, history, data, refetch }) {
             }}
           >
             <option value="" key={v4()}>{t("schedule.classes.filter_all_instructors")}</option>
-            {data.accounts.edges.map(({ node }) =>
+            {data.instructors.edges.map(({ node }) =>
               <option value={node.id} key={v4()}>{node.fullName}</option>
             )}
           </select>

@@ -68,7 +68,7 @@ export const GET_CLASSES_QUERY = gql`
         bookingStatus
       }
     }
-    accounts(first: 100, instructor: true) {
+    instructors(first: 100) {
       edges {
         node {
           id
