@@ -20,7 +20,6 @@ function OrganizationProductForm ({
   match, 
   isSubmitting, 
   errors, 
-  values, 
   returnUrl,
   inputFileName, 
   fileInputLabel, 
