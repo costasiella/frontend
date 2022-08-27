@@ -1633,7 +1633,23 @@
             "upcoming_classes": {
                 "title": "__STRING_NOT_TRANSLATED__"
             },
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "products": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "scheduling": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "accounts": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "about": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
+        },
+        "products": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "insight": {

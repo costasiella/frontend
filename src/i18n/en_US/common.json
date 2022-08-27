@@ -792,7 +792,7 @@
                 "title": "Branding",
                 "explanation": "Set logos used for your organization"
             },
-            "explanation": "Organization address & contact information"
+            "explanation": "Set address & contact information"
         },
         "documents": {
             "title": "Documents",
@@ -829,7 +829,7 @@
             "title_edit": "Edit announcement",
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
             "deleted": "Deleted announcement",
-            "explanation": "Manage shop & backend announcements"
+            "explanation": "Shop & backend announcements"
         },
         "languages": {
             "title": "Languages",
@@ -880,7 +880,23 @@
             "upcoming_classes": {
                 "title": "Upcoming classes"
             },
-            "title": "Home"
+            "title": "Home",
+            "products": {
+                "title": "Products"
+            },
+            "scheduling": {
+                "title": "Scheduling"
+            },
+            "accounts": {
+                "title": "Relations"
+            },
+            "about": {
+                "title": "About"
+            }
+        },
+        "products": {
+            "title": "Products",
+            "explanation": "Quickly create an invoice for items within the product catalog"
         }
     },
     "validity": {
