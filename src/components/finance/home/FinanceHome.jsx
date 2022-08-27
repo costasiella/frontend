@@ -32,6 +32,9 @@ class FinanceHome extends Component {
           <Container>
             <Page.Header title={t("finance.title")} />
             <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.general.title")}</h4>
+              </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>

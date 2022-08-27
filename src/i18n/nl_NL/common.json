@@ -794,6 +794,9 @@
             },
             "taxes": {
                 "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "general": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         }
     },
