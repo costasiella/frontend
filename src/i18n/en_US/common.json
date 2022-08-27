@@ -278,7 +278,10 @@
                 "title": "Taxes"
             },
             "general": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "General"
+            },
+            "structure": {
+                "title": "Structure"
             }
         }
     },

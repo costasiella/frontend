@@ -797,6 +797,9 @@
             },
             "general": {
                 "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "structure": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         }
     },

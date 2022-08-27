@@ -55,6 +55,11 @@ class FinanceHome extends Component {
                   </Card.Body>
                 </Card>
               </Grid.Col>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.structure.title")}</h4>
+              </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
