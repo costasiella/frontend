@@ -273,6 +273,9 @@
         "home": {
             "batches": {
                 "title": "Batches"
+            },
+            "taxes": {
+                "title": "Taxes"
             }
         }
     },

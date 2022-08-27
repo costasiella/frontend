@@ -791,6 +791,9 @@
         "home": {
             "batches": {
                 "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "taxes": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         }
     },
