@@ -105,6 +105,11 @@ class FinanceHome extends Component {
                   </Card.Body>
                 </Card>
               </Grid.Col>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.batches.title")}</h4>
+              </Grid.Col>
               <HasPermissionWrapper permission="view"
                           resource="financepaymentbatch">
                 <Grid.Col md={3} lg={3}>

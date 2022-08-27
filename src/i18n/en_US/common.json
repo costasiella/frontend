@@ -269,6 +269,11 @@
             "empty_list": "No data found within the selected dates",
             "set_dates": "Set dates",
             "taxable_amount": "Taxable amount"
+        },
+        "home": {
+            "batches": {
+                "title": "Batches"
+            }
         }
     },
     "general": {
