@@ -129,7 +129,7 @@ export const GET_CLASSPASS_QUERY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query InputValues($after: String, $before: String) {
-    financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
+    financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -146,7 +146,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
+    financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -162,7 +162,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
+    financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
