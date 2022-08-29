@@ -3,7 +3,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
-
+import { v4 } from 'uuid'
 import {
   Button,
   Card,
@@ -12,7 +12,7 @@ import {
 } from "tabler-react"
 
 
-import { customFileInputLabelStyle } from "../../../../tools/custom_file_input_label_style"
+import { customFileInputLabelStyle } from "../../../tools/custom_file_input_label_style"
 
 function OrganizationProductForm ({ 
   t, 
@@ -21,6 +21,7 @@ function OrganizationProductForm ({
   isSubmitting, 
   errors, 
   returnUrl,
+  initialData,
   inputFileName, 
   fileInputLabel, 
   handleFileInputChange=f=>f

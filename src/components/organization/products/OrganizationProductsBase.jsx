@@ -25,7 +25,7 @@ function OrganizationProductsBase({t, children, showBack=false}) {
               :
                 <HasPermissionWrapper permission="add"
                                     resource="organizationproduct">
-                  <ButtonAdd addUrl="/organization/product/add" />
+                  <ButtonAdd addUrl="/organization/products/add" />
                 </HasPermissionWrapper>    
               }
             </div>

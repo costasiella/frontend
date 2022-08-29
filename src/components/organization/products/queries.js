@@ -49,6 +49,16 @@ export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
   }
 `
 
+export const ADD_ORGANIZATION_PRODUCT = gql`
+mutation CreateOrganizationProduct($input:CreateOrganizationProductInput!) {
+  createOrganizationProduct(input: $input) {
+    organizationProduct {
+      id
+    }
+  }
+}
+`
+
 
 export const ARCHIVE_ORGANIZATION_PRODUCT   = gql`
   mutation ArchiveOrganizationProduct($input: ArchiveOrganizationProductInput!) {
@@ -63,8 +73,8 @@ export const ARCHIVE_ORGANIZATION_PRODUCT   = gql`
 
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query ScheduleEventActivityInputValues($after: String, $before: String) {
-    accounts(first: 100, before: $before, after: $after, isActive: true, instructor: true) {
+  query InputValues($after: String, $before: String) {
+    financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -74,11 +84,14 @@ export const GET_INPUT_VALUES_QUERY = gql`
       edges {
         node {
           id
-          fullName
+          archived
+          name
+          percentage
+          rateType
         }
       }
     }
-    organizationLocationRooms(first: 100, before: $before, after: $after, archived: false) {
+    financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -88,11 +101,25 @@ export const GET_INPUT_VALUES_QUERY = gql`
       edges {
         node {
           id
+          archived
           name
-          organizationLocation {
-            id
-            name
-          }
+          code
+        }
+      }
+    }
+    financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          archived
+          name
+          code
         }
       }
     }
