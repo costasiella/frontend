@@ -137,6 +137,7 @@ import OrganizationLocationRoomEdit from './components/organization/locations/ro
 import OrganizationLevels from './components/organization/levels/OrganizationLevels'
 import OrganizationLevelAdd from './components/organization/levels/OrganizationLevelAdd'
 import OrganizationLevelEdit from './components/organization/levels/OrganizationLevelEdit'
+import OrganizationProducts from './components/organization/products/OrganizationProducts'
 import OrganizationShifts from './components/organization/shifts/OrganizationShifts'
 import OrganizationShiftAdd from './components/organization/shifts/OrganizationShiftAdd'
 import OrganizationShiftEdit from './components/organization/shifts/OrganizationShiftEdit'
@@ -548,6 +549,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/locations/rooms/:location_id" component={OrganizationLocationRooms} />
             <PrivateRoute exact path="/organization/locations/rooms/add/:location_id" component={OrganizationLocationRoomAdd} />
             <PrivateRoute exact path="/organization/locations/rooms/edit/:location_id/:id" component={OrganizationLocationRoomEdit} />
+            <PrivateRoute exact path="/organization/products" component={OrganizationProducts} />
             <PrivateRoute exact path="/organization/shifts" component={OrganizationShifts} />
             <PrivateRoute exact path="/organization/shifts/add" component={OrganizationShiftAdd} />
             <PrivateRoute exact path="/organization/shifts/edit/:id" component={OrganizationShiftEdit} /> 

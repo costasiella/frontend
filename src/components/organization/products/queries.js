@@ -2,8 +2,8 @@ import { gql } from "@apollo/client"
 
 
 export const GET_ORGANIZATION_PRODUCTS_QUERY = gql`
-  query OrganizationProducts($before:String, $after:String, $scheduleEvent:ID!) {
-    organizationProducts(first: 100, before:$before, after:$after, scheduleEvent:$scheduleEvent) {
+  query OrganizationProducts($before:String, $after:String, $archived: Boolean) {
+    organizationProducts(first: 100, before:$before, after:$after, archived: $archived) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -13,6 +13,7 @@ export const GET_ORGANIZATION_PRODUCTS_QUERY = gql`
       edges {
         node {
           id
+          archived
           name
           description
           priceDisplay
@@ -49,10 +50,13 @@ export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
 `
 
 
-export const DELETE_SCHEDULE_EVENT_MEDIA   = gql`
-  mutation DeleteScheduleEventMedia($input: DeleteScheduleEventMediaInput!) {
-    deleteScheduleEventMedia(input: $input) {
-      ok
+export const ARCHIVE_ORGANIZATION_PRODUCT   = gql`
+  mutation ArchiveOrganizationProduct($input: ArchiveOrganizationProductInput!) {
+    archiveOrganizationProduct(input: $input) {
+      organizationProduct {
+        id
+        archived
+      }
     }
   }
 `
