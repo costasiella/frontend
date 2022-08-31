@@ -1649,7 +1649,14 @@
         },
         "products": {
             "title": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "archive_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "unarchive_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "empty_archive": "__STRING_NOT_TRANSLATED__"
         }
     },
     "insight": {

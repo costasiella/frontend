@@ -896,7 +896,14 @@
         },
         "products": {
             "title": "Products",
-            "explanation": "Quickly create an invoice for items within the product catalog"
+            "explanation": "Quickly create an invoice for items within the product catalog",
+            "add": "Add product",
+            "toast_add_success": "Added product",
+            "archive_confirm_msg": "Archive this product?",
+            "unarchive_confirm_msg": "Unarchive this product?",
+            "error_loading": "Error loading products...:(",
+            "empty_list": "No products have been defined yet",
+            "empty_archive": "No products have been archived yet"
         }
     },
     "validity": {
