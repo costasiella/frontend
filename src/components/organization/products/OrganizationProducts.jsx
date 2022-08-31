@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { toast } from 'react-toastify'
 import {
   Avatar,
-  Icon,
   Dimmer,
-  Badge,
   Button,
   Card,
   Table
@@ -17,8 +15,8 @@ import {
 
 import ContentCard from "../../general/ContentCard"
 import ButtonEdit from "../../ui/ButtonEdit"
-import { get_list_query_variables } from './tools'
-import { GET_ORGANIZATION_PRODUCTS_QUERY, ARCHIVE_ORGANIZATION_PRODUCT } from "./queries"
+import { GET_ORGANIZATION_PRODUCTS_QUERY  } from "./queries"
+import OrganizationProductArchive from './OrganizationProductArchive'
 import OrganizationProductsBase from "./OrganizationProductsBase"
 
 
@@ -28,7 +26,6 @@ function OrganizationProducts({t, history}) {
   const {loading, error, data, refetch, fetchMore} = useQuery(GET_ORGANIZATION_PRODUCTS_QUERY, { 
     variables: {archived: archived}
   })
-  const [archiveProduct] = useMutation(ARCHIVE_ORGANIZATION_PRODUCT)
 
   if (loading) return (
     <OrganizationProductsBase>
@@ -69,7 +66,7 @@ function OrganizationProducts({t, history}) {
       <ContentCard cardTitle={cardTitle}
                   headerContent={headerOptions}>
         <p>
-        {(!archived) ? t('organization.products.empty_list') : t("organization.products.empty_archive")}
+          {(!archived) ? t('organization.products.empty_list') : t("organization.products.empty_archive")}
         </p>
       </ContentCard>
     </OrganizationProductsBase>
@@ -127,32 +124,7 @@ function OrganizationProducts({t, history}) {
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
                         <ButtonEdit editUrl={`/organization/product/edit/${node.id}`} />
                     }
-                    {/* <button className="icon btn btn-link btn-sm" 
-                        title={t('general.archive')} 
-                        onClick={() => {
-                          console.log("clicked archived")
-                          archiveClasstype({ variables: {
-                            input: {
-                              id: node.id,
-                              archived: !node.archived
-                            }
-                    }, refetchQueries: [
-                        {query: GET_CLASSTYPES_QUERY, variables: get_list_query_variables()}
-                    ]}).then(({ data }) => {
-                      console.log('got data', data);
-                      toast.success(
-                        (node.archived) ? t('general.unarchived'): t('general.archived'), {
-                          position: toast.POSITION.BOTTOM_RIGHT
-                        })
-                    }).catch((error) => {
-                      toast.error((t('general.toast_server_error')) +  error, {
-                          position: toast.POSITION.BOTTOM_RIGHT
-                        })
-                      console.log('there was an error sending the query', error);
-                    })
-                    }}>
-                      <Icon name="inbox" />
-                    </button> */}
+                    <OrganizationProductArchive node={node} />
                   </Table.Col>
                 </Table.Row>
               ))}
