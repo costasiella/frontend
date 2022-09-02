@@ -46,17 +46,76 @@ export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
         name
       }
     }
+    financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          archived
+          name
+          percentage
+          rateType
+        }
+      }
+    }
+    financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          archived
+          name
+          code
+        }
+      }
+    }
+    financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          archived
+          name
+          code
+        }
+      }
+    }
   }
 `
 
 export const ADD_ORGANIZATION_PRODUCT = gql`
-mutation CreateOrganizationProduct($input:CreateOrganizationProductInput!) {
-  createOrganizationProduct(input: $input) {
-    organizationProduct {
-      id
+  mutation CreateOrganizationProduct($input:CreateOrganizationProductInput!) {
+    createOrganizationProduct(input: $input) {
+      organizationProduct {
+        id
+      }
     }
   }
-}
+`
+
+export const UPDATE_ORGANIZATION_PRODUCT = gql`
+  mutation UpdateOrganizationProduct($input:UpdateOrganizationProductInput!) {
+    updateOrganizationProduct(input: $input) {
+      organizationProduct {
+        id
+      }
+    }
+  }
 `
 
 
