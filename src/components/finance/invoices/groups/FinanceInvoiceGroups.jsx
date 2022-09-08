@@ -102,6 +102,7 @@ function FinanceInvoiceGroups({t, history}) {
               <Table.ColHeader>{t('general.prefix')}</Table.ColHeader>
               <Table.ColHeader>{t('general.public')}</Table.ColHeader>
               <Table.ColHeader>{t('finance.code')}</Table.ColHeader>
+              <Table.ColHeader />
             </Table.Row>
           </Table.Header>
           <Table.Body>
