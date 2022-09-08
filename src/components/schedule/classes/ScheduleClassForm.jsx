@@ -180,19 +180,6 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
             </Form.Group> 
           </Grid.Col>
         </Grid.Row>
-        <Form.Group label={t('general.note')}>
-          <Editor
-              tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
-              textareaName="note"
-              initialValue={values.note}
-              init={tinymceBasicConf}
-              onBlur={(e) => {
-                setFieldValue("note", e.target.getContent())
-                setFieldTouched("note", true, true)
-              }}
-            />
-          <ErrorMessage name="note" component="span" className="invalid-feedback" />
-        </Form.Group>
         <Form.Group label={t('general.info_mail')}>
           <Editor
               tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
