@@ -46,7 +46,7 @@ export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
         name
       }
     }
-    financeTaxRates(first: 100, before: $before, after: $after, archived: false) {
+    financeTaxRates(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -63,7 +63,7 @@ export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
+    financeGlaccounts(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -79,7 +79,7 @@ export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
+    financeCostcenters(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
