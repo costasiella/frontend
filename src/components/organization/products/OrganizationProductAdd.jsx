@@ -76,7 +76,11 @@ function OrganizationProductAdd({ t, history, match }) {
             let inputVars = {
               name: values.name,
               description: values.description,
-              imageFileName: fileName
+              price: values.price,
+              financeTaxRate: values.financeTaxRate,
+              financeCostcenter: values.financeCostcenter,
+              financeGlaccount: values.financeGlaccount,
+              imageFileName: fileName,
             }
 
             let reader = new FileReader()
