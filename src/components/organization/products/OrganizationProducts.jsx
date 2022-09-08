@@ -122,7 +122,7 @@ function OrganizationProducts({t, history}) {
                   <Table.Col className="text-right" key={v4()}>
                     {(node.archived) ? 
                       <span className='text-muted'>{t('general.unarchive_to_edit')}</span> :
-                        <ButtonEdit editUrl={`/organization/product/edit/${node.id}`} />
+                        <ButtonEdit editUrl={`/organization/products/edit/${node.id}`} />
                     }
                     <OrganizationProductArchive node={node} />
                   </Table.Col>
