@@ -88,6 +88,7 @@ function OrganizationProductEdit({ t, history, match }) {
           initialValues={{ 
             name: organizationProduct.name,
             description: organizationProduct.description,
+            price: organizationProduct.price,
             financeTaxRate: initialTaxRate,
             financeGlaccount: initialGlaccount,
             financeCostcenter: initialCostcenter,
@@ -116,7 +117,7 @@ function OrganizationProductEdit({ t, history, match }) {
               ]})
               .then(({ data }) => {
                   console.log('got data', data);
-                  toast.success((t('schedule.events.media.toast_edit_success')), {
+                  toast.success((t('organization.products.toast_edit_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                     setSubmitting(false)
@@ -138,7 +139,7 @@ function OrganizationProductEdit({ t, history, match }) {
               inputVars.image = b64_enc_file
               inputVars.imageFileName = fileName
   
-              updateMedia()
+              updateProduct()
             }
             
             let file = inputFileName.current.files[0]
@@ -150,69 +151,7 @@ function OrganizationProductEdit({ t, history, match }) {
               })
               setSubmitting(false)
             } else {
-              updateMedia()
-            }
-
-
-
-
-
-
-            // sdfsdfs
-
-            // let inputVars = {
-            //   id: id,
-            //   name: values.name,
-            //   description: values.description,
-            //   price: values.price,
-            //   financeTaxRate: values.financeTaxRate,
-            //   financeCostcenter: values.financeCostcenter,
-            //   financeGlaccount: values.financeGlaccount,
-            //   imageFileName: fileName
-            // }
-
-            let reader = new FileReader()
-            reader.onload = function(reader_event) {
-              console.log(reader_event.target.result)
-              let b64_enc_file = reader_event.target.result
-              console.log(b64_enc_file)
-              // Add uploaded document b64 encoded blob to input vars
-              inputVars.image = b64_enc_file
-
-              updateOrganizationProduct({ variables: {
-                input: inputVars
-              }, refetchQueries: [
-                  {query: GET_ORGANIZATION_PRODUCTS_QUERY, variables: { archived: false }}
-              ]})
-              .then(({ data }) => {
-                  console.log('got data', data);
-                  history.push(returnUrl)
-                  toast.success((t('organization.products.toast_add_success')), {
-                      position: toast.POSITION.BOTTOM_RIGHT
-                    })
-                    setSubmitting(false)
-                }).catch((error) => {
-                  toast.error((t('general.toast_server_error')) +  error, {
-                      position: toast.POSITION.BOTTOM_RIGHT
-                    })
-                  console.log('there was an error sending the query', error)
-                  setSubmitting(false)
-                })
-            }
-            
-            let file = inputFileName.current.files[0]
-            if (file && file.size < 5242880) {
-              reader.readAsDataURL(file)
-            } else if (file && file.size > 5242880) { 
-              toast.error(t("error_messages.selected_file_exceeds_max_filesize"), {
-                position: toast.POSITION.BOTTOM_RIGHT
-              })
-              setSubmitting(false)
-            } else {
-              toast.error(t("general.please_select_a_file"), {
-                position: toast.POSITION.BOTTOM_RIGHT
-              })
-              setSubmitting(false)
+              updateProduct()
             }
           }}
         >

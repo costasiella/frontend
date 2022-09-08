@@ -3,7 +3,6 @@ import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { toast } from 'react-toastify'
 import {
   Avatar,
   Dimmer,
