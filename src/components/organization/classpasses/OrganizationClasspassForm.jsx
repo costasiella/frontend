@@ -37,31 +37,35 @@ class OrganizationClasspassForm extends Component {
     return (
         <FoForm>
             <Card.Body> 
-            <Form.Group>
-                <Form.Label className="custom-switch">
-                    <Field 
-                    className="custom-switch-input"
-                    type="checkbox" 
-                    name="displayPublic" 
-                    checked={values.displayPublic} />
-                    <span className="custom-switch-indicator" ></span>
-                    <span className="custom-switch-description">{t('organization.classpass.public')}</span>
-                </Form.Label>
-                <ErrorMessage name="displayPublic" component="div" />   
-            </Form.Group>      
-            <Form.Group>
-                <Form.Label className="custom-switch">
-                    <Field 
-                    className="custom-switch-input"
-                    type="checkbox" 
-                    name="displayShop" 
-                    checked={values.displayShop} />
-                    <span className="custom-switch-indicator" ></span>
-                    <span className="custom-switch-description">{t('organization.classpass.shop')}</span>
-                </Form.Label>
-                <ErrorMessage name="displayShop" component="div" />   
-            </Form.Group> 
             <Grid.Row>
+              <Grid.Col>
+                <Form.Group>
+                  <Form.Label className="custom-switch">
+                      <Field 
+                      className="custom-switch-input"
+                      type="checkbox" 
+                      name="displayPublic" 
+                      checked={values.displayPublic} />
+                      <span className="custom-switch-indicator" ></span>
+                      <span className="custom-switch-description">{t('organization.classpass.public')}</span>
+                  </Form.Label>
+                  <ErrorMessage name="displayPublic" component="div" />   
+                </Form.Group>      
+              </Grid.Col>
+              <Grid.Col>
+                <Form.Group>
+                    <Form.Label className="custom-switch">
+                        <Field 
+                        className="custom-switch-input"
+                        type="checkbox" 
+                        name="displayShop" 
+                        checked={values.displayShop} />
+                        <span className="custom-switch-indicator" ></span>
+                        <span className="custom-switch-description">{t('organization.classpass.shop')}</span>
+                    </Form.Label>
+                    <ErrorMessage name="displayShop" component="div" />   
+                </Form.Group> 
+              </Grid.Col>
               <Grid.Col>
                 <Form.Group>
                   <Form.Label className="custom-switch">
