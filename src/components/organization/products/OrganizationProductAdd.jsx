@@ -10,9 +10,8 @@ import {
 } from "tabler-react"
 
 import { GET_ORGANIZATION_PRODUCTS_QUERY, ADD_ORGANIZATION_PRODUCT, GET_INPUT_VALUES_QUERY } from "./queries"
-// import { SCHEDULE_EVENT_MEDIA_SCHEMA } from './yupSchema'
+import { PRODUCT_SCHEMA } from './yupSchema'
 
-// import ScheduleEventMediaBack from "./ScheduleEventMediaBack"
 import OrganizationProductsBase from "./OrganizationProductsBase"
 import OrganizationProductForm from './OrganizationProductForm'
 
@@ -20,7 +19,6 @@ import OrganizationProductForm from './OrganizationProductForm'
 
 function OrganizationProductAdd({ t, history, match }) {
   const returnUrl = `/organization/products/`
-  // const activeLink = 'media'
   const cardTitle = t("organization.products.add")
 
   const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY)
@@ -67,7 +65,7 @@ function OrganizationProductAdd({ t, history, match }) {
             name: "",
             description: "",
           }}
-          // validationSchema={SCHEDULE_EVENT_MEDIA_SCHEMA}
+          validationSchema={ PRODUCT_SCHEMA }
           onSubmit={(values, { setSubmitting }) => {
             console.log("Submit values")
             console.log(values)
