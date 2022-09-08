@@ -68,6 +68,7 @@ function FinanceInvoiceGroups({t, history}) {
       <ContentCard cardTitle={t('finance.invoice_groups.title')}
                    headerContent={headerOptions}
                    pageInfo={invoiceGroups.pageInfo}
+                   hasCardBody={false}
                    onLoadMore={() => {
                    fetchMore({
                      variables: {
@@ -92,7 +93,7 @@ function FinanceInvoiceGroups({t, history}) {
                     })
                   }} 
         >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

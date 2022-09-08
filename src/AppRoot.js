@@ -387,15 +387,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         })
         console.log('there was an error refreshing the token', error) 
         SetCurrentUrlAsNext()
-        console.log("REDIRECT BACK TO LOGIN")
-        window.location.href = "/#/user/login"
-        window.location.reload()
+        return LoginRequired
+        // console.log("REDIRECT BACK TO LOGIN")
+        // window.location.href = "/#/user/login"
+        // window.location.reload()
       })
     }
   } else {
     return ContinueAsYouAre
   }
-  return null
+  // return null
 }
 
 
