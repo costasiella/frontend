@@ -106,6 +106,7 @@ function OrganizationProducts({t, history}) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('')}</Table.ColHeader>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.price')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -116,7 +117,11 @@ function OrganizationProducts({t, history}) {
                     <Avatar size="lg" imageURL={node.urlImageThumbnailSmall} />
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.name}
+                    {node.name} <br />
+                    <small className="text-muted">{node.description.trunc(46)}</small>
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {node.priceDisplay}
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     {(node.archived) ? 
