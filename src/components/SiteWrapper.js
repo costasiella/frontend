@@ -268,7 +268,7 @@ function SiteWrapper({t, match, history, children}) {
               <small>
                 Copyleft © {now.getFullYear()}.
                 <a
-                  href="https://www.costasiella.com"
+                  href="https://costasiella.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
