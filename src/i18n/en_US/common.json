@@ -1892,6 +1892,10 @@
             "features": {
                 "title": "Shop features",
                 "explanation": "Choose which shop features to use"
+            },
+            "account_profiles": {
+                "title": "Account profiles",
+                "explanation": "Define required profile fields"
             }
         }
     },
