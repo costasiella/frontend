@@ -14,13 +14,13 @@ import {
 const SettingsShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
-          <Form.Group label={t('settings.shop.account_profile.required_fields')}>
+          <Form.Group label={t('settings.shop.account_profiles.required_fields')}>
             <Field component="select" 
               name="shop_account_profile_required_fields" 
               className={(errors.shop_account_profile_required_fields) ? "form-control is-invalid" : "form-control"} 
               autoComplete="off">
-                <option value="NAME_AND_EMAIL">{t("settings.shop.account_profile.options.name_and_email")}</option>
-                <option value="CONTACT">{t("settings.shop.account_profile.options.contact")}</option>
+                <option value="MINIMAL">{t("settings.shop.account_profiles.options.minimal")}</option>
+                <option value="CONTACT">{t("settings.shop.account_profiles.options.contact")}</option>
             </Field>
             <ErrorMessage name="shop_account_profile_required_fields" component="span" className="invalid-feedback" />
           </Form.Group>
