@@ -282,6 +282,7 @@ import SettingsMailMailChimpListAdd from './components/settings/mail/mailchimp_l
 import SettingsMailMailChimpListEdit from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpListEdit'
 import SettingsMailTemplates from './components/settings/mail/templates/SettingsMailTemplates'
 import SettingsMailTemplateEdit from './components/settings/mail/templates/SettingsMailTemplateEdit'
+import SettingsShopAccountProfile from './components/settings/shop/account_profiles/SettingsShopAccountProfile'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
 import SettingsWorkflowClassBooking from './components/settings/workflow/class_booking/SettingsWorkflowClassBooking'
 import SettingsWorkflowShop from './components/settings/workflow/shop/SettingsWorkflowShop'
@@ -769,6 +770,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/mail/mailchimp_lists/edit/:id" component={SettingsMailMailChimpListEdit} />
             <PrivateRoute exact path="/settings/mail/templates" component={SettingsMailTemplates} />
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
+            <PrivateRoute exact path="/settings/shop/account_profiles" component={SettingsShopAccountProfile} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />
             <PrivateRoute exact path="/settings/workflow/class_booking" component={SettingsWorkflowClassBooking} />
             <PrivateRoute exact path="/settings/workflow/shop" component={SettingsWorkflowShop} />
