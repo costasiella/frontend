@@ -165,7 +165,12 @@
             },
             "account_profiles": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "explanation": "__STRING_NOT_TRANSLATED__"
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "required_fields": "__STRING_NOT_TRANSLATED__",
+                "options": {
+                    "contact": "__STRING_NOT_TRANSLATED__",
+                    "minimal": "__STRING_NOT_TRANSLATED__"
+                }
             }
         },
         "integration": {

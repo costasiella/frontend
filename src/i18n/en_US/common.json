@@ -1895,7 +1895,12 @@
             },
             "account_profiles": {
                 "title": "Account profiles",
-                "explanation": "Define required profile fields"
+                "explanation": "Define required profile fields",
+                "required_fields": "Required fields",
+                "options": {
+                    "contact": "Contact information (name, email, phone and address)",
+                    "minimal": "Minimal (name and email)"
+                }
             }
         }
     },
