@@ -33,6 +33,8 @@ function ShopAccountProfile({t, match, history}) {
     </ShopAccountProfileBase>
   )
 
+// TODO: Fetch required level or profile completeness and set correct YupSchema for it.
+
   const user = data.user
 
   let dateOfBirth = null
