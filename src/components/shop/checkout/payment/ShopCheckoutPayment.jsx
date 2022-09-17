@@ -87,7 +87,6 @@ function ShopCheckoutPayment({ t, match, history, location }) {
   // Check profile complete enough
   if (!account.hasCompleteEnoughProfile) {
     // If not, show message that a more complete profile is required
-    //TODO: Save current URL in local storage for usage in profile
     msgNextStep = t("shop.checkout.payment.profile_not_complete_enough")
     buttonNext = <Link to="/shop/account/profile">
       <Button
