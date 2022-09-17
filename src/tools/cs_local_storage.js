@@ -45,6 +45,7 @@ const cs_local_storage_keys = {
     SCHEDULE_SHIFTS_FILTER_LOCATION: 'costasiella:scheduleShiftsFilterLocation',
     SELFCHECKIN_CHECKIN_SEARCH: 'costasiella:SelfcheckinCheckinSearch',
     SHOP_ACCOUNT_BANK_ACCOUNT_NEXT: 'costasiella:ShopAccountBankAccountNext',
+    SHOP_ACCOUNT_PROFILE_NEXT: 'costasiella:ShopAccountProfileNext',
     SHOP_CLASSES_DATE_FROM: 'costasiella:shopClassesDateFrom',
     SHOP_CLASSES_DATE_UNTIL: 'costasiella:shopClassesDateUntil',
     SHOP_CLASSES_ORDER_BY: 'costasiella:shopClassesOrderBy',
