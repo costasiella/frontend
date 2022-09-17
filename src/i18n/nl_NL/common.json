@@ -975,7 +975,9 @@
                 "to_profile": "__STRING_NOT_TRANSLATED__",
                 "order_received": "__STRING_NOT_TRANSLATED__",
                 "order_received_subheader": "__STRING_NOT_TRANSLATED__",
-                "order_received_to_payment_explanation": "__STRING_NOT_TRANSLATED__"
+                "order_received_to_payment_explanation": "__STRING_NOT_TRANSLATED__",
+                "profile_not_complete_enough": "__STRING_NOT_TRANSLATED__",
+                "update_profile": "__STRING_NOT_TRANSLATED__"
             },
             "class_info": {
                 "error_loading": "__STRING_NOT_TRANSLATED__",

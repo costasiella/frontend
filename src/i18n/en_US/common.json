@@ -2110,7 +2110,9 @@
                 "to_payment": "Pay now",
                 "redirecting": "Preparing payment...",
                 "order_received_to_profile_text": "We'll contact you with payment instructions.",
-                "to_profile": "Back to the online shop"
+                "to_profile": "Back to the online shop",
+                "profile_not_complete_enough": "To process your order, we require some additional profile information.",
+                "update_profile": "Update profile"
             },
             "title": "Check out",
             "complete": {
