@@ -1,13 +1,9 @@
-// @flow
-
 import React, { useContext, useRef, useState } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery, useMutation } from '@apollo/client'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
-
-import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
   Button,
@@ -16,6 +12,9 @@ import {
   Grid,
   Icon,
 } from "tabler-react";
+
+import CSLS from '../../../../tools/cs_local_storage'
+import AppSettingsContext from '../../../context/AppSettingsContext'
 import ShopCheckoutPaymentBase from "./ShopCheckoutPaymentBase"
 import ShopCheckoutOrderSummary from "../order_summary/ShopCheckoutOrderSummary"
 
@@ -23,7 +22,7 @@ import { GET_ORDER_QUERY } from "../queries"
 import { CREATE_PAYMENT_LINK } from "./queries"
 
 
-function ShopCheckoutPayment({ t, match, history }) {
+function ShopCheckoutPayment({ t, match, history, location }) {
   const appSettings = useContext(AppSettingsContext)
   const onlinePaymentsAvailable = appSettings.onlinePaymentsAvailable
   const btnPayNow = useRef(null);
@@ -36,6 +35,8 @@ function ShopCheckoutPayment({ t, match, history }) {
   })
 
   const [createPaymentLink] = useMutation(CREATE_PAYMENT_LINK)
+
+  localStorage.setItem(CSLS.SHOP_ACCOUNT_PROFILE_NEXT, location.pathname)
 
   if (loading) return (
     <ShopCheckoutPaymentBase title={title} >
@@ -50,9 +51,10 @@ function ShopCheckoutPayment({ t, match, history }) {
 
   console.log(data)
   const order = data.financeOrder
+  const account = data.financeOrder.account
   console.log(order)
   const orderItems = order.items.edges
-  console.log(orderItems)
+  console.log(orderItems) 
 
   function onClickPay() {
     btnPayNow.current.setAttribute("disabled", "disabled")
@@ -82,7 +84,20 @@ function ShopCheckoutPayment({ t, match, history }) {
   }
 
   // Continue processing and see if online payments are available
-  if (onlinePaymentsAvailable) {
+  // Check profile complete enough
+  if (!account.hasCompleteEnoughProfile) {
+    // If not, show message that a more complete profile is required
+    //TODO: Save current URL in local storage for usage in profile
+    msgNextStep = t("shop.checkout.payment.profile_not_complete_enough")
+    buttonNext = <Link to="/shop/account/profile">
+      <Button
+        block
+        color="primary"
+      >
+        {t("shop.checkout.payment.update_profile")} <Icon name="chevron-right" />
+      </Button>
+    </Link>
+  } else if (onlinePaymentsAvailable) {
     msgNextStep = t("shop.checkout.payment.order_received_to_payment_text")
     buttonNext = <button
       className="btn btn-block btn-success"
