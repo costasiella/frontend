@@ -20,6 +20,7 @@ const GET_USER_PROFILE = gql`
       emergency
       instructor
       employee
+      profilePolicy
     }
   }
 `
