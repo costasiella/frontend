@@ -31,35 +31,8 @@ class OrganizationHome extends Component {
           <Container>
             <Page.Header title={t("organization.title")} />
             <Grid.Row>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("organization.organization.title")}</h5>
-                    {t("organization.organization.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=" />
-                  </Card.Body>
-                </Card>
-              </Grid.Col>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("organization.locations.title")}</h5>
-                    {t("organization.locations.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/organization/locations" />
-                  </Card.Body>
-                </Card>
-              </Grid.Col>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("organization.classtypes.title")}</h5>
-                    {t("organization.classtypes.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/organization/classtypes" />
-                  </Card.Body>
-                </Card>
+              <Grid.Col md={12}>
+                <h4>{t("organization.home.products.title")}</h4>
               </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
@@ -81,11 +54,50 @@ class OrganizationHome extends Component {
                   </Card.Body>
                 </Card>
               </Grid.Col>
+              <HasPermissionWrapper permission="view"
+                                    resource="organizationproduct">
+
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("organization.products.title")}</h5>
+                      {t("organization.products.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/organization/products" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
               {/* <Grid.Col md={3} lg={3}>
                 <Link to='/organization/appointment_categories'>
                   <StampCard header={<small>{t('organization.appointments.title')}</small>} footer={t('')} color="blue" icon="calendar" />
                 </Link>
               </Grid.Col> */}
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("organization.home.scheduling.title")}</h4>
+              </Grid.Col>
+              <Grid.Col md={3} lg={3}>
+                <Card>
+                  <Card.Body>
+                    <h5>{t("organization.locations.title")}</h5>
+                    {t("organization.locations.explanation")}
+                    <br /><br />
+                    <HomeItemButton linkTitle={linkTitle} link="/organization/locations" />
+                  </Card.Body>
+                </Card>
+              </Grid.Col>
+              <Grid.Col md={3} lg={3}>
+                <Card>
+                  <Card.Body>
+                    <h5>{t("organization.classtypes.title")}</h5>
+                    {t("organization.classtypes.explanation")}
+                    <br /><br />
+                    <HomeItemButton linkTitle={linkTitle} link="/organization/classtypes" />
+                  </Card.Body>
+                </Card>
+              </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
@@ -116,6 +128,25 @@ class OrganizationHome extends Component {
                   </Card.Body>
                 </Card>
               </Grid.Col>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("organization.home.accounts.title")}</h4>
+              </Grid.Col>
+              <HasPermissionWrapper permission="view"
+                                    resource="organizationannouncement">
+
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("organization.announcements.title")}</h5>
+                      {t("organization.announcements.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/organization/announcements" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
@@ -136,13 +167,18 @@ class OrganizationHome extends Component {
                   </Card.Body>
                 </Card>
               </Grid.Col>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("organization.home.about.title")}</h4>
+              </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
-                    <h5>{t("organization.organization.branding.title")}</h5>
-                    {t("organization.organization.branding.explanation")}
+                    <h5>{t("organization.organization.title")}</h5>
+                    {t("organization.organization.explanation")}
                     <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=/branding" />
+                    <HomeItemButton linkTitle={linkTitle} link="/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=" />
                   </Card.Body>
                 </Card>
               </Grid.Col>
@@ -156,20 +192,16 @@ class OrganizationHome extends Component {
                   </Card.Body>
                 </Card>
               </Grid.Col>
-              <HasPermissionWrapper permission="view"
-                                    resource="organizationannouncement">
-
-                <Grid.Col md={3} lg={3}>
-                  <Card>
-                    <Card.Body>
-                      <h5>{t("organization.announcements.title")}</h5>
-                      {t("organization.announcements.explanation")}
-                      <br /><br />
-                      <HomeItemButton linkTitle={linkTitle} link="/organization/announcements" />
-                    </Card.Body>
-                  </Card>
-                </Grid.Col>
-              </HasPermissionWrapper>
+              <Grid.Col md={3} lg={3}>
+                <Card>
+                  <Card.Body>
+                    <h5>{t("organization.organization.branding.title")}</h5>
+                    {t("organization.organization.branding.explanation")}
+                    <br /><br />
+                    <HomeItemButton linkTitle={linkTitle} link="/organization/edit/T3JnYW5pemF0aW9uTm9kZToxMDA=/branding" />
+                  </Card.Body>
+                </Card>
+              </Grid.Col>
             </Grid.Row>
           </Container>
         </div>

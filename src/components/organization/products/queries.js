@@ -1,71 +1,42 @@
 import { gql } from "@apollo/client"
 
-export const GET_CLASSPASSES_QUERY = gql`
-  query OrganizationClasspasses($after: String, $before: String, $archived: Boolean) {
-    organizationClasspasses(first: 15, before: $before, after: $after, archived: $archived) {
+
+export const GET_ORGANIZATION_PRODUCTS_QUERY = gql`
+  query OrganizationProducts($before:String, $after:String, $archived: Boolean) {
+    organizationProducts(first: 100, before:$before, after:$after, archived: $archived) {
       pageInfo {
-        startCursor
-        endCursor
         hasNextPage
         hasPreviousPage
+        startCursor
+        endCursor
       }
       edges {
         node {
           id
           archived
-          displayPublic
-          displayShop
-          trialPass
           name
           description
-          price
           priceDisplay
-          financeTaxRate {
-            id
-            name
-          }
-          validity
-          validityUnit
-          validityUnitDisplay
-          classes
-          unlimited
-          quickStatsAmount
-          financeGlaccount {
-            id 
-            name
-          }
-          financeCostcenter {
-            id
-            name
-          }
+          urlImage
+          urlImageThumbnailSmall
         }
       }
     }
   }
 `
 
-export const GET_CLASSPASS_QUERY = gql`
-  query OrganizationClasspass($id: ID!, $after: String, $before: String) {
-    organizationClasspass(id:$id) {
+
+export const GET_ORGANIZATION_PRODUCT_QUERY = gql`
+  query OrganizationProduct($id:ID!) {
+    organizationProduct(id: $id) {
       id
-      archived
-      displayPublic
-      displayShop
-      trialPass
       name
       description
       price
-      priceDisplay
       financeTaxRate {
         id
         name
       }
-      validity
-      validityUnit
-      validityUnitDisplay
-      classes
-      unlimited
-      quickStatsAmount
       financeGlaccount {
         id 
         name
@@ -75,7 +46,7 @@ export const GET_CLASSPASS_QUERY = gql`
         name
       }
     }
-    financeTaxRates(first: 15, before: $before, after: $after, archived: false) {
+    financeTaxRates(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -92,7 +63,7 @@ export const GET_CLASSPASS_QUERY = gql`
         }
       }
     }
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
+    financeGlaccounts(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -108,7 +79,7 @@ export const GET_CLASSPASS_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
+    financeCostcenters(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -126,6 +97,39 @@ export const GET_CLASSPASS_QUERY = gql`
     }
   }
 `
+
+export const ADD_ORGANIZATION_PRODUCT = gql`
+  mutation CreateOrganizationProduct($input:CreateOrganizationProductInput!) {
+    createOrganizationProduct(input: $input) {
+      organizationProduct {
+        id
+      }
+    }
+  }
+`
+
+export const UPDATE_ORGANIZATION_PRODUCT = gql`
+  mutation UpdateOrganizationProduct($input:UpdateOrganizationProductInput!) {
+    updateOrganizationProduct(input: $input) {
+      organizationProduct {
+        id
+      }
+    }
+  }
+`
+
+
+export const ARCHIVE_ORGANIZATION_PRODUCT   = gql`
+  mutation ArchiveOrganizationProduct($input: ArchiveOrganizationProductInput!) {
+    archiveOrganizationProduct(input: $input) {
+      organizationProduct {
+        id
+        archived
+      }
+    }
+  }
+`
+
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query InputValues($after: String, $before: String) {
@@ -179,35 +183,4 @@ export const GET_INPUT_VALUES_QUERY = gql`
       }
     }
   }
-`
-
-export const CREATE_CLASSPASS = gql`
-mutation CreateClasspass($input: CreateOrganizationClasspassInput!) {
-  createOrganizationClasspass(input: $input) {
-    organizationClasspass {
-      id
-    }
-  }
-}
-`
-
-export const UPDATE_CLASSPASS = gql`
-  mutation UpdateOrganizationClasspass($input: UpdateOrganizationClasspassInput!) {
-    updateOrganizationClasspass(input: $input) {
-      organizationClasspass {
-        id
-      }
-    }
-  }
-`
-
-export const ARCHIVE_CLASSPASS = gql`
-mutation ArchiveOrganizationClasspass($input: ArchiveOrganizationClasspassInput!) {
-  archiveOrganizationClasspass(input: $input) {
-    organizationClasspass {
-      id
-      archived
-    }
-  }
-}
 `

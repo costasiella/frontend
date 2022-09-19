@@ -11,18 +11,18 @@ import {
 } from "tabler-react"
 
 
-const SettingsWorkflowShopForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
+const SettingsShopAccountProfileForm = ({ t, history, isSubmitting, errors, values, returnUrl }) => (
   <FoForm>
       <Card.Body>
-          <Form.Group label={t('settings.workflow.shop.subscription_payment_method')}>
+          <Form.Group label={t('settings.shop.account_profiles.required_fields')}>
             <Field component="select" 
-              name="workflow_shop_subscription_payment_method" 
-              className={(errors.workflow_shop_subscription_payment_method) ? "form-control is-invalid" : "form-control"} 
+              name="shop_account_profile_required_fields" 
+              className={(errors.shop_account_profile_required_fields) ? "form-control is-invalid" : "form-control"} 
               autoComplete="off">
-                <option value="MOLLIE">{t("finance.payment_methods.mollie")}</option>
-                <option value="DIRECTDEBIT">{t("finance.payment_methods.direct_debit")}</option>
+                <option value="MINIMAL">{t("settings.shop.account_profiles.options.minimal")}</option>
+                <option value="CONTACT">{t("settings.shop.account_profiles.options.contact")}</option>
             </Field>
-            <ErrorMessage name="workflow_shop_subscription_payment_method" component="span" className="invalid-feedback" />
+            <ErrorMessage name="shop_account_profile_required_fields" component="span" className="invalid-feedback" />
           </Form.Group>
       </Card.Body>
       <Card.Footer>
@@ -44,4 +44,4 @@ const SettingsWorkflowShopForm = ({ t, history, isSubmitting, errors, values, re
   </FoForm>
 )
 
-export default withTranslation()(withRouter(SettingsWorkflowShopForm))
+export default withTranslation()(withRouter(SettingsShopAccountProfileForm))

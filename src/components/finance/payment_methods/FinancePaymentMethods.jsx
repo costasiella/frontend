@@ -80,6 +80,7 @@ function FinancePaymentMethods({ t, history }) {
       <ContentCard cardTitle={cardTitle}
                     headerContent={headerOptions}
                     pageInfo={paymentMethods.pageInfo}
+                    hasCardBody={false}
                     onLoadMore={() => {
                     fetchMore({
                       variables: {
@@ -103,7 +104,7 @@ function FinancePaymentMethods({ t, history }) {
                       }
                     })
                   }} >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

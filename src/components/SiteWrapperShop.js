@@ -257,7 +257,7 @@ function SiteWrapperShop({t, match, history, children}) {
               <small>
                 Peacefully powered by
                 <a
-                  href="https://www.costasiella.com"
+                  href="https://costasiella.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

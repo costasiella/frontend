@@ -109,7 +109,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
 
 export const GET_INPUT_VALUES_QUERY = gql`
   query SubscriptionInputValues($after: String, $before: String) {
-    financeGlaccounts(first: 15, before: $before, after: $after, archived: false) {
+    financeGlaccounts(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -125,7 +125,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    financeCostcenters(first: 15, before: $before, after: $after, archived: false) {
+    financeCostcenters(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
         endCursor

@@ -15,7 +15,7 @@ import { UPDATE_PROFILE } from "./queries"
 import ShopAccountProfileBase from "./ShopAccountProfileBase"
 import ShopAccountProfileForm from "./ShopAccountProfileForm"
 import { dateToLocalISO } from '../../../../tools/date_tools'
-import { ACCOUNT_SCHEMA } from "./yupSchema"
+import { ACCOUNT_SCHEMA_MINIMAL, ACCOUNT_SCHEMA_CONTACT } from "./yupSchema"
 
 
 function ShopAccountProfile({t, match, history}) {
@@ -33,7 +33,14 @@ function ShopAccountProfile({t, match, history}) {
     </ShopAccountProfileBase>
   )
 
+// TODO: Fetch required level or profile completeness and set correct YupSchema for it.
+
   const user = data.user
+
+  let validationSchema = ACCOUNT_SCHEMA_MINIMAL
+  if (user.profilePolicy === "CONTACT") {
+    validationSchema = ACCOUNT_SCHEMA_CONTACT
+  }
 
   let dateOfBirth = null
   if (user.dateOfBirth) {
@@ -59,7 +66,7 @@ function ShopAccountProfile({t, match, history}) {
               city: user.city,
               country: user.country
             }}
-            validationSchema={ACCOUNT_SCHEMA}
+            validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
                 console.log('submit values:')
                 console.log(values)

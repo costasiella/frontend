@@ -269,6 +269,20 @@
             "empty_list": "No data found within the selected dates",
             "set_dates": "Set dates",
             "taxable_amount": "Taxable amount"
+        },
+        "home": {
+            "batches": {
+                "title": "Batches"
+            },
+            "taxes": {
+                "title": "Taxes"
+            },
+            "general": {
+                "title": "General"
+            },
+            "structure": {
+                "title": "Structure"
+            }
         }
     },
     "general": {
@@ -778,7 +792,7 @@
                 "title": "Branding",
                 "explanation": "Set logos used for your organization"
             },
-            "explanation": "Organization address & contact information"
+            "explanation": "Set address & contact information"
         },
         "documents": {
             "title": "Documents",
@@ -815,7 +829,7 @@
             "title_edit": "Edit announcement",
             "delete_confirm_msg": "Are you sure you with to delete this announcement?",
             "deleted": "Deleted announcement",
-            "explanation": "Manage shop & backend announcements"
+            "explanation": "Shop & backend announcements"
         },
         "languages": {
             "title": "Languages",
@@ -866,7 +880,32 @@
             "upcoming_classes": {
                 "title": "Upcoming classes"
             },
-            "title": "Home"
+            "title": "Home",
+            "products": {
+                "title": "Products"
+            },
+            "scheduling": {
+                "title": "Scheduling"
+            },
+            "accounts": {
+                "title": "Relations"
+            },
+            "about": {
+                "title": "About"
+            }
+        },
+        "products": {
+            "title": "Products (beta)",
+            "explanation": "Quickly create an invoice for items within the product catalog",
+            "add": "Add product",
+            "toast_add_success": "Added product",
+            "archive_confirm_msg": "Archive this product?",
+            "unarchive_confirm_msg": "Unarchive this product?",
+            "error_loading": "Error loading products...:(",
+            "empty_list": "No products have been defined yet",
+            "empty_archive": "No products have been archived yet",
+            "edit": "Edit product",
+            "toast_edit_success": "Saved"
         }
     },
     "validity": {
@@ -1853,6 +1892,15 @@
             "features": {
                 "title": "Shop features",
                 "explanation": "Choose which shop features to use"
+            },
+            "account_profiles": {
+                "title": "Account profiles",
+                "explanation": "Define required profile fields",
+                "required_fields": "Required fields",
+                "options": {
+                    "contact": "Contact information (name, email, phone and address)",
+                    "minimal": "Minimal (name and email)"
+                }
             }
         }
     },
@@ -2062,7 +2110,9 @@
                 "to_payment": "Pay now",
                 "redirecting": "Preparing payment...",
                 "order_received_to_profile_text": "We'll contact you with payment instructions.",
-                "to_profile": "Back to the online shop"
+                "to_profile": "Back to the online shop",
+                "profile_not_complete_enough": "To process your order, we require some additional profile information.",
+                "update_profile": "Update profile"
             },
             "title": "Check out",
             "complete": {

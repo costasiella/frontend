@@ -137,6 +137,9 @@ import OrganizationLocationRoomEdit from './components/organization/locations/ro
 import OrganizationLevels from './components/organization/levels/OrganizationLevels'
 import OrganizationLevelAdd from './components/organization/levels/OrganizationLevelAdd'
 import OrganizationLevelEdit from './components/organization/levels/OrganizationLevelEdit'
+import OrganizationProducts from './components/organization/products/OrganizationProducts'
+import OrganizationProductAdd from './components/organization/products/OrganizationProductAdd'
+import OrganizationProductEdit from './components/organization/products/OrganizationProductEdit'
 import OrganizationShifts from './components/organization/shifts/OrganizationShifts'
 import OrganizationShiftAdd from './components/organization/shifts/OrganizationShiftAdd'
 import OrganizationShiftEdit from './components/organization/shifts/OrganizationShiftEdit'
@@ -279,6 +282,7 @@ import SettingsMailMailChimpListAdd from './components/settings/mail/mailchimp_l
 import SettingsMailMailChimpListEdit from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpListEdit'
 import SettingsMailTemplates from './components/settings/mail/templates/SettingsMailTemplates'
 import SettingsMailTemplateEdit from './components/settings/mail/templates/SettingsMailTemplateEdit'
+import SettingsShopAccountProfile from './components/settings/shop/account_profiles/SettingsShopAccountProfile'
 import SettingsShopFeatures from './components/settings/shop/features/SettingsShopFeatures'
 import SettingsWorkflowClassBooking from './components/settings/workflow/class_booking/SettingsWorkflowClassBooking'
 import SettingsWorkflowShop from './components/settings/workflow/shop/SettingsWorkflowShop'
@@ -384,15 +388,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         })
         console.log('there was an error refreshing the token', error) 
         SetCurrentUrlAsNext()
-        console.log("REDIRECT BACK TO LOGIN")
-        window.location.href = "/#/user/login"
-        window.location.reload()
+        return LoginRequired
+        // console.log("REDIRECT BACK TO LOGIN")
+        // window.location.href = "/#/user/login"
+        // window.location.reload()
       })
     }
   } else {
     return ContinueAsYouAre
   }
-  return null
+  // return null
 }
 
 
@@ -548,6 +553,9 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/organization/locations/rooms/:location_id" component={OrganizationLocationRooms} />
             <PrivateRoute exact path="/organization/locations/rooms/add/:location_id" component={OrganizationLocationRoomAdd} />
             <PrivateRoute exact path="/organization/locations/rooms/edit/:location_id/:id" component={OrganizationLocationRoomEdit} />
+            <PrivateRoute exact path="/organization/products" component={OrganizationProducts} />
+            <PrivateRoute exact path="/organization/products/add" component={OrganizationProductAdd} />
+            <PrivateRoute exact path="/organization/products/edit/:id" component={OrganizationProductEdit} />
             <PrivateRoute exact path="/organization/shifts" component={OrganizationShifts} />
             <PrivateRoute exact path="/organization/shifts/add" component={OrganizationShiftAdd} />
             <PrivateRoute exact path="/organization/shifts/edit/:id" component={OrganizationShiftEdit} /> 
@@ -762,6 +770,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/mail/mailchimp_lists/edit/:id" component={SettingsMailMailChimpListEdit} />
             <PrivateRoute exact path="/settings/mail/templates" component={SettingsMailTemplates} />
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
+            <PrivateRoute exact path="/settings/shop/account_profiles" component={SettingsShopAccountProfile} />
             <PrivateRoute exact path="/settings/shop/features" component={SettingsShopFeatures} />
             <PrivateRoute exact path="/settings/workflow/class_booking" component={SettingsWorkflowClassBooking} />
             <PrivateRoute exact path="/settings/workflow/shop" component={SettingsWorkflowShop} />

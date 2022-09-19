@@ -151,6 +151,16 @@ function SettingsHome({ t, match, params }) {
                 </Card.Body>
               </Card>
             </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.shop.account_profiles.title")}</h5>
+                  {t("settings.shop.account_profiles.explanation")}
+                  <br /><br />
+                  <HomeItemButton link="/settings/shop/account_profiles/" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
           </Grid.Row>
           <Grid.Row>
             <Grid.Col md={12}>

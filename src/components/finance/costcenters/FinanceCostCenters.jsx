@@ -81,6 +81,7 @@ function FinanceCostCenters({t, history}) {
       <ContentCard cardTitle={cardTitle}
                     headerContent={headerOptions}
                     pageInfo={costcenters.pageInfo}
+                    hasCardBody={false}
                     onLoadMore={() => {
                     fetchMore({
                       variables: {
@@ -105,7 +106,7 @@ function FinanceCostCenters({t, history}) {
                     })
                   }} 
         >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>

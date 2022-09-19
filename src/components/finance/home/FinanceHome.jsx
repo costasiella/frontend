@@ -32,6 +32,9 @@ class FinanceHome extends Component {
           <Container>
             <Page.Header title={t("finance.title")} />
             <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.general.title")}</h4>
+              </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
@@ -51,6 +54,11 @@ class FinanceHome extends Component {
                     <HomeItemButton linkTitle={linkTitle} link="/finance/orders" />
                   </Card.Body>
                 </Card>
+              </Grid.Col>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.structure.title")}</h4>
               </Grid.Col>
               <Grid.Col md={3} lg={3}>
                 <Card>
@@ -75,6 +83,21 @@ class FinanceHome extends Component {
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
+                    <h5>{t("finance.payment_methods.title")}</h5>
+                    {t("finance.payment_methods.explanation")}
+                    <br /><br />
+                    <HomeItemButton linkTitle={linkTitle} link="/finance/paymentmethods" />
+                  </Card.Body>
+                </Card>
+              </Grid.Col>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.taxes.title")}</h4>
+              </Grid.Col>
+              <Grid.Col md={3} lg={3}>
+                <Card>
+                  <Card.Body>
                     <h5>{t("finance.taxrates.title")}</h5>
                     {t("finance.taxrates.explanation")}
                     <br /><br />
@@ -95,15 +118,10 @@ class FinanceHome extends Component {
                   </Card>
                 </Grid.Col>
               </HasPermissionWrapper>
-              <Grid.Col md={3} lg={3}>
-                <Card>
-                  <Card.Body>
-                    <h5>{t("finance.payment_methods.title")}</h5>
-                    {t("finance.payment_methods.explanation")}
-                    <br /><br />
-                    <HomeItemButton linkTitle={linkTitle} link="/finance/paymentmethods" />
-                  </Card.Body>
-                </Card>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("finance.home.batches.title")}</h4>
               </Grid.Col>
               <HasPermissionWrapper permission="view"
                           resource="financepaymentbatch">

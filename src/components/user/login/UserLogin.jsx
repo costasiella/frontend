@@ -23,6 +23,9 @@ function UserLogin({t, match, history}) {
   const organization = useContext(OrganizationContext)
   const [ doTokenAuth ] = useMutation(TOKEN_AUTH)
 
+  // Do an auth cleanup, so we start clean when signing in
+  CSAuth.cleanup()
+
   return (
     <CSStandaloneFormPage urlLogo={organization.urlLogoLogin} >
       <div className="text-center text-muted mb-1">

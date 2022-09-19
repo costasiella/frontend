@@ -162,6 +162,15 @@
             "features": {
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__"
+            },
+            "account_profiles": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "required_fields": "__STRING_NOT_TRANSLATED__",
+                "options": {
+                    "contact": "__STRING_NOT_TRANSLATED__",
+                    "minimal": "__STRING_NOT_TRANSLATED__"
+                }
             }
         },
         "integration": {
@@ -787,6 +796,20 @@
             },
             "title_add": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__"
+        },
+        "home": {
+            "batches": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "taxes": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "general": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "structure": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "yup": {
@@ -952,7 +975,9 @@
                 "to_profile": "__STRING_NOT_TRANSLATED__",
                 "order_received": "__STRING_NOT_TRANSLATED__",
                 "order_received_subheader": "__STRING_NOT_TRANSLATED__",
-                "order_received_to_payment_explanation": "__STRING_NOT_TRANSLATED__"
+                "order_received_to_payment_explanation": "__STRING_NOT_TRANSLATED__",
+                "profile_not_complete_enough": "__STRING_NOT_TRANSLATED__",
+                "update_profile": "__STRING_NOT_TRANSLATED__"
             },
             "class_info": {
                 "error_loading": "__STRING_NOT_TRANSLATED__",
@@ -1619,7 +1644,32 @@
             "upcoming_classes": {
                 "title": "__STRING_NOT_TRANSLATED__"
             },
-            "title": "__STRING_NOT_TRANSLATED__"
+            "title": "__STRING_NOT_TRANSLATED__",
+            "products": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "scheduling": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "accounts": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "about": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
+        },
+        "products": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "archive_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "unarchive_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "empty_archive": "__STRING_NOT_TRANSLATED__",
+            "edit": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
         }
     },
     "insight": {

@@ -88,6 +88,7 @@ function FinanceInvoiceGroupsDefaults({ t, history }) {
     <FinanceInvoiceGroupDefaultsBase>
       <ContentCard cardTitle={t('finance.invoice_groups_defaults.title')}
                   pageInfo={financeInvoiceGroupDefaults.pageInfo}
+                  hasCardBody={false}
                   onLoadMore={() => {
                     fetchMore({
                       variables: {
@@ -112,7 +113,7 @@ function FinanceInvoiceGroupsDefaults({ t, history }) {
                     })
                   }} 
         >
-        <Table>
+        <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('finance.invoice_groups_defaults.item_type')}</Table.ColHeader>

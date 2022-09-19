@@ -21,6 +21,8 @@ function ShopAccountHome({t, match, history}) {
 
   // Unset any next link for bank accounts that might have come from /shop/subscription/:id
   localStorage.removeItem(CSLS.SHOP_ACCOUNT_BANK_ACCOUNT_NEXT)
+  // Unset any next link for profile that might have come from /shop/checkout/payment
+  localStorage.removeItem(CSLS.SHOP_ACCOUNT_PROFILE_NEXT)
 
 
   if (loading) return (
