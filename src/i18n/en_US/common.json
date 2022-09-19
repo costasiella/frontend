@@ -895,7 +895,7 @@
             }
         },
         "products": {
-            "title": "Products",
+            "title": "Products (beta)",
             "explanation": "Quickly create an invoice for items within the product catalog",
             "add": "Add product",
             "toast_add_success": "Added product",
