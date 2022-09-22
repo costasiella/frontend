@@ -1291,7 +1291,10 @@
                 "url_bio": "__STRING_NOT_TRANSLATED__",
                 "url_website": "__STRING_NOT_TRANSLATED__"
             },
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "products": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "accounts": {
             "profile": "__STRING_NOT_TRANSLATED__",

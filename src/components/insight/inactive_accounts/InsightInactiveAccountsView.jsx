@@ -81,9 +81,9 @@ function InsightInactiveAccountsView({ t, history, match }) {
       <Grid.Row>
         <Grid.Col>
           <Card title={cardTitle}>
-            {/* <Card.Alert color="primary">
+            <Card.Alert color="primary">
               {t("insight.inactive_accounts.explanation_when_inactive")}
-            </Card.Alert> */}
+            </Card.Alert>
             <small>
               <Table cards >
                 <Table.Header>
