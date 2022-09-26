@@ -460,7 +460,9 @@
         "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
         "each": "__STRING_NOT_TRANSLATED__",
         "not_public": "__STRING_NOT_TRANSLATED__",
-        "duplicate": "__STRING_NOT_TRANSLATED__"
+        "duplicate": "__STRING_NOT_TRANSLATED__",
+        "quantity": "__STRING_NOT_TRANSLATED__",
+        "date_purchased": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1293,7 +1295,10 @@
             },
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "products": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {

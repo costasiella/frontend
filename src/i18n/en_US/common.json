@@ -551,7 +551,9 @@
         "confirm_action_yes": "Continue",
         "each": "Each",
         "not_public": "Not public",
-        "duplicate": "Duplicate"
+        "duplicate": "Duplicate",
+        "quantity": "Quantity",
+        "date_purchased": "Date purchased"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1122,7 +1124,10 @@
                 "empty_list": "No documents have been uploaded yet for this customer"
             },
             "products": {
-                "title": "Products"
+                "title": "Products",
+                "empty_list": "This customer hasn't purchased any products yet",
+                "delete_confirm_msg": "Are you sure you wish to remove this product from this account?",
+                "deleted": "Product removed"
             }
         },
         "b2b": {
