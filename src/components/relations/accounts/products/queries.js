@@ -105,24 +105,11 @@ export const GET_INPUT_VALUES_QUERY = gql`
   }
 `
 
-export const CREATE_ACCOUNT_CLASSPASS = gql`
-  mutation CreateAccountClasspass($input: CreateAccountClasspassInput!) {
-    createAccountClasspass(input: $input) {
-      accountClasspass {
+export const CREATE_ACCOUNT_PRODUCT = gql`
+  mutation CreateAccountProduct($input: CreateAccountProductInput!) {
+    createAccountProduct(input: $input) {
+      accountProduct {
         id
-        account {
-          id
-          firstName
-          lastName
-          email
-        }
-        organizationClasspass {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        note
       }
     }
   }
