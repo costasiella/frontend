@@ -115,7 +115,7 @@ function AccountProductAdd({t, match, history}) {
                     .then(({ data }) => {
                         console.log('got data', data);
                         history.push(`/relations/accounts/${accountId}/products`)
-                        toast.success((t('relations.accounts.products.toast_add_success')), {
+                        toast.success((t('relations.account.products.toast_add_success')), {
                             position: toast.POSITION.BOTTOM_RIGHT
                           })
                       }).catch((error) => {
