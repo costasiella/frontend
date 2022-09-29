@@ -1298,7 +1298,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-                "deleted": "__STRING_NOT_TRANSLATED__"
+                "deleted": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {

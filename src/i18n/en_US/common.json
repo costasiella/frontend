@@ -1127,7 +1127,8 @@
                 "title": "Products",
                 "empty_list": "This customer hasn't purchased any products yet",
                 "delete_confirm_msg": "Are you sure you wish to remove this product from this account?",
-                "deleted": "Product removed"
+                "deleted": "Product removed",
+                "title_add": "Choose a product to add"
             }
         },
         "b2b": {
