@@ -5,7 +5,6 @@ import {
     Button,
     Card,
     Grid,
-    Text,
   } from "tabler-react"
 
 
