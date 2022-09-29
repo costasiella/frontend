@@ -16,9 +16,20 @@ export const GET_ACCOUNT_PRODUCTS_QUERY = gql`
             id
             name
             description
+            urlImageThumbnailSmall
           }
           quantity
           createdAt
+          invoiceItems {
+            edges {
+              node {
+                financeInvoice {
+                  invoiceNumber
+                  id
+                }
+              }
+            }
+          }
         }
       }
     }
