@@ -89,6 +89,8 @@ export const GET_INPUT_VALUES_QUERY = gql`
           archived
           name
           description
+          priceDisplay
+          urlImageThumbnailLarge
         }
       }
     }
@@ -100,7 +102,6 @@ export const GET_INPUT_VALUES_QUERY = gql`
       phone
       mobile
       isActive
-      urlImageThumbnailSmall
     }
   }
 `
