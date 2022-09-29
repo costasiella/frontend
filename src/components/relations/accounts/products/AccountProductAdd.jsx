@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { toast } from 'react-toastify'
 
 import { GET_ACCOUNT_PRODUCTS_QUERY, GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_PRODUCT } from './queries'
 // import { CLASSPASS_SCHEMA } from './yupSchema'
@@ -101,6 +102,29 @@ function AccountProductAdd({t, match, history}) {
                   imgUrl={node.urlImageThumbnailLarge}
                   imgAlt={node.name}
                   buttonText={buttonTextAdd}
+                  buttonOnClick={() => {
+                    createAccountProduct({ variables: {
+                      input: {
+                        account: accountId,
+                        organizationProduct: node.id,
+                        quantity: 1,
+                      }
+                    }, refetchQueries: [
+                        {query: GET_ACCOUNT_PRODUCTS_QUERY, variables: { accountId: accountId }}
+                    ]})
+                    .then(({ data }) => {
+                        console.log('got data', data);
+                        history.push(`/relations/accounts/${accountId}/products`)
+                        toast.success((t('relations.accounts.products.toast_add_success')), {
+                            position: toast.POSITION.BOTTOM_RIGHT
+                          })
+                      }).catch((error) => {
+                        toast.error((t('general.toast_server_error')) +  error, {
+                            position: toast.POSITION.BOTTOM_RIGHT
+                          })
+                        console.log('there was an error sending the query', error)
+                      })
+                  }}
                 />
               </Grid.Col>
             ))}
