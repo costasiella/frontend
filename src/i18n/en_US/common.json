@@ -897,7 +897,7 @@
             }
         },
         "products": {
-            "title": "Products (beta)",
+            "title": "Products",
             "explanation": "Quickly create an invoice for items within the product catalog",
             "add": "Add product",
             "toast_add_success": "Added product",
@@ -1128,7 +1128,8 @@
                 "empty_list": "This customer hasn't purchased any products yet",
                 "delete_confirm_msg": "Are you sure you wish to remove this product from this account?",
                 "deleted": "Product removed",
-                "title_add": "Choose a product to add"
+                "title_add": "Choose a product to add",
+                "toast_add_success": "Added product"
             }
         },
         "b2b": {
