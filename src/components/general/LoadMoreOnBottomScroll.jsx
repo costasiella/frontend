@@ -5,6 +5,7 @@ import {
     Button,
     Card,
     Grid,
+    Text,
   } from "tabler-react"
 
 
@@ -54,20 +55,21 @@ class LoadMoreOnBottomScroll extends Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Col md={12}>
-              <Card>
-                <Card.Body>
-                  {(!pageInfo) ? '':
-                    (pageInfo.hasNextPage) ? 
+              { (!pageInfo) ? '':
+                (pageInfo.hasNextPage) ? 
+                  <Card>
+                    <Card.Body>
                       <Button 
-                        link
+                        color="secondary"
+                        outline
                         onClick={onLoadMore} 
-                        >
+                      >
                         {t('general.load_more')}
                       </Button>
-                    : t('general.loaded_all')
-                  }
-                </Card.Body>
-              </Card>
+                    </Card.Body>
+                  </Card>
+                : <span className="text-muted">{t("general.loaded_all")}</span>
+              }
             </Grid.Col>
           </Grid.Row>
         </div>
