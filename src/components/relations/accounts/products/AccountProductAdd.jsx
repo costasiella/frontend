@@ -3,9 +3,6 @@ import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
-import { Formik } from 'formik'
-import { toast } from 'react-toastify'
-
 import { GET_ACCOUNT_PRODUCTS_QUERY, GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_PRODUCT } from './queries'
 // import { CLASSPASS_SCHEMA } from './yupSchema'
 // import AccountClasspassForm from './AccountClasspassForm'
@@ -14,17 +11,23 @@ import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
 import {
   Card,
   Dimmer,
+  Grid,
 } from "tabler-react";
-import { dateToLocalISO } from '../../../../tools/date_tools'
+
+import CSStoreCard from '../../../ui/CSStoreCard'
+import LoadMoreOnBottomScroll from '../../../general/LoadMoreOnBottomScroll'
 
 
 function AccountProductAdd({t, match, history}) {
   const accountId = match.params.account_id
   const activeLink = "products"
   const cardTitle = t('relations.account.products.title_add')
-  const returnUrl = `/relations/accounts/${accountId}/productss`
+  const returnUrl = `/relations/accounts/${accountId}/products`
+
+  const buttonTextAdd = t("general.add")
+
   
-  const {loading, error, data} = useQuery(GET_INPUT_VALUES_QUERY, { 
+  const {loading, error, data, fetchMore} = useQuery(GET_INPUT_VALUES_QUERY, { 
     variables: { accountId: accountId }
   })
   const [createAccountProduct] = useMutation(CREATE_ACCOUNT_PRODUCT)
@@ -46,7 +49,7 @@ function AccountProductAdd({t, match, history}) {
     </RelationsAccountProfileBase>
   )
   
-  const inputData = data
+  const organizationProducts = data.organizationProducts
   const account = data.account
 
   return (
@@ -55,7 +58,54 @@ function AccountProductAdd({t, match, history}) {
       user={account}
       returnUrl={returnUrl} 
     >
-      hello world
+      <Grid.Row>
+        <Grid.Col md={12}>
+          <h4>{t("relations.account.products.title_add")}</h4>
+        </Grid.Col>
+      </Grid.Row>
+
+        <LoadMoreOnBottomScroll 
+          pageInfo={organizationProducts.pageInfo}
+          onLoadMore={() => {
+            fetchMore({
+              variables: {
+                after: organizationProducts.pageInfo.endCursor
+              },
+              updateQuery: (previousResult, { fetchMoreResult }) => {
+                const newEdges = fetchMoreResult.organizationProducts.edges
+                const pageInfo = fetchMoreResult.organizationProducts.pageInfo
+
+                return newEdges.length
+                  ? {
+                      // Put the new accountClasspasses at the end of the list and update `pageInfo`
+                      // so we have the new `endCursor` and `hasNextPage` values
+                      organizationProducts: {
+                        __typename: previousResult.organizationProducts.__typename,
+                        edges: [ ...previousResult.organizationProducts.edges, ...newEdges ],
+                        pageInfo
+                      }
+                    }
+                  : previousResult
+              }
+            })
+          }} 
+        >
+          <Grid.Row>
+            {organizationProducts.edges.map(({ node }) => (
+              <Grid.Col md={4}>
+                {console.log(node)}
+                <CSStoreCard
+                  title={node.name}
+                  subtitle={node.description}
+                  price={node.priceDisplay}
+                  imgUrl={node.urlImageThumbnailLarge}
+                  imgAlt={node.name}
+                  buttonText={buttonTextAdd}
+                />
+              </Grid.Col>
+            ))}
+          </Grid.Row>
+        </LoadMoreOnBottomScroll>
       {/* <Card>
         <Card.Header>
           <Card.Title>{cardTitle}</Card.Title>
