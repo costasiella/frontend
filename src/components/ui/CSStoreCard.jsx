@@ -1,13 +1,15 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
 
 import {
-  Card
+  Button,
+  Card,
+  Icon,
+  Text
 } from "tabler-react"
 
 
-function CSStoreCard({ t, title, subtitle, price, imgUrl, imgAlt, buttonText, buttonUrl }) {
+function CSStoreCard({ t, title, subtitle, price, imgUrl, imgAlt, buttonText="placeholder", buttonOnClick=f=>f }) {
   return (
       <Card>
         <Card.Body>
@@ -18,16 +20,16 @@ function CSStoreCard({ t, title, subtitle, price, imgUrl, imgAlt, buttonText, bu
           <Text className="card-subtitle">{subtitle}</Text>
 
           <div classname="mt-5 d-flex align-items-center">
-            <div className="product-price">
-              <strong>{price}</strong>
-            </div>
-            <div className="ml-auto">
-              <Link to={buttonUrl}>
-                <Button color="primary">
+            <div className="mt-5 d-flex align-items-center">
+              <div className="product-price">
+                <strong>{price}</strong>
+              </div>
+              <div className="ml-auto">
+                <Button color="primary" onClick={buttonOnClick}>
                   <Icon prefix="fe" name="plus" />
                   {buttonText}
                 </Button>
-              </Link>
+              </div>
             </div>
           </div>
         </Card.Body>
