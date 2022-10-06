@@ -24,7 +24,7 @@ function AutomationAccountSubscriptionInvoices({t, history, match}) {
     variables: {
       taskName: "costasiella.tasks.account.subscription.invoices.tasks.account_subscription_invoices_add_for_month"
     },
-    pollInterval: 4000
+    pollInterval: 5000
   })
 
 

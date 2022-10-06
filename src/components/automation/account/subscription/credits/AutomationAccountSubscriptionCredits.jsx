@@ -25,7 +25,7 @@ function AutomationAccountSubscriptionCredits({t, history, match}) {
     variables: {
       taskName: "costasiella.tasks.account.subscription.credits.tasks.account_subscription_credits_add_for_month"
     },
-    pollInterval: 4000
+    pollInterval: 5000
   })
 
   // Loading

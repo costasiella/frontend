@@ -24,7 +24,7 @@ function AutomationAccountSubscriptionMollieCollections({t, history, match}) {
     variables: {
       taskName: "costasiella.tasks.account.subscription.invoices.tasks.account_subscription_invoices_add_for_month_mollie_collection"
     },
-    pollInterval: 4000
+    pollInterval: 5000
   })
 
   // Loading
