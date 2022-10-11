@@ -1,6 +1,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import moment from 'moment'
 
 import {
   Page,
@@ -12,6 +13,7 @@ import SiteWrapper from "../../SiteWrapper"
 import HasPermissionWrapper from "../../HasPermissionWrapper"
 import CSDatePicker from "../../ui/CSDatePicker"
 import ButtonAdd from '../../ui/ButtonAdd';
+import ButtonListWeekChooser from '../../ui/ButtonListWeekChooser';
 
 import CSLS from "../../../tools/cs_local_storage"
 import ScheduleClassesFilter from "./ScheduleClassesFilter"
@@ -20,7 +22,7 @@ import {
   get_list_query_variables, 
 } from './tools'
 
-import moment from 'moment'
+
 
 // Set some initial values for dates, if not found
 if (!localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)) {
@@ -31,6 +33,35 @@ if (!localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)) {
 
 
 function ScheduleClassesBase ({ t, history, children, data, refetch }) {
+  function onClickPrevious() {
+    let nextWeekFrom = moment(localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)).subtract(7, 'days')
+    let nextWeekUntil = moment(nextWeekFrom).add(6, 'days')
+    
+    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_FROM, nextWeekFrom.format('YYYY-MM-DD')) 
+    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL, nextWeekUntil.format('YYYY-MM-DD')) 
+
+    refetch(get_list_query_variables())
+  }
+
+  function onClickNext() {
+    let nextWeekFrom = moment(localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)).add(7, 'days')
+    let nextWeekUntil = moment(nextWeekFrom).add(6, 'days')
+    
+    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_FROM, nextWeekFrom.format('YYYY-MM-DD')) 
+    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL, nextWeekUntil.format('YYYY-MM-DD')) 
+
+    refetch(get_list_query_variables())
+  }
+
+  function onClickCurrent() {
+    let currentWeekFrom = moment()
+    let currentWeekUntil = moment(currentWeekFrom).add(6, 'days')
+
+    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_FROM, currentWeekFrom.format('YYYY-MM-DD')) 
+    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL, currentWeekUntil.format('YYYY-MM-DD')) 
+    
+    refetch(get_list_query_variables())
+  }
   
   return (
     <SiteWrapper>
@@ -84,44 +115,11 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                 }}
                 placeholderText={t('schedule.classes.go_to_date')}
               />
-              <Button.List className="schedule-list-page-options-btn-list">
-                <Button 
-                  icon="chevron-left"
-                  color="secondary"
-                  onClick={ () => {
-                    let nextWeekFrom = moment(localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)).subtract(7, 'days')
-                    let nextWeekUntil = moment(nextWeekFrom).add(6, 'days')
-                    
-                    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_FROM, nextWeekFrom.format('YYYY-MM-DD')) 
-                    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL, nextWeekUntil.format('YYYY-MM-DD')) 
-
-                    refetch(get_list_query_variables())
-                }} />
-                <Button 
-                  icon="sunset"
-                  color="secondary"
-                  onClick={ () => {
-                    let currentWeekFrom = moment()
-                    let currentWeekUntil = moment(currentWeekFrom).add(6, 'days')
-
-                    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_FROM, currentWeekFrom.format('YYYY-MM-DD')) 
-                    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL, currentWeekUntil.format('YYYY-MM-DD')) 
-                    
-                    refetch(get_list_query_variables())
-                }} />
-                <Button 
-                  icon="chevron-right"
-                  color="secondary"
-                  onClick={ () => {
-                    let nextWeekFrom = moment(localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM)).add(7, 'days')
-                    let nextWeekUntil = moment(nextWeekFrom).add(6, 'days')
-                    
-                    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_FROM, nextWeekFrom.format('YYYY-MM-DD')) 
-                    localStorage.setItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL, nextWeekUntil.format('YYYY-MM-DD')) 
-
-                    refetch(get_list_query_variables())
-                }} />
-              </Button.List> 
+              <ButtonListWeekChooser
+                onClickPrevious={onClickPrevious}
+                onClickNext={onClickNext}
+                onClickCurrent={onClickCurrent}
+              />
               <HasPermissionWrapper permission="add"
                                     resource="scheduleclass">
                 <ButtonAdd addUrl={"/schedule/classes/add"} className="ml-2" />
