@@ -66,7 +66,7 @@ function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubT
               <Grid.Col xs={12} sm={12} md={3}>
                 <ClassMenu 
                   scheduleItemId={scheduleItemId}
-                  class_date={classDate}
+                  classDate={classDate}
                   activeLink="attendance"
                 />
               </Grid.Col>
