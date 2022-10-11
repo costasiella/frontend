@@ -2,6 +2,7 @@ import React from 'react'
 import { useMutation } from '@apollo/client';
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import moment from "moment"
 
 import {
   Button,
@@ -24,6 +25,15 @@ function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubT
 
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
+  function onClickPrevious() {
+    const previousWeek = moment(classDate).subtract(7, "days").format('YYYY-MM-DD')
+    history.push(`/schedule/classes/class/attendance/${scheduleItemId}/${previousWeek}`)
+  }
+  function onClickNext () {
+    const previousWeek = moment(classDate).add(7, "days").format('YYYY-MM-DD')
+    history.push(`/schedule/classes/class/attendance/${scheduleItemId}/${previousWeek}`)
+  }
+
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -43,7 +53,9 @@ function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubT
                 {t('general.mailing_list')} 
               </Button>
               <ButtonListWeekChooser 
-
+                showCurrent={false}
+                onClickPrevious={onClickPrevious}
+                onClickNext={onClickNext}
               />
             </div>
           </Page.Header>
