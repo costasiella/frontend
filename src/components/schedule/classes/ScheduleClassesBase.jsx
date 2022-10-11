@@ -115,7 +115,8 @@ function ScheduleClassesBase ({ t, history, children, data, refetch }) {
                 }}
                 placeholderText={t('schedule.classes.go_to_date')}
               />
-              <ButtonListWeekChooser
+              <ButtonListWeekChooser 
+                className="schedule-list-page-options-btn-list"
                 onClickPrevious={onClickPrevious}
                 onClickNext={onClickNext}
                 onClickCurrent={onClickCurrent}

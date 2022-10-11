@@ -13,10 +13,11 @@ import {
 import { TOKEN_REFRESH } from '../../../../../queries/system/auth';
 import { refreshTokenAndOpenExportLinkInNewTab } from '../../../../../tools/refresh_token_and_open_export_link';
 import SiteWrapper from "../../../../SiteWrapper"
+import ButtonListWeekChooser from '../../../../ui/ButtonListWeekChooser';
 import ScheduleClassBack from "../ScheduleClassBack"
 import ClassMenu from "../ClassMenu"
 
-function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubTitle }) {
+function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubTitle, refetch=f=>f }) {
   const scheduleItemId = match.params.class_id
   const classDate = match.params.date
   const exportUrl = `/d/export/schedule_item_attendance/mailinglist/${scheduleItemId}/${classDate}`
@@ -41,6 +42,9 @@ function ScheduleClassAttendanceBaseBase({ t, match, history, children, pageSubT
               >
                 {t('general.mailing_list')} 
               </Button>
+              <ButtonListWeekChooser 
+
+              />
             </div>
           </Page.Header>
           <Grid.Row>

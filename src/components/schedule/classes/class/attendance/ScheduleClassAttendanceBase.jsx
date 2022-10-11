@@ -14,7 +14,7 @@ import ContentCard from "../../../../general/ContentCard"
 import { GET_SCHEDULE_CLASS_QUERY } from "./queries"
 
 
-function ScheduleClassAttendanceBase({ t, match, history, children }) {
+function ScheduleClassAttendanceBase({ t, match, history, children, refetch }) {
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
   const cardTitle=t('general.attendance')
@@ -25,7 +25,7 @@ function ScheduleClassAttendanceBase({ t, match, history, children }) {
   )
 
   if (loading) return (
-    <ScheduleClassAttendanceBaseBase>
+    <ScheduleClassAttendanceBaseBase refetch={refetch}>
       <ContentCard cardTitle={cardTitle}>
         <Dimmer active={true}
                 loader={true}>
@@ -35,7 +35,7 @@ function ScheduleClassAttendanceBase({ t, match, history, children }) {
   )
 
   if (error) return (
-    <ScheduleClassAttendanceBaseBase>
+    <ScheduleClassAttendanceBaseBase refetch={refetch}>
       <ContentCard cardTitle={cardTitle}>
         <p>{t('schedule.classes.class.attendance.error_loading')}</p>
       </ContentCard>
@@ -56,7 +56,7 @@ function ScheduleClassAttendanceBase({ t, match, history, children }) {
   console.log(scheduleClass.status)
   
   return (
-    <ScheduleClassAttendanceBaseBase pageSubTitle={pageSubTitle}>
+    <ScheduleClassAttendanceBaseBase pageSubTitle={pageSubTitle}  refetch={refetch}>
       {children}
     </ScheduleClassAttendanceBaseBase>
 

@@ -6,9 +6,9 @@ import {
   Button,
 } from "tabler-react"
 
-function ButtonListWeekChooser({ t, onClickPrevious=f=>f, onClickNext=f=>f, onClickCurrent=f=>f}) {
+function ButtonListWeekChooser({ t, className, onClickPrevious=f=>f, onClickNext=f=>f, onClickCurrent=f=>f}) {
   return (
-    <Button.List className="schedule-list-page-options-btn-list">
+    <Button.List className={className}>
       <Button 
         icon="chevron-left"
         color="secondary"
