@@ -283,6 +283,10 @@
             "structure": {
                 "title": "Structure"
             }
+        },
+        "quotes": {
+            "title": "Quotes",
+            "explanation": "Manage quotes"
         }
     },
     "general": {

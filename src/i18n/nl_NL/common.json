@@ -812,6 +812,10 @@
             "structure": {
                 "title": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "quotes": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "yup": {

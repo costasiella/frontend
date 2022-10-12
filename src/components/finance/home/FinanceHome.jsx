@@ -35,6 +35,19 @@ class FinanceHome extends Component {
               <Grid.Col md={12}>
                 <h4>{t("finance.home.general.title")}</h4>
               </Grid.Col>
+              <HasPermissionWrapper permission="view"
+                          resource="financequote">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("finance.quotes.title")}</h5>
+                      {t("finance.quotes.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/finance/quotes" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
               <Grid.Col md={3} lg={3}>
                 <Card>
                   <Card.Body>
