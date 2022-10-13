@@ -75,6 +75,7 @@ import FinancePaymentMethodAdd from './components/finance/payment_methods/Financ
 import FinancePaymentMethodEdit from './components/finance/payment_methods/FinancePaymentMethodEdit'
 import FinanceQuotes from './components/finance/quotes/FinanceQuotes'
 import FinanceQuoteGroups from './components/finance/quotes/groups/FinanceQuoteGroups'
+import FinanceQuoteGroupAdd from './components/finance/quotes/groups/FinanceInvoiceGroupAdd'
 import FinanceTaxRates from './components/finance/taxrates/FinanceTaxRates'
 import FinanceTaxRatesAdd from './components/finance/taxrates/FinanceTaxRateAdd'
 import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdit'
@@ -500,6 +501,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/paymentmethods/edit/:id" component={FinancePaymentMethodEdit} />
             <PrivateRoute exact path="/finance/quotes" component={FinanceQuotes} />
             <PrivateRoute exact path="/finance/quotes/groups" component={FinanceQuoteGroups} />
+            <PrivateRoute exact path="/finance/quotes/groups/add" component={FinanceQuoteGroupAdd} />
             <PrivateRoute exact path="/finance/taxrates" component={FinanceTaxRates} />
             <PrivateRoute exact path="/finance/taxrates/add" component={FinanceTaxRatesAdd} />
             <PrivateRoute exact path="/finance/taxrates/edit/:id" component={FinanceTaxRatesEdit} />
