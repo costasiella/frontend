@@ -29,7 +29,7 @@ function FinanceQuoteGroupsBase({t, history, children, showEditBack=false}) {
                 <ButtonBack returnUrl="/finance/quotes" className="mr-2" />
               }
               <HasPermissionWrapper permission="add"
-                                      resource="financequoteegroup">
+                                      resource="financequotegroup">
                 <ButtonAdd addUrl="/finance/quotes/groups/add" />
               </HasPermissionWrapper>
             </div>
