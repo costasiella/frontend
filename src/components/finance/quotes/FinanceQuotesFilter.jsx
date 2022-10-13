@@ -43,10 +43,10 @@ const FinanceQuotesFilter = ({ t, history, data, refetch }) => (
     >
       <option value="" key={v4()}>{t("finance.quotes.status.ALL")}</option>
       <option value="DRAFT" key={v4()}>{t('finance.quotes.status.DRAFT')}</option>
-      <option value="SENT" key={v4()}>{t('finance.quotes.statuses.SENT')}</option>
-      <option value="ACCEPTED" key={v4()}>{t('finance.quotes.statuses.ACCEPTED')}</option>
-      <option value="REJECTED" key={v4()}>{t('finance.quotes.statuses.REJECTED')}</option>
-      <option value="CANCELLED" key={v4()}>{t('finance.quotes.statuses.CANCELLED')}</option>
+      <option value="SENT" key={v4()}>{t('finance.quotes.status.SENT')}</option>
+      <option value="ACCEPTED" key={v4()}>{t('finance.quotes.status.ACCEPTED')}</option>
+      <option value="REJECTED" key={v4()}>{t('finance.quotes.status.REJECTED')}</option>
+      <option value="CANCELLED" key={v4()}>{t('finance.quotes.status.CANCELLED')}</option>
     </select>
   </div>
 );

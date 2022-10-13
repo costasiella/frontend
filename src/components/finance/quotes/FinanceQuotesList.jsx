@@ -33,7 +33,6 @@ function FinanceQuotesList({t, history, match, quotes, showColRelation=false}) {
             <Table.ColHeader>{t('finance.quotes.quote_number')} & {t('finance.quotes.summary')}</Table.ColHeader>
             {showColRelation && <Table.ColHeader>{t('finance.quotes.relation')}</Table.ColHeader>}
             <Table.ColHeader>{t('finance.quotes.date')} & {t('finance.quotes.expiration')}</Table.ColHeader>
-            {/* <Table.ColHeader>{t('finance.quotes.due')}</Table.ColHeader> */}
             <Table.ColHeader>{t('general.total')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
