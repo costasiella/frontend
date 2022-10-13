@@ -286,7 +286,25 @@
         },
         "quotes": {
             "title": "Quotes",
-            "explanation": "Manage quotes"
+            "explanation": "Manage quotes",
+            "error_loading": "Error loading quotes... :(",
+            "empty_list": "No quotes have been created yet",
+            "status": {
+                "ALL": "All",
+                "DRAFT": "Draft",
+                "SENT": "Sent",
+                "ACCEPTED": "Accepted",
+                "REJECTED": "Rejected",
+                "CANCELLED": "Cancelled",
+                "NOT_FOUND": "Not found"
+            },
+            "quote_number": "Quote number",
+            "summary": "Summary",
+            "relation": "Relation",
+            "date": "Date",
+            "expiration": "Expiration",
+            "delete_confirm_msg": "Are you sure you wish to delete this quote?",
+            "deleted": "Deleted quote"
         }
     },
     "general": {
