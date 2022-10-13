@@ -834,6 +834,13 @@
             "expiration": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "deleted": "__STRING_NOT_TRANSLATED__"
+        },
+        "quote_groups": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "next_id": "__STRING_NOT_TRANSLATED__",
+            "expires_after_days": "__STRING_NOT_TRANSLATED__",
+            "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__"
         }
     },
     "yup": {

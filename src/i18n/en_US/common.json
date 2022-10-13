@@ -305,6 +305,13 @@
             "expiration": "Expiration",
             "delete_confirm_msg": "Are you sure you wish to delete this quote?",
             "deleted": "Deleted quote"
+        },
+        "quote_groups": {
+            "title": "Quote groups",
+            "error_loading": "Error loading quote groups... :(",
+            "next_id": "Next #",
+            "expires_after_days": "Expires after days",
+            "auto_reset_prefix_year": "Reset to 1 on January 1st"
         }
     },
     "general": {
