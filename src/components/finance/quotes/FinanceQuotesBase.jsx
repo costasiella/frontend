@@ -12,7 +12,7 @@ import {
 
 import SiteWrapper from '../../SiteWrapper'
 import ButtonExport from '../../ui/ButtonExport';
-import FinanceInvoicesFilter from "./FinanceInvoicesFilter"
+import FinanceQuotesFilter from "./FinanceQuotesFilter"
 
 
 function FinanceQuotesBase ({ t, history, children, refetch }) {
@@ -22,7 +22,7 @@ function FinanceQuotesBase ({ t, history, children, refetch }) {
         <Container>
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
-              <FinanceInvoicesFilter refetch={refetch}/>
+              <FinanceQuotesFilter refetch={refetch}/>
               {/* <ButtonExport url="/finance/quotes/export" className='mr-2' /> */}
               <Link to="/finance/quotes/groups">
                 <Button
