@@ -840,7 +840,11 @@
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "next_id": "__STRING_NOT_TRANSLATED__",
             "expires_after_days": "__STRING_NOT_TRANSLATED__",
-            "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__"
+            "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "public": "__STRING_NOT_TRANSLATED__",
+            "prefix_year": "__STRING_NOT_TRANSLATED__"
         }
     },
     "yup": {

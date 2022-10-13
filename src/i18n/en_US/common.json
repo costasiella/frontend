@@ -311,7 +311,11 @@
             "error_loading": "Error loading quote groups... :(",
             "next_id": "Next #",
             "expires_after_days": "Expires after days",
-            "auto_reset_prefix_year": "Reset to 1 on January 1st"
+            "auto_reset_prefix_year": "Reset to 1 on January 1st",
+            "title_add": "Add Quote group",
+            "toast_add_success": "Added Quote group",
+            "public": "Show quotes from this group in account profiles",
+            "prefix_year": "Prefix year"
         }
     },
     "general": {
