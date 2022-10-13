@@ -14,4 +14,3 @@ export function get_list_query_variables() {
 
   return queryVars
 }
-
