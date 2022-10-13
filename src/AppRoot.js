@@ -73,6 +73,7 @@ import FinanceOrderEdit from './components/finance/orders/edit/FinanceOrderEdit'
 import FinancePaymentMethods from './components/finance/payment_methods/FinancePaymentMethods'
 import FinancePaymentMethodAdd from './components/finance/payment_methods/FinancePaymentMethodAdd'
 import FinancePaymentMethodEdit from './components/finance/payment_methods/FinancePaymentMethodEdit'
+import FinanceQuotes from './components/finance/quotes/FinanceQuotes'
 import FinanceTaxRates from './components/finance/taxrates/FinanceTaxRates'
 import FinanceTaxRatesAdd from './components/finance/taxrates/FinanceTaxRateAdd'
 import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdit'
@@ -496,6 +497,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/paymentmethods" component={FinancePaymentMethods} />
             <PrivateRoute exact path="/finance/paymentmethods/add" component={FinancePaymentMethodAdd} />
             <PrivateRoute exact path="/finance/paymentmethods/edit/:id" component={FinancePaymentMethodEdit} />
+            <PrivateRoute exact path="/finance/quotes" component={FinanceQuotes} />
             <PrivateRoute exact path="/finance/taxrates" component={FinanceTaxRates} />
             <PrivateRoute exact path="/finance/taxrates/add" component={FinanceTaxRatesAdd} />
             <PrivateRoute exact path="/finance/taxrates/edit/:id" component={FinanceTaxRatesEdit} />
