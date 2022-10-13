@@ -18,19 +18,19 @@ class FinanceQuoteStatus extends Component {
 
     switch (status) {
       case "ALL":
-        return <Badge color="secondary">{t('finance.invoices.status.ALL')}</Badge>
+        return <Badge color="secondary">{t('finance.quotes.status.ALL')}</Badge>
       case "DRAFT":
-        return <Badge color="secondary">{t('finance.invoices.status.DRAFT')}</Badge>
+        return <Badge color="secondary">{t('finance.quotes.status.DRAFT')}</Badge>
       case "SENT":
-        return <Badge color="primary">{t('finance.invoices.status.SENT')}</Badge>
+        return <Badge color="primary">{t('finance.quotes.status.SENT')}</Badge>
       case "ACCEPTED":
-        return <Badge color="success">{t('finance.invoices.status.ACCEPTED')}</Badge>
+        return <Badge color="success">{t('finance.quotes.status.ACCEPTED')}</Badge>
       case "REJECTED":
-        return <Badge color="danger">{t('finance.invoices.status.REJECTED')}</Badge>
+        return <Badge color="danger">{t('finance.quotes.status.REJECTED')}</Badge>
       case "CANCELLED":
-        return <Badge color="warning">{t('finance.invoices.status.CANCELLED')}</Badge>
+        return <Badge color="warning">{t('finance.quotes.status.CANCELLED')}</Badge>
       default:
-        return t('finance.invoices.status.NOT_FOUND') 
+        return t('finance.quotes.status.NOT_FOUND') 
     }
   }
 }
