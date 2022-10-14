@@ -56,9 +56,21 @@ function AccountInvoices({ t, location, match, history }) {
 
   // Set back location for edit invoice
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
-
   let financeInvoices = data.financeInvoices
   const account = data.account
+
+  // Empty list
+  if (!financeInvoices.edges.length) {
+    return (
+      <AccountInvoicesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.accounts.invoices.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </AccountInvoicesBase>
+    )
+  }
   
   return (
     <AccountInvoicesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
