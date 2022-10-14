@@ -588,7 +588,8 @@
         "not_public": "Not public",
         "duplicate": "Duplicate",
         "quantity": "Quantity",
-        "date_purchased": "Date purchased"
+        "date_purchased": "Date purchased",
+        "finance_quote_group": "Quote group"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -983,7 +984,9 @@
             "profile_image": "Profile picture",
             "explanation": "Customer, instructor & employee accounts",
             "invoice_to_business": "Invoice to this account or a business",
-            "invoice_to_account": "Invoice to account"
+            "invoice_to_account": "Invoice to account",
+            "quote_to_business": "Quote to business or to this account",
+            "quote_to_account": "Quote to account"
         },
         "account": {
             "subscriptions": {
@@ -1170,7 +1173,8 @@
             },
             "quotes": {
                 "title": "Quotes",
-                "empty_list": "No quotes have been created for this account yet"
+                "empty_list": "No quotes have been created for this account yet",
+                "title_add": "Add Quote"
             }
         },
         "b2b": {

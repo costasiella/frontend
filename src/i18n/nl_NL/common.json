@@ -462,7 +462,8 @@
         "not_public": "__STRING_NOT_TRANSLATED__",
         "duplicate": "__STRING_NOT_TRANSLATED__",
         "quantity": "__STRING_NOT_TRANSLATED__",
-        "date_purchased": "__STRING_NOT_TRANSLATED__"
+        "date_purchased": "__STRING_NOT_TRANSLATED__",
+        "finance_quote_group": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1341,7 +1342,8 @@
             },
             "quotes": {
                 "title": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
@@ -1361,7 +1363,9 @@
             "deleted": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "invoice_to_business": "__STRING_NOT_TRANSLATED__",
-            "invoice_to_account": "__STRING_NOT_TRANSLATED__"
+            "invoice_to_account": "__STRING_NOT_TRANSLATED__",
+            "quote_to_business": "__STRING_NOT_TRANSLATED__",
+            "quote_to_account": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {
