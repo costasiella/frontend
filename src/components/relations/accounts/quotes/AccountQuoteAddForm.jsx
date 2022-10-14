@@ -15,12 +15,12 @@ import {
 const AccountQuoteAddForm = ({ t, inputData, isSubmitting, errors, returnUrl }) => (
   <FoForm>
     <Card.Body>
-      <Form.Group label={t('relations.accounts.invoice_to_business')}>
+      <Form.Group label={t('relations.accounts.quote_to_business')}>
         <Field component="select" 
               name="business" 
               className={(errors.business) ? "form-control is-invalid" : "form-control"} 
               autoComplete="off">
-          <option value="" key={v4()}>{t('relations.accounts.invoice_to_account')}</option>
+          <option value="" key={v4()}>{t('relations.accounts.quote_to_account')}</option>
           {inputData.businesses.edges.map(({ node }) =>
             <option value={node.id} key={v4()}>{node.name}</option>
           )}
