@@ -161,6 +161,19 @@ function ProfileMenu({t, accountId, activeLink}) {
         </HasPermissionWrapper>
         <HasPermissionWrapper 
             permission="view"
+            resource="financequote">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/quotes"}
+                icon="file"
+                active={(activeLink === "quotes")}
+                >
+            {t('relations.account.quotes.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
             resource="financeinvoice">
             <List.GroupItem
                 key={v4()}

@@ -1165,6 +1165,9 @@
                 "deleted": "Product removed",
                 "title_add": "Choose a product to add",
                 "toast_add_success": "Added product"
+            },
+            "quotes": {
+                "title": "Quotes"
             }
         },
         "b2b": {
