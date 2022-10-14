@@ -23,7 +23,7 @@ function FinanceQuotesBase ({ t, history, children, refetch }) {
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
               <FinanceQuotesFilter refetch={refetch}/>
-              {/* <ButtonExport url="/finance/quotes/export" className='mr-2' /> */}
+              <ButtonExport url="/finance/quotes/export" className='mr-2' />
               <Link to="/finance/quotes/groups">
                 <Button
                   color="secondary"
