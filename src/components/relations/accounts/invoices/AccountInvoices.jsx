@@ -65,7 +65,7 @@ function AccountInvoices({ t, location, match, history }) {
       <AccountInvoicesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
-            <p>{t('relations.accounts.invoices.empty_list')}</p>
+            <p>{t('relations.account.invoices.empty_list')}</p>
           </Card.Body>
         </Card>
       </AccountInvoicesBase>

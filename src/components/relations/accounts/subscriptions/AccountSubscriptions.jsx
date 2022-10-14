@@ -61,6 +61,23 @@ function AccountSubscriptions({t, match}) {
       <ButtonAdd addUrl={`/relations/accounts/${accountId}/subscriptions/add`} className='ml-2' />
   </HasPermissionWrapper>
 
+  // Empty list
+  if (!accountSubscriptions.edges.length) {
+    return (
+      <RelationsAccountProfileBase
+        activeLink={activeLink}
+        user={account}
+        pageHeaderButtonList={pageHeaderButtonList}
+      >
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.account.subscriptions.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </RelationsAccountProfileBase>
+    )
+  }
+
   return (
     <RelationsAccountProfileBase
       activeLink={activeLink}

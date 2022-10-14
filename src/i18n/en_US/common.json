@@ -1046,7 +1046,8 @@
                     "toast_you_are_now_editing": "You're now editing the added invoice",
                     "add": "Add invoice",
                     "empty_list": "No invoices have been created yet for this subscription"
-                }
+                },
+                "empty_list": "This account doesn't have any subscriptions yet."
             },
             "classpasses": {
                 "title_add": "Add class pass",
@@ -1083,7 +1084,8 @@
             "invoices": {
                 "title_add": "Add invoice",
                 "title": "Invoices",
-                "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation."
+                "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation.",
+                "empty_list": "No invoices have been created for this account yet."
             },
             "accepted_documents": {
                 "title": "Accepted documents",
@@ -1167,7 +1169,8 @@
                 "toast_add_success": "Added product"
             },
             "quotes": {
-                "title": "Quotes"
+                "title": "Quotes",
+                "empty_list": "No quotes have been created for this account yet"
             }
         },
         "b2b": {

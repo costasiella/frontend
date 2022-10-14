@@ -65,7 +65,7 @@ function AccountQuotes({ t, location, match, history }) {
       <AccountQuotesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
-            <p>{t('relations.accounts.quotes.empty_list')}</p>
+            <p>{t('relations.account.quotes.empty_list')}</p>
           </Card.Body>
         </Card>
       </AccountQuotesBase>
