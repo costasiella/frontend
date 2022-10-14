@@ -16,7 +16,7 @@ import { tinymceBasicConf } from "../../../../plugin_config/tinymce"
 // Use editor as controlled component:
 // https://github.com/tinymce/tinymce-react/blob/master/README.md
 
-const FinanceInvoiceEditNoteForm = ({ t, isSubmitting, values, errors, handleChange, submitForm, setFieldTouched, setFieldValue }) => (
+const FinanceQuoteEditNoteForm = ({ t, isSubmitting, values, errors, handleChange, submitForm, setFieldTouched, setFieldValue }) => (
   <Dimmer loader={isSubmitting} active={isSubmitting}>
     <FoForm>
       <Form.Group label={t('general.note')}>
@@ -44,4 +44,4 @@ const FinanceInvoiceEditNoteForm = ({ t, isSubmitting, values, errors, handleCha
   </Dimmer>
 )
 
-export default withTranslation()(withRouter(FinanceInvoiceEditNoteForm))
+export default withTranslation()(withRouter(FinanceQuoteEditNoteForm))
