@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import { get_list_query_variables } from "../tools"
-import { DELETE_INVOICE_ITEM, GET_INVOICES_QUERY, GET_INVOICE_QUERY } from "../queries"
+import { DELETE_QUOTE_ITEM, GET_QUOTES_QUERY, GET_QUOTE_QUERY } from "../queries"
 import confirm_delete from "../../../../tools/confirm_delete"
 
 import {
@@ -13,7 +13,7 @@ import {
 
 
 function FinanceQuoteItemDelete({t, match, node}) {
-  const [deleteQuoteItem] = useMutation(DELETE_INVOICE_ITEM)
+  const [deleteQuoteItem] = useMutation(DELETE_QUOTE_ITEM)
 
     return (
       <button className="icon btn btn-link btn-sm" 
@@ -33,8 +33,8 @@ function FinanceQuoteItemDelete({t, match, node}) {
                 }
               }, 
               refetchQueries: [
-                {query: GET_INVOICES_QUERY, variables: get_list_query_variables() },
-                {query: GET_INVOICE_QUERY, variables: {id: match.params.id} },
+                {query: GET_QUOTES_QUERY, variables: get_list_query_variables() },
+                {query: GET_QUOTE_QUERY, variables: {id: match.params.id} },
               ]
             }
           })

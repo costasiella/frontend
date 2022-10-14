@@ -84,11 +84,12 @@ function FinanceQuoteEdit({t, match, history, location}) {
           <FinanceQuoteEditSummary 
             initialData={data}
           />
-        <Alert type="primary">
+          {/* Activate code below once quotes are in shop accounts */}
+        {/* <Alert type="primary">
           <div className="mb-1"><b>{t("finance.quote.account_profile_link")}</b></div>
           {shopAccountQuoteUrl}<br />
           <div className="mt-1"><small><Icon name="info" /> {t("finance.quote.account_profile_link_explanation")}</small></div>
-        </Alert>
+        </Alert> */}
           <Grid.Row>
             <Grid.Col md={6} ml={0}>
               <FinanceQuoteEditOrganization organization={data.organization} />

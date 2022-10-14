@@ -38,7 +38,6 @@ function FinanceQuoteEditOptions({t, match, initialData}) {
             dateSent: dateSent,
             dateExpire: dateExpire,
             status: initialData.financeQuote.status,
-            financePaymentMethod: initialPaymentMethod
           }}
           // validationSchema={QUOTE_GROUP_SCHEMA}
           onSubmit={(values, { setSubmitting, setTouched }) => {

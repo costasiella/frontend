@@ -38,22 +38,6 @@ const FinanceQuoteEditBalance = ({ t, history, financeQuote }) => (
           {financeQuote.totalDisplay}
         </span>
       </div><br />
-      <div>
-        <span className="pull-left bold">
-          {t('general.paid')}
-        </span>
-        <span className="pull-right">
-          {financeQuote.paidDisplay}
-        </span>
-      </div><br />
-      <div>
-        <span className="pull-left bold">
-          {t('general.balance')}
-        </span>
-        <span className="pull-right">
-          {financeQuote.balanceDisplay}
-        </span>
-      </div>
     </Card.Body>
   </Card>
 )

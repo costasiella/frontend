@@ -47,10 +47,6 @@ export const GET_QUOTE_QUERY = gql`
         id
         name
       }
-      financePaymentMethod {
-        id
-        name
-      }
       customTo
       relationCompany
       relationCompanyRegistration
