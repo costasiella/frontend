@@ -316,8 +316,8 @@
             "toast_add_success": "Added Quote group",
             "public": "Show quotes from this group in account profiles",
             "prefix_year": "Prefix year",
-            "title_edit": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            "title_edit": "Edit Quote group",
+            "toast_edit_success": "Saved"
         }
     },
     "general": {
