@@ -192,6 +192,7 @@ import AccountNoteEdit from './components/relations/accounts/notes/AccountNoteEd
 import AccountOrders from './components/relations/accounts/orders/AccountOrders'
 import AccountProducts from './components/relations/accounts/products/AccountProducts'
 import AccountProductAdd from './components/relations/accounts/products/AccountProductAdd'
+import AccountQuotes from './components/relations/accounts/quotes/AccountQuotes'
 import AccountScheduleEventTickets from './components/relations/accounts/schedule_event_tickets/AccountScheduleEventTickets'
 import AccountSubscriptions from './components/relations/accounts/subscriptions/AccountSubscriptions'
 import AccountSubscriptionAdd from './components/relations/accounts/subscriptions/AccountSubscriptionAdd'
@@ -620,6 +621,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/orders" component={AccountOrders} />
             <PrivateRoute exact path="/relations/accounts/:account_id/products" component={AccountProducts} />
             <PrivateRoute exact path="/relations/accounts/:account_id/products/add" component={AccountProductAdd} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/quotes" component={AccountQuotes} />
             <PrivateRoute exact path="/relations/accounts/:account_id/event_tickets" component={AccountScheduleEventTickets} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions" component={AccountSubscriptions} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/add" component={AccountSubscriptionAdd} />
