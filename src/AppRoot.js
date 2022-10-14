@@ -74,6 +74,8 @@ import FinancePaymentMethods from './components/finance/payment_methods/FinanceP
 import FinancePaymentMethodAdd from './components/finance/payment_methods/FinancePaymentMethodAdd'
 import FinancePaymentMethodEdit from './components/finance/payment_methods/FinancePaymentMethodEdit'
 import FinanceQuotes from './components/finance/quotes/FinanceQuotes'
+import FinanceQuoteEdit from './components/finance/quotes/edit/FinanceQuoteEdit'
+import FinanceQuoteEditTo from './components/finance/quotes/edit/FinanceQuoteEditTo'
 import FinanceQuoteGroups from './components/finance/quotes/groups/FinanceQuoteGroups'
 import FinanceQuoteGroupAdd from './components/finance/quotes/groups/FinanceQuoteGroupAdd'
 import FinanceQuoteGroupEdit from './components/finance/quotes/groups/FinanceQuoteGroupEdit'
@@ -503,6 +505,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/paymentmethods/add" component={FinancePaymentMethodAdd} />
             <PrivateRoute exact path="/finance/paymentmethods/edit/:id" component={FinancePaymentMethodEdit} />
             <PrivateRoute exact path="/finance/quotes" component={FinanceQuotes} />
+            <PrivateRoute exact path="/finance/quotes/edit/:id" component={FinanceQuoteEdit} />
+            <PrivateRoute exact path="/finance/quotes/edit/:id/to" component={FinanceQuoteEditTo} />
             <PrivateRoute exact path="/finance/quotes/groups" component={FinanceQuoteGroups} />
             <PrivateRoute exact path="/finance/quotes/groups/add" component={FinanceQuoteGroupAdd} />
             <PrivateRoute exact path="/finance/quotes/groups/edit/:id" component={FinanceQuoteGroupEdit} />
