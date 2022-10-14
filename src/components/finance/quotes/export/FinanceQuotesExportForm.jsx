@@ -53,11 +53,11 @@ const FinanceQuotesExportForm = ({ t, history, isSubmitting, setFieldValue, setF
                     className={(errors.status) ? "form-control is-invalid" : "form-control"} 
                     autoComplete="off">
                 <option value="ALL" key={v4()}>{t('general.all')}</option>
-                <option value="DRAFT" key={v4()}>{t('finance.invoices.status.DRAFT')}</option>
-                <option value="SENT" key={v4()}>{t('finance.invoices.status.SENT')}</option>
-                <option value="ACCEPTED" key={v4()}>{t('finance.invoices.status.ACCEPTED')}</option>
-                <option value="REJECTED" key={v4()}>{t('finance.invoices.status.REJECTED')}</option>
-                <option value="CANCELLED" key={v4()}>{t('finance.invoices.status.CANCELLED')}</option>
+                <option value="DRAFT" key={v4()}>{t('finance.quotes.status.DRAFT')}</option>
+                <option value="SENT" key={v4()}>{t('finance.quotes.status.SENT')}</option>
+                <option value="ACCEPTED" key={v4()}>{t('finance.quotes.status.ACCEPTED')}</option>
+                <option value="REJECTED" key={v4()}>{t('finance.quotes.status.REJECTED')}</option>
+                <option value="CANCELLED" key={v4()}>{t('finance.quotes.status.CANCELLED')}</option>
               </Field>
               <ErrorMessage name="status" component="span" className="invalid-feedback" />
             </Form.Group>
@@ -71,7 +71,7 @@ const FinanceQuotesExportForm = ({ t, history, isSubmitting, setFieldValue, setF
             type="submit" 
             disabled={isSubmitting}
         >
-          {t('finance.invoices.export.btn_prepare_export')}
+          {t('finance.quotes.export.btn_prepare_export')}
         </Button>
         <ButtonFormCancel returnUrl={returnUrl} />
       </Card.Footer>
