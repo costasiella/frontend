@@ -135,6 +135,19 @@ function ProfileMenu({t, accountId, activeLink}) {
         </HasPermissionWrapper>
         <HasPermissionWrapper 
             permission="view"
+            resource="accountproduct">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/products"}
+                icon="package"
+                active={(activeLink === 'products')}
+                >
+            {t('relations.account.products.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
             resource="financeorder">
             <List.GroupItem
                 key={v4()}
@@ -144,6 +157,19 @@ function ProfileMenu({t, accountId, activeLink}) {
                 active={orders_active}
                 >
             {t('relations.account.orders.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
+            resource="financequote">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/quotes"}
+                icon="file"
+                active={(activeLink === "quotes")}
+                >
+            {t('relations.account.quotes.title')}
             </List.GroupItem>
         </HasPermissionWrapper>
         <HasPermissionWrapper 

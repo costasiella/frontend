@@ -73,6 +73,13 @@ import FinanceOrderEdit from './components/finance/orders/edit/FinanceOrderEdit'
 import FinancePaymentMethods from './components/finance/payment_methods/FinancePaymentMethods'
 import FinancePaymentMethodAdd from './components/finance/payment_methods/FinancePaymentMethodAdd'
 import FinancePaymentMethodEdit from './components/finance/payment_methods/FinancePaymentMethodEdit'
+import FinanceQuotes from './components/finance/quotes/FinanceQuotes'
+import FinanceQuotesExport from './components/finance/quotes/export/FinanceQuotesExport'
+import FinanceQuoteEdit from './components/finance/quotes/edit/FinanceQuoteEdit'
+import FinanceQuoteEditTo from './components/finance/quotes/edit/FinanceQuoteEditTo'
+import FinanceQuoteGroups from './components/finance/quotes/groups/FinanceQuoteGroups'
+import FinanceQuoteGroupAdd from './components/finance/quotes/groups/FinanceQuoteGroupAdd'
+import FinanceQuoteGroupEdit from './components/finance/quotes/groups/FinanceQuoteGroupEdit'
 import FinanceTaxRates from './components/finance/taxrates/FinanceTaxRates'
 import FinanceTaxRatesAdd from './components/finance/taxrates/FinanceTaxRateAdd'
 import FinanceTaxRatesEdit from './components/finance/taxrates/FinanceTaxRateEdit'
@@ -186,6 +193,10 @@ import AccountNotes from './components/relations/accounts/notes/AccountNotes.jsx
 import AccountNoteAdd from './components/relations/accounts/notes/AccountNoteAdd.jsx'
 import AccountNoteEdit from './components/relations/accounts/notes/AccountNoteEdit.jsx'
 import AccountOrders from './components/relations/accounts/orders/AccountOrders'
+import AccountProducts from './components/relations/accounts/products/AccountProducts'
+import AccountProductAdd from './components/relations/accounts/products/AccountProductAdd'
+import AccountQuotes from './components/relations/accounts/quotes/AccountQuotes'
+import AccountQuoteAdd from './components/relations/accounts/quotes/AccountQuoteAdd'
 import AccountScheduleEventTickets from './components/relations/accounts/schedule_event_tickets/AccountScheduleEventTickets'
 import AccountSubscriptions from './components/relations/accounts/subscriptions/AccountSubscriptions'
 import AccountSubscriptionAdd from './components/relations/accounts/subscriptions/AccountSubscriptionAdd'
@@ -494,6 +505,13 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/paymentmethods" component={FinancePaymentMethods} />
             <PrivateRoute exact path="/finance/paymentmethods/add" component={FinancePaymentMethodAdd} />
             <PrivateRoute exact path="/finance/paymentmethods/edit/:id" component={FinancePaymentMethodEdit} />
+            <PrivateRoute exact path="/finance/quotes" component={FinanceQuotes} />
+            <PrivateRoute exact path="/finance/quotes/export" component={FinanceQuotesExport} />
+            <PrivateRoute exact path="/finance/quotes/edit/:id" component={FinanceQuoteEdit} />
+            <PrivateRoute exact path="/finance/quotes/edit/:id/to" component={FinanceQuoteEditTo} />
+            <PrivateRoute exact path="/finance/quotes/groups" component={FinanceQuoteGroups} />
+            <PrivateRoute exact path="/finance/quotes/groups/add" component={FinanceQuoteGroupAdd} />
+            <PrivateRoute exact path="/finance/quotes/groups/edit/:id" component={FinanceQuoteGroupEdit} />
             <PrivateRoute exact path="/finance/taxrates" component={FinanceTaxRates} />
             <PrivateRoute exact path="/finance/taxrates/add" component={FinanceTaxRatesAdd} />
             <PrivateRoute exact path="/finance/taxrates/edit/:id" component={FinanceTaxRatesEdit} />
@@ -608,6 +626,10 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/notes/add" component={AccountNoteAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/notes/edit/:id" component={AccountNoteEdit} />
             <PrivateRoute exact path="/relations/accounts/:account_id/orders" component={AccountOrders} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/products" component={AccountProducts} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/products/add" component={AccountProductAdd} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/quotes" component={AccountQuotes} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/quotes/add" component={AccountQuoteAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/event_tickets" component={AccountScheduleEventTickets} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions" component={AccountSubscriptions} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/add" component={AccountSubscriptionAdd} />

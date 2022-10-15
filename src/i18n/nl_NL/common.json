@@ -460,7 +460,10 @@
         "confirm_action_yes": "__STRING_NOT_TRANSLATED__",
         "each": "__STRING_NOT_TRANSLATED__",
         "not_public": "__STRING_NOT_TRANSLATED__",
-        "duplicate": "__STRING_NOT_TRANSLATED__"
+        "duplicate": "__STRING_NOT_TRANSLATED__",
+        "quantity": "__STRING_NOT_TRANSLATED__",
+        "date_purchased": "__STRING_NOT_TRANSLATED__",
+        "finance_quote_group": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -810,6 +813,41 @@
             "structure": {
                 "title": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "quotes": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "status": {
+                "ALL": "__STRING_NOT_TRANSLATED__",
+                "DRAFT": "__STRING_NOT_TRANSLATED__",
+                "SENT": "__STRING_NOT_TRANSLATED__",
+                "ACCEPTED": "__STRING_NOT_TRANSLATED__",
+                "REJECTED": "__STRING_NOT_TRANSLATED__",
+                "CANCELLED": "__STRING_NOT_TRANSLATED__",
+                "NOT_FOUND": "__STRING_NOT_TRANSLATED__"
+            },
+            "quote_number": "__STRING_NOT_TRANSLATED__",
+            "summary": "__STRING_NOT_TRANSLATED__",
+            "relation": "__STRING_NOT_TRANSLATED__",
+            "date": "__STRING_NOT_TRANSLATED__",
+            "expiration": "__STRING_NOT_TRANSLATED__",
+            "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "deleted": "__STRING_NOT_TRANSLATED__"
+        },
+        "quote_groups": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "next_id": "__STRING_NOT_TRANSLATED__",
+            "expires_after_days": "__STRING_NOT_TRANSLATED__",
+            "auto_reset_prefix_year": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "public": "__STRING_NOT_TRANSLATED__",
+            "prefix_year": "__STRING_NOT_TRANSLATED__",
+            "title_edit": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
         }
     },
     "yup": {
@@ -1187,7 +1225,8 @@
             "invoices": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
-                "is_the_default_billing_address_for_this_account": "__STRING_NOT_TRANSLATED__"
+                "is_the_default_billing_address_for_this_account": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "memberships": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
@@ -1276,7 +1315,8 @@
                     "edit": "__STRING_NOT_TRANSLATED__",
                     "title_list": "__STRING_NOT_TRANSLATED__",
                     "empty_list": "__STRING_NOT_TRANSLATED__"
-                }
+                },
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "event_tickets": {
                 "title": "__STRING_NOT_TRANSLATED__",
@@ -1291,7 +1331,20 @@
                 "url_bio": "__STRING_NOT_TRANSLATED__",
                 "url_website": "__STRING_NOT_TRANSLATED__"
             },
-            "error_loading": "__STRING_NOT_TRANSLATED__"
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "products": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "deleted": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__"
+            },
+            "quotes": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "accounts": {
             "profile": "__STRING_NOT_TRANSLATED__",
@@ -1310,7 +1363,9 @@
             "deleted": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "invoice_to_business": "__STRING_NOT_TRANSLATED__",
-            "invoice_to_account": "__STRING_NOT_TRANSLATED__"
+            "invoice_to_account": "__STRING_NOT_TRANSLATED__",
+            "quote_to_business": "__STRING_NOT_TRANSLATED__",
+            "quote_to_account": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {

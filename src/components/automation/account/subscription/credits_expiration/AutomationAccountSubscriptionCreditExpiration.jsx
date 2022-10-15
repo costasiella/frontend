@@ -24,7 +24,7 @@ function AutomationAccountSubscriptionCreditExpiration({t, history, match}) {
     variables: {
       taskName: "costasiella.tasks.account.subscription.credits.tasks.account_subscription_credits_expire"
     },
-    pollInterval: 4000
+    pollInterval: 5000
   })
 
   // Loading

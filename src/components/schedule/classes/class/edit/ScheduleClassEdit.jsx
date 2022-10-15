@@ -4,6 +4,13 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import moment from 'moment'
+import {
+  Page,
+  Grid,
+  Card,
+  Container,
+} from "tabler-react";
 
 import { GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY, UPDATE_SCHEDULE_CLASS_WEEKLY_OTC } from './queries'
 import { GET_CLASSES_QUERY } from '../../queries'
@@ -14,14 +21,8 @@ import { TimeStringToJSDateOBJ, dateToLocalISOTime } from '../../../../../tools/
 
 import { class_subtitle } from "../tools"
 
-
-import {
-  Page,
-  Grid,
-  Card,
-  Container,
-} from "tabler-react";
 import SiteWrapper from "../../../../SiteWrapper"
+import ButtonListWeekChooser from '../../../../ui/ButtonListWeekChooser'
 import ScheduleClassWeeklyOTCDelete from './ScheduleClassWeeklyOTCDelete'
 import ScheduleClassBack from "../ScheduleClassBack"
 import ClassMenu from "../ClassMenu"
@@ -29,20 +30,29 @@ import ClassMenu from "../ClassMenu"
 
 function ScheduleClassEdit({ t, match, history }) {
   let showDelete = false
-  const schedule_item_id = match.params.class_id
-  const class_date = match.params.date
-  console.log(schedule_item_id)
-  console.log(class_date)
+  const scheduleItemId = match.params.class_id
+  const classDate = match.params.date
+  console.log(scheduleItemId)
+  console.log(classDate)
 
   const query_vars = {
-    scheduleItem: schedule_item_id,
-    date: class_date
+    scheduleItem: scheduleItemId,
+    date: classDate
   }
 
   const { loading: queryLoading, error: queryError, data: queryData } = useQuery(GET_SCHEDULE_CLASS_WEEKLY_OTCS_QUERY, {
     variables: query_vars,
   })
   const [ updateScheduleClassWeeklyOTC ] = useMutation(UPDATE_SCHEDULE_CLASS_WEEKLY_OTC)
+
+  function onClickPrevious() {
+    const previousWeek = moment(classDate).subtract(7, "days").format('YYYY-MM-DD')
+    history.push(`/schedule/classes/class/edit/${scheduleItemId}/${previousWeek}`)
+  }
+  function onClickNext () {
+    const previousWeek = moment(classDate).add(7, "days").format('YYYY-MM-DD')
+    history.push(`/schedule/classes/class/edit/${scheduleItemId}/${previousWeek}`)
+  }
 
   if (queryLoading) return <p>{t('general.loading_with_dots')}</p>
   // Error
@@ -61,7 +71,7 @@ function ScheduleClassEdit({ t, match, history }) {
     locationRoom: scheduleItem.organizationLocationRoom.name,
     classtype: scheduleItem.organizationClasstype.name, 
     timeStart: TimeStringToJSDateOBJ(scheduleItem.timeStart), 
-    date: class_date
+    date: classDate
   })
   
   let initialData
@@ -129,6 +139,11 @@ function ScheduleClassEdit({ t, match, history }) {
           <Page.Header title={t('schedule.title')} subTitle={subtitle}>
             <div className="page-options d-flex">       
               <ScheduleClassBack />
+              <ButtonListWeekChooser 
+                showCurrent={false}
+                onClickPrevious={onClickPrevious}
+                onClickNext={onClickNext}
+              />
             </div>
           </Page.Header>
           <Grid.Row>
@@ -159,8 +174,8 @@ function ScheduleClassEdit({ t, match, history }) {
 
                         updateScheduleClassWeeklyOTC({ variables: {
                           input: {
-                            scheduleItem: schedule_item_id,
-                            date: class_date,
+                            scheduleItem: scheduleItemId,
+                            date: classDate,
                             status: values.status,
                             description: values.description,
                             account: values.account,
@@ -218,8 +233,8 @@ function ScheduleClassEdit({ t, match, history }) {
                 <ScheduleClassWeeklyOTCDelete /> : ""
               }
               <ClassMenu 
-                scheduleItemId={schedule_item_id}
-                class_date={class_date}
+                scheduleItemId={scheduleItemId}
+                classDate={classDate}
                 activeLink="edit"
               />
             </Grid.Col>

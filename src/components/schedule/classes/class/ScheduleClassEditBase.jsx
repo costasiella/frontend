@@ -32,7 +32,7 @@ function ScheduleClassEditBase({ t, match, history, children, subTitle="", menuA
             <Grid.Col xs={12} sm={3} md={3}>
               <ClassMenu 
                 scheduleItemId={scheduleItemId}
-                class_date={classDate}
+                classDate={classDate}
                 activeLink={menuActiveLink}
               />
             </Grid.Col>

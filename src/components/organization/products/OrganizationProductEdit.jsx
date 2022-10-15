@@ -151,6 +151,7 @@ function OrganizationProductEdit({ t, history, match }) {
               })
               setSubmitting(false)
             } else {
+              // No file provided, update the data by calling updateProduct
               updateProduct()
             }
           }}

@@ -283,6 +283,41 @@
             "structure": {
                 "title": "Structure"
             }
+        },
+        "quotes": {
+            "title": "Quotes",
+            "explanation": "Manage quotes",
+            "error_loading": "Error loading quotes... :(",
+            "empty_list": "No quotes have been created yet",
+            "status": {
+                "ALL": "All",
+                "DRAFT": "Draft",
+                "SENT": "Sent",
+                "ACCEPTED": "Accepted",
+                "REJECTED": "Rejected",
+                "CANCELLED": "Cancelled",
+                "NOT_FOUND": "Not found"
+            },
+            "quote_number": "Quote number",
+            "summary": "Summary",
+            "relation": "Relation",
+            "date": "Date",
+            "expiration": "Expiration",
+            "delete_confirm_msg": "Are you sure you wish to delete this quote?",
+            "deleted": "Deleted quote"
+        },
+        "quote_groups": {
+            "title": "Quote groups",
+            "error_loading": "Error loading quote groups... :(",
+            "next_id": "Next #",
+            "expires_after_days": "Expires after days",
+            "auto_reset_prefix_year": "Reset to 1 on January 1st",
+            "title_add": "Add Quote group",
+            "toast_add_success": "Added Quote group",
+            "public": "Show quotes from this group in account profiles",
+            "prefix_year": "Prefix year",
+            "title_edit": "Edit Quote group",
+            "toast_edit_success": "Saved"
         }
     },
     "general": {
@@ -551,7 +586,10 @@
         "confirm_action_yes": "Continue",
         "each": "Each",
         "not_public": "Not public",
-        "duplicate": "Duplicate"
+        "duplicate": "Duplicate",
+        "quantity": "Quantity",
+        "date_purchased": "Date purchased",
+        "finance_quote_group": "Quote group"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -895,7 +933,7 @@
             }
         },
         "products": {
-            "title": "Products (beta)",
+            "title": "Products",
             "explanation": "Quickly create an invoice for items within the product catalog",
             "add": "Add product",
             "toast_add_success": "Added product",
@@ -946,7 +984,9 @@
             "profile_image": "Profile picture",
             "explanation": "Customer, instructor & employee accounts",
             "invoice_to_business": "Invoice to this account or a business",
-            "invoice_to_account": "Invoice to account"
+            "invoice_to_account": "Invoice to account",
+            "quote_to_business": "Quote to business or to this account",
+            "quote_to_account": "Quote to account"
         },
         "account": {
             "subscriptions": {
@@ -1009,7 +1049,8 @@
                     "toast_you_are_now_editing": "You're now editing the added invoice",
                     "add": "Add invoice",
                     "empty_list": "No invoices have been created yet for this subscription"
-                }
+                },
+                "empty_list": "This account doesn't have any subscriptions yet."
             },
             "classpasses": {
                 "title_add": "Add class pass",
@@ -1046,7 +1087,8 @@
             "invoices": {
                 "title_add": "Add invoice",
                 "title": "Invoices",
-                "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation."
+                "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation.",
+                "empty_list": "No invoices have been created for this account yet."
             },
             "accepted_documents": {
                 "title": "Accepted documents",
@@ -1120,6 +1162,19 @@
                 "delete_confirm_msg": "Are you sure you wish to delete this document?",
                 "deleted": "Deleted document",
                 "empty_list": "No documents have been uploaded yet for this customer"
+            },
+            "products": {
+                "title": "Products",
+                "empty_list": "This customer hasn't purchased any products yet",
+                "delete_confirm_msg": "Are you sure you wish to remove this product from this account?",
+                "deleted": "Product removed",
+                "title_add": "Choose a product to add",
+                "toast_add_success": "Added product"
+            },
+            "quotes": {
+                "title": "Quotes",
+                "empty_list": "No quotes have been created for this account yet",
+                "title_add": "Add Quote"
             }
         },
         "b2b": {
@@ -2004,7 +2059,7 @@
             "deleted": "Deleted inactive accounts report. (Accounts have not been deleted).",
             "card_title": "Accounts without activity after",
             "count_inactive_accounts": "Inactive accounts found",
-            "explanation_when_inactive": "__STRING_NOT_TRANSLATED__",
+            "explanation_when_inactive": "An account is seen as inactive when there have been no signins or any activity related to the account after the specified date.",
             "title_add": "Create inactive accounts report",
             "toast_add_success": "Added new inactive account report. Please refresh the page in a bit to view the inactive accounts.",
             "accounts": {

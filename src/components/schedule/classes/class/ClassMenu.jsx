@@ -9,7 +9,7 @@ import {
 import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
 
-function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
+function ClassMenu ({ t, scheduleItemId, classDate, activeLink }) {
   let attendance_active = false
   let attendancechart_active = false
   let edit_active = false
@@ -38,7 +38,7 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
           <List.GroupItem
               key={v4()}
               className="d-flex align-items-center"
-              to={"#/schedule/classes/class/attendance/" + scheduleItemId + "/" + class_date}
+              to={"#/schedule/classes/class/attendance/" + scheduleItemId + "/" + classDate}
               icon="check-circle"
               active={attendance_active}
               >
@@ -52,7 +52,7 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
           <List.GroupItem
               key={v4()}
               className="d-flex align-items-center"
-              to={"#/schedule/classes/class/attendance_chart/" + scheduleItemId + "/" + class_date}
+              to={"#/schedule/classes/class/attendance_chart/" + scheduleItemId + "/" + classDate}
               icon="bar-chart-2"
               active={attendancechart_active}
               >
@@ -66,7 +66,7 @@ function ClassMenu ({ t, scheduleItemId, class_date, activeLink }) {
           <List.GroupItem
               key={v4()}
               className="d-flex align-items-center"
-              to={"#/schedule/classes/class/edit/" + scheduleItemId + "/" + class_date}
+              to={"#/schedule/classes/class/edit/" + scheduleItemId + "/" + classDate}
               icon="edit-3"
               active={edit_active}
               >

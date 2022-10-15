@@ -63,7 +63,7 @@ function setAttendanceStatus({t, match, updateAttendance, node, status}) {
 function ScheduleClassAttendance({ t, match, history }) {
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
-  const { loading, error, data, fetchMore } = useQuery(
+  const { loading, error, data, refetch, fetchMore } = useQuery(
     GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, {
       variables: get_attendance_list_query_variables(schedule_item_id, class_date)
     }
@@ -91,7 +91,7 @@ function ScheduleClassAttendance({ t, match, history }) {
   ))
 
   return (
-    <ScheduleClassAttendanceBase>
+    <ScheduleClassAttendanceBase refetch={refetch}>
       {(scheduleClass.status === 'CANCELLED') ? 
         <Alert type="warning">
           <strong>{t("schedule.classes.class.attendance.this_class_is_cancelled")}</strong> - {" "}
