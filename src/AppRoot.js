@@ -76,7 +76,7 @@ import FinancePaymentMethodEdit from './components/finance/payment_methods/Finan
 import FinanceQuotes from './components/finance/quotes/FinanceQuotes'
 import FinanceQuotesExport from './components/finance/quotes/export/FinanceQuotesExport'
 import FinanceQuoteEdit from './components/finance/quotes/edit/FinanceQuoteEdit'
-import FinanceQuoteEditTo from './components/finance/quotes/edit/FinanceQuoteEditTo'
+import FinanceQuoteEditTo from './components/finance/quotes/edit_to/FinanceQuoteEditTo'
 import FinanceQuoteGroups from './components/finance/quotes/groups/FinanceQuoteGroups'
 import FinanceQuoteGroupAdd from './components/finance/quotes/groups/FinanceQuoteGroupAdd'
 import FinanceQuoteGroupEdit from './components/finance/quotes/groups/FinanceQuoteGroupEdit'

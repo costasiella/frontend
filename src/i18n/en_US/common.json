@@ -304,7 +304,28 @@
             "date": "Date",
             "expiration": "Expiration",
             "delete_confirm_msg": "Are you sure you wish to delete this quote?",
-            "deleted": "Deleted quote"
+            "deleted": "Deleted quote",
+            "edit_to": {
+                "custom_to": "Manyally set to address, don't copy address from business or account"
+            },
+            "relation_company": "Company",
+            "relation_company_registration": "Registration",
+            "relation_company_tax_registration": "Tax registration",
+            "relation_contact_name": "Contact name",
+            "relation_address": "Address",
+            "relation_postcode": "Postcode",
+            "relation_city": "City",
+            "relation_country": "Country",
+            "item_delete_confirm_msg": "Are you sure you wish to delete this item?",
+            "item_deleted": "Item deleted",
+            "export": {
+                "title": "Export quotes",
+                "ready": {
+                    "title": "Export ready",
+                    "explanation": "An export has been prepared with the following values:"
+                },
+                "btn_prepare_export": "Prepare export"
+            }
         },
         "quote_groups": {
             "title": "Quote groups",
@@ -318,6 +339,26 @@
             "prefix_year": "Prefix year",
             "title_edit": "Edit Quote group",
             "toast_edit_success": "Saved"
+        },
+        "quote": {
+            "toast_edit_to_success": "Saved",
+            "edit_to": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "title": "Quote",
+            "account_profile_link": "__STRING_NOT_TRANSLATED__",
+            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_terms_success": "Terms Saved",
+            "toast_edit_footer_success": "Footer Saved",
+            "toast_edit_note_success": "Note Saved",
+            "saved_item_sorting": "Updated sorting",
+            "toast_edit_options_success": "Options saved",
+            "toast_edit_summary_success": "Summary saved",
+            "toast_add_item_success": "Added item",
+            "item_add": "Add item",
+            "item": {
+                "toast_edit_success": "Saved item"
+            }
         }
     },
     "general": {
