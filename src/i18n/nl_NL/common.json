@@ -834,7 +834,28 @@
             "date": "__STRING_NOT_TRANSLATED__",
             "expiration": "__STRING_NOT_TRANSLATED__",
             "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
-            "deleted": "__STRING_NOT_TRANSLATED__"
+            "deleted": "__STRING_NOT_TRANSLATED__",
+            "edit_to": {
+                "custom_to": "__STRING_NOT_TRANSLATED__"
+            },
+            "relation_company": "__STRING_NOT_TRANSLATED__",
+            "relation_company_registration": "__STRING_NOT_TRANSLATED__",
+            "relation_company_tax_registration": "__STRING_NOT_TRANSLATED__",
+            "relation_contact_name": "__STRING_NOT_TRANSLATED__",
+            "relation_address": "__STRING_NOT_TRANSLATED__",
+            "relation_postcode": "__STRING_NOT_TRANSLATED__",
+            "relation_city": "__STRING_NOT_TRANSLATED__",
+            "relation_country": "__STRING_NOT_TRANSLATED__",
+            "item_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "item_deleted": "__STRING_NOT_TRANSLATED__",
+            "export": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "ready": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "explanation": "__STRING_NOT_TRANSLATED__"
+                },
+                "btn_prepare_export": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "quote_groups": {
             "title": "__STRING_NOT_TRANSLATED__",
@@ -848,6 +869,26 @@
             "prefix_year": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+        },
+        "quote": {
+            "toast_edit_to_success": "__STRING_NOT_TRANSLATED__",
+            "edit_to": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "title": "__STRING_NOT_TRANSLATED__",
+            "account_profile_link": "__STRING_NOT_TRANSLATED__",
+            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_terms_success": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_footer_success": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_note_success": "__STRING_NOT_TRANSLATED__",
+            "saved_item_sorting": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_options_success": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_summary_success": "__STRING_NOT_TRANSLATED__",
+            "toast_add_item_success": "__STRING_NOT_TRANSLATED__",
+            "item_add": "__STRING_NOT_TRANSLATED__",
+            "item": {
+                "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            }
         }
     },
     "yup": {
