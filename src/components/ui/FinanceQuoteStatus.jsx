@@ -8,10 +8,6 @@ import {
 
 
 class FinanceQuoteStatus extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const t = this.props.t
     const status = this.props.status

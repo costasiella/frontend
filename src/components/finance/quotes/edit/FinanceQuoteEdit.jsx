@@ -4,15 +4,13 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import {
-  Alert,
   Page,
   Grid,
   Icon,
   Button,
 } from "tabler-react";
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
 
-import { GET_QUOTE_QUERY, CANCEL_AND_CREATE_CREDIT_QUOTE } from '../queries'
+import { GET_QUOTE_QUERY } from '../queries'
 import { TOKEN_REFRESH } from "../../../../queries/system/auth"
 import { refreshTokenAndOpenExportLinkInNewTab } from "../../../../tools/refresh_token_and_open_export_link"
 
@@ -54,7 +52,7 @@ function FinanceQuoteEdit({t, match, history, location}) {
     returnUrl = "/finance/quotes"
   }
   const export_url = "/d/export/quote/pdf/" + id
-  const shopAccountQuoteUrl = `${window.location.protocol}//${window.location.host}/#/shop/account/quote/${id}`
+  // const shopAccountQuoteUrl = `${window.location.protocol}//${window.location.host}/#/shop/account/quote/${id}`
 
   return (
     <FinanceQuoteEditBase>
