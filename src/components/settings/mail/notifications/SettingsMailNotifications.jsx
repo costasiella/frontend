@@ -97,6 +97,7 @@ function SettingsMailNotifications({ t, history }) {
                   </Table.Col>
                   <Table.Col>
                     {node.accounts.edges.map(({ node: accountNode }) => {
+                      // TODO: Add a delete button to the right of each account
                       <span>{accountNode.fullName}<br /></span>
                     })}
                     <Link to={`/settings/mail/notifications/add_account/${node.id}`}>
