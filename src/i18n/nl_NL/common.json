@@ -160,7 +160,9 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "error_loading": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "accounts": "__STRING_NOT_TRANSLATED__",
+                "add_account": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {

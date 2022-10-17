@@ -1949,7 +1949,9 @@
                 "title": "Notifications",
                 "explanation": "Manage accounts to get notified of events in Costasiella",
                 "error_loading": "Error loading notification settings... :(",
-                "empty_list": "No notifications have been defined yet. Please check with your system administrator whether the fixtures have been loaded."
+                "empty_list": "No notifications have been defined yet. Please check with your system administrator whether the fixtures have been loaded.",
+                "accounts": "Accounts receiving this notification",
+                "add_account": "Add account"
             }
         },
         "home": {

@@ -3,13 +3,14 @@ import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-
+import { Link } from "react-router-dom"
 import {
+  Button,
   Dimmer,
   Table
 } from "tabler-react";
 
-import ButtonEdit from "../../../ui/ButtonEdit"
+// import ButtonAdd from "../../../ui/ButtonAdd"
 import ContentCard from "../../../general/ContentCard"
 
 import { GET_NOTIFICATIONS_QUERY } from "./queries"
@@ -84,7 +85,7 @@ function SettingsMailNotifications({ t, history }) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-              {/* <Table.ColHeader>{t('settings.mail.mailchimp_lists.mailchimp_list_id')}</Table.ColHeader> */}
+              <Table.ColHeader>{t('settings.mail.notifications.accounts')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
@@ -94,11 +95,17 @@ function SettingsMailNotifications({ t, history }) {
                   <Table.Col key={v4()}>
                     {node.name}
                   </Table.Col>
-                  {/* <Table.Col key={v4()}>
-                    {node.mailchimpListId}
-                  </Table.Col> */}
-                  <Table.Col className="text-right" key={v4()}>
-                    <ButtonEdit editUrl={`/settings/mail/notifications/add_account/${node.id}`} />
+                  <Table.Col>
+                    {node.accounts.edges.map(({ node: accountNode }) => {
+                      <span>{accountNode.fullName}<br /></span>
+                    })}
+                    <Link to={`/settings/mail/notifications/add_account/${node.id}`}>
+                      <Button
+                        color="link"
+                        icon="plus-circle">
+                          {t("settings.mail.notifications.add_account")}
+                      </Button>
+                    </Link>
                   </Table.Col>
                 </Table.Row>
               ))}
