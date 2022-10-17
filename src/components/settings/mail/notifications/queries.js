@@ -14,9 +14,13 @@ export const GET_NOTIFICATIONS_QUERY = gql`
           id
           name
           accounts {
-            id
-            fullName
-            email
+            edges {
+              node {
+                id
+                fullName
+                email
+              }
+            }
           }
         }
       }

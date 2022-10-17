@@ -1946,8 +1946,10 @@
                 "toast_edit_success": "Saved"
             },
             "notifications": {
-                "title": "notifications",
-                "explanation": "Manage accounts to get notified of events in Costasiella"
+                "title": "Notifications",
+                "explanation": "Manage accounts to get notified of events in Costasiella",
+                "error_loading": "Error loading notification settings... :(",
+                "empty_list": "No notifications have been defined yet. Please check with your system administrator whether the fixtures have been loaded."
             }
         },
         "home": {
