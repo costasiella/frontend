@@ -343,11 +343,11 @@
         "quote": {
             "toast_edit_to_success": "Saved",
             "edit_to": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "Edit To"
             },
             "title": "Quote",
-            "account_profile_link": "__STRING_NOT_TRANSLATED__",
-            "account_profile_link_explanation": "__STRING_NOT_TRANSLATED__",
+            "account_profile_link": "Link to quote in account profile",
+            "account_profile_link_explanation": "Link to the quote in the profile of this account. Only the account associated with this quote will be able to view it after signing in.",
             "toast_edit_terms_success": "Terms Saved",
             "toast_edit_footer_success": "Footer Saved",
             "toast_edit_note_success": "Note Saved",
@@ -1944,6 +1944,10 @@
                 "delete_success": "Deleted",
                 "title_edit": "Edit MailChimp List",
                 "toast_edit_success": "Saved"
+            },
+            "notifications": {
+                "title": "notifications",
+                "explanation": "Manage accounts to get notified of events in Costasiella"
             }
         },
         "home": {
