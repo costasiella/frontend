@@ -630,7 +630,9 @@
         "duplicate": "Duplicate",
         "quantity": "Quantity",
         "date_purchased": "Date purchased",
-        "finance_quote_group": "Quote group"
+        "finance_quote_group": "Quote group",
+        "search_account_not_found": "__STRING_NOT_TRANSLATED__",
+        "search_no_account_results": "__STRING_NOT_TRANSLATED__"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1951,7 +1953,11 @@
                 "error_loading": "Error loading notification settings... :(",
                 "empty_list": "No notifications have been defined yet. Please check with your system administrator whether the fixtures have been loaded.",
                 "accounts": "Accounts receiving this notification",
-                "add_account": "Add account"
+                "add_account": "Add account",
+                "toast_add_success": "Added account",
+                "btn_add_account": "Notify account",
+                "title_add_account": "Add account",
+                "placeholder_search_account": "Search to find accounts to notify"
             }
         },
         "home": {

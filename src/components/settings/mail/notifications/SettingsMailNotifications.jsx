@@ -53,6 +53,8 @@ function SettingsMailNotifications({ t, history }) {
     </SettingsMailNotificationsBase>
   )}
 
+  console.log(notifications)
+
   return (
     <SettingsMailNotificationsBase>
       <ContentCard cardTitle={cardTitle}
@@ -85,8 +87,7 @@ function SettingsMailNotifications({ t, history }) {
           <Table.Header>
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-              <Table.ColHeader>{t('settings.mail.notifications.accounts')}</Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>
+              <Table.ColHeader className="text-right">{t('settings.mail.notifications.accounts')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -96,17 +97,23 @@ function SettingsMailNotifications({ t, history }) {
                     {node.name}
                   </Table.Col>
                   <Table.Col>
-                    {node.accounts.edges.map(({ node: accountNode }) => {
-                      // TODO: Add a delete button to the right of each account
-                      <span>{accountNode.fullName}<br /></span>
-                    })}
-                    <Link to={`/settings/mail/notifications/add_account/${node.id}`}>
-                      <Button
-                        color="link"
-                        icon="plus-circle">
-                          {t("settings.mail.notifications.add_account")}
-                      </Button>
-                    </Link>
+                    <div className='float-right'>
+                      {node.accounts.edges.map(({ node: accountNode }) => (
+                        // TODO: Add a delete button to the right of each account
+                        // console.log(accountNode)
+                        <div>
+                          {accountNode.fullName}<br />
+                          <span className='text-muted'>{accountNode.email}</span>
+                        </div>
+                      ))}
+                      <Link to={`/settings/mail/notifications/add_account/${node.id}`}>
+                        <Button
+                          color="link"
+                          icon="plus-circle">
+                            {t("settings.mail.notifications.add_account")}
+                        </Button>
+                      </Link>
+                    </div>
                   </Table.Col>
                 </Table.Row>
               ))}

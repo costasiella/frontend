@@ -162,7 +162,11 @@
                 "error_loading": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "accounts": "__STRING_NOT_TRANSLATED__",
-                "add_account": "__STRING_NOT_TRANSLATED__"
+                "add_account": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "btn_add_account": "__STRING_NOT_TRANSLATED__",
+                "title_add_account": "__STRING_NOT_TRANSLATED__",
+                "placeholder_search_account": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -471,7 +475,9 @@
         "duplicate": "__STRING_NOT_TRANSLATED__",
         "quantity": "__STRING_NOT_TRANSLATED__",
         "date_purchased": "__STRING_NOT_TRANSLATED__",
-        "finance_quote_group": "__STRING_NOT_TRANSLATED__"
+        "finance_quote_group": "__STRING_NOT_TRANSLATED__",
+        "search_account_not_found": "__STRING_NOT_TRANSLATED__",
+        "search_no_account_results": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {

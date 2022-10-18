@@ -27,3 +27,21 @@ export const GET_NOTIFICATIONS_QUERY = gql`
     }
   }
 `
+
+export const CREATE_NOTIFICATION_ACCOUNT = gql`
+  mutation CreateSystemNotificationAccount($input:CreateSystemNotificationAccountInput!) {
+    createSystemNotificationAccount(input:$input) {
+      systemNotificationAccount {
+        id
+      }
+    }
+  }
+`
+
+export const DELETE_NOTIFICATION_ACCOUNT = gql`
+  mutation DeleteSystemNotificationAccount($input:DeleteSystemNotificationAccountInput!) {
+    deleteSystemNotificationAccount(input:$input) {
+      ok
+    }
+  }
+`

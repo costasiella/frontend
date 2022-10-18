@@ -11,10 +11,26 @@ import {
   Table
 } from "tabler-react";
 
-import { get_accounts_query_variables } from "./tools"
-import ContentCard from "../../../../general/ContentCard"
-import InputSearch from "../../../../general/InputSearch"
-import { GET_ACCOUNTS_QUERY } from "../../../../../queries/accounts/account_search_queries"
+import ContentCard from "../general/ContentCard"
+import InputSearch from '../general/InputSearch'
+import { GET_ACCOUNTS_QUERY } from '../../queries/accounts/account_search_queries'
+
+// Action buttons
+import SettingsMailNotificationButtonAddAccount from '../settings/mail/notifications/SettingsMailNotificationButtonAddAccount'
+
+function get_accounts_query_variables(searchName) {
+  let queryVars = {
+    instructor: undefined,
+    employee: undefined,
+    searchName: undefined,
+  }
+
+  if (searchName) {
+    queryVars.searchName = searchName
+  }
+
+  return queryVars
+}
 
 
 function SearchAccounts({ 
@@ -24,13 +40,20 @@ function SearchAccounts({
   placeholderSearch="", 
   btnDisableAccountIds=[],
   btnDisabledMessage="",
-  link="",
-  button,
+  btnAction,
  }) {
   const [showSearchResults, setShowSearchResults] = useState(false)
-  const schedule_item_id = match.params.class_id
-  const class_date = match.params.date
   const [ getAccounts, { called, loading, error, data, refetch, fetchMore } ] = useLazyQuery( GET_ACCOUNTS_QUERY )
+
+  function renderActionButton(accountId) {
+    switch(btnAction) {
+      case "settingsMailNotificationAddAccount":
+        return <SettingsMailNotificationButtonAddAccount accountId={accountId} />
+        break
+      default:
+        return "btnAction type not defined"
+    }
+  }
 
   function Search() {
     return <InputSearch 
@@ -136,9 +159,7 @@ function SearchAccounts({
                 <Table.Col key={v4()}>
                   {(btnDisableAccountIds.includes(node.id)) ? 
                     <span className="pull-right">{btnDisabledMessage}</span> :
-                    <Link to={link + `/${node.id}`}>
-                      {button}
-                    </Link>       
+                    <span className="pull-right">{renderActionButton(node.id)}</span>
                   }   
                 </Table.Col>
               </Table.Row>
