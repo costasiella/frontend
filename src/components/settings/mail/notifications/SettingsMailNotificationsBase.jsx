@@ -8,8 +8,6 @@ import {
   Container,
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
-import HasPermissionWrapper from "../../../HasPermissionWrapper"
-import ButtonAdd from "../../../ui/ButtonAdd"
 import ButtonBack from "../../../ui/ButtonBack"
 
 
