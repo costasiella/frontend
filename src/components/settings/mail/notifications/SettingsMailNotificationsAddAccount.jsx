@@ -9,7 +9,7 @@ import SearchAccounts from '../../../ui/SearchAccounts'
 function SettingsMailNotificationsAddAccount({ t, match, history }) {
 
   return (
-    <SettingsMailNotificationsBase>
+    <SettingsMailNotificationsBase showBack={true}>
       <SearchAccounts
         localStorateKeySearchValue="" 
         placeholderSearch={t("settings.mail.notifications.placeholder_search_account")} 
