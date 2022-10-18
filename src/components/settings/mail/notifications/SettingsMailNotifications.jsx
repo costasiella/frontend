@@ -15,6 +15,7 @@ import ContentCard from "../../../general/ContentCard"
 
 import { GET_NOTIFICATIONS_QUERY } from "./queries"
 import SettingsMailNotificationsBase from './SettingsMailNotificationsBase'
+import SettingsMailNotificationButtonDeleteAccount from './SettingsMailNotificationButtonDeleteAccount'
 
 
 function SettingsMailNotifications({ t, history }) {
@@ -102,6 +103,13 @@ function SettingsMailNotifications({ t, history }) {
                         // TODO: Add a delete button to the right of each account
                         // console.log(accountNode)
                         <div>
+                          <div className='float-right'>
+                            <SettingsMailNotificationButtonDeleteAccount
+                              node={accountNode}
+                              notificationId={node.id}
+                              accountId={accountNode.id}
+                            />
+                          </div>
                           {accountNode.fullName}<br />
                           <span className='text-muted'>{accountNode.email}</span>
                         </div>

@@ -166,7 +166,9 @@
                 "toast_add_success": "__STRING_NOT_TRANSLATED__",
                 "btn_add_account": "__STRING_NOT_TRANSLATED__",
                 "title_add_account": "__STRING_NOT_TRANSLATED__",
-                "placeholder_search_account": "__STRING_NOT_TRANSLATED__"
+                "placeholder_search_account": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {

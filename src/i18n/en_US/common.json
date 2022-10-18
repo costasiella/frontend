@@ -631,8 +631,8 @@
         "quantity": "Quantity",
         "date_purchased": "Date purchased",
         "finance_quote_group": "Quote group",
-        "search_account_not_found": "__STRING_NOT_TRANSLATED__",
-        "search_no_account_results": "__STRING_NOT_TRANSLATED__"
+        "search_account_not_found": "Account not found",
+        "search_no_account_results": "The search didn't return any results"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1015,8 +1015,8 @@
             "toast_add_success": "Created account",
             "title": "Accounts",
             "error_loading": "Error loading accounts :(",
-            "empty_list": "No accounts found. There are no active accounts or your search didn't return a result.",
-            "empty_archive": "No accounts found. No accounts have been deleted yet or your search didn't return a result.",
+            "empty_list": "No accounts found. There are no active accounts or the search didn't return a result.",
+            "empty_archive": "No accounts found. No accounts have been deleted yet or the search didn't return a result.",
             "delete_confirm_msg": "Are you sure you wish to delete this account and all associated data?",
             "deleted": "Deleted account",
             "profile": "Profile",
@@ -1318,7 +1318,7 @@
                     },
                     "delete_confirm_msg": "Are you sure you wish to remove this customer from the attendance list?",
                     "delete_success": "Customer removed from list",
-                    "search_result_empty": "No customers found matching your search",
+                    "search_result_empty": "No customers found matching the search",
                     "search_results_already_checked_in": "Already checked-in",
                     "empty_list": "No attendance registered yet",
                     "error_loading": "Error loading... :(",
@@ -1326,7 +1326,7 @@
                     "this_class_is_cancelled": "This class has been cancelled",
                     "unable_to_add_attendance": "Unable to add attendance",
                     "search_customer_not_found": "Customer not found",
-                    "search_no_account_results": "Your search didn't return any results",
+                    "search_no_account_results": "The search didn't return any results",
                     "confirm_resending_info_mail_to": "Do you wish to resend the info mail for this class to the account below?",
                     "resend_success": "Sent info mail",
                     "resend_info_mail": "Resend info mail",
@@ -1957,7 +1957,9 @@
                 "toast_add_success": "Added account",
                 "btn_add_account": "Notify account",
                 "title_add_account": "Add account",
-                "placeholder_search_account": "Search to find accounts to notify"
+                "placeholder_search_account": "Search to find accounts to notify",
+                "delete_confirm_msg": "Are you sure you wish to remove this account from the notification list?",
+                "delete_success": "Account removed from notification list"
             }
         },
         "home": {
