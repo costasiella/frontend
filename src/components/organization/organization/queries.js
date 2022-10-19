@@ -16,6 +16,10 @@ export const GET_ORGANIZATION_QUERY = gql`
       urlLogoEmail
       urlLogoShopHeader
       urlLogoSelfCheckin
+      brandingColorBackground
+      brandingColorText
+      brandingColorAccent
+      brandingColorSecondary
     }
   }
 `
