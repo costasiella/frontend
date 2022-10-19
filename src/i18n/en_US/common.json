@@ -894,7 +894,14 @@
             "logo_invoice": "Logo Invoice",
             "logo_email": "Logo email",
             "logo_shop_header": "Logo shop header",
-            "logo_self_checkin": "Logo self check-in"
+            "logo_self_checkin": "Logo self check-in",
+            "title_colors": "Branding colors",
+            "toast_save_colors_success": "Saved colors",
+            "color_background": "Background",
+            "color_text": "Text",
+            "color_accent": "Accent",
+            "color_secondary": "Secondary",
+            "colors_explanation": "Branding colors are used in quote and invoice templates"
         },
         "announcements": {
             "title": "Announcements",
@@ -1956,7 +1963,6 @@
                 "add_account": "Add account",
                 "toast_add_success": "Added account",
                 "btn_add_account": "Notify account",
-                "title_add_account": "Add account",
                 "placeholder_search_account": "Search to find accounts to notify",
                 "delete_confirm_msg": "Are you sure you wish to remove this account from the notification list?",
                 "delete_success": "Account removed from notification list"

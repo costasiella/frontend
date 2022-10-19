@@ -29,6 +29,11 @@ table .btn {
   margin-left: 0.7rem;
 }
 
+/* Color chooser input height */
+input[type=color] {
+  height: 50px;
+}
+
 /* Show error messages under <Editor> components */
 .invalid-feedback {
   display: block;

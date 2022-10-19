@@ -23,3 +23,13 @@ export const GET_ORGANIZATION_QUERY = gql`
     }
   }
 `
+
+export const UPDATE_ORGANIZATION = gql`
+mutation UpdateOrganization($input: UpdateOrganizationInput!) {
+  updateOrganization(input: $input) {
+    organization {
+      id
+    }
+  }
+}
+`
