@@ -136,6 +136,16 @@ function SettingsHome({ t, match, params }) {
                 </Card.Body>
               </Card>
             </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.mail.notifications.title")}</h5>
+                  {t("settings.mail.notifications.explanation")}
+                  <br /><br />
+                  <HomeItemButton link="/settings/mail/notifications" />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
           </Grid.Row>
           <Grid.Row>
             <Grid.Col md={12}>

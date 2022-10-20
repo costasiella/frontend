@@ -291,6 +291,8 @@ import SettingsIntegrationMollie from './components/settings/integration/mollie/
 import SettingsMailMailChimpLists from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpLists'
 import SettingsMailMailChimpListAdd from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpListAdd'
 import SettingsMailMailChimpListEdit from './components/settings/mail/mailchimp_lists/SettingsMailMailChimpListEdit'
+import SettingsMailNotifications from './components/settings/mail/notifications/SettingsMailNotifications'
+import SettingsMailNotificationsAddAccount from './components/settings/mail/notifications/SettingsMailNotificationsAddAccount'
 import SettingsMailTemplates from './components/settings/mail/templates/SettingsMailTemplates'
 import SettingsMailTemplateEdit from './components/settings/mail/templates/SettingsMailTemplateEdit'
 import SettingsShopAccountProfile from './components/settings/shop/account_profiles/SettingsShopAccountProfile'
@@ -790,6 +792,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/settings/mail/mailchimp_lists" component={SettingsMailMailChimpLists} />
             <PrivateRoute exact path="/settings/mail/mailchimp_lists/add" component={SettingsMailMailChimpListAdd} />
             <PrivateRoute exact path="/settings/mail/mailchimp_lists/edit/:id" component={SettingsMailMailChimpListEdit} />
+            <PrivateRoute exact path="/settings/mail/notifications" component={SettingsMailNotifications} />
+            <PrivateRoute exact path="/settings/mail/notifications/add_account/:id" component={SettingsMailNotificationsAddAccount} />
             <PrivateRoute exact path="/settings/mail/templates" component={SettingsMailTemplates} />
             <PrivateRoute exact path="/settings/mail/templates/edit/:id" component={SettingsMailTemplateEdit} />
             <PrivateRoute exact path="/settings/shop/account_profiles" component={SettingsShopAccountProfile} />

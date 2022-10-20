@@ -16,6 +16,20 @@ export const GET_ORGANIZATION_QUERY = gql`
       urlLogoEmail
       urlLogoShopHeader
       urlLogoSelfCheckin
+      brandingColorBackground
+      brandingColorText
+      brandingColorAccent
+      brandingColorSecondary
     }
   }
+`
+
+export const UPDATE_ORGANIZATION = gql`
+mutation UpdateOrganization($input: UpdateOrganizationInput!) {
+  updateOrganization(input: $input) {
+    organization {
+      id
+    }
+  }
+}
 `

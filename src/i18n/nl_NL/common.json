@@ -155,6 +155,19 @@
                 "delete_success": "__STRING_NOT_TRANSLATED__",
                 "title_edit": "__STRING_NOT_TRANSLATED__",
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            },
+            "notifications": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "explanation": "__STRING_NOT_TRANSLATED__",
+                "error_loading": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "accounts": "__STRING_NOT_TRANSLATED__",
+                "add_account": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__",
+                "btn_add_account": "__STRING_NOT_TRANSLATED__",
+                "placeholder_search_account": "__STRING_NOT_TRANSLATED__",
+                "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+                "delete_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "shop": {
@@ -463,7 +476,9 @@
         "duplicate": "__STRING_NOT_TRANSLATED__",
         "quantity": "__STRING_NOT_TRANSLATED__",
         "date_purchased": "__STRING_NOT_TRANSLATED__",
-        "finance_quote_group": "__STRING_NOT_TRANSLATED__"
+        "finance_quote_group": "__STRING_NOT_TRANSLATED__",
+        "search_account_not_found": "__STRING_NOT_TRANSLATED__",
+        "search_no_account_results": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1695,7 +1710,14 @@
             "logo_email": "__STRING_NOT_TRANSLATED__",
             "logo_shop_header": "__STRING_NOT_TRANSLATED__",
             "logo_self_checkin": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__",
+            "title_colors": "__STRING_NOT_TRANSLATED__",
+            "toast_save_colors_success": "__STRING_NOT_TRANSLATED__",
+            "color_background": "__STRING_NOT_TRANSLATED__",
+            "color_text": "__STRING_NOT_TRANSLATED__",
+            "color_accent": "__STRING_NOT_TRANSLATED__",
+            "color_secondary": "__STRING_NOT_TRANSLATED__",
+            "colors_explanation": "__STRING_NOT_TRANSLATED__"
         },
         "subscription_groups": {
             "title_add": "__STRING_NOT_TRANSLATED__",

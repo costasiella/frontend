@@ -1,25 +1,13 @@
 import React, { useState, useRef } from 'react'
-import { gql } from "@apollo/client"
 import { useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_ORGANIZATION_QUERY } from '../queries'
+import { GET_ORGANIZATION_QUERY, UPDATE_ORGANIZATION } from '../queries'
 import OrganizationBrandingBase from "./OrganizationBrandingBase"
 import OrganizationBrandingEditForm from "./OrganizationBrandingEditForm"
-
-
-const UPDATE_ORGANIZATION = gql`
-  mutation UpdateOrganization($input: UpdateOrganizationInput!) {
-    updateOrganization(input: $input) {
-      organization {
-        id
-      }
-    }
-  }
-`
 
 
 function OrganizationBrandingEdit({t, match, history}) {

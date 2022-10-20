@@ -1,9 +1,10 @@
 import React from 'react'
-import { useQuery } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
-import { GET_ORGANIZATION_QUERY } from '../queries'
+import { Formik } from 'formik'
+import { toast } from 'react-toastify'
 
 import {
   Button,
@@ -12,7 +13,9 @@ import {
   Icon
 } from "tabler-react";
 
+import { GET_ORGANIZATION_QUERY, UPDATE_ORGANIZATION } from '../queries'
 import OrganizationBrandingBase from "./OrganizationBrandingBase"
+import OrganizationBrandingEditColorsForm from "./OrganizationBrandingEditColorsForm"
 
 
 function OrganizationBranding({t, match, history}) {
@@ -21,6 +24,7 @@ function OrganizationBranding({t, match, history}) {
     variables: {
       id: id
   }})
+  const [ updateOrganization ] = useMutation(UPDATE_ORGANIZATION)
 
   if (loading) return (
     <OrganizationBrandingBase>
@@ -119,6 +123,53 @@ function OrganizationBranding({t, match, history}) {
                 </Link>
               </GalleryCard.Details>
             </GalleryCard>
+          </Grid.Col>
+        </Grid.Row>
+        {/* Colors */}
+        <Grid.Row>
+          <Grid.Col md={12}>
+            <h3>{t('organization.branding.title_colors')}</h3>
+            <Formik
+              initialValues={{ 
+                colorBackground: organization.brandingColorBackground, 
+                colorText: organization.brandingColorText, 
+                colorAccent: organization.brandingColorAccent, 
+                colorSecondary: organization.brandingColorSecondary, 
+              }}
+              // validationSchema={LEVEL_SCHEMA}
+              onSubmit={(values, { setSubmitting }) => {
+                  updateOrganization({ variables: {
+                    input: {
+                      id: id,
+                      brandingColorBackground: values.colorBackground,
+                      brandingColorText: values.colorText,
+                      brandingColorAccent: values.colorAccent,
+                      brandingColorSecondary: values.colorSecondary,
+                    }
+                  }, refetchQueries: [
+                      {query: GET_ORGANIZATION_QUERY, variables: {id: id }}
+                  ]})
+                  .then(({ data }) => {
+                      console.log('got data', data);
+                      toast.success((t('organization.branding.toast_save_colors_success')), {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        })
+                    }).catch((error) => {
+                      toast.error((t('general.toast_server_error')) +  error, {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        })
+                      console.log('there was an error sending the query', error)
+                      setSubmitting(false)
+                    })
+              }}
+              >
+              {({ isSubmitting, errors }) => (
+                <OrganizationBrandingEditColorsForm 
+                  isSubmitting={isSubmitting}
+                  errors={errors}
+                />
+              )}
+            </Formik>
           </Grid.Col>
         </Grid.Row>
     </OrganizationBrandingBase>
