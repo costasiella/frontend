@@ -47,7 +47,6 @@ function RelationsB2BEdit({ t, match, history}) {
   }
 
   const initialData = data.business
-  console.log(initialData)
 
   return (
     <RelationsB2BEditBase activeLink={activeLink} pageTitle={initialData.name}>
