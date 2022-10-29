@@ -47,12 +47,14 @@ function RelationsB2BEdit({ t, match, history}) {
   }
 
   const initialData = data.business
+  console.log(initialData)
 
   return (
     <RelationsB2BEditBase activeLink={activeLink} pageTitle={initialData.name}>
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 
+            supplier: initialData.supplier,
             name: initialData.name,
             phone: initialData.phone,
             phone2: initialData.phone2,
@@ -72,6 +74,7 @@ function RelationsB2BEdit({ t, match, history}) {
 
               let input_vars = {
                 id: businessId,
+                supplier: values.supplier,
                 name: values.name,
                 phone: values.phone,
                 phone2: values.phone2,
