@@ -633,7 +633,8 @@
         "finance_quote_group": "Quote group",
         "search_account_not_found": "Account not found",
         "search_no_account_results": "The search didn't return any results",
-        "supplier": "Supplier"
+        "supplier": "Supplier",
+        "vip": "VIP"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

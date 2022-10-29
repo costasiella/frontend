@@ -7,10 +7,10 @@ import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
 import {
-  Icon,
   Badge,
   Button,
   Card,
+  Icon,
   Table
 } from "tabler-react";
 
@@ -141,6 +141,9 @@ function RelationsB2B({ t, history }) {
                     {node.name}
                   </Table.Col>
                   <Table.Col key={v4()}>
+                    {(node.vip) ? <span>
+                      <Badge color="warning" className="mr-1"><Icon name="star"/> {t("general.vip")}</Badge>
+                    </span> : null}
                     {(node.supplier) ? <span>
                       <Badge color="primary" className="mr-1">{t("general.supplier")}</Badge>
                     </span> : null}

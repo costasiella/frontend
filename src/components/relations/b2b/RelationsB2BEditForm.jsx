@@ -25,6 +25,21 @@ function RelationsB2BEditForm({ t, history, isSubmitting, errors, values, return
                 <Field 
                   className="custom-switch-input"
                   type="checkbox" 
+                  name="vip" 
+                  checked={values.vip} 
+                />
+                  <span className="custom-switch-indicator" ></span>
+                  <span className="custom-switch-description">{t('general.vip')}</span>
+              </Form.Label>
+              <ErrorMessage name="vip" component="div" />   
+            </Form.Group>  
+          </Grid.Col>
+          <Grid.Col>
+            <Form.Group>
+              <Form.Label className="custom-switch">
+                <Field 
+                  className="custom-switch-input"
+                  type="checkbox" 
                   name="supplier" 
                   checked={values.supplier} 
                 />

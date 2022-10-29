@@ -479,7 +479,8 @@
         "finance_quote_group": "__STRING_NOT_TRANSLATED__",
         "search_account_not_found": "__STRING_NOT_TRANSLATED__",
         "search_no_account_results": "__STRING_NOT_TRANSLATED__",
-        "supplier": "__STRING_NOT_TRANSLATED__"
+        "supplier": "__STRING_NOT_TRANSLATED__",
+        "vip": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
