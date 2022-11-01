@@ -151,6 +151,7 @@ function OrganizationBranding({t, match, history}) {
                   ]})
                   .then(({ data }) => {
                       console.log('got data', data);
+                      setSubmitting(false)
                       toast.success((t('organization.branding.toast_save_colors_success')), {
                           position: toast.POSITION.BOTTOM_RIGHT
                         })
