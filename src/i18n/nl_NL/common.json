@@ -906,6 +906,10 @@
             "item": {
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "expenses": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "yup": {

@@ -359,6 +359,10 @@
             "item": {
                 "toast_edit_success": "Saved item"
             }
+        },
+        "expenses": {
+            "title": "Expenses",
+            "explanation": "Keep track of expenses"
         }
     },
     "general": {
