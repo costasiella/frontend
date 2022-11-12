@@ -12,16 +12,18 @@ import {
 
 import SiteWrapper from '../../SiteWrapper'
 import ButtonAdd from '../../ui/ButtonAdd';
+import ButtonBack from '../../ui/ButtonBack';
 import ButtonExport from '../../ui/ButtonExport';
 
 
-function FinanceExpensesBase ({ t, history, children, refetch }) {
+function FinanceExpensesBase ({ t, history, children, refetch, returnUrl }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
+              {returnUrl && <ButtonBack returnUrl={returnUrl} />}
               {/* <FinanceInvoicesFilter refetch={refetch}/> */}
               <ButtonExport url="/finance/expenses/export" className='mr-2' />
               <ButtonAdd addUrl="/finance/expenses/add" className='mr-2' />

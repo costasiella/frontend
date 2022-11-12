@@ -2,6 +2,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
+import { v4 } from 'uuid'
 
 import {
   Button,
@@ -10,12 +11,25 @@ import {
   Grid,
 } from "tabler-react";
 
-import { customFileInputLabelStyle } from "../../../../tools/custom_file_input_label_style"
-import CSDatePicker from "../../../ui/CSDatePicker"  
+import { customFileInputLabelStyle } from "../../../tools/custom_file_input_label_style"
+import CSDatePicker from "../../ui/CSDatePicker"  
 import ButtonFormSubmit from '../../ui/ButtonFormSubmit'
 import ButtonFormCancel from '../../ui/ButtonFormCancel'
 
-function FinanceExpenseForm({ t, history, errors, values, isSubmitting, returnUrl, inputFileName, fileInputLabel, handleFileInputChange=f=>f, }) {
+function FinanceExpenseForm({ 
+  t, 
+  history, 
+  errors, 
+  values, 
+  inputData,
+  isSubmitting, 
+  setFieldTouched,
+  setFieldValue,
+  returnUrl, 
+  inputFileName, 
+  fileInputLabel, 
+  handleFileInputChange=f=>f, 
+}) {
   return (
     <FoForm>
       <Card.Body> 
@@ -37,16 +51,16 @@ function FinanceExpenseForm({ t, history, errors, values, isSubmitting, returnUr
           <Grid.Col>
             <Form.Group label={t('general.summary')}>
               <Field type="text" 
-                    name="description" 
-                    className={(errors.description) ? "form-control is-invalid" : "form-control"} 
+                    name="summary" 
+                    className={(errors.summary) ? "form-control is-invalid" : "form-control"} 
                     autoComplete="off" />
-              <ErrorMessage name="description" component="span" className="invalid-feedback" />
+              <ErrorMessage name="summary" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
         </Grid.Row> 
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={t('general.summary')}>
+            <Form.Group label={t('general.description')}>
               <Field type="text" 
                     name="description" 
                     className={(errors.description) ? "form-control is-invalid" : "form-control"} 
