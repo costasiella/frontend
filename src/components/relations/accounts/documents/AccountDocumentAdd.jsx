@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import { GET_DOCUMENTS_QUERY, ADD_DOCUMENT } from './queries'
 import { GET_ACCOUNT_QUERY } from '../queries'
 // import { CLASSPASS_SCHEMA } from './yupSchema'
-import AccountClasspassForm from './AccountDocumentForm'
+import AccountDocumentForm from './AccountDocumentForm'
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase';
 
 import {
@@ -130,7 +130,7 @@ function AccountDocumentAdd({t, match, history}) {
           }}
           >
           {({ isSubmitting, errors, values }) => (
-            <AccountClasspassForm
+            <AccountDocumentForm
               inputData={inputData}
               isSubmitting={isSubmitting}
               errors={errors}
@@ -141,7 +141,7 @@ function AccountDocumentAdd({t, match, history}) {
               returnUrl={returnUrl}
             >
               {console.log(errors)}
-            </AccountClasspassForm>
+            </AccountDocumentForm>
           )}
         </Formik>
       </Card>
