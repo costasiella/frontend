@@ -15,8 +15,9 @@ export const GET_EXPENSES_QUERY = gql`
           date
           summary
           description
-          amount
-          tax
+          amountDisplay
+          taxDisplay
+          totalDisplay
           supplier {
             id
             name
@@ -24,10 +25,12 @@ export const GET_EXPENSES_QUERY = gql`
           financeGlaccount {
             id
             name
+            code
           }
           financeCostcenter {
             id
             name
+            code
           }
           urlProtectedDocument
         }

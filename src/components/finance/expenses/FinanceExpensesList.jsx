@@ -33,8 +33,7 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
             <Table.ColHeader>{t('general.date')}</Table.ColHeader>
             <Table.ColHeader>{t('general.summary')} & {t('general.description')}</Table.ColHeader>
             {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>}
-            <Table.ColHeader>{t('general.amount')}</Table.ColHeader>
-            {/* <Table.ColHeader>{t('finance.expenses.due')}</Table.ColHeader> */}
+            <Table.ColHeader>{t('general.amount')} & {t("general.tax")}</Table.ColHeader>
             <Table.ColHeader>{t('general.glaccount')}</Table.ColHeader>
             <Table.ColHeader>{t('general.costcenter')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
@@ -49,6 +48,23 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
               <Table.Col>
                 {node.summary} <br />
                 <small className='text-muted'>{node.description}</small>
+              </Table.Col>
+              <Table.Col>
+                {node.supplier && node.supplier.name}
+              </Table.Col>
+              <Table.Col>
+                {node.amountDisplay} <br />
+                <small className="text-small">{node.taxDisplay}</small>
+              </Table.Col>
+              <Table.Col>
+                {node.financeGlaccount && <span>
+                  {node.financeGlaccount.name} {node.financeGlaccount.code && <span>({node.financeGlaccount.code})</span>}
+                </span>}
+              </Table.Col>
+              <Table.Col>
+                {node.financeCostcenter && <span>
+                  {node.financeCostcenter.name} {node.financeCostcenter.code && <span>({node.financeCostcenter.code})</span>}
+                </span>}
               </Table.Col>
               <Table.Col className="text-right" key={v4()}>
                 <Link to={"/finance/expenses/edit/" + node.id}>

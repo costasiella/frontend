@@ -362,7 +362,13 @@
         },
         "expenses": {
             "title": "Expenses",
-            "explanation": "Keep track of expenses"
+            "explanation": "Keep track of expenses",
+            "title_add": "Add expense",
+            "toast_add_success": "Added expense",
+            "error_loading": "Error loading expenses... :(",
+            "empty_list": "No expenses have been added yet.",
+            "delete_confirm_msg": "Are you sure you wish to remove this expense?",
+            "deleted": "Deleted expense"
         }
     },
     "general": {
