@@ -116,7 +116,7 @@ export const GET_EXPENSE_QUERY = gql`
 `
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query ExpenseInputValues() {
+  query ExpenseInputValues {
     financeGlaccounts(first: 100, archived: false) {
       pageInfo {
         startCursor

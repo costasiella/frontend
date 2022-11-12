@@ -11,6 +11,7 @@ import {
 } from "tabler-react";
 
 import SiteWrapper from '../../SiteWrapper'
+import ButtonAdd from '../../ui/ButtonAdd';
 import ButtonExport from '../../ui/ButtonExport';
 
 
@@ -23,6 +24,7 @@ function FinanceExpensesBase ({ t, history, children, refetch }) {
             <div className="page-options d-flex">
               {/* <FinanceInvoicesFilter refetch={refetch}/> */}
               <ButtonExport url="/finance/expenses/export" className='mr-2' />
+              <ButtonAdd addUrl="/finance/expenses/add" className='mr-2' />
             </div>
           </Page.Header>
           <Grid.Row>
