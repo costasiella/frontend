@@ -50,6 +50,7 @@ import FinanceCostCenterEdit from './components/finance/costcenters/FinanceCostC
 import FinanceExpenses from './components/finance/expenses/FinanceExpenses'
 import FinanceExpenseAdd from './components/finance/expenses/FinanceExpenseAdd'
 import FinanceExpenseEdit from './components/finance/expenses/FinanceExpenseEdit'
+import FinanceExpensesExport from './components/finance/expenses/export/FinanceExpensesExport'
 import FinanceGLAccounts from './components/finance/glaccounts/FinanceGLAccounts'
 import FinanceGLAccountAdd from './components/finance/glaccounts/FinanceGLAccountAdd'
 import FinanceGLAccountEdit from './components/finance/glaccounts/FinanceGLAccountEdit'
@@ -487,6 +488,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/expenses" component={FinanceExpenses} />
             <PrivateRoute exact path="/finance/expenses/add" component={FinanceExpenseAdd} />
             <PrivateRoute exact path="/finance/expenses/edit/:id" component={FinanceExpenseEdit} />
+            <PrivateRoute exact path="/finance/expenses/export" component={FinanceExpensesExport} />
             <PrivateRoute exact path="/finance/invoices" component={FinanceInvoices} />
             <PrivateRoute exact path="/finance/invoices/export" component={FinanceInvoicesExport} />
             <PrivateRoute exact path="/finance/invoices/edit/:id" component={FinanceInvoiceEdit} />
