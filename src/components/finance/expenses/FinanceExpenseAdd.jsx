@@ -12,7 +12,7 @@ import {
 
 import { dateToLocalISO } from '../../../tools/date_tools'
 import { GET_EXPENSES_QUERY, GET_INPUT_VALUES_QUERY, CREATE_FINANCE_EXPENSE } from './queries'
-// import { CLASSPASS_SCHEMA } from './yupSchema'
+import { EXPENSE_SCHEMA } from './yupSchema'
 import FinanceExpenseForm from './FinanceExpenseForm'
 import FinanceExpensesBase from './FinanceExpensesBase';
 
@@ -65,7 +65,7 @@ function FinanceExpenseAdd({t, match, history}) {
           initialValues={{ 
             description: ""
           }}
-          // validationSchema={CLASSPASS_SCHEMA}
+          validationSchema={EXPENSE_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
             console.log("Submit values")
             console.log(values)
