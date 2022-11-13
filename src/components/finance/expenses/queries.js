@@ -40,9 +40,10 @@ export const GET_EXPENSES_QUERY = gql`
 `
 
 export const GET_EXPENSE_QUERY = gql`
-  query FinanceExpense($id: ID!, $before: String, $after: String) {
+  query FinanceExpense($id: ID!) {
     financeExpense(id:$id) {
       id
+      date
       summary
       description
       amount
@@ -90,7 +91,7 @@ export const GET_EXPENSE_QUERY = gql`
         }
       }
     }
-    financeCostcenter(first: 100, archived: false) {
+    financeCostcenters(first: 100, archived: false) {
       pageInfo {
         startCursor
         endCursor
@@ -101,19 +102,8 @@ export const GET_EXPENSE_QUERY = gql`
         node {
           id
           name
-          percentage
-          rateType
         }
       }
-    }
-    organization(id:"T3JnYW5pemF0aW9uTm9kZToxMDA=") {
-      id
-      name
-      address
-      phone
-      email
-      registration
-      taxRegistration
     }
   }
 `

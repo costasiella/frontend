@@ -14,6 +14,7 @@ import {
 } from "tabler-react";
 
 import AppSettingsContext from '../../context/AppSettingsContext'
+import FileProtectedDownloadTableButton from '../../ui/FileProtectedDownloadTableButton'
 // import { get_list_query_variables } from "./tools"
 // import FinanceExpensesStatus from "../../ui/FinanceExpenseStatus"
 import { GET_EXPENSES_QUERY, DELETE_FINANCE_EXPENSE } from "./queries"
@@ -67,6 +68,7 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
                 </span>}
               </Table.Col>
               <Table.Col className="text-right" key={v4()}>
+                <FileProtectedDownloadTableButton protectedMediaUrl={node.urlProtectedDocument} />
                 <Link to={"/finance/expenses/edit/" + node.id}>
                   <Button className='btn-sm' 
                           color="secondary">
