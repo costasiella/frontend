@@ -9,8 +9,7 @@ import { Link } from 'react-router-dom'
 import {
   Icon,
   Button,
-  Table, 
-  Text
+  Table
 } from "tabler-react";
 
 import AppSettingsContext from '../../context/AppSettingsContext'

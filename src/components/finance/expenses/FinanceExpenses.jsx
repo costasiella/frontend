@@ -7,7 +7,6 @@ import {
   Dimmer,
 } from "tabler-react";
 
-import CSLS from "../../../tools/cs_local_storage"
 import ContentCard from "../../general/ContentCard"
 import FinanceExpensesBase from "./FinanceExpensesBase"
 import FinanceExpensesList from './FinanceExpensesList'
