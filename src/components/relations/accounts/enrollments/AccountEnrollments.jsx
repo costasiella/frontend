@@ -121,7 +121,7 @@ function AccountEnrollments({ t, match, history }) {
                   { moment(node.dateStart).format(dateFormat) }
                 </Table.Col>
                 <Table.Col>
-                  { moment(node.dateEmd).format(dateFormat) }
+                  { (node.dateEnd) && moment(node.dateEnd).format(dateFormat) }
                 </Table.Col>
                 <Table.Col>
                   {/* TODO: add class time & weekday into here */}
