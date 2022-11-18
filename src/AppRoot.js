@@ -175,6 +175,7 @@ import RelationsAccountBankAccount from './components/relations/accounts/bank_ac
 import RelationsAccountBankAccountMandateAdd from './components/relations/accounts/bank_accounts/mandates/RelationsAccountBankAccountMandateAdd'
 import RelationsAccountBankAccountMandateEdit from './components/relations/accounts/bank_accounts/mandates/RelationsAccountBankAccountMandateEdit'
 import RelationsAccountClasses from './components/relations/accounts/classes/AccountClasses'
+import RelationsAccountEnrollments from './components/relations/accounts/enrollments/AccountEnrollments'
 import AccountClasspasses from './components/relations/accounts/classpasses/AccountClasspasses'
 import AccountClasspassAdd from './components/relations/accounts/classpasses/AccountClasspassAdd'
 import AccountClasspassEdit from './components/relations/accounts/classpasses/AccountClasspassEdit'
@@ -621,6 +622,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/documents" component={AccountDocuments} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents/add" component={AccountDocumentAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents/edit/:id" component={AccountDocumentEdit} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/enrollments" component={RelationsAccountEnrollments} />
             <PrivateRoute exact path="/relations/accounts/:account_id/finance_payment_batch_category_items" 
                           component={AccountFinancePaymentBatchCategoryItems} />
             <PrivateRoute exact path="/relations/accounts/:account_id/finance_payment_batch_category_items/add" 

@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_ENROLLMENTS_QUERY = gql`
   query ScheduleItemEnrollments($account: ID!, $before: String, $after: String) {
-    scheduleItemEnrollments(first: 20, before: $before, after: $after, account: $account) {
+    scheduleItemEnrollments(first: 20, before: $before, after: $after, accountSubscription_Account: $account) {
       pageInfo {
         hasNextPage
         hasPreviousPage
