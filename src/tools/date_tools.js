@@ -43,6 +43,18 @@ export function getLastDayMonth(year, month) {
     return new Date(firstDayMonth)
 }
 
+export function getWeekdayNames(t) {
+    return [
+        t("datetime.isoweekdays.monday"),
+        t("datetime.isoweekdays.tuesday"),
+        t("datetime.isoweekdays.wednesday"),
+        t("datetime.isoweekdays.thursday"),
+        t("datetime.isoweekdays.friday"),
+        t("datetime.isoweekdays.saturday"),
+        t("datetime.isoweekdays.sunday"),
+    ]
+}
+
 export function getMonthNamesShort(t) {
     return [
         t("datetime.months.short_january"),

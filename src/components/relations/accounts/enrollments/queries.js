@@ -26,6 +26,7 @@ export const GET_ACCOUNT_ENROLLMENTS_QUERY = gql`
             id
             timeStart
             timeEnd
+            frequencyInterval
             organizationLocationRoom {
               name
               organizationLocation {

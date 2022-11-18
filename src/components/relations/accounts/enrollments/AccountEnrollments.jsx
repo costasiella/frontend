@@ -8,9 +8,11 @@ import moment from 'moment'
 import {
   Card,
   Dimmer,
+  Icon,
   Table
 } from "tabler-react";
 
+import { getWeekdayNames } from '../../../../tools/date_tools'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 import AccountEnrollmentsBase from "./AccountEnrollmentsBase"
@@ -25,6 +27,7 @@ function AccountEnrollments({ t, match, history }) {
   const timeFormat = appSettings.timeFormatMoment
   const account_id = match.params.account_id
   const cardTitle = t('relations.account.classes.title')
+  const weekdayNames = getWeekdayNames(t)
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ENROLLMENTS_QUERY, {
     variables: {'account': account_id},
     fetchPolicy: "network-only"
@@ -104,8 +107,8 @@ function AccountEnrollments({ t, match, history }) {
         <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.dateStart')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.dateEnd')}</Table.ColHeader>
+              <Table.ColHeader>{t('relations.account.enrollments.dateStart')}</Table.ColHeader>
+              <Table.ColHeader>{t('relations.account.enrollments.dateEnd')}</Table.ColHeader>
               <Table.ColHeader>{t('general.class')}</Table.ColHeader>
               <Table.ColHeader>{t('general.subscription')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>  
@@ -124,7 +127,8 @@ function AccountEnrollments({ t, match, history }) {
                   {/* TODO: add class time & weekday into here */}
                   { node.scheduleItem.organizationClasstype.name } <br />
                   <span className="text-muted">
-                    { node.scheduleItem.organizationLocationRoom.organizationLocation.name } {" - " } 
+                    <Icon name="clock" /> { weekdayNames[node.scheduleItem.frequencyInterval] } { moment(node.timeStart).format(timeFormat) } <br />
+                    <Icon name="home" /> { node.scheduleItem.organizationLocationRoom.organizationLocation.name } {" - " } 
                     { node.scheduleItem.organizationLocationRoom.name }
                   </span> 
                 </Table.Col>

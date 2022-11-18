@@ -1423,7 +1423,10 @@
                 "title_add": "__STRING_NOT_TRANSLATED__"
             },
             "enrollments": {
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "dateStart": "__STRING_NOT_TRANSLATED__",
+                "dateEnd": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
@@ -1902,6 +1905,15 @@
             "october": "__STRING_NOT_TRANSLATED__",
             "november": "__STRING_NOT_TRANSLATED__",
             "december": "__STRING_NOT_TRANSLATED__"
+        },
+        "isoweekdays": {
+            "monday": "__STRING_NOT_TRANSLATED__",
+            "tuesday": "__STRING_NOT_TRANSLATED__",
+            "wednesday": "__STRING_NOT_TRANSLATED__",
+            "thursday": "__STRING_NOT_TRANSLATED__",
+            "friday": "__STRING_NOT_TRANSLATED__",
+            "saturday": "__STRING_NOT_TRANSLATED__",
+            "sunday": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {

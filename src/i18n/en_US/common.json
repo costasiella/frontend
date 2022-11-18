@@ -370,14 +370,14 @@
             "delete_confirm_msg": "Are you sure you wish to remove this expense?",
             "deleted": "Deleted expense",
             "export": {
-                "title": "__STRING_NOT_TRANSLATED__",
+                "title": "Export expenses",
                 "ready": {
-                    "title": "__STRING_NOT_TRANSLATED__",
-                    "explanation": "__STRING_NOT_TRANSLATED__"
+                    "title": "Export Ready",
+                    "explanation": "An export has been prepared with the following values:"
                 }
             },
-            "title_edit": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
+            "title_edit": "Edit expense",
+            "toast_edit_success": "Saved"
         }
     },
     "general": {
@@ -1248,7 +1248,10 @@
                 "title_add": "Add Quote"
             },
             "enrollments": {
-                "title": "Class enrollments"
+                "title": "Class enrollments",
+                "empty_list": "No enrollments have been created for this account yet",
+                "dateStart": "Start date",
+                "dateEnd": "End date"
             }
         },
         "b2b": {
@@ -2203,6 +2206,15 @@
             "october": "October",
             "november": "November",
             "december": "December"
+        },
+        "isoweekdays": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
         }
     },
     "goto": {
