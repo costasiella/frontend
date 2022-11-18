@@ -368,7 +368,16 @@
             "error_loading": "Error loading expenses... :(",
             "empty_list": "No expenses have been added yet.",
             "delete_confirm_msg": "Are you sure you wish to remove this expense?",
-            "deleted": "Deleted expense"
+            "deleted": "Deleted expense",
+            "export": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "ready": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "explanation": "__STRING_NOT_TRANSLATED__"
+                }
+            },
+            "title_edit": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
         }
     },
     "general": {
@@ -1159,7 +1168,7 @@
             },
             "classes": {
                 "empty_list": "This customer hasn't booked or attended any classes yet",
-                "title": "Classes"
+                "title": "Class attendance"
             },
             "orders": {
                 "title": "Orders",
@@ -1237,6 +1246,9 @@
                 "title": "Quotes",
                 "empty_list": "No quotes have been created for this account yet",
                 "title_add": "Add Quote"
+            },
+            "enrollments": {
+                "title": "Class enrollments"
             }
         },
         "b2b": {

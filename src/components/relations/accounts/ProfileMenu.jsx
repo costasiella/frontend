@@ -122,6 +122,19 @@ function ProfileMenu({t, accountId, activeLink}) {
         </HasPermissionWrapper>
         <HasPermissionWrapper 
             permission="view"
+            resource="scheduleitemenrollment">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/enrollments"}
+                icon="refresh-cw"
+                active={activeLink === 'enrollments'}
+                >
+            {t('relations.account.enrollments.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="view"
             resource="accountscheduleeventticket">
             <List.GroupItem
                 key={v4()}
