@@ -12,6 +12,7 @@ import RelationsAccountsBack from "../RelationsAccountsBack"
 
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
+import ButtonAdd from '../../../ui/ButtonAdd'
 
 
 function AccountEnrollmentsBase({ t, match, history, children, account={} }) {
@@ -24,6 +25,8 @@ function AccountEnrollmentsBase({ t, match, history, children, account={} }) {
           <Page.Header title={account.fullName} >
             <div className="page-options d-flex">
               <RelationsAccountsBack />
+              <ButtonAdd addUrl={`/relations/accounts/${accountId}/enrollment_find_class`} 
+                className="ml-2" />
             </div>
           </Page.Header>
           <Grid.Row>
