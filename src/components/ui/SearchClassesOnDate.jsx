@@ -1,27 +1,35 @@
 import React, { useState } from 'react'
-import { useLazyQuery } from '@apollo/client'
+import { useQuery, useLazyQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import moment from "moment"
 
 import {
   Alert,
+  Card,
   Dimmer,
   Table
 } from "tabler-react";
 
+import { dateToLocalISO } from "../../tools/date_tools"
+import { capitalize } from '../../tools/string_tools'
+
 import CSDatePicker from './CSDatePicker'
 import ContentCard from "../general/ContentCard"
-import InputSearch from '../general/InputSearch'
 import { GET_CLASSES_QUERY } from "../schedule/classes/queries"
 
 // Action buttons
 // import SettingsMailNotificationButtonAddAccount from '../settings/mail/notifications/SettingsMailNotificationButtonAddAccount'
 
 function get_classes_query_variables(date) {
+  let queryVars = {}
+
   if (date) {
-    queryVars.dateFrom = date
-    queryVars.dateUntil= date
+    const searchDate = dateToLocalISO(date)
+
+    queryVars.dateFrom = searchDate
+    queryVars.dateUntil = searchDate
   }
 
   queryVars.attendanceCountType = 'ATTENDING_AND_BOOKED'
@@ -38,8 +46,12 @@ function SearchClassesOnDate({
   btnDisabledMessage="",
   btnAction,
  }) {
-  const [showSearchResults, setShowSearchResults] = useState(false)
-  const [ getClasses, { called, loading, error, data, refetch, fetchMore } ] = useQuery( GET_CLASSES_QUERY )
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  // const [showSearchResults, setShowSearchResults] = useState(false)
+
+  const { loading, error, data, refetch } = useQuery( GET_CLASSES_QUERY, {
+    variables: get_classes_query_variables(selectedDate)
+  } )
 
   function renderActionButton(scheduleClassId, date) {
     switch(btnAction) {
@@ -54,13 +66,14 @@ function SearchClassesOnDate({
     return <CSDatePicker 
       // className={(errors.dateStart) ? "form-control is-invalid" : "form-control"} 
       className={"form-control"} 
-      selected={new Date()}
+      selected={selectedDate}
       onChange={(date) => {
         if (date) {
-          setShowSearchResults(true)
-          refetch({ variables: get_classes_query_variables(date)})
+          // setShowSearchResults(true)
+          setSelectedDate(date)
+          refetch(get_classes_query_variables(date))
         } else {
-          showSearchResults(false)
+          // showSearchResults(false)
         }
       }}
       // onBlur={() => setFieldTouched("dateStart", true)}
@@ -87,31 +100,31 @@ function SearchClassesOnDate({
     // />
   }
 
-  if (!showSearchResults) {
-    return <Search />
-  }
+  // if (!showSearchResults) {
+  //   return <Search />
+  // }
 
-  if (called && loading) return (
+  if (loading) return (
     <React.Fragment>
       <Search />
-      <ContentCard cardTitle={t('general.search_results')}>
+      <div>
         <Dimmer active={true} loader={true} />
-      </ContentCard>
+      </div>
     </React.Fragment>
   )
 
-  if (called && error) return (
+  if (error) return (
     <React.Fragment>
       <Search />
       <Alert type="danger">{t("general.error_sad_smiley")}</Alert>
     </React.Fragment>
   )
 
-  if (called && !data.scheduleClasses.length) return (
+  if (!data.scheduleClasses.length) return (
     <React.Fragment>
       <Search />
       <Alert type="primary">
-        <strong>{t("general.search_class_not_found")}</strong>
+        <strong>{t("general.search_no_classes_found")}</strong>
       </Alert>
     </React.Fragment>
   )
@@ -120,7 +133,26 @@ function SearchClassesOnDate({
     <React.Fragment>
       <Search />
       {(data) ?
-      "Content here"
+      <div className='mt-4'>
+        {data.scheduleClasses.map(({ date, classes }) => (
+          <React.Fragment key={v4()}>
+            <h3>
+              {capitalize(moment(date).format("dddd"))} {' '}
+              <small className="text-muted">
+                    {moment(date).format("LL")} 
+              </small>
+            </h3>
+            {!(classes.length) ? <Card>
+                <Card.Body>
+                  <h5>{t('schedule.classes.empty_list')} <i className="fa fa-beach"/></h5>
+                </Card.Body>
+              </Card> 
+            :
+            "Content here"
+            }
+          </React.Fragment>
+        ))}
+      </div>
       // <ContentCard cardTitle={t('general.search_results')}
       //             pageInfo={data.accounts.pageInfo}
       //             hasCardBody={false}
@@ -182,5 +214,4 @@ function SearchClassesOnDate({
   )
 }
 
-
-export default withTranslation()(withRouter(SearchAccounts))
+export default withTranslation()(withRouter(SearchClassesOnDate))
