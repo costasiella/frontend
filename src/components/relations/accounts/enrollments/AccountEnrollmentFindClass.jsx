@@ -77,18 +77,8 @@ function AccountEnrollmentFindClass({ t, match, history }) {
 
   return (
     <AccountEnrollmentsBase account={account} >
-      <h5>Select a start date for a new enrollment</h5>
-      <SearchClassesOnDate btnAcount="test" />
-      {/* {(scheduleClass.status === 'CANCELLED') ? 
-        <Alert type="warning">
-          <strong>{t("schedule.classes.class.attendance.this_class_is_cancelled")}</strong> - {" "}
-          {t("schedule.classes.class.attendance.unable_to_add_attendance")}
-        </Alert>  
-        : 
-        <ScheduleClassAttendanceSearch 
-          checkedInIds={checkedInIds}
-        />
-      } */}
+      <h5>{t('relations.account.enrollments.title_add_search_class')}</h5>
+      <SearchClassesOnDate btnAction="accountEnrollmentAdd" />
     </AccountEnrollmentsBase>
   )
 }
