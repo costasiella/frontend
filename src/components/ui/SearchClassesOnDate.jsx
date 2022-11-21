@@ -1,20 +1,32 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery, useLazyQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from "react-router-dom"
 import moment from "moment"
 
 import {
   Alert,
+  Badge,
+  Button,
   Card,
   Dimmer,
+  Grid,
+  Icon,
   Table
 } from "tabler-react";
 
+import AppSettingsContext from '../context/AppSettingsContext'
 import { dateToLocalISO } from "../../tools/date_tools"
 import { capitalize } from '../../tools/string_tools'
+import { 
+  get_class_messages,
+  represent_class_status,
+  represent_instructor 
+} from '../schedule/classes/tools'
 
+import BadgePublic from './BadgePublic'
 import CSDatePicker from './CSDatePicker'
 import ContentCard from "../general/ContentCard"
 import { GET_CLASSES_QUERY } from "../schedule/classes/queries"
@@ -46,6 +58,9 @@ function SearchClassesOnDate({
   btnDisabledMessage="",
   btnAction,
  }) {
+  const appSettings = useContext(AppSettingsContext)
+  const timeFormat = appSettings.timeFormatMoment
+
   const [selectedDate, setSelectedDate] = useState(new Date())
   // const [showSearchResults, setShowSearchResults] = useState(false)
 
@@ -53,10 +68,15 @@ function SearchClassesOnDate({
     variables: get_classes_query_variables(selectedDate)
   } )
 
-  function renderActionButton(scheduleClassId, date) {
+  function renderActionButton(scheduleClassId) {
     switch(btnAction) {
-      // case "settingsMailNotificationAddAccount":
-      //   return <SettingsMailNotificationButtonAddAccount accountId={accountId} />
+      case "accountEnrollmentAdd":
+        const accountId = match.params.account_id
+        return <Link to={`/schedule/classes/all/enrollments/${scheduleClassId}/options/${accountId}`}>
+          <Button color="primary" outline size="sm">
+            <Icon name="plus" /> {t("general.enroll")}
+          </Button>
+        </Link>
       default:
         return "btnAction type not defined"
     }
@@ -148,7 +168,94 @@ function SearchClassesOnDate({
                 </Card.Body>
               </Card> 
             :
-            "Content here"
+            classes.map((
+              { scheduleItemId, 
+                frequencyType,
+                date, 
+                status,
+                holiday,
+                holidayName,
+                description,
+                account, 
+                role,
+                account2,
+                role2,
+                organizationLocationRoom, 
+                organizationClasstype, 
+                organizationLevel,
+                timeStart, 
+                timeEnd,
+                spaces,
+                countAttendance,
+                displayPublic }) => (
+                  <Card key={v4()}>
+                    <Card.Body>
+                      <Grid.Row>
+                        <Grid.Col xs={9} sm={9} md={10}>
+                          <Grid.Row>
+                            <Grid.Col xs={12}>
+                              <h5>
+                                {represent_class_status(status)}
+                                <span className='mr-2'>
+                                {/* Class type */}
+                                {organizationClasstype.name} { ' ' }
+                                {/* Start & end time */}
+                                {moment(date + ' ' + timeStart).format(timeFormat)} {' - '}
+                                {moment(date + ' ' + timeEnd).format(timeFormat)} { ' ' }
+                                </span>
+                                {organizationLevel && <small className="text-muted">
+                                  {organizationLevel.name}
+                                </small>}
+                              </h5>
+                            </Grid.Col>
+                          </Grid.Row>
+                          <Grid.Row>
+                            <Grid.Col xs={12}>
+                              {/* Instructor(s) */}
+                              { (account) ? 
+                                  represent_instructor(account.fullName, role) : 
+                                  <span className="text-red">{t("schedule.classes.no_instructor")}</span>
+                              } <br />
+                              <small className="text-muted">
+                                {(account2) ? represent_instructor(account2.fullName, role2) : ""}
+                              </small>
+                            </Grid.Col>
+                            <Grid.Col xs={12}>
+                              {/* Location */}
+                              <Icon name="home" /> {organizationLocationRoom.organizationLocation.name} 
+                              <small className="text-muted"> | {organizationLocationRoom.name}</small>
+                            </Grid.Col>
+                          </Grid.Row>
+                        </Grid.Col>
+                        <Grid.Col xs={3} sm={3} md={2}>
+                          <span className="float-right">{renderActionButton(scheduleItemId)}</span>
+                        </Grid.Col>
+                      </Grid.Row>
+                      <Grid.Row>
+                        <Grid.Col xs={9} sm={9} md={10}>
+                          <div className="mt-1">
+                            <BadgePublic className="mr-2" isPublic={displayPublic} />
+                            {(frequencyType === 'SPECIFIC') ? 
+                              <Badge color="primary" className="mr-2">{t('general.once')}</Badge> : 
+                              null } 
+                            {(frequencyType === 'LAST_WEEKDAY_OF_MONTH') ? 
+                              <Badge color="success" className="mr-2">{t('general.monthly')}</Badge> : 
+                              null } 
+                            {(status === "CANCELLED") ? 
+                              <Badge color="warning" className="mr-2">{t('general.cancelled')}</Badge> : 
+                              null } 
+                              <small className="text-muted"><br />{get_class_messages(t, status, description, holiday, holidayName)}</small>
+                          </div>
+                        </Grid.Col>
+                        <Grid.Col xs={3} sm={3} md={2}>
+                          {/* Attendance */}
+                          <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                        </Grid.Col>
+                      </Grid.Row>
+                    </Card.Body>
+                  </Card>
+                )
+              )
             }
           </React.Fragment>
         ))}
