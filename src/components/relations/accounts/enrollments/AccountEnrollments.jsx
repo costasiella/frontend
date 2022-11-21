@@ -26,7 +26,7 @@ function AccountEnrollments({ t, match, history }) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const account_id = match.params.account_id
-  const cardTitle = t('relations.account.classes.title')
+  const cardTitle = t('relations.account.enrollments.title')
   const weekdayNames = getWeekdayNames(t)
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ENROLLMENTS_QUERY, {
     variables: {'account': account_id},
