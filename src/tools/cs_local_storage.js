@@ -37,6 +37,7 @@ const cs_local_storage_keys = {
     SCHEDULE_CLASSES_FILTER_LEVEL: 'costasiella:scheduleClassesFilterLevel',
     SCHEDULE_CLASSES_FILTER_LOCATION: 'costasiella:scheduleClassesFilterLocation',
     SCHEDULE_CLASSES_ENROLLMENT_SEARCH: 'costasiella:scheduleClassesEnrollmentSearch',
+    SCHEDULE_CLASSES_ENROLLMENT_RETURN: 'costasiella:scheduleClassesEnrollmentReturn',
     SCHEDULE_CLASSES_CLASS_ATTENDANCE_SEARCH: 'costasiella:scheduleClassesClassAttendanceSearch',
     SCHEDULE_EVENTS_ARCHIVED: 'costasiella:scheduleEventsArchived',
     SCHEDULE_EVENTS_TICKETS_CUSTOMERS_SEARCH: 'costasiella:scheduleEventsTicketsCustomersSearch',

@@ -59,11 +59,9 @@ import {
 // }
 
 
-function AccountEnrollmentFindClass({ t, match, history }) {
+function AccountEnrollmentFindClass({ t, match, location }) {
   const accountId = match.params.account_id
-
   const { loading, error, data } = useQuery(GET_ACCOUNT, { variables: { accountId: accountId }})
-  const [ createScheduleItemEnrollment ] = useMutation(CREATE_SCHEDULE_ITEM_ENROLLMENT)
 
   if (loading) { 
     return "loading"

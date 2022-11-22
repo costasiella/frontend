@@ -12,6 +12,7 @@ import {
   Table
 } from "tabler-react";
 
+import CSLS from '../../../../tools/cs_local_storage'
 import { getWeekdayNames } from '../../../../tools/date_tools'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
@@ -21,7 +22,7 @@ import AccountEnrollmentsBase from "./AccountEnrollmentsBase"
 import { GET_ACCOUNT_ENROLLMENTS_QUERY } from "./queries"
 
 
-function AccountEnrollments({ t, match, history }) {
+function AccountEnrollments({ t, match, location }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
@@ -32,6 +33,9 @@ function AccountEnrollments({ t, match, history }) {
     variables: {'account': account_id},
     fetchPolicy: "network-only"
   })
+
+  // Return here after adding an enrollment
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_RETURN, location.pathname)
 
   // Loading
   if (loading) return (

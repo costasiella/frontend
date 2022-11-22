@@ -11,6 +11,8 @@ import {
   Dimmer,
   Table
 } from "tabler-react";
+
+import CSLS from '../../../../../tools/cs_local_storage'
 import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import AppSettingsContext from '../../../../context/AppSettingsContext'
 import { getEnrollmentsListQueryVariables } from "./tools"
@@ -24,7 +26,7 @@ import ButtonEdit from '../../../../ui/ButtonEdit'
 import { GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY } from "./queries"
 
 
-function ScheduleClassEnrollments({ t, match, history }) {
+function ScheduleClassEnrollments({ t, match, location }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   
@@ -38,6 +40,8 @@ function ScheduleClassEnrollments({ t, match, history }) {
       variables: getEnrollmentsListQueryVariables(scheduleItemId)
     }
   )
+
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_RETURN, location.pathname)
 
   const headerOptions = <Card.Options>
     <Button color={(showCurrent) ? 'primary': 'secondary'}  
