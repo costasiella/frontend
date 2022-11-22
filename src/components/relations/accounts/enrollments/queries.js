@@ -21,6 +21,10 @@ export const GET_ACCOUNT_ENROLLMENTS_QUERY = gql`
               id
               name
             }
+            account {
+              id
+              fullName
+            }
           }
           scheduleItem {
             id

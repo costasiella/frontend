@@ -17,6 +17,7 @@ import { getWeekdayNames } from '../../../../tools/date_tools'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import ContentCard from "../../../general/ContentCard"
 import AccountEnrollmentsBase from "./AccountEnrollmentsBase"
+import ScheduleClassEnrollmentDelete from '../../../schedule/classes/all/enrollments/ScheduleClassEnrollmentDelete'
 // import AccountClassDelete from "./AccountClassDelete"
 
 import { GET_ACCOUNT_ENROLLMENTS_QUERY } from "./queries"
@@ -140,6 +141,7 @@ function AccountEnrollments({ t, match, location }) {
                   { node.accountSubscription.organizationSubscription.name } ({ moment(node.accountSubscription.dateStart).format(dateFormat) })
                 </Table.Col>
                 <Table.Col>
+                  <ScheduleClassEnrollmentDelete node={node} />
                   {/* <AccountClassDelete account={account} node={node} /> */}
                 </Table.Col>
                 {/* <Table.Col className="text-right" key={v4()}>

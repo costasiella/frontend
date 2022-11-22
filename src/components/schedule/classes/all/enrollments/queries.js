@@ -40,6 +40,9 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
             id 
             dateStart
             dateEnd
+            scheduleItem {
+              id
+            }
             accountSubscription {
               id
               dateStart

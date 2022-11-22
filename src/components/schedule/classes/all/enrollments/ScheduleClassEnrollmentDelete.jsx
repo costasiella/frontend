@@ -4,11 +4,12 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import { DELETE_SCHEDULE_ITEM_ENROLLMENT, GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY } from "./queries"
+import { GET_ACCOUNT_ENROLLMENTS_QUERY } from "../../../../relations/accounts/enrollments/queries"
 import ButtonDelete from '../../../../ui/ButtonDelete'
 import { getEnrollmentsListQueryVariables } from './tools'
 
 function ScheduleClassEnrollmentDelete({t, match, node}) {
-  const scheduleItemId = match.params.class_id
+  const scheduleItemId = node.scheduleItem.id
   const [deleteScheduleItemEnrollment] = useMutation(DELETE_SCHEDULE_ITEM_ENROLLMENT)
 
     return (
@@ -25,7 +26,9 @@ function ScheduleClassEnrollmentDelete({t, match, node}) {
             }, 
             refetchQueries: [
               { query: GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, 
-                variables: getEnrollmentsListQueryVariables(scheduleItemId)},
+                variables: getEnrollmentsListQueryVariables(scheduleItemId) },
+              { query: GET_ACCOUNT_ENROLLMENTS_QUERY, 
+                variables: { account: node.accountSubscription.account.id }}  
             ]
           }}
       />
