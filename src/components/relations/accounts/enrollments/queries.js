@@ -57,31 +57,3 @@ export const GET_ACCOUNT_ENROLLMENTS_QUERY = gql`
     }
   }
 `
-
-export const CREATE_SCHEDULE_ITEM_ENROLLMENT = gql`
-  mutation CreateScheduleItemEnrollment($input: CreateScheduleItemEnrollmentInput!) {
-    createScheduleItemEnrollment(input:$input) {
-      scheduleItemEnrollment {
-        id
-      }
-    }
-  }
-`
-
-export const UPDATE_SCHEDULE_ITEM_ENROLLMENT = gql`
-  mutation UpdateScheduleItemEnrollment($input: UpdateScheduleItemEnrollmentInput!) {
-    updateScheduleItemEnrollment(input:$input) {
-      scheduleItemEnrollment {
-        id
-      }
-    }
-  }
-`
-
-export const DELETE_SCHEDULE_ITEM_ENROLLMENT = gql`
-  mutation DeleteScheduleItemEnrollment($input: DeleteScheduleItemEnrollmentInput!) {
-    deleteScheduleItemEnrollment(input: $input) {
-      ok
-    }
-  }
-`
