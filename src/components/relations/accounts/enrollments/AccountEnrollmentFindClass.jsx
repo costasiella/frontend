@@ -23,11 +23,7 @@ import { GET_ACCOUNT } from '../../../../queries/accounts/get_account'
 // import ButtonConfirm from '../../../../ui/ButtonConfirm'
 import SearchClassesOnDate from '../../../ui/SearchClassesOnDate'
 import AccountEnrollmentsBase from "./AccountEnrollmentsBase"
-import { 
-  GET_ACCOUNT_ENROLLMENTS_QUERY,
-  CREATE_SCHEDULE_ITEM_ENROLLMENT
-} from "./queries"
-
+import AccountEnrollmentBack from './AccountEnrollmentBack'
 
 // function setAttendanceStatus({t, match, updateAttendance, node, status}) {
 //   const schedule_item_id = match.params.class_id
@@ -61,6 +57,7 @@ import {
 
 function AccountEnrollmentFindClass({ t, match, location }) {
   const accountId = match.params.account_id
+  const pageHeaderButtonList = <AccountEnrollmentBack accountId={accountId} />
   const { loading, error, data } = useQuery(GET_ACCOUNT, { variables: { accountId: accountId }})
 
   if (loading) { 
@@ -74,7 +71,7 @@ function AccountEnrollmentFindClass({ t, match, location }) {
   const account = data.account
 
   return (
-    <AccountEnrollmentsBase account={account} >
+    <AccountEnrollmentsBase account={account} pageHeaderButtonList={pageHeaderButtonList} >
       <h5>{t('relations.account.enrollments.title_add_search_class')}</h5>
       <SearchClassesOnDate btnAction="accountEnrollmentAdd" />
     </AccountEnrollmentsBase>

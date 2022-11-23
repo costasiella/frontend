@@ -15,9 +15,11 @@ import {
 import CSLS from '../../../../tools/cs_local_storage'
 import { getWeekdayNames } from '../../../../tools/date_tools'
 import AppSettingsContext from '../../../context/AppSettingsContext'
+import ButtonAdd from '../../../ui/ButtonAdd'
 import ButtonEdit from '../../../ui/ButtonEdit'
 import ContentCard from "../../../general/ContentCard"
 import AccountEnrollmentsBase from "./AccountEnrollmentsBase"
+import RelationsAccountsBack from "../RelationsAccountsBack"
 import ScheduleClassEnrollmentDelete from '../../../schedule/classes/all/enrollments/ScheduleClassEnrollmentDelete'
 // import AccountClassDelete from "./AccountClassDelete"
 
@@ -31,6 +33,11 @@ function AccountEnrollments({ t, match, location }) {
   const accountId = match.params.account_id
   const cardTitle = t('relations.account.enrollments.title')
   const weekdayNames = getWeekdayNames(t)
+  const pageHeaderButtonList = <React.Fragment>
+    <RelationsAccountsBack />
+    <ButtonAdd addUrl={`/relations/accounts/${accountId}/enrollment_find_class`} className="ml-2" />
+  </React.Fragment>
+
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ENROLLMENTS_QUERY, {
     variables: {'account': accountId},
     fetchPolicy: "network-only"
@@ -41,7 +48,7 @@ function AccountEnrollments({ t, match, location }) {
 
   // Loading
   if (loading) return (
-    <AccountEnrollmentsBase>
+    <AccountEnrollmentsBase pageHeaderButtonList={pageHeaderButtonList} >
       <Card title={cardTitle}>
         <Card.Body>
           <Dimmer active={true} loader={true} />
@@ -53,7 +60,7 @@ function AccountEnrollments({ t, match, location }) {
   if (error) {
     console.log(error)
     return (
-      <AccountEnrollmentsBase>
+      <AccountEnrollmentsBase pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.error_sad_smiley')}</p>
@@ -69,7 +76,7 @@ function AccountEnrollments({ t, match, location }) {
   // Empty list
   if (!scheduleItemEnrollments.edges.length) {
     return (
-      <AccountEnrollmentsBase account={account}>
+      <AccountEnrollmentsBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('relations.account.enrollments.empty_list')}</p>
@@ -81,7 +88,7 @@ function AccountEnrollments({ t, match, location }) {
 
   // Return populated list
   return (
-    <AccountEnrollmentsBase account={account}>
+    <AccountEnrollmentsBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={scheduleItemEnrollments.pageInfo}

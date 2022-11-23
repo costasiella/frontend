@@ -7,15 +7,13 @@ import {
   Grid,
   Container
 } from "tabler-react";
-import SiteWrapper from "../../../SiteWrapper"
-import RelationsAccountsBack from "../RelationsAccountsBack"
 
+import SiteWrapper from "../../../SiteWrapper"
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
-import ButtonAdd from '../../../ui/ButtonAdd'
 
 
-function AccountEnrollmentsBase({ t, match, history, children, account={} }) {
+function AccountEnrollmentsBase({ t, match, history, children, account={}, pageHeaderButtonList }) {
   const accountId = match.params.account_id
 
   return (
@@ -24,9 +22,7 @@ function AccountEnrollmentsBase({ t, match, history, children, account={} }) {
         <Container>
           <Page.Header title={account.fullName} >
             <div className="page-options d-flex">
-              <RelationsAccountsBack />
-              <ButtonAdd addUrl={`/relations/accounts/${accountId}/enrollment_find_class`} 
-                className="ml-2" />
+              {pageHeaderButtonList}
             </div>
           </Page.Header>
           <Grid.Row>
