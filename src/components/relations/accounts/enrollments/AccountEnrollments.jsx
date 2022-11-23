@@ -15,6 +15,7 @@ import {
 import CSLS from '../../../../tools/cs_local_storage'
 import { getWeekdayNames } from '../../../../tools/date_tools'
 import AppSettingsContext from '../../../context/AppSettingsContext'
+import ButtonEdit from '../../../ui/ButtonEdit'
 import ContentCard from "../../../general/ContentCard"
 import AccountEnrollmentsBase from "./AccountEnrollmentsBase"
 import ScheduleClassEnrollmentDelete from '../../../schedule/classes/all/enrollments/ScheduleClassEnrollmentDelete'
@@ -27,11 +28,11 @@ function AccountEnrollments({ t, match, location }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-  const account_id = match.params.account_id
+  const accountId = match.params.account_id
   const cardTitle = t('relations.account.enrollments.title')
   const weekdayNames = getWeekdayNames(t)
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ENROLLMENTS_QUERY, {
-    variables: {'account': account_id},
+    variables: {'account': accountId},
     fetchPolicy: "network-only"
   })
 
@@ -142,16 +143,8 @@ function AccountEnrollments({ t, match, location }) {
                 </Table.Col>
                 <Table.Col>
                   <ScheduleClassEnrollmentDelete node={node} />
-                  {/* <AccountClassDelete account={account} node={node} /> */}
+                  <ButtonEdit className='float-right' editUrl={`/relations/accounts/${accountId}/enrollments/${node.id}`} />
                 </Table.Col>
-                {/* <Table.Col className="text-right" key={v4()}>
-                  <Link to={"/relations/accounts/" + match.params.account_id + "/classpasses/edit/" + node.id}>
-                    <Button className='btn-sm' 
-                            color="secondary">
-                      {t('general.edit')}
-                    </Button>
-                  </Link>
-                </Table.Col> */}
               </Table.Row>
             ))}
           </Table.Body>
