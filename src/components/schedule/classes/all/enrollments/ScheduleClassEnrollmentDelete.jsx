@@ -14,6 +14,7 @@ function ScheduleClassEnrollmentDelete({t, match, node}) {
 
     return (
       <ButtonDelete
+        className="float-right"
         msgConfirm={t("schedule.classes.class.enrollments.delete_confirm_msg")}
         msgDescription={<p>{node.accountSubscription.account.fullName}</p>}
         msgSuccess={t('schedule.classes.class.enrollments.delete_success')}
