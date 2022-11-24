@@ -653,7 +653,9 @@
         "search_account_not_found": "Account not found",
         "search_no_account_results": "The search didn't return any results",
         "supplier": "Supplier",
-        "vip": "VIP"
+        "vip": "VIP",
+        "on": "on",
+        "search_no_classes_found": "No classes were found on the given date"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1251,7 +1253,10 @@
                 "title": "Class enrollments",
                 "empty_list": "No enrollments have been created for this account yet",
                 "dateStart": "Start date",
-                "dateEnd": "End date"
+                "dateEnd": "End date",
+                "title_add_search_class": "Choose a date and class to create a new enrollment",
+                "title_edit": "Edit enrollment",
+                "for_class": "for"
             }
         },
         "b2b": {

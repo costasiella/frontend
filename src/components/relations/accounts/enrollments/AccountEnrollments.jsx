@@ -30,9 +30,11 @@ function AccountEnrollments({ t, match, location }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
+  const weekdayNames = getWeekdayNames(t)
+
   const accountId = match.params.account_id
   const cardTitle = t('relations.account.enrollments.title')
-  const weekdayNames = getWeekdayNames(t)
+
   const pageHeaderButtonList = <React.Fragment>
     <RelationsAccountsBack />
     <ButtonAdd addUrl={`/relations/accounts/${accountId}/enrollment_find_class`} className="ml-2" />
@@ -149,7 +151,7 @@ function AccountEnrollments({ t, match, location }) {
                 </Table.Col>
                 <Table.Col>
                   <ScheduleClassEnrollmentDelete node={node} />
-                  <ButtonEdit className='float-right' editUrl={`/relations/accounts/${accountId}/enrollments/${node.id}`} />
+                  <ButtonEdit className='float-right' editUrl={`/relations/accounts/${accountId}/enrollments/edit/${node.id}`} />
                 </Table.Col>
               </Table.Row>
             ))}

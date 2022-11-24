@@ -480,7 +480,9 @@
         "search_account_not_found": "__STRING_NOT_TRANSLATED__",
         "search_no_account_results": "__STRING_NOT_TRANSLATED__",
         "supplier": "__STRING_NOT_TRANSLATED__",
-        "vip": "__STRING_NOT_TRANSLATED__"
+        "vip": "__STRING_NOT_TRANSLATED__",
+        "on": "__STRING_NOT_TRANSLATED__",
+        "search_no_classes_found": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -1426,7 +1428,10 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "dateStart": "__STRING_NOT_TRANSLATED__",
-                "dateEnd": "__STRING_NOT_TRANSLATED__"
+                "dateEnd": "__STRING_NOT_TRANSLATED__",
+                "title_add_search_class": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__",
+                "for_class": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
