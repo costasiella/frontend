@@ -1367,7 +1367,9 @@
                     "confirm_resending_info_mail_to": "Do you wish to resend the info mail for this class to the account below?",
                     "resend_success": "Sent info mail",
                     "resend_info_mail": "Resend info mail",
-                    "confirm_resending_info_mail_title": "Resend info mail"
+                    "confirm_resending_info_mail_title": "Resend info mail",
+                    "attending": "Attending",
+                    "booked": "Booked"
                 },
                 "book": {
                     "toast_success": "Check-in success",

@@ -1957,7 +1957,9 @@
                     "confirm_resending_info_mail_to": "__STRING_NOT_TRANSLATED__",
                     "resend_success": "__STRING_NOT_TRANSLATED__",
                     "resend_info_mail": "__STRING_NOT_TRANSLATED__",
-                    "confirm_resending_info_mail_title": "__STRING_NOT_TRANSLATED__"
+                    "confirm_resending_info_mail_title": "__STRING_NOT_TRANSLATED__",
+                    "attending": "__STRING_NOT_TRANSLATED__",
+                    "booked": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"
