@@ -137,7 +137,6 @@ function AccountEnrollments({ t, match, location }) {
                   { (node.dateEnd) && moment(node.dateEnd).format(dateFormat) }
                 </Table.Col>
                 <Table.Col>
-                  {/* TODO: add class time & weekday into here */}
                   { node.scheduleItem.organizationClasstype.name } <br />
                   <span className="text-muted">
                     <Icon name="clock" /> { weekdayNames[node.scheduleItem.frequencyInterval] } { moment(node.timeStart).format(timeFormat) } <br />
