@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { useQuery, useLazyQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
@@ -14,7 +14,6 @@ import {
   Dimmer,
   Grid,
   Icon,
-  Table
 } from "tabler-react";
 
 import AppSettingsContext from '../context/AppSettingsContext'
@@ -28,7 +27,6 @@ import {
 
 import BadgePublic from './BadgePublic'
 import CSDatePicker from './CSDatePicker'
-import ContentCard from "../general/ContentCard"
 import { GET_CLASSES_QUERY } from "../schedule/classes/queries"
 
 // Action buttons
