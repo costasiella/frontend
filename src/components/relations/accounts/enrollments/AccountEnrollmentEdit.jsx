@@ -96,15 +96,13 @@ function AccountEnrollmentEdit({ t, match, history }) {
       <Card title={cardTitle}>
         <Card.Body>
         <Card.Alert color="primary">
-        { scheduleItem.organizationClasstype.name } <br />
-          <span className="text-muted">
-            <Icon name="clock" /> {" "} 
+          <b>{scheduleItem.organizationClasstype.name}</b><br />
+          <Icon name="clock" /> {" "} 
               { weekdayNames[scheduleItem.frequencyInterval] } {" "}
               { moment(`${scheduleItem.dateStart} ${scheduleItem.timeStart}`).format(timeFormat) } <br />
             <Icon name="home" /> {" "}
             { scheduleItem.organizationLocationRoom.organizationLocation.name } {" - " } 
             { scheduleItem.organizationLocationRoom.name }
-          </span>
         </Card.Alert>
         </Card.Body>
           <Formik
