@@ -13,7 +13,7 @@ import {
   Card,
   Dimmer,
   Grid,
-  Icon,
+  Icon, 
 } from "tabler-react";
 
 import AppSettingsContext from '../context/AppSettingsContext'
@@ -41,8 +41,6 @@ function get_classes_query_variables(date) {
     queryVars.dateFrom = searchDate
     queryVars.dateUntil = searchDate
   }
-
-  queryVars.attendanceCountType = 'ATTENDING_AND_BOOKED'
 
   return queryVars
 }
@@ -184,7 +182,7 @@ function SearchClassesOnDate({
                 timeStart, 
                 timeEnd,
                 spaces,
-                countAttendance,
+                countAttendingAndBooked,
                 displayPublic }) => (
                   <Card key={v4()}>
                     <Card.Body>
@@ -247,7 +245,7 @@ function SearchClassesOnDate({
                         </Grid.Col>
                         <Grid.Col xs={3} sm={3} md={2}>
                           {/* Attendance */}
-                          <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                          <small className='float-right mt-1'><Icon name="users" /> {countAttendingAndBooked}/{spaces}</small>
                         </Grid.Col>
                       </Grid.Row>
                     </Card.Body>

@@ -6,7 +6,6 @@ export const GET_BACKEND_ANNOUNCEMENTS_QUERY = gql`
     $dateUntil:Date!, 
     $orderBy: String, 
     $instructor: ID!
-    $attendanceCountType: String!
   ) {
     organizationAnnouncements(first: 100 displayPublic: true, displayBackend: true) {
       pageInfo {
@@ -33,7 +32,6 @@ export const GET_BACKEND_ANNOUNCEMENTS_QUERY = gql`
         dateUntil: $dateUntil, 
         orderBy: $orderBy, 
         instructor: $instructor,
-        attendanceCountType: $attendanceCountType,
         publicOnly: false
     ){
       date
@@ -75,7 +73,7 @@ export const GET_BACKEND_ANNOUNCEMENTS_QUERY = gql`
         timeStart
         timeEnd
         spaces
-        countAttendance
+        countAttendingAndBooked
         availableSpacesOnline
         availableSpacesTotal
         displayPublic
@@ -92,5 +90,4 @@ export const GET_BACKEND_ANNOUNCEMENTS_QUERY = gql`
 //   "dateUntil": "2022-08-20",
 //   "orderBy": "starttime",
 //   "instructor": "QWNjb3VudE5vZGU6Mg==",
-//   "attendanceCountType": "ATTENDING_AND_BOOKED"
 // }

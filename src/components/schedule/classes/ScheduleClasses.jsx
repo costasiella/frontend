@@ -162,7 +162,7 @@ function ScheduleClasses ({ t, history }) {
                 timeStart, 
                 timeEnd,
                 spaces,
-                countAttendance,
+                countAttendingAndBooked,
                 displayPublic }) => (
                   <Card key={v4()}>
                     <Card.Body>
@@ -321,7 +321,11 @@ function ScheduleClasses ({ t, history }) {
                         </Grid.Col>
                         <Grid.Col xs={3} sm={3} md={2}>
                           {/* Attendance */}
-                          <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                          <HasPermissionWrapper permission="view" resource="scheduleitemattendance">
+                            <Link to={'/schedule/classes/class/attendance/' + scheduleItemId + '/' + date}>
+                              <small className='float-right mt-1'><Icon name="users" /> {countAttendingAndBooked}/{spaces}</small>
+                            </Link>
+                          </HasPermissionWrapper>
                         </Grid.Col>
                       </Grid.Row>
                     </Card.Body>
