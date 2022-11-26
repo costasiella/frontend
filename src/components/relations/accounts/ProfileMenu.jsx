@@ -284,11 +284,11 @@ function ProfileMenu({t, accountId, activeLink}) {
             <List.GroupItem
                 key={v4()}
                 className="d-flex align-items-center"
-                to={"#/relations/accounts/" + accountId + "/password"}
-                icon="lock"
-                active={(activeLink === 'password')}
+                to={"#/relations/accounts/" + accountId + "/tools"}
+                icon="settings"
+                active={(activeLink === 'tools')}
                 >
-            {t('relations.account.password.title')}
+            {t('relations.account.tools.title')}
             </List.GroupItem>
         </HasPermissionWrapper>
     </List.Group>
