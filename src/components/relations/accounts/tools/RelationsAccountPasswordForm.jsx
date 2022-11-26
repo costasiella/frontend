@@ -3,6 +3,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 import {
+  Button,
   Card,
   Form,
   Grid
@@ -16,8 +17,8 @@ const RelationsAccountPasswordForm = ({ t, history, isSubmitting, errors, values
       <Card.Body>
         <Grid.Row>
           <Grid.Col>
-            <Form.Group label={t('general.password')}>
-              <Field type="text" 
+            <Form.Group label={t('relations.accounts.set_password')}>
+              <Field type="password" 
                       name="passwordNew" 
                       className={(errors.passwordNew) ? "form-control is-invalid" : "form-control"} 
                       autoComplete="off" />
@@ -27,7 +28,14 @@ const RelationsAccountPasswordForm = ({ t, history, isSubmitting, errors, values
         </Grid.Row>
       </Card.Body>
       <Card.Footer>
-          <ButtonFormSubmit disabled={isSubmitting} />
+        <Button 
+          color="primary"
+          // className="pull-right" 
+          type="submit" 
+          disabled={isSubmitting}
+        >
+          {t('general.submit')}
+        </Button>  
       </Card.Footer>
   </FoForm>
 )

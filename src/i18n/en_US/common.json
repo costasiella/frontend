@@ -1058,7 +1058,10 @@
             "invoice_to_business": "Invoice to this account or a business",
             "invoice_to_account": "Invoice to account",
             "quote_to_business": "Quote to business or to this account",
-            "quote_to_account": "Quote to account"
+            "quote_to_account": "Quote to account",
+            "set_password": "Set password",
+            "toast_edit_password_success": "New password set",
+            "strong_password": "The password should be at least 9 characters long."
         },
         "account": {
             "subscriptions": {
@@ -1256,8 +1259,8 @@
                 "title_add_search_class": "Choose a date and class to create a new enrollment",
                 "title_edit": "Edit enrollment"
             },
-            "password": {
-                "title": "Password"
+            "tools": {
+                "title": "Tools"
             }
         },
         "b2b": {

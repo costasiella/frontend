@@ -1431,7 +1431,7 @@
                 "title_add_search_class": "__STRING_NOT_TRANSLATED__",
                 "title_edit": "__STRING_NOT_TRANSLATED__"
             },
-            "password": {
+            "tools": {
                 "title": "__STRING_NOT_TRANSLATED__"
             }
         },
@@ -1454,7 +1454,10 @@
             "invoice_to_business": "__STRING_NOT_TRANSLATED__",
             "invoice_to_account": "__STRING_NOT_TRANSLATED__",
             "quote_to_business": "__STRING_NOT_TRANSLATED__",
-            "quote_to_account": "__STRING_NOT_TRANSLATED__"
+            "quote_to_account": "__STRING_NOT_TRANSLATED__",
+            "set_password": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_password_success": "__STRING_NOT_TRANSLATED__",
+            "strong_password": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {

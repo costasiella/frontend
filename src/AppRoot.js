@@ -178,6 +178,7 @@ import RelationsAccountClasses from './components/relations/accounts/classes/Acc
 import RelationsAccountEnrollments from './components/relations/accounts/enrollments/AccountEnrollments'
 import RelationsAccountEnrollmentEdit from './components/relations/accounts/enrollments/AccountEnrollmentEdit'
 import RelationsAccountEnrollmentFindClass from './components/relations/accounts/enrollments/AccountEnrollmentFindClass'
+import RelationsAccountTools from './components/relations/accounts/tools/RelationsAccountTools'
 import AccountClasspasses from './components/relations/accounts/classpasses/AccountClasspasses'
 import AccountClasspassAdd from './components/relations/accounts/classpasses/AccountClasspassAdd'
 import AccountClasspassEdit from './components/relations/accounts/classpasses/AccountClasspassEdit'
@@ -673,6 +674,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/edit/:subscription_id/pauses/add" component={AccountSubscriptionEditPauseAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/edit/:subscription_id/pauses/edit/:id" 
                           component={AccountSubscriptionEditPauseEdit} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/tools" component={RelationsAccountTools} />
             <PrivateRoute exact path="/relations/accounts/:account_id/instructor_profile" component={RelationsAccountInstructorProfile} />
             <PrivateRoute exact path="/relations/b2b" component={RelationsB2B} />
             <PrivateRoute exact path="/relations/b2b/add" component={RelationsB2BAdd} />
