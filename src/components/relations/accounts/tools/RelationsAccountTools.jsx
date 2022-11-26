@@ -68,7 +68,6 @@ function RelationsAccountTools({t, match}) {
         <Card.Header>
           <Card.Title>{t("relations.accounts.set_password")}</Card.Title>
         </Card.Header>
-
         <Formik
             initialValues={{}}
             // validationSchema={ACCOUNT_SCHEMA}
