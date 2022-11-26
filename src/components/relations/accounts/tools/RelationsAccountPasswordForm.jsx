@@ -18,10 +18,10 @@ const RelationsAccountPasswordForm = ({ t, history, isSubmitting, errors, values
           <Grid.Col>
             <Form.Group label={t('general.password')}>
               <Field type="text" 
-                      name="password" 
-                      className={(errors.password) ? "form-control is-invalid" : "form-control"} 
+                      name="passwordNew" 
+                      className={(errors.passwordNew) ? "form-control is-invalid" : "form-control"} 
                       autoComplete="off" />
-              <ErrorMessage name="password" component="span" className="invalid-feedback" />
+              <ErrorMessage name="passwordNew" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
         </Grid.Row>
