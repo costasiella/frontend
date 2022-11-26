@@ -1255,6 +1255,9 @@
                 "dateEnd": "End date",
                 "title_add_search_class": "Choose a date and class to create a new enrollment",
                 "title_edit": "Edit enrollment"
+            },
+            "password": {
+                "title": "Password"
             }
         },
         "b2b": {

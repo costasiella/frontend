@@ -1430,6 +1430,9 @@
                 "dateEnd": "__STRING_NOT_TRANSLATED__",
                 "title_add_search_class": "__STRING_NOT_TRANSLATED__",
                 "title_edit": "__STRING_NOT_TRANSLATED__"
+            },
+            "password": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {

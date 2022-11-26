@@ -278,6 +278,19 @@ function ProfileMenu({t, accountId, activeLink}) {
             {t('relations.account.notes.title')}
             </List.GroupItem>
         </HasPermissionWrapper>
+        <HasPermissionWrapper 
+            permission="change"
+            resource="account">
+            <List.GroupItem
+                key={v4()}
+                className="d-flex align-items-center"
+                to={"#/relations/accounts/" + accountId + "/password"}
+                icon="lock"
+                active={(activeLink === 'password')}
+                >
+            {t('relations.account.password.title')}
+            </List.GroupItem>
+        </HasPermissionWrapper>
     </List.Group>
   )
 }
