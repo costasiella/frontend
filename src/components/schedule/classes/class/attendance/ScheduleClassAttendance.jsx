@@ -11,7 +11,6 @@ import {
   Card,
   Dimmer,
   Dropdown,
-  Grid,
   Icon,
   Table
 } from "tabler-react";
