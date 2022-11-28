@@ -10,8 +10,6 @@ import {
 } from "tabler-react"
 
 
-import ButtonFormSubmit from '../../../ui/ButtonFormSubmit'
-
 const RelationsAccountPasswordForm = ({ t, history, isSubmitting, errors, values, inputData, setFieldTouched, setFieldValue }) => (
   <FoForm>
       <Card.Body>
