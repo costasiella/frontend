@@ -1456,8 +1456,7 @@
             "quote_to_business": "__STRING_NOT_TRANSLATED__",
             "quote_to_account": "__STRING_NOT_TRANSLATED__",
             "set_password": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_password_success": "__STRING_NOT_TRANSLATED__",
-            "strong_password": "__STRING_NOT_TRANSLATED__"
+            "toast_edit_password_success": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {
@@ -1473,7 +1472,10 @@
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "invoices": {
+                "empty_list": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "suppliers": {
             "title": "__STRING_NOT_TRANSLATED__"

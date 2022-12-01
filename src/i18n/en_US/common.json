@@ -1060,8 +1060,7 @@
             "quote_to_business": "Quote to business or to this account",
             "quote_to_account": "Quote to account",
             "set_password": "Set password",
-            "toast_edit_password_success": "New password set",
-            "strong_password": "The password should be at least 9 characters long."
+            "toast_edit_password_success": "New password set"
         },
         "account": {
             "subscriptions": {
@@ -1276,7 +1275,10 @@
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
             "archived": "Archived B2B relation",
-            "explanation": "Businesses this organization is connected to"
+            "explanation": "Businesses this organization is connected to",
+            "invoices": {
+                "empty_list": "No invoices have been created yet for this relation"
+            }
         },
         "suppliers": {
             "title": "Suppliers"

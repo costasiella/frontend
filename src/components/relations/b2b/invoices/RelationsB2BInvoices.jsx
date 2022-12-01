@@ -44,7 +44,20 @@ function RelationsB2BInvoices({ t, match, location, history}) {
 
   const business = data.business
   const invoices = data.financeInvoices
-  // TODO: Empty list
+  
+  // Empty list
+  if (!invoices.edges.length) {
+    return (
+      <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name}>
+        <Card title={cardTitle}>
+          <Card.Body>
+            <p>{t('relations.b2b.invoices.empty_list')}</p>
+          </Card.Body>
+        </Card>
+      </RelationsB2BEditBase>
+    )
+  }
+
 
   
 

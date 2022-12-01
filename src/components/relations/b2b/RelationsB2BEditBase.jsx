@@ -16,12 +16,13 @@ import RelationsB2BEditMenu from './RelationsB2BEditMenu'
 function RelationsB2BEditBase({ t, match, history, children, pageTitle="", activeLink="" }) {
   const businessId = match.params.business_id
   const returnUrl = "/relations/b2b"
+  const titleB2B = t("relations.b2b.title")
 
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={pageTitle}>
+          <Page.Header title={`${titleB2B} - ${pageTitle}`}>
             <div className="page-options d-flex">
               <ButtonBack returnUrl={returnUrl} />
             </div>
