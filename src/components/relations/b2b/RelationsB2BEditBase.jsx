@@ -13,7 +13,9 @@ import ButtonBack from '../../ui/ButtonBack'
 import RelationsB2BEditMenu from './RelationsB2BEditMenu'
 
 
-function RelationsB2BEditBase({ t, match, history, children, pageTitle="", activeLink="", returnUrl="/relations/b2b" }) {
+function RelationsB2BEditBase({ 
+  t, match, history, children, pageTitle="", activeLink="", returnUrl="/relations/b2b", pageHeaderButtonList="" 
+}) {
   const businessId = match.params.business_id
   const titleB2B = t("relations.b2b.title")
 
@@ -24,6 +26,7 @@ function RelationsB2BEditBase({ t, match, history, children, pageTitle="", activ
           <Page.Header title={`${titleB2B} - ${pageTitle}`}>
             <div className="page-options d-flex">
               <ButtonBack returnUrl={returnUrl} />
+              { pageHeaderButtonList }
             </div>
           </Page.Header>
           <Grid.Row>

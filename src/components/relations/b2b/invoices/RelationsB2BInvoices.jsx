@@ -9,6 +9,7 @@ import {
 import CSLS from '../../../../tools/cs_local_storage'
 import ContentCard from '../../../general/ContentCard';
 import FinanceInvoicesList from '../../../finance/invoices/FinanceInvoicesList'
+import ButtonAdd from '../../../ui/ButtonAdd';
 
 import { GET_INVOICES_QUERY } from './queries'
 import RelationsB2BEditBase from '../RelationsB2BEditBase'
@@ -22,12 +23,16 @@ function RelationsB2BInvoices({ t, match, location, history}) {
       business: businessId
     }
   })
+  const pageHeaderButtonList = <ButtonAdd 
+    className='ml-2'
+    addUrl={`/relations/b2b/${businessId}/invoices/add`} 
+  />
 
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
   localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
 
   // Loading
-  if (loading) return <RelationsB2BEditBase activeLink={activeLink}>
+  if (loading) return <RelationsB2BEditBase activeLink={activeLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         <Card.Body>{t('general.loading_with_dots')}</Card.Body>
       </Card>
@@ -35,7 +40,7 @@ function RelationsB2BInvoices({ t, match, location, history}) {
   // Error
   if (error) {
     console.log(error)
-    return <RelationsB2BEditBase activeLink={activeLink}>
+    return <RelationsB2BEditBase activeLink={activeLink} pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         <Card.Body>{t('general.error_sad_smiley')}</Card.Body>
       </Card>
@@ -48,7 +53,7 @@ function RelationsB2BInvoices({ t, match, location, history}) {
   // Empty list
   if (!invoices.edges.length) {
     return (
-      <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name}>
+      <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name} pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('relations.b2b.invoices.empty_list')}</p>
@@ -59,7 +64,7 @@ function RelationsB2BInvoices({ t, match, location, history}) {
   } 
 
   return (
-    <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name}>
+    <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name} pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={cardTitle}
         hasCardBody={false}
