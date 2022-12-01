@@ -52,7 +52,6 @@ function AccountInvoiceAdd({ t, match, history }) {
       </RelationsAccountProfileBase>
   }
   
-  console.log(data)
   const account = data.account
   const initialBusiness = account.invoiceToBusiness ? account.invoiceToBusiness.id : null
   const financeInvoiceGroups = data.financeInvoiceGroups
