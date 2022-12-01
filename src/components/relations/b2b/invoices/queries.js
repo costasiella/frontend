@@ -40,3 +40,46 @@ export const GET_INVOICES_QUERY = gql`
     }
   }
 `
+
+export const GET_INPUT_VALUES_QUERY = gql`
+  query InvoiceInputValues($after: String, $before: String, $accountId: ID!) {
+    financeInvoiceGroups(first: 100, before: $before, after: $after, archived: false) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    account(id:$accountId) {
+      id
+      firstName
+      lastName
+      email
+      phone
+      mobile
+      isActive
+      urlImageThumbnailSmall
+      invoiceToBusiness {
+        id
+        name
+      }
+    }
+  }
+`
+
+export const CREATE_B2B_INVOICE = gql`
+  mutation CreateFinanceInvoice($input: CreateFinanceInvoiceInput!) {
+    createFinanceInvoice(input: $input) {
+      financeInvoice {
+        id
+      }
+    }
+  }
+`
