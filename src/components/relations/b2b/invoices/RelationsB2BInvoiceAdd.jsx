@@ -6,71 +6,64 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import {
   Card,
+  Dimmer,
 } from "tabler-react";
 
-import { GET_INPUT_VALUES_QUERY, CREATE_ACCOUNT_INVOICE } from './queries'
-import AccountInvoiceAddForm from './AccountInvoiceAddForm'
-import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
+import { GET_INPUT_VALUES_QUERY, CREATE_B2B_INVOICE } from './queries'
+import B2BInvoiceAddForm from './RelationsB2BInvoiceAddForm'
+import RelationsB2BEditBase from '../RelationsB2BEditBase'
 
 
-function AccountInvoiceAdd({ t, match, history }) {
-  const account_id = match.params.account_id
+function RelationsB2BInvoiceAdd({ t, match, history }) {
+  const businessId = match.params.business_id
   const activeLink = "invoices"
-  const cardTitle = t('relations.account.invoices.title_add')
-  const returnUrl = `/relations/accounts/${account_id}/invoices`
+  const cardTitle = t('relations.b2b.invoices.title_add')
+  const returnUrl = `/relations/b2b/${businessId}/invoices`
 
   const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY, {
       variables: {
-        accountId: account_id
+        business: businessId
       }
     }
   )
-  const [createInvoice] = useMutation(CREATE_ACCOUNT_INVOICE, {
+  const [createInvoice] = useMutation(CREATE_B2B_INVOICE, {
     // onCompleted = () => history.push('/finance/invoices/edit/')
   }) 
 
   // Query
   // Loading
   if (loading) {
-    return <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
+    return <RelationsB2BEditBase activeLink={activeLink} returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
-            <p>{t('general.loading_with_dots')}</p>
+            <Dimmer loader={true} active={true} />
           </Card.Body>
         </Card>
-      </RelationsAccountProfileBase>
+      </RelationsB2BEditBase>
   }
   // Error
   if (error) {
     console.log(error)
-    return <RelationsAccountProfileBase activeLink={activeLink} returnUrl={returnUrl}>
+    return <RelationsB2BEditBase activeLink={activeLink} returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.error_sad_smiley')}</p>
           </Card.Body>
         </Card>
-      </RelationsAccountProfileBase>
+      </RelationsB2BEditBase>
   }
   
-  const account = data.account
-  const initialBusiness = account.invoiceToBusiness ? account.invoiceToBusiness.id : null
+  const business = data.business
   const financeInvoiceGroups = data.financeInvoiceGroups
   const firstInvoiceGroup = financeInvoiceGroups && financeInvoiceGroups.edges && financeInvoiceGroups.edges[0].node.id
 
 
   return (
-    <RelationsAccountProfileBase activeLink={activeLink} user={account} returnUrl={returnUrl}>
+    <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name} returnUrl={returnUrl}>
       <Card title={cardTitle}>
-        {/* { account.invoiceToBusiness && 
-          <Card.Alert color="primary">
-           <b><Icon name="home" /> {account.invoiceToBusiness.name}</b> {' '}
-           {t("relations.account.invoices.is_the_default_billing_address_for_this_account")}
-          </Card.Alert>
-        } */}
         <Formik
           initialValues={{
             financeInvoiceGroup: firstInvoiceGroup,
-            business: initialBusiness,
             summary: ""
           }}
           // validationSchema={INVOICE_GROUP_SCHEMA}
@@ -80,16 +73,15 @@ function AccountInvoiceAdd({ t, match, history }) {
 
             createInvoice({ variables: {
               input: {
-                account: account_id, 
+                business: businessId, 
                 financeInvoiceGroup: values.financeInvoiceGroup,
-                business: (values.business) ? values.business : null,
                 summary: values.summary
               }
             }, refetchQueries: [
             ]})
             .then(({ data }) => {
                 console.log('got data', data)
-                toast.success((t('relations.account.invoices.toast_title_add')), {
+                toast.success((t('relations.b2b.invoices.toast_add_success')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
                 history.push('/finance/invoices/edit/' + data.createFinanceInvoice.financeInvoice.id)
@@ -104,7 +96,7 @@ function AccountInvoiceAdd({ t, match, history }) {
             }}
         >
           {({ isSubmitting, errors, values, submitForm, setFieldTouched, setFieldValue }) => (
-            <AccountInvoiceAddForm
+            <B2BInvoiceAddForm
               inputData={data}
               isSubmitting={isSubmitting}
               errors={errors}
@@ -114,11 +106,11 @@ function AccountInvoiceAdd({ t, match, history }) {
               setFieldValue={setFieldValue}
               returnUrl={returnUrl}
             >
-            </AccountInvoiceAddForm>   
+            </B2BInvoiceAddForm>   
           )}
         </Formik>
       </Card>
-    </RelationsAccountProfileBase>
+    </RelationsB2BEditBase>
 
     // <SiteWrapper>
     //   <div className="my-3 my-md-5">
@@ -142,4 +134,4 @@ function AccountInvoiceAdd({ t, match, history }) {
 }
 
 
-export default withTranslation()(withRouter(AccountInvoiceAdd))
+export default withTranslation()(withRouter(RelationsB2BInvoiceAdd))

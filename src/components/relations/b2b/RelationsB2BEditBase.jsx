@@ -13,9 +13,8 @@ import ButtonBack from '../../ui/ButtonBack'
 import RelationsB2BEditMenu from './RelationsB2BEditMenu'
 
 
-function RelationsB2BEditBase({ t, match, history, children, pageTitle="", activeLink="" }) {
+function RelationsB2BEditBase({ t, match, history, children, pageTitle="", activeLink="", returnUrl="/relations/b2b" }) {
   const businessId = match.params.business_id
-  const returnUrl = "/relations/b2b"
   const titleB2B = t("relations.b2b.title")
 
   return (

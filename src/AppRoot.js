@@ -228,6 +228,7 @@ import RelationsB2B from './components/relations/b2b/RelationsB2B'
 import RelationsB2BAdd from './components/relations/b2b/RelationsB2BAdd.jsx'
 import RelationsB2BEdit from './components/relations/b2b/RelationsB2BEdit.jsx'
 import RelationsB2BInvoices from './components/relations/b2b/invoices/RelationsB2BInvoices'
+import RelationsB2BInvoiceAdd from './components/relations/b2b/invoices/RelationsB2BInvoiceAdd'
 
 import ScheduleHome from './components/schedule/home/ScheduleHome'
 import ScheduleAppointments from './components/schedule/appointments/ScheduleAppointments'
@@ -680,6 +681,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/b2b/add" component={RelationsB2BAdd} />
             <PrivateRoute exact path="/relations/b2b/:business_id/edit" component={RelationsB2BEdit} />
             <PrivateRoute exact path="/relations/b2b/:business_id/invoices" component={RelationsB2BInvoices} />
+            <PrivateRoute exact path="/relations/b2b/:business_id/invoices/add" component={RelationsB2BInvoiceAdd} />
 
             {/* SCHEDULE */}
             <PrivateRoute exact path="/schedule" component={ScheduleHome} />

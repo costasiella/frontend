@@ -42,7 +42,7 @@ export const GET_INVOICES_QUERY = gql`
 `
 
 export const GET_INPUT_VALUES_QUERY = gql`
-  query InvoiceInputValues($after: String, $before: String, $accountId: ID!) {
+  query InvoiceInputValues($after: String, $before: String, $business: ID!) {
     financeInvoiceGroups(first: 100, before: $before, after: $after, archived: false) {
       pageInfo {
         startCursor
@@ -57,19 +57,9 @@ export const GET_INPUT_VALUES_QUERY = gql`
         }
       }
     }
-    account(id:$accountId) {
+    business(id: $business) {
       id
-      firstName
-      lastName
-      email
-      phone
-      mobile
-      isActive
-      urlImageThumbnailSmall
-      invoiceToBusiness {
-        id
-        name
-      }
+      name
     }
   }
 `

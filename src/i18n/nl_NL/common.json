@@ -1304,7 +1304,8 @@
                 "title_add": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
                 "is_the_default_billing_address_for_this_account": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "toast_title_add": "__STRING_NOT_TRANSLATED__"
             },
             "memberships": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
@@ -1474,7 +1475,9 @@
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "invoices": {
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__"
             }
         },
         "suppliers": {

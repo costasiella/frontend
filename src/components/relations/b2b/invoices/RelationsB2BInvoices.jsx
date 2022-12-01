@@ -56,10 +56,7 @@ function RelationsB2BInvoices({ t, match, location, history}) {
         </Card>
       </RelationsB2BEditBase>
     )
-  }
-
-
-  
+  } 
 
   return (
     <RelationsB2BEditBase activeLink={activeLink} pageTitle={business.name}>

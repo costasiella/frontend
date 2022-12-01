@@ -1162,7 +1162,8 @@
                 "title_add": "Add invoice",
                 "title": "Invoices",
                 "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation.",
-                "empty_list": "No invoices have been created for this account yet."
+                "empty_list": "No invoices have been created for this account yet.",
+                "toast_title_add": "Added invoice"
             },
             "accepted_documents": {
                 "title": "Accepted documents",
@@ -1277,7 +1278,9 @@
             "archived": "Archived B2B relation",
             "explanation": "Businesses this organization is connected to",
             "invoices": {
-                "empty_list": "No invoices have been created yet for this relation"
+                "empty_list": "No invoices have been created yet for this relation",
+                "title_add": "Add invoice",
+                "toast_add_success": "Added invoice"
             }
         },
         "suppliers": {
