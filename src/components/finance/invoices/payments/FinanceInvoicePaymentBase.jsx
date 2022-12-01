@@ -83,7 +83,8 @@ function FinanceInvoicePaymentBase({ t, history, match, children, form_type="cre
               </Card.Header>
               <Card.Body padding={0}>
                 <h4> #{ invoice_number } </h4>
-                { inputData.financeInvoice.account.fullName } <br />
+                { (inputData.financeInvoice.relationCompany) && <span>{inputData.financeInvoice.relationCompany}<br /></span> } 
+                { (inputData.financeInvoice.relationName) && <span>{inputData.financeInvoice.relationName}<br /></span> } 
                 { inputData.financeInvoice.summary }
               </Card.Body>
             </Card>
