@@ -1854,6 +1854,9 @@
             },
             "active": {
                 "export_excel": "__STRING_NOT_TRANSLATED__"
+            },
+            "stopped": {
+                "export_excel": "__STRING_NOT_TRANSLATED__"
             }
         },
         "revenue": {

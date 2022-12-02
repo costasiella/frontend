@@ -8,6 +8,7 @@ export const GET_INSIGHT_SUBSCRIPTIONS_QUERY = gql`
       months {
         month
         sold
+        stopped
         active
       }
     }

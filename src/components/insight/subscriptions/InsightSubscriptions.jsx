@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { AreaChart, Area, XAxis, YAxis, Legend, Tooltip, ResponsiveContainer } from 'recharts'
+import { CartesianGrid, XAxis, YAxis, Legend, LineChart, Line, Tooltip, ResponsiveContainer } from 'recharts'
 import moment from 'moment'
 import {
   colors,
@@ -32,6 +32,7 @@ function InsightSubscriptions ({ t, history }) {
   const year = parseInt(localStorage.getItem(CSLS.INSIGHT_SUBSCRIPTIONS_YEAR))
   const export_url_active = "/d/export/insight/subscriptions/active/" + year
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year
+  const export_url_stopped = "/d/export/insight/subscriptions/stopped/" + year
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   console.log(year)
@@ -79,7 +80,7 @@ function InsightSubscriptions ({ t, history }) {
         <Grid.Col md={9}>
           <Card title={cardTitle}>
             <ResponsiveContainer width="100%" aspect={2.5}>
-              <AreaChart
+              <LineChart
                 width={500}
                 height={300}
                 data={chartData}
@@ -90,13 +91,18 @@ function InsightSubscriptions ({ t, history }) {
                   bottom: 20,
                 }}
               >
+                <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="monthName"/>
                 <YAxis width={40} />
                 <Tooltip />
                 <Legend />
-                <Area type="monotone" dataKey="sold" stroke={colors["blue"]} fillOpacity={0.4} fill={colors["blue"]} />
-                <Area type="monotone" dataKey="active" stroke={colors["green"]} fillOpacity={0.1} fill={colors["green"]} />
-              </AreaChart>
+                {/* <Area type="monotone" dataKey="sold" stroke={colors["green"]} fillOpacity={0.4} fill={colors["green"]} />
+                <Area type="monotone" dataKey="stopped" stroke={colors["red"]} fillOpacity={0.4} fill={colors["red"]} />
+                <Area type="monotone" dataKey="active" stroke={colors["blue"]} fillOpacity={0.1} fill={colors["blue"]} /> */}
+                <Line type="monotone" dataKey="sold" stroke={colors["green"]} />
+                <Line type="monotone" dataKey="stopped" stroke={colors["red"]} />
+                <Line type="monotone" dataKey="active" stroke={colors["blue"]} />
+              </LineChart>
             </ResponsiveContainer>
           </Card>
         </Grid.Col>
@@ -112,6 +118,17 @@ function InsightSubscriptions ({ t, history }) {
             )}
           >
             {t("insight.subscriptions.sold.export_excel")}
+          </Button>
+          <Button
+            block
+            color="secondary"
+            RootComponent="a"
+            icon="download-cloud"
+            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+              t, doTokenRefresh, history, export_url_stopped
+            )}
+          >
+            {t("insight.subscriptions.stopped.export_excel")}
           </Button>
           {/* Export as active as excel sheet */}
           <Button

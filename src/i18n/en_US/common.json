@@ -2135,7 +2135,10 @@
             "active": {
                 "export_excel": "Export active as Excel"
             },
-            "explanation": "Report on sold and active subscriptions"
+            "explanation": "Report on sold and active subscriptions",
+            "stopped": {
+                "export_excel": "Export stopped as Excel"
+            }
         },
         "home": {
             "link_view": "View"
