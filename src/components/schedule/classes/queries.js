@@ -9,7 +9,6 @@ export const GET_CLASSES_QUERY = gql`
       $organizationClasstype: ID,
       $organizationLevel: ID,
       $organizationLocation: ID,
-      $attendanceCountType: String!
     ){
     scheduleClasses(
         dateFrom:$dateFrom, 
@@ -19,7 +18,6 @@ export const GET_CLASSES_QUERY = gql`
         organizationClasstype: $organizationClasstype,
         organizationLevel: $organizationLevel,
         organizationLocation: $organizationLocation,
-        attendanceCountType: $attendanceCountType,
         publicOnly: false
     ){
       date
@@ -61,7 +59,9 @@ export const GET_CLASSES_QUERY = gql`
         timeStart
         timeEnd
         spaces
-        countAttendance
+        countAttending
+        countBooked
+        countAttendingAndBooked
         availableSpacesOnline
         availableSpacesTotal
         displayPublic

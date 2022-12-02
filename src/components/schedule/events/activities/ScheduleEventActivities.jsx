@@ -124,7 +124,7 @@ function ScheduleItems({t, match, history}) {
                   {(node.account2) ? <span className="text-muted"><br />{node.account2.fullName}</span> : ""}
                 </Table.Col>
                 <Table.Col>
-                  {node.countAttendance}/{node.spaces}
+                  {node.countAttendingAndBooked}/{node.spaces}
                 </Table.Col>
                 <Table.Col>
                   <BadgeBoolean value={node.displayPublic} />

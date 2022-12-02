@@ -478,7 +478,10 @@
         "date_purchased": "__STRING_NOT_TRANSLATED__",
         "finance_quote_group": "__STRING_NOT_TRANSLATED__",
         "search_account_not_found": "__STRING_NOT_TRANSLATED__",
-        "search_no_account_results": "__STRING_NOT_TRANSLATED__"
+        "search_no_account_results": "__STRING_NOT_TRANSLATED__",
+        "supplier": "__STRING_NOT_TRANSLATED__",
+        "vip": "__STRING_NOT_TRANSLATED__",
+        "search_no_classes_found": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
@@ -904,6 +907,25 @@
             "item": {
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__"
             }
+        },
+        "expenses": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "title_add": "__STRING_NOT_TRANSLATED__",
+            "toast_add_success": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
+            "deleted": "__STRING_NOT_TRANSLATED__",
+            "export": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "ready": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "explanation": "__STRING_NOT_TRANSLATED__"
+                }
+            },
+            "title_edit": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_success": "__STRING_NOT_TRANSLATED__"
         }
     },
     "yup": {
@@ -1282,7 +1304,8 @@
                 "title_add": "__STRING_NOT_TRANSLATED__",
                 "title": "__STRING_NOT_TRANSLATED__",
                 "is_the_default_billing_address_for_this_account": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "toast_title_add": "__STRING_NOT_TRANSLATED__"
             },
             "memberships": {
                 "title_add": "__STRING_NOT_TRANSLATED__",
@@ -1400,6 +1423,17 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "empty_list": "__STRING_NOT_TRANSLATED__",
                 "title_add": "__STRING_NOT_TRANSLATED__"
+            },
+            "enrollments": {
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "dateStart": "__STRING_NOT_TRANSLATED__",
+                "dateEnd": "__STRING_NOT_TRANSLATED__",
+                "title_add_search_class": "__STRING_NOT_TRANSLATED__",
+                "title_edit": "__STRING_NOT_TRANSLATED__"
+            },
+            "tools": {
+                "title": "__STRING_NOT_TRANSLATED__"
             }
         },
         "accounts": {
@@ -1421,7 +1455,9 @@
             "invoice_to_business": "__STRING_NOT_TRANSLATED__",
             "invoice_to_account": "__STRING_NOT_TRANSLATED__",
             "quote_to_business": "__STRING_NOT_TRANSLATED__",
-            "quote_to_account": "__STRING_NOT_TRANSLATED__"
+            "quote_to_account": "__STRING_NOT_TRANSLATED__",
+            "set_password": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_password_success": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {
@@ -1437,7 +1473,12 @@
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "title_edit": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__",
-            "explanation": "__STRING_NOT_TRANSLATED__"
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "invoices": {
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "title_add": "__STRING_NOT_TRANSLATED__",
+                "toast_add_success": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "suppliers": {
             "title": "__STRING_NOT_TRANSLATED__"
@@ -1813,6 +1854,9 @@
             },
             "active": {
                 "export_excel": "__STRING_NOT_TRANSLATED__"
+            },
+            "stopped": {
+                "export_excel": "__STRING_NOT_TRANSLATED__"
             }
         },
         "revenue": {
@@ -1878,6 +1922,15 @@
             "october": "__STRING_NOT_TRANSLATED__",
             "november": "__STRING_NOT_TRANSLATED__",
             "december": "__STRING_NOT_TRANSLATED__"
+        },
+        "isoweekdays": {
+            "monday": "__STRING_NOT_TRANSLATED__",
+            "tuesday": "__STRING_NOT_TRANSLATED__",
+            "wednesday": "__STRING_NOT_TRANSLATED__",
+            "thursday": "__STRING_NOT_TRANSLATED__",
+            "friday": "__STRING_NOT_TRANSLATED__",
+            "saturday": "__STRING_NOT_TRANSLATED__",
+            "sunday": "__STRING_NOT_TRANSLATED__"
         }
     },
     "validity": {
@@ -1918,7 +1971,9 @@
                     "confirm_resending_info_mail_to": "__STRING_NOT_TRANSLATED__",
                     "resend_success": "__STRING_NOT_TRANSLATED__",
                     "resend_info_mail": "__STRING_NOT_TRANSLATED__",
-                    "confirm_resending_info_mail_title": "__STRING_NOT_TRANSLATED__"
+                    "confirm_resending_info_mail_title": "__STRING_NOT_TRANSLATED__",
+                    "attending": "__STRING_NOT_TRANSLATED__",
+                    "booked": "__STRING_NOT_TRANSLATED__"
                 },
                 "attendance_chart": {
                     "title": "__STRING_NOT_TRANSLATED__"

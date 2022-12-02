@@ -39,6 +39,7 @@ export const GET_BUSINESS_QUERY = gql`
     business(id:$id) {
       id
       archived
+      supplier
       vip
       name
       address

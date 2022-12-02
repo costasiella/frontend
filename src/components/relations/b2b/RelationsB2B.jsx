@@ -7,9 +7,10 @@ import { withRouter } from "react-router"
 import { Link } from "react-router-dom"
 
 import {
-  Icon,
+  Badge,
   Button,
   Card,
+  Icon,
   Table
 } from "tabler-react";
 
@@ -130,6 +131,7 @@ function RelationsB2B({ t, history }) {
             <Table.Row key={v4()}>
               <Table.ColHeader>{t('general.name')}</Table.ColHeader>
               <Table.ColHeader></Table.ColHeader>
+              <Table.ColHeader></Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -137,6 +139,14 @@ function RelationsB2B({ t, history }) {
                 <Table.Row key={v4()}>
                   <Table.Col key={v4()}>
                     {node.name}
+                  </Table.Col>
+                  <Table.Col key={v4()}>
+                    {(node.vip) ? <span>
+                      <Badge color="warning" className="mr-1"><Icon name="star"/> {t("general.vip")}</Badge>
+                    </span> : null}
+                    {(node.supplier) ? <span>
+                      <Badge color="primary" className="mr-1">{t("general.supplier")}</Badge>
+                    </span> : null}
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     {(node.archived) ? 

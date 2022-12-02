@@ -47,6 +47,10 @@ import FinanceHome from './components/finance/home/FinanceHome'
 import FinanceCostCenters from './components/finance/costcenters/FinanceCostCenters'
 import FinanceCostCenterAdd from './components/finance/costcenters/FinanceCostCenterAdd'
 import FinanceCostCenterEdit from './components/finance/costcenters/FinanceCostCenterEdit'
+import FinanceExpenses from './components/finance/expenses/FinanceExpenses'
+import FinanceExpenseAdd from './components/finance/expenses/FinanceExpenseAdd'
+import FinanceExpenseEdit from './components/finance/expenses/FinanceExpenseEdit'
+import FinanceExpensesExport from './components/finance/expenses/export/FinanceExpensesExport'
 import FinanceGLAccounts from './components/finance/glaccounts/FinanceGLAccounts'
 import FinanceGLAccountAdd from './components/finance/glaccounts/FinanceGLAccountAdd'
 import FinanceGLAccountEdit from './components/finance/glaccounts/FinanceGLAccountEdit'
@@ -171,6 +175,10 @@ import RelationsAccountBankAccount from './components/relations/accounts/bank_ac
 import RelationsAccountBankAccountMandateAdd from './components/relations/accounts/bank_accounts/mandates/RelationsAccountBankAccountMandateAdd'
 import RelationsAccountBankAccountMandateEdit from './components/relations/accounts/bank_accounts/mandates/RelationsAccountBankAccountMandateEdit'
 import RelationsAccountClasses from './components/relations/accounts/classes/AccountClasses'
+import RelationsAccountEnrollments from './components/relations/accounts/enrollments/AccountEnrollments'
+import RelationsAccountEnrollmentEdit from './components/relations/accounts/enrollments/AccountEnrollmentEdit'
+import RelationsAccountEnrollmentFindClass from './components/relations/accounts/enrollments/AccountEnrollmentFindClass'
+import RelationsAccountTools from './components/relations/accounts/tools/RelationsAccountTools'
 import AccountClasspasses from './components/relations/accounts/classpasses/AccountClasspasses'
 import AccountClasspassAdd from './components/relations/accounts/classpasses/AccountClasspassAdd'
 import AccountClasspassEdit from './components/relations/accounts/classpasses/AccountClasspassEdit'
@@ -220,6 +228,7 @@ import RelationsB2B from './components/relations/b2b/RelationsB2B'
 import RelationsB2BAdd from './components/relations/b2b/RelationsB2BAdd.jsx'
 import RelationsB2BEdit from './components/relations/b2b/RelationsB2BEdit.jsx'
 import RelationsB2BInvoices from './components/relations/b2b/invoices/RelationsB2BInvoices'
+import RelationsB2BInvoiceAdd from './components/relations/b2b/invoices/RelationsB2BInvoiceAdd'
 
 import ScheduleHome from './components/schedule/home/ScheduleHome'
 import ScheduleAppointments from './components/schedule/appointments/ScheduleAppointments'
@@ -481,6 +490,10 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/finance/costcenters" component={FinanceCostCenters} />
             <PrivateRoute exact path="/finance/costcenters/add" component={FinanceCostCenterAdd} />
             <PrivateRoute exact path="/finance/costcenters/edit/:id" component={FinanceCostCenterEdit} />
+            <PrivateRoute exact path="/finance/expenses" component={FinanceExpenses} />
+            <PrivateRoute exact path="/finance/expenses/add" component={FinanceExpenseAdd} />
+            <PrivateRoute exact path="/finance/expenses/edit/:id" component={FinanceExpenseEdit} />
+            <PrivateRoute exact path="/finance/expenses/export" component={FinanceExpensesExport} />
             <PrivateRoute exact path="/finance/invoices" component={FinanceInvoices} />
             <PrivateRoute exact path="/finance/invoices/export" component={FinanceInvoicesExport} />
             <PrivateRoute exact path="/finance/invoices/edit/:id" component={FinanceInvoiceEdit} />
@@ -613,6 +626,9 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/documents" component={AccountDocuments} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents/add" component={AccountDocumentAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/documents/edit/:id" component={AccountDocumentEdit} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/enrollments" component={RelationsAccountEnrollments} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/enrollments/edit/:id" component={RelationsAccountEnrollmentEdit} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/enrollment_find_class" component={RelationsAccountEnrollmentFindClass} />
             <PrivateRoute exact path="/relations/accounts/:account_id/finance_payment_batch_category_items" 
                           component={AccountFinancePaymentBatchCategoryItems} />
             <PrivateRoute exact path="/relations/accounts/:account_id/finance_payment_batch_category_items/add" 
@@ -659,11 +675,13 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/edit/:subscription_id/pauses/add" component={AccountSubscriptionEditPauseAdd} />
             <PrivateRoute exact path="/relations/accounts/:account_id/subscriptions/edit/:subscription_id/pauses/edit/:id" 
                           component={AccountSubscriptionEditPauseEdit} />
+            <PrivateRoute exact path="/relations/accounts/:account_id/tools" component={RelationsAccountTools} />
             <PrivateRoute exact path="/relations/accounts/:account_id/instructor_profile" component={RelationsAccountInstructorProfile} />
             <PrivateRoute exact path="/relations/b2b" component={RelationsB2B} />
             <PrivateRoute exact path="/relations/b2b/add" component={RelationsB2BAdd} />
             <PrivateRoute exact path="/relations/b2b/:business_id/edit" component={RelationsB2BEdit} />
             <PrivateRoute exact path="/relations/b2b/:business_id/invoices" component={RelationsB2BInvoices} />
+            <PrivateRoute exact path="/relations/b2b/:business_id/invoices/add" component={RelationsB2BInvoiceAdd} />
 
             {/* SCHEDULE */}
             <PrivateRoute exact path="/schedule" component={ScheduleHome} />

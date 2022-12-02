@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 import { Dimmer } from 'tabler-react';
 
+import CSLS from '../../../../../tools/cs_local_storage';
 import { GET_ACCOUNT_SUBSCRIPTION_QUERY, GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY, CREATE_SCHEDULE_ITEM_ENROLLMENT } from './queries'
 import { SCHEDULE_CLASS_ENROLLMENT_SCHEMA } from './yupSchema'
 import ScheduleClassEnrollmentForm from './ScheduleClassEnrollmentForm'
@@ -21,7 +22,7 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
   const classId = match.params.class_id
   const accountSubscriptionId = match.params.account_subscription_id
   const returnUrl = `/schedule/classes/all/enrollments/${classId}/options/${accountId}`
-  const nextUrl = `/schedule/classes/all/enrollments/${classId}`
+  const nextUrl = localStorage.getItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_RETURN) || `/schedule/classes/all/enrollments/${classId}`
   let cardTitle = t('schedule.classes.enrollments.title_add')
   const menuActiveLink = "enrollments" 
   const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
@@ -57,9 +58,6 @@ function ScheduleClassEnrollmentAdd({ t, history, match }) {
   
   // TODO: Add account subscription to sent values
   
-
-  
-
   return (
     <ClassEditBase
       cardTitle={cardTitle}

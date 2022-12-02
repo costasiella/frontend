@@ -35,7 +35,6 @@ function HomeHome({ t, match }) {
       instructor: dataUser && dataUser.user ? dataUser.user.accountId : null,
       dateFrom: moment().format('YYYY-MM-DD'),
       dateUntil: moment().add(2, 'days').format('YYYY-MM-DD'),
-      attendanceCountType: "ATTENDING_AND_BOOKED",
       orderBy: "starttime"
     },
     fetchPolicy: "network-only"
@@ -111,7 +110,7 @@ function HomeHome({ t, match }) {
                   timeStart, 
                   timeEnd,
                   spaces,
-                  countAttendance }) => (
+                  countAttendingAndBooked }) => (
                     <Card key={v4()}>
                       <Card.Body>
                         <Grid.Row>
@@ -173,7 +172,7 @@ function HomeHome({ t, match }) {
                           </Grid.Col>
                           <Grid.Col xs={3} sm={3} md={2}>
                             {/* Attendance */}
-                            <small className='float-right mt-1'><Icon name="users" /> {countAttendance}/{spaces}</small>
+                            <small className='float-right mt-1'><Icon name="users" /> {countAttendingAndBooked}/{spaces}</small>
                           </Grid.Col>
                         </Grid.Row>
                       </Card.Body>

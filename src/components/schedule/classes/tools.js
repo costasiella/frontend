@@ -17,7 +17,6 @@ export function get_list_query_variables() {
   let organizationLocation
 
   let queryVars = {
-    attendanceCountType: "ATTENDING_AND_BOOKED",
     dateFrom: localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_FROM), 
     dateUntil: localStorage.getItem(CSLS.SCHEDULE_CLASSES_DATE_UNTIL)
   }

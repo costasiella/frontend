@@ -27,7 +27,7 @@ query ScheduleItem($before:String, $after:String, $scheduleEvent:ID!) {
         }
         name
         spaces
-        countAttendance
+        countAttendingAndBooked
         dateStart
         timeStart
         timeEnd

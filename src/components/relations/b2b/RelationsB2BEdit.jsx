@@ -53,6 +53,8 @@ function RelationsB2BEdit({ t, match, history}) {
       <Card title={cardTitle}>
         <Formik
           initialValues={{ 
+            vip: initialData.vip,
+            supplier: initialData.supplier,
             name: initialData.name,
             phone: initialData.phone,
             phone2: initialData.phone2,
@@ -72,6 +74,8 @@ function RelationsB2BEdit({ t, match, history}) {
 
               let input_vars = {
                 id: businessId,
+                vip: values.vip,
+                supplier: values.supplier,
                 name: values.name,
                 phone: values.phone,
                 phone2: values.phone2,

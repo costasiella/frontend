@@ -18,12 +18,13 @@ function ButtonDelete({
   msgSuccess, 
   deleteFunction, 
   deleteFunctionVariables, 
+  className="",
   buttonClass="btn-link",
   buttonText="",
   buttonTextColor="text-red"
 }) {
   return (
-    <button className={`icon btn ${buttonClass} btn-sm`}
+    <button className={`icon btn ${buttonClass} btn-sm ${className}`}
       title={t('general.delete')} 
       onClick={() => {
         confirm_delete({

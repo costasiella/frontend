@@ -40,6 +40,9 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
             id 
             dateStart
             dateEnd
+            scheduleItem {
+              id
+            }
             accountSubscription {
               id
               dateStart
@@ -74,9 +77,42 @@ export const GET_SCHEDULE_ITEM_ENROLLMENT_QUERY = gql`
         }
         account {
           id
+          firstName
+          lastName
           fullName
+          email
+          phone
+          mobile
+          isActive
+          urlImageThumbnailSmall
         }
-      }   
+      }
+      scheduleItem {
+        id
+        frequencyType
+        frequencyInterval
+        organizationLocationRoom {
+          id
+          name
+          organizationLocation {
+            id
+            name
+          }
+        }
+        organizationClasstype {
+          id
+          name
+        }
+        organizationLevel {
+          id
+          name
+        }
+        dateStart
+        dateEnd
+        timeStart
+        timeEnd
+        displayPublic
+      }  
     }
   }
 `

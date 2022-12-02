@@ -28,7 +28,6 @@ function LocationClasses({ t, match, history }) {
       dateFrom: today,
       dateUntil: today,
       organizationLocation: locationId,
-      attendanceCountType: "ATTENDING_AND_BOOKED"
     }
   })
 

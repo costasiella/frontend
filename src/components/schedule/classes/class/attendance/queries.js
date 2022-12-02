@@ -73,6 +73,9 @@ export const GET_SCHEDULE_CLASS_ATTENDANCE_QUERY = gql`
       displayPublic
       status
       description
+      countAttending
+      countBooked
+      spaces
     }
   }
 `

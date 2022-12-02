@@ -359,6 +359,25 @@
             "item": {
                 "toast_edit_success": "Saved item"
             }
+        },
+        "expenses": {
+            "title": "Expenses",
+            "explanation": "Keep track of expenses",
+            "title_add": "Add expense",
+            "toast_add_success": "Added expense",
+            "error_loading": "Error loading expenses... :(",
+            "empty_list": "No expenses have been added yet.",
+            "delete_confirm_msg": "Are you sure you wish to remove this expense?",
+            "deleted": "Deleted expense",
+            "export": {
+                "title": "Export expenses",
+                "ready": {
+                    "title": "Export Ready",
+                    "explanation": "An export has been prepared with the following values:"
+                }
+            },
+            "title_edit": "Edit expense",
+            "toast_edit_success": "Saved"
         }
     },
     "general": {
@@ -632,7 +651,10 @@
         "date_purchased": "Date purchased",
         "finance_quote_group": "Quote group",
         "search_account_not_found": "Account not found",
-        "search_no_account_results": "The search didn't return any results"
+        "search_no_account_results": "The search didn't return any results",
+        "supplier": "Supplier",
+        "vip": "VIP",
+        "search_no_classes_found": "No classes were found on the given date"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1036,7 +1058,9 @@
             "invoice_to_business": "Invoice to this account or a business",
             "invoice_to_account": "Invoice to account",
             "quote_to_business": "Quote to business or to this account",
-            "quote_to_account": "Quote to account"
+            "quote_to_account": "Quote to account",
+            "set_password": "Set password",
+            "toast_edit_password_success": "New password set"
         },
         "account": {
             "subscriptions": {
@@ -1138,7 +1162,8 @@
                 "title_add": "Add invoice",
                 "title": "Invoices",
                 "is_the_default_billing_address_for_this_account": "Is the default billing address for this account. The billing address to this invoice be changed after creation.",
-                "empty_list": "No invoices have been created for this account yet."
+                "empty_list": "No invoices have been created for this account yet.",
+                "toast_title_add": "Added invoice"
             },
             "accepted_documents": {
                 "title": "Accepted documents",
@@ -1147,7 +1172,7 @@
             },
             "classes": {
                 "empty_list": "This customer hasn't booked or attended any classes yet",
-                "title": "Classes"
+                "title": "Class attendance"
             },
             "orders": {
                 "title": "Orders",
@@ -1225,6 +1250,17 @@
                 "title": "Quotes",
                 "empty_list": "No quotes have been created for this account yet",
                 "title_add": "Add Quote"
+            },
+            "enrollments": {
+                "title": "Class enrollments",
+                "empty_list": "No enrollments have been created for this account yet",
+                "dateStart": "Start date",
+                "dateEnd": "End date",
+                "title_add_search_class": "Choose a date and class to create a new enrollment",
+                "title_edit": "Edit enrollment"
+            },
+            "tools": {
+                "title": "Tools"
             }
         },
         "b2b": {
@@ -1240,7 +1276,12 @@
             "title_edit": "Edit Business-to-Business relation",
             "toast_edit_success": "Saved",
             "archived": "Archived B2B relation",
-            "explanation": "Businesses this organization is connected to"
+            "explanation": "Businesses this organization is connected to",
+            "invoices": {
+                "empty_list": "No invoices have been created yet for this relation",
+                "title_add": "Add invoice",
+                "toast_add_success": "Added invoice"
+            }
         },
         "suppliers": {
             "title": "Suppliers"
@@ -1337,7 +1378,9 @@
                     "confirm_resending_info_mail_to": "Do you wish to resend the info mail for this class to the account below?",
                     "resend_success": "Sent info mail",
                     "resend_info_mail": "Resend info mail",
-                    "confirm_resending_info_mail_title": "Resend info mail"
+                    "confirm_resending_info_mail_title": "Resend info mail",
+                    "attending": "Attending",
+                    "booked": "Booked"
                 },
                 "book": {
                     "toast_success": "Check-in success",
@@ -2092,7 +2135,10 @@
             "active": {
                 "export_excel": "Export active as Excel"
             },
-            "explanation": "Report on sold and active subscriptions"
+            "explanation": "Report on sold and active subscriptions",
+            "stopped": {
+                "export_excel": "Export stopped as Excel"
+            }
         },
         "home": {
             "link_view": "View"
@@ -2179,6 +2225,15 @@
             "october": "October",
             "november": "November",
             "december": "December"
+        },
+        "isoweekdays": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
         }
     },
     "goto": {

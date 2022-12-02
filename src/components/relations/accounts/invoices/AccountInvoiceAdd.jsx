@@ -52,7 +52,6 @@ function AccountInvoiceAdd({ t, match, history }) {
       </RelationsAccountProfileBase>
   }
   
-  console.log(data)
   const account = data.account
   const initialBusiness = account.invoiceToBusiness ? account.invoiceToBusiness.id : null
   const financeInvoiceGroups = data.financeInvoiceGroups
@@ -90,7 +89,7 @@ function AccountInvoiceAdd({ t, match, history }) {
             ]})
             .then(({ data }) => {
                 console.log('got data', data)
-                toast.success((t('relations.account.invoices.title_add')), {
+                toast.success((t('relations.account.invoices.toast_title_add')), {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
                 history.push('/finance/invoices/edit/' + data.createFinanceInvoice.financeInvoice.id)

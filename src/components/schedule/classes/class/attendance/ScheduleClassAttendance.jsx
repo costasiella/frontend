@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 
 import {
   Alert,
+  Badge,
   Button,
   Card,
   Dimmer,
@@ -90,6 +91,15 @@ function ScheduleClassAttendance({ t, match, history }) {
     checkedInIds.push(node.account.id)
   ))
 
+  const headerOptions = <Card.Options>
+    <div className='float-right'>
+      <Badge color="success">{scheduleClass.countAttending} {t("schedule.classes.class.attendance.attending")}</Badge> {" "}
+      <Badge color="primary">{scheduleClass.countBooked} {t("schedule.classes.class.attendance.booked")}</Badge> {" "}
+      {/* <Badge color="info">{t("general.spaces")}: {scheduleClass.spaces}</Badge>  */}
+    </div>
+  </Card.Options>
+
+
   return (
     <ScheduleClassAttendanceBase refetch={refetch}>
       {(scheduleClass.status === 'CANCELLED') ? 
@@ -105,6 +115,7 @@ function ScheduleClassAttendance({ t, match, history }) {
       <ContentCard 
         cardTitle={t('general.attendance')}
         pageInfo={data.scheduleItemAttendances.pageInfo}
+        headerContent={headerOptions}
         hasCardBody={false}
         onLoadMore={() => {
           fetchMore({

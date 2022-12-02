@@ -39,7 +39,9 @@ const FinanceInvoiceEditToForm = ({ t, history, isSubmitting, errors, values, se
                   name="business" 
                   className={(errors.business) ? "form-control is-invalid" : "form-control"} 
                   autoComplete="off">
-              <option value="" key={v4()}>{t('relations.accounts.invoice_to_account')}: {inputData.financeInvoice.account.fullName}</option>
+              {(inputData.financeInvoice.account) &&
+                <option value="" key={v4()}>{t('relations.accounts.invoice_to_account')}: {inputData.financeInvoice.account.fullName}</option>
+              }
               {inputData.businesses.edges.map(({ node }) =>
                 <option value={node.id} key={v4()}>{node.name}</option>
               )}
