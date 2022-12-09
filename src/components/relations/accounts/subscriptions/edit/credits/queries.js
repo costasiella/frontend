@@ -15,9 +15,8 @@ query AccountSubscriptionCredits($before: String, $after: String, $accountSubscr
         accountSubscription {
           id
         }
-        mutationType
-        mutationAmount
         description
+        expiration
         createdAt
       }
     } 
@@ -32,8 +31,7 @@ query AccountSubscriptionCredit($id: ID!) {
     accountSubscription {
       id
     }
-    mutationType
-    mutationAmount
+    expiration
     description
     createdAt
   }
