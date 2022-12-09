@@ -64,7 +64,7 @@ function AccountSubscriptionEditCredits({t, match, history}) {
     </AccountSubscriptionEditListBase>
   )}
 
-  const onLoadMore = () => {
+  function onLoadMore() {
     fetchMore({
       variables: {
         after: accountSubscriptionCredits.pageInfo.endCursor

@@ -39,7 +39,7 @@ function AccountSubscriptionEditListBase({t, history, match, children, pageInfo,
       account={account} 
       subscription={subscription}
       pageInfo={pageInfo}
-      onLoaMore={onLoadMore}
+      onLoadMore={onLoadMore}
       returnUrl={returnUrl}
       pageHeaderButtonList={pageHeaderButtonList}
     >
