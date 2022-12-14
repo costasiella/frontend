@@ -7,6 +7,7 @@ import { v4 } from 'uuid'
 import moment from 'moment'
 import DOMPurify from 'dompurify'
 import {
+  Badge,
   Button,
   Card,
   Table,
@@ -24,6 +25,8 @@ import AccountSubscriptionEditCreditDelete from "./AccountSubscriptionEditCredit
 
 function AccountSubscriptionEditCredits({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+  const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
   
   const accountId = match.params.account_id
@@ -64,6 +67,8 @@ function AccountSubscriptionEditCredits({t, match, history}) {
     </AccountSubscriptionEditListBase>
   )}
 
+  console.table(data)
+
   function onLoadMore() {
     fetchMore({
       variables: {
@@ -100,10 +105,9 @@ function AccountSubscriptionEditCredits({t, match, history}) {
       <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
-            <Table.ColHeader>{t('general.time')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.description')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.credits')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.mutation')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.credit')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.expiration')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.class')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -111,16 +115,27 @@ function AccountSubscriptionEditCredits({t, match, history}) {
             {accountSubscriptionCredits.edges.map(({ node }) => (
               <Table.Row key={v4()}>
                 <Table.Col>
-                  {moment(node.createdAt).format(dateTimeFormatMoment)}
+                  {moment(node.createdAt).format(dateFormat)} <br />
+                  <small className="text-muted">
+                    <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
+                  </small>
                 </Table.Col>
                 <Table.Col>
-                  <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
+                  {moment(node.expiration).format(dateFormat)} <br />
+                  {node.expired && <Badge color="danger">{t("general.expired")}</Badge>}
                 </Table.Col>
                 <Table.Col>
-                  {node.mutationAmount}
-                </Table.Col>
-                <Table.Col>
-                  <SubscriptionCreditsMutationType mutationType={node.mutationType} />
+                  {/* TODO class info here */}
+                  { node.scheduleItemAttendance && <span>
+                    {moment(node.scheduleItemAttendance.date).format(dateFormat)} {" "}
+                    {moment(`${node.scheduleItemAttendance.date} ${node.scheduleItemAttendance.scheduleItem.timeStart}`)
+                      .format(timeFormat)} {" "}
+                    {" - "}
+                    {node.scheduleItemAttendance.scheduleItem.organizationClasstype.name} <br />
+                    <small className='text-muted'>
+                      {node.scheduleItemAttendance.scheduleItem.organizationLocationRoom.organizationLocation.name}
+                    </small>
+                    </span>}
                 </Table.Col>
                 <Table.Col className="text-right">
                   <Link to={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/credits/edit/${node.id}`}>

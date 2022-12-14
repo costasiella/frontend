@@ -17,6 +17,29 @@ query AccountSubscriptionCredits($before: String, $after: String, $accountSubscr
         }
         description
         expiration
+        expired
+        scheduleItemAttendance {
+          id
+          date
+          scheduleItem {
+            id
+            timeStart
+            timeEnd
+            organizationClasstype {
+              id
+              name
+            }
+            organizationLocationRoom {
+              id 
+              name
+              organizationLocation {
+                id
+                name
+              }
+            }
+
+          }
+        }
         createdAt
       }
     } 
