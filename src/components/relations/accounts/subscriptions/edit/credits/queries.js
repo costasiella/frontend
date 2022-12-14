@@ -61,6 +61,16 @@ query AccountSubscriptionCredit($id: ID!) {
 }
 `
 
+export const UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
+  mutation UpdateAccountSubscriptionCredit($input:UpdateAccountSubscriptionCreditInput!) {
+    updateAccountSubscriptionCredit(input: $input) {
+      accountSubscriptionCredit {
+        id
+      }
+    }
+  }
+`
+
 
 export const DELETE_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
   mutation DeleteAccountSubscriptionCredit($input: DeleteAccountSubscriptionCreditInput!) {

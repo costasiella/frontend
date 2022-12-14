@@ -6,23 +6,16 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
+import { dateToLocalISO } from '../../../../../../tools/date_tools'
 import { GET_ACCOUNT_SUBSCRIPTION_QUERY } from "../../queries"
-import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, GET_ACCOUNT_SUBSCRIPTION_CREDIT_QUERY } from "./queries"
+import { 
+  GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, 
+  GET_ACCOUNT_SUBSCRIPTION_CREDIT_QUERY,
+  UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT } from "./queries"
 import { ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA } from './yupSchema'
 
 import AccountSubscriptionEditCreditBase from "./AccountSubscriptionEditCreditBase"
 import AccountSubscriptionEditCreditForm from "./AccountSubscriptionEditCreditForm"
-
-
-const UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
-  mutation UpdateAccountSubscriptionCredit($input:UpdateAccountSubscriptionCreditInput!) {
-    updateAccountSubscriptionCredit(input: $input) {
-      accountSubscriptionCredit {
-        id
-      }
-    }
-  }
-`
 
 
 function AccountSubscriptionEditCreditEdit({ t, history, match }) {
@@ -65,8 +58,7 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
     <AccountSubscriptionEditCreditBase>
       <Formik
         initialValues={{ 
-          mutationType: accountSubscriptionCredit.mutationType,
-          mutationAmount: accountSubscriptionCredit.mutationAmount,
+          expiration: new Date(accountSubscriptionCredit.expiration),
           description: accountSubscriptionCredit.description
         }}
         validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA}
@@ -77,8 +69,7 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
           updateSubscriptionCredit({ variables: {
             input: {
               id: id,
-              mutationType: values.mutationType,
-              mutationAmount: values.mutationAmount,
+              expiration: dateToLocalISO(values.expiration),
               description: values.description
             }
           }, refetchQueries: [

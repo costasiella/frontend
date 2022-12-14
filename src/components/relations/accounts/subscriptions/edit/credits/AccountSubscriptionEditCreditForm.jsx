@@ -10,6 +10,7 @@ import {
   Form,
 } from "tabler-react"
 
+import CSDatePicker from '../../../../../ui/CSDatePicker';
 import { Editor } from '@tinymce/tinymce-react'
 import { tinymceBasicConf } from "../../../../../../plugin_config/tinymce"
 
@@ -35,31 +36,26 @@ function AccountSubscriptionEditCreditForm ({
     title = t('relations.account.subscriptions.credits.edit')
   }
 
+
   return (
     <FoForm>
       <Card.Body>
         <h5>{title}</h5>
         <Grid.Row>
+        {/* TODO: Add expiration date field here */}
           <Grid.Col>
-            <Form.Group label={t('general.credits')}>
-              <Field type="number" 
-                      name="mutationAmount" 
-                      className={(errors.mutationAmount) ? "form-control is-invalid" : "form-control"} 
-                      autoComplete="off" />
-              <ErrorMessage name="mutationAmount" component="span" className="invalid-feedback" />
+            <Form.Group label={t('general.expiration')}>
+              <CSDatePicker 
+                className={(errors.expiration) ? "form-control is-invalid" : "form-control"} 
+                selected={values.expiration}
+                onChange={(date) => {
+                  setFieldValue("expiration", date)
+                  setFieldTouched("expiration", true)
+                }}
+                onBlur={() => setFieldTouched("expiration", true)}
+              />
+              <ErrorMessage name="expiration" component="span" className="invalid-feedback" />
             </Form.Group>
-          </Grid.Col>
-          <Grid.Col>
-            <Form.Group label={t('relations.account.subscriptions.credits.mutationType')}>
-              <Field component="select" 
-                     name="mutationType" 
-                     className={(errors.mutationType) ? "form-control is-invalid" : "form-control"} 
-                     autoComplete="off">
-                <option value="ADD">{t("general.add")}</option>
-                <option value="SUB">{t("general.subtract")}</option>
-              </Field>
-              <ErrorMessage name="mutationType" component="span" className="invalid-feedback" />
-            </Form.Group> 
           </Grid.Col>
         </Grid.Row>
         <Grid.Row>
