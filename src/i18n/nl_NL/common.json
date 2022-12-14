@@ -364,8 +364,6 @@
         "uncancel": "__STRING_NOT_TRANSLATED__",
         "credits": "__STRING_NOT_TRANSLATED__",
         "add": "__STRING_NOT_TRANSLATED__",
-        "subtract": "__STRING_NOT_TRANSLATED__",
-        "mutation": "__STRING_NOT_TRANSLATED__",
         "role": "__STRING_NOT_TRANSLATED__",
         "education": "__STRING_NOT_TRANSLATED__",
         "bio": "__STRING_NOT_TRANSLATED__",
@@ -481,19 +479,14 @@
         "search_no_account_results": "__STRING_NOT_TRANSLATED__",
         "supplier": "__STRING_NOT_TRANSLATED__",
         "vip": "__STRING_NOT_TRANSLATED__",
-        "search_no_classes_found": "__STRING_NOT_TRANSLATED__"
+        "search_no_classes_found": "__STRING_NOT_TRANSLATED__",
+        "expiration": "__STRING_NOT_TRANSLATED__",
+        "credit": "__STRING_NOT_TRANSLATED__",
+        "expired": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {
             "subscriptions": {
-                "credits_expiration": {
-                    "title_card": "__STRING_NOT_TRANSLATED__",
-                    "title_add": "__STRING_NOT_TRANSLATED__",
-                    "explanation_new_expiration": "__STRING_NOT_TRANSLATED__",
-                    "toast_add_success": "__STRING_NOT_TRANSLATED__",
-                    "title": "__STRING_NOT_TRANSLATED__",
-                    "explanation": "__STRING_NOT_TRANSLATED__"
-                },
                 "credits": {
                     "empty_list": "__STRING_NOT_TRANSLATED__",
                     "title_add": "__STRING_NOT_TRANSLATED__",
@@ -1376,7 +1369,6 @@
                     "toast_edit_success": "__STRING_NOT_TRANSLATED__",
                     "add": "__STRING_NOT_TRANSLATED__",
                     "edit": "__STRING_NOT_TRANSLATED__",
-                    "mutationType": "__STRING_NOT_TRANSLATED__",
                     "empty_list": "__STRING_NOT_TRANSLATED__"
                 },
                 "invoices": {

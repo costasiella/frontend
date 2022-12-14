@@ -557,11 +557,9 @@
         "license": "License",
         "license_info": "License Info",
         "credits": "Credits",
-        "mutation": "Mutation",
         "add": "Add",
         "subscription_year": "Subscription year",
         "subscription_month": "Subscription month",
-        "subtract": "Subtract",
         "new_task": "New task",
         "credits_remaining": "Credits remaining",
         "month": "Month",
@@ -654,7 +652,10 @@
         "search_no_account_results": "The search didn't return any results",
         "supplier": "Supplier",
         "vip": "VIP",
-        "search_no_classes_found": "No classes were found on the given date"
+        "search_no_classes_found": "No classes were found on the given date",
+        "expiration": "Expiration",
+        "credit": "Credit",
+        "expired": "Expired"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -1079,7 +1080,6 @@
                     "toast_edit_success": "Saved",
                     "add": "Add credit mutation",
                     "edit": "Edit credit mutation",
-                    "mutationType": "Mutation type",
                     "empty_list": "This subscription hasn't had any credit mutations."
                 },
                 "pauses": {
@@ -2561,14 +2561,6 @@
                     "invoice_date": "Invoice date",
                     "today": "Today",
                     "invoice_date_first_day_month": "1st of chosen month"
-                },
-                "credits_expiration": {
-                    "title": "Expire credits",
-                    "explanation": "Expire credits that are above the accumulation limit.",
-                    "title_card": "Credit expiration result",
-                    "title_add": "Expire credits",
-                    "toast_add_success": "Started credits expiration",
-                    "explanation_new_expiration": "Expire all credits that are over the accumulation limit at this moment."
                 }
             }
         },
