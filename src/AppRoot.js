@@ -32,10 +32,6 @@ import HomeHome from './components/home/home/HomeHome'
 import AutomationHome from './components/automation/home/AutomationHome'
 import AutomationAccountSubscriptionCredits from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCredits'
 import AutomationAccountSubscriptionCreditAdd from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCreditAdd'
-import AutomationAccountSubscriptionCreditExpiration 
-  from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpiration'
-import AutomationAccountSubscriptionCreditExpirationAdd
-  from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpirationAdd'
 import AutomationAccountSubscriptionInvoices from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoices'
 import AutomationAccountSubscriptionInvoicesAdd from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoicesAdd'
 import AutomationAccountSubscriptionMollieCollections 
@@ -471,10 +467,6 @@ function AppRoot({ t }) {
                                 component={AutomationAccountSubscriptionCredits} />
             <PrivateRoute exact path="/automation/account/subscriptions/credits/add" 
                                 component={AutomationAccountSubscriptionCreditAdd} />
-            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration" 
-                                component={AutomationAccountSubscriptionCreditExpiration} />
-            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration/add" 
-                                component={AutomationAccountSubscriptionCreditExpirationAdd} />
             <PrivateRoute exact path="/automation/account/subscriptions/invoices" 
                                 component={AutomationAccountSubscriptionInvoices} />    
             <PrivateRoute exact path="/automation/account/subscriptions/invoices/add" 
