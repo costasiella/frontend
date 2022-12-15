@@ -815,9 +815,9 @@
                 "delete_confirm_msg": "Are you sure you wish to delete this subscriptions group?",
                 "deleted": "Deleted subscriptions group"
             },
-            "credit_accumulation_days": "Credit accumulation in days",
             "explanation": "A number of or unlimited classes for a monthly fee",
-            "reconciliation_classes": "Reconciliation classes"
+            "reconciliation_classes": "Reconciliation classes",
+            "credit_validity": "Credit validity"
         },
         "subscription": {
             "public": "This is a public subscription",
