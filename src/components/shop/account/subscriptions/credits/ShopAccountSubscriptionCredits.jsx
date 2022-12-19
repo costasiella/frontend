@@ -142,12 +142,14 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
                           <h6><Badge color="primary">{t("shop.account.subscriptions.credits.used")}</Badge></h6>
                         }
                         
-                        {(node.scheduleItemAttendance) && <small className='text-muted'>{
-                          `${moment(node.scheduleItemAttendance.date).format(dateFormat)} 
-                          ${moment(node.scheduleItemAttendance.date + " " + node.scheduleItemAttendance.scheduleItem.timeStart).format(timeFormat)}
-                          - ${node.scheduleItemAttendance.scheduleItem.organizationClasstype.name} @ 
-                          ${node.scheduleItemAttendance.scheduleItem.organizationLocationRoom.organizationLocation.name}`
-                        }</small>}
+                        {(node.scheduleItemAttendance) && <small className='text-muted'>
+                          <div>
+                            {`${moment(node.scheduleItemAttendance.date).format(dateFormat)} 
+                            ${moment(node.scheduleItemAttendance.date + " " + node.scheduleItemAttendance.scheduleItem.timeStart).format(timeFormat)}
+                            - ${node.scheduleItemAttendance.scheduleItem.organizationClasstype.name}`}
+                          </div> 
+                          {node.scheduleItemAttendance.scheduleItem.organizationLocationRoom.organizationLocation.name}
+                        </small>}
                       </div>
                     </Grid.Col>
                   </Grid.Row>
