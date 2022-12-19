@@ -76,6 +76,7 @@ function ShopAccountClasses({t, match, history}) {
   // Populated list
   return (
     <ShopAccountClassesBase accountName={user.fullName}>
+      <h4>{t("shop.account.classes.title")}</h4>
       <LoadMoreOnBottomScroll
         // headerContent={headerOptions}
         pageInfo={scheduleItemAttendances.pageInfo}
