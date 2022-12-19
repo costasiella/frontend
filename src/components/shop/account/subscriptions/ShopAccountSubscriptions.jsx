@@ -9,13 +9,16 @@ import moment from 'moment'
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
+  Button,
   Card,
   Dimmer,
   Grid,
+  Icon,
   Table
 } from "tabler-react";
 import { QUERY_ACCOUNT_SUBSCRIPTIONS } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
+import LoadMoreOnBottomScroll from '../../../general/LoadMoreOnBottomScroll'
 
 import ShopAccountSubscriptionsBase from "./ShopAccountSubscriptionsBase"
 import ContentCard from "../../../general/ContentCard"
@@ -72,7 +75,69 @@ function ShopAccountSubscriptions({t, match, history}) {
     <ShopAccountSubscriptionsBase accountName={user.fullName}>
       <Grid.Row>
         <Grid.Col md={12}>
-          <ContentCard cardTitle={t('shop.account.subscriptions.title')}
+          <h4>{t('shop.account.subscriptions.title')}</h4>
+          <LoadMoreOnBottomScroll
+            // headerContent={headerOptions}
+            pageInfo={subscriptions.pageInfo}
+            onLoadMore={() => {
+              fetchMore({
+                variables: {
+                  after: subscriptions.pageInfo.endCursor
+                },
+                updateQuery: (previousResult, { fetchMoreResult }) => {
+                  const newEdges = fetchMoreResult.accountSubscriptions.edges
+                  const pageInfo = fetchMoreResult.accountSubscriptions.pageInfo
+
+                  return newEdges.length
+                    ? {
+                        // Put the new subscriptions at the end of the list and update `pageInfo`
+                        // so we have the new `endCursor` and `hasNextPage` values
+                        accountSubscriptions: {
+                          __typename: previousResult.accountSubscriptions.__typename,
+                          edges: [ ...previousResult.accountSubscriptions.edges, ...newEdges ],
+                          pageInfo
+                        }
+                      }
+                    : previousResult
+                }
+              })
+            }}
+          >
+            {/* <Grid.Row> */}
+            { subscriptions.edges.map(({ node }) => (
+              <Card key={v4()}>
+                <Card.Body>
+                  <Grid.Row>
+                    <Grid.Col xs={12} md={10}>
+                      <div className='mb-xs-3'>
+                        <h6>
+                          { node.organizationSubscription.name }
+                          {/* Perhaps a badge here to indicate active /inactive in the future? */}
+                        </h6>
+                        <Icon name="calendar" /> { moment(node.dateStart).format(dateFormat) } 
+                        { (node.dateEnd) && <span> - {moment(node.dateEnd).format(dateFormat)}</span> }
+                      </div>
+                    </Grid.Col>
+                    <Grid.Col xs={12} md={2}>
+                      <Link to={`/shop/account/subscriptions/${node.id}/credits`}>
+                        <Button
+                          block
+                          outline
+                          color="info"
+                          size="sm"
+                        >
+                          {node.creditTotal} {t("general.credits")}
+                        </Button>
+                      </Link>
+                    </Grid.Col>
+                  </Grid.Row>
+                </Card.Body>
+              </Card>
+            ))}
+          </LoadMoreOnBottomScroll>
+
+
+          {/* <ContentCard cardTitle={t('shop.account.subscriptions.title')}
             hasCardBody={false}
             pageInfo={subscriptions.pageInfo}
             onLoadMore={() => {
@@ -128,7 +193,7 @@ function ShopAccountSubscriptions({t, match, history}) {
                 ))}
               </Table.Body>
             </Table>
-          </ContentCard>
+          </ContentCard> */}
         </Grid.Col>
       </Grid.Row>
     </ShopAccountSubscriptionsBase>
