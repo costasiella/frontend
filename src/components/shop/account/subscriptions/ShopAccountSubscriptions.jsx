@@ -2,6 +2,7 @@ import React, { useContext} from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from "react-router-dom"
 import { v4 } from "uuid"
 import moment from 'moment'
 
@@ -103,6 +104,7 @@ function ShopAccountSubscriptions({t, match, history}) {
                   <Table.ColHeader>{t('general.name')}</Table.ColHeader>
                   <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
                   <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
+                  <Table.ColHeader>{t('general.credits')}</Table.ColHeader>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -116,6 +118,11 @@ function ShopAccountSubscriptions({t, match, history}) {
                     </Table.Col>
                     <Table.Col>
                       { (node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : "" }
+                    </Table.Col>
+                    <Table.Col>
+                      <Link to={`/shop/account/subscriptions/${node.id}/credits`}>
+                        {node.creditTotal} {t("general.credits")}
+                      </Link>
                     </Table.Col>
                   </Table.Row>
                 ))}

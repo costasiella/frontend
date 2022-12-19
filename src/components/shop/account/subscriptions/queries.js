@@ -20,6 +20,7 @@ export const QUERY_ACCOUNT_SUBSCRIPTIONS = gql`
           organizationSubscription {
             name
           }
+          creditTotal
           dateStart
           dateEnd
         }
