@@ -135,65 +135,6 @@ function ShopAccountSubscriptions({t, match, history}) {
               </Card>
             ))}
           </LoadMoreOnBottomScroll>
-
-
-          {/* <ContentCard cardTitle={t('shop.account.subscriptions.title')}
-            hasCardBody={false}
-            pageInfo={subscriptions.pageInfo}
-            onLoadMore={() => {
-              fetchMore({
-                variables: {
-                  after: subscriptions.pageInfo.endCursor
-                },
-                updateQuery: (previousResult, { fetchMoreResult }) => {
-                  const newEdges = fetchMoreResult.accountSubscriptions.edges
-                  const pageInfo = fetchMoreResult.accountSubscriptions.pageInfo
-
-                  return newEdges.length
-                    ? {
-                        // Put the new subscriptions at the end of the list and update `pageInfo`
-                        // so we have the new `endCursor` and `hasNextPage` values
-                        accountSubscriptions: {
-                          __typename: previousResult.accountSubscriptions.__typename,
-                          edges: [ ...previousResult.accountSubscriptions.edges, ...newEdges ],
-                          pageInfo
-                        }
-                      }
-                    : previousResult
-                }
-              })
-            }} >
-            <Table cards>
-              <Table.Header>
-                <Table.Row key={v4()}>
-                  <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.credits')}</Table.ColHeader>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {subscriptions.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    <Table.Col>
-                      {node.organizationSubscription.name}
-                    </Table.Col>
-                    <Table.Col>
-                      {moment(node.dateStart).format(dateFormat)}
-                    </Table.Col>
-                    <Table.Col>
-                      { (node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : "" }
-                    </Table.Col>
-                    <Table.Col>
-                      <Link to={`/shop/account/subscriptions/${node.id}/credits`}>
-                        {node.creditTotal} {t("general.credits")}
-                      </Link>
-                    </Table.Col>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-          </ContentCard> */}
         </Grid.Col>
       </Grid.Row>
     </ShopAccountSubscriptionsBase>
