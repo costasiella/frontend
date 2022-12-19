@@ -47,7 +47,7 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
     </ShopAccountSubscriptionCreditsBase>
   )
 
-  const user = data.user
+  const user = dataUser.user
   const subscriptionCredits = data.accountSubscriptionCredits
 
   // Empty list
@@ -90,7 +90,7 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
                     ? {
                         // Put the new subscription credits at the end of the list and update `pageInfo`
                         // so we have the new `endCursor` and `hasNextPage` values
-                        accountSubscriptionsCredit: {
+                        accountSubscriptionCredits: {
                           __typename: previousResult.accountSubscriptionCredits.__typename,
                           edges: [ ...previousResult.accountSubscriptionCredits.edges, ...newEdges ],
                           pageInfo

@@ -3,7 +3,7 @@ import { gql } from "@apollo/client"
 
 export const QUERY_ACCOUNT_SUBSCRIPTION_CREDITS = gql`
   query AccountSubscriptionCredits($before: String, $after: String, $accountSubscription: ID!) {
-    accountSubscriptionCredits(first: 100, before: $before, after: $after, accountSubscription: $accountSubscription) {
+    accountSubscriptionCredits(first: 20, before: $before, after: $after, accountSubscription: $accountSubscription) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -48,23 +48,6 @@ export const QUERY_ACCOUNT_SUBSCRIPTION_CREDITS = gql`
           }
         }
       }
-    }
-    user {
-      id
-      accountId
-      firstName
-      lastName
-      fullName
-      email
-      gender
-      dateOfBirth
-      address
-      postcode
-      city
-      country
-      phone
-      mobile
-      emergency
     }
   }
 `

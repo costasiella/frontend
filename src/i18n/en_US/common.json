@@ -2373,7 +2373,7 @@
                     "title": "Credits",
                     "empty_list": "No credits have been granted to this subscription yet.",
                     "added_on": "Added on",
-                    "expiration": "Expires on",
+                    "expiration": "Expires",
                     "status": "Status",
                     "expired": "Expired",
                     "available": "Available",
