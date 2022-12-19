@@ -320,6 +320,7 @@ import ShopAccountMailingLists from './components/shop/account/mailing_lists/Sho
 import ShopAccountOrders from './components/shop/account/orders/ShopAccountOrders'
 import ShopAccountProfile from './components/shop/account/profile/ShopAccountProfile'
 import ShopAccountSubscriptions from './components/shop/account/subscriptions/ShopAccountSubscriptions'
+import ShopAccountSubscriptionCredits from './components/shop/account/subscriptions/credits/ShopAccountSubscriptionCredits'
 import ShopClassBook from './components/shop/classes/book/ShopClassBook'
 import ShopClassBooked from './components/shop/classes/booked/ShopClassBooked'
 import ShopClassesSchedule from './components/shop/classes/schedule/ShopClassesSchedule'
@@ -774,6 +775,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/orders" component={ShopAccountOrders} />
             <PrivateRoute exact path = "/shop/account/profile" component={ShopAccountProfile} />
             <PrivateRoute exact path = "/shop/account/subscriptions" component={ShopAccountSubscriptions} />
+            <PrivateRoute exact path = "/shop/account/subscriptions/:subscription_id/credits" component={ShopAccountSubscriptionCredits} />
             <PrivateRoute exact path = "/shop/checkout/payment/:id" component={ShopCheckoutPayment} />
             <PrivateRoute exact path = "/shop/checkout/complete/:id" component={ShopCheckoutComplete} />
             <Route exact path = "/shop/classes" component={ShopClassesSchedule} />

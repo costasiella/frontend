@@ -2368,7 +2368,17 @@
                 "title": "My Subscriptions",
                 "explanation": "View your current and past subscriptions",
                 "error_loading_data": "Error loading subscriptions... :(",
-                "empty_list": "No subscriptions found."
+                "empty_list": "No subscriptions found.",
+                "credits": {
+                    "title": "Credits",
+                    "empty_list": "No credits have been granted to this subscription yet.",
+                    "added_on": "Added on",
+                    "expiration": "Expires on",
+                    "status": "Status",
+                    "expired": "Expired",
+                    "available": "Available",
+                    "used": "Used"
+                }
             },
             "event_tickets": {
                 "title": "My Event tickets",

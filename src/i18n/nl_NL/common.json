@@ -1003,7 +1003,17 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "explanation": "__STRING_NOT_TRANSLATED__",
                 "error_loading_data": "__STRING_NOT_TRANSLATED__",
-                "empty_list": "__STRING_NOT_TRANSLATED__"
+                "empty_list": "__STRING_NOT_TRANSLATED__",
+                "credits": {
+                    "title": "__STRING_NOT_TRANSLATED__",
+                    "empty_list": "__STRING_NOT_TRANSLATED__",
+                    "added_on": "__STRING_NOT_TRANSLATED__",
+                    "expiration": "__STRING_NOT_TRANSLATED__",
+                    "expired": "__STRING_NOT_TRANSLATED__",
+                    "available": "__STRING_NOT_TRANSLATED__",
+                    "status": "__STRING_NOT_TRANSLATED__",
+                    "used": "__STRING_NOT_TRANSLATED__"
+                }
             },
             "profile": {
                 "title": "__STRING_NOT_TRANSLATED__",
