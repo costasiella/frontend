@@ -5,6 +5,9 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
+import {
+  Dimmer
+} from "tabler-react"
 
 import { dateToLocalISO, dateToLocalISOTime } from '../../../../tools/date_tools'
 
@@ -47,7 +50,7 @@ function ScheduleEventActivityAdd({ t, history, match }) {
       activeLink={activeLink} 
       returnUrl={returnUrl}
     >
-      {t("general.loading_with_dots")}
+      <Dimmer active={true} loader={true} />
     </ScheduleEventEditBase>
   )
   if (error) return (

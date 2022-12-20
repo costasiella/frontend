@@ -57,7 +57,7 @@ function ScheduleItems({t, match, history}) {
   if (!scheduleItems.edges.length) { return (
     <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>
       <Card.Body>
-        <p>{t('schedule.events.tickets.empty_list')}</p>
+        <p>{t('schedule.events.activities.empty_list')}</p>
       </Card.Body>
     </ScheduleEventEditListBase>
   )}

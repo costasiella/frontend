@@ -1,10 +1,7 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
-
 
 import {
   Button,

@@ -1529,7 +1529,8 @@
                 "public": "This is a public activity",
                 "attendance": {
                     "empty_list": "No attendance has been registered for this activity yet."
-                }
+                },
+                "empty_list": "No activities have been created yet for this event."
             },
             "media": {
                 "title": "Images",

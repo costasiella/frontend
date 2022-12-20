@@ -2144,7 +2144,8 @@
                 "delete_success": "__STRING_NOT_TRANSLATED__",
                 "toast_edit_success": "__STRING_NOT_TRANSLATED__",
                 "public": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "empty_list": "__STRING_NOT_TRANSLATED__"
             },
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "earlybirds": {
