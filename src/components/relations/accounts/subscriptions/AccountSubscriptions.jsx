@@ -78,6 +78,8 @@ function AccountSubscriptions({t, match}) {
     )
   }
 
+  console.table(accountSubscriptions.edges)
+
   return (
     <RelationsAccountProfileBase
       activeLink={activeLink}
@@ -133,7 +135,7 @@ function AccountSubscriptions({t, match}) {
                     {moment(node.dateStart).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.Enddate && moment(node.dateEnd).format(dateFormat)}
+                    {node.dateEnd && moment(node.dateEnd).format(dateFormat)}
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {(node.financePaymentMethod) ? node.financePaymentMethod.name : ""}
