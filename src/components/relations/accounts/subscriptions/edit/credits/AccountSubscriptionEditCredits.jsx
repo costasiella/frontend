@@ -117,6 +117,7 @@ function AccountSubscriptionEditCredits({t, match, history}) {
                   <small className="text-muted">
                     <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
                   </small>
+                  {(node.reconciled) && <small className="text-muted">Reconciled at {moment(node.reconciled).format(dateFormat)}</small>}
                 </Table.Col>
                 <Table.Col>
                   {moment(node.expiration).format(dateFormat)} <br />
