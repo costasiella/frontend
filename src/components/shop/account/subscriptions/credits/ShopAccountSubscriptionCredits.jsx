@@ -113,8 +113,13 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
                         </small>
                         <h6>
                           { moment(node.createdAt).format(dateFormat) }
-                          <small className='text-muted'> {node.description}</small>
+                          <div><small className='text-muted'> {node.description}</small></div>
                           {/* Perhaps a badge here to indicate active /inactive in the future? */}
+                          { (node.reconciled) && <div>
+                            <small className='text-muted'>
+                              {t("shop.account.subscriptions.credits.reconciled_on")} { moment(node.reconciled).format(dateFormat) }
+                            </small>
+                          </div>}
                         </h6>
                       </div>
                     </Grid.Col>

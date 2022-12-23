@@ -12,6 +12,8 @@ query AccountSubscriptionCredits($before: String, $after: String, $accountSubscr
     edges {
       node {
         id
+        advance
+        reconciled
         accountSubscription {
           id
         }

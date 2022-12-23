@@ -13,6 +13,8 @@ export const QUERY_ACCOUNT_SUBSCRIPTION_CREDITS = gql`
       edges {
         node {
           id
+          advance
+          reconciled
           createdAt
           description
           expiration
