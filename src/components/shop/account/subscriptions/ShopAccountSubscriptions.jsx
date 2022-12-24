@@ -21,7 +21,6 @@ import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 import LoadMoreOnBottomScroll from '../../../general/LoadMoreOnBottomScroll'
 
 import ShopAccountSubscriptionsBase from "./ShopAccountSubscriptionsBase"
-import ContentCard from "../../../general/ContentCard"
 
 
 function ShopAccountSubscriptions({t, match, history}) {
@@ -126,7 +125,9 @@ function ShopAccountSubscriptions({t, match, history}) {
                           color="info"
                           size="sm"
                         >
-                          {node.creditTotal} {t("general.credits")}
+                          {(node.organizationSubscription.unlimited) ? 
+                            t("general.unlimited") : node.creditTotal } {" "}
+                          {t("general.credits")}
                         </Button>
                       </Link>
                     </Grid.Col>

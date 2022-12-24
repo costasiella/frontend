@@ -2377,7 +2377,9 @@
                     "status": "Status",
                     "expired": "Expired",
                     "available": "Available",
-                    "used": "Used"
+                    "used": "Used",
+                    "unlimited": "This is an unlimited subscription.",
+                    "reconciled_on": "Reconciled on"
                 }
             },
             "event_tickets": {

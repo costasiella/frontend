@@ -1012,7 +1012,9 @@
                     "expired": "__STRING_NOT_TRANSLATED__",
                     "available": "__STRING_NOT_TRANSLATED__",
                     "status": "__STRING_NOT_TRANSLATED__",
-                    "used": "__STRING_NOT_TRANSLATED__"
+                    "used": "__STRING_NOT_TRANSLATED__",
+                    "unlimited": "__STRING_NOT_TRANSLATED__",
+                    "reconciled_on": "__STRING_NOT_TRANSLATED__"
                 }
             },
             "profile": {

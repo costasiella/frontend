@@ -49,6 +49,24 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
 
   const user = dataUser.user
   const subscriptionCredits = data.accountSubscriptionCredits
+  const organizationSubscription = data.accountSubscription.organizationSubscription
+
+  // Unlimited credits, no need to go into details.
+  if (organizationSubscription.unlimited) {
+    return (
+      <ShopAccountSubscriptionCreditsBase accountName={user.fullName}>
+        <Grid.Row>
+          <Grid.Col md={12}>
+            <Card cardTitle={t('shop.account.subscriptions.credits.title')} >
+              <Card.Body>
+                {t('shop.account.subscriptions.credits.unlimited')}
+              </Card.Body>
+            </Card>
+          </Grid.Col>
+        </Grid.Row>
+      </ShopAccountSubscriptionCreditsBase>
+    )  
+  }
 
   // Empty list
   if (!subscriptionCredits.edges.length) {
@@ -66,6 +84,7 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
       </ShopAccountSubscriptionCreditsBase>
     )  
   }
+
 
 
   // Populated list

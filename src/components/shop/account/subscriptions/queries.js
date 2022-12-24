@@ -19,6 +19,7 @@ export const QUERY_ACCOUNT_SUBSCRIPTIONS = gql`
           }
           organizationSubscription {
             name
+            unlimited
           }
           creditTotal
           dateStart
