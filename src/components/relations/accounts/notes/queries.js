@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_NOTES_QUERY = gql`
-  query AccountNotes($after: String, $before: String, $account: ID!, $noteType: String!) {
+  query AccountNotes($after: String, $before: String, $account: ID!, $noteType: CostasiellaAccountNoteNoteTypeChoices!) {
     accountNotes(first: 15, before: $before, after: $after, account: $account, noteType: $noteType ) {
       pageInfo {
         startCursor

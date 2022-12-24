@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 export const GET_ACCOUNT_QUOTES_QUERY = gql`
-  query FinanceQuotes($after: String, $before: String, $status: String, $accountId: ID!) {
+  query FinanceQuotes($after: String, $before: String, $status: CostasiellaFinanceQuoteStatusChoices, $accountId: ID!) {
     financeQuotes(first: 15, before: $before, after: $after, status: $status, account: $accountId) {
       pageInfo {
         hasNextPage

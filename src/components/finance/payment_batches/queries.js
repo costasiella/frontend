@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 export const GET_PAYMENT_BATCHES_QUERY = gql`
-  query FinancePaymentBatches($after: String, $before: String, $batchType: String!) {
+  query FinancePaymentBatches($after: String, $before: String, $batchType: CostasiellaFinancePaymentBatchBatchTypeChoices!) {
     financePaymentBatches(first: 15, before: $before, after: $after, batchType: $batchType) {
       pageInfo {
         startCursor

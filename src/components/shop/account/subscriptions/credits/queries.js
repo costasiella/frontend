@@ -43,12 +43,21 @@ export const QUERY_ACCOUNT_SUBSCRIPTION_CREDITS = gql`
             id
             organizationSubscription {
               name
+              unlimited
             }
             creditTotal
             dateStart
             dateEnd
           }
         }
+      }
+    }
+    accountSubscription(id: $accountSubscription) {
+      id
+      organizationSubscription {
+        id
+        name
+        unlimited
       }
     }
   }
