@@ -1080,7 +1080,8 @@
                     "toast_edit_success": "Saved",
                     "add": "Add credit mutation",
                     "edit": "Edit credit mutation",
-                    "empty_list": "This subscription hasn't had any credit mutations."
+                    "empty_list": "This subscription hasn't had any credit mutations.",
+                    "unlimited": "This subscription has unlimited credits."
                 },
                 "pauses": {
                     "empty_list": "This subscription hasn't been paused before.",
@@ -2378,7 +2379,7 @@
                     "expired": "Expired",
                     "available": "Available",
                     "used": "Used",
-                    "unlimited": "This is an unlimited subscription.",
+                    "unlimited": "This subscription has unlimited credits.",
                     "reconciled_on": "Reconciled on"
                 }
             },

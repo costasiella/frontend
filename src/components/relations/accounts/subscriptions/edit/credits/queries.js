@@ -46,6 +46,14 @@ query AccountSubscriptionCredits($before: String, $after: String, $accountSubscr
       }
     } 
   }
+  accountSubscription(id: $accountSubscription) {
+    id
+    organizationSubscription {
+      id
+      name
+      unlimited
+    }
+  }
 }
 `
 

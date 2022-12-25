@@ -10,6 +10,7 @@ import {
   Card,
   Dimmer,
   Grid,
+  Icon
 } from "tabler-react";
 
 import AppSettingsContext from '../../../../context/AppSettingsContext'
@@ -59,7 +60,7 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
           <Grid.Col md={12}>
             <Card cardTitle={t('shop.account.subscriptions.credits.title')} >
               <Card.Body>
-                {t('shop.account.subscriptions.credits.unlimited')}
+                <Card.Alert color="primary"><Icon name="check" /> {t('shop.account.subscriptions.credits.unlimited')}</Card.Alert>
               </Card.Body>
             </Card>
           </Grid.Col>

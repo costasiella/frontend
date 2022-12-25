@@ -10,6 +10,7 @@ import {
   Badge,
   Button,
   Card,
+  Icon,
   Table,
 } from "tabler-react";
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
@@ -56,7 +57,19 @@ function AccountSubscriptionEditCredits({t, match, history}) {
   )
 
   const accountSubscriptionCredits = data.accountSubscriptionCredits
+  const accountSubscription = data.accountSubscription
   const pageInfo = data.accountSubscriptionCredits.pageInfo
+
+  // unlimited
+  if (accountSubscription.organizationSubscription.unlimited) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+      <Card.Body>
+        <Card.Alert color="primary">
+          <Icon name="check" /> {t('relations.account.subscriptions.credits.unlimited')}
+        </Card.Alert>
+      </Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
 
   // Empty list
   if (!accountSubscriptionCredits.edges.length) { return (

@@ -1381,7 +1381,8 @@
                     "toast_edit_success": "__STRING_NOT_TRANSLATED__",
                     "add": "__STRING_NOT_TRANSLATED__",
                     "edit": "__STRING_NOT_TRANSLATED__",
-                    "empty_list": "__STRING_NOT_TRANSLATED__"
+                    "empty_list": "__STRING_NOT_TRANSLATED__",
+                    "unlimited": "__STRING_NOT_TRANSLATED__"
                 },
                 "invoices": {
                     "toast_add_success": "__STRING_NOT_TRANSLATED__",
