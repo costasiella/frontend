@@ -141,7 +141,7 @@ function AccountSubscriptions({t, match}) {
                     {(node.financePaymentMethod) ? node.financePaymentMethod.name : ""}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.creditTotal}
+                    { (node.organizationSubscription.unlimited) ? t("general.unlimited") : node.creditTotal }
                   </Table.Col>
                   <Table.Col className="text-right" key={v4()}>
                     <Link to={"/relations/accounts/" + match.params.account_id + "/subscriptions/edit/" + node.id}>
