@@ -49,6 +49,7 @@ export const GET_ACCOUNT_SUBSCRIPTION_QUERY = gql`
       organizationSubscription {
         id
         name
+        unlimited
       }
       financePaymentMethod {
         id

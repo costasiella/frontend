@@ -30,16 +30,26 @@ function AccountSubscriptionEditBaseBase({
   activeTab,
   returnUrl,
   pageHeaderButtonList=""}
-  ){
+){
 
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
+  
+  let credits = ""
+  if (subscription) {
+    if (subscription.organizationSubscription.unlimited) {
+      credits = t("general.unlimited")
+    } else {
+      credits = subscription.creditTotal
+    }
+  } 
+
   const cardTitle = (subscription) ? 
     <span className="text-muted">
-      - {subscription.organizationSubscription.name + " " + moment(subscription.dateStart).format(dateFormat)} - {subscription.creditTotal} {t("general.credits")}
+      - {subscription.organizationSubscription.name + " " + moment(subscription.dateStart).format(dateFormat)} - {credits} {t("general.credits")}
     </span> : ""
 
   return (
