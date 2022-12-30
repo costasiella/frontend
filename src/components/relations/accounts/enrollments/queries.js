@@ -28,6 +28,7 @@ export const GET_ACCOUNT_ENROLLMENTS_QUERY = gql`
           }
           scheduleItem {
             id
+            dateStart
             timeStart
             timeEnd
             frequencyInterval

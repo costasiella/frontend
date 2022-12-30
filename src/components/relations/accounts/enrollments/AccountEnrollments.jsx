@@ -141,7 +141,9 @@ function AccountEnrollments({ t, match, location }) {
                 <Table.Col>
                   { node.scheduleItem.organizationClasstype.name } <br />
                   <span className="text-muted">
-                    <Icon name="clock" /> { weekdayNames[node.scheduleItem.frequencyInterval] } { moment(node.timeStart).format(timeFormat) } <br />
+                    <Icon name="clock" /> { " " }
+                      { weekdayNames[node.scheduleItem.frequencyInterval - 1] } { " " }
+                      { moment(`${node.scheduleItem.dateStart} ${node.scheduleItem.timeStart}`).format(timeFormat) } <br />
                     <Icon name="home" /> { node.scheduleItem.organizationLocationRoom.organizationLocation.name } {" - " } 
                     { node.scheduleItem.organizationLocationRoom.name }
                   </span> 
