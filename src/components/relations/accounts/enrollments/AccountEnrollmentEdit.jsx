@@ -98,7 +98,7 @@ function AccountEnrollmentEdit({ t, match, history }) {
         <Card.Alert color="primary">
           <b>{scheduleItem.organizationClasstype.name}</b><br />
           <Icon name="clock" /> {" "} 
-              { weekdayNames[scheduleItem.frequencyInterval] } {" "}
+              { weekdayNames[scheduleItem.frequencyInterval - 1 ] } {" "}
               { moment(`${scheduleItem.dateStart} ${scheduleItem.timeStart}`).format(timeFormat) } <br />
             <Icon name="home" /> {" "}
             { scheduleItem.organizationLocationRoom.organizationLocation.name } {" - " } 
