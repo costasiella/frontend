@@ -1,7 +1,14 @@
 import moment from 'moment'
 
-export function class_edit_all_subtitle({t, location, locationRoom, classtype, starttime}) {
-  return t('general.class') + ': ' + location + ' (' + locationRoom + ') - ' + classtype + ' @ ' + moment(starttime).format('LT')
+import { getWeekdayNames } from '../../../../tools/date_tools'
+
+export function class_edit_all_subtitle({t, location, locationRoom, classtype, starttime, dateStart}) {
+  const weekdayNames = getWeekdayNames(t)
+  const weekday = moment(dateStart).day()
+  const weekdayName = weekdayNames[weekday]
+
+  // return t('general.class') + ': ' + location + ' (' + locationRoom + ') - ' + classtype + ' @ ' +  moment(starttime).format('LT')
+  return t('general.class') + ': ' + weekdayName + ' ' + moment(starttime).format('LT') + ' - ' + classtype + ' - ' + location + ' [' + locationRoom + ']'
 }
 
 export function represent_instructor_role(t, role) {

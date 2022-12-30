@@ -7,6 +7,7 @@ import { TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
 import { GET_CLASS_QUERY } from "../queries"
+import { getWeekdayNames } from '../../../../tools/date_tools';
 
 import ClassEditBaseBase from './ClassEditBaseBase'
 import { class_edit_all_subtitle } from "./tools"
@@ -55,7 +56,8 @@ function ClassEditBase({t, match, children, menuActiveLink="", defaultCard=true,
     location: initialValues.organizationLocationRoom.organizationLocation.name,
     locationRoom: initialValues.organizationLocationRoom.name,
     classtype: initialValues.organizationClasstype.name,
-    starttime: initialTimeStart
+    starttime: initialTimeStart,
+    dateStart: initialValues.dateStart
   })
 
   return (
