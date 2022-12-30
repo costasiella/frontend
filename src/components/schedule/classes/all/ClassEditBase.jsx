@@ -7,7 +7,6 @@ import { TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
 import { GET_CLASS_QUERY } from "../queries"
-import { getWeekdayNames } from '../../../../tools/date_tools';
 
 import ClassEditBaseBase from './ClassEditBaseBase'
 import { class_edit_all_subtitle } from "./tools"
