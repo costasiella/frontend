@@ -112,6 +112,9 @@ function ScheduleClassEdit({ t, match, history }) {
     if (initialData.walkInSpaces) {
       initialValues.walkInSpaces = initialData.walkInSpaces
     }
+    if (initialData.infoMailEnabled) {
+      initialValues.infoMailEnabled = initialData.infoMailEnabled
+    }
     if (initialData.infoMailContent) {
       initialValues.infoMailContent = initialData.infoMailContent
     }
@@ -129,6 +132,7 @@ function ScheduleClassEdit({ t, match, history }) {
     initialValues.organizationLevel = ""
     initialValues.timeStart = ""
     initialValues.timeEnd = ""
+    initialValues.infoMailEnabled = ""
     initialValues.infoMailContent = ""
   }
 
@@ -189,6 +193,7 @@ function ScheduleClassEdit({ t, match, history }) {
                             timeEnd: timeEnd,
                             spaces: parseInt(values.spaces),
                             walkInSpaces: parseInt(values.walkInSpaces),
+                            infoMailEnabled: values.infoMailEnabled,
                             infoMailContent: values.infoMailContent
                           }
                         }, refetchQueries: [
