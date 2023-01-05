@@ -92,6 +92,7 @@ function ScheduleClassEditAll({t, match}) {
             timeEnd: initialTimeEnd,
             spaces: initialValues.spaces,
             walkInSpaces: initialValues.walkInSpaces,
+            infoMailEnabled: initialValues.infoMailEnabled,
             infoMailContent: initialValues.infoMailContent
           }}
           validationSchema={CLASS_SCHEMA}
@@ -125,6 +126,7 @@ function ScheduleClassEditAll({t, match}) {
                   timeEnd: dateToLocalISOTime(values.timeEnd),
                   spaces: parseInt(values.spaces),
                   walkInSpaces: parseInt(values.walkInSpaces),
+                  infoMailEnabled: values.infoMailEnabled,
                   infoMailContent: values.infoMailContent,
                 }
               }, refetchQueries: [
