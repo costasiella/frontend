@@ -13,8 +13,7 @@ import {
   Card,
   Dimmer,
   Grid,
-  Icon,
-  Table
+  Icon
 } from "tabler-react";
 import { QUERY_ACCOUNT_SUBSCRIPTIONS } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
