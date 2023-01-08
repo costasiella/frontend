@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 export const GET_DOCUMENTS_QUERY = gql`
-  query OrganizationDocuments($documentType: String!) {
+  query OrganizationDocuments($documentType: CostasiellaOrganizationDocumentDocumentTypeChoices!) {
     organizationDocuments(documentType:$documentType) {
       pageInfo {
         hasNextPage
