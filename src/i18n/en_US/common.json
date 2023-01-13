@@ -2446,6 +2446,13 @@
                 "title": "Invoice",
                 "pieces": "Pieces",
                 "billed_to_b2b": "This invoice is billed to"
+            },
+            "class_uncancel": {              
+                "uncancelation_not_possible": "This class can no longer be booked. It's either full or already finished.",
+                "confirmation_question": "Are you sure you wish to book this class?",
+                "success": "Class booked",
+                "confirm_yes": "Book class",
+                "not_cancelled": "This class booking isn't cancelled, please go back and refresh the list to view the latest status."
             }
         },
         "accounts": {
