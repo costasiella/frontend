@@ -73,6 +73,7 @@ export const GET_BOOKING_OPTIONS_QUERY = gql`
           organizationSubscription {
             id
             name
+            unlimited
           }
           creditTotal
         }
