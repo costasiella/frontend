@@ -309,6 +309,7 @@ import SettingsWorkflowTrial from './components/settings/workflow/trial/Settings
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
+import ShopAccountClassUnCancel from './components/shop/account/class_uncancel/ShopAccountClassUnCancel'
 import ShopAccountClassInfo from './components/shop/account/class_info/ShopAccountClassInfo'
 import ShopAccountClasspasses from './components/shop/account/classpasses/ShopAccountClasspasses'
 import ShopAccountEventTickets from './components/shop/account/event_tickets/ShopAccountEventTickets'
@@ -763,6 +764,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/bank_account" component={ShopAccountBankAccount} />
             <PrivateRoute exact path = "/shop/account/class_cancel/:class_id/:date/:attendance_id" 
                                 component={ShopAccountClassCancel} />
+            <PrivateRoute exact path = "/shop/account/class_uncancel/:class_id/:date/:attendance_id" 
+                                component={ShopAccountClassUnCancel} />
             <PrivateRoute exact path = "/shop/account/class_info/:class_id/:date" component={ShopAccountClassInfo} />
             <PrivateRoute exact path = "/shop/account/classes" component={ShopClasses} />
             <PrivateRoute exact path = "/shop/account/classpasses" component={ShopAccountClasspasses} />
