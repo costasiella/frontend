@@ -21,7 +21,8 @@ function RelationsB2BInvoices({ t, match, location, history}) {
   const { loading, error, data, fetchMore } = useQuery(GET_INVOICES_QUERY, {
     variables: {
       business: businessId
-    }
+    },
+    fetchPolicy: "network-only"
   })
   const pageHeaderButtonList = <ButtonAdd 
     className='ml-2'
