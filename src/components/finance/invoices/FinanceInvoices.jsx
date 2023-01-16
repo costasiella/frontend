@@ -90,6 +90,7 @@ function FinanceInvoices({ t, location, history }) {
       >
         <FinanceInvoicesList 
           invoices={invoices} 
+          showBtnPDF={true}
           showColRelation={true}
         />
       </ContentCard>
