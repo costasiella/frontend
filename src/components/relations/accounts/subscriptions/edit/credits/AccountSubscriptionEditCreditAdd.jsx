@@ -1,28 +1,16 @@
 import React from 'react'
 import { useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
 import { GET_ACCOUNT_SUBSCRIPTION_QUERY } from "../../queries"
-import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY } from "./queries"
-import { ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA } from './yupSchema'
+import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, ADD_ACCOUNT_SUBSCRIPTION_CREDIT } from "./queries"
+import { ACCOUNT_SUBSCRIPTION_CREDIT_ADD_SCHEMA } from './yupSchema'
 
 import AccountSubscriptionEditCreditBase from "./AccountSubscriptionEditCreditBase"
-import AccountSubscriptionEditCreditForm from "./AccountSubscriptionEditCreditForm"
-
-
-const ADD_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
-  mutation CreateAccountSubscriptionCredit($input:CreateAccountSubscriptionCreditInput!) {
-    createAccountSubscriptionCredit(input: $input) {
-      accountSubscriptionCredit {
-        id
-      }
-    }
-  }
-`
+import AccountSubscriptionEditCreditAddForm from "./AccountSubscriptionEditCreditAddForm"
 
 
 function AccountSubscriptionEditCreditAdd({ t, history, match }) {
@@ -38,11 +26,10 @@ function AccountSubscriptionEditCreditAdd({ t, history, match }) {
     <AccountSubscriptionEditCreditBase>
       <Formik
         initialValues={{ 
-          mutationType: "ADD",
-          mutationAmount: 0,
+          amount: 1,
           description: ""
         }}
-        validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA}
+        validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_ADD_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
           console.log("submit values")
           console.log(values)
@@ -50,8 +37,7 @@ function AccountSubscriptionEditCreditAdd({ t, history, match }) {
           addSubscriptionCredit({ variables: {
             input: {
               accountSubscription: subscriptionId,
-              mutationType: values.mutationType,
-              mutationAmount: values.mutationAmount,
+              amount: parseInt(values.amount),
               description: values.description
             }
           }, refetchQueries: [
@@ -78,14 +64,13 @@ function AccountSubscriptionEditCreditAdd({ t, history, match }) {
         }}
         >
         {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-          <AccountSubscriptionEditCreditForm
+          <AccountSubscriptionEditCreditAddForm
             isSubmitting={isSubmitting}
             setFieldTouched={setFieldTouched}
             setFieldValue={setFieldValue}
             errors={errors}
             values={values}
             returnUrl={returnUrl}
-            formTitle="create"
           />
         )}
       </Formik>

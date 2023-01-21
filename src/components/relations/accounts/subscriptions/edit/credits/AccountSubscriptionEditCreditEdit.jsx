@@ -11,10 +11,10 @@ import {
   GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, 
   GET_ACCOUNT_SUBSCRIPTION_CREDIT_QUERY,
   UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT } from "./queries"
-import { ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA } from './yupSchema'
+import { ACCOUNT_SUBSCRIPTION_CREDIT_EDIT_SCHEMA } from './yupSchema'
 
 import AccountSubscriptionEditCreditBase from "./AccountSubscriptionEditCreditBase"
-import AccountSubscriptionEditCreditForm from "./AccountSubscriptionEditCreditForm"
+import AccountSubscriptionEditCreditEditForm from "./AccountSubscriptionEditCreditEditForm"
 
 
 function AccountSubscriptionEditCreditEdit({ t, history, match }) {
@@ -60,7 +60,7 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
           expiration: new Date(accountSubscriptionCredit.expiration),
           description: accountSubscriptionCredit.description
         }}
-        validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA}
+        validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_EDIT_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
           console.log("submit values")
           console.log(values)
@@ -95,7 +95,7 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
         }}
         >
         {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-          <AccountSubscriptionEditCreditForm
+          <AccountSubscriptionEditCreditEditForm
             isSubmitting={isSubmitting}
             setFieldTouched={setFieldTouched}
             setFieldValue={setFieldValue}
