@@ -1447,7 +1447,8 @@
             },
             "select_last_weekday_of_month": "Last weekday of month",
             "filter_all_instructors": "All instructors",
-            "info_mail_enabled": "Send info mails"
+            "info_mail_enabled": "Send info mails",
+            "spaces_enrollments": "Max enrollments"
         },
         "appointments": {
             "title": "Appointments",
@@ -2447,7 +2448,7 @@
                 "pieces": "Pieces",
                 "billed_to_b2b": "This invoice is billed to"
             },
-            "class_uncancel": {              
+            "class_uncancel": {
                 "uncancelation_not_possible": "This class can no longer be booked. It's either full or already finished.",
                 "confirmation_question": "Are you sure you wish to book this class?",
                 "success": "Class booked",
