@@ -153,6 +153,7 @@ export const GET_CLASS_QUERY = gql`
       spaces
       walkInSpaces
       displayPublic
+      enrollmentSpaces
       infoMailEnabled
       infoMailContent
     }
