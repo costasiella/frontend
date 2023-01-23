@@ -92,6 +92,7 @@ function ScheduleClassEditAll({t, match}) {
             timeEnd: initialTimeEnd,
             spaces: initialValues.spaces,
             walkInSpaces: initialValues.walkInSpaces,
+            enrollmentSpaces: initialValues.enrollmentSpaces,
             infoMailEnabled: initialValues.infoMailEnabled,
             infoMailContent: initialValues.infoMailContent
           }}
@@ -126,6 +127,7 @@ function ScheduleClassEditAll({t, match}) {
                   timeEnd: dateToLocalISOTime(values.timeEnd),
                   spaces: parseInt(values.spaces),
                   walkInSpaces: parseInt(values.walkInSpaces),
+                  enrollmentSpaces: parseInt(values.enrollmentSpaces),
                   infoMailEnabled: values.infoMailEnabled,
                   infoMailContent: values.infoMailContent,
                 }
