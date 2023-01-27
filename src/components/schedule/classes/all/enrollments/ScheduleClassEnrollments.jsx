@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import moment from 'moment'
 
 import {
+  Badge,
   Button,
   Card,
   Dimmer,
@@ -43,31 +44,13 @@ function ScheduleClassEnrollments({ t, match, location }) {
 
   localStorage.setItem(CSLS.SCHEDULE_CLASSES_ENROLLMENT_RETURN, location.pathname)
 
-  const headerOptions = <Card.Options>
-    <Button color={(showCurrent) ? 'primary': 'secondary'}  
-            size="sm"
-            onClick={() => {
-              setShowCurrent(true); 
-              let queryVars = getEnrollmentsListQueryVariables(scheduleItemId)
-              console.log(queryVars)
-              refetch(queryVars); 
-            }}
-    >
-      {t('general.current')}
-    </Button>
-    <Button color={(!showCurrent) ? 'primary': 'secondary'} 
-            size="sm" 
-            className="ml-2" 
-            onClick={() => {
-              setShowCurrent(false); 
-              let queryVars = getEnrollmentsListQueryVariables(scheduleItemId, true)
-              console.log(queryVars)
-              refetch(queryVars); 
-            }}
-    >
-      {t('general.ended')}
-    </Button>
-  </Card.Options>
+//   const headerOptions = <Card.Options>
+//   <div className='float-right'>
+//     <Badge color="success">{scheduleClass.countAttending} {t("schedule.classes.class.attendance.attending")}</Badge> {" "}
+//     <Badge color="primary">{scheduleClass.countBooked} {t("schedule.classes.class.attendance.booked")}</Badge> {" "}
+//     {/* <Badge color="info">{t("general.spaces")}: {scheduleClass.spaces}</Badge>  */}
+//   </div>
+// </Card.Options>
 
   const ButtonAddEnrollment = <HasPermissionWrapper permission="add" resource="scheduleitemenrollment">
     <ButtonAdd addUrl={`/schedule/classes/all/enrollments/${scheduleItemId}/search`} className='ml-2' />
@@ -106,6 +89,7 @@ function ScheduleClassEnrollments({ t, match, location }) {
   console.log(data)
   const scheduleItem = data.scheduleItem
   const enrollments = scheduleItem.enrollments
+  const countEnrollments = enrollments.edges.length
 
   // Empty list
   if (!enrollments.edges.length) return (
@@ -124,6 +108,36 @@ function ScheduleClassEnrollments({ t, match, location }) {
       </ContentCard>
     </ClassEditBase>
   )
+
+  const headerOptions = <Card.Options>
+    <div className='mr-2'>
+      <Badge color="success">{countEnrollments} {t("schedule.classes.enrollments.enrolled")}</Badge> {" "}
+      <Badge color="default">{scheduleItem.enrollmentSpaces - countEnrollments} {t("schedule.classes.enrollments.available_enrollment_spaces")}</Badge> {" "}
+    </div>
+    <Button color={(showCurrent) ? 'primary': 'secondary'}  
+            size="sm"
+            onClick={() => {
+              setShowCurrent(true); 
+              let queryVars = getEnrollmentsListQueryVariables(scheduleItemId)
+              console.log(queryVars)
+              refetch(queryVars); 
+            }}
+    >
+      {t('general.current')}
+    </Button>
+    <Button color={(!showCurrent) ? 'primary': 'secondary'} 
+            size="sm" 
+            className="ml-2" 
+            onClick={() => {
+              setShowCurrent(false); 
+              let queryVars = getEnrollmentsListQueryVariables(scheduleItemId, true)
+              console.log(queryVars)
+              refetch(queryVars); 
+            }}
+    >
+      {t('general.ended')}
+    </Button>
+  </Card.Options>
 
   
   return (
