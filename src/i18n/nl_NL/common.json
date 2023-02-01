@@ -2108,7 +2108,8 @@
                     "search_to_find_customers_to_enroll": "__STRING_NOT_TRANSLATED__"
                 },
                 "enrolled": "__STRING_NOT_TRANSLATED__",
-                "available_enrollment_spaces": "__STRING_NOT_TRANSLATED__"
+                "available_enrollment_spaces": "__STRING_NOT_TRANSLATED__",
+                "toast_creating_might_take_a_while": "__STRING_NOT_TRANSLATED__"
             },
             "select_last_weekday_of_month": "__STRING_NOT_TRANSLATED__",
             "filter_all_instructors": "__STRING_NOT_TRANSLATED__",

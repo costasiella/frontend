@@ -1445,7 +1445,8 @@
                     "search_to_find_customers_to_enroll": "Use the search box to find customers to enroll."
                 },
                 "enrolled": "Enrolled",
-                "available_enrollment_spaces": "Available enrollment spaces"
+                "available_enrollment_spaces": "Available enrollment spaces",
+                "toast_creating_might_take_a_while": "Processing this new enrollment."
             },
             "select_last_weekday_of_month": "Last weekday of month",
             "filter_all_instructors": "All instructors",
