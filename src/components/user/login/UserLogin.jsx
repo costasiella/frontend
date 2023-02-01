@@ -9,6 +9,7 @@ import {
   Icon,
 } from "tabler-react"
 
+import AppSettingsContext from '../../context/AppSettingsContext'
 import OrganizationContext from '../../context/OrganizationContext'
 
 import { TOKEN_AUTH } from "../../../queries/system/auth"
@@ -21,6 +22,9 @@ import CSStandaloneFormPage from "../../ui/CSStandaloneFormPage"
 
 function UserLogin({t, match, history}) {
   const organization = useContext(OrganizationContext)
+  const appSettings = useContext(AppSettingsContext)
+  const accountSignupEnabled = appSettings.accountSignupEnabled
+
   const [ doTokenAuth ] = useMutation(TOKEN_AUTH)
 
   // Do an auth cleanup, so we start clean when signing in
@@ -71,23 +75,27 @@ function UserLogin({t, match, history}) {
             errors={errors}
           />
         )}
-      </Formik>    
-      <div className="text-center">
-        <h5>{t('user.register.create_account')}</h5>
-        {t('user.register.create_account_msg')} <br />
-        {t('user.register.create_account_msg_click_below')} <br />
-      </div>
-      <Button 
-        block
-        color="link"
-        RootComponent="a"
-        href={(window.location.hostname === "localhost" || window.location.hostname === "dev.costasiella.com") ? 
-          "http://localhost:8000/d/accounts/signup/" :
-          "/d/accounts/signup/"
-        } 
-      >
-        {t('user.register.create_account')} <Icon name="chevron-right" />
-      </Button>
+      </Formik>
+      {
+        (accountSignupEnabled) && <React.Fragment>
+          <div className="text-center">
+            <h5>{t('user.register.create_account')}</h5>
+            {t('user.register.create_account_msg')} <br />
+            {t('user.register.create_account_msg_click_below')} <br />
+          </div>
+          <Button 
+            block
+            color="link"
+            RootComponent="a"
+            href={(window.location.hostname === "localhost" || window.location.hostname === "dev.costasiella.com") ? 
+              "http://localhost:8000/d/accounts/signup/" :
+              "/d/accounts/signup/"
+            } 
+          >
+            {t('user.register.create_account')} <Icon name="chevron-right" />
+          </Button>
+        </React.Fragment>
+      }
     </CSStandaloneFormPage>
   )
 }
