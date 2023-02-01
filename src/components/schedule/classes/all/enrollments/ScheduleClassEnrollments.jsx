@@ -91,24 +91,6 @@ function ScheduleClassEnrollments({ t, match, location }) {
   const enrollments = scheduleItem.enrollments
   const countEnrollments = enrollments.edges.length
 
-  // Empty list
-  if (!enrollments.edges.length) return (
-    <ClassEditBase 
-      menuActiveLink={menuActiveLink} 
-      defaultCard={false}
-      pageHeaderButtonList={pageHeaderButtonList}
-    >
-      <ContentCard cardTitle={cardTitle}
-                   hasCardBody={false}
-                   headerContent={headerOptions}
-      >
-        <Card.Body>
-          <p>{t('schedule.classes.enrollments.empty_list')}</p>
-        </Card.Body>
-      </ContentCard>
-    </ClassEditBase>
-  )
-
   const headerOptions = <Card.Options>
     <div className='mr-2'>
       <Badge color="success">{countEnrollments} {t("schedule.classes.enrollments.enrolled")}</Badge> {" "}
@@ -139,6 +121,23 @@ function ScheduleClassEnrollments({ t, match, location }) {
     </Button>
   </Card.Options>
 
+  // Empty list
+  if (!enrollments.edges.length) return (
+    <ClassEditBase 
+      menuActiveLink={menuActiveLink} 
+      defaultCard={false}
+      pageHeaderButtonList={pageHeaderButtonList}
+    >
+      <ContentCard cardTitle={cardTitle}
+                   hasCardBody={false}
+                   headerContent={headerOptions}
+      >
+        <Card.Body>
+          <p>{t('schedule.classes.enrollments.empty_list')}</p>
+        </Card.Body>
+      </ContentCard>
+    </ClassEditBase>
+  )
   
   return (
     <ClassEditBase 
