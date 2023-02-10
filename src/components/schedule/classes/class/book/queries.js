@@ -66,6 +66,7 @@ export const GET_BOOKING_OPTIONS_QUERY = gql`
         allowed
         blocked
         paused
+        creditsOnDate
         accountSubscription {
           id
           dateStart

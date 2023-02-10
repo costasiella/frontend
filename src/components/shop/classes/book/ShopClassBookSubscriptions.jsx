@@ -21,7 +21,7 @@ function ShopClassBookSubscriptions({ t, match, history, subscriptions }) {
         <Card.Body>
           <b>{subscription.accountSubscription.organizationSubscription.name}</b><br />
           <span className="text-muted">
-            {t("general.credits_remaining")}: {subscription.accountSubscription.creditTotal}
+            {t("general.credits_valid_for_class")}: {subscription.creditsOnDate}
           </span>
         </Card.Body>
         <Card.Footer>
