@@ -7,7 +7,7 @@ import {
   Container
 } from "tabler-react";
 import SiteWrapperShop from "../../../../SiteWrapperShop"
-import ShopAccountBack from "../../ShopAccountBack"
+import ButtonBack from '../../../../ui/ButtonBack';
 
 
 function ShopAccountSubscriptionCreditsBase({ t, match, history, children, accountName="" }) {
@@ -17,7 +17,7 @@ function ShopAccountSubscriptionCreditsBase({ t, match, history, children, accou
         <Container>
           <Page.Header title={t("shop.account.title")} subTitle={ accountName }>
               <div className="page-options d-flex">
-                <ShopAccountBack />
+                <ButtonBack returnUrl={`/shop/account/subscriptions`} />
               </div>
           </Page.Header>
           { children }
