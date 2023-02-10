@@ -122,7 +122,7 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
           >
             {/* <Grid.Row> */}
             { subscriptionCredits.edges.map(({ node }) => (
-              <Card key={v4()}>
+              <Card key={v4()} statusColor={(!node.scheduleItemAttendance) ? "success" : "default"}>
                 <Card.Body>
                   <Grid.Row>
                     <Grid.Col xs={12} md={4}>
@@ -163,7 +163,7 @@ function ShopAccountSubscriptionCredits({t, match, history}) {
                           <h6><Badge color="danger">{t("shop.account.subscriptions.credits.expired")}</Badge></h6> :
                           <h6><Badge color="success">{t("shop.account.subscriptions.credits.available")}</Badge></h6>
                           : 
-                          <h6><Badge color="primary">{t("shop.account.subscriptions.credits.used")}</Badge></h6>
+                          <h6><Badge color="default">{t("shop.account.subscriptions.credits.used")}</Badge></h6>
                         }
                         
                         {(node.scheduleItemAttendance) && <small className='text-muted'>
