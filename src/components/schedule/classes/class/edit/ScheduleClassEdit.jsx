@@ -132,7 +132,7 @@ function ScheduleClassEdit({ t, match, history }) {
     initialValues.organizationLevel = ""
     initialValues.timeStart = ""
     initialValues.timeEnd = ""
-    initialValues.infoMailEnabled = ""
+    initialValues.infoMailEnabled = false
     initialValues.infoMailContent = ""
   }
 
