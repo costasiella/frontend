@@ -53,6 +53,21 @@ function ShopClassBook({ t, match, history }) {
   // Error
   if (error) {
     console.log(error)
+    console.log(error.graphQLErrors)
+    if (error.graphQLErrors && error.graphQLErrors[0].extensions) {
+      if (error.graphQLErrors[0].extensions.code === "CLASS_DOESNT_TAKE_PLACE_ON_DATE") {
+        return (
+          <ShopClassBookBase pageHeaderOptions={<ShopClassBookBack />}>
+            <p>
+              <Alert type="warning">
+                <strong>{(t("shop.classes.book.class_doesnt_take_place_on_this_date"))}</strong>
+              </Alert>
+            </p>
+          </ShopClassBookBase>
+        )
+      }
+    } 
+      
     return (
       <ShopClassBookBase pageHeaderOptions={<ShopClassBookBack />}>
         <p>{t('general.error_sad_smiley')}</p>

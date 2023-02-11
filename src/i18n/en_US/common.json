@@ -561,7 +561,6 @@
         "subscription_year": "Subscription year",
         "subscription_month": "Subscription month",
         "new_task": "New task",
-        "credits_remaining": "Credits remaining",
         "month": "Month",
         "confirm_archive": "Confirm archival",
         "confirm_archive_no": "No, keep it here",
@@ -2481,7 +2480,8 @@
                     "cancelled_holiday": "This class is within a holiday"
                 },
                 "unable_to_show_booking_options": "Unable to show booking options",
-                "already_booked": "You've already booked this class, please manage your booking from your account under My Classes."
+                "already_booked": "You've already booked this class, please manage your booking from your account under My Classes.",
+                "class_doesnt_take_place_on_this_date": "This class doesn't take place on this date."
             },
             "booked": {
                 "class": "Selected class",

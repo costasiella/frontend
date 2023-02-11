@@ -396,7 +396,6 @@
         "attendance": "__STRING_NOT_TRANSLATED__",
         "booking_options": "__STRING_NOT_TRANSLATED__",
         "valid_until": "__STRING_NOT_TRANSLATED__",
-        "credits_remaining": "__STRING_NOT_TRANSLATED__",
         "no_change": "__STRING_NOT_TRANSLATED__",
         "level": "__STRING_NOT_TRANSLATED__",
         "info_mail": "__STRING_NOT_TRANSLATED__",
@@ -1165,7 +1164,8 @@
                 "title": "__STRING_NOT_TRANSLATED__",
                 "pay_and_book": "__STRING_NOT_TRANSLATED__",
                 "dropin_pay_and_book": "__STRING_NOT_TRANSLATED__",
-                "trial_pay_and_book": "__STRING_NOT_TRANSLATED__"
+                "trial_pay_and_book": "__STRING_NOT_TRANSLATED__",
+                "class_doesnt_take_place_on_this_date": "__STRING_NOT_TRANSLATED__"
             },
             "booked": {
                 "class": "__STRING_NOT_TRANSLATED__",
