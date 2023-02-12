@@ -15,6 +15,7 @@ export const GET_ACCOUNT_SUBSCRIPTIONS_QUERY = gql`
           organizationSubscription {
             id
             name
+            unlimited
           }
           financePaymentMethod {
             id
@@ -48,6 +49,7 @@ export const GET_ACCOUNT_SUBSCRIPTION_QUERY = gql`
       organizationSubscription {
         id
         name
+        unlimited
       }
       financePaymentMethod {
         id
@@ -170,25 +172,7 @@ export const CREATE_ACCOUNT_SUBSCRIPTION = gql`
   mutation CreateAccountSubscription($input: CreateAccountSubscriptionInput!) {
     createAccountSubscription(input: $input) {
       accountSubscription {
-        id
-        account {
-          id
-          firstName
-          lastName
-          email
-        }
-        organizationSubscription {
-          id
-          name
-        }
-        financePaymentMethod {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        note
-        registrationFeePaid        
+        id    
       }
     }
   }
@@ -198,25 +182,7 @@ export const UPDATE_ACCOUNT_SUBSCRIPTION = gql`
   mutation UpdateAccountSubscription($input: UpdateAccountSubscriptionInput!) {
     updateAccountSubscription(input: $input) {
       accountSubscription {
-        id
-        account {
-          id
-          firstName
-          lastName
-          email
-        }
-        organizationSubscription {
-          id
-          name
-        }
-        financePaymentMethod {
-          id
-          name
-        }
-        dateStart
-        dateEnd
-        note
-        registrationFeePaid        
+        id  
       }
     }
   }

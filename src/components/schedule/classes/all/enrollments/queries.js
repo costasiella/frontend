@@ -28,7 +28,8 @@ export const GET_SCHEDULE_ITEM_ENROLLMENTS_QUERY = gql`
       timeStart
       timeEnd
       displayPublic
-      enrollments(first: 1000, before: $before, after: $after, scheduleItem: $scheduleItem, dateEnd_Isnull: $dateEnd_Isnull) {
+      enrollmentSpaces
+      enrollments(first: 1000, before: $before, after: $after, scheduleItem: $scheduleItem, dateEnd_Isnull: $dateEnd_Isnull, orderBy: "fullName") {
         pageInfo {
           startCursor
           endCursor

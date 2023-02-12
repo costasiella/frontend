@@ -9,7 +9,7 @@ import {
   Dimmer,
 } from "tabler-react";
 
-import { GET_INPUT_VALUES_QUERY, CREATE_B2B_INVOICE } from './queries'
+import { GET_INPUT_VALUES_QUERY, CREATE_B2B_INVOICE, GET_INVOICES_QUERY } from './queries'
 import B2BInvoiceAddForm from './RelationsB2BInvoiceAddForm'
 import RelationsB2BEditBase from '../RelationsB2BEditBase'
 
@@ -78,6 +78,7 @@ function RelationsB2BInvoiceAdd({ t, match, history }) {
                 summary: values.summary
               }
             }, refetchQueries: [
+              {query: GET_INVOICES_QUERY, variables: {business: businessId}}
             ]})
             .then(({ data }) => {
                 console.log('got data', data)

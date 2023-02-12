@@ -21,4 +21,6 @@ export const CLASS_SCHEMA = Yup.object().shape({
       .required(t('yup.field_required')),
     walkInSpaces: Yup.number()
       .required(t('yup.field_required')),
+    enrollmentSpaces: Yup.number()
+      .required(t('yup.field_required')),
   })

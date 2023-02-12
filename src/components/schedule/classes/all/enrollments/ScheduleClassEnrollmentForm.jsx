@@ -4,6 +4,7 @@ import { withRouter } from "react-router"
 import { Form as FoForm, ErrorMessage } from 'formik'
 
 import {
+  Alert,
   Button,
   Card,
   Grid,
@@ -51,6 +52,12 @@ const ScheduleClassEnrollmentForm = ({ t, history, match, isSubmitting, errors, 
             {t('general.submit')}
           </Button>
           <ButtonFormCancel returnUrl={returnUrl} />
+          {(isSubmitting) ? 
+            <Alert type="primary" hasExtraSpace>
+              <strong>{t('general.please_wait')}</strong> {t('schedule.classes.enrollments.toast_creating_might_take_a_while')}
+            </Alert> : 
+          ""
+          }
       </Card.Footer>
   </FoForm>
 );

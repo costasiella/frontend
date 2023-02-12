@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 export const GET_INVOICES_QUERY = gql`
-  query FinanceInvoices($after: String, $before: String, $status: String, $business: ID!) {
+  query FinanceInvoices($after: String, $before: String, $status: CostasiellaFinanceInvoiceStatusChoices, $business: ID!) {
     financeInvoices(first: 15, before: $before, after: $after, status: $status, business: $business) {
       pageInfo {
         hasNextPage

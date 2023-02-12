@@ -2,22 +2,24 @@ import React, { useContext} from 'react'
 import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from "react-router-dom"
 import { v4 } from "uuid"
 import moment from 'moment'
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 
 import {
+  Button,
   Card,
   Dimmer,
   Grid,
-  Table
+  Icon
 } from "tabler-react";
 import { QUERY_ACCOUNT_SUBSCRIPTIONS } from "./queries"
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
+import LoadMoreOnBottomScroll from '../../../general/LoadMoreOnBottomScroll'
 
 import ShopAccountSubscriptionsBase from "./ShopAccountSubscriptionsBase"
-import ContentCard from "../../../general/ContentCard"
 
 
 function ShopAccountSubscriptions({t, match, history}) {
@@ -71,8 +73,9 @@ function ShopAccountSubscriptions({t, match, history}) {
     <ShopAccountSubscriptionsBase accountName={user.fullName}>
       <Grid.Row>
         <Grid.Col md={12}>
-          <ContentCard cardTitle={t('shop.account.subscriptions.title')}
-            hasCardBody={false}
+          <h4>{t('shop.account.subscriptions.title')}</h4>
+          <LoadMoreOnBottomScroll
+            // headerContent={headerOptions}
             pageInfo={subscriptions.pageInfo}
             onLoadMore={() => {
               fetchMore({
@@ -96,32 +99,42 @@ function ShopAccountSubscriptions({t, match, history}) {
                     : previousResult
                 }
               })
-            }} >
-            <Table cards>
-              <Table.Header>
-                <Table.Row key={v4()}>
-                  <Table.ColHeader>{t('general.name')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.date_start')}</Table.ColHeader>
-                  <Table.ColHeader>{t('general.date_end')}</Table.ColHeader>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {subscriptions.edges.map(({ node }) => (
-                  <Table.Row key={v4()}>
-                    <Table.Col>
-                      {node.organizationSubscription.name}
-                    </Table.Col>
-                    <Table.Col>
-                      {moment(node.dateStart).format(dateFormat)}
-                    </Table.Col>
-                    <Table.Col>
-                      { (node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : "" }
-                    </Table.Col>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-          </ContentCard>
+            }}
+          >
+            {/* <Grid.Row> */}
+            { subscriptions.edges.map(({ node }) => (
+              <Card key={v4()}>
+                <Card.Body>
+                  <Grid.Row>
+                    <Grid.Col xs={12} md={10}>
+                      <div className='mb-xs-3'>
+                        <h6>
+                          { node.organizationSubscription.name }
+                          {/* Perhaps a badge here to indicate active /inactive in the future? */}
+                        </h6>
+                        <Icon name="calendar" /> { moment(node.dateStart).format(dateFormat) } 
+                        { (node.dateEnd) && <span> - {moment(node.dateEnd).format(dateFormat)}</span> }
+                      </div>
+                    </Grid.Col>
+                    <Grid.Col xs={12} md={2}>
+                      <Link to={`/shop/account/subscriptions/${node.id}/credits`}>
+                        <Button
+                          block
+                          outline
+                          color="info"
+                          size="sm"
+                        >
+                          {(node.organizationSubscription.unlimited) ? 
+                            t("general.unlimited") : node.creditTotal } {" "}
+                          {t("general.credits")}
+                        </Button>
+                      </Link>
+                    </Grid.Col>
+                  </Grid.Row>
+                </Card.Body>
+              </Card>
+            ))}
+          </LoadMoreOnBottomScroll>
         </Grid.Col>
       </Grid.Row>
     </ShopAccountSubscriptionsBase>

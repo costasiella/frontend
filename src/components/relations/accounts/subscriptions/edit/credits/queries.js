@@ -12,15 +12,47 @@ query AccountSubscriptionCredits($before: String, $after: String, $accountSubscr
     edges {
       node {
         id
+        advance
+        reconciled
         accountSubscription {
           id
         }
-        mutationType
-        mutationAmount
         description
+        expiration
+        expired
+        scheduleItemAttendance {
+          id
+          date
+          scheduleItem {
+            id
+            timeStart
+            timeEnd
+            organizationClasstype {
+              id
+              name
+            }
+            organizationLocationRoom {
+              id 
+              name
+              organizationLocation {
+                id
+                name
+              }
+            }
+
+          }
+        }
         createdAt
       }
     } 
+  }
+  accountSubscription(id: $accountSubscription) {
+    id
+    organizationSubscription {
+      id
+      name
+      unlimited
+    }
   }
 }
 `
@@ -32,12 +64,32 @@ query AccountSubscriptionCredit($id: ID!) {
     accountSubscription {
       id
     }
-    mutationType
-    mutationAmount
+    expiration
     description
     createdAt
   }
 }
+`
+
+export const ADD_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
+  mutation CreateAccountSubscriptionCredit($input:CreateAccountSubscriptionCreditInput!) {
+    createAccountSubscriptionCredit(input: $input) {
+      accountSubscriptionCredit {
+        id
+      }
+    }
+  }
+`
+
+
+export const UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
+  mutation UpdateAccountSubscriptionCredit($input:UpdateAccountSubscriptionCreditInput!) {
+    updateAccountSubscriptionCredit(input: $input) {
+      accountSubscriptionCredit {
+        id
+      }
+    }
+  }
 `
 
 

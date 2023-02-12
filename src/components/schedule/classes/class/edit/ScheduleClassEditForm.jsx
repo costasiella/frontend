@@ -20,6 +20,22 @@ const ScheduleClassEditForm = ({ t, history, inputData, isSubmitting, setFieldVa
       <Card.Body>
         <Grid.Row>
           <Grid.Col>
+            <Form.Group>
+              <Form.Label className="custom-switch">
+                  <Field 
+                    className="custom-switch-input"
+                    type="checkbox" 
+                    name="infoMailEnabled" 
+                    checked={values.infoMailEnabled} />
+                  <span className="custom-switch-indicator" ></span>
+                  <span className="custom-switch-description">{t('schedule.classes.info_mail_enabled')}</span>
+              </Form.Label>
+              <ErrorMessage name="infoMailEnabled" component="div" />  
+            </Form.Group>  
+          </Grid.Col>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Col>
             <Form.Group label={t('general.status')}>
               <Field component="select" 
                       name="status" 

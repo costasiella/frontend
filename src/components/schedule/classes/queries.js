@@ -153,6 +153,8 @@ export const GET_CLASS_QUERY = gql`
       spaces
       walkInSpaces
       displayPublic
+      enrollmentSpaces
+      infoMailEnabled
       infoMailContent
     }
     organizationLocationRooms(first: 100, before: $before, after: $after, archived: false) {

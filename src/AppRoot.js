@@ -32,10 +32,6 @@ import HomeHome from './components/home/home/HomeHome'
 import AutomationHome from './components/automation/home/AutomationHome'
 import AutomationAccountSubscriptionCredits from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCredits'
 import AutomationAccountSubscriptionCreditAdd from './components/automation/account/subscription/credits/AutomationAccountSubscriptionCreditAdd'
-import AutomationAccountSubscriptionCreditExpiration 
-  from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpiration'
-import AutomationAccountSubscriptionCreditExpirationAdd
-  from './components/automation/account/subscription/credits_expiration/AutomationAccountSubscriptionCreditExpirationAdd'
 import AutomationAccountSubscriptionInvoices from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoices'
 import AutomationAccountSubscriptionInvoicesAdd from './components/automation/account/subscription/invoices/AutomationAccountSubscriptionInvoicesAdd'
 import AutomationAccountSubscriptionMollieCollections 
@@ -313,6 +309,7 @@ import SettingsWorkflowTrial from './components/settings/workflow/trial/Settings
 
 import ShopAccountHome from './components/shop/account/home/ShopAccountHome'
 import ShopAccountClassCancel from './components/shop/account/class_cancel/ShopAccountClassCancel'
+import ShopAccountClassUnCancel from './components/shop/account/class_uncancel/ShopAccountClassUnCancel'
 import ShopAccountClassInfo from './components/shop/account/class_info/ShopAccountClassInfo'
 import ShopAccountClasspasses from './components/shop/account/classpasses/ShopAccountClasspasses'
 import ShopAccountEventTickets from './components/shop/account/event_tickets/ShopAccountEventTickets'
@@ -324,6 +321,7 @@ import ShopAccountMailingLists from './components/shop/account/mailing_lists/Sho
 import ShopAccountOrders from './components/shop/account/orders/ShopAccountOrders'
 import ShopAccountProfile from './components/shop/account/profile/ShopAccountProfile'
 import ShopAccountSubscriptions from './components/shop/account/subscriptions/ShopAccountSubscriptions'
+import ShopAccountSubscriptionCredits from './components/shop/account/subscriptions/credits/ShopAccountSubscriptionCredits'
 import ShopClassBook from './components/shop/classes/book/ShopClassBook'
 import ShopClassBooked from './components/shop/classes/booked/ShopClassBooked'
 import ShopClassesSchedule from './components/shop/classes/schedule/ShopClassesSchedule'
@@ -471,10 +469,6 @@ function AppRoot({ t }) {
                                 component={AutomationAccountSubscriptionCredits} />
             <PrivateRoute exact path="/automation/account/subscriptions/credits/add" 
                                 component={AutomationAccountSubscriptionCreditAdd} />
-            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration" 
-                                component={AutomationAccountSubscriptionCreditExpiration} />
-            <PrivateRoute exact path="/automation/account/subscriptions/credits_expiration/add" 
-                                component={AutomationAccountSubscriptionCreditExpirationAdd} />
             <PrivateRoute exact path="/automation/account/subscriptions/invoices" 
                                 component={AutomationAccountSubscriptionInvoices} />    
             <PrivateRoute exact path="/automation/account/subscriptions/invoices/add" 
@@ -770,6 +764,8 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/bank_account" component={ShopAccountBankAccount} />
             <PrivateRoute exact path = "/shop/account/class_cancel/:class_id/:date/:attendance_id" 
                                 component={ShopAccountClassCancel} />
+            <PrivateRoute exact path = "/shop/account/class_uncancel/:class_id/:date/:attendance_id" 
+                                component={ShopAccountClassUnCancel} />
             <PrivateRoute exact path = "/shop/account/class_info/:class_id/:date" component={ShopAccountClassInfo} />
             <PrivateRoute exact path = "/shop/account/classes" component={ShopClasses} />
             <PrivateRoute exact path = "/shop/account/classpasses" component={ShopAccountClasspasses} />
@@ -782,6 +778,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path = "/shop/account/orders" component={ShopAccountOrders} />
             <PrivateRoute exact path = "/shop/account/profile" component={ShopAccountProfile} />
             <PrivateRoute exact path = "/shop/account/subscriptions" component={ShopAccountSubscriptions} />
+            <PrivateRoute exact path = "/shop/account/subscriptions/:subscription_id/credits" component={ShopAccountSubscriptionCredits} />
             <PrivateRoute exact path = "/shop/checkout/payment/:id" component={ShopCheckoutPayment} />
             <PrivateRoute exact path = "/shop/checkout/complete/:id" component={ShopCheckoutComplete} />
             <Route exact path = "/shop/classes" component={ShopClassesSchedule} />

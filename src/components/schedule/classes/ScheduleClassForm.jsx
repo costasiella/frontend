@@ -20,18 +20,36 @@ import CSTimePicker from "../../ui/CSTimePicker"
 const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, touched, returnUrl }) => (
     <FoForm>
       <Card.Body>
-        <Form.Group>
-          <Form.Label className="custom-switch">
-              <Field 
-              className="custom-switch-input"
-              type="checkbox" 
-              name="displayPublic" 
-              checked={values.displayPublic} />
-              <span className="custom-switch-indicator" ></span>
-              <span className="custom-switch-description">{t('schedule.classes.public')}</span>
-          </Form.Label>
-          <ErrorMessage name="displayPublic" component="div" />   
-        </Form.Group>  
+        <Grid.Row>
+          <Grid.Col>
+            <Form.Group>
+              <Form.Label className="custom-switch">
+                  <Field 
+                    className="custom-switch-input"
+                    type="checkbox" 
+                    name="displayPublic" 
+                    checked={values.displayPublic} />
+                  <span className="custom-switch-indicator" ></span>
+                  <span className="custom-switch-description">{t('schedule.classes.public')}</span>
+              </Form.Label>
+              <ErrorMessage name="displayPublic" component="div" />  
+            </Form.Group>  
+          </Grid.Col>
+          <Grid.Col>
+            <Form.Group>
+              <Form.Label className="custom-switch">
+                  <Field 
+                    className="custom-switch-input"
+                    type="checkbox" 
+                    name="infoMailEnabled" 
+                    checked={values.infoMailEnabled} />
+                  <span className="custom-switch-indicator" ></span>
+                  <span className="custom-switch-description">{t('schedule.classes.info_mail_enabled')}</span>
+              </Form.Label>
+              <ErrorMessage name="infoMailEnabled" component="div" />  
+            </Form.Group>  
+          </Grid.Col>
+        </Grid.Row>
         <Form.Group label={t('schedule.classes.frequencyType')}>
           <Field component="select" 
                 name="frequencyType" 
@@ -177,6 +195,17 @@ const ScheduleClassForm = ({ t, history, inputData, isSubmitting, setFieldValue,
                     className={(errors.walkInSpaces) ? "form-control is-invalid" : "form-control"} 
                     autoComplete="off" />
               <ErrorMessage name="walkInSpaces" component="span" className="invalid-feedback" />
+            </Form.Group> 
+          </Grid.Col>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Col>
+            <Form.Group label={t('schedule.classes.spaces_enrollments')}>
+              <Field type="text" 
+                    name="enrollmentSpaces" 
+                    className={(errors.enrollmentSpaces) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off" />
+              <ErrorMessage name="enrollmentSpaces" component="span" className="invalid-feedback" />
             </Form.Group> 
           </Grid.Col>
         </Grid.Row>

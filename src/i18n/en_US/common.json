@@ -557,13 +557,10 @@
         "license": "License",
         "license_info": "License Info",
         "credits": "Credits",
-        "mutation": "Mutation",
         "add": "Add",
         "subscription_year": "Subscription year",
         "subscription_month": "Subscription month",
-        "subtract": "Subtract",
         "new_task": "New task",
-        "credits_remaining": "Credits remaining",
         "month": "Month",
         "confirm_archive": "Confirm archival",
         "confirm_archive_no": "No, keep it here",
@@ -654,7 +651,11 @@
         "search_no_account_results": "The search didn't return any results",
         "supplier": "Supplier",
         "vip": "VIP",
-        "search_no_classes_found": "No classes were found on the given date"
+        "search_no_classes_found": "No classes were found on the given date",
+        "expiration": "Expiration",
+        "credit": "Credit",
+        "expired": "Expired",
+        "credits_valid_for_class": "Credits on class date"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",
@@ -814,9 +815,9 @@
                 "delete_confirm_msg": "Are you sure you wish to delete this subscriptions group?",
                 "deleted": "Deleted subscriptions group"
             },
-            "credit_accumulation_days": "Credit accumulation in days",
             "explanation": "A number of or unlimited classes for a monthly fee",
-            "reconciliation_classes": "Reconciliation classes"
+            "reconciliation_classes": "Reconciliation classes",
+            "credit_validity": "Credit validity"
         },
         "subscription": {
             "public": "This is a public subscription",
@@ -1079,8 +1080,8 @@
                     "toast_edit_success": "Saved",
                     "add": "Add credit mutation",
                     "edit": "Edit credit mutation",
-                    "mutationType": "Mutation type",
-                    "empty_list": "This subscription hasn't had any credit mutations."
+                    "empty_list": "This subscription hasn't had any credit mutations.",
+                    "unlimited": "This subscription has unlimited credits."
                 },
                 "pauses": {
                     "empty_list": "This subscription hasn't been paused before.",
@@ -1442,10 +1443,15 @@
                     "error_loading": "Error loading accounts... :(",
                     "empty_list": "Your search didn't return any results",
                     "search_to_find_customers_to_enroll": "Use the search box to find customers to enroll."
-                }
+                },
+                "enrolled": "Enrolled",
+                "available_enrollment_spaces": "Available enrollment spaces",
+                "toast_creating_might_take_a_while": "Processing this new enrollment."
             },
             "select_last_weekday_of_month": "Last weekday of month",
-            "filter_all_instructors": "All instructors"
+            "filter_all_instructors": "All instructors",
+            "info_mail_enabled": "Send info mails",
+            "spaces_enrollments": "Max enrollments"
         },
         "appointments": {
             "title": "Appointments",
@@ -2369,7 +2375,19 @@
                 "title": "My Subscriptions",
                 "explanation": "View your current and past subscriptions",
                 "error_loading_data": "Error loading subscriptions... :(",
-                "empty_list": "No subscriptions found."
+                "empty_list": "No subscriptions found.",
+                "credits": {
+                    "title": "Credits",
+                    "empty_list": "No credits have been granted to this subscription yet.",
+                    "added_on": "Added on",
+                    "expiration": "Expires",
+                    "status": "Status",
+                    "expired": "Expired",
+                    "available": "Available",
+                    "used": "Used",
+                    "unlimited": "This subscription has unlimited credits.",
+                    "reconciled_on": "Reconciled on"
+                }
             },
             "event_tickets": {
                 "title": "My Event tickets",
@@ -2433,6 +2451,13 @@
                 "title": "Invoice",
                 "pieces": "Pieces",
                 "billed_to_b2b": "This invoice is billed to"
+            },
+            "class_uncancel": {
+                "uncancelation_not_possible": "This class can no longer be booked. It's either full or already finished.",
+                "confirmation_question": "Are you sure you wish to book this class?",
+                "success": "Class booked",
+                "confirm_yes": "Book class",
+                "not_cancelled": "This class booking isn't cancelled, please go back and refresh the list to view the latest status."
             }
         },
         "accounts": {
@@ -2456,7 +2481,8 @@
                     "cancelled_holiday": "This class is within a holiday"
                 },
                 "unable_to_show_booking_options": "Unable to show booking options",
-                "already_booked": "You've already booked this class"
+                "already_booked": "You've already booked this class, please manage your booking from your account under My Classes.",
+                "class_doesnt_take_place_on_this_date": "This class doesn't take place on this date."
             },
             "booked": {
                 "class": "Selected class",
@@ -2562,14 +2588,6 @@
                     "invoice_date": "Invoice date",
                     "today": "Today",
                     "invoice_date_first_day_month": "1st of chosen month"
-                },
-                "credits_expiration": {
-                    "title": "Expire credits",
-                    "explanation": "Expire credits that are above the accumulation limit.",
-                    "title_card": "Credit expiration result",
-                    "title_add": "Expire credits",
-                    "toast_add_success": "Started credits expiration",
-                    "explanation_new_expiration": "Expire all credits that are over the accumulation limit at this moment."
                 }
             }
         },

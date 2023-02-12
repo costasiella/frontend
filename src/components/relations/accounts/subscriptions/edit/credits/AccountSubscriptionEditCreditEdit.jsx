@@ -1,28 +1,20 @@
 import React from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-import { gql } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
+import { dateToLocalISO } from '../../../../../../tools/date_tools'
 import { GET_ACCOUNT_SUBSCRIPTION_QUERY } from "../../queries"
-import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, GET_ACCOUNT_SUBSCRIPTION_CREDIT_QUERY } from "./queries"
-import { ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA } from './yupSchema'
+import { 
+  GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY, 
+  GET_ACCOUNT_SUBSCRIPTION_CREDIT_QUERY,
+  UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT } from "./queries"
+import { ACCOUNT_SUBSCRIPTION_CREDIT_EDIT_SCHEMA } from './yupSchema'
 
 import AccountSubscriptionEditCreditBase from "./AccountSubscriptionEditCreditBase"
-import AccountSubscriptionEditCreditForm from "./AccountSubscriptionEditCreditForm"
-
-
-const UPDATE_ACCOUNT_SUBSCRIPTION_CREDIT = gql`
-  mutation UpdateAccountSubscriptionCredit($input:UpdateAccountSubscriptionCreditInput!) {
-    updateAccountSubscriptionCredit(input: $input) {
-      accountSubscriptionCredit {
-        id
-      }
-    }
-  }
-`
+import AccountSubscriptionEditCreditEditForm from "./AccountSubscriptionEditCreditEditForm"
 
 
 function AccountSubscriptionEditCreditEdit({ t, history, match }) {
@@ -65,11 +57,10 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
     <AccountSubscriptionEditCreditBase>
       <Formik
         initialValues={{ 
-          mutationType: accountSubscriptionCredit.mutationType,
-          mutationAmount: accountSubscriptionCredit.mutationAmount,
+          expiration: new Date(accountSubscriptionCredit.expiration),
           description: accountSubscriptionCredit.description
         }}
-        validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_SCHEMA}
+        validationSchema={ACCOUNT_SUBSCRIPTION_CREDIT_EDIT_SCHEMA}
         onSubmit={(values, { setSubmitting }) => {
           console.log("submit values")
           console.log(values)
@@ -77,8 +68,7 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
           updateSubscriptionCredit({ variables: {
             input: {
               id: id,
-              mutationType: values.mutationType,
-              mutationAmount: values.mutationAmount,
+              expiration: dateToLocalISO(values.expiration),
               description: values.description
             }
           }, refetchQueries: [
@@ -105,7 +95,7 @@ function AccountSubscriptionEditCreditEdit({ t, history, match }) {
         }}
         >
         {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-          <AccountSubscriptionEditCreditForm
+          <AccountSubscriptionEditCreditEditForm
             isSubmitting={isSubmitting}
             setFieldTouched={setFieldTouched}
             setFieldValue={setFieldValue}

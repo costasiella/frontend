@@ -76,6 +76,7 @@ function ShopAccountClasses({t, match, history}) {
   // Populated list
   return (
     <ShopAccountClassesBase accountName={user.fullName}>
+      <h4>{t("shop.account.classes.title")}</h4>
       <LoadMoreOnBottomScroll
         // headerContent={headerOptions}
         pageInfo={scheduleItemAttendances.pageInfo}
@@ -124,17 +125,20 @@ function ShopAccountClasses({t, match, history}) {
                     </div>
                   </Grid.Col>
                   <Grid.Col xs={12} md={2}>
-                    <Link to={`/shop/account/class_info/${node.scheduleItem.id}/${node.date}`}>
-                      <Button 
-                        block
-                        outline
-                        color="info"
-                        size="sm"
-                        className=""
-                        >
-                        {t("general.info")}
-                      </Button>
-                    </Link>
+                    {(node.bookingStatus !== "CANCELLED") ?
+                      <Link to={`/shop/account/class_info/${node.scheduleItem.id}/${node.date}`}>
+                        <Button 
+                          block
+                          outline
+                          color="info"
+                          size="sm"
+                          className=""
+                          >
+                          {t("general.info")}
+                        </Button>
+                      </Link>
+                      : ""
+                    }
                     {((node.bookingStatus !== "CANCELLED") && node.cancellationPossible) ?  
                       <Link to={`/shop/account/class_cancel/${node.scheduleItem.id}/${node.date}/${node.id}`}>
                         <Button 
@@ -147,6 +151,18 @@ function ShopAccountClasses({t, match, history}) {
                           {t("general.cancel")}
                         </Button>
                       </Link>
+                      : (node.uncancellationPossible) ? 
+                        <Link to={`/shop/account/class_uncancel/${node.scheduleItem.id}/${node.date}/${node.id}`}>
+                          <Button 
+                            block
+                            outline
+                            color="primary"
+                            size="sm"
+                            className="mt-3"
+                            >
+                            {t("general.book")}
+                          </Button>
+                        </Link>
                       : ""
                     }
                   </Grid.Col>

@@ -128,12 +128,12 @@ const OrganizationSubscriptionForm = ({ t, history, inputData, isSubmitting, set
           </Grid.Row>
           <Grid.Row>
             <Grid.Col>
-              <Form.Group label={t('organization.subscriptions.credit_accumulation_days')}>
+              <Form.Group label={t('organization.subscriptions.credit_validity')}>
                 <Field type="text" 
-                      name="creditAccumulationDays" 
-                      className={(errors.creditAccumulationDays) ? "form-control is-invalid" : "form-control"} 
+                      name="creditValidity" 
+                      className={(errors.creditValidity) ? "form-control is-invalid" : "form-control"} 
                       autoComplete="off" />
-                <ErrorMessage name="creditAccumulationDays" component="span" className="invalid-feedback" />
+                <ErrorMessage name="creditValidity" component="span" className="invalid-feedback" />
               </Form.Group>
             </Grid.Col>
             <Grid.Col>

@@ -28,7 +28,8 @@ function ScheduleClassBookSubscriptions({
         <Card.Body>
           <b>{subscription.accountSubscription.organizationSubscription.name}</b><br />
           <span className="text-muted">
-            {t("general.credits_remaining")}: {subscription.accountSubscription.creditTotal}
+            {(subscription.accountSubscription.organizationSubscription.unlimited) ? t("general.unlimited") : 
+            <span>{t("general.credits_valid_for_class")}: {subscription.creditsOnDate}</span>}
           </span>
         </Card.Body>
         <Card.Footer>

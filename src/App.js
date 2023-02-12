@@ -61,12 +61,21 @@ function SetCurrentUrlAsNext() {
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
   console.log(operation)
+  console.log(response)
+
+  let user_not_logged_in_within_graphql_errors = false
+  let user_nog_logged_in_within_response_errors = false
   
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       )
+      // Catch broken promises (Check needed since django-graphene 3.0.0b8)
+      // Instead of adding a graphql error, there's a broken promise on an exception raised.
+      // if (message.includes(CSEC.USER_NOT_LOGGED_IN)) {
+      //   user_not_logged_in_within_graphql_errors = true
+      // }
     });
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
@@ -76,74 +85,77 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
     console.error('CHOSEN FILE EXCEEDS SIZE LIMIT')
   }
 
-  // Token refresh check
-  // if (graphQLErrors && graphQLErrors[0].message === "Signature has expired") {
+  // Catch errors in response
   if (response) {
     let i
     for (i = 0; i < response.errors.length; i++) {
       if (response.errors[i].extensions && response.errors[i].extensions.code === CSEC.USER_NOT_LOGGED_IN) {
-        console.log(graphQLErrors[0])
-        console.log('Time to refresh the token')
-
-        let authTokenExpired = false
-        let refreshTokenExpired = false
-        const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
-        const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
-
-        if ((new Date() / 1000) >= tokenExp) {
-          authTokenExpired = true
-          
-          if ((new Date() / 1000) >= refreshTokenExp) {
-            refreshTokenExpired = true
-            // Remove any remaining token data
-            CSAuth.cleanup()
-            // Store current location, user has to login again
-            SetCurrentUrlAsNext()
-          }
-        }
-        
-        if (authTokenExpired && !refreshTokenExpired) {
-          console.log("refresh token... somehow...")
-          console.log(localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN))
-
-          return new Observable(observer => {
-            client.mutate({
-              mutation: TOKEN_REFRESH,
-            })
-              .then(({ data }) => { 
-                console.log(data)
-                CSAuth.updateTokenInfo(data.refreshToken)
-              })
-              .then(() => {
-                const subscriber = {
-                  next: observer.next.bind(observer),
-                  error: observer.error.bind(observer),
-                  complete: observer.complete.bind(observer)
-                };
-
-                // Retry last failed request
-                forward(operation).subscribe(subscriber);
-              })
-              .catch(error => {
-                // No refresh or client token available, we force user to login, after a cleanup
-                console.log("Failed to refresh the token, onwards to the login page")
-                observer.error(error);
-                CSAuth.cleanup()
-                window.location.href = "/#/user/login"
-                window.location.reload()
-              });
-          })
-        } else if (refreshTokenExpired) {
-          window.location.href = "#/user/session/expired"
-          window.location.reload()
-        } else {
-          window.location.href = "#/user/login/required"
-          window.location.reload()
-        }
+        user_nog_logged_in_within_response_errors = true
       }
     }
   }
+
+  if (user_nog_logged_in_within_response_errors || user_not_logged_in_within_graphql_errors) {
+    console.log('Time to refresh the token')
+
+    let authTokenExpired = false
+    let refreshTokenExpired = false
+    const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
+    const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
+
+    if ((new Date() / 1000) >= tokenExp) {
+      authTokenExpired = true
+      
+      if ((new Date() / 1000) >= refreshTokenExp) {
+        refreshTokenExpired = true
+        // Remove any remaining token data
+        CSAuth.cleanup()
+        // Store current location, user has to login again
+        SetCurrentUrlAsNext()
+      }
+    }
+    
+    if (authTokenExpired && !refreshTokenExpired) {
+      console.log("refresh token... somehow...")
+      console.log(localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN))
+
+      return new Observable(observer => {
+        client.mutate({
+          mutation: TOKEN_REFRESH,
+        })
+          .then(({ data }) => { 
+            console.log(data)
+            CSAuth.updateTokenInfo(data.refreshToken)
+          })
+          .then(() => {
+            const subscriber = {
+              next: observer.next.bind(observer),
+              error: observer.error.bind(observer),
+              complete: observer.complete.bind(observer)
+            };
+
+            // Retry last failed request
+            forward(operation).subscribe(subscriber);
+          })
+          .catch(error => {
+            // No refresh or client token available, we force user to login, after a cleanup
+            console.log("Failed to refresh the token, onwards to the login page")
+            observer.error(error);
+            CSAuth.cleanup()
+            window.location.href = "/#/user/login"
+            window.location.reload()
+          });
+      })
+    } else if (refreshTokenExpired) {
+      window.location.href = "#/user/session/expired"
+      window.location.reload()
+    } else {
+      window.location.href = "#/user/login/required"
+      window.location.reload()
+    }
+  }
 })
+
 
    
 // // Fetch CSRF Token

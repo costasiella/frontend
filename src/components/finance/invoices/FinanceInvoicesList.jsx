@@ -16,13 +16,23 @@ import AppSettingsContext from '../../context/AppSettingsContext'
 import { get_list_query_variables } from "./tools"
 import FinanceInvoicesStatus from "../../ui/FinanceInvoiceStatus"
 import { GET_INVOICES_QUERY, DELETE_FINANCE_INVOICE } from "./queries"
+import { TOKEN_REFRESH } from "../../../queries/system/auth"
+import { refreshTokenAndOpenExportLinkInNewTab } from "../../../tools/refresh_token_and_open_export_link"
 import confirm_delete from "../../../tools/confirm_delete"
 import moment from 'moment'
 
-function FinanceInvoicesList({t, history, match, invoices, showColRelation=false}) {
+function FinanceInvoicesList({
+  t, 
+  history, 
+  match, 
+  invoices, 
+  showBtnPDF=false,
+  showColRelation=false,
+}) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
 
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   const [ deleteFinanceInvoice ] = useMutation(DELETE_FINANCE_INVOICE)
 
   return (
@@ -81,6 +91,17 @@ function FinanceInvoicesList({t, history, match, invoices, showColRelation=false
                 {node.balanceDisplay}
               </Table.Col>
               <Table.Col className="text-right" key={v4()}>
+                {(showBtnPDF) && <Button
+                  color="secondary"
+                  icon="printer"
+                  className="mr-2"
+                  size="sm"
+                  onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+                    t, doTokenRefresh, history, `/d/export/invoice/pdf/${node.id}`
+                  )}
+                >
+                  {t('general.pdf')} 
+                </Button>}
                 <Link to={"/finance/invoices/edit/" + node.id}>
                   <Button className='btn-sm' 
                           color="secondary">

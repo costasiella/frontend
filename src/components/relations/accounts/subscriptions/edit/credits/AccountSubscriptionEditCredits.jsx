@@ -7,14 +7,15 @@ import { v4 } from 'uuid'
 import moment from 'moment'
 import DOMPurify from 'dompurify'
 import {
+  Badge,
   Button,
   Card,
+  Icon,
   Table,
 } from "tabler-react";
 // import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 
 import ButtonAdd from '../../../../../ui/ButtonAdd';
-import SubscriptionCreditsMutationType from "../../../../../ui/SubscriptionCreditsMutationType"
 import AppSettingsContext from '../../../../../context/AppSettingsContext'
 import { GET_ACCOUNT_SUBSCRIPTION_CREDITS_QUERY } from './queries'
 import AccountSubscriptionEditListBase from "../AccountSubscriptionEditListBase"
@@ -24,7 +25,8 @@ import AccountSubscriptionEditCreditDelete from "./AccountSubscriptionEditCredit
 
 function AccountSubscriptionEditCredits({t, match, history}) {
   const appSettings = useContext(AppSettingsContext)
-  const dateTimeFormatMoment = appSettings.dateTimeFormatMoment
+  const dateFormat = appSettings.dateFormat
+  const timeFormat = appSettings.timeFormatMoment
   
   const accountId = match.params.account_id
   const subscriptionId = match.params.subscription_id
@@ -55,7 +57,19 @@ function AccountSubscriptionEditCredits({t, match, history}) {
   )
 
   const accountSubscriptionCredits = data.accountSubscriptionCredits
+  const accountSubscription = data.accountSubscription
   const pageInfo = data.accountSubscriptionCredits.pageInfo
+
+  // unlimited
+  if (accountSubscription.organizationSubscription.unlimited) { return (
+    <AccountSubscriptionEditListBase activeTab={activeTab} returnUrl={returnUrl} pageHeaderButtonList={pageHeaderButtonList}>
+      <Card.Body>
+        <Card.Alert color="primary">
+          <Icon name="check" /> {t('relations.account.subscriptions.credits.unlimited')}
+        </Card.Alert>
+      </Card.Body>
+    </AccountSubscriptionEditListBase>
+  )}
 
   // Empty list
   if (!accountSubscriptionCredits.edges.length) { return (
@@ -63,6 +77,8 @@ function AccountSubscriptionEditCredits({t, match, history}) {
       <Card.Body>{t('relations.account.subscriptions.credits.empty_list')}</Card.Body>
     </AccountSubscriptionEditListBase>
   )}
+
+  console.table(data)
 
   function onLoadMore() {
     fetchMore({
@@ -100,10 +116,9 @@ function AccountSubscriptionEditCredits({t, match, history}) {
       <Table cards>
         <Table.Header>
           <Table.Row key={v4()}>
-            <Table.ColHeader>{t('general.time')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.description')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.credits')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.mutation')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.credit')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.expiration')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.class')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -111,16 +126,28 @@ function AccountSubscriptionEditCredits({t, match, history}) {
             {accountSubscriptionCredits.edges.map(({ node }) => (
               <Table.Row key={v4()}>
                 <Table.Col>
-                  {moment(node.createdAt).format(dateTimeFormatMoment)}
+                  {moment(node.createdAt).format(dateFormat)} <br />
+                  <small className="text-muted">
+                    <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
+                  </small>
+                  {(node.reconciled) && <small className="text-muted">Reconciled at {moment(node.reconciled).format(dateFormat)}</small>}
                 </Table.Col>
                 <Table.Col>
-                  <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(node.description) }} />
+                  {moment(node.expiration).format(dateFormat)} <br />
+                  {node.expired && <Badge color="danger">{t("general.expired")}</Badge>}
                 </Table.Col>
                 <Table.Col>
-                  {node.mutationAmount}
-                </Table.Col>
-                <Table.Col>
-                  <SubscriptionCreditsMutationType mutationType={node.mutationType} />
+                  {/* TODO class info here */}
+                  { node.scheduleItemAttendance && <span>
+                    {moment(node.scheduleItemAttendance.date).format(dateFormat)} {" "}
+                    {moment(`${node.scheduleItemAttendance.date} ${node.scheduleItemAttendance.scheduleItem.timeStart}`)
+                      .format(timeFormat)} {" "}
+                    {" - "}
+                    {node.scheduleItemAttendance.scheduleItem.organizationClasstype.name} <br />
+                    <small className='text-muted'>
+                      {node.scheduleItemAttendance.scheduleItem.organizationLocationRoom.organizationLocation.name}
+                    </small>
+                    </span>}
                 </Table.Col>
                 <Table.Col className="text-right">
                   <Link to={`/relations/accounts/${accountId}/subscriptions/edit/${subscriptionId}/credits/edit/${node.id}`}>

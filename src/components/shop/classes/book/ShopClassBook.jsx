@@ -2,12 +2,15 @@ import React, { useContext } from 'react'
 import { useQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from "react-router-dom"
 import moment from 'moment'
 
 import {
   Alert,
+  Button,
   Dimmer,
   Grid,
+  Icon,
 } from "tabler-react";
 
 import { TimeStringToJSDateOBJ } from '../../../../tools/date_tools'
@@ -50,6 +53,21 @@ function ShopClassBook({ t, match, history }) {
   // Error
   if (error) {
     console.log(error)
+    console.log(error.graphQLErrors)
+    if (error.graphQLErrors && error.graphQLErrors[0].extensions) {
+      if (error.graphQLErrors[0].extensions.code === "CLASS_DOESNT_TAKE_PLACE_ON_DATE") {
+        return (
+          <ShopClassBookBase pageHeaderOptions={<ShopClassBookBack />}>
+            <p>
+              <Alert type="warning">
+                <strong>{(t("shop.classes.book.class_doesnt_take_place_on_this_date"))}</strong>
+              </Alert>
+            </p>
+          </ShopClassBookBase>
+        )
+      }
+    } 
+      
     return (
       <ShopClassBookBase pageHeaderOptions={<ShopClassBookBack />}>
         <p>{t('general.error_sad_smiley')}</p>
@@ -154,7 +172,15 @@ function ShopClassBook({ t, match, history }) {
             {(alreadyBooked) ?
               <Alert type="primary" hasExtraSpace>
                 <h5>{t("shop.classes.book.unable_to_show_booking_options")}</h5>
-                {t("shop.classes.book.already_booked")}
+                {t("shop.classes.book.already_booked")} <br /><br />
+                <Link to='/shop/account/classes'>
+                  <Button
+                    color="primary"
+                    outline
+                  >
+                    {t('shop.account.classes.title')} <Icon name="chevron-right" />
+                  </Button>
+                </Link>
               </Alert>
               : content
             }

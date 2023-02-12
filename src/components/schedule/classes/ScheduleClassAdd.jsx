@@ -63,7 +63,8 @@ function ScheduleClassAdd({t, history}) {
             timeStart: new Date(),
             timeEnd: new Date(),
             spaces: "",
-            walkInSpaces: ""
+            walkInSpaces: "",
+            enrollmentSpaces: 0
           }}
           validationSchema={CLASS_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
@@ -95,6 +96,7 @@ function ScheduleClassAdd({t, history}) {
                   timeEnd: dateToLocalISOTime(values.timeEnd),
                   spaces: parseInt(values.spaces),
                   walkInSpaces: parseInt(values.walkInSpaces),
+                  enrollmentSpaces: parseInt(values.enrollmentSpaces),
                   infoMailContent: values.infoMailContent,
                 }
               }, refetchQueries: [

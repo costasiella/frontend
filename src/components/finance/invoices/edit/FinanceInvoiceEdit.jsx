@@ -37,6 +37,7 @@ function FinanceInvoiceEdit({t, match, history, location}) {
     variables: {
       id: id
     },
+    fetchPolicy: "network-only"
   })
 
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
