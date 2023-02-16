@@ -30,26 +30,12 @@ export const QUERY_ACCOUNT_INVOICE = gql`
             quantity
             price
             priceDisplay
-            financeTaxRate {
-              id
-              name
-              percentage
-              rateType
-            }
             subtotal
             subtotalDisplay
             tax
             taxDisplay
             total
             totalDisplay
-            financeGlaccount {
-              id
-              name
-            }
-            financeCostcenter {
-              id
-              name
-            }
           }
         }
       }

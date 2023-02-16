@@ -37,12 +37,6 @@ export const QUERY_ACCOUNT_ORDERS = gql`
                 description
                 quantity
                 priceDisplay
-                financeTaxRate {
-                  id
-                  name
-                  percentage
-                  rateType
-                }
                 subtotalDisplay
                 taxDisplay
                 totalDisplay                
