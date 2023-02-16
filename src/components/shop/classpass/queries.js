@@ -13,10 +13,6 @@ export const GET_CLASSPASS_QUERY = gql`
       description
       price
       priceDisplay
-      financeTaxRate {
-        id
-        name
-      }
       validity
       validityUnit
       validityUnitDisplay
