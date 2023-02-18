@@ -383,6 +383,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     if (refreshTokenExp == null) {
       console.log("refresh token not found")
       SetCurrentUrlAsNext()
+      CSAuth.cleanup()
       
       return LoginRequired
     } else if ((new Date() / 1000) >= refreshTokenExp) {
@@ -390,6 +391,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       console.log(new Date() / 1000)
       console.log(refreshTokenExp)
       SetCurrentUrlAsNext()
+      CSAuth.cleanup()
 
       return SessionExpired
     } else {
