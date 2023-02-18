@@ -408,10 +408,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         })
         console.log('there was an error refreshing the token', error) 
         SetCurrentUrlAsNext()
+        // As there was an issue detected with the refresh token, clear all.
+        CSAuth.cleanup()
         return LoginRequired
-        // console.log("REDIRECT BACK TO LOGIN")
-        // window.location.href = "/#/user/login"
-        // window.location.reload()
       })
     }
   } else {
