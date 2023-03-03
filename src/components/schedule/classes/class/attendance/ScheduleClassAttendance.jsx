@@ -31,10 +31,10 @@ import {
 } from "./queries"
 
 
-function sleepFor(sleepDuration){
-  var now = new Date().getTime();
-  while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
-}
+// function sleepFor(sleepDuration){
+//   var now = new Date().getTime();
+//   while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
+// }
 
 function setAttendanceStatus({t, match, updateAttendance, node, status, setAttendanceRefetching=f=>f}) {
   const schedule_item_id = match.params.class_id
@@ -55,7 +55,7 @@ function setAttendanceStatus({t, match, updateAttendance, node, status, setAtten
     ]
   }).then(({ data }) => {
     console.log('got data', data);
-    sleepFor(1000)
+    // sleepFor(1000)
     setAttendanceRefetching(false)
     toast.success(
       t('schedule.classes.class.attendance.status_saved'), {
