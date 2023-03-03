@@ -4,8 +4,8 @@ import { getWeekdayNames } from '../../../../tools/date_tools'
 
 export function class_edit_all_subtitle({t, location, locationRoom, classtype, starttime, dateStart}) {
   const weekdayNames = getWeekdayNames(t)
-  const weekday = moment(dateStart).day()
-  const weekdayName = weekdayNames[weekday]
+  const isoWeekday = moment(dateStart).isoWeekday()
+  const weekdayName = weekdayNames[isoWeekday-1]
 
   // return t('general.class') + ': ' + location + ' (' + locationRoom + ') - ' + classtype + ' @ ' +  moment(starttime).format('LT')
   return t('general.class') + ': ' + weekdayName + ' ' + moment(starttime).format('LT') + ' - ' + classtype + ' - ' + location + ' [' + locationRoom + ']'
