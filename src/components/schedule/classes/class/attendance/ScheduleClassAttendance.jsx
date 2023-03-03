@@ -163,6 +163,18 @@ function ScheduleClassAttendance({ t, match, history }) {
                     </Table.Col>
                     <Table.Col>
                       <BadgeBookingStatus status={node.bookingStatus} />
+                      <ButtonConfirm 
+                            title={t("schedule.classes.class.attendance.confirm_resending_info_mail_title")}
+                            msgConfirm={<p>{t("schedule.classes.class.attendance.confirm_resending_info_mail_to")}</p>}
+                            msgDescription={<p><b>{node.account.fullName}</b></p>}
+                            msgSuccess={t("schedule.classes.class.attendance.resend_success")}
+                            actionFunction={resendInfoMail}
+                            actionFunctionVariables={{variables: {input: {id: node.id}}}}
+                            buttonClass="btn-link float-right"
+                            buttonIcon={<Icon name="send" />}
+                            buttonText={t("schedule.classes.class.attendance.resend_info_mail")}
+                            buttonTextColor=""
+                        />
                     </Table.Col>
                     <Table.Col>
                       {/* Delete */}
@@ -245,18 +257,6 @@ function ScheduleClassAttendance({ t, match, history }) {
                               {t('general.checkin')}
                           </Button>
                         </HasPermissionWrapper>  : "" }
-                        <ButtonConfirm 
-                            title={t("schedule.classes.class.attendance.confirm_resending_info_mail_title")}
-                            msgConfirm={<p>{t("schedule.classes.class.attendance.confirm_resending_info_mail_to")}</p>}
-                            msgDescription={<p><b>{node.account.fullName}</b></p>}
-                            msgSuccess={t("schedule.classes.class.attendance.resend_success")}
-                            actionFunction={resendInfoMail}
-                            actionFunctionVariables={{variables: {input: {id: node.id}}}}
-                            buttonClass="btn-link float-right"
-                            buttonIcon={<Icon name="send" />}
-                            buttonText={t("schedule.classes.class.attendance.resend_info_mail")}
-                            buttonTextColor=""
-                        />
                     </Table.Col>
                   </Table.Row>
                 ))}
