@@ -11,9 +11,6 @@ import {
   } from "tabler-react"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-import ButtonFormCancel from '../../ui/ButtonFormCancel'
-
-
 const InsightInstructorClassesForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
     <FoForm>
       <Card.Body>
@@ -78,10 +75,6 @@ const InsightInstructorClassesForm = ({ t, history, inputData, isSubmitting, set
           </Grid.Col>
         </Grid.Row>
       </Card.Body>
-      {/* <Card.Footer> 
-
-        <ButtonFormCancel returnUrl={returnUrl} />
-      </Card.Footer> */}
     </FoForm>
 )
   
