@@ -81,8 +81,8 @@ function InsightInstructorClassesMonth({t, history}) {
             // execute lazy query to fetch classes for instructor
             getInstructoClassesInMonth({
               variables: { 
-                year: values.year,
-                month: values.month,
+                year: parseInt(values.year),
+                month: parseInt(values.month),
                 instructor: values.instructor
               }
             })
@@ -115,19 +115,36 @@ function InsightInstructorClassesMonth({t, history}) {
               <Table.ColHeader>{t('general.date')}</Table.ColHeader>
               <Table.ColHeader>{t('general.time_start')}</Table.ColHeader>
               <Table.ColHeader>{t('general.class')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.location')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.status')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {dataReport.insightInstructorClassesMonth.classes.map(({ 
               date,
-              timeStart
+              timeStart,
+              organizationClasstype,
+              organizationLocationRoom,
+              status
              }) => (
               <Table.Row key={v4()}>
                 <Table.Col key={v4()}>
+                  {/* TODO display dateformat */}
                   {date}
                 </Table.Col>
                 <Table.Col key={v4()}>
+                  {/* TODO: Timeformat */}
                   {timeStart}
+                </Table.Col>
+                <Table.Col>
+                  {organizationClasstype.name}
+                </Table.Col>
+                <Table.Col>
+                  {organizationLocationRoom.organizationLocation.name} - {organizationLocationRoom.name}
+                </Table.Col>
+                <Table.Col>
+                  {/* TODO: display status badge */}
+                  {status}
                 </Table.Col>
               </Table.Row>
             ))}
