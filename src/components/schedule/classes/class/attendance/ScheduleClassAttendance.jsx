@@ -53,6 +53,7 @@ function setAttendanceStatus({t, match, updateAttendance, node, status, setAtten
       {query: GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
         variables: get_attendance_list_query_variables(schedule_item_id, class_date)}
     ], 
+    // Mutation is "complete" when refetchQueries finish
     awaitRefetchQueries: true
   }).then(({ data }) => {
     console.log('got data', data);

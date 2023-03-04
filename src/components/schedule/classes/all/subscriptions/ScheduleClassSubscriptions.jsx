@@ -144,8 +144,10 @@ function ScheduleClassSubscriptions({t, match, history}) {
                             refetchQueries: [
                               { query: GET_SCHEDULE_CLASS_SUBSCRIPTIONS_QUERY, 
                                 variables: { scheduleItem: classId }
-                            }
-                          ]})
+                            }],
+                            // Mutation is "complete" when refetchQueries finish
+                            awaitRefetchQueries: true
+                          })
                           .then(({ data }) => {
                               console.log('got data', data);
                               toast.success((t('schedule.classes.subscriptions.toast_edit_success')), {

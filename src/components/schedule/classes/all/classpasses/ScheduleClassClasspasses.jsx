@@ -141,8 +141,10 @@ function ScheduleClassClasspasses({ t, match }) {
                           }, refetchQueries: [
                             { query: GET_SCHEDULE_CLASS_CLASSPASSES_QUERY,
                               variables: { scheduleItem: classId }
-                            }
-                        ]})
+                            }],
+                          // Mutation is "complete" when refetchQueries finish
+                          awaitRefetchQueries: true
+                        })
                         .then(({ data }) => {
                             console.log('got data', data);
                             toast.success((t('schedule.classes.classpasses.toast_edit_success')), {
