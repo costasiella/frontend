@@ -11,8 +11,7 @@ import {
   } from "tabler-react"
 import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
-import CSDatePicker from "../../../ui/CSDatePicker"
-import ButtonFormCancel from '../../../ui/ButtonFormCancel'
+import ButtonFormCancel from '../../ui/ButtonFormCancel'
 
 
 const InsightInstructorClassesForm = ({ t, history, inputData, isSubmitting, setFieldValue, setFieldTouched, errors, values, returnUrl }) => (
@@ -52,7 +51,7 @@ const InsightInstructorClassesForm = ({ t, history, inputData, isSubmitting, set
             </Form.Group>
           </Grid.Col>
           <Grid.Col>
-            <Form.Group label={t('')}>
+            <Form.Group label={t('general.instructor')}>
               <Field component="select" 
                     name="instructor" 
                     className={(errors.instructor) ? "form-control is-invalid" : "form-control"} 
@@ -66,18 +65,23 @@ const InsightInstructorClassesForm = ({ t, history, inputData, isSubmitting, set
             </Form.Group>
           </Grid.Col>
         </Grid.Row>
+        <Grid.Row>
+          <Grid.Col>
+            <Button 
+                color="primary"
+                className="pull-right" 
+                type="submit" 
+                disabled={isSubmitting}
+            >
+              {t('insight.instructor_classes_month.find_classes')}
+            </Button>
+          </Grid.Col>
+        </Grid.Row>
       </Card.Body>
-      <Card.Footer> 
-        <Button 
-            color="primary"
-            className="pull-right" 
-            type="submit" 
-            disabled={isSubmitting}
-        >
-          {t('insight.instructor_classes_month.find_classes')}
-        </Button>
+      {/* <Card.Footer> 
+
         <ButtonFormCancel returnUrl={returnUrl} />
-      </Card.Footer>
+      </Card.Footer> */}
     </FoForm>
 )
   

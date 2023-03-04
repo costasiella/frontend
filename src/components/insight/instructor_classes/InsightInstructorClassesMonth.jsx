@@ -15,16 +15,13 @@ import {
   Page
 } from "tabler-react"
 
-import AppSettingsContext from '../../../context/AppSettingsContext'
-import SiteWrapper from '../../../SiteWrapper'
-import { dateToLocalISO } from '../../../../tools/date_tools'
-import ButtonBack from '../../../ui/ButtonBack';
+import AppSettingsContext from '../../context/AppSettingsContext'
+
 
 // import { INVOICES_EXPORT_SCHEMA } from './yupSchema'
 import { GET_INSTRUCTORS_QUERY } from './queries'
 import InsightInstructorClassesMonthBase from './InsightInstructorClassesMonthBase'
 import InsightInstructorClassesForm from './InsightInstructorClassesForm';
-import moment from 'moment'
 
 
 function InsightInstructorClassesMonth({t, history}) {
@@ -32,8 +29,7 @@ function InsightInstructorClassesMonth({t, history}) {
   const dateFormat = appSettings.dateFormat
   const [prepared, setPrepared] = useState(false)
 
-  const cardTitle = t("finance.invoices.export.title")
-  const returnUrl = "/finance/invoices" 
+  const cardTitle = t("insight.instructor_classes_month.title")
 
   const { loading, error, data } = useQuery(GET_INSTRUCTORS_QUERY)
 
@@ -68,8 +64,8 @@ function InsightInstructorClassesMonth({t, history}) {
       <Card title={cardTitle}>
         <Formik
         initialValues={{ 
-          year: year,
-          month: month,
+          year: moment().year(),
+          month: moment().month(),
           instructor: ""
         }}
         // validationSchema={INVOICES_EXPORT_SCHEMA}
@@ -91,7 +87,6 @@ function InsightInstructorClassesMonth({t, history}) {
             setFieldTouched={setFieldTouched}
             errors={errors}
             values={values}
-            returnUrl={returnUrl}
           />
           )
         }
@@ -100,19 +95,9 @@ function InsightInstructorClassesMonth({t, history}) {
     {/* Prepared & loaded lazy query */}
     {(prepared) ? 
     // List instructor classes in this card
-      <Card title={t("finance.invoices.export.ready.title")}>
+      <Card title={t("")}>
         <Card.Body>
-          {t("finance.invoices.export.ready.explanation")}
-          <List>
-            <List.Item>
-              {t("general.period")}{ ": " } 
-              {moment(dateStart).format(dateFormat)} { " - " }
-              {moment(dateEnd).format(dateFormat)}
-            </List.Item>
-            <List.Item>
-              {t("general.status")}: {t(`finance.invoices.status.${status}`)}
-            </List.Item>
-          </List>
+          bla bla bla
         </Card.Body>
       </Card>
       : ""}

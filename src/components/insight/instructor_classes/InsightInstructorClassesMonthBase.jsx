@@ -7,7 +7,7 @@ import {
   Page
 } from "tabler-react"
 
-import SiteWrapper from '../../../SiteWrapper'
+import SiteWrapper from '../../SiteWrapper'
 import InsightBackHome from '../InsightBackHome'
 
 
