@@ -91,6 +91,7 @@ import InsightInactiveAccountsAdd from './components/insight/inactive_accounts/I
 import InsightInactiveAccountsView from './components/insight/inactive_accounts/InsightInactiveAccountsView'
 import InsightClasspasses from './components/insight/classpasses/InsightClasspasses'
 import InsightRevenue from './components/insight/revenue/InsightRevenue'
+import InsightInstructorClassesMonth from './components/insight/instructor_classes/InsightInstructorClassesMonth'
 import InsightSubscriptions from './components/insight/subscriptions/InsightSubscriptions'
 import InsightTrialpasses from './components/insight/trialpasses/InsightTrialpasses'
 
@@ -748,6 +749,7 @@ function AppRoot({ t }) {
             <PrivateRoute exact path="/insight/inactive_accounts/add" component={InsightInactiveAccountsAdd} />
             <PrivateRoute exact path="/insight/inactive_accounts/view/:id" component={InsightInactiveAccountsView} />
             <PrivateRoute exact path="/insight/classpasses" component={InsightClasspasses} />
+            <PrivateRoute exact path="/insight/instructor_classes_month" component={InsightInstructorClassesMonth} />
             <PrivateRoute exact path="/insight/revenue" component={InsightRevenue} />
             <PrivateRoute exact path="/insight/subscriptions" component={InsightSubscriptions} />
             <PrivateRoute exact path="/insight/trialpasses" component={InsightTrialpasses} />
