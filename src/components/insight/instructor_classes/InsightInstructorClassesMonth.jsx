@@ -17,6 +17,7 @@ import {
   Table
 } from "tabler-react"
 
+import AppSettingsContext from '../../context/AppSettingsContext'
 
 import { INSIGHT_INSTRUCTOR_CLASSES_SCHEMA } from './yupSchema'
 import { GET_INSTRUCTORS_QUERY, GET_INSTRUCTORS_CLASSES_MONTH_CLASSES } from './queries'
@@ -25,6 +26,9 @@ import InsightInstructorClassesForm from './InsightInstructorClassesForm';
 
 
 function InsightInstructorClassesMonth({t, history}) {
+  const appSettings = useContext(AppSettingsContext)
+  const dateFormat = appSettings.dateFormat
+  const timeFormat = appSettings.timeFormatMoment
   // const [prepared, setPrepared] = useState(false)
   const cardTitle = t("insight.instructor_classes_month.title")
 
@@ -130,11 +134,11 @@ function InsightInstructorClassesMonth({t, history}) {
               <Table.Row key={v4()}>
                 <Table.Col key={v4()}>
                   {/* TODO display dateformat */}
-                  {date}
+                  {moment(date).format(dateFormat)}
                 </Table.Col>
                 <Table.Col key={v4()}>
                   {/* TODO: Timeformat */}
-                  {timeStart}
+                  {moment(`${date} ${timeStart}`).format(timeFormat)}
                 </Table.Col>
                 <Table.Col>
                   {organizationClasstype.name}
