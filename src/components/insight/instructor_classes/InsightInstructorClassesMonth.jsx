@@ -18,6 +18,7 @@ import {
 } from "tabler-react"
 
 import AppSettingsContext from '../../context/AppSettingsContext'
+import { represent_class_status } from '../../schedule/classes/tools'
 
 import { INSIGHT_INSTRUCTOR_CLASSES_SCHEMA } from './yupSchema'
 import { GET_INSTRUCTORS_QUERY, GET_INSTRUCTORS_CLASSES_MONTH_CLASSES } from './queries'
@@ -116,11 +117,9 @@ function InsightInstructorClassesMonth({t, history}) {
         <Table cards>
           <Table.Header>
             <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.date')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.time_start')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.time')}</Table.ColHeader>
               <Table.ColHeader>{t('general.class')}</Table.ColHeader>
               <Table.ColHeader>{t('general.location')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.status')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -133,22 +132,14 @@ function InsightInstructorClassesMonth({t, history}) {
              }) => (
               <Table.Row key={v4()}>
                 <Table.Col key={v4()}>
-                  {/* TODO display dateformat */}
-                  {moment(date).format(dateFormat)}
-                </Table.Col>
-                <Table.Col key={v4()}>
-                  {/* TODO: Timeformat */}
-                  {moment(`${date} ${timeStart}`).format(timeFormat)}
+                  {represent_class_status(status)} {" "}
+                  {moment(date).format(dateFormat)} - {moment(`${date} ${timeStart}`).format(timeFormat)}
                 </Table.Col>
                 <Table.Col>
                   {organizationClasstype.name}
                 </Table.Col>
                 <Table.Col>
                   {organizationLocationRoom.organizationLocation.name} - {organizationLocationRoom.name}
-                </Table.Col>
-                <Table.Col>
-                  {/* TODO: display status badge */}
-                  {status}
                 </Table.Col>
               </Table.Row>
             ))}
