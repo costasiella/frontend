@@ -1907,6 +1907,11 @@
                 "deleted": "__STRING_NOT_TRANSLATED__"
             },
             "count_deleted_inactive_accounts": "__STRING_NOT_TRANSLATED__"
+        },
+        "instructor_classes_month": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "find_classes": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {

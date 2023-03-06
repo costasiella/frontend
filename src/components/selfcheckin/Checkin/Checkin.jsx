@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import {
   Button,
   Card,
+  Dimmer,
   Dropdown,
   Icon,
   Table
@@ -25,20 +26,28 @@ import ContentCard from "../../general/ContentCard"
 import InputSearch from "../../general/InputSearch"
 
 
-function setAttendanceStatus({t, updateAttendance, node, status}) {
+function setAttendanceStatus({t, updateAttendance, node, status, scheduleItemId, classDate, setRefetchingAttendance}) {
+  setRefetchingAttendance(true)
+
   updateAttendance({
     variables: { 
       input: {
         id: node.id, 
         bookingStatus: status
       }
-    }
+    },
+    refetchQueries: [
+      {query: GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
+        variables: get_attendance_list_query_variables(scheduleItemId, classDate)}
+    ],
+    awaitRefetchQueries: true,
   }).then(({ data }) => {
     console.log('got data', data);
     toast.success(
       t('schedule.classes.class.attendance.status_saved'), {
         position: toast.POSITION.BOTTOM_RIGHT
       })
+    setRefetchingAttendance(false)
   }).catch((error) => {
     toast.error((t('general.toast_server_error')) +  error, {
         position: toast.POSITION.BOTTOM_RIGHT
@@ -50,9 +59,10 @@ function setAttendanceStatus({t, updateAttendance, node, status}) {
 
 function SelfCheckinCheckin({ t, match, history }) {
   const [showSearch, setShowSearch] = useState(false)
+  const [refetchingAttendance, setRefetchingAttendance] = useState(false)
   const locationId = match.params.location_id
   const scheduleItemId = match.params.class_id
-  const class_date = match.params.date
+  const classDate = match.params.date
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
@@ -65,7 +75,8 @@ function SelfCheckinCheckin({ t, match, history }) {
     data: queryAttendanceData 
   } = useQuery(
     GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, {
-      variables: get_attendance_list_query_variables(scheduleItemId, class_date)
+      variables: get_attendance_list_query_variables(scheduleItemId, classDate),
+      fetchPolicy: "network-only"
     }
   )
 
@@ -101,7 +112,7 @@ function SelfCheckinCheckin({ t, match, history }) {
   const scheduleItem = queryAttendanceData.scheduleItem
 
   const subTitle = getSubtitle(
-    class_date,
+    classDate,
     scheduleItem,
     dateTimeFormat
   )
@@ -138,6 +149,7 @@ function SelfCheckinCheckin({ t, match, history }) {
         }} >
         { (!queryAttendanceData.scheduleItemAttendances.edges.length) ? 
             <Card.Body>{t('schedule.classes.class.attendance.empty_list')}</Card.Body> : 
+          <Dimmer active={refetchingAttendance} loader={true} >
           <Table cards>
             <Table.Header>
               <Table.Row key={v4()}>
@@ -176,9 +188,11 @@ function SelfCheckinCheckin({ t, match, history }) {
                                   t: t, 
                                   updateAttendance: updateAttendance,
                                   node: node,
-                                  status: 'ATTENDING'
+                                  status: 'ATTENDING',
+                                  scheduleItemId: scheduleItemId,
+                                  classDate: classDate,
+                                  setRefetchingAttendance: setRefetchingAttendance
                                 })
-                                refetchAttendance()
                               }}>
                                 {t('schedule.classes.class.attendance.booking_status.ATTENDING')}
                             </Dropdown.Item>
@@ -192,7 +206,10 @@ function SelfCheckinCheckin({ t, match, history }) {
                                   t: t, 
                                   updateAttendance: updateAttendance,
                                   node: node,
-                                  status: 'BOOKED'
+                                  status: 'BOOKED',
+                                  scheduleItemId: scheduleItemId,
+                                  classDate: classDate,
+                                  setRefetchingAttendance: setRefetchingAttendance
                                 })
                                 refetchAttendance()
                               }}>
@@ -208,9 +225,11 @@ function SelfCheckinCheckin({ t, match, history }) {
                                   t: t, 
                                   updateAttendance: updateAttendance,
                                   node: node,
-                                  status: 'CANCELLED'
+                                  status: 'CANCELLED',
+                                  scheduleItemId: scheduleItemId,
+                                  classDate: classDate,
+                                  setRefetchingAttendance: setRefetchingAttendance
                                 })
-                                refetchAttendance()
                               }}>
                                 {t('schedule.classes.class.attendance.booking_status.CANCELLED')}
                             </Dropdown.Item>
@@ -229,9 +248,11 @@ function SelfCheckinCheckin({ t, match, history }) {
                                 t: t, 
                                 updateAttendance: updateAttendance,
                                 node: node,
-                                status: 'ATTENDING'
+                                status: 'ATTENDING',
+                                scheduleItemId: scheduleItemId,
+                                classDate: classDate,
+                                setRefetchingAttendance: setRefetchingAttendance
                               })
-                              refetchAttendance()
                             }}>
                               {t('general.checkin')}
                           </Button>
@@ -241,6 +262,7 @@ function SelfCheckinCheckin({ t, match, history }) {
                 ))}
             </Table.Body>
           </Table>
+          </Dimmer>
       }
       </ContentCard>
       <h3>{t("selfcheckin.checkin.title_not_on_list")}</h3>
@@ -312,7 +334,7 @@ function SelfCheckinCheckin({ t, match, history }) {
                     <Table.Col key={v4()}>
                       {(checkedInIds.includes(node.id)) ? 
                         <span className="pull-right">{t("schedule.classes.class.attendance.search_results_already_checked_in")}</span> :
-                        <Link to={"/selfcheckin/book/" + locationId + "/" + scheduleItemId + "/" + class_date + "/" + node.id}>
+                        <Link to={"/selfcheckin/book/" + locationId + "/" + scheduleItemId + "/" + classDate + "/" + node.id}>
                           <Button color="secondary pull-right">
                             {t('general.checkin')} <Icon name="chevron-right" />
                           </Button>

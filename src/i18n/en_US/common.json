@@ -2185,6 +2185,11 @@
                 "deleted": "Inactive accounts will momentarily be deleted"
             },
             "count_deleted_inactive_accounts": "Inactive accounts deleted"
+        },
+        "instructor_classes_month": {
+            "title": "Instructor classes in month",
+            "explanation": "Report on classes by instructors in a given month",
+            "find_classes": "Find classes"
         }
     },
     "selfcheckin": {
