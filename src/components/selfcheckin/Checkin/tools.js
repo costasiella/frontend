@@ -16,9 +16,9 @@ export function get_accounts_query_variables() {
   return queryVars
 }
 
-export function get_attendance_list_query_variables(schedule_item_id, date) {
+export function get_attendance_list_query_variables(scheduleItemId, date) {
   return {
-    scheduleItem: schedule_item_id,
+    scheduleItem: scheduleItemId,
     date: date
   }
 }

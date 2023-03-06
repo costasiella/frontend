@@ -39,7 +39,7 @@ export const GET_ACCOUNTS_QUERY = gql`
 
 export const GET_SCHEDULE_CLASS_ATTENDANCE_QUERY = gql`
   query ScheduleItemAttendances($after: String, $before: String, $scheduleItem: ID!, $date: Date!) {
-    scheduleItemAttendances(first: 100, before: $before, after: $after, scheduleItem: $scheduleItem, date: $date) {
+    scheduleItemAttendances(first: 1000, before: $before, after: $after, scheduleItem: $scheduleItem, date: $date) {
       pageInfo {
         startCursor
         endCursor
