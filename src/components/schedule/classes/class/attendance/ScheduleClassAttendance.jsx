@@ -64,6 +64,7 @@ function setAttendanceStatus({t, match, updateAttendance, node, status, setAtten
         position: toast.POSITION.BOTTOM_RIGHT
       })
   }).catch((error) => {
+    setAttendanceRefetching(false)
     toast.error((t('general.toast_server_error')) +  error, {
         position: toast.POSITION.BOTTOM_RIGHT
       })
@@ -78,7 +79,8 @@ function ScheduleClassAttendance({ t, match, history }) {
   const [attendanceRefetching, setAttendanceRefetching] = useState(false)
   const { loading, error, data, refetch, fetchMore } = useQuery(
     GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, {
-      variables: get_attendance_list_query_variables(schedule_item_id, class_date)
+      variables: get_attendance_list_query_variables(schedule_item_id, class_date),
+      fetchPolicy: "network-only"
     }
   )
   const [ updateAttendance ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)

@@ -43,12 +43,13 @@ function setAttendanceStatus({t, updateAttendance, node, status, scheduleItemId,
     awaitRefetchQueries: true,
   }).then(({ data }) => {
     console.log('got data', data);
+    setRefetchingAttendance(false)
     toast.success(
       t('schedule.classes.class.attendance.status_saved'), {
         position: toast.POSITION.BOTTOM_RIGHT
       })
-    setRefetchingAttendance(false)
   }).catch((error) => {
+    setRefetchingAttendance(false)
     toast.error((t('general.toast_server_error')) +  error, {
         position: toast.POSITION.BOTTOM_RIGHT
       })
@@ -69,7 +70,7 @@ function SelfCheckinCheckin({ t, match, history }) {
   const dateTimeFormat = dateFormat + " " + timeFormat
 
   const { 
-    refetch: refetchAttendance, 
+    // refetch: refetchAttendance, 
     loading: queryAttendanceLoading, 
     error: queryAttendanceError, 
     data: queryAttendanceData 
@@ -211,7 +212,6 @@ function SelfCheckinCheckin({ t, match, history }) {
                                   classDate: classDate,
                                   setRefetchingAttendance: setRefetchingAttendance
                                 })
-                                refetchAttendance()
                               }}>
                                 {t('schedule.classes.class.attendance.booking_status.BOOKED')}
                             </Dropdown.Item>
