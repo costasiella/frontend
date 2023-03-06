@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
+import React, { useContext } from 'react'
+import { useQuery, useLazyQuery } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
@@ -7,13 +7,8 @@ import { v4 } from 'uuid'
 import moment from 'moment'
 
 import {
-  Button,
   Card,
-  Container,
   Dimmer,
-  Icon,
-  List,
-  Page,
   Table
 } from "tabler-react"
 
@@ -39,8 +34,6 @@ function InsightInstructorClassesMonth({t, history}) {
     loading: loadingReport, 
     error: errorReport, 
     data: dataReport, 
-    refetch: refetchReport, 
-    fetchMore: fetchMoreReport,
   } ] = useLazyQuery( GET_INSTRUCTORS_CLASSES_MONTH_CLASSES )
 
   if (loading) {
@@ -55,7 +48,7 @@ function InsightInstructorClassesMonth({t, history}) {
     )
   }
 
-  if (error) {
+  if (error || errorReport) {
     console.error(error)
     return (
       <InsightInstructorClassesMonthBase>
@@ -66,8 +59,7 @@ function InsightInstructorClassesMonth({t, history}) {
         </Card>
       </InsightInstructorClassesMonthBase>
     )
-  }  
-
+  }
 
   return (
     <InsightInstructorClassesMonthBase>
@@ -75,7 +67,7 @@ function InsightInstructorClassesMonth({t, history}) {
         <Formik
         initialValues={{ 
           year: moment().year(),
-          month: moment().month(),
+          month: moment().month()+1,
           instructor: ""
         }}
         validationSchema={INSIGHT_INSTRUCTOR_CLASSES_SCHEMA}
@@ -109,6 +101,16 @@ function InsightInstructorClassesMonth({t, history}) {
         }
       </Formik>
     </Card>
+
+    {/* Show loader */}
+    {(calledReport && loadingReport) ? <Card>
+      <Card.Body>
+        <Dimmer active={true} loader={true} /><br />
+        <div className="text-center">
+          Loading...
+        </div>
+      </Card.Body>
+      </Card> : ""}
     {/* Prepared & loaded lazy query */}
     {(calledReport && dataReport) ? 
     // List instructor classes in this card
@@ -124,6 +126,7 @@ function InsightInstructorClassesMonth({t, history}) {
           </Table.Header>
           <Table.Body>
             {dataReport.insightInstructorClassesMonth.classes.map(({ 
+              description,
               date,
               timeStart,
               organizationClasstype,
@@ -133,7 +136,10 @@ function InsightInstructorClassesMonth({t, history}) {
               <Table.Row key={v4()}>
                 <Table.Col key={v4()}>
                   {represent_class_status(status)} {" "}
-                  {moment(date).format(dateFormat)} - {moment(`${date} ${timeStart}`).format(timeFormat)}
+                  {moment(date).format(dateFormat)} - {moment(`${date} ${timeStart}`).format(timeFormat)} <br />
+                  <small className="text-muted">
+                    {description}
+                  </small>
                 </Table.Col>
                 <Table.Col>
                   {organizationClasstype.name}
