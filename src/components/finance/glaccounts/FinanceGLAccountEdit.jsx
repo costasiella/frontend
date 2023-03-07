@@ -69,7 +69,7 @@ function FinanceGLAccountEdit({t, history, match}) {
                 input: {
                   id: match.params.id,
                   name: values.name,
-                  code: values.code
+                  code: parseInt(values.code)
                 }
               }, refetchQueries: [
                   {query: GET_GLACCOUNTS_QUERY, variables: {"archived": false }}
