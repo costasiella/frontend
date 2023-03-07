@@ -58,7 +58,7 @@ function FinanceGLAccountEdit({t, history, match}) {
         <Formik
           initialValues={{ 
             name: initialData.name, 
-            code: initialData.code
+            code: parseInt(initialData.code)
           }}
           validationSchema={GLACCOUNT_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {

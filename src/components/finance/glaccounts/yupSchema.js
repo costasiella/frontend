@@ -5,4 +5,5 @@ export const GLACCOUNT_SCHEMA = Yup.object().shape({
     name: Yup.string()
       .min(3, t('yup.min_len_3'))
       .required(t('yup.field_required')),
+    code: Yup.number()
   })

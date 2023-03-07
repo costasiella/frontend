@@ -68,7 +68,7 @@ function FinanceCostCenterEdit({t, match, history}) {
                   input: {
                     id: match.params.id,
                     name: values.name,
-                    code: values.code
+                    code: parseInt(values.code)
                   }
                 }, refetchQueries: [
                     {query: GET_COSTCENTERS_QUERY, variables: {"archived": false }}

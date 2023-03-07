@@ -30,7 +30,7 @@ function FinanceCostCenterAdd({ t, history }) {
                 addCostcenter({ variables: {
                   input: {
                     name: values.name, 
-                    code: values.code
+                    code: parseInt(values.code)
                   }
                 }, refetchQueries: [
                     {query: GET_COSTCENTERS_QUERY, variables: {"archived": false }}

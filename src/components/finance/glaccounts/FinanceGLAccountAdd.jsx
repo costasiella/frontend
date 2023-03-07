@@ -33,7 +33,7 @@ function FinanceGLAccountAdd({t, history}) {
               addGlaccount({ variables: {
                 input: {
                   name: values.name, 
-                  code: values.code
+                  code: parseInt(values.code)
                 }
               }, refetchQueries: [
                   {query: GET_GLACCOUNTS_QUERY, variables: {"archived": false }}
