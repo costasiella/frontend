@@ -87,6 +87,15 @@ function FinanceExpenseForm({
                 <ErrorMessage name="tax" component="span" className="invalid-feedback" />
             </Form.Group>
           </Grid.Col>
+          <Grid.Col>
+            <Form.Group label={t('general.percentage')}>
+                <Field type="text" 
+                    name="percentage" 
+                    className={(errors.percentage) ? "form-control is-invalid" : "form-control"} 
+                    autoComplete="off" />
+                <ErrorMessage name="percentage" component="span" className="invalid-feedback" />
+            </Form.Group>
+          </Grid.Col>
         </Grid.Row>
         <Grid.Row>
           <Grid.Col>

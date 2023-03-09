@@ -655,7 +655,8 @@
         "expiration": "Expiration",
         "credit": "Credit",
         "expired": "Expired",
-        "credits_valid_for_class": "Credits on class date"
+        "credits_valid_for_class": "Credits on class date",
+        "percentage": "Percentage"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

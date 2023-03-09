@@ -91,6 +91,7 @@ function FinanceExpenseEdit({t, match, history}) {
             description: financeExpense.description,
             amount: financeExpense.amount,
             tax: financeExpense.tax,
+            percentage: financeExpense.percentage,
             supplier: initialSupplier,
             financeGlaccount: initialGlaccount,
             financeCostcenter: initialCostcenter
@@ -108,6 +109,7 @@ function FinanceExpenseEdit({t, match, history}) {
               description: values.description,
               amount: values.amount,
               tax: values.tax,
+              percentage: values.percentage,
               supplier: values.supplier,
               financeGlaccount: values.financeGlaccount,
               financeCostcenter: values.financeCostcenter,

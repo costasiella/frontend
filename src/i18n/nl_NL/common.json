@@ -482,7 +482,8 @@
         "expiration": "__STRING_NOT_TRANSLATED__",
         "credit": "__STRING_NOT_TRANSLATED__",
         "expired": "__STRING_NOT_TRANSLATED__",
-        "credits_valid_for_class": "__STRING_NOT_TRANSLATED__"
+        "credits_valid_for_class": "__STRING_NOT_TRANSLATED__",
+        "percentage": "__STRING_NOT_TRANSLATED__"
     },
     "automation": {
         "account": {

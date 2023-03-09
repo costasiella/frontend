@@ -17,6 +17,7 @@ export const GET_EXPENSES_QUERY = gql`
           description
           amountDisplay
           taxDisplay
+          percentageDisplay
           totalDisplay
           supplier {
             id
@@ -48,6 +49,7 @@ export const GET_EXPENSE_QUERY = gql`
       description
       amount
       tax
+      percentage
       total
       supplier {
         id
@@ -56,10 +58,12 @@ export const GET_EXPENSE_QUERY = gql`
       financeGlaccount {
         id
         name
+        code
       }
       financeCostcenter {
         id
         name
+        code
       }
       document
     }
@@ -88,6 +92,7 @@ export const GET_EXPENSE_QUERY = gql`
         node {
           id
           name
+          code
         }
       }
     }
@@ -102,6 +107,7 @@ export const GET_EXPENSE_QUERY = gql`
         node {
           id
           name
+          code
         }
       }
     }
@@ -121,6 +127,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         node {
           id
           name
+          code
         }
       }
     }
@@ -135,6 +142,7 @@ export const GET_INPUT_VALUES_QUERY = gql`
         node {
           id
           name
+          code
         }
       }
     }

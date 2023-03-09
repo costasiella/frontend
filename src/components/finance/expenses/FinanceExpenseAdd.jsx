@@ -77,6 +77,7 @@ function FinanceExpenseAdd({t, match, history}) {
               description: values.description,
               amount: values.amount,
               tax: values.tax,
+              percentage: values.percentage,
               supplier: values.supplier,
               financeGlaccount: values.financeGlaccount,
               financeCostcenter: values.financeCostcenter,

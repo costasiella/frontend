@@ -34,8 +34,8 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
             <Table.ColHeader>{t('general.summary')} & {t('general.description')}</Table.ColHeader>
             {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>}
             <Table.ColHeader>{t('general.amount')} & {t("general.tax")}</Table.ColHeader>
-            <Table.ColHeader>{t('general.glaccount')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.costcenter')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.total')} & {t("general.percentage")}</Table.ColHeader>
+            <Table.ColHeader>{t('general.glaccount')} & {t('general.costcenter')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -57,14 +57,18 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
                 <small className="text-small">{node.taxDisplay}</small>
               </Table.Col>
               <Table.Col>
-                {node.financeGlaccount && <span>
-                  {node.financeGlaccount.name} {node.financeGlaccount.code && <span>({node.financeGlaccount.code})</span>}
-                </span>}
+                {node.totalDisplay} <br />
+                <small className="text-small">{node.percentageDisplay}</small>
               </Table.Col>
               <Table.Col>
-                {node.financeCostcenter && <span>
-                  {node.financeCostcenter.name} {node.financeCostcenter.code && <span>({node.financeCostcenter.code})</span>}
-                </span>}
+                {node.financeGlaccount && <span>
+                  {node.financeGlaccount.name} {node.financeGlaccount.code && <span>({node.financeGlaccount.code})</span>}
+                </span>} <br />
+                <small className="text-small">
+                  {node.financeCostcenter && <span>
+                    {node.financeCostcenter.name} {node.financeCostcenter.code && <span>({node.financeCostcenter.code})</span>}
+                  </span>}
+                </small>
               </Table.Col>
               <Table.Col className="text-right" key={v4()}>
                 <FileProtectedDownloadTableButton protectedMediaUrl={node.urlProtectedDocument} />
