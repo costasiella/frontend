@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 import {
   Icon,
+  Badge,
   Button,
   Table
 } from "tabler-react";
@@ -34,7 +35,6 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
             <Table.ColHeader>{t('general.summary')} & {t('general.description')}</Table.ColHeader>
             {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>}
             <Table.ColHeader>{t('general.amount')} & {t("general.tax")}</Table.ColHeader>
-            <Table.ColHeader>{t('general.total')} & {t("general.percentage")}</Table.ColHeader>
             <Table.ColHeader>{t('general.glaccount')} & {t('general.costcenter')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
@@ -53,12 +53,8 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
                 {node.supplier && node.supplier.name}
               </Table.Col>
               <Table.Col>
-                {node.amountDisplay} <br />
-                <small className="text-small">{node.taxDisplay}</small>
-              </Table.Col>
-              <Table.Col>
-                {node.totalDisplay} <br />
-                <small className="text-small">{node.percentageDisplay}</small>
+                {node.totalAmountDisplay} <Badge color="default">{node.percentageDisplay}</Badge><br />
+                <small className="text-small">{node.totalTaxDisplay} <Badge color="default">{node.percentageDisplay}</Badge></small>
               </Table.Col>
               <Table.Col>
                 {node.financeGlaccount && <span>

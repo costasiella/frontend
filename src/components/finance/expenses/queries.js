@@ -18,6 +18,8 @@ export const GET_EXPENSES_QUERY = gql`
           amountDisplay
           taxDisplay
           percentageDisplay
+          totalAmountDisplay
+          totalTaxDisplay
           totalDisplay
           supplier {
             id
