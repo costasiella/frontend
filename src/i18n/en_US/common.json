@@ -377,7 +377,9 @@
                 }
             },
             "title_edit": "Edit expense",
-            "toast_edit_success": "Saved"
+            "toast_edit_success": "Saved",
+            "confirm_duplicate": "Do you wish to duplicate this expense?",
+            "toast_duplicate_success": "Expense duplicated"
         }
     },
     "general": {

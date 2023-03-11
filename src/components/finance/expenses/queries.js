@@ -186,6 +186,16 @@ export const UPDATE_FINANCE_EXPENSE = gql`
   }
 `
 
+export const DUPLICATE_FINANCE_EXPENSE = gql`
+  mutation DuplicateFinanceExpense($input: DuplicateFinanceExpenseInput!) {
+    duplicateFinanceExpense(input: $input) {
+      financeExpense {
+        id
+      }
+    }
+  }
+`
+
 export const DELETE_FINANCE_EXPENSE = gql`
   mutation DeleteFinanceExpense($input: DeleteFinanceExpenseInput!) {
     deleteFinanceExpense(input: $input) {

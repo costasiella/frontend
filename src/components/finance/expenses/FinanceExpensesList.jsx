@@ -14,10 +14,12 @@ import {
 } from "tabler-react";
 
 import AppSettingsContext from '../../context/AppSettingsContext'
+import HasPermissionWrapper from '../../HasPermissionWrapper'
 import FileProtectedDownloadTableButton from '../../ui/FileProtectedDownloadTableButton'
+import ButtonConfirm from '../../ui/ButtonConfirm'
 // import { get_list_query_variables } from "./tools"
 // import FinanceExpensesStatus from "../../ui/FinanceExpenseStatus"
-import { GET_EXPENSES_QUERY, DELETE_FINANCE_EXPENSE } from "./queries"
+import { GET_EXPENSES_QUERY, DUPLICATE_FINANCE_EXPENSE, DELETE_FINANCE_EXPENSE } from "./queries"
 import confirm_delete from "../../../tools/confirm_delete"
 import moment from 'moment'
 
@@ -25,6 +27,7 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
 
+  const [ duplicateFinanceExpense ] = useMutation(DUPLICATE_FINANCE_EXPENSE)
   const [ deleteFinanceExpense ] = useMutation(DELETE_FINANCE_EXPENSE)
 
   return (
@@ -68,7 +71,28 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
                 </small>
               </Table.Col>
               <Table.Col className="text-right" key={v4()}>
+                {/* Download */}
                 <FileProtectedDownloadTableButton protectedMediaUrl={node.urlProtectedDocument} />
+                {/* Duplicate */}
+                <HasPermissionWrapper key={v4()} permission="add" resource="financeexpense">
+                    <ButtonConfirm
+                      title={t("finance.expenses.confirm_duplicate")}
+                      msgConfirm={<p><b>{moment(node.date).format(dateFormat)} - {node.summary}</b><br/> {node.description}</p>}
+                      msgSuccess={(t("finance.expenses.toast_duplicate_success"))}
+                      actionFunction={duplicateFinanceExpense} 
+                      actionFunctionVariables={{
+                        variables: {input: {id: node.id}},
+                        refetchQueries: [
+                          { query: GET_EXPENSES_QUERY }
+                        ]
+                      }}
+                      buttonClass="btn-secondary"
+                      buttonIcon={<Icon name="copy" />}
+                      buttonText={t("general.duplicate")}
+                      buttonTextColor=""
+                    />
+                  </HasPermissionWrapper>
+                {/* Edit */}
                 <Link to={"/finance/expenses/edit/" + node.id}>
                   <Button className='btn-sm' 
                           color="secondary">
