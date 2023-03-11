@@ -731,3 +731,8 @@ table td.cs-insight-data-table-cell {
   float: right;
   width: 75px;
  }
+
+ /* Costasiella specific CSS */
+ th.cs-finance-expenses-col-summary {
+  width: 360px;
+ }

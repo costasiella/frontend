@@ -32,7 +32,7 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
         <Table.Header>
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.date')}</Table.ColHeader>
-            <Table.ColHeader>{t('general.summary')} & {t('general.description')}</Table.ColHeader>
+            <Table.ColHeader className="cs-finance-expenses-col-summary">{t('general.summary')} & {t('general.description')}</Table.ColHeader>
             {/* {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>} */}
             <Table.ColHeader>{t('general.amount')} & {t("general.tax")}</Table.ColHeader>
             <Table.ColHeader>{t('general.glaccount_short')} & {t('general.costcenter')}</Table.ColHeader>
