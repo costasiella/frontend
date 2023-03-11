@@ -656,7 +656,8 @@
         "credit": "Credit",
         "expired": "Expired",
         "credits_valid_for_class": "Credits on class date",
-        "percentage": "Percentage"
+        "percentage": "Percentage",
+        "glaccount_short": "GL Account"
     },
     "yup": {
         "min_len_3": "Please input at least 3 characters",

@@ -35,7 +35,7 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
             <Table.ColHeader>{t('general.summary')} & {t('general.description')}</Table.ColHeader>
             {/* {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>} */}
             <Table.ColHeader>{t('general.amount')} & {t("general.tax")}</Table.ColHeader>
-            <Table.ColHeader>{t('general.glaccount')} & {t('general.costcenter')}</Table.ColHeader>
+            <Table.ColHeader>{t('general.glaccount_short')} & {t('general.costcenter')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
           </Table.Row>
         </Table.Header>
@@ -59,11 +59,11 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
               </Table.Col>
               <Table.Col>
                 {node.financeGlaccount && <span>
-                  {node.financeGlaccount.name} {node.financeGlaccount.code && <span>({node.financeGlaccount.code})</span>}
+                  <Badge color="default">{node.financeGlaccount.name} {node.financeGlaccount.code && <span>({node.financeGlaccount.code})</span>}</Badge>
                 </span>} <br />
                 <small className="text-small">
                   {node.financeCostcenter && <span>
-                    {node.financeCostcenter.name} {node.financeCostcenter.code && <span>({node.financeCostcenter.code})</span>}
+                    <Badge color="default">{node.financeCostcenter.name} {node.financeCostcenter.code && <span>({node.financeCostcenter.code})</span>}</Badge>
                   </span>}
                 </small>
               </Table.Col>
