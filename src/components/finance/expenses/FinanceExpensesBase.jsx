@@ -16,7 +16,7 @@ import ButtonBack from '../../ui/ButtonBack';
 import ButtonExport from '../../ui/ButtonExport';
 
 
-function FinanceExpensesBase ({ t, history, children, refetch, returnUrl }) {
+function FinanceExpensesBase ({ t, history, children, refetch, returnUrl, showListButtons=false }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -25,8 +25,11 @@ function FinanceExpensesBase ({ t, history, children, refetch, returnUrl }) {
             <div className="page-options d-flex">
               {returnUrl && <ButtonBack returnUrl={returnUrl} />}
               {/* <FinanceInvoicesFilter refetch={refetch}/> */}
-              <ButtonExport url="/finance/expenses/export" className='mr-2' />
-              <ButtonAdd addUrl="/finance/expenses/add" className='mr-2' />
+              {(showListButtons) ?
+              <React.Fragment>
+                <ButtonExport url="/finance/expenses/export" className='mr-2' />
+                <ButtonAdd addUrl="/finance/expenses/add" className='mr-2' />
+              </React.Fragment> : "" }
             </div>
           </Page.Header>
           <Grid.Row>

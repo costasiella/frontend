@@ -55,7 +55,7 @@ function FinanceExpenses({ t, location, history }) {
   )}
 
   return (
-    <FinanceExpensesBase refetch={refetch}>
+    <FinanceExpensesBase refetch={refetch} showListButtons={true}>
       <ContentCard 
         cardTitle={t('finance.expenses.title')}
         hasCardBody={false}
