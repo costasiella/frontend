@@ -63,7 +63,8 @@ function FinanceExpenseAdd({t, match, history}) {
         </Card.Header>
         <Formik
           initialValues={{ 
-            description: ""
+            description: "",
+            percentage: 100
           }}
           validationSchema={EXPENSE_SCHEMA}
           onSubmit={(values, { setSubmitting }) => {
