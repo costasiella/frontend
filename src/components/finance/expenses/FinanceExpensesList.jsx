@@ -33,7 +33,7 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
           <Table.Row key={v4()}>
             <Table.ColHeader>{t('general.date')}</Table.ColHeader>
             <Table.ColHeader>{t('general.summary')} & {t('general.description')}</Table.ColHeader>
-            {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>}
+            {/* {showColRelation && <Table.ColHeader>{t('general.supplier')}</Table.ColHeader>} */}
             <Table.ColHeader>{t('general.amount')} & {t("general.tax")}</Table.ColHeader>
             <Table.ColHeader>{t('general.glaccount')} & {t('general.costcenter')}</Table.ColHeader>
             <Table.ColHeader></Table.ColHeader>
@@ -43,15 +43,16 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
           {expenses.edges.map(({ node }) => (
             <Table.Row key={v4()}>
               <Table.Col key={v4()}>
-                {moment(node.date).format(dateFormat)}
+                {moment(node.date).format(dateFormat)} <br />
+                {node.supplier && <Badge color="default">{node.supplier.name}</Badge>}
               </Table.Col>
               <Table.Col>
                 {node.summary} <br />
                 <small className='text-muted'>{node.description}</small>
               </Table.Col>
-              <Table.Col>
+              {/* <Table.Col>
                 {node.supplier && node.supplier.name}
-              </Table.Col>
+              </Table.Col> */}
               <Table.Col>
                 {node.totalAmountDisplay} <Badge color="default">{node.percentageDisplay}</Badge><br />
                 <small className="text-small">{node.totalTaxDisplay} <Badge color="default">{node.percentageDisplay}</Badge></small>
