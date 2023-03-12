@@ -20,6 +20,7 @@ export const CSAuth = {
         localStorage.setItem(CSLS.AUTH_REFRESH_TOKEN_EXP, refreshTokenData.refreshExpiresIn)
     },
     cleanup() {
+        console.warn("csauth cleanup called!")
         // Like logging out, but don't unset next url. 
         // This function is used when a refreshToken has expired
         // localStorage.removeItem(CSLS.AUTH_TOKEN)

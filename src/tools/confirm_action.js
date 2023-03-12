@@ -6,7 +6,7 @@ import {
 } from "tabler-react";
 
 
-const confirm_action = ({t, title, msgConfirm, msgDescription, msgSuccess, actionFunction, functionVariables}) => {
+const confirm_action = ({t, title, history, msgConfirm, msgDescription, msgSuccess, actionFunction, functionVariables}) => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
@@ -21,6 +21,14 @@ const confirm_action = ({t, title, msgConfirm, msgDescription, msgSuccess, actio
                 actionFunction(functionVariables)
                   .then(({ data }) => {
                     console.log('got data', data);
+                    // Redirect to edit finance expense edit
+                    if (data.duplicateFinanceExpense) {
+                      console.log("GOT DUPLICATE EXPENSE DATA")
+                      const financeExpenseId = data.duplicateFinanceExpense.financeExpense.id
+                      history.push(`/finance/expenses/edit/${financeExpenseId}`)
+                    }
+                    
+                    // Show success toast
                     toast.success(
                       msgSuccess, {
                         position: toast.POSITION.BOTTOM_RIGHT

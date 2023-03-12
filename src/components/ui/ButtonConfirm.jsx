@@ -31,6 +31,7 @@ function ButtonConfirmAction({
         confirm_action({
           t: t,
           title: title,
+          history: history,
           msgConfirm: <p>{msgConfirm}</p>,
           msgDescription: msgDescription,
           msgSuccess: msgSuccess,
