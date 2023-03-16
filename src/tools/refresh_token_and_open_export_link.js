@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 function download(dataurl) {
   let link = document.createElement("a");
   link.href = dataurl
+  link.target = "_blank"
   // Put the link in the DOM and click it
   document.body.appendChild(link);
   link.click();
