@@ -72,7 +72,10 @@ function FinanceExpensesList({t, history, match, expenses, showColRelation=false
               </Table.Col>
               <Table.Col className="text-right" key={v4()}>
                 {/* Download */}
-                <FileProtectedDownloadTableButton protectedMediaUrl={node.urlProtectedDocument} />
+                <FileProtectedDownloadTableButton 
+                  protectedMediaUrl={node.urlProtectedDocument} 
+                  showLabel={false}
+                />
                 {/* Duplicate */}
                 <HasPermissionWrapper key={v4()} permission="add" resource="financeexpense">
                     <ButtonConfirm

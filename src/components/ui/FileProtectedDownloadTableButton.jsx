@@ -13,7 +13,7 @@ import { TOKEN_REFRESH } from "../../queries/system/auth"
 import { refreshTokenAndOpenExportLinkInNewTab } from "../../tools/refresh_token_and_open_export_link"
 
 
-function FileProtectedDownloadTableButton({ t, history, protectedMediaUrl, className="" }) {
+function FileProtectedDownloadTableButton({ t, history, protectedMediaUrl, showLabel=true, className="" }) {
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   return (
@@ -22,11 +22,12 @@ function FileProtectedDownloadTableButton({ t, history, protectedMediaUrl, class
       size="sm"
       icon="download-cloud"
       RootComponent="a" 
+      title="download"
       onClick={() => refreshTokenAndOpenExportLinkInNewTab(
         t, doTokenRefresh, history, protectedMediaUrl
     )}
     >
-      {t('general.download')}
+      { showLabel && t('general.download')}
     </Button>
   )
 }
