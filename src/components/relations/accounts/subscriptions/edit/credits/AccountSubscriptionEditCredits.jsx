@@ -134,7 +134,7 @@ function AccountSubscriptionEditCredits({t, match, history}) {
                 </Table.Col>
                 <Table.Col>
                   {moment(node.expiration).format(dateFormat)} <br />
-                  {node.expired && <Badge color="danger">{t("general.expired")}</Badge>}
+                  {(node.expired && !node.scheduleItemAttendance) ? <Badge color="danger">{t("general.expired")}</Badge> : ''}
                 </Table.Col>
                 <Table.Col>
                   {/* TODO class info here */}

@@ -820,7 +820,7 @@
                 "deleted": "Deleted subscriptions group"
             },
             "explanation": "A number of or unlimited classes for a monthly fee",
-            "reconciliation_classes": "Reconciliation classes",
+            "reconciliation_classes": "Advance credits",
             "credit_validity": "Credit validity"
         },
         "subscription": {
