@@ -2024,7 +2024,9 @@
                 },
                 "menu": {
                     "edit_this_class": "__STRING_NOT_TRANSLATED__"
-                }
+                },
+                "unable_to_book_class": "__STRING_NOT_TRANSLATED__",
+                "processing_checkin": "__STRING_NOT_TRANSLATED__"
             },
             "placeholder_enddate": "__STRING_NOT_TRANSLATED__",
             "instructors": {

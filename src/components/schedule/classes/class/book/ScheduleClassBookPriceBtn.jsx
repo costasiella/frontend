@@ -4,6 +4,7 @@ import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 
 import {
+  Alert,
   Button,
 } from "tabler-react";
 import { toast } from 'react-toastify'
@@ -32,11 +33,21 @@ function ScheduleClassBookPriceBtn({t, match, history, price, returnTo, location
   const [classCheckin, { loading, error }] = useMutation(CREATE_SCHEDULE_ITEM_ATTENDANCE)
 
   if (loading) {
-    return "Please wait..."
+    return <Button 
+      block 
+      outline 
+      disabled={true}
+      color="success" 
+    >
+      {t("schedule.classes.class.processing_checkin")}
+    </Button>
   }
 
   if (error) {
-    return "uh oh... error found"
+    console.log(error)
+    return <Alert type="danger">
+      {t("schedule.classes.class.unable_to_book_class")}
+    </Alert>
   }
 
   const returnUrl = getUrlFromReturnTo({

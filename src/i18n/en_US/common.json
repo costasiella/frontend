@@ -1414,7 +1414,9 @@
                 },
                 "menu": {
                     "edit_this_class": "Edit this class"
-                }
+                },
+                "unable_to_book_class": "Unable to book class",
+                "processing_checkin": "Checking in..."
             },
             "no_instructor": "Looking for an instructor",
             "prices": {
