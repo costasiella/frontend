@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 // import logo from './logo.svg';
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Route, 
   Switch, 
@@ -11,6 +11,7 @@ import {
 import { withTranslation } from 'react-i18next'
 import { useQuery, useMutation } from "@apollo/client"
 import { toast } from 'react-toastify'
+import { Dimmer } from 'tabler-react'
 
 
 import { GET_APP_SETTINGS_QUERY } from "./components/settings/general/date_time/queries"
@@ -363,13 +364,16 @@ function SetCurrentUrlAsNext() {
   localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
 }
 
-
+// Private routes catches expires tokens
 const PrivateRoute = ({ component: Component, ...rest }) => {
+  const [ refreshingToken, setRefreshingToken ] = useState(false)
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   let authTokenExpired = false
   console.log(rest.path)
 
   const ContinueAsYouAre = <Route {...rest} render={(props) => ( <Component {...props} /> )} />
+  const WaitAsYouAre = <Route {...rest} render={(props) => ( 
+    <Dimmer active={true} loader={true}><Component {...props} /> </Dimmer>)} />
   const LoginRequired = <Route {...rest} render={(props) => ( <Redirect to='/user/login/required' /> )} />
   const SessionExpired = <Route {...rest} render={(props) => ( <Redirect to='/user/session/expired' /> )} />
   
@@ -379,7 +383,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     authTokenExpired = true
   }
 
-  if (authTokenExpired) {
+  if (refreshingToken) {
+    console.log("Refreshing token... please wait")
+    return WaitAsYouAre
+  }
+
+  if (authTokenExpired)  {
     const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
     if (refreshTokenExp == null) {
       console.log("refresh token not found")
@@ -401,10 +410,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       console.log(new Date() / 1000)
       console.log(refreshTokenExp)
 
+      //TODO: Catch loading state?
+      setRefreshingToken(true)
       doTokenRefresh().then(({ data }) => {
         console.log('got refresh data', data)
         CSAuth.updateTokenInfo(data.refreshToken)
-        return ContinueAsYouAre
+        setTimeout(function() {
+          setRefreshingToken(false)
+        }, 100)
+        return ContinueAsYouAre  
       }).catch((error) => {
         toast.error(error, {
           position: toast.POSITION.BOTTOM_RIGHT

@@ -57,7 +57,9 @@ function SetCurrentUrlAsNext() {
     localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
   } 
 }
-  
+
+
+let refreshingToken = false
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward, response }) => {
   console.log(operation)
@@ -95,6 +97,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
     }
   }
 
+  // Catch expired tokens on refresh
   if (user_nog_logged_in_within_response_errors || user_not_logged_in_within_graphql_errors) {
     console.log('Time to refresh the token')
 
@@ -115,17 +118,20 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
       }
     }
     
-    if (authTokenExpired && !refreshTokenExpired) {
+    if (authTokenExpired && !refreshTokenExpired && !refreshingToken) {
       console.log("refresh token... somehow...")
-      console.log(localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN))
 
       return new Observable(observer => {
+        refreshingToken = true
         client.mutate({
           mutation: TOKEN_REFRESH,
         })
           .then(({ data }) => { 
             console.log(data)
             CSAuth.updateTokenInfo(data.refreshToken)
+            setTimeout(function() {
+              refreshingToken = false
+            }, 100)
           })
           .then(() => {
             const subscriber = {
@@ -139,19 +145,24 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
           })
           .catch(error => {
             // No refresh or client token available, we force user to login, after a cleanup
-            console.log("Failed to refresh the token, onwards to the login page")
+
+            // 
+            // console.log("Failed to refresh the token, onwards to the login page")
+            console.log("Error refreshing token!")
+            console.log(error);
             observer.error(error);
-            CSAuth.cleanup()
-            window.location.href = "/#/user/login"
-            window.location.reload()
+            refreshingToken = false
+            // CSAuth.cleanup()
+            // window.location.href = "/#/user/login"
+            // window.location.reload()
           });
       })
     } else if (refreshTokenExpired) {
+      console.log("Refresh token expired")
       window.location.href = "#/user/session/expired"
       window.location.reload()
-    } else {
-      window.location.href = "#/user/login/required"
-      window.location.reload()
+    } else if (refreshingToken) {
+      console.log("Token refreshing...")
     }
   }
 })
