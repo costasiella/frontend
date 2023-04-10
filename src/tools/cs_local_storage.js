@@ -5,6 +5,7 @@ const cs_local_storage_keys = {
     AUTH_REFRESH_TOKEN: 'costasiella:authRefreshToken', 
     AUTH_REFRESH_TOKEN_EXP: 'costasiella:refreshTokenExp',
     AUTH_LOGIN_NEXT: 'costasiella:authLoginNext',
+    FINANCE_EXPENSES_FILTER_SUPPLIER: 'costasiella:financeExpensesFilterSupplier',
     FINANCE_INVOICES_FILTER_STATUS: 'costasiella:financeInvoicesFilterStatus',
     FINANCE_INVOICES_EDIT_RETURN: 'costasiella:financeInvoicesEditReturn',
     FINANCE_ORDERS_FILTER_STATUS: 'costasiella:financeOrdersFilterStatus',
