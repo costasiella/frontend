@@ -39,6 +39,21 @@ export const GET_EXPENSES_QUERY = gql`
         }
       }
     }
+    businesses(first: 1000, archived: false, supplier: true) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          archived
+          name
+        }
+      }
+    }
   }
 `
 
