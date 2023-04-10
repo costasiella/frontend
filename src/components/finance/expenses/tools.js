@@ -3,11 +3,11 @@ import CSLS from "../../../tools/cs_local_storage"
 export function get_list_query_variables() {
   let queryVars = {}
 
-  let status = localStorage.getItem(CSLS.FINANCE_INVOICES_FILTER_STATUS)
-  if (status) {
-    queryVars.status = status
+  let supplier = localStorage.getItem(CSLS.FINANCE_EXPENSES_FILTER_SUPPLIER)
+  if (supplier) {
+    queryVars.supplier = supplier
   } else {
-    queryVars.status = undefined
+    queryVars.supplier = undefined
   }
   
   console.log(queryVars)
