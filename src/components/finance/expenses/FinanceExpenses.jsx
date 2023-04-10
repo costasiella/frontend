@@ -10,17 +10,23 @@ import {
 import ContentCard from "../../general/ContentCard"
 import FinanceExpensesBase from "./FinanceExpensesBase"
 import FinanceExpensesList from './FinanceExpensesList'
+import FinanceExpensesFilter from './FinanceExpensesFilter';
 
-// import { get_list_query_variables } from "./tools"
+import { get_list_query_variables } from "./tools"
 import { GET_EXPENSES_QUERY } from "./queries"
 
 
 function FinanceExpenses({ t, location, history }) {
   // Fetch data
   const { loading, error, data, refetch, fetchMore } = useQuery(GET_EXPENSES_QUERY, {
-    // variables: get_list_query_variables(),
+    variables: get_list_query_variables(),
     fetchPolicy: "network-only"
   })
+
+  function test(vars) {
+    refetch(get_list_query_variables())
+    console.log(vars)
+  }
 
 
   if (loading) return (
@@ -45,7 +51,8 @@ function FinanceExpenses({ t, location, history }) {
 
   // Empty list
   if (!expenses.edges.length) { return (
-    <FinanceExpensesBase refetch={refetch}>
+    <FinanceExpensesBase refetch={refetch} showListButtons={true}>
+      <FinanceExpensesFilter data={data} refetch={refetch} />
       <ContentCard cardTitle={t('finance.expenses.title')}>
         <p>
           {t('finance.expenses.empty_list')}
@@ -56,6 +63,7 @@ function FinanceExpenses({ t, location, history }) {
 
   return (
     <FinanceExpensesBase refetch={refetch} showListButtons={true}>
+      <FinanceExpensesFilter data={data} refetch={test} />
       <ContentCard 
         cardTitle={t('finance.expenses.title')}
         hasCardBody={false}

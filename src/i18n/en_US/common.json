@@ -366,7 +366,7 @@
             "title_add": "Add expense",
             "toast_add_success": "Added expense",
             "error_loading": "Error loading expenses... :(",
-            "empty_list": "No expenses have been added yet.",
+            "empty_list": "No expenses found ...",
             "delete_confirm_msg": "Are you sure you wish to remove this expense?",
             "deleted": "Deleted expense",
             "export": {
@@ -380,6 +380,9 @@
             "toast_edit_success": "Saved",
             "confirm_duplicate": "Do you wish to duplicate this expense?",
             "toast_duplicate_success": "Expense duplicated. You're now editing the duplicated expense."
+        },
+        "expenes": {
+            "filter_all_suppliers": "All suppliers"
         }
     },
     "general": {
