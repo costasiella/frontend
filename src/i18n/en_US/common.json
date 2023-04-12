@@ -1068,7 +1068,10 @@
             "quote_to_business": "Quote to business or to this account",
             "quote_to_account": "Quote to account",
             "set_password": "Set password",
-            "toast_edit_password_success": "New password set"
+            "toast_edit_password_success": "New password set",
+            "mollie_customer_id": "Mollie Customer ID",
+            "set_mollie_customer_id": "Set Mollie Customer ID",
+            "toast_edit_mollie_customer_id_success": "Saved Mollie Customer ID"
         },
         "account": {
             "subscriptions": {

@@ -5,7 +5,7 @@ import { withRouter } from "react-router"
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 
-import { GET_ACCOUNT_QUERY } from '../queries'
+import { GET_ACCOUNT_QUERY, UPDATE_ACCOUNT } from '../queries'
 import { UPDATE_ACCOUNT_PASSWORD } from './queries'
 // import { ACCOUNT_SCHEMA } from './yupSchema'
 
@@ -14,6 +14,7 @@ import {
   Dimmer,
 } from "tabler-react"
 
+import RelationsAccountMollieCustomerForm from "./RelationsAccountMollieCustomerForm"
 import RelationsAccountPasswordForm from "./RelationsAccountPasswordForm"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
 
@@ -27,6 +28,7 @@ function RelationsAccountTools({t, match}) {
     variables: {id: accountId},
     fetchPolicy: "network-only"
   })
+  const [updateAccount] = useMutation(UPDATE_ACCOUNT)
   const [updateAccountPassword] = useMutation(UPDATE_ACCOUNT_PASSWORD)
 
   if (loading) return (
@@ -64,12 +66,55 @@ function RelationsAccountTools({t, match}) {
       user={account}
       activeLink={activeLink}
     >
-      <Card>
-        <Card.Header>
-          <Card.Title>{t("relations.accounts.set_password")}</Card.Title>
-        </Card.Header>
+      <Card title={t("relations.accounts.set_password")}> 
+        {/* Update password */}
         <Formik
-            initialValues={{}}
+          initialValues={{}}
+          // validationSchema={ACCOUNT_SCHEMA}
+          onSubmit={(values, { setSubmitting }) => {
+              console.log('submit values:')
+              console.log(values)
+
+              let input_vars = {
+                id: accountId,
+                passwordNew: values.passwordNew
+              }
+
+              updateAccountPassword({ variables: {
+                input: input_vars
+              }})
+              .then(({ data }) => {
+                console.log('got data', data)
+                toast.success((t('relations.accounts.toast_edit_password_success')), {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+                setSubmitting(false)
+              }).catch((error) => {
+                toast.error((t('general.toast_server_error')) +  error, {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+                console.log('there was an error sending the query', error)
+                setSubmitting(false)
+              }
+            )
+          }}
+          >
+          {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+            <RelationsAccountPasswordForm
+              isSubmitting={isSubmitting}
+              setFieldTouched={setFieldTouched}
+              setFieldValue={setFieldValue}
+              errors={errors}
+              values={values}
+              inputData={data}
+            />
+          )}
+        </Formik>
+      </Card>
+      <Card title={t("relations.accounts.set_mollie_customer_id")}>
+        {/* Update mollie customer id */}
+        <Formik
+            initialValues={{ mollieCustomerId: data.account.mollieCustomerId }}
             // validationSchema={ACCOUNT_SCHEMA}
             onSubmit={(values, { setSubmitting }) => {
                 console.log('submit values:')
@@ -77,15 +122,15 @@ function RelationsAccountTools({t, match}) {
 
                 let input_vars = {
                   id: accountId,
-                  passwordNew: values.passwordNew
+                  mollieCustomerId: values.mollieCustomerId
                 }
 
-                updateAccountPassword({ variables: {
+                updateAccount({ variables: {
                   input: input_vars
                 }})
                 .then(({ data }) => {
                   console.log('got data', data)
-                  toast.success((t('relations.accounts.toast_edit_password_success')), {
+                  toast.success((t('relations.accounts.toast_edit_mollie_customer_id_success')), {
                       position: toast.POSITION.BOTTOM_RIGHT
                     })
                   setSubmitting(false)
@@ -100,7 +145,7 @@ function RelationsAccountTools({t, match}) {
             }}
             >
             {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
-              <RelationsAccountPasswordForm
+              <RelationsAccountMollieCustomerForm
                 isSubmitting={isSubmitting}
                 setFieldTouched={setFieldTouched}
                 setFieldValue={setFieldValue}
