@@ -67,7 +67,7 @@ function FinanceInvoicesExport({t, history}) {
                 const isoDateStart = dateToLocalISO(values.dateStart)
                 const isoDateEnd = dateToLocalISO(values.dateEnd)
                 setExportUrl(
-                  `/d/export/invoices/${isoDateStart}/${isoDateEnd}/${status}/`
+                  `/d/export/invoices/${isoDateStart}/${isoDateEnd}/${status}`
                 )
                 
                 setSubmitting(false)
