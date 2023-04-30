@@ -152,9 +152,9 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
             console.log(error);
             observer.error(error);
             refreshingToken = false
-            // CSAuth.cleanup()
-            // window.location.href = "/#/user/login"
-            // window.location.reload()
+            CSAuth.cleanup()
+            window.location.href = "/#/user/login"
+            window.location.reload()
           });
       })
     } else if (refreshTokenExpired) {
