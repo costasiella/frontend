@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
@@ -11,6 +11,8 @@ import {
   Table,
 } from "tabler-react";
 
+import { TOKEN_REFRESH } from '../../../../queries/system/auth';
+import { refreshTokenAndOpenExportLinkInNewTab } from '../../../../tools/refresh_token_and_open_export_link';
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBoolean from "../../../ui/BadgeBoolean"
 import ButtonAdd from "../../../ui/ButtonAdd"
@@ -28,8 +30,7 @@ function ScheduleItems({t, match, history}) {
   
   const eventId = match.params.event_id
   const activeLink = "activities"
-
-  const pageHeaderOptions = <ButtonAdd addUrl={`/schedule/events/edit/${eventId}/activities/add`} className="ml-2" />
+  const exportUrl = `/d/export/schedule_event/activities/attendance/${eventId}`
 
   const { loading, error, data, fetchMore } = useQuery(GET_SCHEDULE_EVENT_ACTIVITIES_QUERY, {
     variables: {
@@ -37,6 +38,23 @@ function ScheduleItems({t, match, history}) {
     },
     fetchPolicy: "network-only"
   })
+
+  const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
+
+  const pageHeaderOptions = <React.Fragment>
+    {/* Export Active Accounts */}
+    <Button
+      color="secondary"
+      icon="download-cloud"
+      className="ml-2"
+      onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+        t, doTokenRefresh, history, exportUrl
+      )}
+    >
+      {t('general.export')} 
+    </Button>
+    <ButtonAdd addUrl={`/schedule/events/edit/${eventId}/activities/add`} className="ml-2" />
+  </React.Fragment>
   
   if (loading) return (
     <ScheduleEventEditListBase activeLink={activeLink} pageHeaderOptions={pageHeaderOptions}>

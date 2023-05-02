@@ -132,7 +132,7 @@ function OrganizationSubscriptionsPrices ({ t, history, match }) {
                     <ButtonDelete 
                       msgConfirm={t('organization.subscription_prices.delete_confirm_msg')}
                       msgDescription={<p>
-                        {node.priceDisplay} {node.financeTaxRate.name} <br />
+                        {node.priceDisplay} {node.financeTaxRate && node.financeTaxRate.name} <br />
                         <span className="text-muted">
                           {node.dateStart} {(node.dateEnd) ? ' - ' + node.dateEnd : ""}
                         </span>

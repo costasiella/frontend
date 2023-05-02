@@ -89,6 +89,7 @@ export const GET_ACCOUNT_QUERY = gql`
       emergency
       isActive
       keyNumber
+      mollieCustomerId
       urlImageThumbnailSmall
       organizationDiscovery {
         id
@@ -145,9 +146,6 @@ export const UPDATE_ACCOUNT = gql`
     updateAccount(input: $input) {
       account {
         id
-        firstName
-        lastName
-        email
       }
     }
   }

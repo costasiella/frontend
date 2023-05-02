@@ -1477,7 +1477,10 @@
             "quote_to_business": "__STRING_NOT_TRANSLATED__",
             "quote_to_account": "__STRING_NOT_TRANSLATED__",
             "set_password": "__STRING_NOT_TRANSLATED__",
-            "toast_edit_password_success": "__STRING_NOT_TRANSLATED__"
+            "toast_edit_password_success": "__STRING_NOT_TRANSLATED__",
+            "mollie_customer_id": "__STRING_NOT_TRANSLATED__",
+            "set_mollie_customer_id": "__STRING_NOT_TRANSLATED__",
+            "toast_edit_mollie_customer_id_success": "__STRING_NOT_TRANSLATED__"
         },
         "title": "__STRING_NOT_TRANSLATED__",
         "b2b": {
