@@ -14,7 +14,7 @@ import {
 import cs_django_links from "../../tools/cs_django_links"
 
 
-const ShopClasspassForm = ({ t, isSubmitting, errors }) => (
+const ShopCheckoutForm = ({ t, isSubmitting, errors }) => (
     <FoForm>
       <Form.Group label={t('shop.order.message')}>
         <Field type="text" 
@@ -49,4 +49,4 @@ const ShopClasspassForm = ({ t, isSubmitting, errors }) => (
     </FoForm>
 )
 
-export default withTranslation()(withRouter(ShopClasspassForm))
+export default withTranslation()(withRouter(ShopCheckoutForm))
