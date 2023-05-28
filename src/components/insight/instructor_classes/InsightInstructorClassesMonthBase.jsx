@@ -17,7 +17,7 @@ function InsightInstructorClassesMonthBase({t, history, children}) {
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("finance.title")}>
+          <Page.Header title={t("insight.title")}>
             <div className="page-options d-flex">
               <InsightBackHome />
             </div>
