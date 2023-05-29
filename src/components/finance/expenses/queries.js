@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const GET_EXPENSES_QUERY = gql`
-  query FinanceExpenses($after: String, $before: String, $supplier: ID) {
-    financeExpenses(first: 25, before: $before, after: $after, supplier: $supplier) {
+query FinanceExpenses($after: String, $before: String, $supplier: ID, $dateFrom: Date, $dateUntil: Date) {
+  financeExpenses(first: 25, before: $before, after: $after, supplier: $supplier, date_Gte:$dateFrom, date_Lte:$dateUntil) {
       pageInfo {
         hasNextPage
         hasPreviousPage
