@@ -925,9 +925,7 @@
             "toast_duplicate_success": "__STRING_NOT_TRANSLATED__",
             "filter_label_supplier": "__STRING_NOT_TRANSLATED__",
             "filter_label_date_from": "__STRING_NOT_TRANSLATED__",
-            "filter_date_from": "__STRING_NOT_TRANSLATED__",
-            "filter_label_date_until": "__STRING_NOT_TRANSLATED__",
-            "filter_date_until": "__STRING_NOT_TRANSLATED__"
+            "filter_label_date_until": "__STRING_NOT_TRANSLATED__"
         },
         "expenes": {
             "filter_all_suppliers": "__STRING_NOT_TRANSLATED__"
