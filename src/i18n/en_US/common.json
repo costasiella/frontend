@@ -379,7 +379,12 @@
             "title_edit": "Edit expense",
             "toast_edit_success": "Saved",
             "confirm_duplicate": "Do you wish to duplicate this expense?",
-            "toast_duplicate_success": "Expense duplicated. You're now editing the duplicated expense."
+            "toast_duplicate_success": "Expense duplicated. You're now editing the duplicated expense.",
+            "filter_label_supplier": "Supplier",
+            "filter_label_date_from": "Date from",
+            "filter_date_from": "Date until",
+            "filter_label_date_until": "Date until",
+            "filter_date_until": "Date until"
         },
         "expenes": {
             "filter_all_suppliers": "All suppliers"
