@@ -120,8 +120,20 @@ function FinanceExpensesFilter({ t, history, data, refetch }) {
             color="link"
             size="sm"
             onClick={() => {
+              // Supplier
               localStorage.setItem(CSLS.FINANCE_EXPENSES_FILTER_SUPPLIER, "")
               setSupplier("")
+              // Date from
+              const dateFromDefault = moment().startOf('quarter')
+              localStorage.setItem(CSLS.FINANCE_EXPENSES_FILTER_DATE_FROM, 
+                dateFromDefault.format("YYYY-MM-DD"))
+              setDateFrom(new Date(dateFromDefault))
+              // Date until
+              const dateUntilDefault = moment().endOf('quarter')
+              localStorage.setItem(CSLS.FINANCE_EXPENSES_FILTER_DATE_UNTIL, 
+                dateUntilDefault.format("YYYY-MM-DD"))
+              setDateUntil(new Date(dateUntilDefault))
+              // Refetch
               refetch(get_list_query_variables())
             }}
           >
