@@ -32,28 +32,28 @@ import {
 //   notificationsObjects: Array<NotificationProps>,
 // |};
 
-type subNavItem = {|
-  +value: string,
-  +to?: string,
-  +icon?: string,
-  +LinkComponent?: React.ElementType,
-|};
+// type subNavItem = {|
+//   +value: string,
+//   +to?: string,
+//   +icon?: string,
+//   +LinkComponent?: React.ElementType,
+// |};
 
-type navItem = {|
-  +value: string,
-  +to?: string,
-  +icon?: string,
-  +active?: boolean,
-  +LinkComponent?: React.ElementType,
-  +subItems?: Array<subNavItem>,
-  +useExact?: boolean,
-|};
+// type navItem = {|
+//   +value: string,
+//   +to?: string,
+//   +icon?: string,
+//   +active?: boolean,
+//   +LinkComponent?: React.ElementType,
+//   +subItems?: Array<subNavItem>,
+//   +useExact?: boolean,
+// |};
 
 
 const getNavBarItems = (t, loading, error, data) => {
   const shopFeatures = data.systemFeatureShop
 
-  let items: Array<navItem> = []
+  let items = []
   // let permissions = get_all_permissions(user)
 
   if (loading) {
