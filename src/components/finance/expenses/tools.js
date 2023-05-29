@@ -9,6 +9,13 @@ export function get_list_query_variables() {
   } else {
     queryVars.supplier = undefined
   }
+
+  let dateFrom = localStorage.getItem(CSLS.FINANCE_EXPENSES_FILTER_DATE_FROM)
+  if (dateFrom) {
+    queryVars.dateFrom = dateFrom
+  } else {
+    queryVars.dateFrom = undefined
+  }
   
   console.log(queryVars)
 
