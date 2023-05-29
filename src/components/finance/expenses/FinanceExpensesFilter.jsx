@@ -24,7 +24,7 @@ function getDefaultValue(lsKey) {
 
 function getDefaultValueDate(lsKey) {
   let dateValue
-  if (lsKey == CSLS.FINANCE_EXPENSES_FILTER_DATE_FROM) {
+  if (lsKey === CSLS.FINANCE_EXPENSES_FILTER_DATE_FROM) {
     dateValue = new Date(moment().startOf('quarter'))  
   } else {
     dateValue = new Date(moment().endOf('quarter'))  
