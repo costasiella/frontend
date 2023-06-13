@@ -827,7 +827,7 @@
             },
             "explanation": "A number of or unlimited classes for a monthly fee",
             "reconciliation_classes": "Advance credits",
-            "credit_validity": "Credit validity"
+            "credit_validity": "Credit validity in days"
         },
         "subscription": {
             "public": "This is a public subscription",
