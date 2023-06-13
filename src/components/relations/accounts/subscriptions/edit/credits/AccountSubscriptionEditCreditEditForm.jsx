@@ -1,7 +1,7 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Form as FoForm, ErrorMessage } from 'formik'
+import { Form as FoForm, Field, ErrorMessage } from 'formik'
 
 import {
   Button,
@@ -11,8 +11,6 @@ import {
 } from "tabler-react"
 
 import CSDatePicker from '../../../../../ui/CSDatePicker';
-import { Editor } from '@tinymce/tinymce-react'
-import { tinymceBasicConf } from "../../../../../../plugin_config/tinymce"
 
 
 function AccountSubscriptionEditCreditForm ({ 
@@ -60,19 +58,13 @@ function AccountSubscriptionEditCreditForm ({
         </Grid.Row>
         <Grid.Row>
           <Grid.Col>
-          <Form.Group label={t('general.description')}>
-            <Editor
-                tinymceScriptSrc="/d/static/tinymce/tinymce.min.js"
-                textareaName="description"
-                initialValue={values.description}
-                init={tinymceBasicConf}
-                onBlur={(e) => {
-                  setFieldValue("description", e.target.getContent())
-                  setFieldTouched("description", true, true)
-                }}
-              />
-            <ErrorMessage name="description" component="span" className="invalid-feedback" />
-          </Form.Group>
+            <Form.Group label={t('general.description')}>
+              <Field type="text" 
+                  name="description" 
+                  className={(errors.description) ? "form-control is-invalid" : "form-control"} 
+                  autoComplete="off" />
+              <ErrorMessage name="description" component="span" className="invalid-feedback" />
+            </Form.Group>
           </Grid.Col>
         </Grid.Row>
       </Card.Body>

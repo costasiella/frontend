@@ -63,11 +63,9 @@ function AccountSubscriptionEditCreditAdd({ t, history, match }) {
             })
         }}
         >
-        {({ isSubmitting, errors, values, setFieldTouched, setFieldValue }) => (
+        {({ isSubmitting, errors, values }) => (
           <AccountSubscriptionEditCreditAddForm
             isSubmitting={isSubmitting}
-            setFieldTouched={setFieldTouched}
-            setFieldValue={setFieldValue}
             errors={errors}
             values={values}
             returnUrl={returnUrl}
