@@ -1394,7 +1394,8 @@
                     "resend_info_mail": "Resend info mail",
                     "confirm_resending_info_mail_title": "Resend info mail",
                     "attending": "Attending",
-                    "booked": "Booked"
+                    "booked": "Booked",
+                    "trial": "Trial"
                 },
                 "book": {
                     "toast_success": "Check-in success",

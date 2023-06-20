@@ -53,6 +53,12 @@ export const GET_SCHEDULE_CLASS_ATTENDANCE_QUERY = gql`
             id
             fullName
           }     
+          accountClasspass {
+            organizationClasspass {
+              name
+              trialPass
+            }
+          }
           attendanceType
           bookingStatus
         }

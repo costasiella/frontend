@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import {
+  Badge,
   Button,
   Card,
   Dimmer,
@@ -163,7 +164,16 @@ function SelfCheckinCheckin({ t, match, history }) {
               {queryAttendanceData.scheduleItemAttendances.edges.map(({ node }) => (
                   <Table.Row key={v4()}>
                     <Table.Col>
-                      {node.account.fullName}
+                      {node.account.fullName} <br />
+                      {node.accountClasspass && 
+                        <small className='text-muted'>
+                          {node.accountClasspass.organizationClasspass.name} { " " }
+                        </small>
+                      }
+                      {node.accountClasspass && 
+                       node.accountClasspass.organizationClasspass.trialPass && 
+                       <Badge color="success">{t('schedule.classes.class.attendance.trial')}</Badge>
+                      }
                     </Table.Col>
                     <Table.Col>
                       <BadgeBookingStatus status={node.bookingStatus} />
