@@ -375,7 +375,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const WaitAsYouAre = <Route {...rest} render={(props) => ( 
     <Dimmer active={true} loader={true}><Component {...props} /> </Dimmer>)} />
   const LoginRequired = <Route {...rest} render={(props) => ( <Redirect to='/user/login/required' /> )} />
-  const SessionExpired = <Route {...rest} render={(props) => ( <Redirect to='/user/session/expired' /> )} />
+  // const SessionExpired = <Route {...rest} render={(props) => ( <Redirect to='/user/session/expired' /> )} />
   
   // Check expiration
   const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
