@@ -390,46 +390,46 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
   if (authTokenExpired)  {
     const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
-    if (refreshTokenExp == null) {
-      console.log("refresh token not found")
-      SetCurrentUrlAsNext()
-      CSAuth.cleanup()
+    // if (refreshTokenExp == null) {
+    //   console.log("refresh token not found")
+    //   SetCurrentUrlAsNext()
+    //   CSAuth.cleanup()
       
-      return LoginRequired
-    } else if ((new Date() / 1000) >= refreshTokenExp) {
-      console.log("refresh token expired")
-      console.log(new Date() / 1000)
-      console.log(refreshTokenExp)
-      SetCurrentUrlAsNext()
-      CSAuth.cleanup()
+    //   return LoginRequired
+    // } else if ((new Date() / 1000) >= refreshTokenExp) {
+    //   console.log("refresh token expired")
+    //   console.log(new Date() / 1000)
+    //   console.log(refreshTokenExp)
+    //   SetCurrentUrlAsNext()
+    //   CSAuth.cleanup()
 
-      return SessionExpired
-    } else {
+    //   return SessionExpired
+    // } else {
       // Refresh token
-      console.log("auth token expired")
-      console.log(new Date() / 1000)
-      console.log(refreshTokenExp)
+    console.log("auth token expired, trying to refresh")
+    console.log(new Date() / 1000)
+    console.log(refreshTokenExp)
 
-      //TODO: Catch loading state?
-      setRefreshingToken(true)
-      doTokenRefresh().then(({ data }) => {
-        console.log('got refresh data', data)
-        CSAuth.updateTokenInfo(data.refreshToken)
-        setTimeout(function() {
-          setRefreshingToken(false)
-        }, 100)
-        return ContinueAsYouAre  
-      }).catch((error) => {
-        toast.error(error, {
-          position: toast.POSITION.BOTTOM_RIGHT
-        })
-        console.log('there was an error refreshing the token', error) 
-        SetCurrentUrlAsNext()
-        // As there was an issue detected with the refresh token, clear all.
-        CSAuth.cleanup()
-        return LoginRequired
+    // Catch loading state
+    setRefreshingToken(true)
+    doTokenRefresh().then(({ data }) => {
+      console.log('got refresh data', data)
+      CSAuth.updateTokenInfo(data.refreshToken)
+      setTimeout(function() {
+        setRefreshingToken(false)
+      }, 100)
+      return ContinueAsYouAre  
+    }).catch((error) => {
+      toast.error(error, {
+        position: toast.POSITION.BOTTOM_RIGHT
       })
-    }
+      console.log('there was an error refreshing the token', error) 
+      SetCurrentUrlAsNext()
+      // As there was an issue detected with the refresh token, clear all.
+      CSAuth.cleanup()
+      return LoginRequired
+    })
+    // }
   } else {
     return ContinueAsYouAre
   }
