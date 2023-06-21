@@ -48,7 +48,7 @@ query ScheduleEvent($id: ID!) {
         }
       }
     }
-    tickets(first: 100) {
+    tickets(first: 100, displayPublic: true) {
       pageInfo {
         hasNextPage
         hasPreviousPage
