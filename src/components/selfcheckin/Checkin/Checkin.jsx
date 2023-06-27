@@ -62,6 +62,7 @@ function setAttendanceStatus({t, updateAttendance, node, status, scheduleItemId,
 function SelfCheckinCheckin({ t, match, history }) {
   const [showSearch, setShowSearch] = useState(false)
   const [refetchingAttendance, setRefetchingAttendance] = useState(false)
+  const [searchName, setSearchName] = useState(undefined)
   const locationId = match.params.location_id
   const scheduleItemId = match.params.class_id
   const classDate = match.params.date
@@ -277,7 +278,7 @@ function SelfCheckinCheckin({ t, match, history }) {
       </ContentCard>
       <h3>{t("selfcheckin.checkin.title_not_on_list")}</h3>
       <InputSearch 
-        initialValueKey={CSLS.SELFCHECKIN_CHECKIN_SEARCH}
+        initialValueKey={searchName}
         placeholder={t("search")}
         onChange={(value) => {
           console.log(value)
@@ -286,9 +287,11 @@ function SelfCheckinCheckin({ t, match, history }) {
             // {console.log('showSearch')}
             // {console.log(showSearch)}
             setShowSearch(true)
-            getAccounts({ variables: get_accounts_query_variables()})
+            setSearchName(value)
+            getAccounts({ variables: get_accounts_query_variables(value)})
           } else {
             setShowSearch(false)
+            setSearchName(undefined)
           }
         }}
       /> <br />

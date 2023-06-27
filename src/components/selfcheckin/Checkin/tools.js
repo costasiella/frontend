@@ -1,15 +1,11 @@
-import CSLS from "../../../tools/cs_local_storage"
 import moment from 'moment'
 
-export function get_accounts_query_variables() {
+export function get_accounts_query_variables(searchName) {
   let queryVars = {
     searchName: undefined
   }
 
-  let search = localStorage.getItem(CSLS.SELFCHECKIN_CHECKIN_SEARCH)
-  queryVars.searchName = search
-
-  console.log(queryVars)
+  queryVars.searchName = searchName
 
   return queryVars
 }
