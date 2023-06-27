@@ -4,9 +4,7 @@ export const GET_ACCOUNTS_QUERY = gql`
   query Accounts(
     $after: String, 
     $before: String, 
-    $searchName: String,
-    $instructor: Boolean,
-    $employee: Boolean
+    $searchName: String
   ) {
     accounts(
       first: 25, 
@@ -14,9 +12,7 @@ export const GET_ACCOUNTS_QUERY = gql`
       after: $after, 
       isActive: true, 
       fullName_Icontains: $searchName,
-      customer: true,
-      instructor: $instructor,
-      employee: $employee
+      customer: true
     ) {
       pageInfo {
         hasNextPage

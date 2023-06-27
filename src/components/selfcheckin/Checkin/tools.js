@@ -3,8 +3,6 @@ import moment from 'moment'
 
 export function get_accounts_query_variables() {
   let queryVars = {
-    instructor: undefined,
-    employee: undefined,
     searchName: undefined
   }
 

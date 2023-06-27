@@ -89,7 +89,7 @@ function SelfCheckinCheckin({ t, match, history }) {
       loading: queryAccountsLoading, 
       error: queryAccountsError, 
       data: queryAccountsData 
-    }] = useLazyQuery( GET_ACCOUNTS_QUERY )
+    }] = useLazyQuery( GET_ACCOUNTS_QUERY, { fetchPolicy: "network-only"} )
 
   console.log('queryAccountsData')
   console.log(queryAccountsData)
