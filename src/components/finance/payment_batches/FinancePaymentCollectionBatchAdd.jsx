@@ -105,8 +105,8 @@ function FinancePaymentCollectionBatchAdd({ t, history, match }) {
             }
 
             if (categoryType === "category") {
-              input.year = values.year
-              input.month = values.month
+              input.year = parseInt(values.year)
+              input.month = parseInt(values.month)
               input.financePaymentBatchCategory = values.financePaymentBatchCategory
             }
 
