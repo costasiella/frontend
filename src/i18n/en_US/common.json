@@ -232,7 +232,7 @@
             "batch_category": "Category",
             "error_loading_input_values": "Error loading input values... :(",
             "include_zero_amounts": "Include zero amounts",
-            "toast_add_success": "Added payment batch",
+            "toast_add_success": "Added payment batch. Adding items, please wait...",
             "status": {
                 "SENT_TO_BANK": "Sent to bank",
                 "APPROVED": "Approved",

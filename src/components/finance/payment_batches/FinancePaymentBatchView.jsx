@@ -27,7 +27,8 @@ function FinancePaymentBatchView({ t, history, match }) {
   const batchId = match.params.id
 
   const { loading, error, data } = useQuery(GET_PAYMENT_BATCH_QUERY, {
-    variables: { id: batchId }
+    variables: { id: batchId },
+    pollInterval: 5000,
   })
   // const [updateFinancePaymentBatch] = useMutation(UPDATE_PAYMENT_BATCH)
 
