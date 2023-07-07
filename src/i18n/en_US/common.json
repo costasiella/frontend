@@ -2181,7 +2181,7 @@
         },
         "inactive_accounts": {
             "title": "Inactive account reports",
-            "explanation": "Find and optionally clean up accounts inactive after a given date.",
+            "explanation": "Find and optionally clean up accounts inactive after a set date.",
             "error_loading": "Error loading inactive account reports :(",
             "empty_list": "No inactive account reports have been generated yet",
             "created_at": "Generated at",
@@ -2206,6 +2206,10 @@
             "title": "Instructor classes in month",
             "explanation": "Report on classes by instructors in a given month",
             "find_classes": "Find classes"
+        },
+        "keynumbers_wo_subscritpion": {
+            "title": "Subscribers without keys",
+            "explanation": "Customers with a subscription, that have't been assigned a key"
         }
     },
     "selfcheckin": {

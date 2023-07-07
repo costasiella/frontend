@@ -108,6 +108,19 @@ class InsightHome extends Component {
                   </Card>
                 </Grid.Col>
               </HasPermissionWrapper>
+              <HasPermissionWrapper permission="view"
+                                    resource="insightkeynumberswosubscription">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.keynumbers_wo_subscritpion.title")}</h5>
+                      {t("insight.keynumbers_wo_subscritpion.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/keynumbers_wo_subscription" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
             </Grid.Row>
           </Container>
         </div>
