@@ -27,6 +27,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
 
   const eventId = match.params.event_id
   const scheduleItemId = match.params.id
+  const returnUrl = `/schedule/events/edit/${eventId}/activities`
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_QUERY, {
     variables: { id: eventId }
@@ -42,7 +43,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
 
   if (loading || loadingActivity) {
     return (
-      <ScheduleEventEditBaseBase sidebarContent={sidebarContent}>
+      <ScheduleEventEditBaseBase sidebarContent={sidebarContent} returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
           <Card.Body>
@@ -55,7 +56,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
 
   if (error || errorActivity) {
     return (
-      <ScheduleEventEditBaseBase sidebarContent={sidebarContent}>
+      <ScheduleEventEditBaseBase sidebarContent={sidebarContent}  returnUrl={returnUrl}>
         <Card title={cardTitle}>
           <ScheduleEventActivityTabs activeTab={activeTab} eventId={eventId} scheduleItemId={scheduleItemId}/>
           <Card.Body>
@@ -80,7 +81,7 @@ function ScheduleEventActivityEditBase({t, match, history, activeTab, children})
   </span> : ""
 
   return (
-    <ScheduleEventEditBaseBase activeLink={activeLink} sidebarContent={sidebarContent}>
+    <ScheduleEventEditBaseBase activeLink={activeLink} sidebarContent={sidebarContent} returnUrl={returnUrl}>
       <Card>
         <Card.Header>
           <Card.Title>{cardTitle} {cardSubTitle} {cardActivitySubtitle}</Card.Title>

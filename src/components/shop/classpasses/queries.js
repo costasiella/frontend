@@ -26,14 +26,6 @@ export const GET_ORGANIZATION_CLASSPASSES_QUERY = gql`
           classes
           unlimited
           quickStatsAmount
-          financeGlaccount {
-            id 
-            name
-          }
-          financeCostcenter {
-            id
-            name
-          }
         }
       }
     }
