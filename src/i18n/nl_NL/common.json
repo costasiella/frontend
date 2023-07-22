@@ -1925,6 +1925,10 @@
             "title": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "find_classes": "__STRING_NOT_TRANSLATED__"
+        },
+        "keynumbers_wo_subscritpion": {
+            "title": "__STRING_NOT_TRANSLATED__",
+            "explanation": "__STRING_NOT_TRANSLATED__"
         }
     },
     "datetime": {
