@@ -104,7 +104,7 @@ module.exports = function (proxy, allowedHost) {
     // proxy,
     proxy: [{
         context: ['/d'],
-        target: 'http://localhost:8000'
+        target: 'http://127.0.0.1:8000'
     }],
     before(app, server) {
       // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
