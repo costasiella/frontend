@@ -1,20 +1,19 @@
-var fs = require('fs');
-var chalk = require('chalk');
+const fs = require('fs');
+const chalk = require('chalk');
 
 module.exports = {
+    input: [
+        'src/**/*.{js,jsx}',
+        // Use ! to filter out files or directories
+        '!src/**/*.spec.{js,jsx}',
+        '!src/i18n/**',
+        '!**/node_modules/**',
+    ],
+    output: 'src',
     options: {
-        src: [
-            'src/**/*.{html,js,jsx}',
-            // Use ! to filter out files or directories
-            '!src/**/*.spec.{js,jsx}',
-            '!src/i18n/**',
-            // '!test/**',
-            '!**/node_modules/**'
-        ],
-        dest: './src/i18n',
         debug: false,
+        sort: true,
         removeUnusedKeys: true,
-        sort: false,
         func: {
             list: ['i18next.t', 'i18n.t', 't'],
             extensions: ['.js', '.jsx']
@@ -25,24 +24,28 @@ module.exports = {
             defaultsKey: 'defaults',
             extensions: ['.js', '.jsx'],
             fallbackKey: function(ns, value) {
-                // Returns a hash value as the fallback key
-                return sha1(value);
+                return value;
+            },
+
+            // https://react.i18next.com/latest/trans-component#usage-with-simple-html-elements-like-less-than-br-greater-than-and-others-v10.4.0
+            supportBasicHtmlNodes: true, // Enables keeping the name of simple nodes (e.g. <br/>) in translations instead of indexed keys.
+            keepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'], // Which nodes are allowed to be kept in translations during defaultValue generation of <Trans>.
+
+            // https://github.com/acornjs/acorn/tree/master/acorn#interface
+            acorn: {
+                ecmaVersion: 2020,
+                sourceType: 'module', // defaults to 'module'
             }
         },
-        lngs: [
-            'en_US',
-            'nl_NL'
-        ],
+        lngs: ['en_US','nl_NL'],
         ns: [
-            'common'
+            'common',
         ],
         defaultLng: 'en_US',
         defaultNs: 'common',
         defaultValue: '__STRING_NOT_TRANSLATED__',
         resource: {
-            // the load path is relative to current working directory
-            loadPath: '../src/i18n/{{lng}}/{{ns}}.json',
-            // the save path is relative to the output path
+            loadPath: 'src/i18n/{{lng}}/{{ns}}.json',
             savePath: 'i18n/{{lng}}/{{ns}}.json',
             jsonIndent: 4,
             lineEnding: '\n'
@@ -52,7 +55,9 @@ module.exports = {
         interpolation: {
             prefix: '{{',
             suffix: '}}'
-        }
+        },
+        metadata: {},
+        allowDynamicKeys: false,
     },
     transform: function customTransform(file, enc, done) {
         "use strict";

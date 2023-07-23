@@ -10,12 +10,12 @@ import {
 import SiteWrapper from "../../SiteWrapper"
 import InsightBackHome from '../InsightBackHome'
 
-function InsightKeyNumbersWoSubscriptionBase ({ t, history, children, year, month, refetch=f=>f }) {
+function InsightKeyNumbersWoSubscriptionBase ({ t, history, children }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("insight.title")} subTitle={t("insight.keynumbers_wo_subscription.title") + " " + year + "-" + month}>
+          <Page.Header title={t("insight.title")} subTitle={t("insight.keynumbers_wo_subscription.title")}>
             <div className="page-options d-flex">
               <InsightBackHome />
             </div>

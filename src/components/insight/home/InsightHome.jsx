@@ -113,8 +113,8 @@ class InsightHome extends Component {
                 <Grid.Col md={3} lg={3}>
                   <Card>
                     <Card.Body>
-                      <h5>{t("insight.keynumbers_wo_subscritpion.title")}</h5>
-                      {t("insight.keynumbers_wo_subscritpion.explanation")}
+                      <h5>{t("insight.keynumbers_wo_subscription.title")}</h5>
+                      {t("insight.keynumbers_wo_subscription.explanation")}
                       <br /><br />
                       <HomeItemButton linkTitle={linkTitle} link="/insight/keynumbers_wo_subscription" />
                     </Card.Body>
