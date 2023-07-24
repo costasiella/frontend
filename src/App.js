@@ -98,79 +98,76 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
   }
 
   // Catch expired tokens on refresh
-  if (user_not_logged_in_within_response_errors || user_not_logged_in_within_graphql_errors) {
+
+  // These two ifs look silly, but hear me out...
+  // Both errors might be triggered at the same time, both within the GraphQL erros and the response.
+  // Some logic is required to prevent running the refresh more than once. 
+  // As that might cause it to run with an invalid refresh token and fail, 
+  // causing the user to be signed out, even though a valid token will arrive a tiny bit later.
+  // So here we have two conditions, that both inform the refresh function that the token is being refreshed
+  // To prevent the race condition mentioned above.
+  if (user_not_logged_in_within_response_errors) {
     console.log('Time to refresh the token')
+    refreshToken(forward, operation)
+    refreshingToken = true
+  }
 
-    // let authTokenExpired = false
-    // let refreshTokenExpired = false
-    // const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
-    // const refreshTokenExp = localStorage.getItem(CSLS.AUTH_REFRESH_TOKEN_EXP)
-
-    // if ((new Date() / 1000) >= tokenExp) {
-    //   authTokenExpired = true
-      
-    //   if ((new Date() / 1000) >= refreshTokenExp) {
-    //     refreshTokenExpired = true
-    //     // Remove any remaining token data
-    //     CSAuth.cleanup()
-    //     // Store current location, user has to login again
-    //     SetCurrentUrlAsNext()
-    //   }
-    // }
-    
-    // if (authTokenExpired && !refreshTokenExpired && !refreshingToken) {
-    if (!refreshingToken) {
-      console.log("refresh token... somehow...")
-
-      return new Observable(observer => {
-        refreshingToken = true
-        client.mutate({
-          mutation: TOKEN_REFRESH,
-        })
-          .then(({ data }) => { 
-            console.log(data)
-            CSAuth.updateTokenInfo(data.refreshToken)
-            setTimeout(function() {
-              refreshingToken = false
-            }, 100)
-          })
-          .then(() => {
-            const subscriber = {
-              next: observer.next.bind(observer),
-              error: observer.error.bind(observer),
-              complete: observer.complete.bind(observer)
-            };
-
-            // Retry last failed request
-            forward(operation).subscribe(subscriber);
-          })
-          .catch(error => {
-            // No refresh or client token available, we force user to login, after a cleanup
-            // console.log("Failed to refresh the token, onwards to the login page")
-            console.error("Error refreshing token!")
-            console.error(error);
-            observer.error(error);
-            refreshingToken = false
-            CSAuth.cleanup()
-            // Give this time time to save to the local storage
-            
-            SetCurrentUrlAsNext()
-            window.location.href = "/#/user/login"
-            setTimeout(function() {
-              window.location.reload()
-            }, 100)
-          });
-      })
-    // } else if (refreshTokenExpired) {
-    //   console.log("Refresh token expired")
-    //   window.location.href = "#/user/session/expired"
-    //   window.location.reload()
-    } else if (refreshingToken) {
-      console.log("Token refreshing...")
-    }
+  if (user_not_logged_in_within_graphql_errors) {
+    console.log('Time to refresh the token')
+    refreshToken(forward, operation)
+    refreshingToken = true
   }
 })
 
+
+// Actually try to refresh the token
+function refreshToken(forward, operation) {
+  if (!refreshingToken) {
+    console.log("Start token refresh...")
+
+    return new Observable(observer => {
+      client.mutate({
+        mutation: TOKEN_REFRESH,
+      })
+        .then(({ data }) => { 
+          console.log(data)
+          CSAuth.updateTokenInfo(data.refreshToken)
+        })
+        .then(() => {
+          const subscriber = {
+            next: observer.next.bind(observer),
+            error: observer.error.bind(observer),
+            complete: observer.complete.bind(observer)
+          };
+
+          // Token is no longer refreshing
+          refreshingToken = false
+
+          // Retry last failed request
+          forward(operation).subscribe(subscriber);
+        })
+        .catch(error => {
+          // No refresh or client token available, we request user to login, after a cleanup
+          console.error("Error refreshing token!")
+          console.error(error);
+          observer.error(error);
+
+          CSAuth.cleanup()
+          SetCurrentUrlAsNext()
+
+          refreshingToken = false
+
+          // console.warn("Would set location to user login")
+          window.location.href = "/#/user/login"
+          setTimeout(function() {
+            window.location.reload()
+          }, 100)
+        });
+    })
+  } else if (refreshingToken) {
+    console.log("Token already refreshing...")
+  }
+}
 
    
 // // Fetch CSRF Token
