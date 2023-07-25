@@ -1085,7 +1085,7 @@
         "keynumbers_wo_subscription": {
             "empty_list": "No accounts with a subscription and no key number were found",
             "explanation": "Accounts with a subscription where key number is not set",
-            "title": "Subscripers w/o key number"
+            "title": "Subscribers w/o key number"
         },
         "revenue": {
             "explanation": "Revenue charts. Totals and by product type.",
