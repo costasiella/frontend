@@ -55,9 +55,10 @@ function SetCurrentUrlAsNext() {
     // the code below will move the user to /user/login, which will also error at first, thus /user/login always
     // gets set... we don't want that. This flow can be refactored at some point, but it works for now. 
     localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, next)
-  } 
+  } else {
+    localStorage.setItem(CSLS.AUTH_LOGIN_NEXT, "/user/welcome")
+  }
 }
-
 
 let refreshingToken = false
 
@@ -87,6 +88,19 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
     console.error('CHOSEN FILE EXCEEDS SIZE LIMIT')
   }
 
+  // No refresh token check
+  if (graphQLErrors && graphQLErrors[0].message === "Refresh token is required") {
+    console.error('REFRESH TOKEN IS REQUIRED')
+    CSAuth.cleanup()
+    SetCurrentUrlAsNext()
+
+    refreshingToken = false
+    window.location.href = "/#/user/login"
+    setTimeout(function() {
+      window.location.reload()
+    }, 100)
+  }
+
   // Catch errors in response
   if (response) {
     let i
@@ -98,40 +112,33 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward, re
   }
 
   // Catch expired tokens on refresh
-
-  // These two ifs look silly, but hear me out...
-  // Both errors might be triggered at the same time, both within the GraphQL erros and the response.
-  // Some logic is required to prevent running the refresh more than once. 
-  // As that might cause it to run with an invalid refresh token and fail, 
-  // causing the user to be signed out, even though a valid token will arrive a tiny bit later.
-  // So here we have two conditions, that both inform the refresh function that the token is being refreshed
-  // To prevent the race condition mentioned above.
-  if (user_not_logged_in_within_response_errors) {
+  if (user_not_logged_in_within_response_errors || user_not_logged_in_within_graphql_errors) {
     console.log('Time to refresh the token')
-    refreshToken(forward, operation)
-    refreshingToken = true
-  }
-
-  if (user_not_logged_in_within_graphql_errors) {
-    console.log('Time to refresh the token')
-    refreshToken(forward, operation)
-    refreshingToken = true
+    if (refreshingToken) {
+      console.log("Token already refreshing...")
+    } else { 
+      return refreshToken(forward, operation)
+    }
+    
   }
 })
 
 
 // Actually try to refresh the token
 function refreshToken(forward, operation) {
-  if (!refreshingToken) {
+  if (refreshingToken) {
+    console.log("Token already refreshing...")
+  } else {
+    refreshingToken = true
     console.log("Start token refresh...")
 
     return new Observable(observer => {
-      client.mutate({
-        mutation: TOKEN_REFRESH,
-      })
+      doTokenRefresh()
         .then(({ data }) => { 
           console.log(data)
           CSAuth.updateTokenInfo(data.refreshToken)
+          // Token is no longer refreshing
+          refreshingToken = false
         })
         .then(() => {
           const subscriber = {
@@ -139,34 +146,33 @@ function refreshToken(forward, operation) {
             error: observer.error.bind(observer),
             complete: observer.complete.bind(observer)
           };
-
-          // Token is no longer refreshing
-          refreshingToken = false
-
+          
           // Retry last failed request
           forward(operation).subscribe(subscriber);
         })
         .catch(error => {
-          // No refresh or client token available, we request user to login, after a cleanup
+          // No or invalid refresh token we request user to login, after a cleanup
           console.error("Error refreshing token!")
           console.error(error);
           observer.error(error);
 
-          CSAuth.cleanup()
-          SetCurrentUrlAsNext()
-
           refreshingToken = false
 
-          // console.warn("Would set location to user login")
-          window.location.href = "/#/user/login"
-          setTimeout(function() {
-            window.location.reload()
-          }, 100)
-        });
+          // Don't redirect users to the login component here.
+          // A simultaneous refresh might happen, causing an invalid refresh token error.
+          // This isn't very clean, but it works. It just means no user feedback on an
+          // invalid refresh token and they'll have to reload the page.
+        });  
     })
-  } else if (refreshingToken) {
-    console.log("Token already refreshing...")
   }
+}
+
+async function doTokenRefresh () {
+  const refreshResolverResponse = await client.mutate({
+    mutation: TOKEN_REFRESH,
+  })
+
+  return refreshResolverResponse
 }
 
    
@@ -240,6 +246,35 @@ const csrfMiddleware = new ApolloLink(async (operation, forward) => {
 //     }
 //   }
 // });
+
+
+// Ideally before executing anything, a token is refreshed.
+// But it needs more work... how to handle unauthenticated users for example.
+
+
+// const authLink = new ApolloLink((operation, forward) => {
+//   // Ensure the user is signed in
+
+//   console.log("Doing authLink")
+//   // Check expiration
+//   let authTokenExpired = false
+//   const tokenExp = localStorage.getItem(CSLS.AUTH_TOKEN_EXP)
+//   if ((new Date() / 1000) >= tokenExp) {
+//     authTokenExpired = true
+//   }
+
+//   if (authTokenExpired) {
+//     return refreshToken(forward, operation)
+//   }
+//   // const token = localStorage.getItem('token');
+//   // operation.setContext({
+//   //   headers: {
+//   //     authorization: token ? `Bearer ${token}` : "",
+//   //   },
+//   // });
+//   return forward(operation);
+// });
+
 
 // set up ApolloClient
 const client = new ApolloClient({
