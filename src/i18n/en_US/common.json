@@ -1470,7 +1470,7 @@
                     "reference": "Reference",
                     "reference_placeholder": "In case left empty, a unique reference will be generated.",
                     "signature_date": "Signed on",
-                    "title": "Mandates",
+                    "title": "Direct debit mandates",
                     "title_add": "Add mandate",
                     "title_edit": "Edit mandate",
                     "toast_add_success": "Added mandate",
@@ -2535,6 +2535,7 @@
             "agree_privacy": "Accept the",
             "agree_terms": "Accept the ",
             "by_placing_this_order": "By placing this order I",
+            "direct_debit_permission": "Authorize monthly direct debit collection of the fee for the selectec subscription from the bank account set in my account",
             "message": "Any message with this order?",
             "payment": "Payment"
         },

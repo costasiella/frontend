@@ -42,6 +42,9 @@ const ShopClasspassForm = ({ t, isSubmitting, errors, values, setFieldTouched, s
               {t("general.privacy_policy")}
             </a>
           </li>
+          <li>
+            {t("shop.order.direct_debit_permission")}
+          </li>
         </ul>
       </small>
       <Button 
