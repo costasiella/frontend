@@ -14,6 +14,7 @@ export const GET_PAYMENT_BATCHES_QUERY = gql`
           id
           name
           status
+          executionDate
           financePaymentBatchCategory {
             id
             name
@@ -36,6 +37,7 @@ export const GET_PAYMENT_BATCH_QUERY = gql`
       id
       name
       status
+      executionDate
       financePaymentBatchCategory {
         id
         name
