@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client'
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from 'react-router-dom'
 
 import {
   Alert,
@@ -18,6 +19,7 @@ import HasPermissionWrapper from "../../../../HasPermissionWrapper"
 import { toast } from 'react-toastify'
 import { get_attendance_list_query_variables } from "./tools"
 
+import CSLS from '../../../../../tools/cs_local_storage'
 import ContentCard from "../../../../general/ContentCard"
 import BadgeBookingStatus from "../../../../ui/BadgeBookingStatus"
 import ButtonConfirm from '../../../../ui/ButtonConfirm'
@@ -73,7 +75,7 @@ function setAttendanceStatus({t, match, updateAttendance, node, status, setAtten
 }
 
 
-function ScheduleClassAttendance({ t, match, history }) {
+function ScheduleClassAttendance({ t, match, location }) {
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
   const [attendanceRefetching, setAttendanceRefetching] = useState(false)
@@ -85,6 +87,9 @@ function ScheduleClassAttendance({ t, match, history }) {
   )
   const [ updateAttendance ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
   const [ resendInfoMail ] = useMutation(RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE)
+
+  // Inform account profile how to come back here using the back button
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
 
   // Loading
   if (loading) return <ScheduleClassAttendanceBase>
@@ -174,7 +179,9 @@ function ScheduleClassAttendance({ t, match, history }) {
                 {data.scheduleItemAttendances.edges.map(({ node }) => (
                     <Table.Row key={v4()}>
                       <Table.Col>
-                        {node.account.fullName}
+                        <Link to={`/relations/accounts/${node.account.id}/profile`}>
+                          {node.account.fullName}
+                        </Link>
                       </Table.Col>
                       <Table.Col>
                         <BadgeBookingStatus status={node.bookingStatus} />
