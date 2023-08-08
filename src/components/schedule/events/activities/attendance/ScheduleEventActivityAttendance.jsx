@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { v4 } from 'uuid'
+import { Link } from 'react-router-dom'
 
 import {
   Card,
@@ -111,7 +112,9 @@ function ScheduleEventActivityAttendance({ t, history, match }) {
           {scheduleItemAttendances.edges.map(({ node }) => (
             <Table.Row key={v4()}>
               <Table.Col>
-                {node.account.fullName}
+                <Link to={`/relations/accounts/${node.account.id}/profile`}>
+                  {node.account.fullName}
+                </Link>
               </Table.Col>
               <Table.Col>
                 <BadgeBookingStatus status={node.bookingStatus} />

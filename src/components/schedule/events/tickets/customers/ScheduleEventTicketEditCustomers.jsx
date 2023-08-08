@@ -89,7 +89,9 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
           {data.accountScheduleEventTickets.edges.map(({ node }) => (
             <Table.Row key={v4()}>
               <Table.Col>
-                {node.account.fullName} <br />
+                <Link to={`/relations/accounts/${node.account.id}/profile`}>
+                  {node.account.fullName}
+                </Link> <br />
                 {(node.cancelled) ? <Badge color="warning">{t("general.cancelled")}</Badge> : ""}
               </Table.Col>  
               <Table.Col>
