@@ -2513,6 +2513,7 @@
             "tickets": "Tickets"
         },
         "events": {
+            "error_loading": "Error loading events... :(",
             "sign_in_to_see_discounts": "to see whether additional discounts apply to your account.",
             "tell_me_more": "Tell me more",
             "ticket": {

@@ -2513,6 +2513,7 @@
             "tickets": "__STRING_NOT_TRANSLATED__"
         },
         "events": {
+            "error_loading": "__STRING_NOT_TRANSLATED__",
             "sign_in_to_see_discounts": "__STRING_NOT_TRANSLATED__",
             "tell_me_more": "__STRING_NOT_TRANSLATED__",
             "ticket": {

@@ -36,7 +36,7 @@ function ShopEvents({ t, match, history }) {
   )
   if (error) return (
     <ShopEventsBase title={title}>
-      {t("shop.classpasses.error_loading")}
+      {t("shop.events.error_loading")}
     </ShopEventsBase>
   )
 
