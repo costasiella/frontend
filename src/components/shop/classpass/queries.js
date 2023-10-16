@@ -19,14 +19,6 @@ export const GET_CLASSPASS_QUERY = gql`
       classes
       unlimited
       quickStatsAmount
-      financeGlaccount {
-        id 
-        name
-      }
-      financeCostcenter {
-        id
-        name
-      }
     }
     user {
       hasReachedTrialLimit
