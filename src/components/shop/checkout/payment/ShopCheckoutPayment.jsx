@@ -31,7 +31,8 @@ function ShopCheckoutPayment({ t, match, history, location }) {
   const title = t("shop.home.title")
   const id = match.params.id
   const { loading, error, data } = useQuery(GET_ORDER_QUERY, {
-    variables: { id: id }
+    variables: { id: id },
+    fetchPolicy: "network-only"
   })
 
   const [createPaymentLink] = useMutation(CREATE_PAYMENT_LINK)
@@ -49,12 +50,9 @@ function ShopCheckoutPayment({ t, match, history, location }) {
     </ShopCheckoutPaymentBase>
   )
 
-  console.log(data)
   const order = data.financeOrder
   const account = data.financeOrder.account
-  console.log(order)
   const orderItems = order.items.edges
-  console.log(orderItems) 
 
   function onClickPay() {
     btnPayNow.current.setAttribute("disabled", "disabled")
