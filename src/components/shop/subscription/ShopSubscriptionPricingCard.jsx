@@ -2,6 +2,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
+import { v4 } from 'uuid'
 
 import {
   Icon,
@@ -31,28 +32,28 @@ function ShopSubscriptionPricingCard({ t, subscription, btnLink, active=false, d
         {subscription.priceTodayDisplay}
       </PricingCard.Price>
       <PricingCard.AttributeList>
-        <PricingCard.AttributeItem>
+        <PricingCard.AttributeItem key={v4()}>
           <b>{(subscription.unlimited) ? t('general.unlimited') : subscription.classes }</b> { " " }
           {t('general.classes')} / {unit}
         </PricingCard.AttributeItem>
-        <PricingCard.AttributeItem>
+        <PricingCard.AttributeItem key={v4()}>
           {t('general.min_duration')} { " " }
           <b>{subscription.minDuration} {(subscription.minDuration === 1) ? t("general.month") : t("general.months")}</b> 
         </PricingCard.AttributeItem>
         {(displayCheckoutInfo) ? 
-          <PricingCard.AttributeItem>
+          <PricingCard.AttributeItem key={v4()}>
             {t("general.first_month")}: <b>{subscription.priceFirstMonthDisplay}</b>
           </PricingCard.AttributeItem>
         : ""}
         {(displayCheckoutInfo && subscription.accountRegistrationFee > 0) ? 
-          <PricingCard.AttributeItem>
+          <PricingCard.AttributeItem key={v4()}>
             {t("general.registration_fee")}: <b>{subscription.accountRegistrationFeeDisplay}</b>
           </PricingCard.AttributeItem>
         : ""}
       </PricingCard.AttributeList>
       {(btnLink) ?
         <Link to={btnLink}>
-          <PricingCard.Button >
+          <PricingCard.Button rootComponent={"button"}>
             {t("shop.subscriptions.choose")} <Icon name="chevron-right" />
           </PricingCard.Button>
         </Link>

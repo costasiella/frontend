@@ -2,6 +2,7 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/client'
+import { v4 } from 'uuid'
 
 import {
   Dimmer,
@@ -31,12 +32,13 @@ function ShopSubscriptions({ t, match, history }) {
   )
 
   const subscriptions = data.organizationSubscriptions
+  console.table(subscriptions)
 
   return (
     <ShopSubscriptionsBase>
         <Grid.Row>
           {subscriptions.edges.map(({ node }) => (
-            <Grid.Col xs={12} sm={12} md={3}>
+            <Grid.Col xs={12} sm={12} md={3} key={v4()}>
               <ShopSubscriptionPricingCard
                 subscription={node}
                 btnLink={"/shop/subscription/" + node.id}
