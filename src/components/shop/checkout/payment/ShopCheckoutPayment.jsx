@@ -52,7 +52,7 @@ function ShopCheckoutPayment({ t, match, history, location }) {
 
   const order = data.financeOrder
   const account = data.financeOrder.account
-  const orderItems = order.items.edges
+  // const orderItems = order.items.edges
 
   function onClickPay() {
     btnPayNow.current.setAttribute("disabled", "disabled")
