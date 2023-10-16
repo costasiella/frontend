@@ -32,7 +32,6 @@ function ShopSubscriptions({ t, match, history }) {
   )
 
   const subscriptions = data.organizationSubscriptions
-  console.table(subscriptions)
 
   return (
     <ShopSubscriptionsBase>

@@ -28,14 +28,6 @@ export const GET_ORGANIZATION_SUBSCRIPTIONS_QUERY = gql`
           termsAndConditions
           registrationFee
           quickStatsAmount
-          financeGlaccount {
-            id 
-            name
-          }
-          financeCostcenter {
-            id
-            name
-          }
         }
       }
     }
