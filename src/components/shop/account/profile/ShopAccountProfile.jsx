@@ -10,6 +10,7 @@ import {
   Grid,
 } from "tabler-react";
 
+import CSLS from '../../../../tools/cs_local_storage'
 import GET_USER_PROFILE from "../../../../queries/system/get_user_profile"
 import { UPDATE_PROFILE } from "./queries"
 import ShopAccountProfileBase from "./ShopAccountProfileBase"
@@ -21,6 +22,7 @@ import { ACCOUNT_SCHEMA_MINIMAL, ACCOUNT_SCHEMA_CONTACT } from "./yupSchema"
 function ShopAccountProfile({t, match, history}) {
   const { loading, error, data } = useQuery(GET_USER_PROFILE)
   const [ updateProfile ] = useMutation(UPDATE_PROFILE)
+  const profileSubmitNext = localStorage.getItem(CSLS.SHOP_ACCOUNT_PROFILE_NEXT)
 
   if (loading) return (
     <ShopAccountProfileBase>
@@ -100,6 +102,9 @@ function ShopAccountProfile({t, match, history}) {
                 ]})
                 .then(({ data }) => {
                     console.log('got data', data)
+                    if (profileSubmitNext) {
+                      history.push(profileSubmitNext)
+                    }
                     toast.success((t('shop.account.profile.toast_edit_success')), {
                         position: toast.POSITION.BOTTOM_RIGHT
                       })
