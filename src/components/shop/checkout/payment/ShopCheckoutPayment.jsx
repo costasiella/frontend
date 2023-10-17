@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
 import {
+  Alert,
   Button,
   Card,
   Dimmer,
@@ -85,7 +86,9 @@ function ShopCheckoutPayment({ t, match, history, location }) {
   // Check profile complete enough
   if (!account.hasCompleteEnoughProfile) {
     // If not, show message that a more complete profile is required
-    msgNextStep = t("shop.checkout.payment.profile_not_complete_enough")
+    msgNextStep = <Alert type="primary">
+      {t("shop.checkout.payment.profile_not_complete_enough")}
+    </Alert>
     buttonNext = <Link to="/shop/account/profile">
       <Button
         block

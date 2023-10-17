@@ -2430,7 +2430,7 @@
                 "order_received_to_payment_text": "Please click the button below to start the payment.",
                 "order_received_to_profile_text": "We'll contact you with payment instructions.",
                 "order_summary": "Order summary",
-                "profile_not_complete_enough": "To process your order, we require some additional profile information.",
+                "profile_not_complete_enough": "To process your order we require some additional information. Please use the button below to complete your profile.",
                 "redirecting": "Preparing payment...",
                 "to_payment": "Pay now",
                 "to_profile": "Back to the online shop",
