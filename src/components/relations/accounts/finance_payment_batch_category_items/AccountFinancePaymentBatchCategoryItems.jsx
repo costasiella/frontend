@@ -51,7 +51,6 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
   }
 
   let batchCategoryItems = data.accountFinancePaymentBatchCategoryItems
-
     
   // Empty list
   if (!batchCategoryItems.edges.length) {
@@ -120,7 +119,7 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
                     {node.amountDisplay}
                   </Table.Col>
                   <Table.Col key={v4()}>
-                    {node.financePaymentBatchCategory.name}
+                    { node.financePaymentBatchCategory && node.financePaymentBatchCategory.name }
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.description.replace(/(.{28})..+/, "$1...")}
