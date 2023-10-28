@@ -131,7 +131,7 @@ function ShopAccountInvoice({t, match, history}) {
                   <Grid.Row>
                     <Grid.Col xs={12} sm={12} md={8}>
                       <h6>{moment(node.date).format(dateFormat)}</h6>
-                      {node.financePaymentMethod.name}
+                      {node.financePaymentMethod && node.financePaymentMethod.name}
                     </Grid.Col>
                     <Grid.Col xs={12} sm={12} md={4}>
                       <div className="float-right">
