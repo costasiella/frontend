@@ -1052,7 +1052,19 @@
             "title": "__STRING_NOT_TRANSLATED__"
         },
         "home": {
-            "link_view": "__STRING_NOT_TRANSLATED__"
+            "accounts": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "finance": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "link_view": "__STRING_NOT_TRANSLATED__",
+            "products": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            },
+            "schedule": {
+                "title": "__STRING_NOT_TRANSLATED__"
+            }
         },
         "inactive_accounts": {
             "accounts": {

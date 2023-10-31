@@ -1052,7 +1052,19 @@
             "title": "Class passes"
         },
         "home": {
-            "link_view": "View"
+            "accounts": {
+                "title": "Accounts"
+            },
+            "finance": {
+                "title": "Finance"
+            },
+            "link_view": "View",
+            "products": {
+                "title": "Products"
+            },
+            "schedule": {
+                "title": "Schedule"
+            }
         },
         "inactive_accounts": {
             "accounts": {
