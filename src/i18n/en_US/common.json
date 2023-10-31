@@ -1094,6 +1094,10 @@
             "find_classes": "Find classes",
             "title": "Instructor classes in month"
         },
+        "invoicesopenondate": {
+            "explanation": "View invoices not paid or refunded on a given date.",
+            "title": "Invoices open on date"
+        },
         "keynumbers_wo_subscription": {
             "empty_list": "No accounts with a subscription and no key number were found",
             "explanation": "Accounts with a subscription where key number is not set",

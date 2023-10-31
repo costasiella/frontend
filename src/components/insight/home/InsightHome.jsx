@@ -90,6 +90,19 @@ class InsightHome extends Component {
                   </Card>
                 </Grid.Col>
               </HasPermissionWrapper>
+              <HasPermissionWrapper permission="view"
+                                    resource="insightfinanceinvoicesopenondate">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.invoicesopenondate.title")}</h5>
+                      {t("insight.invoicesopenondate.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/invoices_open_on_date" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
             </Grid.Row>
             <Grid.Row>
               <Grid.Col md={12}>

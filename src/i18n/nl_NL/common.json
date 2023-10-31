@@ -1094,6 +1094,10 @@
             "find_classes": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__"
         },
+        "invoicesopenondate": {
+            "explanation": "__STRING_NOT_TRANSLATED__",
+            "title": "__STRING_NOT_TRANSLATED__"
+        },
         "keynumbers_wo_subscription": {
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
