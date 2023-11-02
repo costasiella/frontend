@@ -79,8 +79,8 @@ function AccountFinancePaymentBatchCategoryItemEdit({ t, history, match }) {
                 input: {
                   id: accountFinancePaymentBatchCategoryItemId, 
                   amount: values.amount,
-                  year: values.year,
-                  month: values.month,
+                  year: parseInt(values.year),
+                  month: parseInt(values.month),
                   financePaymentBatchCategory: values.financePaymentBatchCategory,
                   description: values.description
                 }
