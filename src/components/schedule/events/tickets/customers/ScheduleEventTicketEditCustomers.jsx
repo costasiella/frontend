@@ -95,7 +95,7 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
                 {(node.cancelled) ? <Badge color="warning">{t("general.cancelled")}</Badge> : ""}
               </Table.Col>  
               <Table.Col>
-                { node.invoiceItems.edges && <Link to={`/finance/invoices/edit/${node.invoiceItems.edges[0].node.financeInvoice.id}`}>
+                { node.invoiceItems && node.invoiceItems.edges.length && <Link to={`/finance/invoices/edit/${node.invoiceItems.edges[0].node.financeInvoice.id}`}>
                     {node.invoiceItems.edges[0].node.financeInvoice.invoiceNumber } <br />
                   </Link>
                 }

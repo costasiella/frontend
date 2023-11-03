@@ -59,7 +59,7 @@ function FinanceInvoiceGroupEdit({t, history, match}) {
             name: initialData.name, 
             displayPublic: initialData.displayPublic,
             dueAfterDays: initialData.dueAfterDays,
-            nextId: initialData.nextId,
+            nextId: parseInt(initialData.nextId),
             prefix: initialData.prefix,
             prefixYear: initialData.prefixYear,
             autoResetPrefixYear: initialData.autoResetPrefixYear,
