@@ -100,7 +100,7 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
                   </Link>
                 }
                 <small className="text-muted">
-                  {node.invoiceItems.edges && node.invoiceItems.edges[0].node.financeInvoice.summary.trunc(40) } <br />
+                  { node.invoiceItems && node.invoiceItems.edges.length && node.invoiceItems.edges[0].node.financeInvoice.summary.trunc(40) } <br />
                 </small>
               </Table.Col>
               <Table.Col>
