@@ -1095,7 +1095,10 @@
             "title": "__STRING_NOT_TRANSLATED__"
         },
         "invoicesopenondate": {
+            "empty_list": "__STRING_NOT_TRANSLATED__",
+            "error_loading": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
+            "generate_report": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__"
         },
         "keynumbers_wo_subscription": {

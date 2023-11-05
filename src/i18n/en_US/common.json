@@ -1095,7 +1095,10 @@
             "title": "Instructor classes in month"
         },
         "invoicesopenondate": {
+            "empty_list": "No open invoices where found on the given date",
+            "error_loading": "Error loading open invoices... :(",
             "explanation": "View invoices not paid or refunded on a given date.",
+            "generate_report": "Generate report",
             "title": "Invoices open on date"
         },
         "keynumbers_wo_subscription": {

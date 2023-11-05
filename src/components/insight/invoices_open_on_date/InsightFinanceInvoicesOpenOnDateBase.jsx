@@ -9,46 +9,38 @@ import {
   Page
 } from "tabler-react";
 
-import { TAX_SUMMARY_SCHEMA } from './yupSchema'
+import { OPEN_INVOICES_SCHEMA } from './yupSchema'
 import { dateToLocalISO } from '../../../tools/date_tools'
 import SiteWrapper from '../../SiteWrapper'
-import FinanceTaxRatesSummaryFilter from "./FinanceTaxRatesSummaryFilter"
+import FinanceInvoicesOpenOnDateFilter from "./InsightFinanceInvoicesOpenOnDateFilter"
 
 
-function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
-  const dateStart = moment().startOf('month')
-  const dateEnd   = moment().endOf('month')
-
+function InsightFinanceInvoicesOpenOnDateBase ({ t, history, children, refetch }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
         <Container>
-          <Page.Header title={t("finance.title")} subTitle={t('finance.taxrates_summary.title')}>
+          <Page.Header title={t("insight.title")} subTitle={t('insight.invoicesopenondate.title')}>
             <div className="page-options d-flex">
-              {/* <Link to="/finance/invoices/groups" 
-                    className='btn btn-outline-secondary btn-sm'>
-                <Icon prefix="fe" name="folder" /> {t('general.groups')}
-              </Link> */}
+              {/* Page options here, if any */}
             </div>
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={12}>
               <Formik 
                 initialValues={{
-                  dateStart: new Date(dateStart),
-                  dateEnd: new Date(dateEnd)
+                  date: new Date(),
                 }}
-                validationSchema={TAX_SUMMARY_SCHEMA}
+                validationSchema={OPEN_INVOICES_SCHEMA}
                 onSubmit={(values, { setSubmitting }) => {
                   refetch({
-                    dateStart: dateToLocalISO(values.dateStart),
-                    dateEnd: dateToLocalISO(values.dateEnd),
+                    date: dateToLocalISO(values.date),
                   })
                   setSubmitting(false)                  
                 }}
               >
                 {({ isSubmitting, errors, values, touched, handleChange, setFieldTouched, setFieldValue }) => (
-                <FinanceTaxRatesSummaryFilter 
+                <FinanceInvoicesOpenOnDateFilter 
                   isSubmitting={isSubmitting}
                   errors={errors}
                   values={values}
@@ -68,7 +60,7 @@ function FinanceTaxRatesSummaryBase ({ t, history, children, refetch }) {
   )
 }
 
-export default withTranslation()(withRouter(FinanceTaxRatesSummaryBase))
+export default withTranslation()(withRouter(InsightFinanceInvoicesOpenOnDateBase))
 
 
 
