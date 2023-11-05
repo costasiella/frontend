@@ -28,7 +28,7 @@ function InsightFinanceInvoicesOpenOnDateFilter({ t, history, values, errors, da
               }}
               // onBlur={() => setFieldTouched("dateStart", true)}
             />
-            <ErrorMessage name="datet" component="span" className="invalid-feedback" />
+            <ErrorMessage name="date" component="span" className="invalid-feedback" />
           </Form.Group>
         </Grid.Col>
         <Grid.Col>

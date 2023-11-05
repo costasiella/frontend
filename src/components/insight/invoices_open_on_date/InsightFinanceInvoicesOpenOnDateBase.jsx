@@ -14,7 +14,7 @@ import SiteWrapper from '../../SiteWrapper'
 import FinanceInvoicesOpenOnDateFilter from "./InsightFinanceInvoicesOpenOnDateFilter"
 
 
-function InsightFinanceInvoicesOpenOnDateBase ({ t, history, children, refetch }) {
+function InsightFinanceInvoicesOpenOnDateBase ({ t, history, children, refetch=f=>f, setDate=f=>f }) {
   return (
     <SiteWrapper>
       <div className="my-3 my-md-5">
@@ -35,6 +35,7 @@ function InsightFinanceInvoicesOpenOnDateBase ({ t, history, children, refetch }
                   refetch({
                     date: dateToLocalISO(values.date),
                   })
+                  setDate(values.date)
                   setSubmitting(false)                  
                 }}
               >
