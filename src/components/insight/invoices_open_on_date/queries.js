@@ -16,7 +16,10 @@ export const GET_INSIGHT_FINANCE_OPEN_INVOICES_QUERY = gql`
           id
           fullName
         }
-        
+        business {
+          id
+          name
+        }
       }
     }
   }

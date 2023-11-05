@@ -3,14 +3,17 @@ import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { Link } from 'react-router-dom'
 import moment from "moment"
 import {
   Dimmer,
+  Icon,
   Table, 
 } from "tabler-react";
 
 import AppSettingsContext from '../../context/AppSettingsContext'
 import ContentCard from "../../general/ContentCard"
+import FinanceInvoiceStatus from '../../ui/FinanceInvoiceStatus'
 import InsightFinanceInvoicesOpenOnDateBase from "./InsightFinanceInvoicesOpenOnDateBase"
 import { GET_INSIGHT_FINANCE_OPEN_INVOICES_QUERY } from "./queries"
 import { dateToLocalISO } from '../../../tools/date_tools'
@@ -18,7 +21,7 @@ import { dateToLocalISO } from '../../../tools/date_tools'
 
 
 function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
-  const cardTitle = t('finance.taxrates_summary.title')
+  const cardTitle = t('insight.invoicesopenondate.title')
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
 
@@ -69,7 +72,7 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
 
   return (
     <InsightFinanceInvoicesOpenOnDateBase refetch={refetch} setDate={setDate}>
-      <ContentCard cardTitle={t('insight.invoicesopenondate.title')}
+      <ContentCard cardTitle={cardTitle}
                   // pageInfo={taxRatesSummary.pageInfo}
                   hasCardBody={false}
         >
@@ -88,6 +91,14 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
           <Table.Body>
             {openInvoices.financeInvoices.map((financeInvoice) => (
               <Table.Row key={v4()}>
+                <Table.Col key={v4()}>
+                  <FinanceInvoiceStatus status={financeInvoice.status} /> <br />
+                  {/* Perhaps but the business relation in the "relation" column? */}
+                  {/* {(financeInvoice.business) && 
+                    <Link to={"/relations/b2b/" + financeInvoice.business.id + "/edit"}>
+                      <small><Icon name="home" /> {financeInvoice.business.name}</small>
+                    </Link>} */}
+                </Table.Col>
                 <Table.Col>{financeInvoice.invoiceNumber}</Table.Col>
                 {/* <Table.Col>{financeTaxRate.percentage} %</Table.Col>
                 <Table.Col>{subtotalDisplay}</Table.Col>

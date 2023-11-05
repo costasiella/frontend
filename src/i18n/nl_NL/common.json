@@ -1095,10 +1095,13 @@
             "title": "__STRING_NOT_TRANSLATED__"
         },
         "invoicesopenondate": {
+            "amount_paid_on": "__STRING_NOT_TRANSLATED__",
             "empty_list": "__STRING_NOT_TRANSLATED__",
             "error_loading": "__STRING_NOT_TRANSLATED__",
             "explanation": "__STRING_NOT_TRANSLATED__",
             "generate_report": "__STRING_NOT_TRANSLATED__",
+            "invoice_date": "__STRING_NOT_TRANSLATED__",
+            "relation": "__STRING_NOT_TRANSLATED__",
             "title": "__STRING_NOT_TRANSLATED__"
         },
         "keynumbers_wo_subscription": {
