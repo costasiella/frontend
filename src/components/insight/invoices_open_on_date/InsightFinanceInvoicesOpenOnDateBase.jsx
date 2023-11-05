@@ -2,7 +2,6 @@ import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
 import { Formik } from 'formik'
-import moment from 'moment'
 import {
   Container,
   Grid,
