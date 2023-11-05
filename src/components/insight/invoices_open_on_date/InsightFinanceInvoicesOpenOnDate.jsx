@@ -99,7 +99,9 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
                       <small><Icon name="home" /> {financeInvoice.business.name}</small>
                     </Link>} */}
                 </Table.Col>
+                {/* TODO: Add a link to the invoice page */}
                 <Table.Col>{financeInvoice.invoiceNumber}</Table.Col>
+                <Table.Col>{moment(financeInvoice.dateSent).format(dateFormat)}</Table.Col>
                 {/* <Table.Col>{financeTaxRate.percentage} %</Table.Col>
                 <Table.Col>{subtotalDisplay}</Table.Col>
                 <Table.Col>{taxDisplay}</Table.Col> */}
