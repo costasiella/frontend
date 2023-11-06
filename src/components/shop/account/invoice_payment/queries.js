@@ -59,14 +59,6 @@ export const GET_INVOICE_QUERY = gql`
             taxDisplay
             total
             totalDisplay
-            financeGlaccount {
-              id
-              name
-            }
-            financeCostcenter {
-              id
-              name
-            }
           }
         }
       }
