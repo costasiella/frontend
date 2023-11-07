@@ -120,6 +120,9 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
                     </Link>
                   }
                 </Table.Col>
+                <Table.Col>{ financeInvoice.totalDisplay }</Table.Col>
+                <Table.Col>{ financeInvoice.paidDisplay }</Table.Col>
+                <Table.Col>{ financeInvoice.balanceDisplay }</Table.Col>
                 {/* <Table.Col>{financeTaxRate.percentage} %</Table.Col>
                 <Table.Col>{subtotalDisplay}</Table.Col>
                 <Table.Col>{taxDisplay}</Table.Col> */}
