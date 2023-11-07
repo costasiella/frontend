@@ -11,6 +11,7 @@ import {
   Table, 
 } from "tabler-react";
 
+import CSLS from '../../../tools/cs_local_storage'
 import AppSettingsContext from '../../context/AppSettingsContext'
 import ContentCard from "../../general/ContentCard"
 import FinanceInvoiceStatus from '../../ui/FinanceInvoiceStatus'
@@ -28,7 +29,7 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
   const [date, setDate] = useState(new Date())
 
   // Set back location for edit invoice
-  // localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
+  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
   // Fetch data
   const { loading, error, data, refetch } = useQuery(GET_INSIGHT_FINANCE_OPEN_INVOICES_QUERY, {
     variables: {
@@ -99,8 +100,11 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
                       <small><Icon name="home" /> {financeInvoice.business.name}</small>
                     </Link>} */}
                 </Table.Col>
-                {/* TODO: Add a link to the invoice page */}
-                <Table.Col>{financeInvoice.invoiceNumber}</Table.Col>
+                <Table.Col>
+                  <Link to={`/finance/invoices/edit/${financeInvoice.id}`}>
+                    {financeInvoice.invoiceNumber}
+                  </Link>
+                </Table.Col>
                 <Table.Col>{moment(financeInvoice.dateSent).format(dateFormat)}</Table.Col>
                 {/* <Table.Col>{financeTaxRate.percentage} %</Table.Col>
                 <Table.Col>{subtotalDisplay}</Table.Col>
