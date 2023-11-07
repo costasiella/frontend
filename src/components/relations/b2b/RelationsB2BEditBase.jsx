@@ -8,6 +8,7 @@ import {
   Container
 } from "tabler-react"
 
+import CSLS from '../../../tools/cs_local_storage'
 import SiteWrapper from "../../SiteWrapper"
 import ButtonBack from '../../ui/ButtonBack'
 import RelationsB2BEditMenu from './RelationsB2BEditMenu'
@@ -18,6 +19,11 @@ function RelationsB2BEditBase({
 }) {
   const businessId = match.params.business_id
   const titleB2B = t("relations.b2b.title")
+
+  returnUrl = localStorage.getItem(CSLS.RELATIONS_BUSINESS_EDIT_RETURN)
+  if (!returnUrl) {
+    returnUrl = '/relations/b2b'
+  }
 
   return (
     <SiteWrapper>

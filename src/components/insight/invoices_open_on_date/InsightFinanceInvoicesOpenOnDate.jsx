@@ -30,6 +30,8 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
 
   // Set back location for edit invoice
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
+  localStorage.setItem(CSLS.RELATIONS_BUSINESS_EDIT_RETURN, location.pathname)
   // Fetch data
   const { loading, error, data, refetch } = useQuery(GET_INSIGHT_FINANCE_OPEN_INVOICES_QUERY, {
     variables: {
@@ -106,6 +108,18 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
                   </Link>
                 </Table.Col>
                 <Table.Col>{moment(financeInvoice.dateSent).format(dateFormat)}</Table.Col>
+                <Table.Col key={v4()}>
+                  { financeInvoice.account && 
+                    <Link to={"/relations/accounts/" + financeInvoice.account.id + "/profile"}>
+                      <Icon name="user" /> {financeInvoice.account.fullName} <br />
+                    </Link> 
+                  }
+                  { financeInvoice.business && 
+                    <Link to={"/relations/b2b/" + financeInvoice.business.id + "/edit"}>
+                      <small><Icon name="home" /> {financeInvoice.business.name}</small>
+                    </Link>
+                  }
+                </Table.Col>
                 {/* <Table.Col>{financeTaxRate.percentage} %</Table.Col>
                 <Table.Col>{subtotalDisplay}</Table.Col>
                 <Table.Col>{taxDisplay}</Table.Col> */}
