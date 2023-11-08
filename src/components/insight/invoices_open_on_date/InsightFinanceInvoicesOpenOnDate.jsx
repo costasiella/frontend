@@ -6,6 +6,7 @@ import { withRouter } from "react-router"
 import { Link } from 'react-router-dom'
 import moment from "moment"
 import {
+  Card,
   Dimmer,
   Icon,
   Table, 
@@ -78,6 +79,11 @@ function InsightFinanceInvoicesOpenOnDate({ t, location, history }) {
       <ContentCard cardTitle={cardTitle}
                   // pageInfo={taxRatesSummary.pageInfo}
                   hasCardBody={false}
+                  headerContent={
+                    <Card.Options>
+                      {t("general.total")} {openInvoices.totalOpenOnDateDisplay}
+                    </Card.Options>
+                  }
         >
         <Table cards>
           <Table.Header>
