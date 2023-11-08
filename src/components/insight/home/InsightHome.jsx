@@ -30,6 +30,9 @@ class InsightHome extends Component {
           <Container>
             <Page.Header title={t("insight.title")} />
             <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("insight.home.products.title")}</h4>
+              </Grid.Col>
               <HasPermissionWrapper permission="view"
                                     resource="insightclasspasses">
                 <Grid.Col md={3} lg={3}>
@@ -69,6 +72,11 @@ class InsightHome extends Component {
                   </Card>
                 </Grid.Col>
               </HasPermissionWrapper>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("insight.home.finance.title")}</h4>
+              </Grid.Col>
               <HasPermissionWrapper permission="view"
                                     resource="insightrevenue">
                 <Grid.Col md={3} lg={3}>
@@ -83,6 +91,24 @@ class InsightHome extends Component {
                 </Grid.Col>
               </HasPermissionWrapper>
               <HasPermissionWrapper permission="view"
+                                    resource="insightfinanceinvoicesopenondate">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.invoicesopenondate.title")}</h5>
+                      {t("insight.invoicesopenondate.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/invoices_open_on_date" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Col md={12}>
+                <h4>{t("insight.home.accounts.title")}</h4>
+              </Grid.Col>
+              <HasPermissionWrapper permission="view"
                                     resource="insightaccountsinactive">
                 <Grid.Col md={3} lg={3}>
                   <Card>
@@ -96,19 +122,6 @@ class InsightHome extends Component {
                 </Grid.Col>
               </HasPermissionWrapper>
               <HasPermissionWrapper permission="view"
-                                    resource="insightinstructorclassesmonth">
-                <Grid.Col md={3} lg={3}>
-                  <Card>
-                    <Card.Body>
-                      <h5>{t("insight.instructor_classes_month.title")}</h5>
-                      {t("insight.instructor_classes_month.explanation")}
-                      <br /><br />
-                      <HomeItemButton linkTitle={linkTitle} link="/insight/instructor_classes_month" />
-                    </Card.Body>
-                  </Card>
-                </Grid.Col>
-              </HasPermissionWrapper>
-              <HasPermissionWrapper permission="view"
                                     resource="insightkeynumberswosubscription">
                 <Grid.Col md={3} lg={3}>
                   <Card>
@@ -117,6 +130,24 @@ class InsightHome extends Component {
                       {t("insight.keynumbers_wo_subscription.explanation")}
                       <br /><br />
                       <HomeItemButton linkTitle={linkTitle} link="/insight/keynumbers_wo_subscription" />
+                    </Card.Body>
+                  </Card>
+                </Grid.Col>
+              </HasPermissionWrapper>
+            </Grid.Row>
+            <Grid.Row>
+             <Grid.Col md={12}>
+                <h4>{t("insight.home.schedule.title")}</h4>
+              </Grid.Col>
+              <HasPermissionWrapper permission="view"
+                                    resource="insightinstructorclassesmonth">
+                <Grid.Col md={3} lg={3}>
+                  <Card>
+                    <Card.Body>
+                      <h5>{t("insight.instructor_classes_month.title")}</h5>
+                      {t("insight.instructor_classes_month.explanation")}
+                      <br /><br />
+                      <HomeItemButton linkTitle={linkTitle} link="/insight/instructor_classes_month" />
                     </Card.Body>
                   </Card>
                 </Grid.Col>

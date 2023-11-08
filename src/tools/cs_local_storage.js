@@ -25,6 +25,7 @@ const cs_local_storage_keys = {
     RELATIONS_ACCOUNTS_IS_ACTIVE: 'costasiella:relationsAccountsIsActive',
     RELATIONS_ACCOUNT_NOTES_NOTE_TYPE: 'costasiella:relationsAccountNotesNoteType',
     RELATIONS_ACCOUNT_PROFILE_RETURN: 'costasiella:relationsAccountProfileReturn',
+    RELATIONS_BUSINESSES_EDIT_RETURN: 'costasiella:relationsBusinessEditReturn',
     RELATIONS_BUSINESSES_SHOW_ARCHIVE: 'costasiella:relationsBusinessesShowArchive',
     RELATIONS_BUSINESSES_SEARCH: 'costasiella:relationsBusinessesSeach',
     SCHEDULE_APPOINTMENTS_DATE_FROM: 'costasiella:scheduleAppointmentsDateFrom',

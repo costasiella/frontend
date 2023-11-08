@@ -1052,7 +1052,19 @@
             "title": "Class passes"
         },
         "home": {
-            "link_view": "View"
+            "accounts": {
+                "title": "Accounts"
+            },
+            "finance": {
+                "title": "Finance"
+            },
+            "link_view": "View",
+            "products": {
+                "title": "Products"
+            },
+            "schedule": {
+                "title": "Schedule"
+            }
         },
         "inactive_accounts": {
             "accounts": {
@@ -1081,6 +1093,16 @@
             "explanation": "Report on classes by instructors in a given month",
             "find_classes": "Find classes",
             "title": "Instructor classes in month"
+        },
+        "invoicesopenondate": {
+            "amount_paid_on": "Amount paid on",
+            "empty_list": "No open invoices where found on the given date",
+            "error_loading": "Error loading open invoices... :(",
+            "explanation": "View invoices not paid or refunded on a given date.",
+            "generate_report": "Generate report",
+            "invoice_date": "Invoice date",
+            "relation": "Relation",
+            "title": "Invoices open on date"
         },
         "keynumbers_wo_subscription": {
             "empty_list": "No accounts with a subscription and no key number were found",

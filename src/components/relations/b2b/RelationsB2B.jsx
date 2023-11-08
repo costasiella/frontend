@@ -38,6 +38,10 @@ function RelationsB2B({ t, history }) {
     localStorage.setItem(CSLS.RELATIONS_BUSINESSES_SHOW_ARCHIVE, false) 
   }
 
+  // Go back to the listing, clear any other paths in the local storage
+  localStorage.removeItem(CSLS.RELATIONS_BUSINESS_EDIT_RETURN)
+
+  // Fetch data
   const { loading, error, data, fetchMore, refetch } = useQuery(GET_BUSINESSES_QUERY, { 
     variables: get_list_query_variables()
   })
