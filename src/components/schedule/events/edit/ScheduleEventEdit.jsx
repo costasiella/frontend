@@ -37,7 +37,8 @@ function ScheduleEventEdit({t, match, history}) {
   const activeLink = "general"
 
   const { loading, error, data } = useQuery(GET_SCHEDULE_EVENT_QUERY, {
-    variables: { id: id }
+    variables: { id: id },
+    fetchPolicy: "network-only"
   })
   const [ updateScheduleEvent ] = useMutation(UPDATE_SCHEDULE_EVENT)
 
