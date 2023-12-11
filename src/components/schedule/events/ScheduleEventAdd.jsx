@@ -35,7 +35,9 @@ function ScheduleEventAdd({ t, history }) {
   const returnUrl = "/schedule/events"
   const pageHeaderButtonList = <ButtonBack returnUrl={returnUrl} />
 
-  const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY)
+  const { loading, error, data } = useQuery(GET_INPUT_VALUES_QUERY, {
+    fetchPolicy: "network-only"
+  })
   const [ createScheduleEvent ] = useMutation(CREATE_SCHEDULE_EVENT)
 
   if (loading) {
