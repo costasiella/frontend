@@ -12,7 +12,9 @@ import {
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBookingStatus from "../../../ui/BadgeBookingStatus"
+import ButtonAdd from '../../../ui/ButtonAdd'
 import ContentCard from "../../../general/ContentCard"
+import RelationsAccountsBack from "../RelationsAccountsBack"
 import AccountClassesBase from "./AccountClassesBase"
 import AccountClassDelete from "./AccountClassDelete"
 
@@ -23,16 +25,22 @@ function AccountClasses({ t, match, history }) {
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-  const account_id = match.params.account_id
+  const accountId = match.params.account_id
   const cardTitle = t('relations.account.classes.title')
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_CLASSES_QUERY, {
-    variables: {'account': account_id},
+    variables: {'account': accountId},
     fetchPolicy: "network-only"
   })
 
+  const pageHeaderButtonList = <React.Fragment>
+    <RelationsAccountsBack />
+    <ButtonAdd addUrl={`/relations/accounts/${accountId}/classes_find_class`} className="ml-2" />
+  </React.Fragment>
+
+
   // Loading
   if (loading) return (
-    <AccountClassesBase>
+    <AccountClassesBase pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         <Card.Body>
           <p>{t('general.loading_with_dots')}</p>
@@ -44,7 +52,7 @@ function AccountClasses({ t, match, history }) {
   if (error) {
     console.log(error)
     return (
-      <AccountClassesBase>
+      <AccountClassesBase pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.error_sad_smiley')}</p>
@@ -60,7 +68,7 @@ function AccountClasses({ t, match, history }) {
   // Empty list
   if (!scheduleItemAttendances.edges.length) {
     return (
-      <AccountClassesBase account={account}>
+      <AccountClassesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('relations.account.classes.empty_list')}</p>
@@ -72,7 +80,7 @@ function AccountClasses({ t, match, history }) {
 
   // Return populated list
   return (
-    <AccountClassesBase account={account}>
+    <AccountClassesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={scheduleItemAttendances.pageInfo}

@@ -955,6 +955,7 @@
         "quantity": "__STRING_NOT_TRANSLATED__",
         "quantity_short_and_price": "__STRING_NOT_TRANSLATED__",
         "quickStatsAmount": "__STRING_NOT_TRANSLATED__",
+        "register": "__STRING_NOT_TRANSLATED__",
         "registration_fee": "__STRING_NOT_TRANSLATED__",
         "reset_filter": "__STRING_NOT_TRANSLATED__",
         "restore": "__STRING_NOT_TRANSLATED__",
@@ -1504,7 +1505,8 @@
             },
             "classes": {
                 "empty_list": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "title_add_search_class": "__STRING_NOT_TRANSLATED__"
             },
             "classpasses": {
                 "add": "__STRING_NOT_TRANSLATED__",

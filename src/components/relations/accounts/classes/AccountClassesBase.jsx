@@ -8,13 +8,12 @@ import {
   Container
 } from "tabler-react";
 import SiteWrapper from "../../../SiteWrapper"
-import RelationsAccountsBack from "../RelationsAccountsBack"
 
 import ProfileMenu from "../ProfileMenu"
 import ProfileCardSmall from "../../../ui/ProfileCardSmall"
 
 
-function AccountClassesBase({ t, match, history, children, account={} }) {
+function AccountClassesBase({ t, match, history, children, account={}, pageHeaderButtonList }) {
   const accountId = match.params.account_id
 
   return (
@@ -23,7 +22,7 @@ function AccountClassesBase({ t, match, history, children, account={} }) {
         <Container>
           <Page.Header title={account.fullName} >
             <div className="page-options d-flex">
-              <RelationsAccountsBack />
+              {pageHeaderButtonList}
             </div>
           </Page.Header>
           <Grid.Row>

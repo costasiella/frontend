@@ -955,6 +955,7 @@
         "quantity": "Quantity",
         "quantity_short_and_price": "QTY & Price",
         "quickStatsAmount": "Quick stats amount",
+        "register": "Register",
         "registration_fee": "Registration fee",
         "reset_filter": "Reset filter",
         "restore": "Restore",
@@ -1504,7 +1505,8 @@
             },
             "classes": {
                 "empty_list": "This customer hasn't booked or attended any classes yet",
-                "title": "Class attendance"
+                "title": "Class attendance",
+                "title_add_search_class": "Choose a date and class to register a new class attendance"
             },
             "classpasses": {
                 "add": "Add class pass",

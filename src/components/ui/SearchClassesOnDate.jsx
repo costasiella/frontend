@@ -52,10 +52,12 @@ function SearchClassesOnDate({
   localStorateKeySearchValue="", 
   btnDisableClassesIds=[],
   btnDisabledMessage="",
+  classDate="",
   btnAction,
  }) {
   const appSettings = useContext(AppSettingsContext)
   const timeFormat = appSettings.timeFormatMoment
+  const accountId = match.params.account_id
 
   const [selectedDate, setSelectedDate] = useState(new Date())
   // const [showSearchResults, setShowSearchResults] = useState(false)
@@ -66,8 +68,13 @@ function SearchClassesOnDate({
 
   function renderActionButton(scheduleClassId) {
     switch(btnAction) {
+      case "accountAttendanceAdd":
+        return <Link to={`/schedule/classes/class/book/${scheduleClassId}/${dateToLocalISO(selectedDate)}/${accountId}`}>
+          <Button color="primary" outline size="sm">
+            <Icon name="plus" /> {t("general.register")}
+          </Button>
+        </Link>
       case "accountEnrollmentAdd":
-        const accountId = match.params.account_id
         return <Link to={`/schedule/classes/all/enrollments/${scheduleClassId}/options/${accountId}`}>
           <Button color="primary" outline size="sm">
             <Icon name="plus" /> {t("general.enroll")}
