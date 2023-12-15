@@ -89,7 +89,12 @@ function ScheduleClassAttendance({ t, match, location }) {
   const [ resendInfoMail ] = useMutation(RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE)
 
   // Inform account profile how to come back here using the back button
+  // From attendance list to customer profile
   localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
+
+  // Inform attendance registration components to come back here
+  // From customer profile to attendance list
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_BOOK_RETURN, location.pathname)
 
   // Loading
   if (loading) return <ScheduleClassAttendanceBase>
