@@ -1,23 +1,12 @@
-// @flow
-
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
-import { Link } from 'react-router-dom'
 
+import CSLS from '../../../../../tools/cs_local_storage'
+import ButtonBack from '../../../../ui/ButtonBack'
 
-import {
-  Button,
-  Icon
-} from "tabler-react"
-
-
-const ScheduleClassBookBack = ({ t, classId, date }) => (
-  <Link to={"/schedule/classes/class/attendance/" + classId + "/" + date} >
-    <Button color="primary btn-block mb-6">
-      <Icon prefix="fe" name="chevrons-left" /> {t('general.back')}
-    </Button>
-  </Link>
+const ScheduleClassBookBack = () => (
+  <ButtonBack returnUrl={localStorage.getItem(CSLS.SCHEDULE_CLASSES_BOOK_RETURN)} />
 )
 
 export default withTranslation()(withRouter(ScheduleClassBookBack))
