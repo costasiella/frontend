@@ -25,6 +25,7 @@ import {
   represent_instructor 
 } from '../schedule/classes/tools'
 
+import SearchClassesOnDateBtnAttendanceAdd from "./SearchClassesOnDateBtnAttendanceAdd"
 import BadgePublic from './BadgePublic'
 import CSDatePicker from './CSDatePicker'
 import { GET_CLASSES_QUERY } from "../schedule/classes/queries"
@@ -69,11 +70,21 @@ function SearchClassesOnDate({
   function renderActionButton(scheduleClassId) {
     switch(btnAction) {
       case "accountAttendanceAdd":
-        return <Link to={`/schedule/classes/class/book/${scheduleClassId}/${dateToLocalISO(selectedDate)}/${accountId}`}>
-          <Button color="primary" outline size="sm">
-            <Icon name="plus" /> {t("general.register")}
-          </Button>
-        </Link>
+        //  Check whether a customer is already checked in and show a message instead of an add button
+        // Perhaps make a new component for the button and do an attendance query based on date, classID & account id
+        // If there's an attendance id, the customer is attending
+
+        return <SearchClassesOnDateBtnAttendanceAdd
+          accountId={accountId}
+          scheduleClassId={scheduleClassId}
+          classDate={dateToLocalISO(selectedDate)}
+        />
+
+        // return <Link to={`/schedule/classes/class/book/${scheduleClassId}/${dateToLocalISO(selectedDate)}/${accountId}`}>
+        //   <Button color="primary" outline size="sm">
+        //     <Icon name="plus" /> {t("general.add")}
+        //   </Button>
+        // </Link>
       case "accountEnrollmentAdd":
         return <Link to={`/schedule/classes/all/enrollments/${scheduleClassId}/options/${accountId}`}>
           <Button color="primary" outline size="sm">

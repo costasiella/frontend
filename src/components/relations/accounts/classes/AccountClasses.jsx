@@ -10,8 +10,6 @@ import {
   Table
 } from "tabler-react";
 
-import CSLS from '../../../../tools/cs_local_storage'
-
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBookingStatus from "../../../ui/BadgeBookingStatus"
 import ButtonAdd from '../../../ui/ButtonAdd'
@@ -33,9 +31,6 @@ function AccountClasses({ t, match, history, location }) {
     variables: {'account': accountId},
     fetchPolicy: "network-only"
   })
-
-  // Return here after registering attendance using the schedule class attendance components
-  localStorage.setItem(CSLS.SCHEDULE_CLASSES_BOOK_RETURN, location.pathname)
 
   const pageHeaderButtonList = <React.Fragment>
     <RelationsAccountsBack />

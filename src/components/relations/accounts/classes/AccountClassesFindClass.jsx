@@ -5,6 +5,7 @@ import { withRouter } from "react-router"
 import { Dimmer } from 'tabler-react';
 
 import { GET_ACCOUNT } from '../../../../queries/accounts/get_account'
+import CSLS from '../../../../tools/cs_local_storage'
 
 import SearchClassesOnDate from '../../../ui/SearchClassesOnDate'
 import AccountClassesBase from "./AccountClassesBase"
@@ -14,6 +15,9 @@ function AccountClassesFindClass({ t, match, location }) {
   const accountId = match.params.account_id
   const pageHeaderButtonList = <AccountClassesBack accountId={accountId} />
   const { loading, error, data } = useQuery(GET_ACCOUNT, { variables: { accountId: accountId }})
+
+  // Return here after registering attendance using the schedule class attendance components
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_BOOK_RETURN, location.pathname)
 
   if (loading) { 
     return (
