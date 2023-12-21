@@ -145,41 +145,6 @@ function AccountClasses({ t, match, history, location }) {
                 <Table.Col>
                   <AccountClassDelete account={account} node={node} />
                 </Table.Col>
-                {/* <Table.Col className="text-right" key={v4()}>
-                  <Link to={"/relations/accounts/" + match.params.account_id + "/classpasses/edit/" + node.id}>
-                    <Button className='btn-sm' 
-                            color="secondary">
-                      {t('general.edit')}
-                    </Button>
-                  </Link>
-                </Table.Col> */}
-                {/* <Mutation mutation={DELETE_ACCOUNT_CLASSPASS} key={v4()}>
-                  {(deleteAccountClasspass, { data }) => (
-                    <Table.Col className="text-right" key={v4()}>
-                      <button className="icon btn btn-link btn-sm" 
-                        title={t('general.delete')} 
-                        href=""
-                        onClick={() => {
-                          confirm_delete({
-                            t: t,
-                            msgConfirm: t("relations.account.classpasses.delete_confirm_msg"),
-                            msgDescription: <p>{node.organizationClasspass.name} {node.dateStart}</p>,
-                            msgSuccess: t('relations.account.classpasses.deleted'),
-                            deleteFunction: deleteAccountClasspass,
-                            functionVariables: { variables: {
-                              input: {
-                                id: node.id
-                              }
-                            }, refetchQueries: [
-                              {query: GET_ACCOUNT_CLASSPASSES_QUERY, variables: { archived: archived, accountId: match.params.account_id }} 
-                            ]}
-                          })
-                      }}>
-                        <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
-                      </button>
-                    </Table.Col>
-                  )}
-                </Mutation> */}
               </Table.Row>
             ))}
           </Table.Body>
