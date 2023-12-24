@@ -769,6 +769,7 @@
         "at": "at",
         "attend": "Attend",
         "attendance": "Attendance",
+        "attending": "Attending",
         "back": "Back",
         "back_to": "Back to",
         "backend": "Back end",
@@ -1504,7 +1505,8 @@
             },
             "classes": {
                 "empty_list": "This customer hasn't booked or attended any classes yet",
-                "title": "Class attendance"
+                "title": "Class attendance",
+                "title_add_search_class": "Choose a date and class to register a new class attendance"
             },
             "classpasses": {
                 "add": "Add class pass",

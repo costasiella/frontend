@@ -50,12 +50,7 @@ function ScheduleClassBookPriceBtn({t, match, history, price, returnTo, location
     </Alert>
   }
 
-  const returnUrl = getUrlFromReturnTo({
-    returnTo: returnTo,
-    schedule_item_id: schedule_item_id,
-    class_date: class_date,
-    locationId: locationId
-  })
+  const returnUrl = getUrlFromReturnTo()
 
   return (
     <Button 

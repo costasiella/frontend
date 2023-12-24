@@ -769,6 +769,7 @@
         "at": "__STRING_NOT_TRANSLATED__",
         "attend": "__STRING_NOT_TRANSLATED__",
         "attendance": "__STRING_NOT_TRANSLATED__",
+        "attending": "__STRING_NOT_TRANSLATED__",
         "back": "__STRING_NOT_TRANSLATED__",
         "back_to": "__STRING_NOT_TRANSLATED__",
         "backend": "__STRING_NOT_TRANSLATED__",
@@ -1504,7 +1505,8 @@
             },
             "classes": {
                 "empty_list": "__STRING_NOT_TRANSLATED__",
-                "title": "__STRING_NOT_TRANSLATED__"
+                "title": "__STRING_NOT_TRANSLATED__",
+                "title_add_search_class": "__STRING_NOT_TRANSLATED__"
             },
             "classpasses": {
                 "add": "__STRING_NOT_TRANSLATED__",

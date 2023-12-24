@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -7,32 +7,43 @@ import moment from 'moment'
 
 import {
   Card,
+  Dimmer,
   Table
 } from "tabler-react";
 
 import AppSettingsContext from '../../../context/AppSettingsContext'
 import BadgeBookingStatus from "../../../ui/BadgeBookingStatus"
+import ButtonAdd from '../../../ui/ButtonAdd'
 import ContentCard from "../../../general/ContentCard"
+import RelationsAccountsBack from "../RelationsAccountsBack"
 import AccountClassesBase from "./AccountClassesBase"
 import AccountClassDelete from "./AccountClassDelete"
+import ScheduleClassAttendanceItemCheckinAndStatus from '../../../schedule/classes/class/attendance/ScheduleClassAttendanceItemCheckinAndStatus'
 
 import { GET_ACCOUNT_CLASSES_QUERY } from "./queries"
 
 
-function AccountClasses({ t, match, history }) {
+function AccountClasses({ t, match, history, location }) {
+  const [attendanceRefetching, setAttendanceRefetching] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
-  const account_id = match.params.account_id
+  const accountId = match.params.account_id
   const cardTitle = t('relations.account.classes.title')
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_CLASSES_QUERY, {
-    variables: {'account': account_id},
+    variables: {'account': accountId},
     fetchPolicy: "network-only"
   })
 
+  const pageHeaderButtonList = <React.Fragment>
+    <RelationsAccountsBack />
+    <ButtonAdd addUrl={`/relations/accounts/${accountId}/classes_find_class`} className="ml-2" />
+  </React.Fragment>
+
+
   // Loading
   if (loading) return (
-    <AccountClassesBase>
+    <AccountClassesBase pageHeaderButtonList={pageHeaderButtonList}>
       <Card title={cardTitle}>
         <Card.Body>
           <p>{t('general.loading_with_dots')}</p>
@@ -44,7 +55,7 @@ function AccountClasses({ t, match, history }) {
   if (error) {
     console.log(error)
     return (
-      <AccountClassesBase>
+      <AccountClassesBase pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('general.error_sad_smiley')}</p>
@@ -60,7 +71,7 @@ function AccountClasses({ t, match, history }) {
   // Empty list
   if (!scheduleItemAttendances.edges.length) {
     return (
-      <AccountClassesBase account={account}>
+      <AccountClassesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
         <Card title={cardTitle}>
           <Card.Body>
             <p>{t('relations.account.classes.empty_list')}</p>
@@ -72,7 +83,7 @@ function AccountClasses({ t, match, history }) {
 
   // Return populated list
   return (
-    <AccountClassesBase account={account}>
+    <AccountClassesBase account={account} pageHeaderButtonList={pageHeaderButtonList}>
       <ContentCard 
         cardTitle={cardTitle}
         pageInfo={scheduleItemAttendances.pageInfo}
@@ -101,81 +112,56 @@ function AccountClasses({ t, match, history }) {
           })
         }} 
       >
-        <Table cards>
-          <Table.Header>
-            <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.time')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.class')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.location')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.booking_status')}</Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>  
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {scheduleItemAttendances.edges.map(({ node }) => (
+        <Dimmer active={attendanceRefetching} loader={true}>
+          <Table cards>
+            <Table.Header>
               <Table.Row key={v4()}>
-                { console.log(node) }
-                { console.log(account) }
-                <Table.Col>
-                  { moment(node.date).format(dateFormat) } <br />
-                  <span className="text-muted">
-                    {moment(node.date + ' ' + node.scheduleItem.timeStart).format(timeFormat)}
-                  </span>
-                </Table.Col>
-                <Table.Col>
-                  { node.scheduleItem.organizationClasstype.name }
-                </Table.Col>
-                <Table.Col>
-                  { node.scheduleItem.organizationLocationRoom.organizationLocation.name } <br />
-                  <span className="text-muted">
-                    { node.scheduleItem.organizationLocationRoom.name }
-                  </span> 
-                </Table.Col>
-                <Table.Col>
-                  <BadgeBookingStatus status={node.bookingStatus} />
-                </Table.Col>
-                <Table.Col>
-                  <AccountClassDelete account={account} node={node} />
-                </Table.Col>
-                {/* <Table.Col className="text-right" key={v4()}>
-                  <Link to={"/relations/accounts/" + match.params.account_id + "/classpasses/edit/" + node.id}>
-                    <Button className='btn-sm' 
-                            color="secondary">
-                      {t('general.edit')}
-                    </Button>
-                  </Link>
-                </Table.Col> */}
-                {/* <Mutation mutation={DELETE_ACCOUNT_CLASSPASS} key={v4()}>
-                  {(deleteAccountClasspass, { data }) => (
-                    <Table.Col className="text-right" key={v4()}>
-                      <button className="icon btn btn-link btn-sm" 
-                        title={t('general.delete')} 
-                        href=""
-                        onClick={() => {
-                          confirm_delete({
-                            t: t,
-                            msgConfirm: t("relations.account.classpasses.delete_confirm_msg"),
-                            msgDescription: <p>{node.organizationClasspass.name} {node.dateStart}</p>,
-                            msgSuccess: t('relations.account.classpasses.deleted'),
-                            deleteFunction: deleteAccountClasspass,
-                            functionVariables: { variables: {
-                              input: {
-                                id: node.id
-                              }
-                            }, refetchQueries: [
-                              {query: GET_ACCOUNT_CLASSPASSES_QUERY, variables: { archived: archived, accountId: match.params.account_id }} 
-                            ]}
-                          })
-                      }}>
-                        <span className="text-red"><Icon prefix="fe" name="trash-2" /></span>
-                      </button>
-                    </Table.Col>
-                  )}
-                </Mutation> */}
+                <Table.ColHeader>{t('general.time')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.class')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.location')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.booking_status')}</Table.ColHeader>
+                <Table.ColHeader></Table.ColHeader>  
+                <Table.ColHeader></Table.ColHeader>  
               </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+            </Table.Header>
+            <Table.Body>
+              {scheduleItemAttendances.edges.map(({ node }) => (
+                <Table.Row key={v4()}>
+                  { console.log(node) }
+                  { console.log(account) }
+                  <Table.Col>
+                    { moment(node.date).format(dateFormat) } <br />
+                    <span className="text-muted">
+                      {moment(node.date + ' ' + node.scheduleItem.timeStart).format(timeFormat)}
+                    </span>
+                  </Table.Col>
+                  <Table.Col>
+                    { node.scheduleItem.organizationClasstype.name }
+                  </Table.Col>
+                  <Table.Col>
+                    { node.scheduleItem.organizationLocationRoom.organizationLocation.name } <br />
+                    <span className="text-muted">
+                      { node.scheduleItem.organizationLocationRoom.name }
+                    </span> 
+                  </Table.Col>
+                  <Table.Col>
+                    <BadgeBookingStatus status={node.bookingStatus} />
+                  </Table.Col>
+                  <Table.Col>
+                    <ScheduleClassAttendanceItemCheckinAndStatus
+                      setAttendanceRefetching={setAttendanceRefetching}
+                      scheduleItemAttendanceNode={node}
+                      refetchAccountAttendance={true}
+                    />
+                  </Table.Col>
+                  <Table.Col>
+                    <AccountClassDelete account={account} node={node} />
+                  </Table.Col>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </Dimmer>
       </ContentCard>
     </AccountClassesBase>
   )

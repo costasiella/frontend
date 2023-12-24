@@ -52,12 +52,7 @@ function SubscriptionCheckinButton({t, match, history, subscription, returnTo, l
     </Alert>
   }
 
-  const returnUrl = getUrlFromReturnTo({
-    returnTo: returnTo,
-    schedule_item_id: schedule_item_id,
-    class_date: class_date,
-    locationId: locationId
-  })
+  const returnUrl = getUrlFromReturnTo()
 
   if (subscription.blocked) {
     return (

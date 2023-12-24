@@ -8,15 +8,11 @@ import { Link } from 'react-router-dom'
 import {
   Alert,
   Badge,
-  Button,
   Card,
   Dimmer,
-  Dropdown,
   Icon,
   Table
 } from "tabler-react";
-import HasPermissionWrapper from "../../../../HasPermissionWrapper"
-import { toast } from 'react-toastify'
 import { get_attendance_list_query_variables } from "./tools"
 
 import CSLS from '../../../../../tools/cs_local_storage'
@@ -26,9 +22,9 @@ import ButtonConfirm from '../../../../ui/ButtonConfirm'
 import ScheduleClassAttendanceSearch from "./ScheduleClassAttendanceSearch"
 import ScheduleClassAttendanceBase from "./ScheduleClassAttendanceBase"
 import ScheduleClassAttendanceDelete from "./ScheduleClassAttendanceDelete"
+import ScheduleClassAttendanceItemCheckinAndStatus from './ScheduleClassAttendanceItemCheckinAndStatus'
 import { 
   GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
-  UPDATE_SCHEDULE_ITEM_ATTENDANCE,
   RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE 
 } from "./queries"
 
@@ -37,42 +33,6 @@ import {
 //   var now = new Date().getTime();
 //   while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
 // }
-
-function setAttendanceStatus({t, match, updateAttendance, node, status, setAttendanceRefetching=f=>f}) {
-  const schedule_item_id = match.params.class_id
-  const class_date = match.params.date
-
-  setAttendanceRefetching(true)
-
-  updateAttendance({
-    variables: { 
-      input: {
-        id: node.id, 
-        bookingStatus: status
-      }
-    },
-    refetchQueries: [
-      {query: GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
-        variables: get_attendance_list_query_variables(schedule_item_id, class_date)}
-    ], 
-    // Mutation is "complete" when refetchQueries finish
-    awaitRefetchQueries: true
-  }).then(({ data }) => {
-    console.log('got data', data);
-    // sleepFor(1000)
-    setAttendanceRefetching(false)
-    toast.success(
-      t('schedule.classes.class.attendance.status_saved'), {
-        position: toast.POSITION.BOTTOM_RIGHT
-      })
-  }).catch((error) => {
-    setAttendanceRefetching(false)
-    toast.error((t('general.toast_server_error')) +  error, {
-        position: toast.POSITION.BOTTOM_RIGHT
-      })
-    console.log('there was an error sending the query', error);
-  })
-}
 
 
 function ScheduleClassAttendance({ t, match, location }) {
@@ -85,11 +45,15 @@ function ScheduleClassAttendance({ t, match, location }) {
       fetchPolicy: "network-only"
     }
   )
-  const [ updateAttendance ] = useMutation(UPDATE_SCHEDULE_ITEM_ATTENDANCE)
   const [ resendInfoMail ] = useMutation(RESEND_INFO_MAIL_SCHEDULE_ITEM_ATTENDANCE)
 
   // Inform account profile how to come back here using the back button
+  // From attendance list to customer profile
   localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
+
+  // Inform attendance registration components to come back here
+  // From customer profile to attendance list
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_BOOK_RETURN, location.pathname)
 
   // Loading
   if (loading) return <ScheduleClassAttendanceBase>
@@ -202,86 +166,11 @@ function ScheduleClassAttendance({ t, match, location }) {
                         {/* Delete */}
                         <ScheduleClassAttendanceDelete node={node} />
                         {/* Status dropdown */}
-                        <Dropdown
-                          key={v4()}
-                          className="float-right"
-                          type="button"
-                          toggle
-                          color="secondary btn-sm"
-                          triggerContent={t("general.status")}
-                          items={[
-                            // <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                            //   <Dropdown.Item
-                            //     key={v4()}
-                            //     icon="check"
-                            //     onClick={() => {
-                            //       setAttendanceStatus({
-                            //         t: t, 
-                            //         updateAttendance: updateAttendance,
-                            //         node: node,
-                            //         status: 'ATTENDING'
-                            //       })
-                            //       refetchAttendance()
-                            //     }}>
-                            //       {t('schedule.classes.class.attendance.booking_status.ATTENDING')}
-                            //   </Dropdown.Item>
-                            // </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                              <Dropdown.Item
-                                key={v4()}
-                                icon="calendar"
-                                onClick={() => {
-                                  setAttendanceStatus({
-                                    t: t, 
-                                    match: match,
-                                    updateAttendance: updateAttendance,
-                                    node: node,
-                                    status: 'BOOKED',
-                                    setAttendanceRefetching: setAttendanceRefetching
-                                  })
-                                }}>
-                                  {t('schedule.classes.class.attendance.booking_status.BOOKED')}
-                              </Dropdown.Item>
-                            </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                              <Dropdown.Item
-                                key={v4()}
-                                icon="x"
-                                onClick={() => {
-                                  setAttendanceStatus({
-                                    t: t, 
-                                    match: match,
-                                    updateAttendance: updateAttendance,
-                                    node: node,
-                                    status: 'CANCELLED',
-                                    setAttendanceRefetching: setAttendanceRefetching
-                                  })
-                                }}>
-                                  {t('schedule.classes.class.attendance.booking_status.CANCELLED')}
-                              </Dropdown.Item>
-                            </HasPermissionWrapper>,
-                          ]}
+                        <ScheduleClassAttendanceItemCheckinAndStatus
+                          setAttendanceRefetching={setAttendanceRefetching}
+                          scheduleItemAttendanceNode={node}
+                          refetchScheduleItemAttendance={true}
                         />
-                        {(node.bookingStatus === "BOOKED") ?
-                          <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                            <Button
-                              key={v4()}
-                              className="float-right"
-                              color="success"
-                              size="sm"
-                              onClick={() => {
-                                setAttendanceStatus({
-                                  t: t, 
-                                  match: match,
-                                  updateAttendance: updateAttendance,
-                                  node: node,
-                                  status: 'ATTENDING',
-                                  setAttendanceRefetching: setAttendanceRefetching
-                                })
-                              }}>
-                                {t('general.checkin')}
-                            </Button>
-                          </HasPermissionWrapper>  : "" }
                       </Table.Col>
                     </Table.Row>
                   ))}

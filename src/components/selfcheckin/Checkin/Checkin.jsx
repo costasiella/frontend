@@ -59,7 +59,7 @@ function setAttendanceStatus({t, updateAttendance, node, status, scheduleItemId,
 }
 
 
-function SelfCheckinCheckin({ t, match, history }) {
+function SelfCheckinCheckin({ t, match, location }) {
   const [showSearch, setShowSearch] = useState(false)
   const [refetchingAttendance, setRefetchingAttendance] = useState(false)
   const [searchName, setSearchName] = useState(undefined)
@@ -70,6 +70,9 @@ function SelfCheckinCheckin({ t, match, history }) {
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
   const dateTimeFormat = dateFormat + " " + timeFormat
+
+  // Return here after registering attendance using the schedule class attendance components
+  localStorage.setItem(CSLS.SCHEDULE_CLASSES_BOOK_RETURN, location.pathname)
 
   const { 
     // refetch: refetchAttendance, 
