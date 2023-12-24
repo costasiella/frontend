@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery } from "@apollo/client"
 import { v4 } from "uuid"
 import { withTranslation } from 'react-i18next'
@@ -7,6 +7,7 @@ import moment from 'moment'
 
 import {
   Card,
+  Dimmer,
   Table
 } from "tabler-react";
 
@@ -17,11 +18,13 @@ import ContentCard from "../../../general/ContentCard"
 import RelationsAccountsBack from "../RelationsAccountsBack"
 import AccountClassesBase from "./AccountClassesBase"
 import AccountClassDelete from "./AccountClassDelete"
+import ScheduleClassAttendanceItemCheckinAndStatus from '../../../schedule/classes/class/attendance/ScheduleClassAttendanceItemCheckinAndStatus'
 
 import { GET_ACCOUNT_CLASSES_QUERY } from "./queries"
 
 
 function AccountClasses({ t, match, history, location }) {
+  const [attendanceRefetching, setAttendanceRefetching] = useState(false)
   const appSettings = useContext(AppSettingsContext)
   const dateFormat = appSettings.dateFormat
   const timeFormat = appSettings.timeFormatMoment
@@ -109,46 +112,56 @@ function AccountClasses({ t, match, history, location }) {
           })
         }} 
       >
-        <Table cards>
-          <Table.Header>
-            <Table.Row key={v4()}>
-              <Table.ColHeader>{t('general.time')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.class')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.location')}</Table.ColHeader>
-              <Table.ColHeader>{t('general.booking_status')}</Table.ColHeader>
-              <Table.ColHeader></Table.ColHeader>  
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {scheduleItemAttendances.edges.map(({ node }) => (
+        <Dimmer active={attendanceRefetching} loader={true}>
+          <Table cards>
+            <Table.Header>
               <Table.Row key={v4()}>
-                { console.log(node) }
-                { console.log(account) }
-                <Table.Col>
-                  { moment(node.date).format(dateFormat) } <br />
-                  <span className="text-muted">
-                    {moment(node.date + ' ' + node.scheduleItem.timeStart).format(timeFormat)}
-                  </span>
-                </Table.Col>
-                <Table.Col>
-                  { node.scheduleItem.organizationClasstype.name }
-                </Table.Col>
-                <Table.Col>
-                  { node.scheduleItem.organizationLocationRoom.organizationLocation.name } <br />
-                  <span className="text-muted">
-                    { node.scheduleItem.organizationLocationRoom.name }
-                  </span> 
-                </Table.Col>
-                <Table.Col>
-                  <BadgeBookingStatus status={node.bookingStatus} />
-                </Table.Col>
-                <Table.Col>
-                  <AccountClassDelete account={account} node={node} />
-                </Table.Col>
+                <Table.ColHeader>{t('general.time')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.class')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.location')}</Table.ColHeader>
+                <Table.ColHeader>{t('general.booking_status')}</Table.ColHeader>
+                <Table.ColHeader></Table.ColHeader>  
+                <Table.ColHeader></Table.ColHeader>  
               </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+            </Table.Header>
+            <Table.Body>
+              {scheduleItemAttendances.edges.map(({ node }) => (
+                <Table.Row key={v4()}>
+                  { console.log(node) }
+                  { console.log(account) }
+                  <Table.Col>
+                    { moment(node.date).format(dateFormat) } <br />
+                    <span className="text-muted">
+                      {moment(node.date + ' ' + node.scheduleItem.timeStart).format(timeFormat)}
+                    </span>
+                  </Table.Col>
+                  <Table.Col>
+                    { node.scheduleItem.organizationClasstype.name }
+                  </Table.Col>
+                  <Table.Col>
+                    { node.scheduleItem.organizationLocationRoom.organizationLocation.name } <br />
+                    <span className="text-muted">
+                      { node.scheduleItem.organizationLocationRoom.name }
+                    </span> 
+                  </Table.Col>
+                  <Table.Col>
+                    <BadgeBookingStatus status={node.bookingStatus} />
+                  </Table.Col>
+                  <Table.Col>
+                    <ScheduleClassAttendanceItemCheckinAndStatus
+                      setAttendanceRefetching={setAttendanceRefetching}
+                      scheduleItemAttendanceNode={node}
+                      refetchAccountAttendance={true}
+                    />
+                  </Table.Col>
+                  <Table.Col>
+                    <AccountClassDelete account={account} node={node} />
+                  </Table.Col>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </Dimmer>
       </ContentCard>
     </AccountClassesBase>
   )

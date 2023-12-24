@@ -169,72 +169,8 @@ function ScheduleClassAttendance({ t, match, location }) {
                         <ScheduleClassAttendanceItemCheckinAndStatus
                           setAttendanceRefetching={setAttendanceRefetching}
                           scheduleItemAttendanceNode={node}
+                          refetchScheduleItemAttendance={true}
                         />
-                        {/* <Dropdown
-                          key={v4()}
-                          className="float-right"
-                          type="button"
-                          toggle
-                          color="secondary btn-sm"
-                          triggerContent={t("general.status")}
-                          items={[
-                            <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                              <Dropdown.Item
-                                key={v4()}
-                                icon="calendar"
-                                onClick={() => {
-                                  setAttendanceStatus({
-                                    t: t, 
-                                    match: match,
-                                    updateAttendance: updateAttendance,
-                                    node: node,
-                                    status: 'BOOKED',
-                                    setAttendanceRefetching: setAttendanceRefetching
-                                  })
-                                }}>
-                                  {t('schedule.classes.class.attendance.booking_status.BOOKED')}
-                              </Dropdown.Item>
-                            </HasPermissionWrapper>,
-                            <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                              <Dropdown.Item
-                                key={v4()}
-                                icon="x"
-                                onClick={() => {
-                                  setAttendanceStatus({
-                                    t: t, 
-                                    match: match,
-                                    updateAttendance: updateAttendance,
-                                    node: node,
-                                    status: 'CANCELLED',
-                                    setAttendanceRefetching: setAttendanceRefetching
-                                  })
-                                }}>
-                                  {t('schedule.classes.class.attendance.booking_status.CANCELLED')}
-                              </Dropdown.Item>
-                            </HasPermissionWrapper>,
-                          ]}
-                        /> */}
-                        {/* Check-in button */}
-                        {/* {(node.bookingStatus === "BOOKED") ?
-                          <HasPermissionWrapper key={v4()} permission="change" resource="scheduleitemattendance">
-                            <Button
-                              key={v4()}
-                              className="float-right"
-                              color="success"
-                              size="sm"
-                              onClick={() => {
-                                setAttendanceStatus({
-                                  t: t, 
-                                  match: match,
-                                  updateAttendance: updateAttendance,
-                                  node: node,
-                                  status: 'ATTENDING',
-                                  setAttendanceRefetching: setAttendanceRefetching
-                                })
-                              }}>
-                                {t('general.checkin')}
-                            </Button>
-                          </HasPermissionWrapper>  : "" } */}
                       </Table.Col>
                     </Table.Row>
                   ))}

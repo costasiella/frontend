@@ -17,12 +17,43 @@ import {
   UPDATE_SCHEDULE_ITEM_ATTENDANCE,
 } from "./queries"
 
+import {
+  GET_ACCOUNT_CLASSES_QUERY
+} from "../../../../relations/accounts/classes/queries"
 
-function setAttendanceStatus({t, match, updateAttendance, node, status, setAttendanceRefetching=f=>f}) {
+function setAttendanceStatus({
+  t,
+  match,
+  updateAttendance, 
+  node, 
+  status, 
+  setAttendanceRefetching=f=>f,
+  refetchAccountAttendance=false,
+  refetchScheduleItemAttendance=false,
+}) {
   const schedule_item_id = match.params.class_id
   const class_date = match.params.date
+  const account_id = match.params.account_id
+  let refetchQueries = []
 
   setAttendanceRefetching(true)
+
+  // Refetch relations > account > classes
+  if (refetchAccountAttendance) {
+    refetchQueries.push({
+      query: GET_ACCOUNT_CLASSES_QUERY,
+      variables: {account: account_id}
+    })
+  }
+
+  // Refetch schedule > classes > attendance
+  if (refetchScheduleItemAttendance) {
+    refetchQueries.push({
+      query: GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
+      variables: get_attendance_list_query_variables(schedule_item_id, class_date)
+    })
+  }
+
 
   updateAttendance({
     variables: { 
@@ -31,10 +62,11 @@ function setAttendanceStatus({t, match, updateAttendance, node, status, setAtten
         bookingStatus: status
       }
     },
-    refetchQueries: [
-      {query: GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
-        variables: get_attendance_list_query_variables(schedule_item_id, class_date)}
-    ], 
+    refetchQueries: refetchQueries,
+    // refetchQueries: [
+    //   {query: GET_SCHEDULE_CLASS_ATTENDANCE_QUERY, 
+    //     variables: get_attendance_list_query_variables(schedule_item_id, class_date)}
+    // ], 
     // Mutation is "complete" when refetchQueries finish
     awaitRefetchQueries: true
   }).then(({ data }) => {
@@ -59,6 +91,8 @@ function ScheduleClassAttendanceItemCheckinAndStatus({
   t, 
   match, 
   location, 
+  refetchAccountAttendance=false,
+  refetchScheduleItemAttendance=false,
   scheduleItemAttendanceNode,
   setAttendanceRefetching=f=>f,
  }) {
@@ -86,7 +120,9 @@ function ScheduleClassAttendanceItemCheckinAndStatus({
                   updateAttendance: updateAttendance,
                   node: scheduleItemAttendanceNode,
                   status: 'BOOKED',
-                  setAttendanceRefetching: setAttendanceRefetching
+                  setAttendanceRefetching: setAttendanceRefetching,
+                  refetchAccountAttendance: refetchAccountAttendance,
+                  refetchScheduleItemAttendance: refetchScheduleItemAttendance
                 })
               }}>
                 {t('schedule.classes.class.attendance.booking_status.BOOKED')}
@@ -103,7 +139,9 @@ function ScheduleClassAttendanceItemCheckinAndStatus({
                   updateAttendance: updateAttendance,
                   node: scheduleItemAttendanceNode,
                   status: 'CANCELLED',
-                  setAttendanceRefetching: setAttendanceRefetching
+                  setAttendanceRefetching: setAttendanceRefetching,
+                  refetchAccountAttendance: refetchAccountAttendance,
+                  refetchScheduleItemAttendance: refetchScheduleItemAttendance
                 })
               }}>
                 {t('schedule.classes.class.attendance.booking_status.CANCELLED')}
@@ -126,7 +164,9 @@ function ScheduleClassAttendanceItemCheckinAndStatus({
                 updateAttendance: updateAttendance,
                 node: scheduleItemAttendanceNode,
                 status: 'ATTENDING',
-                setAttendanceRefetching: setAttendanceRefetching
+                setAttendanceRefetching: setAttendanceRefetching,
+                refetchAccountAttendance: refetchAccountAttendance,
+                refetchScheduleItemAttendance: refetchScheduleItemAttendance
               })
             }}>
               {t('general.checkin')}
