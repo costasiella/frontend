@@ -66,6 +66,7 @@ const FinanceInvoiceEditOptionsForm = ({ t, isSubmitting, values, errors, handle
           <option value="SENT">{t('finance.invoices.status.SENT')}</option>
           <option value="PAID">{t('finance.invoices.status.PAID')}</option>
           <option value="CANCELLED">{t('finance.invoices.status.CANCELLED')}</option>
+          <option value="OVERDUE">{t('finance.invoices.status.OVERDUE')}</option>
         </Field>
         <ErrorMessage name="status" component="span" className="invalid-feedback" />
       </Form.Group>
