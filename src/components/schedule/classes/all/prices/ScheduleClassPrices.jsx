@@ -133,7 +133,7 @@ function ScheduleClassPrices({t, match, history}) {
                   {(node.dateEnd) ? moment(node.dateEnd).format(dateFormat) : ""}
                 </Table.Col>
                 <Table.Col>
-                  {node.organizationClasspassDropin.name}
+                  {(node.organizationClasspassDropin) ? node.organizationClasspassDropin.name : ""}
                 </Table.Col>
                 <Table.Col>
                   {(node.organizationClasspassTrial) ? node.organizationClasspassTrial.name : ""}
