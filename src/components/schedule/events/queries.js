@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const GET_SCHEDULE_EVENTS_QUERY = gql`
-  query ScheduleEvents($before:String, $after:String, $archived:Boolean!) {
-    scheduleEvents(first: 15, before: $before, after:$after, archived:$archived) {
+  query ScheduleEvents($before:String, $after:String, $archived:Boolean!, $orderBy: String!) {
+    scheduleEvents(first: 15, before: $before, after:$after, archived:$archived, orderBy: [$orderBy]) {
       pageInfo {
         hasNextPage
         hasPreviousPage

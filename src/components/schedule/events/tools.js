@@ -8,6 +8,7 @@ export function get_list_query_variables() {
 
   let queryVars = {
     archived: (archived === "true") ? true : false,
+    orderBy: (archived === "true") ? "-date_start": "date_start",
   }
 
   console.log(queryVars)
