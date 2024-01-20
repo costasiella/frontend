@@ -29,6 +29,7 @@ function AccountOrders({ t, match, history }) {
   const account_id = match.params.account_id
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ORDERS_QUERY, {
     variables: {'account': account_id},
+    fetchPolicy: "network-only"
   })
 
   // Loading

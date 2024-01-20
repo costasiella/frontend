@@ -36,7 +36,8 @@ function AccountAcceptedDocuments({ t, history, match }) {
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_ACCEPTED_DOCUMENTS_QUERY, {
     variables: {
       account: accountId
-    }
+    },
+    fetchPolicy: "network-only"
   })
 
   // Loading

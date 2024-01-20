@@ -41,7 +41,8 @@ function AccountProducts({t, match, location}) {
   localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
 
   const {loading, error, data, fetchMore} = useQuery(GET_ACCOUNT_PRODUCTS_QUERY, {
-    variables: { accountId: accountId }
+    variables: { accountId: accountId },
+    fetchPolicy: "network-only"
   })
   const [deleteAccountProduct] = useMutation(DELETE_ACCOUNT_PRODUCT)
 

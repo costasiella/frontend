@@ -32,7 +32,8 @@ function AccountSubscriptions({t, match}) {
   const cardTitle = t('relations.account.subscriptions.title')
   const activeLink = "subscriptions"
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SUBSCRIPTIONS_QUERY, {
-    variables: {accountId: accountId}
+    variables: {accountId: accountId},
+    fetchPolicy: "network-only"
   })
   const [deleteAccountSubscription] = useMutation(DELETE_ACCOUNT_SUBSCRIPTION)
 

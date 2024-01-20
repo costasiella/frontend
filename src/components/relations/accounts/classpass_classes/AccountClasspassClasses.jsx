@@ -35,7 +35,8 @@ function AccountClasspassClasses({t, match}) {
     variables: { 
       accountId: accountId,
       id: id
-    }
+    },
+    fetchPolicy: "network-only"
   })
 
   if (loading) return(

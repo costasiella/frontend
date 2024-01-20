@@ -32,9 +32,12 @@ function AccountScheduleEventTickets({t, history, match}) {
   const cardTitle = t('relations.account.event_tickets.title')
 
   const accountId = match.params.account_id
-  const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, { variables: {
-    account: accountId
-  }})
+  const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_SCHEDULE_EVENT_TICKETS_QUERY, { 
+    variables: {
+      account: accountId
+    },
+    fetchPolicy: "network-only"
+  })
   const [updateAccountScheduleEventTicket] = useMutation(UPDATE_ACCOUNT_SCHEDULE_EVENT_TICKET)
 
 
