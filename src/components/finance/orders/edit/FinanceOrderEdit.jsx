@@ -16,6 +16,7 @@ import FinanceOrderEditForm from "./FinanceOrderEditForm"
 import FinanceOrderEditBase from './FinanceOrderEditBase'
 
 import {
+  Alert,
   Grid,
   Icon,
   Card,
@@ -96,7 +97,24 @@ function FinanceOrderEdit({t, match, location, history}) {
 
         </Grid.Col>
         <Grid.Col md={6}>
-          {(order.status !== "DELIVERED") ? 
+          {(order.status === "DELIVERED") ? 
+              <Card title={t('general.status')}>
+              <Card.Body> 
+                <span className="text-green"><Icon name="check" /></span> {t("finance.orders.statuses.DELIVERED")}
+              </Card.Body>
+            </Card> : "" }
+          {(order.status === "DELIVERY_ERROR") ? 
+              <Card title={t('general.status')}>
+              <Card.Body> 
+                <Alert type="danger" icon="alert-triangle">
+                  {t("finance.orders.statuses.DELIVERY_ERROR")}
+                </Alert>
+                <p>
+                  {order.deliveryErrorMessage && order.deliveryErrorMessage}
+                </p>
+              </Card.Body>
+            </Card> : "" }
+          {(order.status !== "DELIVERED" && order.status !== "DELIVERY_ERROR") ?
             <Formik
               initialValues={{ 
                 status: order.status, 
@@ -138,12 +156,7 @@ function FinanceOrderEdit({t, match, location, history}) {
                 />
               )}
             </Formik>
-            :     
-            <Card title={t('general.status')}>
-              <Card.Body> 
-                <span className="text-green"><Icon name="check" /></span> {t("finance.orders.statuses.DELIVERED")}
-              </Card.Body>
-            </Card>
+            : ""  
           }
         </Grid.Col>
       </Grid.Row> 

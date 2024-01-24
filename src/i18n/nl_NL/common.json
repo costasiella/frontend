@@ -550,6 +550,7 @@
                 "AWAITING_PAYMENT": "__STRING_NOT_TRANSLATED__",
                 "CANCELLED": "__STRING_NOT_TRANSLATED__",
                 "DELIVERED": "__STRING_NOT_TRANSLATED__",
+                "DELIVERY_ERROR": "__STRING_NOT_TRANSLATED__",
                 "NOT_FOUND": "__STRING_NOT_TRANSLATED__",
                 "PAID": "__STRING_NOT_TRANSLATED__",
                 "RECEIVED": "__STRING_NOT_TRANSLATED__",

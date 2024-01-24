@@ -32,6 +32,7 @@ const FinanceOrderEditForm = ({ t, isSubmitting, errors, values, returnUrl }) =>
                 <option value={"DELIVERED"} key={v4()}>{t("finance.orders.statuses.DELIVERED")}</option>
                 <option value={"CANCELLED"} key={v4()}>{t("finance.orders.statuses.CANCELLED")}</option>
                 <option value={"NOT_FOUND"} key={v4()}>{t("finance.orders.statuses.NOT_FOUND")}</option>
+                {/* <option value={"DELIVERY_ERROR"} key={v4()}>{t('finance.orders.statuses.DELIVERY_ERROR')}</option> */}
               </Field>
               <ErrorMessage name="status" component="span" className="invalid-feedback" />
             </Form.Group>

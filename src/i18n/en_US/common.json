@@ -550,6 +550,7 @@
                 "AWAITING_PAYMENT": "Awaiting payment",
                 "CANCELLED": "Cancelled",
                 "DELIVERED": "Delivered",
+                "DELIVERY_ERROR": "Delivery Error",
                 "NOT_FOUND": "Not found",
                 "PAID": "Paid",
                 "RECEIVED": "Received",
