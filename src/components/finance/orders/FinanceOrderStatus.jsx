@@ -34,6 +34,8 @@ class FinanceOrderStatus extends Component {
         return <Badge color="success">{t('finance.orders.statuses.DELIVERED')}</Badge>
       case "CANCELLED":
         return <Badge color="warning">{t('finance.orders.statuses.CANCELLED')}</Badge>
+      case "DELIVERY_ERROR":
+        return <Badge color="danger">{t('finance.orders.statuses.DELIVERY_ERROR')}</Badge>
       default:
         return t('finance.orders.statuses.NOT_FOUND') 
     }
