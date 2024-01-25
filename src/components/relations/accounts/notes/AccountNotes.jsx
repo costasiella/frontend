@@ -42,7 +42,8 @@ function AccountNotes({ t, history, match }) {
   const accountId = match.params.account_id
 
   const { loading, error, data, fetchMore, refetch } = useQuery(GET_ACCOUNT_NOTES_QUERY, {
-    variables: get_list_query_variables(accountId)
+    variables: get_list_query_variables(accountId),
+    fetchPolicy: "network-only"
   })
   const [deleteAccountNote] = useMutation(DELETE_ACCOUNT_NOTE)
 

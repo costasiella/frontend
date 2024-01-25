@@ -20,6 +20,7 @@ export const QUERY_ACCOUNT_ORDERS = gql`
           }
           message
           status
+          deliveryErrorMessage
           total
           totalDisplay
           createdAt

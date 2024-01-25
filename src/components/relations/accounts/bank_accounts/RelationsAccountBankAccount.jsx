@@ -29,7 +29,8 @@ function RelationsAccountBankAccount({ t, match, history }) {
   const accountId = match.params.account_id
 
   const { loading, error, data } = useQuery(GET_ACCOUNT_BANK_ACCOUNTS_QUERY, {
-    variables: { account: accountId }
+    variables: { account: accountId },
+    fetchPolicy: "network-only"
   })
 
   const [ updateAccountBankAccount ] = useMutation(UPDATE_ACCOUNT_BANK_ACCOUNT)

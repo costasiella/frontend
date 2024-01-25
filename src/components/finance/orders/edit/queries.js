@@ -19,6 +19,7 @@ export const GET_FINANCE_ORDER_QUERY = gql`
       total
       totalDisplay
       balanceDisplay
+      deliveryErrorMessage
       items(first: 100) {
         pageInfo {
           hasNextPage

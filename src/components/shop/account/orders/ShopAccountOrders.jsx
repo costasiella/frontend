@@ -155,6 +155,9 @@ function ShopAccountOrders({t, match, history}) {
                           </Button>
                         </Link>
                       : ""}
+                      {(node.status === "DELIVERY_ERROR" && node.deliveryErrorMessage) ? 
+                       <span>{node.deliveryErrorMessage}</span>
+                      : ""}
                     </Card.Options>
                   </Card.Header>
                   <Table cards>

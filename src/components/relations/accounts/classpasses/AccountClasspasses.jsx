@@ -37,7 +37,8 @@ function AccountClasspasses({t, match}) {
   </HasPermissionWrapper>
 
   const {loading, error, data, fetchMore} = useQuery(GET_ACCOUNT_CLASSPASSES_QUERY, {
-    variables: { accountId: accountId }
+    variables: { accountId: accountId },
+    fetchPolicy: "network-only"
   })
   const [deleteAccountClasspass] = useMutation(DELETE_ACCOUNT_CLASSPASS)
 

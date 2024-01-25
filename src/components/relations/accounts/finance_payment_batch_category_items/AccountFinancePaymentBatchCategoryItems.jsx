@@ -27,7 +27,8 @@ function AccountFinancePaymentBatchCategoryItems({ t, history, match }) {
   const cardTitle = t('relations.account.finance_payment_batch_category_items.title')
 
   const { loading, error, data, fetchMore } = useQuery(GET_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEMS_QUERY, {
-    variables: { account: accountId }
+    variables: { account: accountId },
+    fetchPolicy: "network-only"
   })
   const [deleteAccountFinancePaymentBatchCategoryItem] = useMutation(DELETE_ACCOUNT_FINANCE_PAYMENT_BATCH_CATEGORY_ITEM)
 

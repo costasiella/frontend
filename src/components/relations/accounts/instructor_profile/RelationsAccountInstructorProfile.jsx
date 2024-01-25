@@ -22,7 +22,8 @@ function RelationsAccountInstructorProfile({ t, match}) {
   const accountId = match.params.account_id
   const activeLink = "instructor_profile"
   const { loading, error, data } = useQuery(GET_ACCOUNT_INSTRUCTOR_PROFILE_QUERY, {
-    variables: { id: accountId }
+    variables: { id: accountId },
+    fetchPolicy: "network-only"
   })
   const [updateAccountInstructorProfile] = useMutation(UPDATE_ACCOUNT_INSTRUCTOR_PROFILE)
 

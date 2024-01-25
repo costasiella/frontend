@@ -37,7 +37,8 @@ function AccountDocuments({t, match}) {
   </HasPermissionWrapper>
 
   const {loading, error, data, fetchMore} = useQuery(GET_DOCUMENTS_QUERY, {
-    variables: { account: accountId }
+    variables: { account: accountId },
+    fetchPolicy: "network-only"
   })
   const [deleteAccountDocument] = useMutation(DELETE_DOCUMENT)
 
