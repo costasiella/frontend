@@ -101,8 +101,7 @@ function ShopClassBook({ t, match, history }) {
   const class_info = date_display + ' ' + timeStart + ' - ' + timeEnd + ' ' + classType + ' ' + t("general.at") + ' ' + location
 
   console.log(prices)
-  console.log("ALREADY BOOKED")
-  console.log(alreadyBooked)
+  console.log("ALREADY BOOKED: " + alreadyBooked)
   console.log(scheduleClass.bookingStatus)
 
   let content
@@ -169,6 +168,7 @@ function ShopClassBook({ t, match, history }) {
         <Grid.Col md={12}>
           <h5>{ class_info }</h5>
           <div className="mt-6">
+            {/* Show alert when already booked */}
             {(alreadyBooked) ?
               <Alert type="primary" hasExtraSpace>
                 <h5>{t("shop.classes.book.unable_to_show_booking_options")}</h5>
@@ -182,6 +182,7 @@ function ShopClassBook({ t, match, history }) {
                   </Button>
                 </Link>
               </Alert>
+              // Display booking options
               : content
             }
           </div>

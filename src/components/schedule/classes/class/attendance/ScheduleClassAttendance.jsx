@@ -145,7 +145,17 @@ function ScheduleClassAttendance({ t, match, location }) {
                       <Table.Col>
                         <Link to={`/relations/accounts/${node.account.id}/profile`}>
                           {node.account.fullName}
-                        </Link>
+                        </Link> <br />
+                        {console.table(node)}
+                        {node.accountClasspass && 
+                          <small className='text-muted'>
+                            {node.accountClasspass.organizationClasspass.name} { " " }
+                          </small>
+                        }
+                        {node.accountClasspass && 
+                        node.accountClasspass.organizationClasspass.trialPass && 
+                        <Badge color="success">{t('schedule.classes.class.attendance.trial')}</Badge>
+                        }
                       </Table.Col>
                       <Table.Col>
                         <BadgeBookingStatus status={node.bookingStatus} />
