@@ -22,7 +22,6 @@ function FinanceInvoicesBase ({ t, history, children, refetch }) {
         <Container>
           <Page.Header title={t("finance.title")}>
             <div className="page-options d-flex">
-              <FinanceInvoicesFilter refetch={refetch}/>
               <ButtonExport url="/finance/invoices/export" className='mr-2' />
               <Link to="/finance/invoices/groups">
                 <Button
@@ -36,6 +35,7 @@ function FinanceInvoicesBase ({ t, history, children, refetch }) {
           </Page.Header>
           <Grid.Row>
             <Grid.Col md={12}>
+              <FinanceInvoicesFilter refetch={refetch}/>
               {children}
             </Grid.Col>
           </Grid.Row>
