@@ -20,7 +20,7 @@ import ButtonAdd from '../../../../ui/ButtonAdd'
 
 
 
-function ScheduleEventTicketEditCustomers({ t, history, match }) {
+function ScheduleEventTicketEditCustomers({ t, history, location, match }) {
   const id = match.params.id
   const eventId = match.params.event_id
   const returnUrl = `/schedule/events/edit/${eventId}/tickets/`
@@ -37,8 +37,10 @@ function ScheduleEventTicketEditCustomers({ t, history, match }) {
   // const [updateScheduleEventTicketScheduleItem] = useMutation(UPDATE_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEM)
 
   // set returnURL for invoice links
-  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, 
-    `/schedule/events/edit/${eventId}/tickets/edit/${id}/customers`)
+  localStorage.setItem(CSLS.FINANCE_INVOICES_EDIT_RETURN, location.pathname)
+  localStorage.setItem(CSLS.RELATIONS_ACCOUNT_PROFILE_RETURN, location.pathname)
+
+    // `/schedule/events/edit/${eventId}/tickets/edit/${id}/customers`)
 
   if (loading) return (
     <ScheduleEventTicketEditBase 
