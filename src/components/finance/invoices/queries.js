@@ -4,6 +4,7 @@ export const GET_INVOICES_QUERY = gql`
   query FinanceInvoices(
     $after: String, 
     $before: String, 
+    $invoiceNumberSearch: String,
     $status: CostasiellaFinanceInvoiceStatusChoices,
     $dateFrom: Date,
     $dateUntil: Date
@@ -12,6 +13,7 @@ export const GET_INVOICES_QUERY = gql`
       first: 15, 
       before: $before, 
       after: $after, 
+      invoiceNumber_Icontains: $invoiceNumberSearch,
       status: $status
       dateSent_Gte: $dateFrom,
       dateSent_Lte: $dateUntil

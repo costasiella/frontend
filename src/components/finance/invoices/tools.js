@@ -12,9 +12,9 @@ export function get_list_query_variables() {
 
   let search = localStorage.getItem(CSLS.FINANCE_INVOICES_FILTER_SEARCH)
   if (search) {
-    queryVars.search = search
+    queryVars.invoiceNumberSearch = search
   } else {
-    queryVars.search = undefined
+    queryVars.invoiceNumberSearch = undefined
   }
 
   // Date from

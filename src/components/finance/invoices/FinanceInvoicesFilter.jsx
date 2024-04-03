@@ -9,6 +9,7 @@ import {
 
 import CSLS from "../../../tools/cs_local_storage"
 import CSDatePicker from '../../ui/CSDatePicker'
+import InputSearch from '../../general/InputSearch'
 import { get_list_query_variables } from './tools'
 
 
@@ -60,6 +61,21 @@ function FinanceInvoicesFilter({ t, history, data, refetch }) {
 
   return (
     <Grid.Row>
+      <Grid.Col lg={5} md={5} s={6} xs={12}>
+        {/* Search */}
+        <label class="bold">{t("finance.invoices.filter_label_search")}</label>
+        <InputSearch 
+          initialValueKey={CSLS.FINANCE_INVOICES_FILTER_SEARCH}
+          placeholder="Search..."
+          onChange={(value) => {
+            updateLocalStorageAndRefetch(
+              CSLS.FINANCE_INVOICES_FILTER_SEARCH,
+              value,
+              refetch
+            )
+          }}
+        />
+      </Grid.Col>
       <Grid.Col lg={3} md={4} s={6} xs={12}>
         {/* Status */}
         <label class="bold">{t("finance.invoices.filter_label_status")}</label>
@@ -83,7 +99,7 @@ function FinanceInvoicesFilter({ t, history, data, refetch }) {
           <option value="CANCELLED" key={v4()}>{t('finance.invoices.statuses.cancelled')}</option>
         </select>
       </Grid.Col>
-      <Grid.Col lg={3} md={4} s={6} xs={12}>
+      <Grid.Col lg={2} md={2} s={6} xs={12}>
         <label class="bold">{t("finance.invoices.filter_label_date_from")}</label>
         <CSDatePicker 
           className="form-control mr-2"
@@ -101,7 +117,7 @@ function FinanceInvoicesFilter({ t, history, data, refetch }) {
           placeholderText={t('finance.invoices.filter_label_date_from')}
         />
       </Grid.Col>
-      <Grid.Col lg={3} md={4} s={6} xs={12}>
+      <Grid.Col lg={2} md={2} s={6} xs={12}>
           <label class="bold">{t("finance.invoices.filter_label_date_until")}</label>
           <CSDatePicker 
             className="form-control mr-2"

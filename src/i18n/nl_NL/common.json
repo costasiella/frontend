@@ -499,6 +499,10 @@
                 },
                 "title": "__STRING_NOT_TRANSLATED__"
             },
+            "filter_label_date_from": "__STRING_NOT_TRANSLATED__",
+            "filter_label_date_until": "__STRING_NOT_TRANSLATED__",
+            "filter_label_search": "__STRING_NOT_TRANSLATED__",
+            "filter_label_status": "__STRING_NOT_TRANSLATED__",
             "invoice_number": "__STRING_NOT_TRANSLATED__",
             "item_delete_confirm_msg": "__STRING_NOT_TRANSLATED__",
             "item_deleted": "__STRING_NOT_TRANSLATED__",
