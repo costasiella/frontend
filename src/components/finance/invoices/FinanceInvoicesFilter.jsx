@@ -27,12 +27,12 @@ function getDefaultValue(value) {
 
 
 function getDefaultValueDate(lsKey) {
-  let dateValue
-  if (lsKey === CSLS.FINANCE_INVOICES_FILTER_DATE_FROM) {
-    dateValue = new Date(moment().startOf('quarter'))  
-  } else {
-    dateValue = new Date(moment().endOf('quarter'))  
-  }
+  let dateValue = ""
+  // if (lsKey === CSLS.FINANCE_INVOICES_FILTER_DATE_FROM) {
+  //   dateValue = new Date(moment().startOf('quarter'))  
+  // } else {
+  //   dateValue = new Date(moment().endOf('quarter'))  
+  // }
   
   const lsValue = localStorage.getItem(lsKey)
   if (lsValue) {
@@ -104,10 +104,15 @@ function FinanceInvoicesFilter({ t, history, data, refetch }) {
         <CSDatePicker 
           className="form-control mr-2"
           selected={dateFrom}
-          isClearable={false}
+          isClearable={true}
           onChange={(date) => {
-            let dateStr = moment(date).format('YYYY-MM-DD')
             setDateFrom(date)
+            let dateStr
+            if (date) {
+              dateStr = moment(date).format('YYYY-MM-DD')
+            } else {
+              dateStr = ""
+            }
             updateLocalStorageAndRefetch(
               CSLS.FINANCE_INVOICES_FILTER_DATE_FROM,
               dateStr,
@@ -122,10 +127,16 @@ function FinanceInvoicesFilter({ t, history, data, refetch }) {
           <CSDatePicker 
             className="form-control mr-2"
             selected={dateUntil}
-            isClearable={false}
+            isClearable={true}
             onChange={(date) => {
-              let dateStr = moment(date).format('YYYY-MM-DD')
+              console.log(date)
               setDateUntil(date)
+              let dateStr
+              if (date) {
+                dateStr = moment(date).format('YYYY-MM-DD')
+              } else {
+                dateStr = ""
+              }
               updateLocalStorageAndRefetch(
                 CSLS.FINANCE_INVOICES_FILTER_DATE_UNTIL,
                 dateStr,
