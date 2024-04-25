@@ -117,7 +117,7 @@ function ScheduleClassEditAll({t, match}) {
                   id: id,
                   displayPublic: values.displayPublic,
                   frequencyType: values.frequencyType,
-                  frequencyInterval: frequencyInterval,
+                  frequencyInterval: parseInt(frequencyInterval),
                   organizationLocationRoom: values.organizationLocationRoom,
                   organizationClasstype: values.organizationClasstype,
                   organizationLevel: values.organizationLevel,
