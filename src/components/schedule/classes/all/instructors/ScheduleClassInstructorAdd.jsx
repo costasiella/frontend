@@ -24,7 +24,9 @@ function ScheduleClassInstructorAdd({ t, history, match }) {
   const menuActiveLink = "instructors" 
   const pageHeaderButtonList = <ScheduleClassInstructorBack classId={classId} />
 
-  const {loading, error, data} = useQuery(GET_INPUT_VALUES_QUERY)
+  const {loading, error, data} = useQuery(GET_INPUT_VALUES_QUERY, {
+    fetchPolicy: "network-only"
+  })
   const [addScheduleClassInstructor] = useMutation(ADD_SCHEDULE_CLASS_INSTRUCTOR)
 
   if (loading) return (

@@ -26,7 +26,8 @@ function ScheduleClassInstructorEdit({ t, match, history }) {
   const pageHeaderButtonList = <ScheduleClassInstructorBack classId={classId} />
 
   const {loading, error, data} = useQuery(GET_SINGLE_SCHEDULE_CLASS_ACCOUNTS_QUERY, {
-    variables: { id: id }
+    variables: { id: id },
+    fetchPolicy: "network-only"
   })
   const [updateScheduleClassInstructor] = useMutation(UPDATE_SCHEDULE_CLASS_INSTRUCTOR)
 
