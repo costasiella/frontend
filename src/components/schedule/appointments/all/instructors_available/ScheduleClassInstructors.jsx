@@ -104,7 +104,10 @@ class ScheduleClassInstructors extends Component {
               location: data.scheduleItem.organizationLocationRoom.organizationLocation.name,
               locationRoom: data.scheduleItem.organizationLocationRoom.name,
               classtype: data.scheduleItem.organizationClasstype.name,
-              starttime: initialTimeStart
+              starttime: initialTimeStart,
+              dateStart: scheduleItem.dateStart,
+              frequencyType: scheduleItem.frequencyType,
+              frequencyInterval: scheduleItem.frequencyInterval
             })
   
             // Empty list

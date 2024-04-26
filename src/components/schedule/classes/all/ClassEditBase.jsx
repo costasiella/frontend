@@ -56,7 +56,9 @@ function ClassEditBase({t, match, children, menuActiveLink="", defaultCard=true,
     locationRoom: initialValues.organizationLocationRoom.name,
     classtype: initialValues.organizationClasstype.name,
     starttime: initialTimeStart,
-    dateStart: initialValues.dateStart
+    dateStart: initialValues.dateStart,
+    frequencyType: initialValues.frequencyType,
+    frequencyInterval: initialValues.frequencyInterval
   })
 
   return (
