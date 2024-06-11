@@ -33,6 +33,7 @@ function InsightSubscriptions ({ t, history }) {
   const export_url_active = "/d/export/insight/subscriptions/active/" + year
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year
   const export_url_stopped = "/d/export/insight/subscriptions/stopped/" + year
+  const export_url_paused = "/d/export/insight/subscriptions/paused/" + year
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   console.log(year)
@@ -102,12 +103,13 @@ function InsightSubscriptions ({ t, history }) {
                 <Line type="monotone" dataKey="sold" stroke={colors["green"]} />
                 <Line type="monotone" dataKey="stopped" stroke={colors["red"]} />
                 <Line type="monotone" dataKey="active" stroke={colors["blue"]} />
+                <Line type="monotone" dataKey="paused" stroke={colors["orange"]} />
               </LineChart>
             </ResponsiveContainer>
           </Card>
         </Grid.Col>
         <Grid.Col md={3}>
-          {/* Export as sold as excel sheet */}
+          {/* Export sold as excel sheet */}
           <Button
             block
             color="secondary"
@@ -119,6 +121,19 @@ function InsightSubscriptions ({ t, history }) {
           >
             {t("insight.subscriptions.sold.export_excel")}
           </Button>
+          {/* Export active as excel sheet */}
+          <Button
+            block
+            color="secondary"
+            RootComponent="a"
+            icon="download-cloud"
+            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+              t, doTokenRefresh, history, export_url_active
+            )}
+          >
+            {t("insight.subscriptions.active.export_excel")}
+          </Button>
+          {/* Export stopped as excel sheet */}
           <Button
             block
             color="secondary"
@@ -130,17 +145,17 @@ function InsightSubscriptions ({ t, history }) {
           >
             {t("insight.subscriptions.stopped.export_excel")}
           </Button>
-          {/* Export as active as excel sheet */}
+          {/* Export paused as excel sheet */}
           <Button
             block
             color="secondary"
             RootComponent="a"
             icon="download-cloud"
             onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-              t, doTokenRefresh, history, export_url_active
+              t, doTokenRefresh, history, export_url_paused
             )}
           >
-            {t("insight.subscriptions.active.export_excel")}
+            {t("insight.subscriptions.paused.export_excel")}
           </Button>
         </Grid.Col>
       </Grid.Row>

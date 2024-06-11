@@ -10,6 +10,7 @@ export const GET_INSIGHT_SUBSCRIPTIONS_QUERY = gql`
         sold
         stopped
         active
+        paused
       }
     }
   }
