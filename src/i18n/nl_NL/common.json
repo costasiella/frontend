@@ -1126,7 +1126,13 @@
             "active": {
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },
+            "blocked": {
+                "export_excel": "__STRING_NOT_TRANSLATED__"
+            },
             "explanation": "__STRING_NOT_TRANSLATED__",
+            "paused": {
+                "export_excel": "__STRING_NOT_TRANSLATED__"
+            },
             "sold": {
                 "export_excel": "__STRING_NOT_TRANSLATED__"
             },

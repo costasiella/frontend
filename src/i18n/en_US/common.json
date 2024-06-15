@@ -1126,7 +1126,13 @@
             "active": {
                 "export_excel": "Export active as Excel"
             },
+            "blocked": {
+                "export_excel": "Export blocked as Excel"
+            },
             "explanation": "Report on sold and active subscriptions",
+            "paused": {
+                "export_excel": "Export paused as Excel"
+            },
             "sold": {
                 "export_excel": "Export sold as Excel"
             },

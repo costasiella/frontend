@@ -11,6 +11,7 @@ export const GET_INSIGHT_SUBSCRIPTIONS_QUERY = gql`
         stopped
         active
         paused
+        blocked
       }
     }
   }

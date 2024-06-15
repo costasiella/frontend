@@ -34,6 +34,7 @@ function InsightSubscriptions ({ t, history }) {
   const export_url_sold = "/d/export/insight/subscriptions/sold/" + year
   const export_url_stopped = "/d/export/insight/subscriptions/stopped/" + year
   const export_url_paused = "/d/export/insight/subscriptions/paused/" + year
+  const export_url_blocked = "/d/export/insight/subscriptions/blocked/" + year
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
 
   console.log(year)
@@ -104,6 +105,7 @@ function InsightSubscriptions ({ t, history }) {
                 <Line type="monotone" dataKey="stopped" stroke={colors["red"]} />
                 <Line type="monotone" dataKey="active" stroke={colors["blue"]} />
                 <Line type="monotone" dataKey="paused" stroke={colors["orange"]} />
+                <Line type="monotone" dataKey="blocked" stroke={colors["purple"]} />
               </LineChart>
             </ResponsiveContainer>
           </Card>
@@ -156,6 +158,18 @@ function InsightSubscriptions ({ t, history }) {
             )}
           >
             {t("insight.subscriptions.paused.export_excel")}
+          </Button>
+          {/* Export blocked as excel sheet */}
+          <Button
+            block
+            color="secondary"
+            RootComponent="a"
+            icon="download-cloud"
+            onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+              t, doTokenRefresh, history, export_url_blocked
+            )}
+          >
+            {t("insight.subscriptions.blocked.export_excel")}
           </Button>
         </Grid.Col>
       </Grid.Row>
