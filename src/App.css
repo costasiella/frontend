@@ -736,3 +736,7 @@ table td.cs-insight-data-table-cell {
  th.cs-finance-expenses-col-summary {
   width: 340px;
  }
+
+ .finance-invoice-item-description textarea {
+  min-height: 92px;
+ }

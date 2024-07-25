@@ -33,7 +33,7 @@ const FinanceInvoiceItemEditForm = ({ t, isSubmitting, errors, node, touched, ha
             <ErrorMessage name="productName" component="span" className="invalid-feedback" />
           </Form.Group>
         </Grid.Col>
-        <Grid.Col md={3} className="cs-grid-table-cell">
+        <Grid.Col md={3} className="cs-grid-table-cell finance-invoice-item-description">
           <Form.Group>
             <Field type="text" 
                     name="description" 
