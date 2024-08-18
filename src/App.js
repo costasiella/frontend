@@ -13,6 +13,7 @@ import { relayStylePagination } from "@apollo/client/utilities";
 import { onError } from "@apollo/client/link/error";
 // import { setContext } from '@apollo/client/link/context';
 import Cookies from 'js-cookie';
+import moment from 'moment';
 
 import { TOKEN_REFRESH } from "./queries/system/auth"
 
@@ -293,7 +294,7 @@ const client = new ApolloClient({
 
 function App() {
   // Register "NL" locale for moment
-  // moment.locale('en-US')
+  moment.locale('en-US')
 
   return (
     <ApolloProvider client={client}>
