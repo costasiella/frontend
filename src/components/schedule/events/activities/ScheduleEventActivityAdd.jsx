@@ -83,8 +83,8 @@ function ScheduleEventActivityAdd({ t, history, match }) {
           organizationLocationRoom: '',
           dateStart: new Date(),
           // Set defaults as date objects
-          timeStart: new Date("2000-1-1 09:00"),
-          timeEnd: new Date("2000-1-1 10:00"),
+          timeStart: new Date(2000, 1, 1, 9, 0),
+          timeEnd: new Date(2000, 1, 1, 10, 0),
           account: '',
           account2: ''
         }}
