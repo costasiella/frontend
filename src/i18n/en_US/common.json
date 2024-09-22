@@ -2198,7 +2198,7 @@
                     "help_content": "{{ mail_content }} ( Content as set in event info mail field )",
                     "help_description": "{{ schedule_event }} (Schedule event object), {{ schedule_event_ticket }} (Schedule event ticket object), {{ schedule_event_time_info }} (Schedule event time info)",
                     "help_subject": "No variables available",
-                    "help_title": "No variables available",
+                    "help_title": "{{ schedule_event }} (Schedule event object)",
                     "title": "Event info mail"
                 },
                 "explanation": "Set the contents of system generated mails.",
