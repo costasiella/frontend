@@ -1,3 +1,6 @@
+// This file is closely related to shop > subscription > CheckoutCardDirectDebitAccountInfoRequired.jsx.
+// They should have the same error messages when more account info is required.
+
 import React, { useContext, useRef, useState } from 'react'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"

@@ -53,6 +53,7 @@ export const GET_SUBSCRIPTION_QUERY = gql`
       instructor
       employee
       hasBankAccountInfo
+      hasCompleteEnoughProfile
     }
   }
 `
