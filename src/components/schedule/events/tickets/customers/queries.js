@@ -101,6 +101,14 @@ export const GET_ACCOUNTS_QUERY = gql`
   }
 `
 
+export const RESEND_INFO_MAIL_ACCOUNT_SCHEDULE_EVENT_TICKET = gql`
+  mutation ResendTicketInfoMail($input: ResendInfoMailAccountScheduleEventTicketInput!) {
+    resendInfoMailAccountScheduleEventTicket(input: $input) {
+      ok
+    }
+  }
+`
+
 // export const GET_SCHEDULE_EVENT_TICKET_SCHEDULE_ITEM_QUERY = gql`
 // query ScheduleEventTicket($before:String, $after:String, $id:ID!) {
 //   scheduleEventTicket(id: $id) {

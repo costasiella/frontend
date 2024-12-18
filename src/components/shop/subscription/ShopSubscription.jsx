@@ -11,6 +11,7 @@ import {
 
 import CSLS from "../../../tools/cs_local_storage"
 import CheckoutCardMollie from './CheckoutCardMollie'
+import CheckoutCardDirectDebitAccountInfoRequired from './CheckoutCardDirectDebitAccountInfoRequired'
 import CheckoutCardBankAccountRequired from './CheckoutCardBankAccountRequired'
 import CheckoutCardDirectDebit from './CheckoutCardDirectDebit'
 import ShopSubscriptionBase from "./ShopSubscriptionBase"
@@ -47,15 +48,22 @@ function ShopSubscription({ t, match, history }) {
 
   // Check for shop subscription payment method
   if (subscription.shopPaymentMethod === "DIRECTDEBIT") {
-    // Check for bank account details, if not set, 
-    if (!account.hasBankAccountInfo) {
-      // Create local storage back url for account bank account component    
-      localStorage.setItem(CSLS.SHOP_ACCOUNT_BANK_ACCOUNT_NEXT, `/shop/subscription/${id}`)
-      // Show bank account requird 
-      CheckoutCard = <CheckoutCardBankAccountRequired />
+    // Check for profile completeness, if not sufficient, 
+    if (!account.hasCompleteEnoughProfile) {
+      localStorage.setItem(CSLS.SHOP_ACCOUNT_PROFILE_NEXT, `/shop/subscription/${id}`)
+      // Show Account info required card
+      CheckoutCard = <CheckoutCardDirectDebitAccountInfoRequired />
     } else {
-      // Allow customer to create a subscription
-      CheckoutCard = <CheckoutCardDirectDebit accountId={account.accountId} organizationSubscription={subscription} />
+      // Check for bank account details, if not set, 
+      if (!account.hasBankAccountInfo) {
+        // Create local storage back url for account bank account component    
+        localStorage.setItem(CSLS.SHOP_ACCOUNT_BANK_ACCOUNT_NEXT, `/shop/subscription/${id}`)
+        // Show bank account required 
+        CheckoutCard = <CheckoutCardBankAccountRequired />
+      } else {
+        // Allow customer to create a subscription
+        CheckoutCard = <CheckoutCardDirectDebit accountId={account.accountId} organizationSubscription={subscription} />
+      }
     }
   } else {
     CheckoutCard = <CheckoutCardMollie organizationSubscriptionId={id} />

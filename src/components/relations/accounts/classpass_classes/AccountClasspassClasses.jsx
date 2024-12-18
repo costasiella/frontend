@@ -14,6 +14,7 @@ import AppSettingsContext from '../../../context/AppSettingsContext'
 import ButtonBack from '../../../ui/ButtonBack'
 import ContentCard from "../../../general/ContentCard"
 import RelationsAccountProfileBase from '../RelationsAccountProfileBase'
+import BadgeBookingStatus from '../../../ui/BadgeBookingStatus'
 
 import { GET_ACCOUNT_CLASSPASS_CLASSES_QUERY } from "./queries"
 
@@ -112,6 +113,7 @@ function AccountClasspassClasses({t, match}) {
               <Table.ColHeader>{t('general.time')}</Table.ColHeader>
               <Table.ColHeader>{t('general.location')}</Table.ColHeader>
               <Table.ColHeader>{t('general.class')}</Table.ColHeader>
+              <Table.ColHeader>{t('general.booking_status')}</Table.ColHeader>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -125,6 +127,9 @@ function AccountClasspassClasses({t, match}) {
                   </Table.Col>
                   <Table.Col key={v4()}>
                     {node.scheduleItem.organizationClasstype.name}
+                  </Table.Col>
+                  <Table.Col>
+                    <BadgeBookingStatus status={node.bookingStatus} />
                   </Table.Col>
                 </Table.Row>
               ))}

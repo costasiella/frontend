@@ -23,6 +23,7 @@ export const GET_ACCOUNT_CLASSPASS_CLASSES_QUERY = gql`
         edges {
           node {
             date
+            bookingStatus
             scheduleItem {
               timeStart
               timeEnd
