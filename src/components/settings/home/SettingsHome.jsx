@@ -214,6 +214,19 @@ function SettingsHome({ t, match, params }) {
                 </Card.Body>
               </Card>
             </Grid.Col>
+            <Grid.Col md={3}>
+              <Card>
+                <Card.Body>
+                  <h5>{t("settings.about.diagnostics.title")}</h5>
+                  {t("settings.about.diagnostics.explanation")}
+                  <br /><br />
+                  <HomeItemButton 
+                    link="/settings/diagnostics" 
+                    linkTitle={t("View info")}
+                  />
+                </Card.Body>
+              </Card>
+            </Grid.Col>
           </Grid.Row>
         </Container>
       </div>
