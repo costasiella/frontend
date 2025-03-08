@@ -2,8 +2,10 @@ import React from 'react'
 import { useMutation } from '@apollo/client'
 import { withTranslation } from 'react-i18next'
 import { withRouter } from "react-router"
+import { v4 } from "uuid"
 
 import {
+  Dropdown,
   Page,
   Form,
   Grid,
@@ -25,6 +27,7 @@ import { get_list_query_variables } from "./tools"
 
 function RelationsAccountsBase({t, history, children, refetch}) {
   const exportUrl = `/d/export/relations/accounts/active`
+  const exportUrlSportBitManager = `/d/export/relations/accounts/sportbitmanager`
   const [doTokenRefresh] = useMutation(TOKEN_REFRESH)
   
 
@@ -54,17 +57,40 @@ function RelationsAccountsBase({t, history, children, refetch}) {
                 <option value="instructor">{t("general.instructors")}</option>
                 <option value="employee">{t("general.employees")}</option>
               </Form.Select>
-              {/* Export Active Accounts */}
-              <Button
-                color="secondary"
-                icon="download-cloud"
+              {/* Export */}
+              <Dropdown
                 className="ml-2"
-                onClick={() => refreshTokenAndOpenExportLinkInNewTab(
-                  t, doTokenRefresh, history, exportUrl
-                )}
-              >
-                {t('relations.btn_export_active_accounts')} 
-              </Button>
+                type="button"
+                toggle
+                icon="download-cloud"
+                color="secondary"
+                triggerContent={t("general.export")}
+                items={[
+                  <HasPermissionWrapper permission="view" resource="account">
+                    <Dropdown.Item
+                      key={v4()}
+                      icon="list"
+                      onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+                        t, doTokenRefresh, history, exportUrl
+                      )}
+                      >
+                        {t('relations.export.active_accounts')}
+                    </Dropdown.Item>
+                  </HasPermissionWrapper>,
+                  <HasPermissionWrapper permission="view" resource="account">
+                    <Dropdown.Item
+                      key={v4()}
+                      icon="list"
+                      onClick={() => refreshTokenAndOpenExportLinkInNewTab(
+                        t, doTokenRefresh, history, exportUrlSportBitManager
+                      )}
+                      >
+                        {t('relations.export.sportbit_manager')}
+                    </Dropdown.Item>
+                  </HasPermissionWrapper>
+                ]}>
+              </Dropdown>
+              {/* Add account button */}
               <HasPermissionWrapper permission="add"
                                     resource="account">
                 <Button color="primary ml-2"

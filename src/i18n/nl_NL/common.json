@@ -1735,7 +1735,10 @@
             "toast_add_success": "__STRING_NOT_TRANSLATED__",
             "toast_edit_success": "__STRING_NOT_TRANSLATED__"
         },
-        "btn_export_active_accounts": "__STRING_NOT_TRANSLATED__",
+        "export": {
+            "active_accounts": "__STRING_NOT_TRANSLATED__",
+            "sportbit_manager": "__STRING_NOT_TRANSLATED__"
+        },
         "suppliers": {
             "title": "__STRING_NOT_TRANSLATED__"
         },
