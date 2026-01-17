@@ -1,3 +1,5 @@
+# As of 01-01-2026 all development has been stopped and this repository will be archived.
+
 # Costasiella frontend
 
 ## About
